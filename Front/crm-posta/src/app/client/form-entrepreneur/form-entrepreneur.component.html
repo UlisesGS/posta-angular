@@ -1,0 +1,212 @@
+<div class="container display-flex">
+    <form action="">
+        <h2 class="btn btn-disabled">DATOS DE EMPRENDEDOR</h2>
+        <div class="col-8 p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
+            <div style="flex-basis: 50%;">
+                <label for="">
+                    <br>
+                    <input type="text" name="name" ngModel="" placeholder="Nombre"  >
+                </label>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        <br>
+                        <input type="text" name="nit" ngModel=""placeholder="Documento/NIT" >
+                    </label>
+                </div>
+            </div>
+            <div style="flex-basis: 50%;">
+                <label for="">
+                    <br>
+                    <input type="text" name="lastName" ngModel="" placeholder="Apellido">
+                </label>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        
+                        <br>
+                        <select class="form-select form-select-sm" name="studyLevel" ngModel="" aria-label="Default select example">
+                            <option value="">Género</option>
+                            <option value=""></option>
+                            
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div style="flex-basis: 50%;">
+                <label for="">
+                    <br>
+                    <input type="text" style="border-radius: 5;" name="nit" ngModel="" placeholder="Edad">
+                </label>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        
+                        <br>
+                        <select class="form-select form-select-sm" name="studyLevel" ngModel="" aria-label="Default select example">
+                            <option value="">Grupo Étnico</option>
+                            <option value=""></option>
+                            
+                        </select>
+                    </label>
+                </div>
+                <div style="flex-basis: 50%;">
+                    
+                    <label for=""  style="font-size: 15px; margin-top: 10px;;">
+                        <strong>¿Es población víctima?</strong>
+                        <br>
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;">
+                    <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 10px;">
+                    <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+                </div>
+            </div>
+            <div style="flex-basis: 50%;">
+                <label for="">
+                    
+                    <br>
+                    <select class="form-select form-select-sm" name="studyLevel" ngModel="" aria-label="Default select example">
+                        <option value="">Nivel Escolaridad</option>
+                        <option value=""></option>
+                        
+                    </select>
+                </label>
+                <div style="flex-basis: 50%;">
+                    
+                    <label for=""  style="font-size: 15px; margin-top: 10px;;">
+                        <strong>¿Esta en condiciones de desplazamiento?</strong>
+                        <br>
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;">
+                    <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 10px;">
+                    <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+                </div>
+                <div style="flex-basis: 50%;">
+                    
+                    <label for=""  style="font-size: 15px; margin-top: 10px;;">
+                        <strong>¿Presenta alguna discapacidad?</strong>
+                        <br>
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;">
+                    <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 10px;">
+                    <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+            <!-- Form de los datos de Empresa -->
+        <div>
+            <h2 class="btn btn-disabled mt-2">DATOS IDEA DE NEGOCIO</h2>
+            <div class="col-8 p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        <br>
+                        <select class="form-select form-select-sm" name="typeOfCompany" ngModel="" aria-label="Default select example">
+                            <option value="">Tipo de Empresa</option>
+                            <option value=""></option>
+                            
+                        </select>
+                    </label>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+                            <input type="text" name="companyName" ngModel=""placeholder="Nombre Empresa">
+                        </label>
+                    </div>
+                </div>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        <br>
+                        <input type="text" name="" ngModel="" placeholder="Actividad Económica/CIIU">
+                    </label>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+                            <input type="date" name="fechaAlta" ngModel=""placeholder="Fecha de Constitución">
+                        </label>
+                        
+                    </div>
+                </div>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        <br>
+                        <input type="text" style="border-radius: 5; margin-right: 5px;" name="employeePartTime" ngModel="" placeholder="Emleados TC">
+                    </label>
+                    <label for="">
+                        <br>
+                        <input type="text" style="border-radius: 5;" name="employeeFullTime" ngModel="" placeholder="Empleados MT">
+                    </label>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="address" ngModel="" placeholder="DIrección">
+                        </label>
+                    </div>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                        <br>
+                        <input type="text" style="border-radius: 5; margin-right: 5px;" name="email" ngModel="" placeholder="Correo Electrónico">
+                    </label>
+                    <div style="flex-basis: 50%;">
+                        
+                        <label for=""  style="font-size: 15px; margin-top: 10px;;">
+                            <strong>¿Tiene registro Mercantil?</strong>
+                            <br>
+                        </label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;">
+                        <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 10px;">
+                        <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+                    </div>
+                    </div>
+                </div>
+                <div style="flex-basis: 50%;">
+                    <label for=""  style="font-size: 15px; margin-top: 10px;;">
+                        <strong>Forma de Contratación</strong>
+                        <br>
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;">
+                    <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 10px;">
+                    <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 10px;">
+                    <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label>
+                    <div style="flex-basis: 50%;">
+                        
+                        <label for="">
+                            <br>
+                            <select class="form-select form-select-sm" name="municipio" ngModel="" aria-label="Default select example">
+                                <option value="">Ciudad</option>
+                                <option value=""></option>
+                                
+                            </select>
+                        </label>
+                    </div>
+                    <div style="flex-basis: 50%;">
+                        
+                        <label for="">
+                            <br>
+                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="phone" ngModel="" placeholder="Teléfono">
+                        </label>
+                    </div>
+                    <div style="flex-basis: 50%;">
+                        
+                        <label for="">
+                            <br>
+                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="numberMercantilRegistry" ngModel="" placeholder="Número de registro Mercantil">
+                        </label>
+                    </div>
+                </div>
+                <div style="flex-basis: 100%;" class="mt-3">
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Tema/Observaciones"></textarea>
+                      </div>
+                </div>
+            </div>
+        </div>
+        </form>
+</div>

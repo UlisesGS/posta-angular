@@ -1,0 +1,43 @@
+
+table {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+    height: 70px;
+    position: relative;
+    
+   
+  }
+th {
+    font-size: 70%;
+    width: 18%;
+    padding: 0px 20px 0px 20px ;
+    background: #faf8f8;
+  }
+ td{
+    font-size: 70%;
+    width: 10px;
+    background: #faf8f8;
+    padding: 0px 20px 0px 20px ;
+  }
+  #button{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70%;
+    width: 100px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 1em;
+  }
+  #button-add{
+    
+    border-collapse: collapse;
+    border-radius: 1em;
+    margin-bottom: 5px;
+    position: relative;
+    right: 0;
+  }
+  

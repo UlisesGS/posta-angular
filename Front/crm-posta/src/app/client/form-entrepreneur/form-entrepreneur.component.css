@@ -1,0 +1,21 @@
+h2{
+    border-collapse: collapse;
+    border: solid 2px;
+    border-color: #eb9694;
+    background-color: red ;
+    color: white;
+    font-size: 18;
+}
+h2:hover{
+    border-collapse: collapse;
+    
+    border: solid 2px;
+    border-color: #eb9694;
+    background-color: red ;
+    color: white;
+    font-size: 18;
+}
+input{
+    border-collapse: collapse;
+    border-radius: 0.5em;
+}
