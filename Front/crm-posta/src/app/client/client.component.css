@@ -1,43 +1,50 @@
 
-table {
+ table {
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
     height: 70px;
     position: relative;
     
-   
   }
+  
 th {
-    font-size: 70%;
+    font-size: 100%;
     width: 18%;
-    padding: 0px 20px 0px 20px ;
+    height: 4vw;
+    padding: 5px 20px 5px 20px ;
     background: #faf8f8;
+    vertical-align: middle;
   }
+  
  td{
-    font-size: 70%;
-    width: 10px;
+    font-size: 90%;
     background: #faf8f8;
-    padding: 0px 20px 0px 20px ;
-  }
+    padding: 5px 20px 5px 20px ;
+  } 
   #button{
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 70%;
+    font-size: 100%;
     width: 100px;
-    height: 20px;
+    height: 30px;
     background-color: red;
     color: white;
-    border-radius: 1em;
+    border-radius: 0.5em;
   }
   #button-add{
-    
+    align-items: flex-end;
     border-collapse: collapse;
     border-radius: 1em;
     margin-bottom: 5px;
     position: relative;
     right: 0;
+    text-align: center center;
   }
+
+ #mio-2{
+  margin-left: 0;
+ }
   
