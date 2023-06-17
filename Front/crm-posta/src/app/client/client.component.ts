@@ -10,7 +10,7 @@ import { ClientService } from './client.service';
 })
 export class ClientComponent implements OnInit{
   clients:Client[];
-
+public value:boolean;
 
   constructor(private serviceClient:ClientService){
 
@@ -20,5 +20,12 @@ export class ClientComponent implements OnInit{
     this.serviceClient.getClientsPaginar(page).subscribe(client=>{
       this.clients=client.content as Client[];
     })
+  }
+  public cambiarCondicion(){
+    if(this.value){
+     this.value=false;
+    }else{
+      this.value=true;
+    }
   }
 }

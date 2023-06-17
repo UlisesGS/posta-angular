@@ -5,9 +5,18 @@
                 <h3>Contactos</h3>
             </div>
             <div class="col-1 text-start">
-                <a href="#" class="btn">
-                    <i class="fa-solid fa-filter fa-2xs" type="button"></i>
+                <a (click)="cambiarCondicion()" class="btn">
+                    <i  class="fa-solid fa-filter fa-2xs" type="button"></i>
+
                 </a>
+            </div>
+            <div class="container" *ngIf="value">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Busqueda Por Genero</option>
+                <option value="MALE">Masculino</option>
+                <option value="FEMALE">Femenino</option>
+                <option value="LGTBQ">LGTBQ+</option>
+              </select>
             </div>
             <div class="col-9 text-end">
                 <button class="btn btn-success" id="button-add" routerLink="/clients/form/businessman">+Agregar
