@@ -1,6 +1,10 @@
 
-div{
+#div-izq{
     position: fixed;
+}
+#div-arr{
+  position: fixed;
+  margin-left: 250px;
 }
 ul {
     list-style-type: none;
