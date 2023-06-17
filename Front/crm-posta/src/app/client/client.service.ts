@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Client } from './client';
+import { Entrepreneur } from './entrepreneur';
+import { Businessman } from './businessman';
 
 
 @Injectable({
@@ -55,29 +57,29 @@ export class ClientService {
 
 
   /* TODOS LOS PUT */
-  public updateEntrepreneur(id:number):Observable<any>{
-    return this.http.put<any>(`${this.http}/entrepreneur/${id}`, {headers:this.httpHeader})
+  public updateEntrepreneur(entrepreneur:Entrepreneur):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/entrepreneur/${entrepreneur.id}`, entrepreneur,{headers:this.httpHeader})
   }
 
-  public updateBusinessman(id:number):Observable<any>{
-    return this.http.put<any>(`${this.http}/businessman/${id}`, {headers:this.httpHeader})
+  public updateBusinessman(businessman:Businessman):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/businessman/${businessman.id}`,businessman, {headers:this.httpHeader})
   }
 /* TODOS LOS DELETE */
   public ClientsDelete(id:void):Observable<void>{
-    return this.http.delete<void>(`${this.http}/${id}`)
+    return this.http.delete<void>(`${this.urlEndPoint}/${id}`)
   }
 
 
 
-  /* TODOS LOS POST */
-  /*public saveSelfAssessment():Observable<any>{
-    return this.http.post<any>(${this.http}/selfAssessment)/
 
-    /public saveEntrepreneur():Observable<any>{
-      return this.http.post<any>(${this.http}/entrepreneur)
+  /*public saveSelfAssessment():Observable<any>{
+    return this.http.post<any>(${this.http}/selfAssessment)/*/
+
+  public saveEntrepreneur(entrepreneur:Entrepreneur):Observable<any>{
+      return this.http.post<any>(`${this.urlEndPoint}/entrepreneur`,entrepreneur)
     }
 
-    public saveBusinessman():Observable<any>{
-      return this.http.post<any>(${this.http}/businessman)
-    }*/
+    public saveBusinessman(businessman:Businessman):Observable<any>{
+      return this.http.post<any>(`${this.urlEndPoint}/businessman`,businessman)
+    }
 }

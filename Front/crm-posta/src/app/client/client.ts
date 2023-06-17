@@ -6,7 +6,7 @@ export class Client{
     name:string;
     lastName:string;
     edad:number;
-    municipio:Municipio= new Municipio();
+    municipio:Municipio;
     phone:string;
     email:string;
     address:string;
