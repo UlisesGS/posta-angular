@@ -5,12 +5,12 @@
             <div style="flex-basis: 50%;">
                 <label for="">
                     <br>
-                    <input type="text" name="name" ngModel="" placeholder="Nombre"  >
+                    <input type="text" name="name" ngModel="emprendedor.name" placeholder="Nombre"  >
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
-                        <input type="text" name="nit" ngModel=""placeholder="Documento/NIT" >
+                        <input type="text" name="nit" ngModel="emprendedor.nit"placeholder="Documento/NIT" >
                     </label>
                 </div>
             </div>
@@ -21,12 +21,12 @@
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
-                        
+
                         <br>
                         <select class="form-select form-select-sm" name="studyLevel" ngModel="" aria-label="Default select example">
                             <option value="">Género</option>
                             <option value=""></option>
-                            
+
                         </select>
                     </label>
                 </div>
@@ -38,17 +38,17 @@
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
-                        
+
                         <br>
                         <select class="form-select form-select-sm" name="studyLevel" ngModel="" aria-label="Default select example">
                             <option value="">Grupo Étnico</option>
                             <option value=""></option>
-                            
+
                         </select>
                     </label>
                 </div>
                 <div style="flex-basis: 50%;">
-                    
+
                     <label for=""  style="font-size: 15px; margin-top: 10px;;">
                         <strong>¿Es población víctima?</strong>
                         <br>
@@ -61,16 +61,16 @@
             </div>
             <div style="flex-basis: 50%;">
                 <label for="">
-                    
+
                     <br>
                     <select class="form-select form-select-sm" name="studyLevel" ngModel="" aria-label="Default select example">
                         <option value="">Nivel Escolaridad</option>
                         <option value=""></option>
-                        
+
                     </select>
                 </label>
                 <div style="flex-basis: 50%;">
-                    
+
                     <label for=""  style="font-size: 15px; margin-top: 10px;;">
                         <strong>¿Esta en condiciones de desplazamiento?</strong>
                         <br>
@@ -81,7 +81,7 @@
                     <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
                 </div>
                 <div style="flex-basis: 50%;">
-                    
+
                     <label for=""  style="font-size: 15px; margin-top: 10px;;">
                         <strong>¿Presenta alguna discapacidad?</strong>
                         <br>
@@ -93,11 +93,11 @@
                 </div>
             </div>
         </div>
-    
-    
-    
-    
-    
+
+
+
+
+
             <!-- Form de los datos de Empresa -->
         <div>
             <h2 class="btn btn-disabled mt-2">DATOS IDEA DE NEGOCIO</h2>
@@ -108,7 +108,7 @@
                         <select class="form-select form-select-sm" name="typeOfCompany" ngModel="" aria-label="Default select example">
                             <option value="">Tipo de Empresa</option>
                             <option value=""></option>
-                            
+
                         </select>
                     </label>
                     <div style="flex-basis: 50%;">
@@ -128,7 +128,7 @@
                             <br>
                             <input type="date" name="fechaAlta" ngModel=""placeholder="Fecha de Constitución">
                         </label>
-                        
+
                     </div>
                 </div>
                 <div style="flex-basis: 50%;">
@@ -152,7 +152,7 @@
                         <input type="text" style="border-radius: 5; margin-right: 5px;" name="email" ngModel="" placeholder="Correo Electrónico">
                     </label>
                     <div style="flex-basis: 50%;">
-                        
+
                         <label for=""  style="font-size: 15px; margin-top: 10px;;">
                             <strong>¿Tiene registro Mercantil?</strong>
                             <br>
@@ -176,25 +176,25 @@
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 10px;">
                     <label for=""class="form-check-label" for="flexRadioDefault1" style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label>
                     <div style="flex-basis: 50%;">
-                        
+
                         <label for="">
                             <br>
                             <select class="form-select form-select-sm" name="municipio" ngModel="" aria-label="Default select example">
                                 <option value="">Ciudad</option>
                                 <option value=""></option>
-                                
+
                             </select>
                         </label>
                     </div>
                     <div style="flex-basis: 50%;">
-                        
+
                         <label for="">
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="phone" ngModel="" placeholder="Teléfono">
                         </label>
                     </div>
                     <div style="flex-basis: 50%;">
-                        
+
                         <label for="">
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="numberMercantilRegistry" ngModel="" placeholder="Número de registro Mercantil">
@@ -207,6 +207,9 @@
                       </div>
                 </div>
             </div>
+        </div>
+        <div class="form-group">
+          <button (click)="registrar()" class="btn btn-danger">Registrar</button>
         </div>
         </form>
 </div>

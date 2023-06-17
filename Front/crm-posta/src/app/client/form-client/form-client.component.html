@@ -5,28 +5,30 @@
             <div style="flex-basis: 50%;">
                 <label for="">
                     <br>
-                    <input type="text" name="name" ngModel="" placeholder="Nombre">
+                    <input type="text" name="name"  [(ngModel)]="empresario.name" placeholder="Nombre">
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
-                        <input type="text" name="nit" ngModel="" placeholder="Documento/NIT">
+                        <input type="text" name="nit"  [(ngModel)]="empresario.nit" placeholder="Documento/NIT">
                     </label>
                 </div>
             </div>
             <div style="flex-basis: 50%;">
                 <label for="">
                     <br>
-                    <input type="text" name="lastName" ngModel="" placeholder="Apellido">
+                    <input type="text" name="lastName" [(ngModel)]="empresario.lastName"placeholder="Apellido">
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
 
                         <br>
-                        <select class="form-select form-select-sm" name="studyLevel" ngModel=""
+                        <select class="form-select form-select-sm"  [(ngModel)]="empresario.gender" name="studyLevel"
                             aria-label="Default select example">
                             <option value="">Género</option>
-                            <option value=""></option>
+                            <option value="MALE">MALE</option>
+                            <option value="FEMALE">FEMALE</option>
+                            <option value="LGTBQ">LGTBQ+</option>
 
                         </select>
                     </label>
@@ -78,7 +80,7 @@
                 </label>
                 <div style="flex-basis: 50%;">
 
-                    <label for="" style="font-size: 15px; margin-top: 10px;;">
+                    <label for="" style="font-size: 15px; margin-top: 10px;">
                         <strong>¿Esta en condiciones de desplazamiento?</strong>
                         <br>
                     </label>
@@ -130,7 +132,7 @@
                     <div style="flex-basis: 50%;">
                         <label for="">
                             <br>
-                            <input type="text" name="companyName" ngModel="" placeholder="Nombre Empresa">
+                            <input type="text" name="companyName" ngModel="empresario.companyName" placeholder="Nombre Empresa">
                         </label>
                     </div>
                 </div>
@@ -245,7 +247,7 @@
         <div class="col-8 p-2 mt-3" style="border-radius: 1em;">
             <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
             <p style="font-size: 10px;" class="">
-                
+
                 Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE
                 VILLAVICENCIO (la “CCV”)
                 para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación
@@ -272,6 +274,9 @@
                 de los canales dispuestos en la Política de Tratamiento de Datos Personales o a través del correo
                 electrónico datospersonales@ccv.org.co.
             </p>
+        </div>
+        <div  class="form-group">
+          <button (click)="registrar()" class="btn btn-danger">Registrar</button>
         </div>
     </form>
 </div>
