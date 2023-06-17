@@ -32,3 +32,24 @@ ul {
     color: red;
     border-radius: 0.5em;
   }
+  .input-wrapper{
+    position: relative;
+    width: 500px;
+  }
+.input{
+  box-sizing: border-box;
+  color: #191919;
+  padding: 15px 15px 15px 35px;
+  width: 100%;
+}
+ 
+  .input-icon {
+    color: grey;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
