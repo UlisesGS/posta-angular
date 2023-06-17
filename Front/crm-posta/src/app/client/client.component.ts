@@ -11,6 +11,7 @@ import { ClientService } from './client.service';
 export class ClientComponent implements OnInit{
   clients:Client[];
 public value:boolean;
+public genero:string;
 
   constructor(private serviceClient:ClientService){
 
@@ -27,5 +28,13 @@ public value:boolean;
     }else{
       this.value=true;
     }
+  }
+  public filtroPorGenero(){
+   console.log(this.genero);
+   this.serviceClient.getClientsGender(0,this.genero).subscribe(data=>{
+    this.clients= data.content;
+   })
+
+
   }
 }

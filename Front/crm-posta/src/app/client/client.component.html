@@ -10,12 +10,12 @@
 
                 </a>
             </div>
-            <div class="container" *ngIf="value">
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Busqueda Por Genero</option>
+            <div class="input-group mb-3" *ngIf="value">
+              <select (click)="filtroPorGenero()"  [(ngModel)]="genero" class="form-select" aria-label="Default select example">
+                <option  selected>Busqueda Por Genero</option>
                 <option value="MALE">Masculino</option>
                 <option value="FEMALE">Femenino</option>
-                <option value="LGTBQ">LGTBQ+</option>
+                <option value="LGBTQ">LGBTQ+</option>
               </select>
             </div>
             <div class="col-9 text-end">

@@ -47,7 +47,7 @@ export class ClientService {
   }
 
   public getClientsGender(page:number, variableGender:string): Observable<any>{      / AGREGAR PAGINACION /
-    return this.http.get<any>(`${this.urlEndPoint}/gender/${0}?=${variableGender}`);
+    return this.http.get<any>(`${this.urlEndPoint}/gender/${0}?gender=${variableGender}`);
   }
 
   public getClientsByTime(page:number): Observable<any>{      / AGREGAR PAGINACION /
