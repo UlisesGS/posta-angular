@@ -12,6 +12,7 @@ export class ClientComponent implements OnInit{
   clients:Client[];
 public value:boolean;
 public genero:string;
+public type:string;
 
   constructor(private serviceClient:ClientService){
 
@@ -36,5 +37,10 @@ public genero:string;
    })
 
 
+  }
+  public filtroPorType(){
+    this.serviceClient.getClientType(0,this.type).subscribe(data=>{
+      this.clients= data.content;
+    })
   }
 }

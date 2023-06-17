@@ -10,13 +10,25 @@
 
                 </a>
             </div>
-            <div class="input-group mb-3" *ngIf="value">
+            <div class="col-2" *ngIf="value">
+              <label >Busqueda por genero
               <select (click)="filtroPorGenero()"  [(ngModel)]="genero" class="form-select" aria-label="Default select example">
-                <option  selected>Busqueda Por Genero</option>
+
                 <option value="MALE">Masculino</option>
                 <option value="FEMALE">Femenino</option>
                 <option value="LGBTQ">LGBTQ+</option>
               </select>
+            </label>
+            </div>
+            <div class="col-2" *ngIf="value">
+              <label >Busqueda por Type
+              <select (click)="filtroPorType()"  [(ngModel)]="type" class="form-select" aria-label="Default select example">
+
+                <option value="entrepreneur">Emprendedor</option>
+                <option value="businessman">Empredario</option>
+
+              </select>
+              </label>
             </div>
             <div class="col-9 text-end">
                 <button class="btn btn-success" id="button-add" routerLink="/clients/form/businessman">+Agregar
