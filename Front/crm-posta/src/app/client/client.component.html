@@ -1,51 +1,62 @@
-
-    
-    <div class="row">
-        <div class="col-sm-1">
-            <h3>Contactos</h3>
-        </div>
-        <div class="col-sm-9">
-            <p>Filtrar<i class="fa-solid fa-filter fa-sm" type="button"></i></p>
-        </div>
-        <div class="col justify-content-end">
-            <button id="button-add" class="btn btn-success" routerLink="/clients/form/businessman">+Agregar Cliente</button>
-        </div>
-        
-        
-    </div>
+<div class="container" id="mio-2">
     <div class="col-10">
-            <table class="table" *ngFor="let client of clients">
-                <tr >
-                    <td  scope="col-3"> Nombre</td>
-                    <td  scope="col-3"> Empresa/Idea</td>
-                    <td  scope="col-3"> Producto/Servicio</td>
-                    <td  scope="col-3"> Ciudad</td>
-                    <td  scope="col-3"> Tipo de Cliente</td>
-                    <td></td>
-                </tr>
-                <tr  >
-                    <th scope="col-3">{{client.name}} {{client.lastName}}</th>
-                    <th scope="col-3">{{client.businessIdea}}</th>
-                    <th scope="col-3">{{client.product}}</th>
-                    <th scope="col-3">{{client?.municipio?.name}}</th>
-                    <th scope="col-3" *ngIf="client.type ==='entrepreneur'">
-                        <button id="button" class="btn btn-disabled">Emprendedor</button>
-                    </th>
-                    <th scope="col-3" *ngIf="client.type ==='businessman'">
-                        <button id="button" class="btn btn-disabled">Empresario</button>
-                    </th>
-                    <th><i class="fa-solid fa-pen-to-square fa-xl"></i></th>
-                    
-                </tr>
-                
-        </table>
+        <div class="row">
+            <div class="col-2">
+                <h3>Contactos</h3>
+            </div>
+            <div class="col-1 text-start">
+                <a href="#" class="btn">
+                    <i class="fa-solid fa-filter fa-2xs" type="button"></i>
+                </a>
+            </div>
+            <div class="col-9 text-end">
+                <button class="btn btn-success" id="button-add" routerLink="/clients/form/businessman">+Agregar
+                    Cliente</button>
+            </div>
         </div>
- 
+    </div>
+</div>
 
 
 
 
-    
 
-    
+<div class="container" style="margin-left: 0;">
+    <div class="col-10">
+        <div class="row">
+            <table class="table table-borderless">
+                <thead>
+                    <tr style="border: solid  white; border-radius: 1em;">
+                        <td scope="col-3"> Nombre</td>
+                        <td scope="col-3"> Empresa/Idea</td>
+                        <td scope="col-3"> Producto/Servicio</td>
+                        <td scope="col-3"> Ciudad</td>
+                        <td scope="col-3"> Tipo de Cliente</td>
+                        <td scope="col-3"></td>
+                    </tr>
+                </thead>
+                <tbody class="table" *ngFor="let client of clients">
+                    <tr style="border: solid  white; border-radius: 1em;">
+                        <th scope="col-3">{{client.name}} {{client.lastName}}</th>
+                        <th scope="col-3">{{client.businessIdea}}</th>
+                        <th scope="col-3">{{client.product}}</th>
+                        <th scope="col-3">{{client?.municipio?.name}}</th>
+                        <th scope="col-3" *ngIf="client.type ==='entrepreneur'">
+                            <button id="button" class="btn btn-disabled">Emprendedor</button>
+                        </th>
+                        <th scope="col-3" *ngIf="client.type ==='businessman'">
+                            <button id="button" class="btn btn-disabled">Empresario</button>
+                        </th>
+                        <th rowspan="2">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </th>
 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+</div>
