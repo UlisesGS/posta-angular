@@ -3,6 +3,7 @@ export class Client{
     nit:string;
     name:string;
     lastName:string;
+    edad:number;
     phone:string;
     email:string;
     address:string;

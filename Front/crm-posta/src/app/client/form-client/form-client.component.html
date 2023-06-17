@@ -26,8 +26,8 @@
                         <select class="form-select form-select-sm"  [(ngModel)]="empresario.gender" name="studyLevel"
                             aria-label="Default select example">
                             <option value="">Género</option>
-                            <option value="MALE">MALE</option>
-                            <option value="FEMALE">FEMALE</option>
+                            <option value="MALE">Masculino</option>
+                            <option value="FEMALE">Femenino</option>
                             <option value="LGTBQ">LGTBQ+</option>
 
                         </select>
@@ -37,31 +37,35 @@
             <div style="flex-basis: 50%;">
                 <label for="">
                     <br>
-                    <input type="text" style="border-radius: 5;" name="nit" ngModel="" placeholder="Edad">
+                    <input type="text" style="border-radius: 5;" name="edad"  [(ngModel)]="empresario.edad" placeholder="Edad">
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
 
                         <br>
-                        <select class="form-select form-select-sm" name="studyLevel" ngModel=""
+                        <select class="form-select form-select-sm" name="ethnicGroup"  [(ngModel)]="empresario.ethnicGroup"
                             aria-label="Default select example">
                             <option value="">Grupo Étnico</option>
-                            <option value=""></option>
+                            <option value="ROM">ROM</option>
+                            <option value="INDIGENAS">INDIGENAS</option>
+                            <option value="AFROCOLOMBIANO">AFROCOLOMBIANO</option>
+                            <option value="RAIZALES">RAIZALES</option>
+                            <option value="OTRO ">OTRO </option>
 
                         </select>
                     </label>
                 </div>
                 <div style="flex-basis: 50%;">
 
-                    <label for="" style="font-size: 15px; margin-top: 10px;;">
+                    <label for="" style="font-size: 15px; margin-top: 10px;">
                         <strong>¿Es población víctima?</strong>
                         <br>
                     </label>
-                    <input class="form-check-input" type="radio" name="victimPopulation" id="flexRadioDefault1"
+                    <input  [(ngModel)]="empresario.victimPopulation" class="form-check-input" type="radio" name="victimPopulation" id="flexRadioDefault1"
                         style="margin-top: 20px; margin-left: 5px;">
                     <label for="" class="form-check-label" for="flexRadioDefault1"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
-                    <input class="form-check-input" type="radio" name="victimPopulation" id="flexRadioDefault1"
+                    <input [(ngModel)]="empresario.victimPopulation" class="form-check-input" type="radio" name="victimPopulation" id="flexRadioDefault1"
                         style="margin-top: 20px; margin-left: 10px;">
                     <label for="" class="form-check-label" for="flexRadioDefault1"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
@@ -84,13 +88,13 @@
                         <strong>¿Esta en condiciones de desplazamiento?</strong>
                         <br>
                     </label>
-                    <input class="form-check-input" type="radio" name="displacement" id="flexRadioDefault1"
-                        style="margin-top: 20px; margin-left: 5px;">
-                    <label for="" class="form-check-label" for="flexRadioDefault1"
+                    <input  [(ngModel)]="empresario.displacement" class="form-check-input" type="radio" name="displacement" id="displacement"
+                       value="true" style="margin-top: 20px; margin-left: 5px;">
+                    <label  class="form-check-label" for="displacement"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
-                    <input class="form-check-input" type="radio" name="displacement" id="flexRadioDefault1"
+                    <input value="false" [(ngModel)]="empresario.displacement" class="form-check-input" type="radio" name="displacement" id="displacement1"
                         style="margin-top: 20px; margin-left: 10px;">
-                    <label for="" class="form-check-label" for="flexRadioDefault1"
+                    <label  class="form-check-label" for="displacement1"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
                 </div>
                 <div style="flex-basis: 50%;">
@@ -99,13 +103,13 @@
                         <strong>¿Presenta alguna discapacidad?</strong>
                         <br>
                     </label>
-                    <input class="form-check-input" type="radio" name="disability" id="flexRadioDefault1"
+                    <input [(ngModel)]="empresario.disability" class="form-check-input" type="radio" name="disability" id="flexRadioDefault1"
                         style="margin-top: 20px; margin-left: 5px;">
                     <label for="" class="form-check-label" for="flexRadioDefault1"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
-                    <input class="form-check-input" type="radio" name="disability" id="flexRadioDefault1"
+                    <input [(ngModel)]="empresario.disability" class="form-check-input" type="radio" name="disability" id="flexRadioDefault2"
                         style="margin-top: 20px; margin-left: 10px;">
-                    <label for="" class="form-check-label" for="flexRadioDefault1"
+                    <label for="" class="form-check-label" for="flexRadioDefault2"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
                 </div>
             </div>
