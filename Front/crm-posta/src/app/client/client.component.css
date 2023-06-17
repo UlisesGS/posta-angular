@@ -5,9 +5,9 @@
     overflow: hidden;
     height: 70px;
     position: relative;
-    
+
   }
-  
+
 th {
     font-size: 100%;
     width: 18%;
@@ -16,12 +16,12 @@ th {
     background: #faf8f8;
     vertical-align: middle;
   }
-  
+
  td{
     font-size: 90%;
     background: #faf8f8;
     padding: 5px 20px 5px 20px ;
-  } 
+  }
   #button{
     text-align: center;
     display: flex;
@@ -47,4 +47,7 @@ th {
  #mio-2{
   margin-left: 0;
  }
-  
+ #error{
+  transform: scale(0.7);
+ }
+

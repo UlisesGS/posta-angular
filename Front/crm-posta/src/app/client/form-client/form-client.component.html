@@ -7,18 +7,21 @@
                     <br>
                     <input type="text" name="name"  [(ngModel)]="empresario.name" placeholder="Nombre">
                 </label>
+
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
                         <input type="text" name="nit"  [(ngModel)]="empresario.nit" placeholder="Documento/NIT">
                     </label>
                 </div>
+
             </div>
             <div style="flex-basis: 50%;">
                 <label for="">
                     <br>
                     <input type="text" name="lastName" [(ngModel)]="empresario.lastName"placeholder="Apellido">
                 </label>
+               
                 <div style="flex-basis: 50%;">
                     <label for="">
 
@@ -233,9 +236,10 @@
                         <label for="">
                           Municipio
                             <br>
-                            <select  [(ngModel)]="empresario.municipio" class="form-select form-select-sm" name="municipio"
+                            <select   [(ngModel)]="empresario.municipio" class="form-select form-select-sm" name="municipio"
                                 aria-label="Default select example">
-                                <option *ngFor="let municipio of municipios" value="municipio.id">{{municipio.name}} || {{municipio.country}}</option>
+                                <option [ngValue]="undefined">--- Seleccionar Municipio---</option>
+                                <option *ngFor="let m of municipios" [ngValue]="m">{{m.name}} || {{m.country}}</option>
 
 
                             </select>
