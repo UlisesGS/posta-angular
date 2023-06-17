@@ -40,10 +40,10 @@ public registrar(){
 
 
     }
-    if(e.status==500){
+    if(e.status==500 || e.status==400){
       console.log(e);
 
-      Swal.fire("Error: ", `Error ${e}`, 'error');
+      Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
     }
 
   })
