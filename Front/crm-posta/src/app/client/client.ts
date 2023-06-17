@@ -17,8 +17,8 @@ export class Client{
     type:string;
     regdate:Date;
     updatedate:Date;
-    businessIdea:string;
-    product:string;
+  //  businessIdea:string;
+  //  product:string;
     // municipio:Municipio;
 
 

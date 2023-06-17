@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 
- 
+
 
 
 import { AppComponent } from './app.component';
@@ -18,7 +18,7 @@ import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entre
 
 
 const routes:Routes=[
-  {path:'', redirectTo:'/inicio', pathMatch:'full'},
+  {path:'', redirectTo:'/clients', pathMatch:'full'},
   {path:'clients', component:ClientComponent},
   {path:'clients/page/:page', component:ClientComponent},
   {path:'clients/form/businessman', component:FormClientComponent},

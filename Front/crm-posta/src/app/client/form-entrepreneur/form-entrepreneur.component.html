@@ -5,12 +5,16 @@
             <div style="flex-basis: 50%;">
                 <label for="">
                     <br>
-                    <input type="text" name="name" ngModel="" placeholder="Nombre">
+
+                    <input type="text" name="name" ngModel="emprendedor.name" placeholder="Nombre"  >
+
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
-                        <input type="text" name="nit" ngModel="" placeholder="Documento/NIT">
+
+                        <input type="text" name="nit" ngModel="emprendedor.nit"placeholder="Documento/NIT" >
+
                     </label>
                 </div>
             </div>
@@ -51,7 +55,9 @@
                 </div>
                 <div style="flex-basis: 50%;">
 
-                    <label for="" style="font-size: 15px; margin-top: 10px;;">
+
+                    <label for=""  style="font-size: 15px; margin-top: 10px;;">
+
                         <strong>¿Es población víctima?</strong>
                         <br>
                     </label>
@@ -82,7 +88,9 @@
                 </label>
                 <div style="flex-basis: 50%;">
 
-                    <label for="" style="font-size: 15px; margin-top: 10px;;">
+
+                    <label for=""  style="font-size: 15px; margin-top: 10px;;">
+
                         <strong>¿Esta en condiciones de desplazamiento?</strong>
                         <br>
                     </label>
@@ -97,7 +105,9 @@
                 </div>
                 <div style="flex-basis: 50%;">
 
-                    <label style="font-size: 15px; margin-top: 10px;;">
+n
+                    <label for=""  style="font-size: 15px; margin-top: 10px;;">
+
                         <strong>¿Presenta alguna discapacidad?</strong>
                         <br>
                     </label>
@@ -117,14 +127,22 @@
 
 
 
-        <!-- Form de los datos de Empresa -->
+
+            <!-- Form de los datos de Empresa -->
+
         <div>
             <h2 class="btn btn-disabled mt-2">DATOS IDEA DE NEGOCIO</h2>
             <div class="col-8 p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
-                        <input type="text" name="businessIdea" ngModel="" placeholder="Idea de Negocio">
+
+                        <select class="form-select form-select-sm" name="typeOfCompany" ngModel="" aria-label="Default select example">
+                            <option value="">Tipo de Empresa</option>
+                            <option value=""></option>
+
+                        </select>
+
                     </label>
                 </div>
                 <div style="flex-basis: 50%;">
@@ -132,7 +150,15 @@
                         <br>
                         <input type="text" name="product" ngModel="" placeholder="Producto a Comercializar">
                     </label>
-                    
+
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+                            <input type="date" name="fechaAlta" ngModel=""placeholder="Fecha de Constitución">
+                        </label>
+
+                    </div>
+
                 </div>
                 <div style="flex-basis: 50%;">
                     
@@ -147,6 +173,15 @@
                     <div style="flex-basis: 50%;">
 
                         <label for="">
+
+                        <br>
+                        <input type="text" style="border-radius: 5; margin-right: 5px;" name="email" ngModel="" placeholder="Correo Electrónico">
+                    </label>
+                    <div style="flex-basis: 50%;">
+
+                        <label for=""  style="font-size: 15px; margin-top: 10px;;">
+                            <strong>¿Tiene registro Mercantil?</strong>
+
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="phone" ngModel=""
                                 placeholder="Teléfono">
@@ -169,12 +204,21 @@
                     </div>
                     
                     <div style="flex-basis: 50%;">
+
                         <label for="">
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="email" ngModel=""
                                 placeholder="Correo Electrónico">
                         </label>
-                        
+
+                    </div>
+                    <div style="flex-basis: 50%;">
+
+                        <label for="">
+                            <br>
+                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="numberMercantilRegistry" ngModel="" placeholder="Número de registro Mercantil">
+                        </label>
+
                     </div>
                 </div>
                 <div style="flex-basis: 100%;" class="mt-3">
@@ -185,6 +229,13 @@
                 </div>
             </div>
         </div>
+
+        <div class="form-group">
+          <button (click)="registrar()" class="btn btn-danger">Registrar</button>
+        </div>
+        </form>
+</div>
+
         <div class="col-8 p-2 mt-3" style="border-radius: 1em;">
             <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
             <p style="font-size: 10px;" class="">
@@ -218,3 +269,4 @@
         </div>
     </form>
 </div>
+
