@@ -1,18 +1,18 @@
-/* html{
-    background-color: rgb(170, 170, 170);
+ /* html{
+    background-color: rgb(215, 230, 243);
     background-size: cover;
     background-attachment: fixed;
     
-}
-#fondo{
+} */
+/* #fondo{
     background-color: rgb(170, 170, 170);
     background-size: cover;
     background-attachment: fixed;
-} */
+} 
 html, body{
-    /* background-color: rgb(243,242,242); */
+    background-color: rgb(207, 228, 240); 
     height: 100%;
     margin-bottom: 10px;
     display: block;
     
-}
+} */
