@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { MunicipioComponent } from './municipio/municipio.component';
 import { FormClientComponent } from './client/form-client/form-client.component';
 import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entrepreneur.component';
+import { RegistrarComponent } from './client/registrar/registrar.component';
 
 
 const routes:Routes=[
@@ -23,6 +24,8 @@ const routes:Routes=[
   {path:'clients/page/:page', component:ClientComponent},
   {path:'clients/form/businessman', component:FormClientComponent},
   {path:'clients/form/entrepreneur', component:FormEntrepreneurComponent},
+  {path:'clients/registrar', component:RegistrarComponent},
+
 ]
 
 @NgModule({
@@ -34,7 +37,8 @@ const routes:Routes=[
     UserComponent,
     MunicipioComponent,
     FormClientComponent,
-    FormEntrepreneurComponent
+    FormEntrepreneurComponent,
+    RegistrarComponent
   ],
   imports: [
   BrowserModule,
