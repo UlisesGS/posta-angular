@@ -25,7 +25,7 @@
                         <br>
                         <select class="form-select form-select-sm"  [(ngModel)]="empresario.gender" name="studyLevel"
                             aria-label="Default select example">
-                            <option value="">Género</option>
+                            <option [ngValue]="undefined">--- Seleccionar Género ---</option>
                             <option value="MALE">Masculino</option>
                             <option value="FEMALE">Femenino</option>
                             <option value="LGTBQ">LGTBQ+</option>
@@ -46,7 +46,7 @@
                         <br>
                         <select  [(ngModel)]="empresario.ethnicGroup" class="form-select form-select-sm" name="ethnicGroup"  [(ngModel)]="empresario.ethnicGroup"
                             aria-label="Default select example">
-                            <option value="">Grupo Étnico</option>
+                            <option [ngValue]="undefined">--- Seleccionar Grupo Étnico ---</option>
                             <option value="ROM">ROM</option>
                             <option value="INDIGENAS">INDIGENAS</option>
                             <option value="AFROCOLOMBIANO">AFROCOLOMBIANO</option>
@@ -82,7 +82,7 @@
                     <br>
                     <select  [(ngModel)]="empresario.studyLevel" class="form-select form-select-sm" name="studyLevel" ngModel=""
                         aria-label="Default select example">
-                        <option value="">Nivel Escolaridad</option>
+                        <option [ngValue]="undefined">--- Seleccionar Nivel Escolaridad ---</option>
                         <option value="SECUNDARIO">SECUNDARIO</option>
                         <option value="TERCIARIO">TERCIARIO</option>
                         <option value="UNIVERSITARIO ">UNIVERSITARIO </option>
@@ -137,7 +137,7 @@
                         <br>
                         <select [(ngModel)]="empresario.typeOfCompany"  class="form-select form-select-sm" name="typeOfCompany"
                             aria-label="Default select example">
-                            <option value="">Tipo de Empresa</option>
+                            <option [ngValue]="undefined">--- Seleccionar Tipo de Empresa ---</option>
                             <option value="EMPRESA1">Empresa 1</option>
                             <option value="EMPRESA2">Empresa 2</option>
                             <option value="EMPRESA3">Empresa 3</option>
