@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-client.component.css']
 })
 export class FormClientComponent implements OnInit {
+  municipios:Municipio[]=[];
+  empresario:Businessman = new Businessman() ;
+  errores:any;
   constructor(private service:ClientService,private router:Router){}
   ngOnInit(): void {
 this.service.getClientsMunicipios().subscribe(data=>{
@@ -22,8 +25,7 @@ this.service.getClientsMunicipios().subscribe(data=>{
 
 
   }
-  municipios:Municipio[]=[];
-  empresario:Businessman = new Businessman() ;
+
 public registrar(){
 
   console.log(this.empresario);
@@ -31,7 +33,18 @@ public registrar(){
     Swal.fire('Creado', `Empresario ${data.name} fue creado con exito`, 'success')
     this.router.navigate[('/clients')]
   },e=>{
-    console.log(e);
+    if(e.status==404){
+      this.errores=e.error;
+      Swal.fire('Error:', 'complete bien los datos', 'error');
+     console.log(this.errores);
+
+
+    }
+    if(e.status==500 || e.status==400){
+      console.log(e);
+
+      Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
+    }
 
   })
 
