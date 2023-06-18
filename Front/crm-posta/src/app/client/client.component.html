@@ -6,35 +6,44 @@
             </div>
             <div class="col-1 text-start">
                 <a (click)="cambiarCondicion()" class="btn">
-                    <i  class="fa-solid fa-filter fa-2xs" type="button"></i>
+                    <i  class="fa-solid fa-filter fa-sm" type="button"></i>
 
                 </a>
             </div>
-            <div class="col-2" *ngIf="value">
-              <label >Busqueda por genero
-              <select (click)="filtroPorGenero()"  [(ngModel)]="genero" class="form-select" aria-label="Default select example">
-
-                <option value="MALE">Masculino</option>
-                <option value="FEMALE">Femenino</option>
-                <option value="LGBTQ">LGBTQ+</option>
-              </select>
-            </label>
-            </div>
-            <div class="col-2" *ngIf="value">
-              <label >Busqueda por Type
-              <select (click)="filtroPorType()"  [(ngModel)]="type" class="form-select" aria-label="Default select example">
-
-                <option value="entrepreneur">Emprendedor</option>
-                <option value="businessman">Empredario</option>
-
-              </select>
-              </label>
-            </div>
+            
             <div class="col-9 text-end">
                 <button class="btn btn-success" id="button-add" routerLink="/clients/form/businessman">+Agregar
                     Cliente</button>
             </div>
         </div>
+        <div class="row" id="miDiv">
+            <div class="col-2" *ngIf="value">
+                <label >Género
+                <select (click)="filtroPorGenero()"  [(ngModel)]="genero" class="form-select" aria-label="Default select example">
+                  <option value="MALE">Masculino</option>
+                  <option value="FEMALE">Femenino</option>
+                  <option value="LGBTQ">LGBTQ+</option>
+                </select>
+              </label>
+              </div>
+              <div class="col-2" *ngIf="value">
+                <label >Tipo
+                <select (click)="filtroPorType()"  [(ngModel)]="type" class="form-select" aria-label="Default select example">
+                  <option value="entrepreneur">Emprendedor</option>
+                  <option value="businessman">Empresario</option>
+    
+                </select>
+                </label>
+              </div>
+              <div class="col-2" *ngIf="value">
+                <label >Municipio
+                <select (click)="filtroPorMunicipio()"  [(ngModel)]="municipio" class="form-select" aria-label="Default select example">
+                  
+                </select>
+                </label>
+              </div>
+        </div>
+        
     </div>
 </div>
 
@@ -42,7 +51,7 @@
 
 
 
-<div class="container" style="margin-left: 0;">
+<div class="container" style="margin-left: 0; margin-top: 5px;">
     <div class="col-10">
         <div class="row">
             <table class="table table-borderless">

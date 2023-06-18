@@ -47,7 +47,13 @@ th {
  #mio-2{
   margin-left: 0;
  }
+
  #error{
+  transform: scale(0.7);
+ }
+
+
+ #miDiv{
   transform: scale(0.7);
  }
 
