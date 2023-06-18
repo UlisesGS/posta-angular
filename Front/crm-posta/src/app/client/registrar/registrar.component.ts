@@ -10,7 +10,7 @@ export class RegistrarComponent implements OnInit{
   public empresario:boolean;
   public valor:string;
   ngOnInit(): void {
-    this.emprendedor=false;
+   // this.emprendedor=false;
     this.valor="a"
 
   }
@@ -20,7 +20,13 @@ export class RegistrarComponent implements OnInit{
     }else{
       this.empresario=true;
     }
+    console.log(this.emprendedor);
+    console.log(this.empresario);
+
    }
+
+
+
 
   }
 

@@ -1,15 +1,15 @@
 
 <div  class="form-check form-check-inline">
-  <input (click)="cambiarForm()" class="form-check-input"  [(ngModel)]="emprendedor" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="true">
+  <input (click)="cambiarForm()" class="form-check-input"  [(ngModel)]="emprendedor" type="radio" name="valor" id="inlineRadio1" value="true">
   <label class="form-check-label" for="inlineRadio1">Emprendedor</label>
 </div>
 <div class="form-check form-check-inline">
-  <input (click)="cambiarForm()" class="form-check-input" [(ngModel)]="empresario" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="false">
+  <input (click)="cambiarForm()" class="form-check-input" [(ngModel)]="empresario" type="radio" name="valor" id="inlineRadio2" value="false">
   <label class="form-check-label" for="inlineRadio2">Empresario</label>
 </div>
 
 <app-form-client *ngIf='empresario'></app-form-client>
 
 
-  <app-form-entrepreneur *ngIf='emprendedor'></app-form-entrepreneur>
+  <app-form-entrepreneur *ngIf='emprendedor && !empresario'></app-form-entrepreneur>
 
