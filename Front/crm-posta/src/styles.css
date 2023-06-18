@@ -16,3 +16,6 @@ html, body{
     display: block;
     
 } */
+html, body, app-root {
+    background-color: #3188cf;
+  }

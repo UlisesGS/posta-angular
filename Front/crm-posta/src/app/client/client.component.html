@@ -20,17 +20,17 @@
             <div class="col-2" *ngIf="value">
                 <label >Género
                 <select (click)="filtroPorGenero()"  [(ngModel)]="genero" class="form-select" aria-label="Default select example">
-                  <option value="MALE">Masculino</option>
-                  <option value="FEMALE">Femenino</option>
-                  <option value="LGBTQ">LGBTQ+</option>
+                  <option value="MALE" style="font-size: 12px;">Masculino</option>
+                  <option value="FEMALE" style="font-size: 12px;">Femenino</option>
+                  <option value="LGBTQ" style="font-size: 12px;">LGBTQ+</option>
                 </select>
               </label>
               </div>
               <div class="col-2" *ngIf="value">
                 <label >Tipo
                 <select (click)="filtroPorType()"  [(ngModel)]="type" class="form-select" aria-label="Default select example">
-                  <option value="entrepreneur">Emprendedor</option>
-                  <option value="businessman">Empresario</option>
+                  <option value="entrepreneur" style="font-size: 12px;">Emprendedor</option>
+                  <option value="businessman" style="font-size: 12px;">Empresario</option>
     
                 </select>
                 </label>
