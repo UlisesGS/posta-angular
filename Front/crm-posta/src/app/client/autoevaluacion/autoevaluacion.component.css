@@ -1,0 +1,29 @@
+h2{
+    border-collapse: collapse;
+    border: solid 2px;
+    border-color: #eb9694;
+    background-color: red ;
+    color: white;
+    font-size: 18;
+}
+h2:hover{
+    border-collapse: collapse;
+    
+    border: solid 2px;
+    border-color: #eb9694;
+    background-color: red ;
+    color: white;
+    font-size: 18;
+}
+th{
+    vertical-align: middle;
+    background-color: rgb(209, 207, 207);
+}
+td{
+    vertical-align: middle;
+    font-size: 12px;
+    
+}
+thead{
+    font-size: 13px;
+}

@@ -1,13 +1,12 @@
 <div class="container" id="mio-2">
     <div class="col-10">
         <div class="row">
-            <div class="col-2">
+            <div class="col">
                 <h3>Contactos</h3>
             </div>
-            <div class="col-1 text-start">
+            <div class="col text-start">
                 <a (click)="cambiarCondicion()" class="btn">
-                    <i  class="fa-solid fa-filter fa-sm" type="button"></i>
-
+                    <i class="fa-solid fa-filter fa-sm" type="button"></i>
                 </a>
             </div>
             
@@ -18,32 +17,33 @@
         </div>
         <div class="row" id="miDiv">
             <div class="col-2" *ngIf="value">
-                <label >Género
-                <select (click)="filtroPorGenero()"  [(ngModel)]="genero" class="form-select" aria-label="Default select example">
-                  <option value="MALE" style="font-size: 12px;">Masculino</option>
-                  <option value="FEMALE" style="font-size: 12px;">Femenino</option>
-                  <option value="LGBTQ" style="font-size: 12px;">LGBTQ+</option>
-                </select>
-              </label>
-              </div>
-              <div class="col-2" *ngIf="value">
-                <label >Tipo
-                <select (click)="filtroPorType()"  [(ngModel)]="type" class="form-select" aria-label="Default select example">
-                  <option value="entrepreneur" style="font-size: 12px;">Emprendedor</option>
-                  <option value="businessman" style="font-size: 12px;">Empresario</option>
-    
-                </select>
+                <label>Género
+                    <select (click)="filtroPorGenero()" [(ngModel)]="genero" class="form-select"
+                        aria-label="Default select example">
+                        <option value="MALE" style="font-size: 12px;">Masculino</option>
+                        <option value="FEMALE" style="font-size: 12px;">Femenino</option>
+                        <option value="LGBTQ" style="font-size: 12px;">LGBTQ+</option>
+                    </select>
                 </label>
-              </div>
-              <div class="col-2" *ngIf="value">
-                <label >Municipio
-                <select (click)="filtroPorMunicipio()"  [(ngModel)]="municipio" class="form-select" aria-label="Default select example">
-                  
-                </select>
+            </div>
+            <div class="col-2" *ngIf="value">
+                <label>Tipo
+                    <select (click)="filtroPorType()" [(ngModel)]="type" class="form-select"
+                        aria-label="Default select example">
+                        <option value="entrepreneur" style="font-size: 12px;">Emprendedor</option>
+                        <option value="businessman" style="font-size: 12px;">Empresario</option>
+                    </select>
                 </label>
-              </div>
+            </div>
+            <div class="col-2" *ngIf="value">
+                <label>Municipio
+                    <select (click)="filtroPorMunicipio()" [(ngModel)]="municipio" class="form-select"
+                        aria-label="Default select example">
+
+                    </select>
+                </label>
+            </div>
         </div>
-        
     </div>
 </div>
 
@@ -80,13 +80,9 @@
                         <th rowspan="2">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </th>
-
                     </tr>
                 </tbody>
             </table>
         </div>
-
-
-
     </div>
 </div>
