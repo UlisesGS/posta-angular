@@ -141,9 +141,8 @@
                         <select [(ngModel)]="empresario.typeOfCompany"  class="form-select form-select-sm" name="typeOfCompany"
                             aria-label="Default select example">
                             <option [ngValue]="undefined">--- Seleccionar Tipo de Empresa ---</option>
-                            <option value="EMPRESA1">Empresa 1</option>
-                            <option value="EMPRESA2">Empresa 2</option>
-                            <option value="EMPRESA3">Empresa 3</option>
+                            <option *ngFor="let e of enums" [ngValue]="e">{{e}}</option>
+                            
 
                         </select>
                     </label>

@@ -15,14 +15,19 @@ export class FormClientComponent implements OnInit {
   municipios:Municipio[]=[];
   empresario:Businessman = new Businessman() ;
   errores:any;
+  enums:any;
+
   constructor(private service:ClientService,private router:Router){}
   ngOnInit(): void {
 this.service.getClientsMunicipios().subscribe(data=>{
   this.municipios=data;
   console.log(data);
+})
+this.service.getEnums().subscribe(data=>{
+  this.enums=data;
+console.log(this.enums);
 
 })
-
 
   }
 
