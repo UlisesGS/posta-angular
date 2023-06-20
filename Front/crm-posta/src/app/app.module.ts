@@ -18,6 +18,7 @@ import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entre
 import { RegistrarComponent } from './client/registrar/registrar.component';
 import { AutoevaluacionComponent } from './client/autoevaluacion/autoevaluacion.component';
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 const routes:Routes=[
@@ -44,7 +45,8 @@ const routes:Routes=[
     FormEntrepreneurComponent,
     RegistrarComponent,
     AutoevaluacionComponent,
-    ClientDetailsComponent
+    ClientDetailsComponent,
+    ModalComponent
   ],
   imports: [
   BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from './client';
 import { ClientService } from './client.service';
+import { ModalService } from '../modal/modal.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ public value:boolean;
 public genero:string;
 public type:string;
 
-  constructor(private serviceClient:ClientService){
+  constructor(private serviceClient:ClientService,
+    private modalService: ModalService){
 
   }
   ngOnInit(): void {
@@ -42,5 +44,10 @@ public type:string;
     this.serviceClient.getClientType(0,this.type).subscribe(data=>{
       this.clients= data.content;
     })
+  }
+
+  
+  abrirModal():void{
+    this.modalService.abrirModal();
   }
 }

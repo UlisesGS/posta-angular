@@ -1,4 +1,4 @@
-
+<div class="abrir-modal animacion fadeIn" *ngIf="modalService.modal">
 <div  class="form-check form-check-inline">
   <input (click)="cambiarForm()" class="form-check-input"  [(ngModel)]="emprendedor" type="radio" name="valor" id="inlineRadio1" value="true">
   <label class="form-check-label" for="inlineRadio1">Emprendedor</label>
@@ -12,4 +12,4 @@
 
 
   <app-form-entrepreneur *ngIf='emprendedor && !empresario'></app-form-entrepreneur>
-
+</div>
