@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from './client';
 import { ClientService } from './client.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { ClientService } from './client.service';
 })
 export class ClientComponent implements OnInit{
   clients:Client[];
+  client:Client;
 public value:boolean;
 public genero:string;
 public type:string;
@@ -23,6 +25,8 @@ public type:string;
       this.clients=client.content as Client[];
     })
   }
+
+
   public cambiarCondicion(){
     if(this.value){
      this.value=false;
