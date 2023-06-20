@@ -1,7 +1,7 @@
 <div class="container display-flex">
     <form action="">
         <h2 class="btn btn-disabled">DATOS DE REPRESENTANTE LEGAL</h2>
-        <div class="col-8 p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
+        <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
             <div style="flex-basis: 50%;">
                 <label for="">
                     <br>
@@ -21,7 +21,7 @@
                     <br>
                     <input type="text" name="lastName" [(ngModel)]="empresario.lastName"placeholder="Apellido">
                 </label>
-               
+
                 <div style="flex-basis: 50%;">
                     <label for="">
 
@@ -39,13 +39,13 @@
             </div>
             <div style="flex-basis: 50%;">
                 <label for="">
-                  Edad
+
                     <br>
                     <input type="text" style="border-radius: 5;" name="edad"  [(ngModel)]="empresario.edad" placeholder="Edad">
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
-                      Grupo Étnico
+
                         <br>
                         <select  [(ngModel)]="empresario.ethnicGroup" class="form-select form-select-sm" name="ethnicGroup"  [(ngModel)]="empresario.ethnicGroup"
                             aria-label="Default select example">
@@ -134,9 +134,9 @@
         <!-- Form de los datos de Empresa -->
         <div>
             <h2 class="btn btn-disabled mt-2">DATOS DE LA EMPRESA</h2>
-            <div class="col-8 p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
+            <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
                 <div style="flex-basis: 50%;">
-                    <label >Tipo de Empresa
+                    <label >
                         <br>
                         <select [(ngModel)]="empresario.typeOfCompany"  class="form-select form-select-sm" name="typeOfCompany"
                             aria-label="Default select example">
@@ -149,7 +149,7 @@
                     </label>
                     <div style="flex-basis: 50%;">
                         <label for="">
-                          Nombre de la Compañia
+
                             <br>
                             <input type="text" name="companyName" [(ngModel)]="empresario.companyName"  placeholder="Nombre Empresa">
                         </label>
@@ -157,7 +157,7 @@
                 </div>
                 <div style="flex-basis: 50%;">
                     <label for="">
-                      no se que va aca
+
                         <br>
                         <input type="text" name="" [(ngModel)]="empresario.numberMercantilRegistry"  placeholder="Actividad Económica/CIIU">
                     </label>
@@ -171,20 +171,20 @@
                 </div>
                 <div style="flex-basis: 50%;">
                     <label for="">
-                      Empleados MT
+
                         <br>
                         <input type="text" style="border-radius: 5; margin-right: 5px;" name="employeePartTime"
                         [(ngModel)]="empresario.employeePartTime"placeholder="Emleados MT">
                     </label>
                     <label for="">
-                      Empleados TC
+
                         <br>
                         <input type="text" style="border-radius: 5;" name="employeeFullTime"
                         [(ngModel)]="empresario.employeeFullTime"     placeholder="Empleados TC">
                     </label>
                     <div style="flex-basis: 50%;">
                         <label for="">
-                          Direccion
+
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="address"   [(ngModel)]="empresario.address"
                                 placeholder="DIrección">
@@ -192,7 +192,7 @@
                     </div>
                     <div style="flex-basis: 50%;">
                         <label for="">
-                          Email
+
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"  [(ngModel)]="empresario.email"
                                 placeholder="Correo Electrónico">
@@ -234,7 +234,7 @@
                     <div style="flex-basis: 50%;">
 
                         <label for="">
-                          Municipio
+
                             <br>
                             <select   [(ngModel)]="empresario.municipio" class="form-select form-select-sm" name="municipio"
                                 aria-label="Default select example">
@@ -249,7 +249,7 @@
                     <div style="flex-basis: 50%;">
 
                         <label for="">
-                          Telefono
+
                             <br>
                             <input  [(ngModel)]="empresario.phone" type="text" style="border-radius: 5; margin-right: 5px;" name="phone" ngModel=""
                                 placeholder="Teléfono">
@@ -258,7 +258,7 @@
                     <div style="flex-basis: 50%;">
 
                         <label for="">
-                          Numero Registro Mercantil
+
                             <br>
                             <input  [(ngModel)]="empresario.numberMercantilRegistry" type="text" style="border-radius: 5; margin-right: 5px;"
                                 name="numberMercantilRegistry" ngModel="" placeholder="Número de registro Mercantil">
