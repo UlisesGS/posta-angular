@@ -54,6 +54,10 @@ export class ClientService {
     return this.http.get<any>(`${this.urlEndPoint}/byTime/${0}`);
   }
 
+  public getEnums():Observable<any>{
+    return this.http.get<any>(`${this.urlEndPoint}/enums`);
+  }
+
 
 
   /* TODOS LOS PUT */
