@@ -29,7 +29,7 @@ const routes:Routes=[
   {path:'clients/form/entrepreneur', component:FormEntrepreneurComponent},
   {path:'clients/registrar', component:RegistrarComponent},
   {path:'clients/autoevaluacion', component:AutoevaluacionComponent},
-  {path:'clients/details', component:ClientDetailsComponent}
+  {path:'clients/details/:id', component:ClientDetailsComponent}
 
 ]
 

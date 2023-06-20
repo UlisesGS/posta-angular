@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from 'src/app/modal/modal.service';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-registrar',
@@ -10,9 +10,9 @@ export class RegistrarComponent implements OnInit{
   public emprendedor:boolean;
   public empresario:boolean;
   public valor:string;
+  constructor(public modalservice:ModalService){
 
-  constructor(public modalService: ModalService){}
-
+  }
   ngOnInit(): void {
    // this.emprendedor=false;
     //this.valor="a"
@@ -30,7 +30,7 @@ export class RegistrarComponent implements OnInit{
    }
 
    cerrarModal(){
-    this.modalService.cerrarModal();
+    this.modalservice.cerrarModal();
   }
 
 

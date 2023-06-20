@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from './client';
 import { ClientService } from './client.service';
-import { ModalService } from '../modal/modal.service';
+import { Observable } from 'rxjs';
+import { ModalService } from './modal.service';
 
 
 @Component({
@@ -11,20 +12,35 @@ import { ModalService } from '../modal/modal.service';
 })
 export class ClientComponent implements OnInit{
   clients:Client[];
+  client:Client;
 public value:boolean;
 public genero:string;
 public type:string;
+public modal:boolean;
+public ciu:any;
 
-  constructor(private serviceClient:ClientService,
-    private modalService: ModalService){
 
-  }
+  constructor(private serviceClient:ClientService, 
+    public modalservice:ModalService){}
+
   ngOnInit(): void {
+    this.modal=false;
     let page=0;
     this.serviceClient.getClientsPaginar(page).subscribe(client=>{
       this.clients=client.content as Client[];
     })
+    /*
+    this.serviceClient.traerCiu().subscribe(data=>{
+      this.ciu= data;
+      console.log(data);
+
+    })
+    */
+this.ciu=this.serviceClient.ciu
+
   }
+
+
   public cambiarCondicion(){
     if(this.value){
      this.value=false;
@@ -48,6 +64,6 @@ public type:string;
 
   
   abrirModal():void{
-    this.modalService.abrirModal();
+    this.modalservice.abrirModal();
   }
 }
