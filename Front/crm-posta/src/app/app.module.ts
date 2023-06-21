@@ -18,6 +18,8 @@ import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entre
 import { RegistrarComponent } from './client/registrar/registrar.component';
 import { AutoevaluacionComponent } from './client/autoevaluacion/autoevaluacion.component';
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
+import { UsuariolistComponent } from './usuario/usuariolist/usuariolist.component';
+import { UsuarioformComponent } from './usuario/usuarioform/usuarioform.component';
 
 
 const routes:Routes=[
@@ -28,7 +30,11 @@ const routes:Routes=[
   {path:'clients/form/entrepreneur', component:FormEntrepreneurComponent},
   {path:'clients/registrar', component:RegistrarComponent},
   {path:'clients/autoevaluacion', component:AutoevaluacionComponent},
-  {path:'clients/details/:id', component:ClientDetailsComponent}
+  {path:'clients/details/:id', component:ClientDetailsComponent},
+  {path:'usuarios', component:UsuariolistComponent},
+
+  {path:'usuarios/form', component:UsuarioformComponent},
+  {path:'usuarios/form/:id', component:UsuarioformComponent}
 
 ]
 
@@ -44,7 +50,9 @@ const routes:Routes=[
     FormEntrepreneurComponent,
     RegistrarComponent,
     AutoevaluacionComponent,
-    ClientDetailsComponent
+    ClientDetailsComponent,
+    UsuariolistComponent,
+    UsuarioformComponent
   ],
   imports: [
   BrowserModule,
