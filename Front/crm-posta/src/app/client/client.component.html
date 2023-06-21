@@ -73,7 +73,8 @@
                 <tbody class="table" *ngFor="let client of clients">
                     <tr style="border: solid  white; border-radius: 1em;">
                         <th scope="col-3">{{client.name}} {{client.lastName}}</th>
-                        <th scope="col-3">{{client.businessIdea}}</th>
+                        <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
+                        <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
                         <th scope="col-3">{{client.product}}</th>
                         <th scope="col-3">{{client?.municipio?.name}}</th>
                         <th scope="col-3" *ngIf="client.type ==='entrepreneur'">
@@ -88,6 +89,7 @@
                     </tr>
                 </tbody>
             </table>
+            <app-paginator *ngIf="paginador" [paginador]="paginador"></app-paginator>
         </div>
     </div>
 </div>

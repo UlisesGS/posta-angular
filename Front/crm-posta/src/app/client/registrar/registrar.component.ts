@@ -7,8 +7,8 @@ import { ModalService } from '../modal.service';
   styleUrls: ['./registrar.component.css']
 })
 export class RegistrarComponent implements OnInit{
-  public emprendedor:boolean;
-  public empresario:boolean;
+  public emprendedor:boolean=false;
+  public empresario:boolean=false;
   public valor:string;
   constructor(public modalservice:ModalService){
 
@@ -18,14 +18,20 @@ export class RegistrarComponent implements OnInit{
     //this.valor="a"
     
   }
-  public cambiarForm(){
-    if(this.emprendedor){
+  public cambiarForm(e:any){
+    console.log(e.target.value);
+
+
+    if(this.emprendedor ){
+
       this.empresario=false;
     }else{
+
       this.empresario=true;
     }
-    console.log(this.emprendedor);
-    console.log(this.empresario);
+
+   // console.log(this.emprendedor);
+    //console.log(this.empresario);
 
    }
 

@@ -18,8 +18,14 @@ import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entre
 import { RegistrarComponent } from './client/registrar/registrar.component';
 import { AutoevaluacionComponent } from './client/autoevaluacion/autoevaluacion.component';
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
+
 import { AccionComponent } from './client/accion/accion.component';
 import { AsesoriaComponent } from './header/asesoria/asesoria.component'; 
+
+import { UsuariolistComponent } from './usuario/usuariolist/usuariolist.component';
+import { UsuarioformComponent } from './usuario/usuarioform/usuarioform.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+
 
 
 const routes:Routes=[
@@ -31,7 +37,14 @@ const routes:Routes=[
   {path:'clients/registrar', component:RegistrarComponent},
   {path:'clients/autoevaluacion', component:AutoevaluacionComponent},
   {path:'clients/details/:id', component:ClientDetailsComponent},
+
   {path:'clients/action/:id', component:AccionComponent}
+
+  {path:'usuarios', component:UsuariolistComponent},
+
+  {path:'usuarios/form', component:UsuarioformComponent},
+  {path:'usuarios/form/:id', component:UsuarioformComponent}
+
 
 ]
 
@@ -48,8 +61,14 @@ const routes:Routes=[
     RegistrarComponent,
     AutoevaluacionComponent,
     ClientDetailsComponent,
+
     AccionComponent,
     AsesoriaComponent
+
+    UsuariolistComponent,
+    UsuarioformComponent,
+    PaginatorComponent
+
   ],
   imports: [
   BrowserModule,
