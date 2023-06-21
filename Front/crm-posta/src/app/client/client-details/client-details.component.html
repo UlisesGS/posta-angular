@@ -1,25 +1,27 @@
-<div id="details" class="container col-2">
-    <ul>
-        <h3 *ngIf="client.type ==='businessman'">Empresario</h3>
-        <h3 *ngIf="client.type ==='entrepreneur'">Emprendedor</h3>
-        <h4>{{client.name}}</h4>
-        <li>Documento/Nit</li>
-        <p>{{client.nit}}</p>
-        <li>Género</li>
-        <p>{{client.gender}}</p>
-        <h3 *ngIf="client.type ==='businessman'">Empresa</h3>
-        <h3 *ngIf="client.type ==='entrepreneur'">Idea</h3>
-        <p *ngIf="client.type ==='businessman'">{{client.companyName}}</p>
-        <p *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</p>
-        <li *ngIf="client.type ==='entrepreneur'">Producto</li>
-        <p *ngIf="client.type ==='entrepreneur'">{{client.product}} </p>
-        <li>Dirección</li>
-        <p>{{client.address}}</p>
-        <li>Ciudad</li>
-        <p>{{client.municipio.name}}, {{client.municipio.country}}</p>
-        <li>Teléfono</li>
-        <p>{{client.phone}}</p>
-        <li>Correo Eletrónico</li>
-        <p>{{client.email}}</p>
-    </ul>
-</div>
+
+
+                <div id="details" class="container col-2">
+                    <ul>
+                        <h3 *ngIf="client.type ==='businessman'">Empresario</h3>
+                        <h3 *ngIf="client.type ==='entrepreneur'">Emprendedor</h3>
+                        <h4>{{client.name}}</h4>
+                        <li>Documento/Nit</li>
+                        <p>{{client.nit}}</p>
+                        <li>Género</li>
+                        <p>{{client.gender}}</p>
+                        <h3 *ngIf="client.type ==='businessman'">Empresa</h3>
+                        <h3 *ngIf="client.type ==='entrepreneur'">Idea</h3>
+                        <p *ngIf="client.type ==='businessman'">{{client.companyName}}</p>
+                        <p *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</p>
+                        <li *ngIf="client.type ==='entrepreneur'">Producto</li>
+                        <p *ngIf="client.type ==='entrepreneur'">{{client.product}} </p>
+                        <li>Dirección</li>
+                        <p>{{client.address}}</p>
+                        <li>Ciudad</li>
+                        <p>{{client.municipio.name}}, {{client.municipio.country}}</p>
+                        <li>Teléfono</li>
+                        <p>{{client.phone}}</p>
+                        <li>Correo Eletrónico</li>
+                        <p>{{client.email}}</p>
+                    </ul>
+                </div>

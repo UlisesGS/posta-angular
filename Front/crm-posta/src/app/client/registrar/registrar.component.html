@@ -1,17 +1,7 @@
-<div class="abrir-modal animacion fadeIn" *ngIf="modalService.modal">
-<div  class="form-check form-check-inline">
-  <input (click)="cambiarForm()" class="form-check-input"  [(ngModel)]="emprendedor" type="radio" name="valor" id="inlineRadio1" value="true">
-  <label class="form-check-label" for="inlineRadio1">Emprendedor</label>
-</div>
-<div class="form-check form-check-inline">
-  <input (click)="cambiarForm()" class="form-check-input" [(ngModel)]="empresario" type="radio" name="valor" id="inlineRadio2" value="false">
-  <label class="form-check-label" for="inlineRadio2">Empresario</label>
-</div>
-=======
-<div class="abrir-modal animacion fadeIn " >
-  <div class="modal" tabindex="-1" style="display:block">
+<div class="abrir-modal animacion fadeIn">
+  <div class="modal" tabindex="-1" style="display:block;">
     <div class="modal-dialog" style="width:850px;  " role="document">
-      <div class="modal-content" style="width:850px;">
+      <div class="modal-content" style="width:850px; ">
         <div class="modal-header" style="width:850px;">
           <h5 class="modal-title">Registro de Clientes</h5>
           <button (click)="cerrarModal()" type="button" class="btn-close" data-bs-dismiss="modal"
@@ -36,7 +26,6 @@
 
   <app-form-entrepreneur *ngIf='emprendedor && !empresario'></app-form-entrepreneur>
 </div>
-            <app-form-entrepreneur *ngIf='emprendedor && !empresario'></app-form-entrepreneur>
           </div>
         </div>
       </div>

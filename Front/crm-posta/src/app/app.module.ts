@@ -18,7 +18,8 @@ import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entre
 import { RegistrarComponent } from './client/registrar/registrar.component';
 import { AutoevaluacionComponent } from './client/autoevaluacion/autoevaluacion.component';
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
-import { ModalComponent } from './modal/modal.component';
+import { AccionComponent } from './client/accion/accion.component';
+import { AsesoriaComponent } from './header/asesoria/asesoria.component'; 
 
 
 const routes:Routes=[
@@ -29,7 +30,8 @@ const routes:Routes=[
   {path:'clients/form/entrepreneur', component:FormEntrepreneurComponent},
   {path:'clients/registrar', component:RegistrarComponent},
   {path:'clients/autoevaluacion', component:AutoevaluacionComponent},
-  {path:'clients/details/:id', component:ClientDetailsComponent}
+  {path:'clients/details/:id', component:ClientDetailsComponent},
+  {path:'clients/action/:id', component:AccionComponent}
 
 ]
 
@@ -46,7 +48,8 @@ const routes:Routes=[
     RegistrarComponent,
     AutoevaluacionComponent,
     ClientDetailsComponent,
-    ModalComponent
+    AccionComponent,
+    AsesoriaComponent
   ],
   imports: [
   BrowserModule,

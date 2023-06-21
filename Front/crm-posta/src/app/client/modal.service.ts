@@ -5,17 +5,36 @@ import { EventEmitter, Injectable } from '@angular/core';
 })
 export class ModalService {
 
-  modal : boolean= false
-private _notificar = new EventEmitter<any>()
+  modal: boolean = false;
+  action: boolean = false;
+  asesoria: boolean=false;
+  private _notificar = new EventEmitter<any>()
   constructor() { }
-  get notificar():EventEmitter<any>{
+  get notificar(): EventEmitter<any> {
     return this._notificar;
 
   }
-  abrirModal(){
-this.modal=true
+  abrirModal() {
+    this.modal = true
   }
-  cerrarModal(){
-    this.modal=false
+
+  cerrarModal() {
+    this.modal = false
+  }
+
+  abrirModalAction() {
+    this.action = true
+  }
+
+  cerrarModalAction() {
+    this.action = false
+  }
+
+  abrirModalAsesoria() {
+    this.asesoria = true
+  }
+
+  cerrarModalAsesoria() {
+    this.asesoria = false
   }
 }

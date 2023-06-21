@@ -2,6 +2,7 @@
 <div class="container" id="mio-2">
 
 <app-registrar *ngIf="modalservice.modal"></app-registrar>
+<app-accion *ngIf="modalservice.action && clienteSeleccionado" [cliente]="clienteSeleccionado"></app-accion>
 
 <div  class="container" id="mio-2">
     <div class="col-10">
@@ -82,7 +83,7 @@
                             <button id="button" class="btn btn-disabled">Empresario</button>
                         </th>
                         <th rowspan="2">
-                            <i class="fa-solid fa-pen-to-square" type="button" [routerLink]="['/clients/details/', client.id]"></i>
+                            <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client)"></i>
                         </th>
                     </tr>
                 </tbody>

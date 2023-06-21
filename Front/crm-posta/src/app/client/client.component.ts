@@ -13,6 +13,7 @@ import { ModalService } from './modal.service';
 export class ClientComponent implements OnInit{
   clients:Client[];
   client:Client;
+  clienteSeleccionado:Client;
 public value:boolean;
 public genero:string;
 public type:string;
@@ -65,5 +66,10 @@ this.ciu=this.serviceClient.ciu
   
   abrirModal():void{
     this.modalservice.abrirModal();
+  }
+
+  abrirModalAction(client:Client){
+    this.clienteSeleccionado=client;
+    this.modalservice.abrirModalAction();
   }
 }
