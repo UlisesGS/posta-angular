@@ -18,12 +18,9 @@ import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entre
 import { RegistrarComponent } from './client/registrar/registrar.component';
 import { AutoevaluacionComponent } from './client/autoevaluacion/autoevaluacion.component';
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
-<<<<<<< HEAD
 import { UsuariolistComponent } from './usuario/usuariolist/usuariolist.component';
 import { UsuarioformComponent } from './usuario/usuarioform/usuarioform.component';
-=======
 import { PaginatorComponent } from './paginator/paginator.component';
->>>>>>> 5271719ffb2afee28a17e590bed1f3186d00e3a5
 
 
 const routes:Routes=[
@@ -55,12 +52,9 @@ const routes:Routes=[
     RegistrarComponent,
     AutoevaluacionComponent,
     ClientDetailsComponent,
-<<<<<<< HEAD
     UsuariolistComponent,
-    UsuarioformComponent
-=======
+    UsuarioformComponent,
     PaginatorComponent
->>>>>>> 5271719ffb2afee28a17e590bed1f3186d00e3a5
   ],
   imports: [
   BrowserModule,
