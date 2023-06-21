@@ -28,13 +28,12 @@ public modal:boolean;
 public ciu:any;
 
 
-  constructor(private serviceClient:ClientService, 
-    public modalservice:ModalService, 
-    private activatedRoute:ActivatedRoute){
+  constructor(private serviceClient:ClientService,
+    public modalservice:ModalService,
+    private activatedRoute:ActivatedRoute){}
 
 
-  constructor(private serviceClient:ClientService, 
-    public modalservice:ModalService){}
+
 
   ngOnInit(): void {
     this.modal=false;
@@ -55,11 +54,11 @@ public ciu:any;
         this.clients = response.content as Client[];
         this.paginador = response;
       });
-  });
-    
-    
-    
-    
+  })
+
+
+
+
     // let page=0;
     // this.serviceClient.getClientsPaginar(page).subscribe(client=>{
     //   this.clients=client.content as Client[];
@@ -71,9 +70,11 @@ public ciu:any;
 
     })
     */
-this.ciu=this.serviceClient.ciu
+//this.ciu=this.serviceClient.ciu
 
   }
+
+    
 
 
   public cambiarCondicion(){
@@ -97,7 +98,7 @@ this.ciu=this.serviceClient.ciu
     })
   }
 
-  
+
   abrirModal():void{
     this.modalservice.abrirModal();
   }

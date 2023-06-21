@@ -20,7 +20,7 @@ import { AutoevaluacionComponent } from './client/autoevaluacion/autoevaluacion.
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
 
 import { AccionComponent } from './client/accion/accion.component';
-import { AsesoriaComponent } from './header/asesoria/asesoria.component'; 
+import { AsesoriaComponent } from './header/asesoria/asesoria.component';
 
 import { UsuariolistComponent } from './usuario/usuariolist/usuariolist.component';
 import { UsuarioformComponent } from './usuario/usuarioform/usuarioform.component';
@@ -38,7 +38,7 @@ const routes:Routes=[
   {path:'clients/autoevaluacion', component:AutoevaluacionComponent},
   {path:'clients/details/:id', component:ClientDetailsComponent},
 
-  {path:'clients/action/:id', component:AccionComponent}
+  {path:'clients/action/:id', component:AccionComponent},
 
   {path:'usuarios', component:UsuariolistComponent},
 
@@ -63,7 +63,7 @@ const routes:Routes=[
     ClientDetailsComponent,
 
     AccionComponent,
-    AsesoriaComponent
+    AsesoriaComponent,
 
     UsuariolistComponent,
     UsuarioformComponent,
