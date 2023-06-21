@@ -15,8 +15,8 @@ export class RegistrarComponent implements OnInit{
   }
   ngOnInit(): void {
    // this.emprendedor=false;
-    this.valor="a"
-
+    //this.valor="a"
+    
   }
   public cambiarForm(e:any){
     console.log(e.target.value);
@@ -36,7 +36,7 @@ export class RegistrarComponent implements OnInit{
    }
 
    cerrarModal(){
-    this.modalservice.cerrarModal()
+    this.modalservice.cerrarModal();
   }
 
 

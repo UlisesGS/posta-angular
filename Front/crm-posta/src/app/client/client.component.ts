@@ -15,7 +15,11 @@ export class ClientComponent implements OnInit{
   clients:Client[];
   client:Client;
 
+  clienteSeleccionado:Client;
+
+
   paginador:any;
+
 
 public value:boolean;
 public genero:string;
@@ -23,11 +27,15 @@ public type:string;
 public modal:boolean;
 public ciu:any;
 
+
   constructor(private serviceClient:ClientService, 
     public modalservice:ModalService, 
     private activatedRoute:ActivatedRoute){
 
-  }
+
+  constructor(private serviceClient:ClientService, 
+    public modalservice:ModalService){}
+
   ngOnInit(): void {
     this.modal=false;
 
@@ -88,8 +96,14 @@ this.ciu=this.serviceClient.ciu
       this.clients= data.content;
     })
   }
-  public abrirModal(){
-   this.modalservice.abrirModal()
 
+  
+  abrirModal():void{
+    this.modalservice.abrirModal();
+  }
+
+  abrirModalAction(client:Client){
+    this.clienteSeleccionado=client;
+    this.modalservice.abrirModalAction();
   }
 }

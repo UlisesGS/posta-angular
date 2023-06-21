@@ -11,13 +11,18 @@
   </div>
 </div> -->
 <div class="container" id="arr">
+  <app-asesoria *ngIf="modalService.asesoria"></app-asesoria>
 <div class="col-10">
   <div class="row">
     <div class="col-7">
       <input type="text" class="form-control" placeholder="Buscar">
     </div>
     <div class="col-2 text-end">
+
+      <button class="btn" style="background-color: red;color: white; border-radius: 1em;" (click)="abrirModalAsesoria()">Iniciar Asesoría</button>
+
       <button class="btn" style="background-color: red;color: white;">Iniciar Asesoría</button>
+
     </div>
     <div class="col-1 text-end">
       <a href="#" class="btn" style="background-color: #faf8f8;">

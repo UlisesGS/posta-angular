@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ModalService } from '../client/modal.service';
 
 
 @Component({
@@ -7,6 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css'],
   
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+
+  public modal:boolean;
+
+  constructor(public modalService:ModalService){}
+
+  ngOnInit(): void {
+    this.modal=false;
+  }
+
+  abrirModalAsesoria():void{
+    this.modalService.abrirModalAsesoria();
+  }
 
 }

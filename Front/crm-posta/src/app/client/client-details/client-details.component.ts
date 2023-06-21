@@ -3,6 +3,7 @@ import { ClientService } from '../client.service';
 import { Client } from '../client';
 import { Entrepreneur } from '../entrepreneur';
 import { ActivatedRoute } from '@angular/router';
+import { ModalService } from '../modal.service';
 
 
 @Component({
@@ -12,8 +13,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ClientDetailsComponent implements OnInit{
   client:Client;
+  verContacto:boolean;
 
-  constructor(private serviceClient:ClientService, private activate:ActivatedRoute){
+  constructor(private serviceClient:ClientService, 
+    private activate:ActivatedRoute){
 
   }
 
@@ -28,6 +31,9 @@ export class ClientDetailsComponent implements OnInit{
       
     })
   }
+
+
+
   }
 
   
