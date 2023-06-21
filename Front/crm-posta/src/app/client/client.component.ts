@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from './client';
 import { ClientService } from './client.service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { ModalService } from './modal.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,21 +14,48 @@ import { ModalService } from './modal.service';
 export class ClientComponent implements OnInit{
   clients:Client[];
   client:Client;
+
+  paginador:any;
+
 public value:boolean;
 public genero:string;
 public type:string;
 public modal:boolean;
 public ciu:any;
 
-  constructor(private serviceClient:ClientService, public modalservice:ModalService){
+  constructor(private serviceClient:ClientService, 
+    public modalservice:ModalService, 
+    private activatedRoute:ActivatedRoute){
 
   }
   ngOnInit(): void {
     this.modal=false;
-    let page=0;
-    this.serviceClient.getClientsPaginar(page).subscribe(client=>{
-      this.clients=client.content as Client[];
-    })
+
+    this.activatedRoute.paramMap.subscribe(params => {
+      let page: number = +params.get('page');
+
+      if (!page) {
+        page = 0;
+      }
+      this.serviceClient.getClientsPaginar(page)
+      .pipe(
+        tap(response => {
+          console.log('ClientesComponent: tap 3');
+          (response.content as Client[]).forEach(cliente => console.log(cliente.name));
+        })
+      ).subscribe(response => {
+        this.clients = response.content as Client[];
+        this.paginador = response;
+      });
+  });
+    
+    
+    
+    
+    // let page=0;
+    // this.serviceClient.getClientsPaginar(page).subscribe(client=>{
+    //   this.clients=client.content as Client[];
+    // })
     /*
     this.serviceClient.traerCiu().subscribe(data=>{
       this.ciu= data;

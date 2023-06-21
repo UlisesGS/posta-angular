@@ -1,5 +1,6 @@
 
- table {
+
+table {
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
@@ -45,7 +46,9 @@ th {
   }
 
  #mio-2{
+  margin-top: 10px;
   margin-left: 0;
+  
  }
 
  #error{

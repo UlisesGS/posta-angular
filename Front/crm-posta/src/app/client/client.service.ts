@@ -31,27 +31,27 @@ export class ClientService {
 
   /* TODAS LAS PAGINACIONES */
   public getClientType(page:number, variableType:string): Observable<any>{    / AGREGAR PAGINACION /
-    return this.http.get<any>(`${this.urlEndPoint}/type/${0}?type=${variableType}`)
+    return this.http.get<any>(`${this.urlEndPoint}/type/${page}?type=${variableType}`)
   }
 
   public getClientState(page:number, variableState:boolean): Observable<any>{    / AGREGAR PAGINACION /
-    return this.http.get<any>(`${this.urlEndPoint}/state/${0}?active=${variableState}`)
+    return this.http.get<any>(`${this.urlEndPoint}/state/${page}?active=${variableState}`)
   }
 
   public getClientsPaginar(page:number):Observable<any>{     / AGREGAR PAGINACION /
-    return this.http.get<any>(`${this.urlEndPoint}/paginar/${0}`, {headers:this.httpHeader})
+    return this.http.get<any>(`${this.urlEndPoint}/paginar/${page}`, {headers:this.httpHeader})
   }
 
   public getClientsMunicipiosPage(page:number, variableIdmunicipio:number): Observable<any>{      / AGREGAR PAGINACION /
-    return this.http.get<any>(`${this.urlEndPoint}/municipios/${0}?idMunicipio=${variableIdmunicipio}`);
+    return this.http.get<any>(`${this.urlEndPoint}/municipios/${page}?idMunicipio=${variableIdmunicipio}`);
   }
 
   public getClientsGender(page:number, variableGender:string): Observable<any>{      / AGREGAR PAGINACION /
-    return this.http.get<any>(`${this.urlEndPoint}/gender/${0}?gender=${variableGender}`);
+    return this.http.get<any>(`${this.urlEndPoint}/gender/${page}?gender=${variableGender}`);
   }
 
   public getClientsByTime(page:number): Observable<any>{      / AGREGAR PAGINACION /
-    return this.http.get<any>(`${this.urlEndPoint}/byTime/${0}`);
+    return this.http.get<any>(`${this.urlEndPoint}/byTime/${page}`);
   }
 
   public getEnums():Observable<any>{
