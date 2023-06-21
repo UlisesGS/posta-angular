@@ -27,7 +27,8 @@
       </div>
 
       <div class="mb-3">
-        <button (click)="registrar()" class="btn btn-primary">Registrar</button>
+        <button *ngIf="!usuario.id" (click)="registrar()" class="btn btn-primary">Registrar</button>
+        <button *ngIf="usuario.id" (click)="editar()" class="btn btn-primary">Editar</button>
       </div>
     </form>
   </div>

@@ -27,7 +27,7 @@
           <td>{{usuario.email}}</td>
           <td>{{usuario.role}}</td>
           <td>
-            <button class="btn btn-success btn-sm">Editar</button>
+            <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-success btn-sm">Editar</button>
 
           </td>
           <td>
