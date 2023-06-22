@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card" style="margin-right: 20px;">
   <div class="card-header">
     {{titulo}}<br>
     <button routerLink="/usuarios" class="btn btn-dark btn-sm">volver</button>
   </div>
   <div class="card-body">
-    <form>
+    <form> 
       <div class="mb-3">
         <label for="name" class="form-label">Nombre</label>
         <input type="text" name="name" [(ngModel)]="usuario.name" class="form-control" id="name">
@@ -27,8 +27,8 @@
       </div>
 
       <div class="mb-3">
-        <button *ngIf="!usuario.id" (click)="registrar()" class="btn btn-primary">Registrar</button>
-        <button *ngIf="usuario.id" (click)="editar()" class="btn btn-primary">Editar</button>
+        <button *ngIf="!usuario.id" (click)="registrar()" class="btn btn-success">Registrar</button>
+        <button *ngIf="usuario.id" (click)="editar()" class="btn btn-info">Editar</button>
       </div>
     </form>
   </div>

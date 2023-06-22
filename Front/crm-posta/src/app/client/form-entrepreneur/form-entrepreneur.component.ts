@@ -26,9 +26,14 @@ public registrar(){
   console.log(this.emprendedor);
   this.clientService.saveEntrepreneur(this.emprendedor).subscribe(data=>{
     Swal.fire(`Creado`, `Emprendedor ${data.name} fue creado con exito`, `success`)
-    this.router.navigate[('/clients')]
+    this.router.navigate(['/clients'])
   },e=>{
-    
+    if(e.status==500 || e.status==400){
+      console.log(e);
+
+      Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
+    }
+
     
 
   })
