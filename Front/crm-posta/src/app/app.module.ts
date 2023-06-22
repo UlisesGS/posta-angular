@@ -37,14 +37,11 @@ const routes:Routes=[
   {path:'clients/registrar', component:RegistrarComponent},
   {path:'clients/autoevaluacion', component:AutoevaluacionComponent},
   {path:'clients/details/:id', component:ClientDetailsComponent},
-
   {path:'clients/action/:id', component:AccionComponent},
-
   {path:'usuarios', component:UsuariolistComponent},
-
   {path:'usuarios/form', component:UsuarioformComponent},
   {path:'usuarios/form/:id', component:UsuarioformComponent},
-
+  {path:'municipios', component:MunicipioComponent},
 
 ]
 
@@ -61,10 +58,8 @@ const routes:Routes=[
     RegistrarComponent,
     AutoevaluacionComponent,
     ClientDetailsComponent,
-
     AccionComponent,
     AsesoriaComponent,
-
     UsuariolistComponent,
     UsuarioformComponent,
     PaginatorComponent,

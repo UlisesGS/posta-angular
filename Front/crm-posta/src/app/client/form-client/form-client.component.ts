@@ -5,6 +5,7 @@ import { Municipio } from 'src/app/municipio/municipio';
 import { ClientService } from '../client.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-form-client',
@@ -17,7 +18,7 @@ export class FormClientComponent implements OnInit {
   errores:any;
   enums:any;
 
-  constructor(private service:ClientService,private router:Router){}
+  constructor(private service:ClientService,private router:Router,public modalservice:ModalService){}
   ngOnInit(): void {
 this.service.getClientsMunicipios().subscribe(data=>{
   this.municipios=data;
@@ -36,7 +37,9 @@ public registrar(){
   console.log(this.empresario);
   this.service.saveBusinessman(this.empresario).subscribe(data=>{
     Swal.fire('Creado', `Empresario ${data.name} fue creado con exito`, 'success')
-    this.router.navigate[('/clients')]
+    
+    this.cerrarModal();
+    this.router.navigate(['/municipios'])
   },e=>{
     if(e.status==404){
       this.errores=e.error;
@@ -53,5 +56,8 @@ public registrar(){
 
   })
 
+}
+cerrarModal(){
+  this.modalservice.cerrarModal();
 }
 }

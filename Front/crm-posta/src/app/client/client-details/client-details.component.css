@@ -1,6 +1,6 @@
-#details{
+/* #details{
     position: fixed;
-}
+} */
 ul {
     list-style-type: none;
     padding: 5px;
@@ -9,7 +9,7 @@ ul {
     background-color: #faf8f8;
     border-radius: 0.5em;
     border:1px solid  #faf8f8;
-    position: fixed;
+    /* position: fixed; */
     text-align: center;
   }
   

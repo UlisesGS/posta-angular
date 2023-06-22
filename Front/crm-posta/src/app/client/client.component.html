@@ -1,102 +1,95 @@
 
-<div class="container" id="mio-2">
+
 
 <app-registrar *ngIf="modalservice.modal"></app-registrar>
 <app-asesoria *ngIf="modalservice.asesoria"></app-asesoria>
 <app-accion *ngIf="modalservice.action && clienteSeleccionado" [cliente]="clienteSeleccionado"></app-accion>
 
-<div  class="container" id="mio-2">
-    <div class="col">
-        <div class="row">
-            <div class="col">
-                <h3>Contactos</h3>
-            </div>
-            <div class="col text-start">
-                <a (click)="cambiarCondicion()" class="btn">
-                    <i class="fa-solid fa-filter fa-sm" type="button"></i>
-                </a>
-            </div>
 
-            <div class="col-9 text-end">
-                <button class="btn btn-success" id="button-add" (click)="abrirModal()" >+Agregar Cliente</button>
-            </div>
-        </div>
-        <div class="row" id="miDiv">
-            <div class="col-2" *ngIf="value">
-                <label>Género
-                    <select (click)="filtroPorGenero()" [(ngModel)]="genero" class="form-select"
-                        aria-label="Default select example">
-                        <option [ngValue]="undefined">--- Seleccionar Tipo---</option>
-                        <option value="MALE" style="font-size: 12px;">Masculino</option>
-                        <option value="FEMALE" style="font-size: 12px;">Femenino</option>
-                        <option value="LGBTQ" style="font-size: 12px;">LGBTQ+</option>
-                    </select>
-                </label>
-            </div>
-            <div class="col-2" *ngIf="value">
-                <label>Tipo
-                    <select (click)="filtroPorType()" [(ngModel)]="type" class="form-select"
-                        aria-label="Default select example">
-                        <option [ngValue]="undefined">--- Seleccionar Tipo---</option>
-                        <option value="entrepreneur" style="font-size: 12px;">Emprendedor</option>
-                        <option value="businessman" style="font-size: 12px;">Empresario</option>
-                    </select>
-                </label>
-            </div>
-            <div class="col-2" *ngIf="value">
-                <label>Municipio
-                  <select (click)="filtrarPorMunicipio()"  [(ngModel)]="municipio" class="form-select form-select-sm" name="municipio"
-                  aria-label="Default select example">
-                  <option [ngValue]="undefined">--- Seleccionar Municipio---</option>
-                  <option *ngFor="let m of municicipios" [ngValue]="m.id">{{m.name}} || {{m.country}}</option>
+ 
 
-                    </select>
-                </label>
+<div class="card" style="margin-right: 20px;">
+    <div class="card-header">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <h3>Contactos</h3>
+                </div>
+                <div class="col text-start">
+                    <a (click)="cambiarCondicion()" class="btn">
+                        <i class="fa-solid fa-filter fa-sm" type="button"></i>
+                    </a>
+                </div>
+    
+                <div class="col-9 text-end">
+                    <button class="btn btn-success" id="button-add" (click)="abrirModal()" >+Agregar Cliente</button>
+                </div>
+            </div>
+            <div class="row" id="miDiv">
+                <div class="col-2" *ngIf="value">
+                    <label style="font-size: 12px;">Género
+                        <select (click)="filtroPorGenero()" [(ngModel)]="genero" class="form-select"
+                            aria-label="Default select example" style="font-size: 12px;">
+                            <option [ngValue]="undefined" style="font-size: 12px;">--- Seleccionar Tipo---</option>
+                            <option value="MALE" style="font-size: 12px;">Masculino</option>
+                            <option value="FEMALE" style="font-size: 12px;">Femenino</option>
+                            <option value="LGBTQ" style="font-size: 12px;">LGBTQ+</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="col-2" *ngIf="value">
+                    <label style="font-size: 12px;">Tipo
+                        <select (click)="filtroPorType()" [(ngModel)]="type" class="form-select"
+                            aria-label="Default select example" style="font-size: 12px;">
+                            <option [ngValue]="undefined" style="font-size: 12px;">--- Seleccionar Tipo---</option>
+                            <option value="entrepreneur" style="font-size: 12px;">Emprendedor</option>
+                            <option value="businessman" style="font-size: 12px;">Empresario</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="col-2" *ngIf="value">
+                    <label style="font-size: 12px;">Municipio
+                        <select (click)="filtrarPorMunicipio()"  [(ngModel)]="municipio" class="form-select form-select-sm" name="municipio"
+                        aria-label="Default select example" style="font-size: 12px;">
+                        <option [ngValue]="undefined" style="font-size: 12px;">--- Seleccionar Municipio---</option>
+                        <option *ngFor="let m of municicipios" [ngValue]="m.id">{{m.name}} || {{m.country}}</option>
+                        </select>
+                    </label>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
-
-
-<div class="container" style="margin-left: 0; margin-top: 5px;">
-    <div class="col">
-        <div class="row">
-            <table class="table table-borderless">
-                <thead>
-                    <tr style="border: solid  white; border-radius: 1em;">
-                        <td scope="col-3"> Nombre</td>
-                        <td scope="col-3"> Empresa/Idea</td>
-                        <td scope="col-3"> Producto/Servicio</td>
-                        <td scope="col-3"> Ciudad</td>
-                        <td scope="col-3"> Tipo de Cliente</td>
-                        <td scope="col-3"></td>
-                    </tr>
-                </thead>
-                <tbody class="table" *ngFor="let client of clients">
-                    <tr style="border: solid  white; border-radius: 1em;">
-                        <th scope="col-3">{{client.name}} {{client.lastName}}</th>
-                        <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
-                        <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
-                        <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
+    <div class="card-body">
+        <table class="table table-sm table-borderless" >
+                <tr style="border: solid  #faf8f8; border-radius: 1em; ;">
+                    <td scope="col-3"> Nombre</td>
+                    <td scope="col-3"> Empresa/Idea</td>
+                    <td scope="col-3"> Producto/Servicio</td>
+                    <td scope="col-3"> Ciudad</td>
+                    <td scope="col-3"> Tipo de Cliente</td>
+                    <td scope="col-3"> Acciones</td>
+                </tr>
+            <tbody class="table-sm" *ngFor="let client of clients" >
+                <tr *ngIf="client.type!==null" style="border: solid  #faf8f8; border-radius: 1em;">
+                    <th scope="col-3">{{client.name}} {{client.lastName}}</th>
+                    <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
+                    <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
+                    <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
                         <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.typeOfCompany}}</th>
-
-                        <th scope="col-3">{{client?.municipio?.name}}</th>
-                        <th scope="col-3" *ngIf="client.type ==='entrepreneur'">
-                            <button id="button" class="btn btn-disabled">Emprendedor</button>
-                        </th>
-                        <th scope="col-3" *ngIf="client.type ==='businessman'">
-                            <button id="button" class="btn btn-disabled">Empresario</button>
-                        </th>
-                        <th rowspan="2">
-                            <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client)"></i>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-            <app-paginator  *ngIf="paginador && !value" [paginador]="paginador"></app-paginator>
-        </div>
+                    <th scope="col-3">{{client?.municipio?.name}}</th>
+                    <th scope="col-3" *ngIf="client.type ==='entrepreneur'">
+                        <button id="button" class="btn btn-disabled">Emprendedor</button>
+                    </th>
+                    <th scope="col-3" *ngIf="client.type ==='businessman'">
+                        <button id="button" class="btn btn-disabled">Empresario</button>
+                    </th>
+                    <th rowspan="2">
+                        <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client)"></i>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <app-paginator *ngIf="paginador && !value" [paginador]="paginador"></app-paginator>
     </div>
 </div>
+
