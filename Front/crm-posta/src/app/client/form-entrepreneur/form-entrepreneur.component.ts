@@ -29,6 +29,7 @@ public registrar(){
     this.router.navigate[('/clients')]
   },e=>{
     
+    
 
   })
 

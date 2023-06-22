@@ -14,10 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ClientComponent implements OnInit{
   clients:Client[];
   client:Client;
-
   clienteSeleccionado:Client;
-
-
   paginador:any;
 
 
@@ -31,9 +28,6 @@ public ciu:any;
   constructor(private serviceClient:ClientService, 
     public modalservice:ModalService, 
     private activatedRoute:ActivatedRoute){}
-
-
- 
 
   ngOnInit(): void {
     this.modal=false;
@@ -56,23 +50,23 @@ public ciu:any;
       });
   });
     
-    
+
     
     
     // let page=0;
     // this.serviceClient.getClientsPaginar(page).subscribe(client=>{
     //   this.clients=client.content as Client[];
-    // })
+    // 
     /*
     this.serviceClient.traerCiu().subscribe(data=>{
       this.ciu= data;
       console.log(data);
 
-    })
+    
     */
-//this.ciu=this.serviceClient.ciu
-
-  }
+  //this.ciu=this.serviceClient.ciu
+    }
+  
     
 
   public cambiarCondicion(){

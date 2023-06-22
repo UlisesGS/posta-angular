@@ -74,10 +74,13 @@ export class ClientService {
   }
 
 
+  public saveClient(client:Client):Observable<any>{
+    return this.http.post<any>(`${this.urlEndPoint}/save`, client)
+  }
 
-
-  /*public saveSelfAssessment():Observable<any>{
-    return this.http.post<any>(${this.http}/selfAssessment)/*/
+    public saveSelfAssessment(client:Client):Observable<any>{
+    return this.http.post<any>(`${this.urlEndPoint}/selfAssessment`, client)
+    }
 
   public saveEntrepreneur(entrepreneur:Entrepreneur):Observable<any>{
       return this.http.post<any>(`${this.urlEndPoint}/entrepreneur`,entrepreneur)
