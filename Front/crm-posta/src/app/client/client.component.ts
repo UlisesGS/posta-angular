@@ -99,4 +99,5 @@ public ciu:any;
     this.clienteSeleccionado=client;
     this.modalservice.abrirModalAction();
   }
+
 }
