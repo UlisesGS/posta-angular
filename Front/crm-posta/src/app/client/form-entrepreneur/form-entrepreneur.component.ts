@@ -4,6 +4,7 @@ import { ClientService } from '../client.service';
 import { Router } from '@angular/router';
 import { Municipio } from 'src/app/municipio/municipio';
 import Swal from 'sweetalert2';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-form-entrepreneur',
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./form-entrepreneur.component.css']
 })
 export class FormEntrepreneurComponent implements OnInit {
-  constructor(private clientService:ClientService,private router:Router){}
+  constructor(private clientService:ClientService,private router:Router, public modalservice:ModalService){}
   emprendedor:Entrepreneur= new Entrepreneur();
   municipios:Municipio[]=[];
 
@@ -26,7 +27,9 @@ public registrar(){
   console.log(this.emprendedor);
   this.clientService.saveEntrepreneur(this.emprendedor).subscribe(data=>{
     Swal.fire(`Creado`, `Emprendedor ${data.name} fue creado con exito`, `success`)
-    this.router.navigate(['/clients'])
+    
+    this.cerrarModal();
+    this.router.navigate(['/municipios'])
   },e=>{
     if(e.status==500 || e.status==400){
       console.log(e);
@@ -39,6 +42,8 @@ public registrar(){
   })
 
 }
-
+cerrarModal(){
+  this.modalservice.cerrarModal();
+}
 
 }

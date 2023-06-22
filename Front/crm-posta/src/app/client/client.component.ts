@@ -63,30 +63,34 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
 
 })
 
-
-
-
-    // let page=0;
-    // this.serviceClient.getClientsPaginar(page).subscribe(client=>{
-    //   this.clients=client.content as Client[];
-    // 
-    /*
-    this.serviceClient.traerCiu().subscribe(data=>{
-      this.ciu= data;
-      console.log(data);
-
-    
-    */
-
-  //this.ciu=this.serviceClient.ciu
     }
   
-    
+    public todos(){
+      this.activatedRoute.paramMap.subscribe(params => {
+        let page: number = +params.get('page');
+  
+        if (!page) {
+          page = 0;
+        }
+        this.serviceClient.getClientsPaginar(page)
+        .pipe(
+          tap(response => {
+            console.log('ClientesComponent: tap 3');
+            (response.content as Client[]).forEach(cliente => console.log(cliente.name));
+          })
+        ).subscribe(response => {
+          this.clients = response.content as Client[];
+          this.paginador = response;
+        });
+  
+    })
+    }
 
 
   public cambiarCondicion(){
     if(this.value){
      this.value=false;
+     this.todos();
     }else{
       this.value=true;
     }
