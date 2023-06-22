@@ -10,7 +10,7 @@ import { Asesoria } from './asesoria';
 export class UsuarioService {
 
   constructor(private http:HttpClient) { }
-  private urlEndPoint:string="http://localhost:8080/users";
+  private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/users";
   private httpHeader=new HttpHeaders({'Content-Type':'application/json'});
 
   /* TODOS LOS GET */

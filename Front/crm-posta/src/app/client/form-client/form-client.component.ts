@@ -36,7 +36,7 @@ public registrar(){
   console.log(this.empresario);
   this.service.saveBusinessman(this.empresario).subscribe(data=>{
     Swal.fire('Creado', `Empresario ${data.name} fue creado con exito`, 'success')
-    this.router.navigate[('/clients')]
+    this.router.navigate(['/clients'])
   },e=>{
     if(e.status==404){
       this.errores=e.error;
