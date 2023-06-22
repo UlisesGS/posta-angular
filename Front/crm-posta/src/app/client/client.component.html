@@ -26,6 +26,7 @@
                 <label>Género
                     <select (click)="filtroPorGenero()" [(ngModel)]="genero" class="form-select"
                         aria-label="Default select example">
+                        <option [ngValue]="undefined">--- Seleccionar Tipo---</option>
                         <option value="MALE" style="font-size: 12px;">Masculino</option>
                         <option value="FEMALE" style="font-size: 12px;">Femenino</option>
                         <option value="LGBTQ" style="font-size: 12px;">LGBTQ+</option>
@@ -36,6 +37,7 @@
                 <label>Tipo
                     <select (click)="filtroPorType()" [(ngModel)]="type" class="form-select"
                         aria-label="Default select example">
+                        <option [ngValue]="undefined">--- Seleccionar Tipo---</option>
                         <option value="entrepreneur" style="font-size: 12px;">Emprendedor</option>
                         <option value="businessman" style="font-size: 12px;">Empresario</option>
                     </select>
@@ -43,8 +45,10 @@
             </div>
             <div class="col-2" *ngIf="value">
                 <label>Municipio
-                    <select (click)="filtroPorMunicipio()" [(ngModel)]="municipio" class="form-select"
-                        aria-label="Default select example">
+                  <select (click)="filtrarPorMunicipio()"  [(ngModel)]="municipio" class="form-select form-select-sm" name="municipio"
+                  aria-label="Default select example">
+                  <option [ngValue]="undefined">--- Seleccionar Municipio---</option>
+                  <option *ngFor="let m of municicipios" [ngValue]="m.id">{{m.name}} || {{m.country}}</option>
 
                     </select>
                 </label>
@@ -76,7 +80,9 @@
                         <th scope="col-3">{{client.name}} {{client.lastName}}</th>
                         <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
                         <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
-                        <th scope="col-3">{{client.product}}</th>
+                        <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
+                        <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.typeOfCompany}}</th>
+
                         <th scope="col-3">{{client?.municipio?.name}}</th>
                         <th scope="col-3" *ngIf="client.type ==='entrepreneur'">
                             <button id="button" class="btn btn-disabled">Emprendedor</button>
