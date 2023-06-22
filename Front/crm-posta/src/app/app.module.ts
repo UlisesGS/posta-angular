@@ -43,7 +43,7 @@ const routes:Routes=[
   {path:'usuarios', component:UsuariolistComponent},
 
   {path:'usuarios/form', component:UsuarioformComponent},
-  {path:'usuarios/form/:id', component:UsuarioformComponent}
+  {path:'usuarios/form/:id', component:UsuarioformComponent},
 
 
 ]
@@ -67,7 +67,7 @@ const routes:Routes=[
 
     UsuariolistComponent,
     UsuarioformComponent,
-    PaginatorComponent
+    PaginatorComponent,
 
   ],
   imports: [

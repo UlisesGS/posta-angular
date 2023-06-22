@@ -28,12 +28,21 @@ public modal:boolean;
 public ciu:any;
 
 
+<<<<<<< HEAD
   constructor(private serviceClient:ClientService,
     public modalservice:ModalService,
     private activatedRoute:ActivatedRoute){}
 
 
 
+=======
+  constructor(private serviceClient:ClientService, 
+    public modalservice:ModalService, 
+    private activatedRoute:ActivatedRoute){}
+
+
+ 
+>>>>>>> 196024a1821ca09ad1f18645221d7cd7354fe675
 
   ngOnInit(): void {
     this.modal=false;
@@ -73,9 +82,13 @@ public ciu:any;
 //this.ciu=this.serviceClient.ciu
 
   }
+<<<<<<< HEAD
 
     
 
+=======
+    
+>>>>>>> 196024a1821ca09ad1f18645221d7cd7354fe675
 
   public cambiarCondicion(){
     if(this.value){
@@ -107,4 +120,5 @@ public ciu:any;
     this.clienteSeleccionado=client;
     this.modalservice.abrirModalAction();
   }
+
 }
