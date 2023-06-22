@@ -4,6 +4,7 @@ import { ClientService } from './client.service';
 import { Observable, tap } from 'rxjs';
 import { ModalService } from './modal.service';
 import { ActivatedRoute } from '@angular/router';
+import { Municipio } from '../municipio/municipio';
 
 
 @Component({
@@ -14,6 +15,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ClientComponent implements OnInit{
   clients:Client[];
   client:Client;
+
+  municicipios:Municipio[];
+
   clienteSeleccionado:Client;
   paginador:any;
 
@@ -23,11 +27,13 @@ public genero:string;
 public type:string;
 public modal:boolean;
 public ciu:any;
+public municipio:number;
 
 
-  constructor(private serviceClient:ClientService, 
-    public modalservice:ModalService, 
+  constructor(private serviceClient:ClientService,
+    public modalservice:ModalService,
     private activatedRoute:ActivatedRoute){}
+
 
   ngOnInit(): void {
     this.modal=false;
@@ -48,11 +54,18 @@ public ciu:any;
         this.clients = response.content as Client[];
         this.paginador = response;
       });
-  });
-    
 
-    
-    
+  })
+this.serviceClient.getClientsMunicipios().subscribe(data=>{
+  this.municicipios=data;
+  console.log(this.municicipios);
+
+
+})
+
+
+
+
     // let page=0;
     // this.serviceClient.getClientsPaginar(page).subscribe(client=>{
     //   this.clients=client.content as Client[];
@@ -64,10 +77,12 @@ public ciu:any;
 
     
     */
+
   //this.ciu=this.serviceClient.ciu
     }
   
     
+
 
   public cambiarCondicion(){
     if(this.value){
@@ -90,7 +105,7 @@ public ciu:any;
     })
   }
 
-  
+
   abrirModal():void{
     this.modalservice.abrirModal();
   }
@@ -98,6 +113,15 @@ public ciu:any;
   abrirModalAction(client:Client){
     this.clienteSeleccionado=client;
     this.modalservice.abrirModalAction();
+  }
+  public filtrarPorMunicipio(){
+    console.log(this.municipio);
+
+this.serviceClient.getClientsMunicipiosPage(0,this.municipio).subscribe(data=>{
+  this.clients = data.content ;
+  console.log(data);
+
+})
   }
 
 }

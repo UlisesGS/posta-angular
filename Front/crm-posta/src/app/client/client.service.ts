@@ -42,8 +42,10 @@ export class ClientService {
     return this.http.get<any>(`${this.urlEndPoint}/paginar/${page}`, {headers:this.httpHeader})
   }
 
-  public getClientsMunicipiosPage(page:number, variableIdmunicipio:number): Observable<any>{      / AGREGAR PAGINACION /
-    return this.http.get<any>(`${this.urlEndPoint}/municipios/${page}?idMunicipio=${variableIdmunicipio}`);
+  public getClientsMunicipiosPage(page:number, idMunicipio:number): Observable<any>{      / AGREGAR PAGINACION /
+  console.log(idMunicipio);
+
+  return this.http.get<any>(`${this.urlEndPoint}/municipios/${page}?idMunicipio=${idMunicipio}`);
   }
 
   public getClientsGender(page:number, variableGender:string): Observable<any>{      / AGREGAR PAGINACION /

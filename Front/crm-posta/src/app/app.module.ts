@@ -20,7 +20,7 @@ import { AutoevaluacionComponent } from './client/autoevaluacion/autoevaluacion.
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
 
 import { AccionComponent } from './client/accion/accion.component';
-import { AsesoriaComponent } from './header/asesoria/asesoria.component'; 
+import { AsesoriaComponent } from './header/asesoria/asesoria.component';
 
 import { UsuariolistComponent } from './usuario/usuariolist/usuariolist.component';
 import { UsuarioformComponent } from './usuario/usuarioform/usuarioform.component';
