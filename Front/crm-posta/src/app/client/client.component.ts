@@ -30,11 +30,10 @@ public ciu:any;
 
   constructor(private serviceClient:ClientService, 
     public modalservice:ModalService, 
-    private activatedRoute:ActivatedRoute){
+    private activatedRoute:ActivatedRoute){}
 
 
-  constructor(private serviceClient:ClientService, 
-    public modalservice:ModalService){}
+ 
 
   ngOnInit(): void {
     this.modal=false;
@@ -71,10 +70,10 @@ public ciu:any;
 
     })
     */
-this.ciu=this.serviceClient.ciu
+//this.ciu=this.serviceClient.ciu
 
   }
-
+    
 
   public cambiarCondicion(){
     if(this.value){
@@ -106,4 +105,5 @@ this.ciu=this.serviceClient.ciu
     this.clienteSeleccionado=client;
     this.modalservice.abrirModalAction();
   }
+
 }

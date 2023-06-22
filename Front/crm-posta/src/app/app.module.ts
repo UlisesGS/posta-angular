@@ -38,12 +38,12 @@ const routes:Routes=[
   {path:'clients/autoevaluacion', component:AutoevaluacionComponent},
   {path:'clients/details/:id', component:ClientDetailsComponent},
 
-  {path:'clients/action/:id', component:AccionComponent}
+  {path:'clients/action/:id', component:AccionComponent},
 
   {path:'usuarios', component:UsuariolistComponent},
 
   {path:'usuarios/form', component:UsuarioformComponent},
-  {path:'usuarios/form/:id', component:UsuarioformComponent}
+  {path:'usuarios/form/:id', component:UsuarioformComponent},
 
 
 ]
@@ -63,11 +63,11 @@ const routes:Routes=[
     ClientDetailsComponent,
 
     AccionComponent,
-    AsesoriaComponent
+    AsesoriaComponent,
 
     UsuariolistComponent,
     UsuarioformComponent,
-    PaginatorComponent
+    PaginatorComponent,
 
   ],
   imports: [
