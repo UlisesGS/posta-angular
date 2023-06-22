@@ -41,7 +41,7 @@ const routes:Routes=[
   {path:'usuarios', component:UsuariolistComponent},
   {path:'usuarios/form', component:UsuarioformComponent},
   {path:'usuarios/form/:id', component:UsuarioformComponent},
-
+  {path:'municipios', component:MunicipioComponent},
 
 ]
 

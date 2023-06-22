@@ -1,6 +1,6 @@
 
 
-                <div id="details" class="container col-2">
+                <div id="details" class="card">
                     <ul>
                         <h3 *ngIf="client.type ==='businessman'">Empresario</h3>
                         <h3 *ngIf="client.type ==='entrepreneur'">Emprendedor</h3>
@@ -15,6 +15,8 @@
                         <p *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</p>
                         <li *ngIf="client.type ==='entrepreneur'">Producto</li>
                         <p *ngIf="client.type ==='entrepreneur'">{{client.product}} </p>
+                        <li *ngIf="client.type ==='businessman'">Tipo de Compañia</li>
+                        <p *ngIf="client.type ==='businessman'">{{client.typeOfCompany}} </p>
                         <li>Dirección</li>
                         <p>{{client.address}}</p>
                         <li>Ciudad</li>
