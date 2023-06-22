@@ -1,39 +1,50 @@
-<div class="card">
+<div class="card" style="margin-right: 20px;">
   <div class="card-header">
-    <h5 class="card-title">Lista de Usuarios</h5>
-    <button routerLink="/usuarios/form" class="btn btn-primary btn-sm">Crear+</button>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <h3>Lista de Usuarios</h3>
+      </div>
+      <div class="col-9 text-end">
+        <button routerLink="/usuarios/form" class="btn btn-success" id="button-add">Crear+</button>
+      </div>
+      </div>
+
+    </div>
+    
+    
+    
   </div>
   <div class="card-body">
     <table class="table table-sm table-borderless">
       <thead class="table">
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Telefono</th>
-          <th scope="col">email</th>
-          <th scope="col">Role</th>
-          <th scope="col">Editar</th>
-          <th scope="col">Eliminar</th>
-
+        <tr style="border: solid  #faf8f8; border-radius: 1em; ;">
+          
+          <td scope="col-3">Nombre</td>
+          <td scope="col-3">Apellido</td>
+          <td scope="col-3">Telefono</td>
+          <td scope="col-3">email</td>
+          <td scope="col-2" style="text-align: center; justify-content: center; align-items: center;">Role</td>
+          <td scope="col-3" >Editar</td>
+          <td scope="col-3">Desactivar</td>
         </tr>
       </thead>
-      <tbody class="table-sm">
-        <tr *ngFor="let usuario of usuarios">
-          <td>{{usuario.id}}</td>
-          <td>{{usuario.name}}</td>
-          <td>{{usuario.lastName}}</td>
-          <td>{{usuario.phone}}</td>
-          <td>{{usuario.email}}</td>
-          <td>{{usuario.role}}</td>
-          <td>
-            <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-success btn-sm">Editar</button>
+      <tbody class="table-sm" *ngFor="let usuario of usuarios">
+        <tr style="border: solid  #faf8f8; border-radius: 1em; ;" >
+         
+          <th scope="col-3">{{usuario.name}}</th>
+          <th scope="col-3">{{usuario.lastName}}</th>
+          <th scope="col-3">{{usuario.phone}}</th>
+          <th scope="col-3">{{usuario.email}}</th>
+          <th scope="col-2" style="text-align: center; justify-content: center; align-items: center;">{{usuario.role}}</th>
+          <th scope="col-3" >
+            <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" id="button">Editar</button>
 
-          </td>
-          <td>
-            <button class="btn btn-danger btn-sm">Eliminar</button>
+          </th>
+          <th scope="col-3">
+            <button class="btn btn-primary" id="button">Desactivar</button>
 
-          </td>
+          </th>
          </tr>
       </tbody>
     </table>
