@@ -2,13 +2,17 @@
 
 #div-izq{
     position: fixed;
+    top: 0;
 }
+
 #arr{
-  position: fixed;
-  margin-left: 245px;
+  /* position: fixed; */
+  /* margin-left: 245px; */
   margin-top: 5px;
   margin-bottom: 5px;
   padding-bottom: 5px;
+  top: 0;
+  width: 100vw;
   
 }
 ul {
@@ -47,7 +51,6 @@ ul {
   
   width: 100%;
 }
- 
   .input-icon {
     color: grey;
     position: absolute;
@@ -57,4 +60,3 @@ ul {
     top: 50%;
     transform: translateY(-50%);
   }
- 
