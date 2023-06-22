@@ -1,46 +1,61 @@
-<!-- <div id="div-arr" class="container row mt-1" style="display: inline;">
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="input-wrapper">
-        <input type="search" class="form-control" placeholder="    Buscar" id="input" style="border-radius: 1em; text-align: end; padding-left: 15;">
-        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" height="0.5em" viewBox="0 0 512 512" fill="currentColor">
-          <path fill-rule="evenodd" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7
-           40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" clip-rule="evenodd" /></svg>
-       </div>
+
+
+
+
+<div class="container">
+  <nav >
+    <div class="container" id="arr" style="background-color: white;">
+      <div class="col" >
+        <div class="row">
+          <div class="col-7">
+            <input type="text" class="form-control" placeholder="Buscar">
+          </div>
+          <div class="col-2 text-end">
+            <button class="btn" style="background-color: red;color: white; border-radius: 1em;"
+              (click)="abrirModalAsesoria()">Iniciar Asesoría</button>
+          </div>
+          <div class="col-1 text-end">
+            <a href="#" class="btn" style="background-color: #faf8f8;">
+              <i class="fa-regular fa-bell"></i>
+            </a>
+          </div>
+          <div class="col-2 text-end">
+            <button class="btn" type="button" style="background-color: #faf8f8; width: 100%;">
+              User N°
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+   
+  </nav>
+</div>
+
+<!-- <div class="container" id="arr" style="background-color: white;">
+  <div class="col" >
+    <div class="row">
+      <div class="col-7">
+        <input type="text" class="form-control" placeholder="Buscar">
+      </div>
+      <div class="col-2 text-end">
+        <button class="btn" style="background-color: red;color: white; border-radius: 1em;"
+          (click)="abrirModalAsesoria()">Iniciar Asesoría</button>
+      </div>
+      <div class="col-1 text-end">
+        <a href="#" class="btn" style="background-color: #faf8f8;">
+          <i class="fa-regular fa-bell"></i>
+        </a>
+      </div>
+      <div class="col-2 text-end">
+        <button class="btn" type="button" style="background-color: #faf8f8; width: 100%;">
+          User N°
+        </button>
+      </div>
     </div>
   </div>
 </div> -->
-<div class="container" id="arr">
-
-<div class="col-10">
-  <div class="row">
-    <div class="col-7">
-      <input type="text" class="form-control" placeholder="Buscar">
-    </div>
-    <div class="col-2 text-end">
-
-      <button class="btn" style="background-color: red;color: white; border-radius: 1em;" (click)="abrirModalAsesoria()">Iniciar Asesoría</button>
-
-
-
-
-    </div>
-    <div class="col-1 text-end">
-      <a href="#" class="btn" style="background-color: #faf8f8;">
-        <i class="fa-regular fa-bell"></i>
-      </a>
-    </div>
-    <div class="col-2 text-end">
-
-        <button class="btn" type="button"  style="background-color: #faf8f8; width: 100%;">
-          User N°
-        </button>
-
-
-    </div>
-  </div>
-</div>
-</div>
 
 
 
@@ -48,17 +63,16 @@
 
 <div id="div-izq" class="container col-2">
   <ul>
+    <img src="/assets/imgNavBar.jpeg" alt="" style="width: 100%;">
     <li>
-      <a href="#home"><i class="fa-solid fa-bars"></i> Inicio</a></li>
-      <li><a routerLink="/usuarios"><i class="fa-solid fa-user-tie"></i> Asesores</a></li>
+      <a href="#home"><i class="fa-solid fa-bars"></i> Inicio</a>
+    </li>
+    <li><a routerLink="/usuarios"><i class="fa-solid fa-user-tie"></i> Asesores</a></li>
     <li><a routerLink="/clients"><i class="fa-solid fa-user-tie"></i> Contactos</a></li>
     <li><a routerLink='/clients/autoevaluacion'><i class="fa-solid fa-layer-group"></i> Procesos</a></li>
     <li><a routerLink='/clients/details'><i class="fa-regular fa-calendar-days"></i> Calendario</a></li>
-
     <li><a href=""><i class="fa-regular fa-folder-open"></i> Reportes</a></li>
     <li><a href="#about"><i class="fa-solid fa-comment"></i> Mensajes</a></li>
     <li><a class="position-bottom" href="#about"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
   </ul>
-
 </div>
-
