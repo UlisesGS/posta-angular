@@ -1,3 +1,11 @@
+
+<div class="card" style="margin-right: 20px; margin-bottom: 20px; height: 102px; background-color: rgb(125,58,135) ; display: flex;">
+  <ul class="nav d-flex justify-content-center align-items-center" style="position: relative; height: 100%; overflow: hidden; align-items: flex-start; flex-grow: 1;">
+   <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
+  </ul>
+</div>
+
+
 <div class="card" style="margin-right: 20px;">
   <div class="card-header">
     <div class="col">
@@ -5,49 +13,49 @@
         <div class="col">
           <h3>Lista de Usuarios</h3>
       </div>
-      <div class="col-9 text-end">
+      <div class="col text-end">
         <button routerLink="/usuarios/form" class="btn btn-success" id="button-add">Crear+</button>
       </div>
       </div>
-
     </div>
-    
-    
     
   </div>
   <div class="card-body">
-    <table class="table table-sm table-borderless">
-      <thead class="table">
-        <tr style="border: solid  #faf8f8; border-radius: 1em; ;">
-          
-          <td scope="col-3">Nombre</td>
-          <td scope="col-3">Apellido</td>
-          <td scope="col-3">Telefono</td>
-          <td scope="col-3">email</td>
-          <td scope="col-2" style="text-align: center; justify-content: center; align-items: center;">Role</td>
-          <td scope="col-3" >Editar</td>
-          <td scope="col-3">Desactivar</td>
-        </tr>
-      </thead>
-      <tbody class="table-sm" *ngFor="let usuario of usuarios">
-        <tr style="border: solid  #faf8f8; border-radius: 1em; ;" >
-         
-          <th scope="col-3">{{usuario.name}}</th>
-          <th scope="col-3">{{usuario.lastName}}</th>
-          <th scope="col-3">{{usuario.phone}}</th>
-          <th scope="col-3">{{usuario.email}}</th>
-          <th scope="col-2" style="text-align: center; justify-content: center; align-items: center;">{{usuario.role}}</th>
-          <th scope="col-3" >
-            <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" id="button">Editar</button>
-
-          </th>
-          <th scope="col-3">
-            <button class="btn btn-primary" id="button">Desactivar</button>
-
-          </th>
-         </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-sm table-borderless">
+        <thead class="table">
+          <tr style="border: solid  #faf8f8; border-radius: 1em; ;">
+            
+            <td scope="col-3">Nombre</td>
+            <td scope="col-3">Apellido</td>
+            <td scope="col-3">Telefono</td>
+            <td scope="col-3">email</td>
+            <td scope="col-2" style="text-align: center; justify-content: center; align-items: center;">Role</td>
+            <td scope="col-3" >Editar</td>
+            <td scope="col-3">Desactivar</td>
+          </tr>
+        </thead>
+        <tbody class="table-sm" *ngFor="let usuario of usuarios">
+          <tr style="border: solid  #faf8f8; border-radius: 1em; ;" >
+           
+            <th scope="col-3">{{usuario.name}}</th>
+            <th scope="col-3">{{usuario.lastName}}</th>
+            <th scope="col-3">{{usuario.phone}}</th>
+            <th scope="col-3">{{usuario.email}}</th>
+            <th scope="col-2" style="text-align: center; justify-content: center; align-items: center;">{{usuario.role}}</th>
+            <th scope="col-3" >
+              <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" id="button">Editar</button>
+  
+            </th>
+            <th scope="col-3">
+              <button class="btn btn-primary" id="button">Desactivar</button>
+  
+            </th>
+           </tr>
+        </tbody>
+      </table>
+    </div>
+    
 
   </div>
 </div>
