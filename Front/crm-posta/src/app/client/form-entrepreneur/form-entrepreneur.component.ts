@@ -15,6 +15,7 @@ export class FormEntrepreneurComponent implements OnInit {
   constructor(private clientService:ClientService,private router:Router, public modalservice:ModalService){}
   emprendedor:Entrepreneur= new Entrepreneur();
   municipios:Municipio[]=[];
+  errores:any;
 
   ngOnInit(): void {
     this.clientService.getClientsMunicipios().subscribe(data=>{
@@ -31,15 +32,21 @@ public registrar(){
     this.cerrarModal();
     this.router.navigate(['/municipios'])
   },e=>{
+    if(e.status==404){
+      this.errores=e.error;
+      Swal.fire('Error:', 'complete bien los datos', 'error');
+     console.log(this.errores);
+
+
+    }
     if(e.status==500 || e.status==400){
       console.log(e);
 
       Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
     }
 
-    
-
-  })
+  }
+)
 
 }
 cerrarModal(){
