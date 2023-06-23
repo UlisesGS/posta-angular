@@ -11,12 +11,12 @@
    <ul class="nav d-flex justify-content-center align-items-center" style="position: relative; height: 100%; overflow: hidden; align-items: flex-start; flex-grow: 1;">
     <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
    </ul>
- </div> 
+ </div>
 
 
 
 
- 
+
 <div class="card" style="margin-right: 20px;">
     <div class="card-header">
         <div class="col">
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="col-9 text-end">
-                    <button class="btn btn-success" id="button-add" (click)="abrirModal()" >+Agregar Cliente</button>
+                    <button  class="btn btn-success" id="button-add" (click)="abrirModal()" >+Agregar Cliente</button>
                 </div>
             </div>
             <div class="row" id="miDiv">
@@ -100,7 +100,7 @@
             </tbody>
         </table>
         </div>
-        
+
         <app-paginator *ngIf="paginador && !value" [paginador]="paginador"></app-paginator>
     </div>
 </div>
