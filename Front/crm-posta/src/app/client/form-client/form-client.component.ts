@@ -4,7 +4,7 @@ import { Businessman } from '../businessman';
 import { Municipio } from 'src/app/municipio/municipio';
 import { ClientService } from '../client.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ModalService } from '../modal.service';
 
 @Component({
@@ -18,7 +18,10 @@ export class FormClientComponent implements OnInit {
   errores:any;
   enums:any;
 
-  constructor(private service:ClientService,private router:Router,public modalservice:ModalService){}
+  constructor(private service:ClientService
+    ,private router:Router
+    ,public modalservice:ModalService
+    ,private rutaParametro:ActivatedRoute){}
   ngOnInit(): void {
 this.service.getClientsMunicipios().subscribe(data=>{
   this.municipios=data;
@@ -29,7 +32,14 @@ this.service.getEnums().subscribe(data=>{
 console.log(this.enums);
 
 })
-
+this.rutaParametro.paramMap.subscribe(parametro=>{
+  let id = +parametro.get('id');
+  if(id){
+    this.service.getClient(id).subscribe(data=>{
+      this.empresario=data;
+    })
+  }
+})
   }
 
 public registrar(){
@@ -37,7 +47,7 @@ public registrar(){
   console.log(this.empresario);
   this.service.saveBusinessman(this.empresario).subscribe(data=>{
     Swal.fire('Creado', `Empresario ${data.name} fue creado con exito`, 'success')
-    
+
     this.cerrarModal();
     this.router.navigate(['/municipios'])
   },e=>{
@@ -56,6 +66,17 @@ public registrar(){
 
   })
 
+}
+public editar(){
+this.service.updateBusinessman(this.empresario).subscribe(data=>{
+  this.router.navigate(['/clients'])
+  Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
+
+    //this.cerrarModal();
+
+},e=>{
+  Swal.fire("Error: ", `Error al editar el contacto`, 'error');
+})
 }
 cerrarModal(){
   this.modalservice.cerrarModal();
