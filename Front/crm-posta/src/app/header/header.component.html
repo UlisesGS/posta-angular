@@ -8,7 +8,7 @@
       <div class="col" >
         <div class="row">
           <div class="col-7">
-            <input type="text" class="form-control" placeholder="Buscar">
+            <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar" >
           </div>
           <div class="col-2 text-end">
             <button class="btn" style="background-color: red;color: white; border-radius: 1em;"
@@ -29,7 +29,7 @@
 
 
     </div>
-   
+
   </nav>
 
 

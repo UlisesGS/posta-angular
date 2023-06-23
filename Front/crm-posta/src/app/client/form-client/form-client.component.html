@@ -26,7 +26,7 @@
                     <label for="">
 
                         <br>
-                        <select class="form-select form-select-sm"  [(ngModel)]="empresario.gender" name="studyLevel"
+                        <select class="form-select form-select-sm"  [(ngModel)]="empresario.gender" name="gender"
                             aria-label="Default select example">
                             <option [ngValue]="undefined">--- Seleccionar Género ---</option>
                             <option value="MALE">Masculino</option>
@@ -235,7 +235,7 @@
                         <label for="">
 
                             <br>
-                            <select   [(ngModel)]="empresario.municipio" class="form-select form-select-sm" name="municipio"
+                            <select [compareWith]="compararRegion"   [(ngModel)]="empresario.municipio" class="form-select form-select-sm" name="municipio"
                                 aria-label="Default select example">
                                 <option [ngValue]="undefined">--- Seleccionar Municipio---</option>
                                 <option *ngFor="let m of municipios" [ngValue]="m">{{m.name}} || {{m.country}}</option>

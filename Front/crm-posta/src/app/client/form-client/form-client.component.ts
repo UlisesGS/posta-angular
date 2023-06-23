@@ -37,6 +37,7 @@ this.rutaParametro.paramMap.subscribe(parametro=>{
   if(id){
     this.service.getClient(id).subscribe(data=>{
       this.empresario=data;
+      //this.empresario.municipio=data.municipio;
     })
   }
 })
@@ -75,10 +76,19 @@ this.service.updateBusinessman(this.empresario).subscribe(data=>{
     //this.cerrarModal();
 
 },e=>{
+  
   Swal.fire("Error: ", `Error al editar el contacto`, 'error');
 })
 }
 cerrarModal(){
   this.modalservice.cerrarModal();
+}
+compararRegion(o1: Municipio, o2: Municipio):boolean{
+
+  if(o1 === undefined && o2 === undefined){
+    return true;
+  }
+
+   return o1 && o2 ? o1.id === o2.id : o1 === o2;
 }
 }
