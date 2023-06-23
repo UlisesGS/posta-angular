@@ -31,6 +31,7 @@ export class FormClientComponent implements OnInit {
       this.enums = data;
       console.log(this.enums);
 
+
     })
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
@@ -67,15 +68,29 @@ export class FormClientComponent implements OnInit {
 
     })
 
-  }
-  public editar() {
-    this.service.updateBusinessman(this.empresario).subscribe(data => {
-      this.router.navigate(['/clients'])
-      Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
+
+}
+public editar(){
+  console.log(this.empresario);
+
+this.service.updateBusinessman(this.empresario).subscribe(data=>{
+  this.router.navigate(['/clients'])
+  Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
+
 
       //this.cerrarModal();
 
-    }, e => {
+
+},e=>{
+
+  Swal.fire("Error: ", `Error al editar el contacto`, 'error');
+})
+}
+cerrarModal(){
+  this.modalservice.cerrarModal();
+}
+compararMunicipio(o1: Municipio, o2: Municipio):boolean{
+
 
       Swal.fire("Error: ", `Error al editar el contacto`, 'error');
     })
