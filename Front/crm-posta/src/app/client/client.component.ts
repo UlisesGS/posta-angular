@@ -70,8 +70,9 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
 
 
 })
+}
 
-    }
+
     public buscar(){
       if(this.termino==""){
         this.todos()
@@ -102,7 +103,16 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
 
     })
     }
+  
 
+    public reiniciarFiltro(){
+      this.genero = undefined;
+      this.type = undefined;
+      this.municipio = undefined;
+      this.value=false; /* SI LO DEJAS EN TRUE NO MUESTRA LA PAGINACION */
+      this.todos();
+    }
+  
 
   public cambiarCondicion(){
     if(this.value){
