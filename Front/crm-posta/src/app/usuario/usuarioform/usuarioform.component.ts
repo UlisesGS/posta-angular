@@ -3,6 +3,7 @@ import { UsuarioService } from '../usuario.service';
 import { Usuario } from '../usuario';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ModalService } from 'src/app/client/modal.service';
 
 @Component({
   selector: 'app-usuarioform',
@@ -12,6 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class UsuarioformComponent implements OnInit {
   usuario: Usuario = new Usuario();
   public titulo: string = 'Formulario Usuario'
+  public modal:boolean;
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro=>{
       let id=+parametro.get('id');
@@ -25,9 +27,10 @@ export class UsuarioformComponent implements OnInit {
      }
 
     })
-
+    
   }
-  constructor(private usuarioService: UsuarioService, private ruta: Router,private rutaParametro:ActivatedRoute) {
+  constructor(private usuarioService: UsuarioService, private ruta: Router,private rutaParametro:ActivatedRoute,
+    ) {
 
   }
   public registrar() {

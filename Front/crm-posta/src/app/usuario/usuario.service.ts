@@ -1,17 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Usuario } from './usuario';
 import { Asesoria } from './asesoria';
+import { ModalService } from '../client/modal.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class UsuarioService implements OnInit{
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+    private modalService:ModalService) { }
   private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/users";
   private httpHeader=new HttpHeaders({'Content-Type':'application/json'});
+  
+  ngOnInit(): void {
+    
+  }
+
 
   /* TODOS LOS GET */
   public usuarioFindAll():Observable<any>{
@@ -43,4 +50,7 @@ export class UsuarioService {
   public usuarioDelete(id:number):Observable<void>{
     return this.http.delete<void>(`${this.urlEndPoint}/${id}`);
   }
+  
 }
+
+
