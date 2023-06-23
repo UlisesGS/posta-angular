@@ -80,26 +80,28 @@
                 <tr style="border: solid  #faf8f8; border-radius: 1em; ;">
                     <td scope="col-3"> Nombre</td>
                     <td scope="col-3"> Empresa/Idea</td>
-                    <td scope="col-3"> Producto/Servicio</td>
-                    <td scope="col-3"> Ciudad</td>
-                    <td scope="col-3"> Tipo de Cliente</td>
-                    <td scope="col-3"> Acciones</td>
+                    <td scope="col-2"> Producto/Servicio</td>
+                    <td scope="col-2"> Ciudad</td>
+                    <td scope="col-1"> Tipo de Cliente</td>
+                    <td scope="col-1"> Acciones</td>
                 </tr>
             <tbody class="table-sm" *ngFor="let client of clients" >
                 <tr *ngIf="client.type!==null" style="border: solid  #faf8f8; border-radius: 1em;">
                     <th scope="col-3">{{client.name}} {{client.lastName}}</th>
                     <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
                     <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
-                    <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
-                        <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.typeOfCompany}}</th>
-                    <th scope="col-3">{{client?.municipio?.name}}</th>
-                    <th scope="col-3" *ngIf="client.type ==='entrepreneur'">
+
+                    <th scope="col-2" *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
+                    <th scope="col-2" *ngIf="client.type ==='businessman'">{{client.typeOfCompany}}</th>
+
+                    <th scope="col-2">{{client?.municipio?.name}}</th>
+                    <th scope="col-1" *ngIf="client.type ==='entrepreneur'">
                         <button id="button" class="btn btn-disabled">Emprendedor</button>
                     </th>
-                    <th scope="col-3" *ngIf="client.type ==='businessman'">
+                    <th scope="col-1" *ngIf="client.type ==='businessman'">
                         <button id="button" class="btn btn-disabled">Empresario</button>
                     </th>
-                    <th rowspan="2">
+                    <th scope="col-1">
                         <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client)"></i>
                     </th>
                 </tr>

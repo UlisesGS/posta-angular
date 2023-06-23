@@ -1,40 +1,13 @@
 
-
-/* table {
-    border-collapse: collapse;
-    border-radius: 1em;
-    overflow: hidden;
-    height: 70px;
-    position: relative;
-
-  }
-*/
-/* th {
-    font-size: 100%;
-    width: 18%;
-    height: 4vw;
-    padding: 5px 20px 5px 20px ;
-    background: white;
-    vertical-align: middle;
-  }
-
- td{
-  height: 5px;
-    font-size: 90%;
-    background: white;
-    padding: 0px 20px 5px 20px ;
-  }  */
   #button{
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 100%;
-    width: 125px;
-    height: 40px;
     background-color: red;
     color: white;
     border-radius: 0.5em;
+    width: 55%;
   }
   #button-add{
     align-items: flex-end;
@@ -46,18 +19,5 @@
     text-align: center center;
   }
 
- /* #mio-2{
-  margin-top: 10px;
-  margin-left: 0;
-  
- }
 
- #error{
-  transform: scale(0.7);
- }
-
-
- #miDiv{
-  transform: scale(0.7);
- } */
 
