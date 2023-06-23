@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientComponent } from './client/client.component';
-import { UserComponent } from './user/user.component';
+
 import { FormsModule } from '@angular/forms';
 import { MunicipioComponent } from './municipio/municipio.component';
 import { FormClientComponent } from './client/form-client/form-client.component';
@@ -20,8 +20,11 @@ import { UsuariolistComponent } from './usuario/usuariolist/usuariolist.componen
 import { UsuarioformComponent } from './usuario/usuarioform/usuarioform.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { LoginComponent } from './auth/login/login.component';
+import { MainComponent } from './main/main.component';
+
+
 const routes:Routes=[
-  {path:'', redirectTo:'/clients', pathMatch:'full'},
+  {path:'', redirectTo:'/main', pathMatch:'full'},
   {path:'clients', component:ClientComponent},
   {path:'clients/page/:page', component:ClientComponent},
   {path:'clients/form/businessman', component:FormClientComponent},
@@ -37,6 +40,7 @@ const routes:Routes=[
   {path:'usuarios/form/:id', component:UsuarioformComponent},
   {path:'municipios', component:MunicipioComponent},
   {path:'login',component:LoginComponent},
+  {path:'main',component:MainComponent},
 
 ]
 
@@ -46,7 +50,7 @@ const routes:Routes=[
     HeaderComponent,
     FooterComponent,
     ClientComponent,
-    UserComponent,
+   
     MunicipioComponent,
     FormClientComponent,
     FormEntrepreneurComponent,
@@ -59,6 +63,7 @@ const routes:Routes=[
     UsuarioformComponent,
     PaginatorComponent,
     LoginComponent,
+    MainComponent,
 
   ],
   imports: [
