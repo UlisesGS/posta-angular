@@ -183,7 +183,7 @@
 
                         <label for="">
                             <br>
-                            <select [(ngModel)]="emprendedor.municipio" class="form-select form-select-sm"
+                            <select [compareWith]="compararMunicipio" [(ngModel)]="emprendedor.municipio" class="form-select form-select-sm"
                                 name="municipio" aria-label="Default select example">
                                 <option [ngValue]="undefined">--- Seleccionar Municipio ---</option>
                                 <option *ngFor="let m of municipios" [ngValue]="m">{{m.name}} || {{m.country}}</option>
@@ -242,7 +242,12 @@
             </p>
         </div>
         <div class="form-group">
-            <button (click)="registrar()" class="btn btn-success">Registrar</button>
-        </div>
+            <button *ngIf="!emprendedor.id" (click)="registrar()" class="btn btn-success">Registrar</button>
+            <button *ngIf="emprendedor.id" (click)="editar()" class="btn btn-success">Registrar</button>
+          </div>
+
+
+
+
     </form>
 </div>

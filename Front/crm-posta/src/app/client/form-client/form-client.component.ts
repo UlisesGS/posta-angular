@@ -37,6 +37,7 @@ this.rutaParametro.paramMap.subscribe(parametro=>{
   if(id){
     this.service.getClient(id).subscribe(data=>{
       this.empresario=data;
+     // this.empresario.victimPopulation=true;
       //this.empresario.municipio=data.municipio;
     })
   }
@@ -69,6 +70,8 @@ public registrar(){
 
 }
 public editar(){
+  console.log(this.empresario);
+
 this.service.updateBusinessman(this.empresario).subscribe(data=>{
   this.router.navigate(['/clients'])
   Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
@@ -76,14 +79,14 @@ this.service.updateBusinessman(this.empresario).subscribe(data=>{
     //this.cerrarModal();
 
 },e=>{
-  
+
   Swal.fire("Error: ", `Error al editar el contacto`, 'error');
 })
 }
 cerrarModal(){
   this.modalservice.cerrarModal();
 }
-compararRegion(o1: Municipio, o2: Municipio):boolean{
+compararMunicipio(o1: Municipio, o2: Municipio):boolean{
 
   if(o1 === undefined && o2 === undefined){
     return true;
