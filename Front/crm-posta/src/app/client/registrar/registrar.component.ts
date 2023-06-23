@@ -24,10 +24,13 @@ if (valor==='empresario'){
   this.empresario=true;
   this.emprendedor=false;
 }
-if(valor==='emprendedor')
-this.emprendedor=true;
-this.empresario=false;
+if(valor==='emprendedor'){
+  this.emprendedor=true;
+  this.empresario=false;
 }
+
+}
+
 
 /*
     if(this.emprendedor ){

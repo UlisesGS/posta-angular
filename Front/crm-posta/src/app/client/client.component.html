@@ -65,6 +65,9 @@
                         </select>
                     </label>
                 </div>
+                <div class="col-7" *ngIf="value">
+                  <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar" >
+                </div>
             </div>
         </div>
     </div>

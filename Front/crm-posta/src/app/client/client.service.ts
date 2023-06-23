@@ -14,6 +14,7 @@ import { Businessman } from './businessman';
 export class ClientService {
   private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/clients"
   //private urlEndPoint:string="http://localhost:8080/clients";
+  private url = "http://localhost:8080/clients";
   private httpHeader=new HttpHeaders({'Content-Type':'application/json'})
 
   constructor(private http:HttpClient, private router:Router) { }
@@ -95,6 +96,9 @@ export class ClientService {
    //   return this.http.get<any>('https://github.com/Startup-Colombia/CIIU/blob/master/CIIU.json')
    return this.ciu;
 
+    }
+    public buscarPorNombre(termino:string):Observable<any>{
+      return this.http.get<any>(`${this.url}/search/${termino}`)
     }
     public ciu={
       "A": {

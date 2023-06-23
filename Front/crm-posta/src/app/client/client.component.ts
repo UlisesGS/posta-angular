@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Client } from './client';
 import { ClientService } from './client.service';
 import { Observable, tap } from 'rxjs';
@@ -8,12 +8,16 @@ import { Municipio } from '../municipio/municipio';
 import { AuthService } from '../auth/auth.service';
 
 
+
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit{
+  @Input()clientes:Client[];
+
+
   clients:Client[];
   client:Client;
 
@@ -29,6 +33,7 @@ public type:string;
 public modal:boolean;
 public ciu:any;
 public municipio:number;
+public termino:string;
 
 
   constructor(private serviceClient:ClientService,
@@ -65,6 +70,15 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
 
 
 })
+
+    }
+    public buscar(){
+      if(this.termino==""){
+        this.todos()
+      }
+    this.serviceClient.buscarPorNombre(this.termino).subscribe(data=>{
+      this.clients=data;
+    })
 
     }
 
