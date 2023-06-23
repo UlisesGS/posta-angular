@@ -2,10 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-
-
-
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -18,22 +14,20 @@ import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entre
 import { RegistrarComponent } from './client/registrar/registrar.component';
 import { AutoevaluacionComponent } from './client/autoevaluacion/autoevaluacion.component';
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
-
 import { AccionComponent } from './client/accion/accion.component';
 import { AsesoriaComponent } from './header/asesoria/asesoria.component';
-
 import { UsuariolistComponent } from './usuario/usuariolist/usuariolist.component';
 import { UsuarioformComponent } from './usuario/usuarioform/usuarioform.component';
 import { PaginatorComponent } from './paginator/paginator.component';
-
-
-
+import { LoginComponent } from './auth/login/login.component';
 const routes:Routes=[
   {path:'', redirectTo:'/clients', pathMatch:'full'},
   {path:'clients', component:ClientComponent},
   {path:'clients/page/:page', component:ClientComponent},
   {path:'clients/form/businessman', component:FormClientComponent},
   {path:'clients/form/entrepreneur', component:FormEntrepreneurComponent},
+  {path:'clients/form/editar/businessman/:id', component:FormClientComponent},
+  {path:'clients/form/editar/entrepreneur/:id', component:FormEntrepreneurComponent},
   {path:'clients/registrar', component:RegistrarComponent},
   {path:'clients/autoevaluacion', component:AutoevaluacionComponent},
   {path:'clients/details/:id', component:ClientDetailsComponent},
@@ -42,6 +36,7 @@ const routes:Routes=[
   {path:'usuarios/form', component:UsuarioformComponent},
   {path:'usuarios/form/:id', component:UsuarioformComponent},
   {path:'municipios', component:MunicipioComponent},
+  {path:'login',component:LoginComponent},
 
 ]
 
@@ -63,6 +58,7 @@ const routes:Routes=[
     UsuariolistComponent,
     UsuarioformComponent,
     PaginatorComponent,
+    LoginComponent,
 
   ],
   imports: [

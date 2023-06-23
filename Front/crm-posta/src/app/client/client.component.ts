@@ -5,6 +5,7 @@ import { Observable, tap } from 'rxjs';
 import { ModalService } from './modal.service';
 import { ActivatedRoute } from '@angular/router';
 import { Municipio } from '../municipio/municipio';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -32,7 +33,9 @@ public municipio:number;
 
   constructor(private serviceClient:ClientService,
     public modalservice:ModalService,
-    private activatedRoute:ActivatedRoute){}
+    private activatedRoute:ActivatedRoute,
+    public authService:AuthService,
+    ){}
 
 
   ngOnInit(): void {
@@ -64,11 +67,11 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
 })
 
     }
-  
+
     public todos(){
       this.activatedRoute.paramMap.subscribe(params => {
         let page: number = +params.get('page');
-  
+
         if (!page) {
           page = 0;
         }
@@ -82,7 +85,7 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
           this.clients = response.content as Client[];
           this.paginador = response;
         });
-  
+
     })
     }
 
