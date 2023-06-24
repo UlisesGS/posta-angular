@@ -36,12 +36,12 @@ export class UsuarioformComponent implements OnInit {
   public registrar() {
     console.log(this.usuario);
     this.usuarioService.usuarioSave(this.usuario).subscribe(data => {
-      Swal.fire('Creado', `El usuario ${data.name} fue creado con exito`, 'success');
+      Swal.fire('ÉXITO', `El usuario ${data.name} fue creado con exito`, 'success');
       this.ruta.navigate(['/usuarios'])
 
     }
     , e => {
-      Swal.fire('Error: ', 'Ingrese bien los datos', 'error');
+      Swal.fire('ERROR: ', 'Datos Incorrectos', 'error');
     }
     )
 
@@ -50,12 +50,12 @@ public editar(){
  // Swal.fire('En construccion', 'Esta seccion esta en construccion', 'info');
  this.usuarioService.usuarioUpdate(this.usuario).subscribe(data=>{
   this.ruta.navigate(['/usuarios'])
-  Swal.fire('Editado', `El usuario ${data.name} fue editado con exito`, 'success');
+  Swal.fire('EDITADO', `El usuario ${data.name} fue editado con exito`, 'success');
 
  },e=>{
   console.log(e);
 
-  Swal.fire('Error: ', 'Ingrese bien los datos', 'error');
+  Swal.fire('ERROR: ', 'Datos Incorrectos', 'error');
  })
 }
 

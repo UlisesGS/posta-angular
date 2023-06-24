@@ -40,14 +40,14 @@ export class FormEntrepreneurComponent implements OnInit {
 public registrar(){
   console.log(this.emprendedor);
   this.clientService.saveEntrepreneur(this.emprendedor).subscribe(data=>{
-    Swal.fire(`Creado`, `Emprendedor ${data.name} fue creado con exito`, `success`)
+    Swal.fire(`ÉXITO`, `Emprendedor ${data.name} fue creado con exito`, `success`)
 
     this.cerrarModal();
     this.router.navigate(['/municipios'])
   },e=>{
     if(e.status==404){
       this.errores=e.error;
-      Swal.fire('Error:', 'complete bien los datos', 'error');
+      Swal.fire('ERROR:', 'Datos Incompletos', 'error');
      console.log(this.errores);
 
 
@@ -55,7 +55,7 @@ public registrar(){
     if(e.status==500 || e.status==400){
       console.log(e);
 
-      Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
+      Swal.fire("ERROR: ", `Error en la carga del formulario`, 'error');
     }
 
 
