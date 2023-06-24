@@ -1,82 +1,10 @@
 
-
-
-
-
-  <nav class="navbar navbar-expand" style="margin-left: 250px;">
-    <div class="flex-grow-1" id="arr" style="background-color: white;">
-      <div class="col" >
-        <div class="row">
-          <div class="col-7">
-            <input (keyup)="setLlenar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar" >
-          </div>
-          <div class="col-2 text-end">
-            <button class="btn" style="background-color: red;color: white; border-radius: 1em;"
-              (click)="abrirModalAsesoria()">Iniciar Asesoría</button>
-          </div>
-          <div class="col-1 text-end">
-            <a href="#" class="btn" style="background-color: #faf8f8;">
-              <i class="fa-regular fa-bell"></i>
-            </a>
-          </div>
-          <div class="col-2 text-end">
-            <button class="btn" type="button" style="background-color: #faf8f8; width: 100%;">
-              User N°
-            </button>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-
-  </nav>
-
-
-
-<!--
-  <div class="col-1">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="sidebarCollapse">
-          <div class="collapse navbar-collapse" id="sidebarCollapse">
-            <ul class="navbar-nav">
-              <img src="/assets/imgNavBar.jpeg" alt="" style="width: 10%;">
-              <li>
-                <a href="#home"><i class="fa-solid fa-bars"></i> Inicio</a>
-              </li>
-              <li><a routerLink="/usuarios"><i class="fa-solid fa-user-tie"></i> Asesores</a></li>
-              <li><a routerLink="/clients"><i class="fa-solid fa-user-tie"></i> Contactos</a></li>
-              <li><a href=""><i class="fa-solid fa-layer-group"></i> Procesos</a></li>
-              <li><a routerLink='/clients/details'><i class="fa-regular fa-calendar-days"></i> Calendario</a></li>
-              <li><a href=""><i class="fa-regular fa-folder-open"></i> Reportes</a></li>
-              <li><a href="#about"><i class="fa-solid fa-comment"></i> Mensajes</a></li>
-              <li><a class="position-bottom" href="#about"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </nav>
-  </div> -->
-
-
-
-
-
-<nav>
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-  <div id="div-izq" class="container col-2">
+<nav class="sidebar" style="width: 100%; height: 98vh;">
+  <div style="flex: 1;">
     <ul>
-      <img src="/assets/imgNavBar.jpeg" alt="" style="width: 100%;">
+      <li>
+        <img src="/assets/imgNavBar.png" alt="" style="width: 100%;">
+      </li>
       <li>
         <a href="#home"><i class="fa-solid fa-bars"></i> Inicio</a>
       </li>
@@ -88,9 +16,10 @@
       <li><a href="#about"><i class="fa-solid fa-comment"></i> Mensajes</a></li>
       <li><a class="position-bottom" href="#about"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
     </ul>
+    
   </div>
+  <div style="margin-top: auto; display: flex; justify-content: center;;">
+    <img src="/assets/camaraHD.jpg" alt="" style="width: 70%; align-self: flex-end;" >
   </div>
-
-
 </nav>
 
