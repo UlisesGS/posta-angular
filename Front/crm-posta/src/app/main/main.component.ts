@@ -68,6 +68,9 @@ export class MainComponent implements OnInit {
     })
   }
 
+  abrirModal():void{
+    this.modalservice.abrirModal();
+  }
 
   abrirModalAction(client: Client) {
     this.clienteSeleccionado = client;

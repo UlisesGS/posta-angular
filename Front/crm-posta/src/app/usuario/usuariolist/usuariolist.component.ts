@@ -18,8 +18,11 @@ this.usuarioService.usuarioFindAll().subscribe(data=>{
 })
 
   }
-  constructor(private usuarioService:UsuarioService){
+  constructor(private usuarioService:UsuarioService,
+    public modalService:ModalService){}
 
+  abrirModal():void{
+    this.modalService.abrirModal();
   }
   
 }
