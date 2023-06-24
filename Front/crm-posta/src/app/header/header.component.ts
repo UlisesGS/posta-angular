@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { ModalService } from '../client/modal.service';
 import { ClientService } from '../client/client.service';
 import { Client } from '../client/client';
+import { BusquedaService } from './../busqueda.service';
 
 
 @Component({
@@ -11,11 +12,11 @@ import { Client } from '../client/client';
 
 })
 export class HeaderComponent implements OnInit {
-
+  @HostBinding('class.is-open')
 public modal:boolean;
 public termino:string;
 clientes:Client[]=[]
-  constructor(public modalService:ModalService,private clienteService:ClientService){}
+  constructor(public modalService:ModalService,private clienteService:ClientService, private busquedaService: BusquedaService){}
 
   ngOnInit(): void {
     this.modal=false;
@@ -24,12 +25,12 @@ clientes:Client[]=[]
   abrirModalAsesoria():void{
     this.modalService.abrirModalAsesoria();
   }
-  public buscar(){
-this.clienteService.buscarPorNombre(this.termino).subscribe(data=>{
-  this.clientes=data;
-})
-console.log(this.clientes);
-
+  public setLlenar(){
+//this.clienteService.buscarPorNombre(this.termino).subscribe(data=>{
+  //this.clientes=data;
+//})
+//console.log(this.clientes);
+this.busquedaService.setTermino(this.termino);
   }
 
 }

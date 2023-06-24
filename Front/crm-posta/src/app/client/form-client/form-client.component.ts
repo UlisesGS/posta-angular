@@ -85,16 +85,20 @@ export class FormClientComponent implements OnInit {
       //this.cerrarModal();
 
 
-    }, e => {
+},e=>{
 
-      Swal.fire("Error: ", `Error al editar el contacto`, 'error');
-    })
-  }
+  Swal.fire("Error: ", `Error al editar el contacto`, 'error');
+})
+}
 
   cerrarModal() {
     this.modalservice.cerrarModal();
   }
-  compararMunicipio(o1: Municipio, o2: Municipio): boolean {
+
+  compararMunicipio(o1: Municipio, o2: Municipio):boolean{
+
+
+
     if (o1 === undefined && o2 === undefined) {
       return true;
     }
