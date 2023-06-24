@@ -10,7 +10,8 @@ import { ModalService } from 'src/app/client/modal.service';
 })
 export class UsuariolistComponent implements OnInit{
   usuarios:Usuario[]=[];
- 
+  activo:boolean
+
 
   ngOnInit(): void {
     this.todos();
@@ -25,19 +26,23 @@ export class UsuariolistComponent implements OnInit{
 
   public usuarioDelete(id:number): void{
     console.log(id);
-    
+
     this.usuarioService.usuarioDelete(id).subscribe( data => {
       console.log(data);
-      
+
       this.todos();
     })
   }
-  
+
   public todos(){
     this.usuarioService.usuarioFindAll().subscribe(data=>{
       this.usuarios=data;
-      console.log(this.usuarios);
-      
+this.activo=data.active;
+      console.log(data);
+
+
     })
+
   }
+
 }

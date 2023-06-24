@@ -54,14 +54,15 @@
               <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" id="button">Editar</button>
 
             </th>
-            <th scope="col-3">
-              <!-- <button class="btn btn-primary" id="button">Desactivar</button> -->
-              <label class="switch">
-                <input  (click)="usuarioDelete(usuario.id)" type="checkbox">
-                <span class="slider"></span>
-              </label>
+ <th scope="col-3">
 
-            </th>
+  <label class="switch">
+    <input [(ngModel)]="usuario.active" name="active"   (click)="usuarioDelete(usuario.id)" type="checkbox">
+    <span class="slider"></span>
+  </label>
+
+</th>
+
            </tr>
         </tbody>
       </table>
