@@ -1,6 +1,6 @@
 
 
- 
+
 <app-registrar *ngIf="modalservice.modal"></app-registrar>
 <app-asesoria *ngIf="modalservice.asesoria"></app-asesoria>
 <app-accion *ngIf="modalservice.action && clienteSeleccionado" [cliente]="clienteSeleccionado"></app-accion>
@@ -76,10 +76,10 @@
 
                 <div class="col-7" *ngIf="value">
                   <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar" >
-                  
+
                 </div>
 
-                
+
 
             </div>
         </div>
@@ -95,7 +95,7 @@
                     <td scope="col-1"> Tipo de Cliente</td>
                     <td scope="col-1"> Acciones</td>
                 </tr>
-            <tbody class="table-sm" *ngFor="let client of clients" >
+            <tbody  class="table-sm" *ngFor="let client of clients" >
                 <tr style="border: solid  #faf8f8; border-radius: 1em;">
                     <th scope="col-3">{{client.name}} {{client.lastName}}</th>
                     <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
@@ -118,6 +118,7 @@
             </tbody>
         </table>
         </div>
+
 
         <app-paginator *ngIf="paginador && !value" [paginador]="paginador"></app-paginator>
     </div>

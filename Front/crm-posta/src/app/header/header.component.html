@@ -8,7 +8,7 @@
       <div class="col" >
         <div class="row">
           <div class="col-7">
-            <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar" >
+            <input (keyup)="setLlenar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar" >
           </div>
           <div class="col-2 text-end">
             <button class="btn" style="background-color: red;color: white; border-radius: 1em;"
@@ -34,14 +34,14 @@
 
 
 
-<!-- 
+<!--
   <div class="col-1">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="sidebarCollapse">
           <div class="collapse navbar-collapse" id="sidebarCollapse">
             <ul class="navbar-nav">
@@ -58,22 +58,22 @@
               <li><a class="position-bottom" href="#about"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
             </ul>
           </div>
-          
+
         </div>
       </div>
     </nav>
   </div> -->
-  
-  
-      
-  
+
+
+
+
 
 <nav>
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
-    
+
   <div id="div-izq" class="container col-2">
     <ul>
       <img src="/assets/imgNavBar.jpeg" alt="" style="width: 100%;">

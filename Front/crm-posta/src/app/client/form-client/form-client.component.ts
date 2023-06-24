@@ -86,19 +86,15 @@ this.service.updateBusinessman(this.empresario).subscribe(data=>{
   Swal.fire("Error: ", `Error al editar el contacto`, 'error');
 })
 }
-cerrarModal(){
-  this.modalservice.cerrarModal();
-}
-compararMunicipio(o1: Municipio, o2: Municipio):boolean{
 
 
-      Swal.fire("Error: ", `Error al editar el contacto`, 'error');
-    })
-  }
+
+
   cerrarModal() {
     this.modalservice.cerrarModal();
   }
-  compararRegion(o1: Municipio, o2: Municipio): boolean {
+  compararMunicipio(o1: Municipio, o2: Municipio):boolean{
+
 
     if (o1 === undefined && o2 === undefined) {
       return true;
