@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   }
   public findByUsernameAndPassword(){
-
+    
   }
 
 }

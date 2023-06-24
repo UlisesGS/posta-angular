@@ -50,15 +50,20 @@
               <button *ngIf="!usuario.id" (click)="registrar()" class="btn btn-success" >Registrar</button>
               <button *ngIf="usuario.id" (click)="editar()" class="btn btn-info">Editar</button>
             </div>
-
-          </div>
-          
-        </form>
+        </div>
+          </form>
       </div>
     </div>
   </div>
-  
-</div>
+  </div>
 
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" name="email" [(ngModel)]="usuario.email" class="form-control" id="email" required>
+      </div>
+      <div class="mb-3" *ngIf="usuario.id && usuario.role=='ADVISER'">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" [(ngModel)]="usuario.password" class="form-control" id="password" required>
+      </div>
 
 
