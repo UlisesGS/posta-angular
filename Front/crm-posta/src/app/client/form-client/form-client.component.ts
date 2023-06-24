@@ -17,6 +17,7 @@ export class FormClientComponent implements OnInit {
   empresario: Businessman = new Businessman();
   errores: any;
   enums: any;
+  
 
   constructor(private service: ClientService
     , private router: Router
@@ -52,7 +53,8 @@ export class FormClientComponent implements OnInit {
 
       this.cerrarModal();
       this.router.navigate(['/municipios'])
-    }, e => {
+    }
+    , e => {
       if (e.status == 404) {
         this.errores = e.error;
         Swal.fire('Error:', 'complete bien los datos', 'error');
@@ -66,16 +68,18 @@ export class FormClientComponent implements OnInit {
         Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
       }
 
+
     })
 
 
-}
-public editar(){
-  console.log(this.empresario);
+  }
+  public editar() {
+    console.log(this.empresario);
 
-this.service.updateBusinessman(this.empresario).subscribe(data=>{
-  this.router.navigate(['/clients'])
-  Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
+
+    this.service.updateBusinessman(this.empresario).subscribe(data => {
+      this.router.navigate(['/clients'])
+      Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
 
 
       //this.cerrarModal();
@@ -87,13 +91,12 @@ this.service.updateBusinessman(this.empresario).subscribe(data=>{
 })
 }
 
-
-
-
   cerrarModal() {
     this.modalservice.cerrarModal();
   }
+
   compararMunicipio(o1: Municipio, o2: Municipio):boolean{
+
 
 
     if (o1 === undefined && o2 === undefined) {
@@ -101,5 +104,11 @@ this.service.updateBusinessman(this.empresario).subscribe(data=>{
     }
 
     return o1 && o2 ? o1.id === o2.id : o1 === o2;
+
   }
+
+
+
 }
+
+

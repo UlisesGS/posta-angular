@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 <div class="card" style="margin-right: 20px; margin-bottom: 20px; height: 102px; background-color: rgb(125,58,135) ; display: flex;">
   <ul class="nav d-flex justify-content-center align-items-center" style="position: relative; height: 100%; overflow: hidden; align-items: flex-start; flex-grow: 1;">
    <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
@@ -38,7 +28,9 @@
             <td scope="col-3">Nombre</td>
             <td scope="col-3">Apellido</td>
             <td scope="col-3">Telefono</td>
-            <td scope="col-3">email</td>
+            <td scope="col-3">Email</td>
+            <td scope="col-3">Cedula</td>
+            <td scope="col-3">Profesion</td>
             <td scope="col-2" style="text-align: center; justify-content: center; align-items: center;">Role</td>
             <td scope="col-3" >Editar</td>
             <td scope="col-3">Desactivar</td>
@@ -51,6 +43,8 @@
             <th scope="col-3">{{usuario.lastName}}</th>
             <th scope="col-3">{{usuario.phone}}</th>
             <th scope="col-3">{{usuario.email}}</th>
+            <th scope="col-3">{{usuario.cedula}}</th>
+            <th scope="col-3">{{usuario.profesion}}</th>
             <th scope="col-2" style="text-align: center; justify-content: center; align-items: center;">{{usuario.role}}</th>
             <th scope="col-3" >
               <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" id="button">Editar</button>

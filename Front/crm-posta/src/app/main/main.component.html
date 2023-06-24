@@ -40,10 +40,10 @@
                     <th scope="col-3">{{client.name}} {{client.lastName}}</th>
                     <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
                     <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
-
+                    <th scope="col-3" *ngIf="client.type ===null">No se registra</th>
                     <th scope="col-2" *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
                     <th scope="col-2" *ngIf="client.type ==='businessman'">{{client.typeOfCompany}}</th>
-
+                    <th scope="col-2" *ngIf="client.type ===null">No se registra</th>
                     <th scope="col-2">{{client?.municipio?.name}}</th>
                     <th scope="col-1" *ngIf="client.type ==='entrepreneur'">
                         <button id="button" class="btn btn-disabled">Emprendedor</button>
@@ -51,7 +51,10 @@
                     <th scope="col-1" *ngIf="client.type ==='businessman'">
                         <button id="button" class="btn btn-disabled">Empresario</button>
                     </th>
-                    <th scope="col-1">
+                    <th scope="col-1" *ngIf="client.type ===null">
+                        <button id="button" class="btn btn-disabled">Asesoría</button>
+                    </th>
+                    <th scope="col-1" *ngIf="client.type!==null">
                         <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client)"></i>
                     </th>
                 </tr>
