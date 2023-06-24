@@ -39,9 +39,11 @@ export class UsuarioformComponent implements OnInit {
       Swal.fire('Creado', `El usuario ${data.name} fue creado con exito`, 'success');
       this.ruta.navigate(['/usuarios'])
 
-    }, e => {
+    }
+    , e => {
       Swal.fire('Error: ', 'Ingrese bien los datos', 'error');
-    })
+    }
+    )
 
   }
 public editar(){
