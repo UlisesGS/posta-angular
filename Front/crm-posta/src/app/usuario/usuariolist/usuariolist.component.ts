@@ -13,16 +13,31 @@ export class UsuariolistComponent implements OnInit{
  
 
   ngOnInit(): void {
-this.usuarioService.usuarioFindAll().subscribe(data=>{
-  this.usuarios=data;
-})
-
+    this.todos();
   }
+
   constructor(private usuarioService:UsuarioService,
     public modalService:ModalService){}
 
   abrirModal():void{
     this.modalService.abrirModal();
   }
+
+  public usuarioDelete(id:number): void{
+    console.log(id);
+    
+    this.usuarioService.usuarioDelete(id).subscribe( data => {
+      console.log(data);
+      
+      this.todos();
+    })
+  }
   
+  public todos(){
+    this.usuarioService.usuarioFindAll().subscribe(data=>{
+      this.usuarios=data;
+      console.log(this.usuarios);
+      
+    })
+  }
 }
