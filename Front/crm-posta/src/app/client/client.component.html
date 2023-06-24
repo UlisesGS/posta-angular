@@ -102,7 +102,7 @@
                     <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
                     <th scope="col-3" *ngIf="client.type ===null">No se registra</th>
                     <th scope="col-2" *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
-                    <th scope="col-2" *ngIf="client.type ==='businessman'">{{client.typeOfCompany}}</th>
+                    <th scope="col-2" *ngIf="client.type ==='businessman'">CIIU N° {{client?.ciiu?.id}}</th>
                     <th scope="col-3" *ngIf="client.type ===null">No se registra</th>
                     <th scope="col-2">{{client?.municipio?.name}}</th>
                     <th scope="col-1" *ngIf="client.type ==='entrepreneur'">

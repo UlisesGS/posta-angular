@@ -6,6 +6,7 @@ import { Municipio } from 'src/app/municipio/municipio';
 import Swal from 'sweetalert2';
 import { ModalService } from '../modal.service';
 
+
 @Component({
   selector: 'app-form-entrepreneur',
   templateUrl: './form-entrepreneur.component.html',
@@ -20,6 +21,7 @@ export class FormEntrepreneurComponent implements OnInit {
   emprendedor:Entrepreneur= new Entrepreneur();
   municipios:Municipio[]=[];
   errores:any;
+  
 
   ngOnInit(): void {
     this.clientService.getClientsMunicipios().subscribe(data=>{

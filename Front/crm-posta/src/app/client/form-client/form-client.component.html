@@ -146,13 +146,10 @@
                             name="typeOfCompany" aria-label="Default select example" >
                             <option [ngValue]="undefined">--- Seleccionar Tipo de Empresa ---</option>
                             <option *ngFor="let e of enums" [ngValue]="e">{{e}}</option>
-
-
                         </select>
                     </label>
                     <div style="flex-basis: 50%;">
                         <label for="">
-
                             <br>
                             <input type="text" name="companyName" [(ngModel)]="empresario.companyName"
                                 placeholder="Nombre Empresa" class="form-control" required>
@@ -160,12 +157,21 @@
                     </div>
                 </div>
                 <div style="flex-basis: 50%;">
-                    <label for="">
+                    <label>
+                        <br>
+                        <select [(ngModel)]="empresario.ciiu" class="form-select form-select-sm"
+                            name="typeOfCompany" aria-label="Default select example" >
+                            <option [ngValue]="undefined">--- Seleccionar CIIU ---</option>
+                            <option *ngFor="let e of ciiu" [ngValue]="e">{{e.id}} || {{e.titulo}}</option>
+                        </select>
+                    </label>
 
+
+                    <!-- <label for="">
                         <br>
                         <input type="text" name="" [(ngModel)]="empresario.numberMercantilRegistry"
                             placeholder="Actividad Económica/CIIU" class="form-control" required>
-                    </label>
+                    </label> -->
                     <div style="flex-basis: 50%;">
                         <label for="">
                             <br>
@@ -193,7 +199,7 @@
 
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="address"
-                                [(ngModel)]="empresario.address" placeholder="DIrección" class="form-control" required>
+                                [(ngModel)]="empresario.address" placeholder="Dirección" class="form-control" required>
                         </label>
                     </div>
                     <div style="flex-basis: 50%;">
@@ -228,15 +234,15 @@
                         <br>
                     </label>
                     <input [(ngModel)]="empresario.contracting" value="DIRECT" class="form-check-input" type="radio"
-                        name="contracting" id="contracting" style="margin-top: 20px; margin-left: 5px;" required="">
+                        name="contracting" id="contracting" style="margin-top: 20px; margin-left: 5px;" required>
                     <label class="form-check-label" for="contracting"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
                     <input [(ngModel)]="empresario.contracting" value="INNUENDO" class="form-check-input" type="radio"
-                        name="contracting" id="contracting1" style="margin-top: 20px; margin-left: 10px;" required="">
-                    <label fclass="form-check-label" for="contracting1"
+                        name="contracting" id="contracting1" style="margin-top: 20px; margin-left: 10px;" required>
+                    <label class="form-check-label" for="contracting1"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
                     <input [(ngModel)]="empresario.contracting" value="FIXED" class="form-check-input" type="radio"
-                        name="contracting" id="contracting2" style="margin-top: 20px; margin-left: 10px;" required="">
+                        name="contracting" id="contracting2" style="margin-top: 20px; margin-left: 10px;" required>
                     <label class="form-check-label" for="contracting2"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label>
                     <div style="flex-basis: 50%;">
