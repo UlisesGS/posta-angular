@@ -1,3 +1,4 @@
+import { Ciiu } from "./ciiu";
 import { Client } from "./client";
 
 export class Businessman extends Client {
@@ -9,4 +10,5 @@ export class Businessman extends Client {
   employeeFullTime:number;
   registroMercantil:boolean;
   numberMercantilRegistry:string;
+  ciiu:Ciiu;
 }

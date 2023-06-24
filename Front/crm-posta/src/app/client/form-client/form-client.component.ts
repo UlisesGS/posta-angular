@@ -6,6 +6,7 @@ import { ClientService } from '../client.service';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalService } from '../modal.service';
+import { Ciiu } from '../ciiu';
 
 @Component({
   selector: 'app-form-client',
@@ -17,6 +18,7 @@ export class FormClientComponent implements OnInit {
   empresario: Businessman = new Businessman();
   errores: any;
   enums: any;
+  ciiu:Ciiu[]=[];
   
 
   constructor(private service: ClientService
@@ -31,8 +33,11 @@ export class FormClientComponent implements OnInit {
     this.service.getEnums().subscribe(data => {
       this.enums = data;
       console.log(this.enums);
-
-
+    })
+    this.service.getCiiu().subscribe(data=>{
+      this.ciiu=data;
+      console.log(data);
+      
     })
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
