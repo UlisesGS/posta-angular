@@ -49,7 +49,7 @@ export class FormClientComponent implements OnInit {
 
     console.log(this.empresario);
     this.service.saveBusinessman(this.empresario).subscribe(data => {
-      Swal.fire('Creado', `Empresario ${data.name} fue creado con exito`, 'success')
+      Swal.fire('ÉXITO', `Empresario ${data.name} fue creado con exito`, 'success')
 
       this.cerrarModal();
       this.router.navigate(['/municipios'])
@@ -57,7 +57,7 @@ export class FormClientComponent implements OnInit {
     , e => {
       if (e.status == 404) {
         this.errores = e.error;
-        Swal.fire('Error:', 'complete bien los datos', 'error');
+        Swal.fire('ERROR:', 'Datos Incompletos', 'error');
         console.log(this.errores);
 
 
@@ -65,7 +65,7 @@ export class FormClientComponent implements OnInit {
       if (e.status == 500 || e.status == 400) {
         console.log(e);
 
-        Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
+        Swal.fire("ERROR: ", `Error en la carga del formulario`, 'error');
       }
 
 

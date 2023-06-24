@@ -5,9 +5,14 @@
 
 
 <div class="card" style="margin-right: 20px;">
-  <div class="card-header">
-    {{titulo}}<br>
-    <button routerLink="/usuarios" class="btn btn-dark btn-sm">volver</button>
+  <div class="card-header d-flex justify-content-between">
+    <h3>{{titulo}}</h3>
+    <div class="text-end">
+      <button routerLink="/usuarios" class="btn btn-dark btn-sm">
+        <i class="bi bi-arrow-left">Volver</i>
+      </button>
+    </div>
+    
   </div>
   <div class="card-body">
     <form class="was-validated"> 
