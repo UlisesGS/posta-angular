@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, SimpleChanges, ɵdetectChanges } from '@angular/core';
 import { Client } from './client';
 import { ClientService } from './client.service';
-import { Observable, tap } from 'rxjs';
+import { Observable, Subscription, fromEvent, tap } from 'rxjs';
 import { ModalService } from './modal.service';
 import { ActivatedRoute } from '@angular/router';
 import { Municipio } from '../municipio/municipio';
 import { AuthService } from '../auth/auth.service';
+import { BusquedaService } from '../busqueda.service';
 
 
 
@@ -15,7 +16,11 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit{
-  @Input()clientes:Client[];
+
+
+
+
+datosFiltrados:string;
 
 
   clients:Client[];
@@ -40,10 +45,13 @@ public termino:string;
     public modalservice:ModalService,
     private activatedRoute:ActivatedRoute,
     public authService:AuthService,
+    public busquedaService:BusquedaService,
     ){}
 
 
   ngOnInit(): void {
+
+    this.filtrarDato()
     this.modal=false;
 
     this.activatedRoute.paramMap.subscribe(params => {
@@ -74,13 +82,12 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
 
 
     public buscar(){
-      if(this.termino==""){
-        this.todos()
-      }
+
+
     this.serviceClient.buscarPorNombre(this.termino).subscribe(data=>{
       this.clients=data;
     })
-
+// en el html {{busquedaService.getTermino().length>0  && busquedaService.getTermino().length!=0?buscar(busquedaService.getTermino()):""}}
     }
 
     public todos(){
@@ -103,7 +110,7 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
 
     })
     }
-  
+
 
     public reiniciarFiltro(){
       this.genero = undefined;
@@ -112,7 +119,7 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
       this.value=false; /* SI LO DEJAS EN TRUE NO MUESTRA LA PAGINACION */
       this.todos();
     }
-  
+
 
   public cambiarCondicion(){
     if(this.value){
@@ -154,5 +161,12 @@ this.serviceClient.getClientsMunicipiosPage(0,this.municipio).subscribe(data=>{
 
 })
   }
-  
+  filtrarDato(){
+   this.datosFiltrados= this.busquedaService.getTermino();
+console.log(this.datosFiltrados);
+
+
+  }
+
+
 }

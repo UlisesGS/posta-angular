@@ -1,20 +1,20 @@
 <div class="container display-flex">
-    <form >
+    <form class="was-validated" >
         <h2 class="btn btn-disabled">DATOS DE REPRESENTANTE LEGAL</h2>
         <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
             <div style="flex-basis: 50%;">
-                <label for="">
-                    <br>
-                    <input type="text" name="name"  [(ngModel)]="empresario.name" placeholder="Nombre">
+                <div>
+                    <label for="este">
+                        <br>
+                        <input type="text" name="name" [(ngModel)]="empresario.name" placeholder="Nombre" class="form-control" required>
+                    </label>
                     
-                </label>
+                </div>
                 
-                
-
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
-                        <input type="text" name="nit"  [(ngModel)]="empresario.nit" placeholder="Documento/NIT">
+                        <input type="text" name="nit" [(ngModel)]="empresario.nit" placeholder="Documento/NIT" class="form-control" required>
                     </label>
                 </div>
 
@@ -22,15 +22,15 @@
             <div style="flex-basis: 50%;">
                 <label for="">
                     <br>
-                    <input type="text" name="lastName" [(ngModel)]="empresario.lastName"placeholder="Apellido">
+                    <input type="text" name="lastName" [(ngModel)]="empresario.lastName" placeholder="Apellido" class="form-control" required>
                 </label>
 
                 <div style="flex-basis: 50%;">
                     <label for="">
 
                         <br>
-                        <select class="form-select form-select-sm"  [(ngModel)]="empresario.gender" name="gender"
-                            aria-label="Default select example">
+                        <select class="form-select form-select-sm" [(ngModel)]="empresario.gender" name="gender"
+                            aria-label="Default select example" >
                             <option [ngValue]="undefined">--- Seleccionar Género ---</option>
                             <option value="MALE">Masculino</option>
                             <option value="FEMALE">Femenino</option>
@@ -44,14 +44,15 @@
                 <label for="">
 
                     <br>
-                    <input type="text" style="border-radius: 5;" name="edad"  [(ngModel)]="empresario.edad" placeholder="Edad">
+                    <input type="text" style="border-radius: 5;" name="edad" [(ngModel)]="empresario.edad"
+                        placeholder="Edad" class="form-control" required>
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
 
                         <br>
-                        <select  [(ngModel)]="empresario.ethnicGroup" class="form-select form-select-sm" name="ethnicGroup"  [(ngModel)]="empresario.ethnicGroup"
-                            aria-label="Default select example">
+                        <select [(ngModel)]="empresario.ethnicGroup" class="form-select form-select-sm"
+                            name="ethnicGroup" [(ngModel)]="empresario.ethnicGroup" aria-label="Default select example" >
                             <option [ngValue]="undefined">--- Seleccionar Grupo Étnico ---</option>
                             <option value="ROM">ROM</option>
                             <option value="INDIGENAS">INDIGENAS</option>
@@ -68,14 +69,14 @@
                         <strong>¿Es población víctima?</strong>
                         <br>
                     </label>
-                    <input    value="true"  [(ngModel)]="empresario.victimPopulation" class="form-check-input" type="radio" name="victimPopulation" id="flexRadioDefault1"
-                        style="margin-top: 20px; margin-left: 5px;">
+                    <input value="true" [(ngModel)]="empresario.victimPopulation" class="form-check-input" type="radio"
+                        name="victimPopulation" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;" required="">
                     <label for="victimPopulation" class="form-check-label"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
 
 
-                        <input  value="false" [(ngModel)]="empresario.victimPopulation" class="form-check-input" type="radio" name="victimPopulation" id="victimPopulation1"
-                        style="margin-top: 20px; margin-left: 10px;">
+                    <input value="false" [(ngModel)]="empresario.victimPopulation" class="form-check-input" type="radio"
+                        name="victimPopulation" id="victimPopulation1" style="margin-top: 20px; margin-left: 10px;" required="">
                     <label for="victimPopulation1" class="form-check-label"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
 
@@ -86,8 +87,8 @@
                 <label for="">
 
                     <br>
-                    <select  [(ngModel)]="empresario.studyLevel" class="form-select form-select-sm" name="studyLevel" ngModel=""
-                        aria-label="Default select example">
+                    <select [(ngModel)]="empresario.studyLevel" class="form-select form-select-sm" name="studyLevel"
+                        ngModel="" aria-label="Default select example" >
                         <option [ngValue]="undefined">--- Seleccionar Nivel Escolaridad ---</option>
                         <option value="SECUNDARIO">SECUNDARIO</option>
                         <option value="TERCIARIO">TERCIARIO</option>
@@ -101,13 +102,13 @@
                         <strong>¿Esta en condiciones de desplazamiento?</strong>
                         <br>
                     </label>
-                    <input  [(ngModel)]="empresario.displacement" class="form-check-input" type="radio" name="displacement" id="displacement"
-                       value="true" style="margin-top: 20px; margin-left: 5px;">
-                    <label  class="form-check-label" for="displacement"
+                    <input [(ngModel)]="empresario.displacement" class="form-check-input" type="radio"
+                        name="displacement" id="displacement" value="true" style="margin-top: 20px; margin-left: 5px;" required="">
+                    <label class="form-check-label" for="displacement"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
-                    <input value="false" [(ngModel)]="empresario.displacement" class="form-check-input" type="radio" name="displacement" id="displacement1"
-                        style="margin-top: 20px; margin-left: 10px;">
-                    <label  class="form-check-label" for="displacement1"
+                    <input value="false" [(ngModel)]="empresario.displacement" class="form-check-input" type="radio"
+                        name="displacement" id="displacement1" style="margin-top: 20px; margin-left: 10px;" required="">
+                    <label class="form-check-label" for="displacement1"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
                 </div>
                 <div style="flex-basis: 50%;">
@@ -116,14 +117,14 @@
                         <strong>¿Presenta alguna discapacidad?</strong>
                         <br>
                     </label>
-                    <input value="true" [(ngModel)]="empresario.disability" class="form-check-input" type="radio" name="disability" id="flexRadioDefault1"
-                        style="margin-top: 20px; margin-left: 5px;">
+                    <input value="true" [(ngModel)]="empresario.disability" class="form-check-input" type="radio"
+                        name="disability" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;" required="">
                     <label class="form-check-label" for="disability"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
 
 
-                    <input value="false" [(ngModel)]="empresario.disability" class="form-check-input" type="radio" name="disability" id="disability1"
-                        style="margin-top: 20px; margin-left: 10px;">
+                    <input value="false" [(ngModel)]="empresario.disability" class="form-check-input" type="radio"
+                        name="disability" id="disability1" style="margin-top: 20px; margin-left: 10px;" required="">
                     <label class="form-check-label" for="disability1"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
                 </div>
@@ -139,10 +140,10 @@
             <h2 class="btn btn-disabled mt-2">DATOS DE LA EMPRESA</h2>
             <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
                 <div style="flex-basis: 50%;">
-                    <label >
+                    <label>
                         <br>
-                        <select [(ngModel)]="empresario.typeOfCompany"  class="form-select form-select-sm" name="typeOfCompany"
-                            aria-label="Default select example">
+                        <select [(ngModel)]="empresario.typeOfCompany" class="form-select form-select-sm"
+                            name="typeOfCompany" aria-label="Default select example" >
                             <option [ngValue]="undefined">--- Seleccionar Tipo de Empresa ---</option>
                             <option *ngFor="let e of enums" [ngValue]="e">{{e}}</option>
 
@@ -153,7 +154,8 @@
                         <label for="">
 
                             <br>
-                            <input type="text" name="companyName" [(ngModel)]="empresario.companyName"  placeholder="Nombre Empresa">
+                            <input type="text" name="companyName" [(ngModel)]="empresario.companyName"
+                                placeholder="Nombre Empresa" class="form-control" required>
                         </label>
                     </div>
                 </div>
@@ -161,12 +163,14 @@
                     <label for="">
 
                         <br>
-                        <input type="text" name="" [(ngModel)]="empresario.numberMercantilRegistry"  placeholder="Actividad Económica/CIIU">
+                        <input type="text" name="" [(ngModel)]="empresario.numberMercantilRegistry"
+                            placeholder="Actividad Económica/CIIU" class="form-control" required>
                     </label>
                     <div style="flex-basis: 50%;">
                         <label for="">
                             <br>
-                            <input type="date" name="fechaAlta" [(ngModel)]="empresario.fechaAlta" placeholder="Fecha de Constitución">
+                            <input type="date" name="fechaAlta" [(ngModel)]="empresario.fechaAlta"
+                                placeholder="Fecha de Constitución" class="form-control" required>
                         </label>
 
                     </div>
@@ -176,28 +180,28 @@
 
                         <br>
                         <input type="text" style="border-radius: 5; margin-right: 5px;" name="employeePartTime"
-                        [(ngModel)]="empresario.employeePartTime"placeholder="Emleados MT">
+                            [(ngModel)]="empresario.employeePartTime" placeholder="Emleados MT" class="form-control" required>
                     </label>
                     <label for="">
 
                         <br>
                         <input type="text" style="border-radius: 5;" name="employeeFullTime"
-                        [(ngModel)]="empresario.employeeFullTime"     placeholder="Empleados TC">
+                            [(ngModel)]="empresario.employeeFullTime" placeholder="Empleados TC" class="form-control" required>
                     </label>
                     <div style="flex-basis: 50%;">
                         <label for="">
 
                             <br>
-                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="address"   [(ngModel)]="empresario.address"
-                                placeholder="DIrección">
+                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="address"
+                                [(ngModel)]="empresario.address" placeholder="DIrección" class="form-control" required>
                         </label>
                     </div>
                     <div style="flex-basis: 50%;">
                         <label for="">
 
                             <br>
-                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"  [(ngModel)]="empresario.email"
-                                placeholder="Correo Electrónico">
+                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"
+                                [(ngModel)]="empresario.email" placeholder="Correo Electrónico" class="form-control" required>
                         </label>
                         <div style="flex-basis: 50%;">
 
@@ -205,13 +209,15 @@
                                 <strong>¿Tiene registro Mercantil?</strong>
                                 <br>
                             </label>
-                            <input value="true" [(ngModel)]="empresario.registroMercantil" class="form-check-input" type="radio" name="registroMercantil" id="registroMercantil"
-                                style="margin-top: 20px; margin-left: 5px;">
+                            <input value="true" [(ngModel)]="empresario.registroMercantil" class="form-check-input"
+                                type="radio" name="registroMercantil" id="registroMercantil"
+                                style="margin-top: 20px; margin-left: 5px;" required="">
                             <label class="form-check-label" for="registroMercantil"
                                 style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
-                            <input  value="false" [(ngModel)]="empresario.registroMercantil" class="form-check-input" type="radio" name="registroMercantil" id="registroMercantil1"
-                                style="margin-top: 20px; margin-left: 10px;">
-                            <label  class="form-check-label" for="registroMercantil1"
+                            <input value="false" [(ngModel)]="empresario.registroMercantil" class="form-check-input"
+                                type="radio" name="registroMercantil" id="registroMercantil1"
+                                style="margin-top: 20px; margin-left: 10px;" required="">
+                            <label class="form-check-label" for="registroMercantil1"
                                 style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
                         </div>
                     </div>
@@ -221,16 +227,16 @@
                         <strong>Forma de Contratación</strong>
                         <br>
                     </label>
-                    <input   [(ngModel)]="empresario.contracting" value="DIRECT" class="form-check-input" type="radio" name="contracting" id="contracting"
-                        style="margin-top: 20px; margin-left: 5px;">
+                    <input [(ngModel)]="empresario.contracting" value="DIRECT" class="form-check-input" type="radio"
+                        name="contracting" id="contracting" style="margin-top: 20px; margin-left: 5px;" required="">
                     <label class="form-check-label" for="contracting"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
-                    <input  [(ngModel)]="empresario.contracting" value="INNUENDO" class="form-check-input" type="radio" name="contracting" id="contracting1"
-                        style="margin-top: 20px; margin-left: 10px;">
+                    <input [(ngModel)]="empresario.contracting" value="INNUENDO" class="form-check-input" type="radio"
+                        name="contracting" id="contracting1" style="margin-top: 20px; margin-left: 10px;" required="">
                     <label fclass="form-check-label" for="contracting1"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
-                    <input  [(ngModel)]="empresario.contracting" value="FIXED" class="form-check-input" type="radio" name="contracting" id="contracting2"
-                        style="margin-top: 20px; margin-left: 10px;">
+                    <input [(ngModel)]="empresario.contracting" value="FIXED" class="form-check-input" type="radio"
+                        name="contracting" id="contracting2" style="margin-top: 20px; margin-left: 10px;" required="">
                     <label class="form-check-label" for="contracting2"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label>
                     <div style="flex-basis: 50%;">
@@ -238,9 +244,9 @@
                         <label for="">
 
                             <br>
-                            <select [compareWith]="compararMunicipio"   [(ngModel)]="empresario.municipio" class="form-select form-select-sm" name="municipio"
-                                aria-label="Default select example">
-                                <option [ngValue]="undefined">--- Seleccionar Municipio---</option>
+                            <select [compareWith]="compararMunicipio" [(ngModel)]="empresario.municipio"
+                                class="form-select form-select-sm" name="municipio" aria-label="Default select example"  >
+                                <option [ngValue]="undefined" disabled >--- Seleccionar Municipio---</option>
                                 <option *ngFor="let m of municipios" [ngValue]="m">{{m.name}} || {{m.country}}</option>
 
 
@@ -253,8 +259,9 @@
                         <label for="">
 
                             <br>
-                            <input  [(ngModel)]="empresario.phone" type="text" style="border-radius: 5; margin-right: 5px;" name="phone" ngModel=""
-                                placeholder="Teléfono">
+                            <input [(ngModel)]="empresario.phone" type="text"
+                                style="border-radius: 5; margin-right: 5px;" name="phone" ngModel=""
+                                placeholder="Teléfono" class="form-control" required>
                         </label>
                     </div>
                     <div style="flex-basis: 50%;">
@@ -262,21 +269,22 @@
                         <label for="">
 
                             <br>
-                            <input  [(ngModel)]="empresario.numberMercantilRegistry" type="text" style="border-radius: 5; margin-right: 5px;"
-                                name="numberMercantilRegistry"  placeholder="Número de registro Mercantil">
+                            <input [(ngModel)]="empresario.numberMercantilRegistry" type="text"
+                                style="border-radius: 5; margin-right: 5px;" name="numberMercantilRegistry"
+                                placeholder="Número de registro Mercantil" class="form-control" required>
                         </label>
                     </div>
                 </div>
                 <div style="flex-basis: 100%;" class="mt-3">
                     <div class="form-group">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
-                            [(ngModel)]="empresario.remarks" placeholder="Tema/Observaciones"></textarea>
+                            [(ngModel)]="empresario.remarks" placeholder="Tema/Observaciones" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col p-2 mt-3" style="border-radius: 1em;">
-            <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" >
+            <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" required>
             <p style="font-size: 10px;" class="">
 
                 Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE
@@ -306,9 +314,9 @@
                 electrónico datospersonales@ccv.org.co.
             </p>
         </div>
-        <div  class="form-group">
-          <button *ngIf="!empresario.id" (click)="registrar()" class="btn btn-success">Registrar</button>
-          <button *ngIf="empresario.id" (click)="editar()" class="btn btn-success">Editar</button>
+        <div class="form-group">
+            <button *ngIf="!empresario.id" (click)="registrar()" class="btn btn-success">Registrar</button>
+            <button *ngIf="empresario.id" (click)="editar()" class="btn btn-success">Editar</button>
         </div>
     </form>
 </div>
