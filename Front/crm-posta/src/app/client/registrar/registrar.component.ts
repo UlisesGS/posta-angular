@@ -23,7 +23,7 @@ export class RegistrarComponent implements OnInit{
 if (valor==='empresario'){
   this.empresario=true;
   this.emprendedor=false;
-}
+} 
 if(valor==='emprendedor'){
   this.emprendedor=true;
   this.empresario=false;
