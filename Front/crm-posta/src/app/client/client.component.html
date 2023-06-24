@@ -5,6 +5,11 @@
 <app-asesoria *ngIf="modalservice.asesoria"></app-asesoria>
 <app-accion *ngIf="modalservice.action && clienteSeleccionado" [cliente]="clienteSeleccionado"></app-accion>
 
+<div class="btn-group mb-5 " role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary" (click)="buscarNav()">Buscar</button>
+  <button type="button" class="btn btn-secondary" (click)="todos()">Todos</button>
+
+</div>
 
 
 
@@ -74,8 +79,12 @@
                     <button  class="btn btn-success" id="button-add" (click)="reiniciarFiltro()">Reinicar Filtros</button>
                 </div>
 
-                <div class="col-7" *ngIf="value">
-                  <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar" >
+                <div class="col-7 m-2" *ngIf="value">
+                  <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar por Nombre" >
+
+                </div>
+                <div class="col-7 m-2" *ngIf="value">
+                  <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar por producto" >
 
                 </div>
 
@@ -84,8 +93,11 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
+    <div class="card-body" >
+      <div class="alert alert-primary" role="alert" *ngIf="clients?.length<=0" >
+        No exite el cliente buscado!
+      </div>
+        <div class="table-responsive" *ngIf="!exite">
             <table class="table table-sm table-borderless" >
                 <tr style="border: solid  #faf8f8; border-radius: 1em; ;">
                     <td scope="col-3"> Nombre</td>
@@ -126,4 +138,5 @@
         <app-paginator *ngIf="paginador && !value" [paginador]="paginador"></app-paginator>
     </div>
 </div>
+
 
