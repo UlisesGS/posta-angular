@@ -1,13 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Usuario } from '../usuario/usuario';
 import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit {
   usuario:Usuario = new Usuario()
   constructor() { }
+  ngOnInit(): void {
+    this.isLogin()
+  }
   public isLogin():boolean{
     if (localStorage.getItem('usuario')){
       return true;
@@ -20,7 +23,7 @@ export class AuthService {
     Swal.fire('Correcto', 'Inicio Sesion correctamente','success');
   }
   public logaut(){
-    localStorage.clear();
+    localStorage.removeItem('usuario')
 
   }
   public devolverUsuario():Usuario{

@@ -19,14 +19,14 @@
                     <div class="form-floating mb-3">
                         <input class="form-control" type="text" name="email"
                             placeholder="Ingrese su nombre de usuario..." data-sb-validations="required"
-                            [(ngModel)]="usuario.email" />
+                            [(ngModel)]="auth.email" />
                         <label for="name">Email</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">EL Email es requerido</div>
                     </div>
                     <!-- Email address input-->
                     <div class="form-floating mb-3">
                         <input class="form-control" type="password" name="password" placeholder="password123"
-                            data-sb-validations="required,password" [(ngModel)]="usuario.password" />
+                            data-sb-validations="required,password" [(ngModel)]="auth.password" />
                         <label for="email">Contraseña</label>
                         <div class="invalid-feedback" data-sb-feedback="email:required">La contraseña es requerida...
                         </div>

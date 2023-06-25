@@ -3,6 +3,10 @@ import { ModalService } from '../client/modal.service';
 import { ClientService } from '../client/client.service';
 import { Client } from '../client/client';
 import { BusquedaService } from './../busqueda.service';
+import { Usuario } from './../usuario/usuario';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,11 +19,18 @@ export class HeaderComponent implements OnInit {
   @HostBinding('class.is-open')
 public modal:boolean;
 public termino:string;
+usuario:Usuario= new Usuario()
 clientes:Client[]=[]
-  constructor(public modalService:ModalService,private clienteService:ClientService, private busquedaService: BusquedaService){}
+  constructor(public authService:AuthService
+    , public modalService:ModalService
+    ,private clienteService:ClientService
+    , private busquedaService: BusquedaService
+    ,private ruta:Router,
+    ){}
 
   ngOnInit(): void {
     this.modal=false;
+    this.usuario=JSON.parse(localStorage.getItem('usuario'))
   }
 
   abrirModalAsesoria():void{
@@ -31,6 +42,13 @@ clientes:Client[]=[]
 //})
 //console.log(this.clientes);
 this.busquedaService.setTermino(this.termino);
+  }
+  public cerrarSesion(){
+localStorage.removeItem('usuario')
+this.usuario=null;
+Swal.fire("Sesion", 'la sesion fue cerrada con exito', 'success');
+this.ngOnInit()
+this.ruta.navigate(['/login'])
   }
 
 }

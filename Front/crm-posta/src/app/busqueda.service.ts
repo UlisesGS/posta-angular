@@ -11,13 +11,13 @@ export class BusquedaService {
   constructor() { }
   public setTermino(termino:string){
     this.termino=termino;
-  console.log(termino);
+
+
 
 
   }
   public getTermino():string{
 
-console.log(this.termino);
 
     return  this.termino;
   }
