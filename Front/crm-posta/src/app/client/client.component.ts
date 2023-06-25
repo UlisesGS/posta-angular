@@ -39,6 +39,8 @@ public modal:boolean;
 public ciu:any;
 public municipio:number;
 public termino:string;
+exite:boolean;
+
 
 
   constructor(private serviceClient:ClientService,
@@ -79,10 +81,27 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
 
 })
 }
+buscarNav(){
 
+
+
+
+  this.serviceClient.buscarPorNombre(this.busquedaService.getTermino()).subscribe(data=>{
+    this.clients=data;
+    this.exite=false
+
+  },e=>{
+    console.log(e);
+
+this.exite=true
+  })
+
+
+}
 
     public buscar(){
 
+console.log("buscar"+this.termino);
 
     this.serviceClient.buscarPorNombre(this.termino).subscribe(data=>{
       this.clients=data;

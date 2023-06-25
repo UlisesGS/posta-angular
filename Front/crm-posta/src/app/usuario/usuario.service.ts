@@ -15,9 +15,9 @@ export class UsuarioService implements OnInit{
   //private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/users";
   private urlEndPoint:string="http://localhost:8080/users";
   private httpHeader=new HttpHeaders({'Content-Type':'application/json'});
-  
+
   ngOnInit(): void {
-    
+
   }
 
 
@@ -51,7 +51,9 @@ export class UsuarioService implements OnInit{
   public usuarioDelete(id:number):Observable<void>{
     return this.http.delete<void>(`${this.urlEndPoint}/${id}`);
   }
-  
+  public usuarioFindByEmail(email:string):Observable<any>{
+    return this.http.get(`${this.urlEndPoint}/byEmail/${email}`)
+  }
 }
 
 

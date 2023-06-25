@@ -25,6 +25,8 @@ export class AsesoriaComponent implements OnInit {
   errores:any;
   condicion:boolean;
   asesoria:Asesoria=new Asesoria();
+  termino:string;
+  clientes:Client[]=[]
 
   ngOnInit(): void{
     this.condicion=false;
@@ -37,7 +39,7 @@ export class AsesoriaComponent implements OnInit {
 
   public registrar(){
     console.log(this.client);
-    
+
     this.clientService.saveClient(this.client).subscribe(data=>{
       console.log(data);
       this.client=data;
@@ -47,21 +49,21 @@ export class AsesoriaComponent implements OnInit {
 
 
       /*this.cerrarModalAsesoria();*/
-      
+
     },e=>{
       if(e.status==404){
         this.errores=e.error;
         Swal.fire('Error:', 'complete bien los datos', 'error');
        console.log(this.errores);
-  
-  
+
+
       }
       if(e.status==500 || e.status==400){
         console.log(e);
-  
+
         Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
       }
-  
+
     })
   }
 
@@ -71,7 +73,7 @@ export class AsesoriaComponent implements OnInit {
     this.asesoria.client=this.client;
 
     console.log(this.asesoria);
-    
+
     this.usuarioService.asesoriaSave(this.asesoria).subscribe(data=>{
       this.asesoria.advisory=data;
       Swal.fire('Finalizada', `La asesoria de ${/* NOMBRE DE ASESOR */this.client.name} fue creada con exito`, 'success')
@@ -81,22 +83,36 @@ export class AsesoriaComponent implements OnInit {
         this.errores=e.error;
         Swal.fire('Error:', 'complete bien los datos', 'error');
        console.log(this.errores);
-  
-  
+
+
       }
       if(e.status==500 || e.status==400){
         console.log(e);
-  
+
         Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
       }
-  
+
     }
     );
-    
+
   }
 
 
   cerrarModalAsesoria():void{
     this.modalService.cerrarModalAsesoria();
+  }
+  public buscar(){
+this.clientService.buscarPorNombre(this.termino).subscribe(data=>{
+  this.clientes = data;
+})
+  }
+  public findById(id:number){
+    this.clientService.getClient(id).subscribe(data=>{
+      this.client= data;
+      this.condicion=true;
+    })
+  }
+  public volver(){
+    this.condicion=false;
   }
 }

@@ -25,7 +25,8 @@ import { HeaderSuperiorComponent } from './header/header-superior/header-superio
 
 
 const routes:Routes=[
-  {path:'', redirectTo:'/main', pathMatch:'full'},
+
+  {path:'', redirectTo:'/login', pathMatch:'full'},
   {path:'clients', component:ClientComponent},
   {path:'clients/page/:page', component:ClientComponent},
   {path:'clients/form/businessman', component:FormClientComponent},
@@ -51,7 +52,7 @@ const routes:Routes=[
     HeaderComponent,
     FooterComponent,
     ClientComponent,
-   
+
     MunicipioComponent,
     FormClientComponent,
     FormEntrepreneurComponent,

@@ -21,14 +21,14 @@
       </div>
       </div>
     </div>
-    
+
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <table class="table table-sm table-borderless">
         <thead class="table-sm">
           <tr style="border: solid  #faf8f8; border-radius: 1em; ;">
-             
+
             <td scope="col-3">Nombre</td>
             <td scope="col-3">Apellido</td>
             <td scope="col-3">Telefono</td>
@@ -42,7 +42,7 @@
         </thead>
         <tbody class="table-sm" *ngFor="let usuario of usuarios">
           <tr style="border: solid  #faf8f8; border-radius: 1em; ;" >
-           
+
             <th scope="col-3">{{usuario.name}}</th>
             <th scope="col-3">{{usuario.lastName}}</th>
             <th scope="col-3">{{usuario.phone}}</th>
@@ -52,21 +52,22 @@
             <th scope="col-2" style="text-align: center; justify-content: center; align-items: center;">{{usuario.role}}</th>
             <th scope="col-3" >
               <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" id="button">Editar</button>
-  
+
             </th>
-            <th scope="col-3">
-              <!-- <button class="btn btn-primary" id="button">Desactivar</button> -->
-              <label class="switch">
-                <input (click)="usuarioDelete(usuario.id)" type="checkbox">
-                <span class="slider"></span>
-              </label>
-  
-            </th>
+ <th scope="col-3">
+
+  <label class="switch">
+    <input [(ngModel)]="usuario.active" name="active"   (click)="usuarioDelete(usuario.id)" type="checkbox">
+    <span class="slider"></span>
+  </label>
+
+</th>
+
            </tr>
         </tbody>
       </table>
     </div>
-    
+
 
   </div>
 </div>
