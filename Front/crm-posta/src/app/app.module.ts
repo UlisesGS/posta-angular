@@ -21,6 +21,7 @@ import { UsuarioformComponent } from './usuario/usuarioform/usuarioform.componen
 import { PaginatorComponent } from './paginator/paginator.component';
 import { LoginComponent } from './auth/login/login.component';
 import { MainComponent } from './main/main.component';
+import { HeaderSuperiorComponent } from './header/header-superior/header-superior.component';
 
 
 const routes:Routes=[
@@ -65,6 +66,7 @@ const routes:Routes=[
     PaginatorComponent,
     LoginComponent,
     MainComponent,
+    HeaderSuperiorComponent,
 
   ],
   imports: [
