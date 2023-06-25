@@ -1,67 +1,60 @@
-
 <!-- <app-registrar *ngIf="modalservice.modal"></app-registrar>-->
 
-<app-asesoria *ngIf="modalservice.asesoria"></app-asesoria> 
+<app-asesoria *ngIf="modalservice.asesoria"></app-asesoria>
 <app-accion *ngIf="modalservice.action && clienteSeleccionado" [cliente]="clienteSeleccionado"></app-accion>
 
+<div class="card"
+    style="margin-right: 20px; margin-bottom: 20px; height: 102px; background-color: rgb(125,58,135) ; display: flex;">
+    <ul class="nav d-flex justify-content-center align-items-center"
+        style="position: relative; height: 100%; overflow: hidden; align-items: flex-start; flex-grow: 1;">
+        <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
+    </ul>
+</div>
 
-
-
-
-
- <div class="card" style="margin-right: 20px; margin-bottom: 20px; height: 102px; background-color: rgb(125,58,135) ; display: flex;">
-   <ul class="nav d-flex justify-content-center align-items-center" style="position: relative; height: 100%; overflow: hidden; align-items: flex-start; flex-grow: 1;">
-    <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
-   </ul>
- </div>
-
-
-
-
-
-<div class="card" style="margin-right: 20px;">
-    <div class="card-header">
-        <div class="col">
-            <h3>Contactos</h3>
+    <div  style="margin-bottom: 5px;">
+        <div class="card-header bg-transparent" >
+            <div class="col">
+                <h3>Contactos</h3>
+            </div>
         </div>
-
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-sm table-borderless" >
-                <tr style="border: solid  #faf8f8; border-radius: 1em; ;">
-                    <td scope="col-3"> Nombre</td>
-                    <td scope="col-3"> Empresa/Idea</td>
-                    <td scope="col-2"> Producto/Servicio</td>
-                    <td scope="col-2"> Ciudad</td>
-                    <td scope="col-1"> Tipo de Cliente</td>
-                    <td scope="col-1"> Acciones</td>
+    <div class="table-container">
+        <table class="table table-sm"  *ngFor="let client of clients">
+            <thead>
+                <tr>
+                    <td style="width: 20%; font-size: 10px;" class="align-middle"> Nombre</td>
+                    <td style="width: 20%; font-size: 10px;" class="align-middle"> Empresa/Idea</td>
+                    <td style="width: 20%; font-size: 10px;" class="align-middle"> Producto/Servicio</td>
+                    <td style="width: 15%; font-size: 10px;" class="align-middle"> Ciudad</td>
+                    <td style="width: 20%; font-size: 10px; text-align: center;" class="align-middle"> Tipo de Cliente</td>
+                    <td style="text-align: center; width: 5%; font-size: 10px;" class="align-middle"> Acciones</td>
                 </tr>
-            <tbody class="table-sm" *ngFor="let client of clients" >
-                <tr  style="border: solid  #faf8f8; border-radius: 1em;">
-                    <th scope="col-3">{{client.name}} {{client.lastName}}</th>
-                    <th scope="col-3" *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
-                    <th scope="col-3" *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
-                    <th scope="col-3" *ngIf="client.type ===null">No se registra</th>
-                    <th scope="col-2" *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
-                    <th scope="col-2" *ngIf="client.type ==='businessman'">CIIU N° {{client?.ciiu?.id}}</th>
-                    <th scope="col-2" *ngIf="client.type ===null">No se registra</th>
-                    <th scope="col-2">{{client?.municipio?.name}}</th>
-                    <th scope="col-1" *ngIf="client.type ==='entrepreneur'">
-                        <button id="button" class="btn btn-disabled">Emprendedor</button>
+            </thead>
+            <tbody  class="table-sm" style="margin-top: 0;">
+                <tr>
+                    <th style="width: 20%;" >{{client.name}} {{client.lastName}}</th>
+                    <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
+                    <th style="width: 20%;"  *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
+                 
+                    <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
+                    <th style="width: 20%;"  *ngIf="client.type ==='businessman'">CIIU N° {{client?.ciiu?.id}}</th>
+                   
+                    <th style="width: 15%;" >{{client?.municipio?.name}}</th>
+        
+                    <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">
+                        <button id="button" class="btn btn-disabled"
+                            style=" background-color: red; color: white; width: 100%;">Emprendedor</button>
                     </th>
-                    <th scope="col-1" *ngIf="client.type ==='businessman'">
-                        <button id="button" class="btn btn-disabled">Empresario</button>
+                    <th style="width: 20%;"  *ngIf="client.type ==='businessman'">
+                        <button id="button" class="btn btn-disabled"
+                            style=" background-color: rgb(136, 0, 0); color: white; width: 100%;">Empresario</button>
                     </th>
-                    <th scope="col-1" *ngIf="client.type ===null">
-                        <button id="button" class="btn btn-disabled">Asesoría</button>
-                    </th>
-                    <th scope="col-1" *ngIf="client.type!==null">
+                   
+                    <th *ngIf="client.type!==null"  style="text-align: center; width: 5%;">
                         <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client)"></i>
                     </th>
                 </tr>
             </tbody>
         </table>
-        </div>
     </div>
-</div> 
+    

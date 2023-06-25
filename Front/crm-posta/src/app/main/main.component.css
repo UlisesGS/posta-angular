@@ -1,10 +1,21 @@
-#button{
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: red;
-    color: white;
-    border-radius: 0.5em;
-    width: 55%;
-  }
+
+table {
+  border: 1px solid white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+tr {
+  border: none;
+  padding: 0;
+}
+td {
+  padding-left: 50px;
+  border: none;
+}
+th {
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  padding-left: 50px;
+  padding-top: 0;
+}
