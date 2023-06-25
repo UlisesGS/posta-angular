@@ -1,7 +1,5 @@
 
 <app-asesoria *ngIf="modalService.asesoria"></app-asesoria>
-
-
 <div class="card" style="margin-right: 20px; margin-bottom: 20px; height: 102px; background-color: rgb(125,58,135) ; display: flex;">
   <ul class="nav d-flex justify-content-center align-items-center" style="position: relative; height: 100%; overflow: hidden; align-items: flex-start; flex-grow: 1;">
    <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
@@ -9,7 +7,7 @@
 </div>
 
 
-<div class="card" style="margin-right: 20px;">
+<!-- <div class="card" style="margin-right: 20px;">
   <div class="card-header">
     <div class="col">
       <div class="row">
@@ -40,26 +38,23 @@
             <td scope="col-3">Desactivar</td>
           </tr>
         </thead>
-        <tbody class="table-sm" *ngFor="let usuario of usuarios">
+        <tbody class="table-sm" >
           <tr style="border: solid  #faf8f8; border-radius: 1em; ;" >
            
-            <th scope="col-3">{{usuario.name}}</th>
-            <th scope="col-3">{{usuario.lastName}}</th>
-            <th scope="col-3">{{usuario.phone}}</th>
-            <th scope="col-3">{{usuario.email}}</th>
-            <th scope="col-3">{{usuario.cedula}}</th>
-            <th scope="col-3">{{usuario.profesion}}</th>
+            <th scope="col-3"></th>
+            <th scope="col-3"></th>
+            <th scope="col-3"></th>
+            <th scope="col-3"></th>
+            <th scope="col-3"></th>
+            <th scope="col-3"></th>
             <th scope="col-2" style="text-align: center; justify-content: center; align-items: center;">{{usuario.role}}</th>
             <th scope="col-3" >
-              <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" id="button">Editar</button>
+              
   
             </th>
             <th scope="col-3">
-              <!-- <button class="btn btn-primary" id="button">Desactivar</button> -->
-              <label class="switch">
-                <input (click)="usuarioDelete(usuario.id)" type="checkbox">
-                <span class="slider"></span>
-              </label>
+              
+              
   
             </th>
            </tr>
@@ -69,4 +64,56 @@
     
 
   </div>
+</div> -->
+<div  style="margin-bottom: 5px;">
+  <div class="card-header bg-transparent" >
+    <div class="row">
+      <div class="col">
+        <h3>Usuarios</h3>
+    </div>
+    <div class="col text-end">
+      <button routerLink="/usuarios/form" class="btn btn-success" id="button-add">Crear+</button>
+    </div>
+    </div>  
+    
+  </div>
+</div>
+<div class="table-container">
+  <table class="table table-sm"  *ngFor="let usuario of usuarios">
+      <thead>
+          <tr>
+              <td style="width: 10%; font-size: 10px;" class="align-middle"> Nombre</td>
+              
+              <td style="width: 15%; font-size: 10px;" class="align-middle"> Telefono/td>
+              <td style="width: 20%; font-size: 10px;" class="align-middle"> Email</td>
+              <td style="width: 15%; font-size: 10px;" class="align-middle"> Cédula</td>
+              <td style="width: 15%; font-size: 10px;" class="align-middle"> Profesión</td>
+              <td style="width: 10%; font-size: 10px;" class="align-middle"> Tipo de Usuario</td>
+              <td style="width: 15%; font-size: 10px; text-align: center;" class="align-middle"> Editar</td>
+              <td style="text-align: center; width: 5%; font-size: 10px;" class="align-middle"> Estado</td>
+          </tr>
+      </thead>
+      <tbody  class="table-sm" style="margin-top: 0;">
+          <tr>
+              <th style="width: 10%;" >{{usuario.name}}</th>
+              
+              <th style="width: 15%;">{{usuario.phone}}</th>
+              <th style="width: 20%;" >{{usuario.email}}</th>
+              <th style="width: 15%;" >{{usuario.cedula}}</th>
+              <th style="width: 15%;" >{{usuario.profesion}}</th>
+              <th style="width: 10%;" >{{usuario.role}}</th>
+              <th style="width: 15%;" >
+                <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" style="width: 100%;">Editar</button>
+              </th>
+              <th style="width: 5%;" >
+                <label class="switch">
+                  <input (click)="usuarioDelete(usuario.id)" type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </th>
+
+             
+          </tr>
+      </tbody>
+  </table>
 </div>
