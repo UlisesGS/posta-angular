@@ -33,6 +33,8 @@ clientes:Client[]=[]
     this.usuario=JSON.parse(localStorage.getItem('usuario'))
   }
 
+  
+
   abrirModalAsesoria():void{
     this.modalService.abrirModalAsesoria();
   }
