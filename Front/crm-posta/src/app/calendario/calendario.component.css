@@ -1,0 +1,57 @@
+.calendar {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.day {
+  position: relative;
+  height: 100px;
+  cursor: pointer;
+}
+
+.day.currentMonth {
+  background-color: #f2f2f2;
+}
+
+.date {
+  font-weight: bold;
+}
+
+.events {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+}
+
+.event {
+  background-color: #ffc107;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.time {
+  font-size: 12px;
+  color: #555;
+}

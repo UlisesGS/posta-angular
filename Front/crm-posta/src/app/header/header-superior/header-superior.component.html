@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand">
+<nav *ngIf="authService.isLogin()" class="navbar navbar-expand">
     <div class="flex-grow-1" id="arr" >
       <div class="col" >
         <div class="row">
@@ -15,8 +15,8 @@
             </a>
           </div>
           <div class="col-2 text-end">
-            <button class="btn" type="button" style="background-color: #faf8f8; width: 100%;">
-              User N°
+            <button   class="btn" type="button" style="background-color: #faf8f8; width: 100%;">
+             {{authService.nameUsuario()}}
             </button>
           </div>
         </div>
