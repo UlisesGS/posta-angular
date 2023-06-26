@@ -21,8 +21,12 @@ export class LoginComponent implements OnInit {
     private ruta:Router){}
 
   ngOnInit(): void {
-
+    
   }
+
+
+
+
   public findByUsernameAndPassword(){
    this.usuarioService.usuarioFindByEmail(this.auth.email).subscribe(data=>{
     this.usuario=data;

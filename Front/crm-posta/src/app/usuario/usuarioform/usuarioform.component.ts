@@ -4,6 +4,7 @@ import { Usuario } from '../usuario';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalService } from 'src/app/client/modal.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-usuarioform',
@@ -14,25 +15,32 @@ export class UsuarioformComponent implements OnInit {
   usuario: Usuario = new Usuario();
   public titulo: string = 'Formulario Usuario'
   public modal:boolean;
+  usuarioLogin: Usuario = new Usuario();
+
+  
+  constructor(private usuarioService: UsuarioService,
+     private ruta: Router,
+     private rutaParametro:ActivatedRoute) {}
+
+
   ngOnInit(): void {
-    this.rutaParametro.paramMap.subscribe(parametro=>{
-      let id=+parametro.get('id');
-     if(id){
-      this.usuarioService.usuarioFindById(id).subscribe(data=>{
-        this.usuario=data;
-        this.titulo='Editar Usuario';
+      this.rutaParametro.paramMap.subscribe(parametro=>{
+        let id=+parametro.get('id');
+       if(id){
+        this.usuarioService.usuarioFindById(id).subscribe(data=>{
+          this.usuario=data;
+          this.titulo='Editar Usuario';
+          console.log(this.usuario);
+        })
+       }else{
+        this.titulo='Crear Usuario';
+       }
+  
       })
-     }else{
-      this.titulo='Crear Usuario';
-     }
+      
+    }
 
-    })
-    
-  }
-  constructor(private usuarioService: UsuarioService, private ruta: Router,private rutaParametro:ActivatedRoute,
-    ) {
 
-  }
   public registrar() {
     console.log(this.usuario);
     this.usuarioService.usuarioSave(this.usuario).subscribe(data => {

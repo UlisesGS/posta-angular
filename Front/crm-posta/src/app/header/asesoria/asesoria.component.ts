@@ -41,6 +41,8 @@ export class AsesoriaComponent implements OnInit {
     })
   }
 
+  
+
 
   public registrar(){
     console.log(this.client);
