@@ -22,6 +22,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { LoginComponent } from './auth/login/login.component';
 import { MainComponent } from './main/main.component';
 import { HeaderSuperiorComponent } from './header/header-superior/header-superior.component';
+import { PdfComponent } from './pdf/pdf.component';
 
 
 const routes:Routes=[
@@ -43,6 +44,7 @@ const routes:Routes=[
   {path:'municipios', component:MunicipioComponent},
   {path:'login',component:LoginComponent},
   {path:'main',component:MainComponent},
+  {path:'clients/pdf/:id',component:PdfComponent},
 
 ]
 
@@ -67,8 +69,8 @@ const routes:Routes=[
     LoginComponent,
     MainComponent,
     HeaderSuperiorComponent,
-
-  ],
+      PdfComponent
+   ],
   imports: [
   BrowserModule,
     HttpClientModule,
