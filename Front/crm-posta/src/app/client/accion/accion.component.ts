@@ -4,7 +4,7 @@ import { Client } from '../client';
 import { Router } from '@angular/router';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import pdfMake from 'pdfmake/build/pdfmake';
-pdfMake.vfs=pdfFonts.pdfMake.vfs;
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-accion',
   templateUrl: './accion.component.html',
@@ -118,12 +118,18 @@ createPdf(){
 // tipo tabla
 
 createPdf(){
+  //const imagenUrl='/assets/camaraHD.jpg'
   const pdfDefinition: any = {
+
     content: [
+      
+
       {
         text: 'Ficha de Cliente',
+
         style: 'header'
       },
+
       {
         table: {
 
@@ -164,18 +170,28 @@ createPdf(){
             ],
             [
               { text: 'tipo:', bold: true },
-              { text: this.cliente.type }
+
+              { text:  this.cliente.type==='entrepreneur'?'Emprendedor':'Empresario',color:'red' }
             ]
           ]
         },
         layout: 'lightHorizontalLines' // Estilo de tabla con líneas horizontales claras
-      }
+      },
+
     ],
+
     styles: {
       header: {
-        fontSize: 18,
+        fontSize: 30,
         bold: true,
-        margin: [0, 0, 0, 10]
+        margin: [0, 20, 0,20],
+        color:'red',
+        alignment:'center',
+        localization: {
+          attributes: {
+            text: 'Nombre' // Cambia el atributo "name" al idioma deseado
+          }
+        }
       }
     }
   };

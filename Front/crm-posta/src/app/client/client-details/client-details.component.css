@@ -12,21 +12,22 @@ ul {
     /* position: fixed; */
     text-align: center;
   }
-  
+
   li{
     color: #000;
     text-decoration: none;
   }
+  /*
   p{
     color: #000;
     text-decoration: none;
     border-radius: 0.5em;
     border:solid 1px;
-    
+
   }
 
+*/
 
-  
   /* Change the link color on hover */
   /* li:hover {
     background-color: #eb9694;
