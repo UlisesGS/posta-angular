@@ -161,6 +161,10 @@ createPdf(){
             [
               { text: 'Email:', bold: true },
               { text: this.cliente.email }
+            ],
+            [
+              { text: 'tipo:', bold: true },
+              { text: this.cliente.type }
             ]
           ]
         },
