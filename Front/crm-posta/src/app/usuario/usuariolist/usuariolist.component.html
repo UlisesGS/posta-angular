@@ -14,7 +14,7 @@
         <h3>Usuarios</h3>
     </div>
     <div class="col text-end">
-      <button routerLink="/usuarios/form" class="btn btn-success" id="button-add">Crear+</button>
+      <button routerLink="/usuarios/form" class="btn btn-success" style="border-radius: 1emcd;">Crear+</button>
     </div>
     </div>  
     
@@ -48,8 +48,8 @@
                 <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" style="width: 100%;">Editar</button>
               </th>
               <th style="width: 5%;" >
-                <label class="switch">
-                  <input (click)="usuarioDelete(usuario.id)" type="checkbox">
+               <label class="switch">
+                  <input [(ngModel)]="usuario.active" name="active"   (click)="usuarioDelete(usuario.id)" type="checkbox">
                   <span class="slider"></span>
                 </label>
               </th>
