@@ -5,6 +5,7 @@ import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
 import { Municipio } from 'src/app/municipio/municipio';
 import { Asesoria } from 'src/app/usuario/asesoria';
+import { Usuario } from 'src/app/usuario/usuario';
 import { UsuarioService } from 'src/app/usuario/usuario.service';
 import Swal from 'sweetalert2';
 
@@ -27,8 +28,12 @@ export class AsesoriaComponent implements OnInit {
   asesoria:Asesoria=new Asesoria();
   termino:string;
   clientes:Client[]=[]
+  usuario:Usuario = new Usuario()
 
   ngOnInit(): void{
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    console.log(this.usuario);
+
     this.condicion=false;
     this.clientService.getClientsMunicipios().subscribe(data => {
       this.municipio=data;
@@ -71,7 +76,7 @@ export class AsesoriaComponent implements OnInit {
   public finalizar(){
 
     this.asesoria.client=this.client;
-
+this.asesoria.user = this.usuario;
     console.log(this.asesoria);
 
     this.usuarioService.asesoriaSave(this.asesoria).subscribe(data=>{

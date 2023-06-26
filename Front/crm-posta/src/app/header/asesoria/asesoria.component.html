@@ -4,10 +4,11 @@
             <div class="modal-content" style="width:850px; ">
                 <div class="modal-header" style="width:850px; margin-bottom: 5px">
                     <h5 class="modal-title">Iniciando Asesoría</h5>
+
                     <button (click)="cerrarModalAsesoria()" type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-
+                <p  class="m-4"> Asesor : {{usuario.name}}  {{usuario.lastName}}</p>
                 <div class="container display-flex" *ngIf="!condicion">
                   <div class="col-7 m-2" >
                     <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar por Nombre" >
@@ -37,7 +38,7 @@
                   </div>
 
                 <div class="container display-flex" *ngIf="condicion">
-                  <p> CLiente : {{client.name}}  {{client.lastName}}</p>
+                  <p> Cliente : {{client.name}}  {{client.lastName}}</p>
                     <div style="flex-basis: 100%;" class="mt-3">
                         <div class="form-group">
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"

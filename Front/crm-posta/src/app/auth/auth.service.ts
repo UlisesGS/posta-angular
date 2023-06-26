@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Usuario } from '../usuario/usuario';
 import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,25 @@ export class AuthService implements OnInit {
       return this.usuario;
     }
     return null;
+  }
+  public rolAdmin ():boolean{
+    if(localStorage.getItem('usuario')){
+      this.usuario=JSON.parse(localStorage.getItem('usuario'))
+      if(this.usuario.role=='ADMIN'){
+        return true;
+      }
+
+    }
+    return false;
+  }
+  public nameUsuario():string{
+    if(localStorage.getItem('usuario')){
+      this.usuario=JSON.parse(localStorage.getItem('usuario'))
+
+        return this.usuario.name;
+      }
+return null;
+
+
   }
 }
