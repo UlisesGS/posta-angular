@@ -12,10 +12,11 @@
 
       <li><a routerLink="/clients"><i class="fa-solid fa-user-tie"></i> Contactos</a></li>
       <li><a href=""><i class="fa-solid fa-layer-group"></i> Procesos</a></li>
+      <li><a routerLink="/asesorias"><i class="fa-solid fa-layer-group"></i> Asesorias</a></li>
       <li><a routerLink='/calendario'><i class="fa-regular fa-calendar-days"></i> Calendario</a></li>
-      
+
       <li><a *ngIf="authService.rolAdmin()" ><i class="fa-regular fa-folder-open"></i> Reportes</a></li>
-      
+
       <li><a href="#about"><i class="fa-solid fa-comment"></i> Mensajes</a></li>
       <li><a (click)="cerrarSesion()" class="position-bottom" ><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
     </ul>

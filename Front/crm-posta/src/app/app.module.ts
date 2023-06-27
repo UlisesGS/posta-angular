@@ -27,6 +27,7 @@ import { PdfComponent } from './pdf/pdf.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 //import { CalendarModule as AngularCalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AsesoriaListComponent } from './header/asesoria/asesoriaList/asesoriaList.component';
 
 const routes:Routes=[
 
@@ -49,6 +50,7 @@ const routes:Routes=[
   {path:'main',component:MainComponent},
   {path:'clients/pdf/:id',component:PdfComponent},
   {path:'calendario',component:CalendarioComponent},
+  {path:'asesorias',component:AsesoriaListComponent},
 
 ]
 
@@ -74,7 +76,9 @@ const routes:Routes=[
     MainComponent,
     HeaderSuperiorComponent,
       PdfComponent,
-      CalendarioComponent
+      CalendarioComponent,
+      AsesoriaListComponent,
+
    ],
   imports: [
   BrowserModule,

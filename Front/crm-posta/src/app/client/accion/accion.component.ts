@@ -116,13 +116,13 @@ createPdf(){
   pdf.open();
 }*/
 // tipo tabla
-
+/*
 createPdf(){
   //const imagenUrl='/assets/camaraHD.jpg'
   const pdfDefinition: any = {
 
     content: [
-      
+
 
       {
         text: 'Ficha de Cliente',
@@ -198,6 +198,7 @@ createPdf(){
   const pdf = pdfMake.createPdf(pdfDefinition);
   pdf.open();
 }
+*/
 
 //tipo ficha
 /*
@@ -256,4 +257,87 @@ createPdf(cliente: Client) {
   // pdf.download();
 }
 */
+
+
+  // ... Código existente
+  createPdf() {
+    const documentDefinition = {
+      content: [
+        { text: 'Ficha de Cliente', style: 'titulo' },
+        { text: 'FECHA: ' + this.cliente.regdate, style: 'header' },
+        { text: 'MUNICIPIO/DEPARTAMENTO: ' + this.cliente.municipio.country, style: 'header' },
+        { text: 'ASESOR: ______', style: 'header' },
+        { text: 'DURACIÓN ASESORÍA: _________', style: 'header' },
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
+        '',
+        'CLASIFICACIÓN DE CLIENTE:',
+        {  text: this.cliente.type=='entrepreneur'? 'EMPRENDEDOR:':'EMPRESARIO:' , margin: [20, 0] },
+
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
+        '',
+        {text:   'NOMBRES Y APELLIDOS: ' + this.cliente.name + " "+ this.cliente.lastName  },
+     {text:  ' No. DOCUMENTO/NIT:  ' + this.cliente.nit} ,
+        { text: 'GÉNERO:', margin: [0, 0] },
+        { text: this.cliente.gender, margin: [0, 0] },
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
+        '',
+
+
+        'No. CELULAR: '+ this.cliente.phone    + ' CORREO ELECTRÓNICO: ' + this.cliente.email,
+        'DIRECCIÓN: ' + this.cliente.address ,
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
+        '',
+        '¿INTERESADO EN RECIBIR CORREOS ELECTRÓNICOS MASIVOS?:          SI __       NO __',
+        'TEMA ABORDADO:',
+        '',
+        {
+          text: 'Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE VILLAVICENCIO (la “CCV”) para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación personal, nombres y apellidos, números de teléfono y celular, correo electrónico, país de origen y en general toda la información solicitada para información de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a la que puede accederse en el siguiente link:',
+          style: 'p'
+        },
+        {
+          text: 'https://s3.pagegear.co/415/78/politica_de_tratamiento_de_datos_personales_2021_ccv.pdf',
+          link: 'https://s3.pagegear.co/415/78/politica_de_tratamiento_de_datos_personales_2021_ccv.pdf',
+          style: 'link'
+        },
+        {
+          text: 'así como para el desarrollo de las funciones públicas que le han sido asignadas y demás actividades complementarias y ser informado de nuevas jornadas, eventos y/o espacios de formación que adelanta la Cámara, divulgación de la oferta académica y evaluación de los servicios de la Cámara. Reconozco y acepto que la CCV me informó que en caso de que se soliciten datos personales sensibles, la entrega de estos es meramente facultativa y no estoy obligado a entregarlos.',
+          style: 'p'
+        },
+        {
+          text: 'Reconozco que se me fue informado que, como titular de mis datos personales, tengo derecho a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la autorización otorgada para su tratamiento, ser informado sobre el uso que se ha dado a los mismos, presentar quejas ante la Superintendencia de Industria y Comercio por infracción a la ley, revocar la autorización y/o solicitar la supresión de mis datos en los casos que sea procedente y acceder en forma gratuita a los mismos. De igual manera, se me indicó que puedo ejercer mis derechos como titular de mis datos personales a través de los canales dispuestos en la Política de Tratamiento de Datos Personales o a través del correo electrónico datospersonales@ccv.org.co.',
+          style: 'p'
+        }
+      ],
+      styles: {
+        header: {
+          bold: true,
+          fontSize: 12
+        },
+        titulo:{
+          bold: true,
+          fontSize: 18,
+          alignment:'center',
+          margin: [0,0,0,40 ],
+        },
+        p: {
+          fontSize: 10,
+          margin: [0, 10]
+        },
+        link: {
+          fontSize: 10,
+          color: 'blue',
+          margin: [0, 10],
+          decoration: 'underline'
+        }
+      }
+    };
+
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    pdfMake.createPdf(documentDefinition).open();
+  }
 }
+
+
+
+
+
