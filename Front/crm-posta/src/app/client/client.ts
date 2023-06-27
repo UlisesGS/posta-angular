@@ -1,4 +1,5 @@
 import { Municipio } from "../municipio/municipio";
+import { Ciiu } from "./ciiu";
 
 export class Client{
     id:number;
@@ -21,9 +22,21 @@ export class Client{
     type:string;
     regdate:Date;
     updatedate:Date;
-  //  businessIdea:string;
-  //  product:string;
-    // municipio:Municipio;
+//Atributos Emprendedor
+    businessIdea:string;
+    product:string;
+//Atributos Empresario
+  contracting:string;
+  companyName:string;
+  fechaAlta:string;
+  typeOfCompany:string;
+  employeePartTime:number;
+  employeeFullTime:number;
+  registroMercantil:boolean;
+  numberMercantilRegistry:string;
+  ciiu:Ciiu;
+  
+  
 
 
 }

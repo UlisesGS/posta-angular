@@ -141,7 +141,7 @@ createPdf(){
               { text: this.cliente.id }
             ],
             [
-              { text: 'NIT:', bold: true },
+              { text: 'Documento/NIT:', bold: true },
               { text: this.cliente.nit }
             ],
             [
@@ -153,7 +153,7 @@ createPdf(){
               { text: this.cliente.lastName }
             ],
             [
-              { text: 'Genero:', bold: true },
+              { text: 'Género:', bold: true },
               { text: this.cliente.gender }
             ],
             [
@@ -169,7 +169,7 @@ createPdf(){
               { text: this.cliente.email }
             ],
             [
-              { text: 'tipo:', bold: true },
+              { text: 'Tipo de Cliente:', bold: true },
 
               { text:  this.cliente.type==='entrepreneur'?'Emprendedor':'Empresario',color:'red' }
             ]
@@ -197,8 +197,10 @@ createPdf(){
   };
   const pdf = pdfMake.createPdf(pdfDefinition);
   pdf.open();
+
 }
 */
+
 
 //tipo ficha
 /*
@@ -259,6 +261,7 @@ createPdf(cliente: Client) {
 */
 
 
+
   // ... Código existente
   createPdf() {
     const documentDefinition = {
@@ -288,6 +291,7 @@ createPdf(cliente: Client) {
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
         '¿INTERESADO EN RECIBIR CORREOS ELECTRÓNICOS MASIVOS?:          SI __       NO __',
+
         'TEMA ABORDADO:',
         '',
         {
@@ -313,12 +317,14 @@ createPdf(cliente: Client) {
           bold: true,
           fontSize: 12
         },
+
         titulo:{
           bold: true,
           fontSize: 18,
           alignment:'center',
           margin: [0,0,0,40 ],
         },
+
         p: {
           fontSize: 10,
           margin: [0, 10]
@@ -335,6 +341,7 @@ createPdf(cliente: Client) {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
     pdfMake.createPdf(documentDefinition).open();
   }
+
 }
 
 

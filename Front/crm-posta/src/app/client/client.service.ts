@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Client } from './client';
-import { Entrepreneur } from './entrepreneur';
-import { Businessman } from './businessman';
+// import { Entrepreneur } from './entrepreneur';
+// import { Businessman } from './businessman';
 
 
 @Injectable({
@@ -67,12 +67,13 @@ export class ClientService {
 
 
   /* TODOS LOS PUT */
-  public updateEntrepreneur(entrepreneur:Entrepreneur):Observable<any>{
-    return this.http.put<any>(`${this.urlEndPoint}/entrepreneur/${entrepreneur.id}`, entrepreneur,{headers:this.httpHeader})
+  public updateEntrepreneur(entrepreneur:Client):Observable<any>{
+   
+    return this.http.put<any>(`${this.urlEndPoint}/client/${entrepreneur.id}`, entrepreneur,{headers:this.httpHeader})
   }
 
-  public updateBusinessman(businessman:Businessman):Observable<any>{
-    return this.http.put<any>(`${this.urlEndPoint}/businessman/${businessman.id}`,businessman, {headers:this.httpHeader})
+  public updateBusinessman(businessman:Client):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/client/${businessman.id}`,businessman, {headers:this.httpHeader})
   }
 /* TODOS LOS DELETE */
   public ClientsDelete(id:void):Observable<void>{
@@ -88,12 +89,12 @@ export class ClientService {
     return this.http.post<any>(`${this.urlEndPoint}/selfAssessment`, client)
     }
 
-  public saveEntrepreneur(entrepreneur:Entrepreneur):Observable<any>{
-      return this.http.post<any>(`${this.urlEndPoint}/entrepreneur`,entrepreneur)
+  public saveEntrepreneur(entrepreneur:Client):Observable<any>{
+      return this.http.post<any>(`${this.urlEndPoint}/save`,entrepreneur)
     }
 
-    public saveBusinessman(businessman:Businessman):Observable<any>{
-      return this.http.post<any>(`${this.urlEndPoint}/businessman`,businessman)
+    public saveBusinessman(businessman:Client):Observable<any>{
+      return this.http.post<any>(`${this.urlEndPoint}/save`,businessman)
     }
    
     public buscarPorNombre(termino:string):Observable<any>{

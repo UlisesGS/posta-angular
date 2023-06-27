@@ -1,11 +1,14 @@
 <nav *ngIf="authService.isLogin()" class="sidebar" style="width: 100%; height: 98vh;">
+  <div style="margin-top: auto; display: flex; justify-content: center; padding-top: 20px;">
+    <img src="/assets/ImagenNavBar.png" alt="" style="width:80%;">
+  </div>
   <div style="flex: 1;">
     <ul>
+      <!-- <li>
+        <img src="/assets/ImagenNavBar.png" alt="" style="width:100%;">
+      </li> -->
       <li>
-        <img src="/assets/imgNavBar.png" alt="" style="width: 100%;">
-      </li>
-      <li>
-        <a ><i class="fa-solid fa-bars"></i> Inicio</a>
+        <a routerLink="/main"><i class="fa-solid fa-bars"></i> Inicio</a>
       </li>
 
       <li><a *ngIf="authService.rolAdmin()" routerLink="/usuarios"><i class="fa-solid fa-user-tie"></i> Asesores</a></li>
@@ -21,7 +24,7 @@
       <li><a (click)="cerrarSesion()" class="position-bottom" ><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
     </ul>
   </div>
-  <div style="margin-top: auto; display: flex; justify-content: center;;">
+  <div style="margin-top: auto; display: flex; justify-content: center; padding-bottom: 40px;">
     <img src="/assets/camaraHD.jpg" alt="" style="width: 70%; align-self: flex-end;" >
   </div>
 </nav>

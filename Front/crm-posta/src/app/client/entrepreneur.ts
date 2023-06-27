@@ -1,8 +1,8 @@
-import { Client } from "./client";
+// import { Client } from "./client";
 
 
-export class Entrepreneur extends Client  {
+// export class Entrepreneur extends Client  {
 
-   businessIdea:string;
-   product:string;
-}
+//    businessIdea:string;
+//    product:string;
+// }
