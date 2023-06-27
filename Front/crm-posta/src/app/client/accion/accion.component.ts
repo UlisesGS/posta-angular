@@ -4,6 +4,8 @@ import { Client } from '../client';
 import { Router } from '@angular/router';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import pdfMake from 'pdfmake/build/pdfmake';
+import { ClientService } from '../client.service';
+import Swal from 'sweetalert2';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-accion',
@@ -13,9 +15,12 @@ import pdfMake from 'pdfmake/build/pdfmake';
 export class AccionComponent {
 
   @Input()cliente:Client = new Client();
+  
+  errores:any;
 
   constructor(private modalService:ModalService,
     private ruta:Router,
+    private service:ClientService
     ){}
 
   cerrarModalAction():void{
@@ -29,6 +34,31 @@ export class AccionComponent {
       this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
     }
   }
+
+  public cambiarTipo() {
+    this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
+    /*this.cliente.type="businessman";
+    this.cliente.businessIdea="";
+    this.cliente.product="";
+    console.log(this.cliente);
+    
+    this.service.updateBusinessman(this.cliente).subscribe(data => {
+      console.log(data);
+      console.log(this.cliente);
+      this.cerrarModalAction();
+      Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
+
+
+      
+
+
+},e=>{
+  this.cerrarModalAction();
+  Swal.fire("Error: ", `Error al editar el contacto`, 'error');
+})*/
+}
+
+  
   /*
   createPdf(){
     const pdfDefinition:any={

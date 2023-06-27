@@ -16,6 +16,7 @@ import { Ciiu } from '../ciiu';
 export class FormClientComponent implements OnInit {
   municipios: Municipio[] = [];
   empresario: Client = new Client();
+  cliente: Client = new Client();
   errores: any;
   enums: any;
   ciiu:Ciiu[]=[];
@@ -44,7 +45,10 @@ export class FormClientComponent implements OnInit {
       let id = +parametro.get('id');
       if (id) {
         this.service.getClient(id).subscribe(data => {
+          
+          
           this.empresario = data;
+          console.log(this.empresario);
           //this.empresario.municipio=data.municipio;
         })
       }
@@ -114,6 +118,27 @@ export class FormClientComponent implements OnInit {
 
   }
 
+
+  public cambiarTipo() {
+    
+    this.cliente.type="businessman";
+    this.cliente.businessIdea=null;
+    this.cliente.product=null;
+    console.log(this.cliente);
+    
+    this.service.updateBusinessman(this.cliente).subscribe(data => {
+      console.log(data);
+      console.log(this.cliente);
+      Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
+
+
+      
+
+
+},e=>{
+  Swal.fire("Error: ", `Error al editar el contacto`, 'error');
+})
+}
 
 
 }
