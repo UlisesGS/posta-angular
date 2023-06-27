@@ -90,6 +90,7 @@
             <tr>
                 <th style="width: 20%;" >{{client.name}} {{client.lastName}}</th>
                 <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
+                
                 <th style="width: 20%;"  *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
              
                 <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>

@@ -26,6 +26,8 @@ export class ClientDetailsComponent implements OnInit{
       if(id){
         this.serviceClient.getClient(id).subscribe(data=>{
           this.client=data;
+          console.log(this.client);
+          
         })
       }
       

@@ -26,7 +26,7 @@ export class Client{
     businessIdea:string;
     product:string;
 //Atributos Empresario
-contracting:string;
+  contracting:string;
   companyName:string;
   fechaAlta:string;
   typeOfCompany:string;
