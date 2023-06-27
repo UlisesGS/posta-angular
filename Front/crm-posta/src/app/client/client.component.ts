@@ -123,6 +123,8 @@ console.log("buscar"+this.termino);
             (response.content as Client[]).forEach(cliente => console.log(cliente.name));
           })
         ).subscribe(response => {
+          console.log(response);
+          
           this.clients = response.content as Client[];
           this.paginador = response;
         });

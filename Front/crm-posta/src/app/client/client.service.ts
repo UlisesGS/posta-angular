@@ -73,6 +73,8 @@ export class ClientService {
   }
 
   public updateBusinessman(businessman:Client):Observable<any>{
+    console.log(businessman);
+    
     return this.http.put<any>(`${this.urlEndPoint}/client/${businessman.id}`,businessman, {headers:this.httpHeader})
   }
 /* TODOS LOS DELETE */
