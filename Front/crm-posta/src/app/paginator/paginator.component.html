@@ -9,7 +9,7 @@
       <a class="page-link" [routerLink]="['/clients/page', 0]">Primera</a>
     </li>
   
-    <li *ngFor="let pagina of paginas" [ngClass]="pagina-1 == paginador.number? 'page-item active':'page-item'">
+    <li *ngFor="let pagina of paginas" [ngClass]="pagina-1 == paginador.number? 'page-item active':'page-item'" style="z-index: 0;">
       <span class="page-link" *ngIf="pagina-1 == paginador.number">{{pagina}}</span>
       <a *ngIf="pagina-1 != paginador.number" class="page-link" [routerLink]="['/clients/page', pagina-1]">{{pagina}}</a>
     </li>

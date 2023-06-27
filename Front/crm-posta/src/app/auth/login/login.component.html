@@ -1,48 +1,49 @@
-<section class="bg-light py-5">
-    <div class="container px-5 my-5 px-5">
-        <div class="text-center mb-5">
-            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-            <h2 class="fw-bolder">Iniciar Sesion</h2>
-            <p class="lead mb-0">ingresa tu cuenta si ya tienes una creada</p>
-        </div>
-        <div class="row gx-5 justify-content-center">
-            <div class="col-lg-6">
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                    <!-- Name input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" type="text" name="email"
-                            placeholder="Ingrese su nombre de usuario..." data-sb-validations="required"
-                            [(ngModel)]="auth.email" />
-                        <label for="name">Email</label>
-                        <div class="invalid-feedback" data-sb-feedback="name:required">EL Email es requerido</div>
-                    </div>
-                    <!-- Email address input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" type="password" name="password" placeholder="password123"
-                            data-sb-validations="required,password" [(ngModel)]="auth.password" />
-                        <label for="email">Contraseña</label>
-                        <div class="invalid-feedback" data-sb-feedback="email:required">La contraseña es requerida...
-                        </div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Contraseña no valida.</div>
-                    </div>
-
-                    <div class="d-none" id="submitErrorMessage">
-                        <div class="text-center text-danger mb-3">Error al iniciar sesion!!!</div>
-                    </div>
-                    <!-- Submit Button-->
-
-                    <button class="btn btn-primary btn-lg" id="submitButton" type=""
-                        (click)="findByUsernameAndPassword()">Aceptar</button>
+<div class="container mt-5" style="border-radius: 1em; width: 30vw;">
+    <div class="card">
+        <section class="bg-light">
+            <div class="container">
+                <div class="text-center">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                    <h2 class="fw-bolder">Iniciar Sesion</h2>
                     
-                </form>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col" style="width: 70vw;">
+                      
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <!-- Name input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="email"
+                                    placeholder="Ingrese su nombre de usuario..." data-sb-validations="required"
+                                    [(ngModel)]="auth.email" />
+                                <label for="name">Email</label>
+                               
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="password" name="password" placeholder="password123"
+                                    data-sb-validations="required,password" [(ngModel)]="auth.password" />
+                                <label for="email">Contraseña</label>
+                                
+                            </div>
+        
+                            <div class="d-none" id="submitErrorMessage">
+                                <div class="text-center text-danger mb-3">Error al iniciar sesion!!!</div>
+                            </div>
+                            <!-- Submit Button-->
+                            <div class="text-center my-5">
+                                <button class="btn btn-primary btn-lg"  id="submitButton" type=""(click)="findByUsernameAndPassword()">Aceptar</button>
+                            </div>
+                            
+                            
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
-</section>
+</div>
+
+
+
+

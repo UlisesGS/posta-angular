@@ -141,7 +141,7 @@ createPdf(){
               { text: this.cliente.id }
             ],
             [
-              { text: 'NIT:', bold: true },
+              { text: 'Documento/NIT:', bold: true },
               { text: this.cliente.nit }
             ],
             [
@@ -153,7 +153,7 @@ createPdf(){
               { text: this.cliente.lastName }
             ],
             [
-              { text: 'Genero:', bold: true },
+              { text: 'Género:', bold: true },
               { text: this.cliente.gender }
             ],
             [
@@ -169,7 +169,7 @@ createPdf(){
               { text: this.cliente.email }
             ],
             [
-              { text: 'tipo:', bold: true },
+              { text: 'Tipo de Cliente:', bold: true },
 
               { text:  this.cliente.type==='entrepreneur'?'Emprendedor':'Empresario',color:'red' }
             ]

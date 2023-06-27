@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Entrepreneur } from '../entrepreneur';
+// import { Entrepreneur } from '../entrepreneur';
 import { ClientService } from '../client.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Municipio } from 'src/app/municipio/municipio';
 import Swal from 'sweetalert2';
 import { ModalService } from '../modal.service';
+import { Client } from '../client';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class FormEntrepreneurComponent implements OnInit {
     , public modalservice:ModalService
     , private rutaParametro:ActivatedRoute
     ){}
-  emprendedor:Entrepreneur= new Entrepreneur();
+  emprendedor:Client= new Client();
   municipios:Municipio[]=[];
   errores:any;
   
@@ -40,6 +41,7 @@ export class FormEntrepreneurComponent implements OnInit {
 
   }
 public registrar(){
+  this.emprendedor.type="entrepreneur";
   console.log(this.emprendedor);
   this.clientService.saveEntrepreneur(this.emprendedor).subscribe(data=>{
     Swal.fire(`ÉXITO`, `Emprendedor ${data.name} fue creado con exito`, `success`)
@@ -71,12 +73,10 @@ cerrarModal(){
   this.modalservice.cerrarModal();
 }
 public editar(){
+  this.emprendedor.type="entrepreneur";
   this.clientService.updateEntrepreneur(this.emprendedor).subscribe(data=>{
     this.router.navigate(['/clients'])
     Swal.fire(`Editado`, `Emprendedor ${data.name} fue editado con exito`, `success`)
-
-
-
 
   },e=>{
     console.log(e);

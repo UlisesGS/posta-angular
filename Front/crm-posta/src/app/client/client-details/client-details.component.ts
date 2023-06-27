@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../client.service';
 import { Client } from '../client';
-import { Entrepreneur } from '../entrepreneur';
+// import { Entrepreneur } from '../entrepreneur';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../modal.service';
 

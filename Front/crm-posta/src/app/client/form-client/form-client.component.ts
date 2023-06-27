@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../client';
-import { Businessman } from '../businessman';
+// import { Businessman } from '../businessman';
 import { Municipio } from 'src/app/municipio/municipio';
 import { ClientService } from '../client.service';
 import Swal from 'sweetalert2';
@@ -15,10 +15,11 @@ import { Ciiu } from '../ciiu';
 })
 export class FormClientComponent implements OnInit {
   municipios: Municipio[] = [];
-  empresario: Businessman = new Businessman();
+  empresario: Client = new Client();
   errores: any;
   enums: any;
   ciiu:Ciiu[]=[];
+  
   
 
   constructor(private service: ClientService
@@ -51,7 +52,7 @@ export class FormClientComponent implements OnInit {
   }
 
   public registrar() {
-
+    this.empresario.type="businessman";
     console.log(this.empresario);
     this.service.saveBusinessman(this.empresario).subscribe(data => {
       Swal.fire('ÉXITO', `Empresario ${data.name} fue creado con exito`, 'success')
@@ -80,7 +81,8 @@ export class FormClientComponent implements OnInit {
   }
   public editar() {
     console.log(this.empresario);
-
+    this.empresario.type="businessman";
+    
 
     this.service.updateBusinessman(this.empresario).subscribe(data => {
       this.router.navigate(['/clients'])
