@@ -6,6 +6,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import pdfMake from 'pdfmake/build/pdfmake';
 import { ClientService } from '../client.service';
 import Swal from 'sweetalert2';
+import { Usuario } from 'src/app/usuario/usuario';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-accion',
@@ -15,9 +16,8 @@ import Swal from 'sweetalert2';
 export class AccionComponent {
 
   @Input()cliente:Client = new Client();
-  
   errores:any;
-
+  usuario:Usuario=new Usuario();
   constructor(private modalService:ModalService,
     private ruta:Router,
     private service:ClientService
@@ -33,6 +33,15 @@ export class AccionComponent {
     }else{
       this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
     }
+  }
+
+  public devolverUsuario():Usuario{
+
+    if(localStorage.getItem('usuario')){
+     this.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+      return this.usuario;
+    }
+    return null;
   }
 
   public cambiarTipo() {
@@ -287,45 +296,67 @@ createPdf(cliente: Client) {
 }
 */
 
+
   createPdf() {
     const documentDefinition = {
       content: [
-        { text: 'FECHA: ______/______/______', style: 'header' },
-        { text: 'MUNICIPIO/DEPARTAMENTO: _________________', style: 'header' },
-        { text: 'ASESOR: __________________', style: 'header' },
+        { text: 'FECHA: '+ this.cliente.regdate, style: 'header' },
+        { text: 'MUNICIPIO/DEPARTAMENTO: '+ this.cliente.municipio.country, style: 'header' },
+        { text: 'ASESOR: '+ this.usuario.name+ ' '+this.usuario.lastName, style: 'header' },
         { text: 'DURACIÓN ASESORÍA: _______________________', style: 'header' },
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
         {
         columns: [
           { text: 'CLASIFICACIÓN DE CLIENTE:', style: 'fieldHeader' },
-          { text: 'EMPRENDEDOR: _______', style: 'fieldValue', margin: [20, 0] },
-          { text: 'EMPRESARIO: _______', style: 'fieldValue', margin: [20, 0] }
+          { text: this.cliente.type=='entrepreneur'? 'EMPRENDEDOR':'EMPRESARIO', style: 'fieldValue', margin: [20, 0] }
         ]},
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
         {
           columns: [
-            { text: 'NOMBRES Y APELLIDOS:', style: 'fieldHeader' },
-            { text: 'No. DOCUMENTO/NIT:', style: 'fieldHeader', margin: [100, 0] }
+            { text: 'NOMBRES Y APELLIDOS: '+this.cliente.name + ' '+ this.cliente.lastName, style: 'fieldHeader' },
+            { text: 'No. DOCUMENTO/NIT: '+this.cliente.nit, style: 'fieldHeader', margin: [100, 0] }
           ]
         },
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
         {
           columns: [
-            { text: 'GÉNERO:', style: 'fieldHeader' },
-            { text: 'MASCULINO _____', style: 'fieldValue', margin: [20, 0] },
-            { text: 'FEMENINO _____', style: 'fieldValue', margin: [20, 0] },
-            { text: 'LGBTI ______', style: 'fieldValue', margin: [20, 0] }
+            { text: 'GÉNERO: ', style: 'fieldHeader' }
           ]
         },
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
-        'NOMBRE DE LA EMPRESA O IDEA DE NEGOCIO:',
-        'PRODUCTO O SERVICIO A COMERCIALIZAR:',
-        'No. CELULAR:       CORREO ELECTRÓNICO:',
-        'DIRECCIÓN:',
+        {
+          columns: [
+            { text: 'NOMBRE DE LA EMPRESA O IDEA DE NEGOCIO: ', style: 'fieldHeader' },
+            { text: this.cliente.type=='entrepreneur'? this.cliente.businessIdea:this.cliente.companyName, style: 'fieldValue', margin: [20, 0] },
+          ]
+        },
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
+        '',
+        
+        {
+          columns: [
+            { text: 'PRODUCTO O SERVICIO A COMERCIALIZAR:', style: 'fieldHeader' },
+          ]
+        },
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
+        '',
+        {
+          columns: [
+            { text: 'No. CELULAR: ', style: 'fieldHeader' },
+            { text: 'CORREO ELECTRÓNICO:', style: 'fieldHeader', margin: [100, 0] }
+          ]
+        },
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
+        '',
+        {
+          columns: [
+            { text: 'DIRECCIÓN: ', style: 'fieldHeader' },
+          ]
+        },
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
         '¿INTERESADO EN RECIBIR CORREOS ELECTRÓNICOS MASIVOS?:          SI ______       NO ______',
