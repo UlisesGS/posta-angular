@@ -26,6 +26,7 @@ import { HeaderSuperiorComponent } from './header/header-superior/header-superio
 import { CalendarioComponent } from './calendario/calendario.component';
 //import { CalendarModule as AngularCalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AsesoriaListComponent } from './header/asesoria/asesoriaList/asesoriaList.component';
 
 const routes:Routes=[
 
@@ -47,6 +48,7 @@ const routes:Routes=[
   {path:'login',component:LoginComponent},
   {path:'main',component:MainComponent},
   {path:'calendario',component:CalendarioComponent},
+  {path:'asesorias',component:AsesoriaListComponent},
 
 ]
 
@@ -71,7 +73,12 @@ const routes:Routes=[
     LoginComponent,
     MainComponent,
     HeaderSuperiorComponent,
-      CalendarioComponent
+
+      PdfComponent,
+      CalendarioComponent,
+      AsesoriaListComponent,
+
+
    ],
   imports: [
   BrowserModule,

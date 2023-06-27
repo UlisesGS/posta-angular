@@ -122,7 +122,7 @@ createPdf(){
   const pdfDefinition: any = {
 
     content: [
-      
+
 
       {
         text: 'Ficha de Cliente',
@@ -197,7 +197,10 @@ createPdf(){
   };
   const pdf = pdfMake.createPdf(pdfDefinition);
   pdf.open();
-}*/
+
+}
+*/
+
 
 //tipo ficha
 /*
@@ -257,48 +260,38 @@ createPdf(cliente: Client) {
 }
 */
 
+
+
+  // ... Código existente
   createPdf() {
     const documentDefinition = {
       content: [
-        { text: 'FECHA: ______/______/______', style: 'header' },
-        { text: 'MUNICIPIO/DEPARTAMENTO: _________________', style: 'header' },
-        { text: 'ASESOR: __________________', style: 'header' },
-        { text: 'DURACIÓN ASESORÍA: _______________________', style: 'header' },
+        { text: 'Ficha de Cliente', style: 'titulo' },
+        { text: 'FECHA: ' + this.cliente.regdate, style: 'header' },
+        { text: 'MUNICIPIO/DEPARTAMENTO: ' + this.cliente.municipio.country, style: 'header' },
+        { text: 'ASESOR: ______', style: 'header' },
+        { text: 'DURACIÓN ASESORÍA: _________', style: 'header' },
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
-        {
-        columns: [
-          { text: 'CLASIFICACIÓN DE CLIENTE:', style: 'fieldHeader' },
-          { text: 'EMPRENDEDOR: _______', style: 'fieldValue', margin: [20, 0] },
-          { text: 'EMPRESARIO: _______', style: 'fieldValue', margin: [20, 0] }
-        ]},
+        'CLASIFICACIÓN DE CLIENTE:',
+        {  text: this.cliente.type=='entrepreneur'? 'EMPRENDEDOR:':'EMPRESARIO:' , margin: [20, 0] },
+
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
-        {
-          columns: [
-            { text: 'NOMBRES Y APELLIDOS:', style: 'fieldHeader' },
-            { text: 'No. DOCUMENTO/NIT:', style: 'fieldHeader', margin: [100, 0] }
-          ]
-        },
+        {text:   'NOMBRES Y APELLIDOS: ' + this.cliente.name + " "+ this.cliente.lastName  },
+     {text:  ' No. DOCUMENTO/NIT:  ' + this.cliente.nit} ,
+        { text: 'GÉNERO:', margin: [0, 0] },
+        { text: this.cliente.gender, margin: [0, 0] },
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
-        {
-          columns: [
-            { text: 'GÉNERO:', style: 'fieldHeader' },
-            { text: 'MASCULINO _____', style: 'fieldValue', margin: [20, 0] },
-            { text: 'FEMENINO _____', style: 'fieldValue', margin: [20, 0] },
-            { text: 'LGBTI ______', style: 'fieldValue', margin: [20, 0] }
-          ]
-        },
+
+
+        'No. CELULAR: '+ this.cliente.phone    + ' CORREO ELECTRÓNICO: ' + this.cliente.email,
+        'DIRECCIÓN: ' + this.cliente.address ,
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
-        'NOMBRE DE LA EMPRESA O IDEA DE NEGOCIO:',
-        'PRODUCTO O SERVICIO A COMERCIALIZAR:',
-        'No. CELULAR:       CORREO ELECTRÓNICO:',
-        'DIRECCIÓN:',
-        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-        '',
-        '¿INTERESADO EN RECIBIR CORREOS ELECTRÓNICOS MASIVOS?:          SI ______       NO ______',
+        '¿INTERESADO EN RECIBIR CORREOS ELECTRÓNICOS MASIVOS?:          SI __       NO __',
+
         'TEMA ABORDADO:',
         '',
         {
@@ -324,6 +317,14 @@ createPdf(cliente: Client) {
           bold: true,
           fontSize: 12
         },
+
+        titulo:{
+          bold: true,
+          fontSize: 18,
+          alignment:'center',
+          margin: [0,0,0,40 ],
+        },
+
         p: {
           fontSize: 10,
           margin: [0, 10]
@@ -341,5 +342,9 @@ createPdf(cliente: Client) {
     pdfMake.createPdf(documentDefinition).open();
   }
 
-
 }
+
+
+
+
+
