@@ -9,31 +9,27 @@
        <div class="row">
            <div class="col">
                <h3>Asesorias</h3>
-           </div>
-
-
-
+           </div> 
    </div>
 </div>
 </div>
-
-
-
 <div class="table-container">
    <table class="table table-sm" *ngFor="let asesoria of asesorias" >
        <thead>
            <tr>
-               <td style="width: 20%; font-size: 10px;" class="align-middle"> Id</td>
+               <td style="width: 5%; font-size: 10px;" class="align-middle"> Id</td>
+               <td style="width: 20%; font-size: 10px;" class="align-middle"> Fecha Asesoría</td>
                <td style="width: 20%; font-size: 10px;" class="align-middle"> Cliente</td>
                <td style="width: 20%; font-size: 10px;" class="align-middle"> Asesor</td>
-               <td style="width: 20%; font-size: 10px;" class="align-middle"> descripcion</td>
+               <td style="width: 20%; font-size: 10px;" class="align-middle"> Descripción</td>
                <td style="width: 20%; font-size: 10px; text-align: center;" class="align-middle"> Tipo</td>
 
            </tr>
        </thead>
        <tbody  class="table-sm" style="margin-top: 0;">
            <tr>
-               <th style="width: 20%;" >{{asesoria.id}}</th>
+               <th style="width: 5%;" >{{asesoria.id}}</th>
+               <th style="width: 20%;" >{{asesoria.regdate}}</th>
                <th style="width: 20%;" >{{asesoria.client.name}}</th>
                <th style="width: 20%;" >{{asesoria.user.name}}</th>
                <th style="width: 20%;" >{{asesoria.advisory}}</th>
@@ -42,9 +38,6 @@
                    <button id="button" class="btn btn-disabled"
                        style=" background-color: red; color: white; width: 100%;">Asesorias</button>
                </th>
-
-
-
            </tr>
        </tbody>
    </table>

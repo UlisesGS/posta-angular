@@ -16,6 +16,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 })
 export class AccionComponent {
 
+
   @Input()cliente:Client = new Client();
   errores:any;
   usuario:Usuario=new Usuario();
@@ -26,14 +27,15 @@ export class AccionComponent {
     private http:HttpClient
     ){}
 
-  cerrarModalAction():void{
+
+  cerrarModalAction(): void {
     this.modalService.cerrarModalAction();
   }
-  public tipoCliente(){
-    if(this.cliente.type=='entrepreneur'){
+  public tipoCliente() {
+    if (this.cliente.type == 'entrepreneur') {
       this.ruta.navigate([`clients/form/editar/entrepreneur/${this.cliente.id}`]);
 
-    }else{
+    } else {
       this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
     }
   }
@@ -68,9 +70,10 @@ export class AccionComponent {
   this.cerrarModalAction();
   Swal.fire("Error: ", `Error al editar el contacto`, 'error');
 })*/
-}
+  }
 
-  
+
+
 
 convertImageToBase64(imageUrl: string): Promise<string> {
   return this.http.get(imageUrl, { responseType: 'blob' })
@@ -238,4 +241,5 @@ createPdf() {
   pdfMake.createPdf(documentDefinition).open();
    
   })}
+
 }
