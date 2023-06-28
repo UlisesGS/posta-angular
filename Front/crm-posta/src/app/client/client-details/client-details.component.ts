@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../modal.service';
 
 
+
 @Component({
   selector: 'app-client-details',
   templateUrl: './client-details.component.html',
@@ -15,8 +16,11 @@ export class ClientDetailsComponent implements OnInit{
   client:Client;
   verContacto:boolean;
 
+ 
+  
+
   constructor(private serviceClient:ClientService, 
-    private activate:ActivatedRoute){
+    private activate:ActivatedRoute,){
 
   }
 

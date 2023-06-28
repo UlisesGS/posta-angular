@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Client } from './client';
-// import { Entrepreneur } from './entrepreneur';
-// import { Businessman } from './businessman';
+
 
 
 @Injectable({
@@ -14,7 +13,7 @@ import { Client } from './client';
 export class ClientService {
   //private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/clients"
   private urlEndPoint:string="http://localhost:8080/clients";
-  //private url = "http://localhost:8080/clients";
+  
   private httpHeader=new HttpHeaders({'Content-Type':'application/json'})
 
   constructor(private http:HttpClient, private router:Router) { }

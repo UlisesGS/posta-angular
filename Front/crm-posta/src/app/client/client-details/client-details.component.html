@@ -3,76 +3,40 @@
    <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
   </ul>
 </div>
-<!--
- <div id="details" class="card">
-                    <ul>
-                        <h3 *ngIf="client.type ==='businessman'">Empresario</h3>
-                        <h3 *ngIf="client.type ==='entrepreneur'">Emprendedor</h3>
-                        <h4 class="btn btn-primary">{{client.name}}</h4>
-                        <li>Documento/Nit</li>
-                        <p class="btn btn-primary">{{client.nit}}</p>
-                        <li>Género</li>
-                        <p class="btn btn-primary">{{client.gender}}</p>
-                        <h3 *ngIf="client.type ==='businessman'">Empresa</h3>
-                        <h3 *ngIf="client.type ==='entrepreneur'">Idea</h3>
-                        <p class="btn btn-primary" *ngIf="client.type ==='businessman'">{{client.companyName}}</p>
-                        <p class="btn btn-primary" *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</p>
-                        <li *ngIf="client.type ==='entrepreneur'">Producto</li>
-                        <p class="btn btn-primary" *ngIf="client.type ==='entrepreneur'">{{client.product}} </p>
-                        <li *ngIf="client.type ==='businessman'">Tipo de Compañia</li>
-                        <p class="btn btn-primary" *ngIf="client.type ==='businessman'">{{client.typeOfCompany}} </p>
-                        <li>Dirección</li>
-                        <p class="btn btn-primary">{{client.address}}</p>
-                        <li>Ciudad</li>
-                        <p class="btn btn-primary">{{client.municipio.name}}, {{client.municipio.country}}</p>
-                        <li>Teléfono</li>
-                        <p class="btn btn-primary">{{client.phone}}</p>
-                        <li>Correo Eletrónico</li>
-                        <p class="btn btn-primary">{{client.email}}</p>
-                    </ul>
-                </div>
-
-
--->
-<div class="card mb-3" style="width: 20vw;">
-
-
-  <div  class="card-header"  *ngIf="client.type ==='entrepreneur'">Emprendedor</div>
-  <div  class="card-header" *ngIf="client.type ==='businessman'">Empresario</div>
-  <div class="card-body">
-    <h5 class="card-title">Nombre</h5>
-    <p class="card-text">{{client.name}}</p>
-    <h5 class="card-title">Apellido</h5>
-    <p class="card-text">{{client.lastName}}</p>
-    <h5 class="card-title">Documento/NIT</h5>
-    <p class="card-text">{{client.nit}}</p>
-    <h5 class="card-title">Género</h5>
-    <p class="card-text">{{client.gender}}</p>
-    <h5 class="card-title">Dirección</h5>
-    <p class="card-text">{{client.address}}</p>
-    <h5 class="card-title">Municipio</h5>
-    <p class="card-text">{{client?.municipio.name}} - {{client?.municipio.country}}</p>
-    <h5 class="card-title">Grupo Étnico</h5>
-    <p class="card-text">{{client.ethnicGroup}}</p>
-    <h5 class="card-title">Email</h5>
-    <p class="card-text">{{client.email}}</p>
-    <h5 class="card-title" *ngIf="client.type==='businessman'">Compañía</h5>
-    <p class="card-text">{{client.companyName}}</p>
-    <h5 class="card-title" *ngIf="client.type==='businessman'">N° Registro Mercantil</h5>
-    <p class="card-text">{{client.numberMercantilRegistry}}</p>
-    <h5 class="card-title" *ngIf="client.type==='businessman'">CIIU</h5>
-    <p class="card-text">{{client?.ciiu.id}} - {{client?.ciiu.titulo}} </p>
-
-    <ng-container *ngIf="client; else noClient">
-      <h5 class="card-title" *ngIf="client.type === 'entrepreneur'">Idea de Negocio</h5>
-      <p class="card-text" *ngIf="client.type === 'entrepreneur'">{{client.businessIdea}}</p>
-    </ng-container>
-    
-    <ng-template #noClient>
-      <p>No se encontró ningún cliente.</p>
-    </ng-template>
-   
-    
-
+<div class="row">
+<div class="col">
+  <div class="card mb-3" style="width: 20vw;">
+    <div  class="card-header"  *ngIf="client.type ==='entrepreneur'">Emprendedor</div>
+    <div  class="card-header" *ngIf="client.type ==='businessman'">Empresario</div>
+    <div class="card-body">
+      <h5 class="card-title">Nombre</h5>
+      <p class="card-text">{{client.name}}</p>
+      <h5 class="card-title">Apellido</h5>
+      <p class="card-text">{{client.lastName}}</p>
+      <h5 class="card-title">Documento/NIT</h5>
+      <p class="card-text">{{client.nit}}</p>
+      <h5 class="card-title">Género</h5>
+      <p class="card-text">{{client.gender}}</p>
+      <h5 class="card-title">Dirección</h5>
+      <p class="card-text">{{client.address}}</p>
+      <h5 class="card-title">Municipio</h5>
+      <p class="card-text">{{client?.municipio.name}} - {{client?.municipio.country}}</p>
+      <h5 class="card-title">Grupo Étnico</h5>
+      <p class="card-text">{{client.ethnicGroup}}</p>
+      <h5 class="card-title">Email</h5>
+      <p class="card-text">{{client.email}}</p>
+      <h5 class="card-title" *ngIf="client.type==='businessman'">Compañía</h5>
+      <p class="card-text">{{client.companyName}}</p>
+      <h5 class="card-title" *ngIf="client.type==='businessman'">N° Registro Mercantil</h5>
+      <p class="card-text">{{client.numberMercantilRegistry}}</p>
+      <h5 class="card-title" *ngIf="client.type==='businessman'">CIIU</h5>
+      <p class="card-text">{{client?.ciiu.id}} - {{client?.ciiu.titulo}} </p>
+    </div>
   </div>
 </div>
+
+</div>
+
+
+
+

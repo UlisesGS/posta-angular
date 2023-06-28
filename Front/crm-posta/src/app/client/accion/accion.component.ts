@@ -14,23 +14,23 @@ import Swal from 'sweetalert2';
 })
 export class AccionComponent {
 
-  @Input()cliente:Client = new Client();
-  
-  errores:any;
+  @Input() cliente: Client = new Client();
 
-  constructor(private modalService:ModalService,
-    private ruta:Router,
-    private service:ClientService
-    ){}
+  errores: any;
 
-  cerrarModalAction():void{
+  constructor(private modalService: ModalService,
+    private ruta: Router,
+    private service: ClientService
+  ) { }
+
+  cerrarModalAction(): void {
     this.modalService.cerrarModalAction();
   }
-  public tipoCliente(){
-    if(this.cliente.type=='entrepreneur'){
+  public tipoCliente() {
+    if (this.cliente.type == 'entrepreneur') {
       this.ruta.navigate([`clients/form/editar/entrepreneur/${this.cliente.id}`]);
 
-    }else{
+    } else {
       this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
     }
   }
@@ -56,9 +56,9 @@ export class AccionComponent {
   this.cerrarModalAction();
   Swal.fire("Error: ", `Error al editar el contacto`, 'error');
 })*/
-}
+  }
 
-  
+
   /*
   createPdf(){
     const pdfDefinition:any={
@@ -106,189 +106,189 @@ export class AccionComponent {
 //descargar
 //pdf.dowload();
 }*/
-/*
-// tipo carta
-createPdf(){
-  const pdfDefinition: any = {
-    content: [
-      {
-        text: 'Ficha de Cliente',
-        style: 'header'
-      },
-      {
-        table: {
-          widths: ['auto', '*'], // Ancho de las columnas
-          body: [
-            ['Fecha:', { text: new Date().toLocaleDateString(), margin: [10, 0, 0, 0] }],
-            ['Nombre completo:', { text: this.cliente.name + ' ' + this.cliente.lastName, margin: [10, 0, 0, 0] }],
-            ['Dirección:', { text: this.cliente.address, margin: [10, 0, 0, 0] }],
-            ['Teléfono:', { text: this.cliente.phone, margin: [10, 0, 0, 0] }],
-            ['Email:', { text: this.cliente.email, margin: [10, 0, 0, 0] }],
-            ['Mensaje:', {
-              text: 'Estimado(a) ' + this.cliente.name + ',\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultrices elit nec consequat feugiat. Mauris pulvinar turpis vitae purus volutpat scelerisque. Donec eu dui nisl. Curabitur viverra odio sed nisi varius lobortis. Integer tristique ex non purus congue, a ultrices magna facilisis. Vestibulum euismod sem id purus aliquam, ac pellentesque tellus rutrum. Sed id lectus dui. Suspendisse faucibus tellus ut massa dapibus, ut vulputate neque porttitor. Vivamus dictum magna sit amet mauris fermentum, sit amet faucibus sapien tempor. Sed consectetur cursus urna eget vestibulum. Sed id libero luctus, mattis eros ac, dictum risus.\n\nSincerely,\nTu Nombre',
-              margin: [10, 0, 0, 0]
-            }]
-          ]
+  /*
+  // tipo carta
+  createPdf(){
+    const pdfDefinition: any = {
+      content: [
+        {
+          text: 'Ficha de Cliente',
+          style: 'header'
         },
-        layout: 'noBorders' // Eliminar bordes de la tabla
-      }
-    ],
-    styles: {
-      header: {
-        fontSize: 18,
-        bold: true,
-        margin: [0, 0, 0, 10]
-      }
-    }
-  };
-
-  const pdf = pdfMake.createPdf(pdfDefinition);
-  pdf.open();
-}*/
-// tipo tabla
-/*
-createPdf(){
-  //const imagenUrl='/assets/camaraHD.jpg'
-  const pdfDefinition: any = {
-
-    content: [
-
-
-      {
-        text: 'Ficha de Cliente',
-
-        style: 'header'
-      },
-
-      {
-        table: {
-
-
-          widths: ['auto', '*'], // Ancho de las columnas
-          body: [
-            [
-              { text: 'ID:', bold: true },
-              { text: this.cliente.id }
-            ],
-            [
-              { text: 'Documento/NIT:', bold: true },
-              { text: this.cliente.nit }
-            ],
-            [
-              { text: 'Nombre:', bold: true },
-              { text: this.cliente.name }
-            ],
-            [
-              { text: 'Apellido:', bold: true },
-              { text: this.cliente.lastName }
-            ],
-            [
-              { text: 'Género:', bold: true },
-              { text: this.cliente.gender }
-            ],
-            [
-              { text: 'Municipio:', bold: true },
-              { text: this.cliente.municipio.country } // Suponiendo que el atributo "nombre" contiene el nombre del municipio
-            ],
-            [
-              { text: 'Teléfono:', bold: true },
-              { text: this.cliente.phone }
-            ],
-            [
-              { text: 'Email:', bold: true },
-              { text: this.cliente.email }
-            ],
-            [
-              { text: 'Tipo de Cliente:', bold: true },
-
-              { text:  this.cliente.type==='entrepreneur'?'Emprendedor':'Empresario',color:'red' }
+        {
+          table: {
+            widths: ['auto', '*'], // Ancho de las columnas
+            body: [
+              ['Fecha:', { text: new Date().toLocaleDateString(), margin: [10, 0, 0, 0] }],
+              ['Nombre completo:', { text: this.cliente.name + ' ' + this.cliente.lastName, margin: [10, 0, 0, 0] }],
+              ['Dirección:', { text: this.cliente.address, margin: [10, 0, 0, 0] }],
+              ['Teléfono:', { text: this.cliente.phone, margin: [10, 0, 0, 0] }],
+              ['Email:', { text: this.cliente.email, margin: [10, 0, 0, 0] }],
+              ['Mensaje:', {
+                text: 'Estimado(a) ' + this.cliente.name + ',\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultrices elit nec consequat feugiat. Mauris pulvinar turpis vitae purus volutpat scelerisque. Donec eu dui nisl. Curabitur viverra odio sed nisi varius lobortis. Integer tristique ex non purus congue, a ultrices magna facilisis. Vestibulum euismod sem id purus aliquam, ac pellentesque tellus rutrum. Sed id lectus dui. Suspendisse faucibus tellus ut massa dapibus, ut vulputate neque porttitor. Vivamus dictum magna sit amet mauris fermentum, sit amet faucibus sapien tempor. Sed consectetur cursus urna eget vestibulum. Sed id libero luctus, mattis eros ac, dictum risus.\n\nSincerely,\nTu Nombre',
+                margin: [10, 0, 0, 0]
+              }]
             ]
-          ]
+          },
+          layout: 'noBorders' // Eliminar bordes de la tabla
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10]
+        }
+      }
+    };
+  
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }*/
+  // tipo tabla
+  /*
+  createPdf(){
+    //const imagenUrl='/assets/camaraHD.jpg'
+    const pdfDefinition: any = {
+  
+      content: [
+  
+  
+        {
+          text: 'Ficha de Cliente',
+  
+          style: 'header'
         },
-        layout: 'lightHorizontalLines' // Estilo de tabla con líneas horizontales claras
-      },
-
-    ],
-
-    styles: {
-      header: {
-        fontSize: 30,
-        bold: true,
-        margin: [0, 20, 0,20],
-        color:'red',
-        alignment:'center',
-        localization: {
-          attributes: {
-            text: 'Nombre' // Cambia el atributo "name" al idioma deseado
+  
+        {
+          table: {
+  
+  
+            widths: ['auto', '*'], // Ancho de las columnas
+            body: [
+              [
+                { text: 'ID:', bold: true },
+                { text: this.cliente.id }
+              ],
+              [
+                { text: 'Documento/NIT:', bold: true },
+                { text: this.cliente.nit }
+              ],
+              [
+                { text: 'Nombre:', bold: true },
+                { text: this.cliente.name }
+              ],
+              [
+                { text: 'Apellido:', bold: true },
+                { text: this.cliente.lastName }
+              ],
+              [
+                { text: 'Género:', bold: true },
+                { text: this.cliente.gender }
+              ],
+              [
+                { text: 'Municipio:', bold: true },
+                { text: this.cliente.municipio.country } // Suponiendo que el atributo "nombre" contiene el nombre del municipio
+              ],
+              [
+                { text: 'Teléfono:', bold: true },
+                { text: this.cliente.phone }
+              ],
+              [
+                { text: 'Email:', bold: true },
+                { text: this.cliente.email }
+              ],
+              [
+                { text: 'Tipo de Cliente:', bold: true },
+  
+                { text:  this.cliente.type==='entrepreneur'?'Emprendedor':'Empresario',color:'red' }
+              ]
+            ]
+          },
+          layout: 'lightHorizontalLines' // Estilo de tabla con líneas horizontales claras
+        },
+  
+      ],
+  
+      styles: {
+        header: {
+          fontSize: 30,
+          bold: true,
+          margin: [0, 20, 0,20],
+          color:'red',
+          alignment:'center',
+          localization: {
+            attributes: {
+              text: 'Nombre' // Cambia el atributo "name" al idioma deseado
+            }
           }
         }
       }
-    }
-  };
-  const pdf = pdfMake.createPdf(pdfDefinition);
-  pdf.open();
+    };
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  
+  }
+  */
 
-}
-*/
 
-
-//tipo ficha
-/*
-createPdf(cliente: Client) {
-  const pdfDefinition: any = {
-    content: [
-      {
-        text: 'Ficha del Cliente',
-        style: 'header'
-      },
-      {
-        text: 'ID: ' + cliente.id,
-        margin: [0, 10, 0, 0] // Margen superior de 10 unidades
-      },
-      {
-        text: 'NIT: ' + cliente.nit,
-        margin: [0, 5, 0, 0] // Margen superior de 5 unidades
-      },
-      {
-        text: 'Nombre: ' + cliente.name,
-        margin: [0, 5, 0, 0]
-      },
-      {
-        text: 'Apellido: ' + cliente.lastName,
-        margin: [0, 5, 0, 0]
-      },
-      {
-        text: 'Edad: ' + cliente.edad,
-        margin: [0, 5, 0, 0]
-      },
-      {
-        text: 'Municipio: ' + cliente.municipio.country, // Suponiendo que el atributo "nombre" contiene el nombre del municipio
-        margin: [0, 5, 0, 0]
-      },
-      {
-        text: 'Teléfono: ' + cliente.phone,
-        margin: [0, 5, 0, 0]
-      },
-      {
-        text: 'Email: ' + cliente.email,
-        margin: [0, 5, 0, 0]
+  //tipo ficha
+  /*
+  createPdf(cliente: Client) {
+    const pdfDefinition: any = {
+      content: [
+        {
+          text: 'Ficha del Cliente',
+          style: 'header'
+        },
+        {
+          text: 'ID: ' + cliente.id,
+          margin: [0, 10, 0, 0] // Margen superior de 10 unidades
+        },
+        {
+          text: 'NIT: ' + cliente.nit,
+          margin: [0, 5, 0, 0] // Margen superior de 5 unidades
+        },
+        {
+          text: 'Nombre: ' + cliente.name,
+          margin: [0, 5, 0, 0]
+        },
+        {
+          text: 'Apellido: ' + cliente.lastName,
+          margin: [0, 5, 0, 0]
+        },
+        {
+          text: 'Edad: ' + cliente.edad,
+          margin: [0, 5, 0, 0]
+        },
+        {
+          text: 'Municipio: ' + cliente.municipio.country, // Suponiendo que el atributo "nombre" contiene el nombre del municipio
+          margin: [0, 5, 0, 0]
+        },
+        {
+          text: 'Teléfono: ' + cliente.phone,
+          margin: [0, 5, 0, 0]
+        },
+        {
+          text: 'Email: ' + cliente.email,
+          margin: [0, 5, 0, 0]
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10]
+        }
       }
-    ],
-    styles: {
-      header: {
-        fontSize: 18,
-        bold: true,
-        margin: [0, 0, 0, 10]
-      }
-    }
-  };
-
-  const pdf = pdfMake.createPdf(pdfDefinition);
-  pdf.open();
-  // Descargar
-  // pdf.download();
-}
-*/
+    };
+  
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+    // Descargar
+    // pdf.download();
+  }
+  */
 
 
 
@@ -304,25 +304,25 @@ createPdf(cliente: Client) {
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
         'CLASIFICACIÓN DE CLIENTE:',
-        {  text: this.cliente.type=='entrepreneur'? 'EMPRENDEDOR:':'EMPRESARIO:' , margin: [20, 0] },
+        { text: this.cliente.type == 'entrepreneur' ? 'EMPRENDEDOR' : 'EMPRESARIO', margin: [20, 0] },
 
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
-        {text:   'NOMBRES Y APELLIDOS: ' + this.cliente.name + " "+ this.cliente.lastName  },
-     {text:  ' No. DOCUMENTO/NIT:  ' + this.cliente.nit} ,
+        { text: 'NOMBRES Y APELLIDOS: ' + this.cliente.name + " " + this.cliente.lastName },
+        { text: ' No. DOCUMENTO/NIT:  ' + this.cliente.nit },
         { text: 'GÉNERO:', margin: [0, 0] },
         { text: this.cliente.gender, margin: [0, 0] },
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
 
 
-        'No. CELULAR: '+ this.cliente.phone    + ' CORREO ELECTRÓNICO: ' + this.cliente.email,
-        'DIRECCIÓN: ' + this.cliente.address ,
+        'No. CELULAR: ' + this.cliente.phone + ' CORREO ELECTRÓNICO: ' + this.cliente.email,
+        'DIRECCIÓN: ' + this.cliente.address,
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
         '',
         '¿INTERESADO EN RECIBIR CORREOS ELECTRÓNICOS MASIVOS?:          SI __       NO __',
 
-        'TEMA ABORDADO:',
+        'TEMA ABORDADO:'+ this.cliente.remarks,
         '',
         {
           text: 'Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE VILLAVICENCIO (la “CCV”) para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación personal, nombres y apellidos, números de teléfono y celular, correo electrónico, país de origen y en general toda la información solicitada para información de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a la que puede accederse en el siguiente link:',
@@ -348,11 +348,11 @@ createPdf(cliente: Client) {
           fontSize: 12
         },
 
-        titulo:{
+        titulo: {
           bold: true,
           fontSize: 18,
-          alignment:'center',
-          margin: [0,0,0,40 ],
+          alignment: 'center',
+          margin: [0, 0, 0, 40],
         },
 
         p: {

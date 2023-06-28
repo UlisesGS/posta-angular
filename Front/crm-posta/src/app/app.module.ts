@@ -74,7 +74,6 @@ const routes:Routes=[
     MainComponent,
     HeaderSuperiorComponent,
 
-      PdfComponent,
       CalendarioComponent,
       AsesoriaListComponent,
 

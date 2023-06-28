@@ -7,7 +7,7 @@ import { Asesoria } from 'src/app/usuario/asesoria';
 import { Usuario } from 'src/app/usuario/usuario';
 import { UsuarioService } from 'src/app/usuario/usuario.service';
 
-
+ 
 @Component({
   selector: 'app-asesoriaList',
   templateUrl: './asesoriaList.component.html',

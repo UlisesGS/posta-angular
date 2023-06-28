@@ -6,5 +6,6 @@ export class Asesoria {
     client:Client;
     advisory:string;
     user:Usuario;
+    regdate:Date;
 
 }
