@@ -1,0 +1,57 @@
+<div class="abrir-modal animacion fadeIn">
+  <div class="modal" tabindex="-1" style="display:block; margin-left: -200px;">
+      <div class="modal-dialog" style="width:850px;  " role="document">
+          <div class="modal-content" style="width:850px; ">
+              <div class="modal-header" style="width:850px; margin-bottom: 5px">
+                  <h5 class="modal-title">Iniciando Proceso</h5>
+
+                  <button (click)="cerrarModalAsesoria()" type="button" class="btn-close" data-bs-dismiss="modal"
+                      aria-label="Close"></button>
+              </div>
+              <p  class="m-4"> Asesor : {{usuario.name}}  {{usuario.lastName}}</p>
+              <div class="container display-flex" *ngIf="!condicion">
+                <div class="col-7 m-2" >
+                  <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar por Nombre" >
+
+                </div>
+                <table class="table table-striped table-hover table-sm" >
+                  <thead>
+                    <tr>
+                      <th>Nic</th>
+                      <th>nombre</th>
+                      <th>Apellido</th>
+                      <th>Tipo</th>
+                      <th>Asignar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let cliente of clientes" >
+                      <td>{{cliente.nit}}</td>
+                      <td>{{cliente.name}}</td>
+                      <td>{{cliente.lastName}}</td>
+                      <td>{{cliente.type}}</td>
+                      <td><button (click)="findById(cliente.id)" class="btn btn-success btn-sm"  >+</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                </div>
+
+              <div class="container display-flex" *ngIf="condicion">
+                <p> Cliente : {{client.name}}  {{client.lastName}}</p>
+
+
+
+                  <div class="form-group" style="margin-top: 5px; margin-bottom: 5px;">
+                      <button [routerLink]="['/autoevaluacion/cliente/', client.id]" class="btn btn-success">Crear Proceso</button>
+                      <button (click)="volver()" class="btn btn-success m-2">Volver</button>
+                      <button  (click)="cerrarModalAsesoria()" class="btn btn-primary m-2">Cancelar</button>
+
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>

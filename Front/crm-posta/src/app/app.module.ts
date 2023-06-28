@@ -27,6 +27,9 @@ import { CalendarioComponent } from './calendario/calendario.component';
 //import { CalendarModule as AngularCalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AsesoriaListComponent } from './header/asesoria/asesoriaList/asesoriaList.component';
+import { ProcesoListarComponent } from './procesos/proceso-listar/proceso-listar.component';
+import { AccionProcesosComponent } from './procesos/accion-procesos/accion-procesos.component';
+import { NuevoProcesoComponent } from './procesos/nuevo-proceso/nuevo-proceso.component';
 
 const routes:Routes=[
 
@@ -38,7 +41,7 @@ const routes:Routes=[
   {path:'clients/form/editar/businessman/:id', component:FormClientComponent},
   {path:'clients/form/editar/entrepreneur/:id', component:FormEntrepreneurComponent},
   {path:'clients/registrar', component:RegistrarComponent},
-  {path:'clients/autoevaluacion', component:AutoevaluacionComponent},
+  {path:'autoevaluacion/cliente/:id', component:AutoevaluacionComponent},
   {path:'clients/details/:id', component:ClientDetailsComponent},
   {path:'clients/action/:id', component:AccionComponent},
   {path:'usuarios', component:UsuariolistComponent},
@@ -49,6 +52,7 @@ const routes:Routes=[
   {path:'main',component:MainComponent},
   {path:'calendario',component:CalendarioComponent},
   {path:'asesorias',component:AsesoriaListComponent},
+  {path:'procesos',component:ProcesoListarComponent},
 
 ]
 
@@ -76,6 +80,9 @@ const routes:Routes=[
 
       CalendarioComponent,
       AsesoriaListComponent,
+      ProcesoListarComponent,
+      AccionProcesosComponent,
+      NuevoProcesoComponent,
 
 
    ],
