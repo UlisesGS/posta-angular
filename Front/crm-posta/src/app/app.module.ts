@@ -73,8 +73,6 @@ const routes:Routes=[
     LoginComponent,
     MainComponent,
     HeaderSuperiorComponent,
-
-      PdfComponent,
       CalendarioComponent,
       AsesoriaListComponent,
 
