@@ -1,0 +1,52 @@
+<div class="card" style="margin-right: 20px; margin-bottom: 20px; height: 102px; background-color: rgb(125,58,135) ; display: flex;">
+  <ul class="nav d-flex justify-content-center align-items-center" style="position: relative; height: 100%; overflow: hidden; align-items: flex-start; flex-grow: 1;">
+   <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
+  </ul>
+</div>
+
+<div  style="margin-bottom: 5px;">
+   <div class="card-header bg-transparent" style="margin-bottom: 10px;">
+       <div class="row">
+           <div class="col">
+               <h3>Asesorias</h3>
+           </div>
+
+
+
+   </div>
+</div>
+</div>
+
+
+
+<div class="table-container">
+   <table class="table table-sm" *ngFor="let asesoria of asesorias" >
+       <thead>
+           <tr>
+               <td style="width: 20%; font-size: 10px;" class="align-middle"> Id</td>
+               <td style="width: 20%; font-size: 10px;" class="align-middle"> Cliente</td>
+               <td style="width: 20%; font-size: 10px;" class="align-middle"> Asesor</td>
+               <td style="width: 20%; font-size: 10px;" class="align-middle"> descripcion</td>
+               <td style="width: 20%; font-size: 10px; text-align: center;" class="align-middle"> Tipo</td>
+
+           </tr>
+       </thead>
+       <tbody  class="table-sm" style="margin-top: 0;">
+           <tr>
+               <th style="width: 20%;" >{{asesoria.id}}</th>
+               <th style="width: 20%;" >{{asesoria.client.name}}</th>
+               <th style="width: 20%;" >{{asesoria.user.name}}</th>
+               <th style="width: 20%;" >{{asesoria.advisory}}</th>
+
+               <th style="width: 20%;" >
+                   <button id="button" class="btn btn-disabled"
+                       style=" background-color: red; color: white; width: 100%;">Asesorias</button>
+               </th>
+
+
+
+           </tr>
+       </tbody>
+   </table>
+
+</div>

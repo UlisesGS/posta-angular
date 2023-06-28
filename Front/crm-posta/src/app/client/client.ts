@@ -11,7 +11,7 @@ export class Client{
     phone:string;
     email:string;
     address:string;
-    gender:[];
+    gender:string[];
     studyLevel:[];
     ethnicGroup:[];
     victimPopulation:boolean;
@@ -26,7 +26,7 @@ export class Client{
     businessIdea:string;
     product:string;
 //Atributos Empresario
-contracting:string;
+  contracting:string;
   companyName:string;
   fechaAlta:string;
   typeOfCompany:string;

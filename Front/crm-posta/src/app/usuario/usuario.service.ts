@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Usuario } from './usuario';
 import { Asesoria } from './asesoria';
 import { ModalService } from '../client/modal.service';
@@ -52,7 +52,10 @@ export class UsuarioService implements OnInit{
     return this.http.delete<void>(`${this.urlEndPoint}/${id}`);
   }
   public usuarioFindByEmail(email:string):Observable<any>{
-    return this.http.get(`${this.urlEndPoint}/byEmail/${email}`)
+    return this.http.get<any>(`${this.urlEndPoint}/byEmail/${email}`)
+  }
+  public usuarioGetAsesorias(usuario:Usuario):Observable<Asesoria[]>{
+    return this.http.get<Asesoria[]>(`${this.urlEndPoint}/byAdvisory/${0}?user_id=${usuario.id}`)
   }
 }
 
