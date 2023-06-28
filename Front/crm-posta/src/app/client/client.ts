@@ -11,7 +11,7 @@ export class Client{
     phone:string;
     email:string;
     address:string;
-    gender:[];
+    gender:string[];
     studyLevel:[];
     ethnicGroup:[];
     victimPopulation:boolean;
