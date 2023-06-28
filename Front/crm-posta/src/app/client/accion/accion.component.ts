@@ -185,12 +185,7 @@ createPdf() {
       
       { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
       
-      '\n',
       
-      '¿INTERESADO EN RECIBIR CORREOS ELECTRÓNICOS MASIVOS?:          SI ______       NO ______',
-      'TEMA ABORDADO:',
-      
-      '\n',
       
       {
         text: 'Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE VILLAVICENCIO (la “CCV”) para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación personal, nombres y apellidos, números de teléfono y celular, correo electrónico, país de origen y en general toda la información solicitada para información de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a la que puede accederse en el siguiente link:',

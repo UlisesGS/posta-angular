@@ -35,6 +35,8 @@ export class Client{
   registroMercantil:boolean;
   numberMercantilRegistry:string;
   ciiu:Ciiu;
+  //Atributos edad
+  fechaNacimiento:Date;
   
   
 
