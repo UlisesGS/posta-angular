@@ -12,7 +12,6 @@ import { MunicipioComponent } from './municipio/municipio.component';
 import { FormClientComponent } from './client/form-client/form-client.component';
 import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entrepreneur.component';
 import { RegistrarComponent } from './client/registrar/registrar.component';
-import { AutoevaluacionComponent } from './client/autoevaluacion/autoevaluacion.component';
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
 import { AccionComponent } from './client/accion/accion.component';
 import { AsesoriaComponent } from './header/asesoria/asesoria.component';
@@ -30,6 +29,16 @@ import { AsesoriaListComponent } from './header/asesoria/asesoriaList/asesoriaLi
 import { ProcesoListarComponent } from './procesos/proceso-listar/proceso-listar.component';
 import { AccionProcesosComponent } from './procesos/accion-procesos/accion-procesos.component';
 import { NuevoProcesoComponent } from './procesos/nuevo-proceso/nuevo-proceso.component';
+import { AutoevaluacionComponent } from './procesos/autoevaluacion/autoevaluacion.component';
+import { SegmentoComponent } from './procesos/segmento/segmento.component';
+import { PropuestaDeValorComponent } from './procesos/propuesta-de-valor/propuesta-de-valor.component';
+import { CanalesComponent } from './procesos/canales/canales.component';
+import { RelacionesComponent } from './procesos/relaciones/relaciones.component';
+import { RecursosClavesComponent } from './procesos/recursos-claves/recursos-claves.component';
+import { ActividadesClavesComponent } from './procesos/actividades-claves/actividades-claves.component';
+import { SociosClavesComponent } from './procesos/socios-claves/socios-claves.component';
+import { IngresosComponent } from './procesos/ingresos/ingresos.component';
+import { EstructuraCostosComponent } from './procesos/estructura-costos/estructura-costos.component';
 
 const routes:Routes=[
 
@@ -53,7 +62,15 @@ const routes:Routes=[
   {path:'calendario',component:CalendarioComponent},
   {path:'asesorias',component:AsesoriaListComponent},
   {path:'procesos',component:ProcesoListarComponent},
-
+  {path:'segmento/cliente/:id',component:SegmentoComponent},
+  {path:'propuestaDeValor/cliente/:id',component:PropuestaDeValorComponent},
+  {path:'canales/cliente/:id',component:CanalesComponent},
+  {path:'relaciones/cliente/:id',component:RelacionesComponent},
+  {path:'recursosClaves/cliente/:id',component:RecursosClavesComponent},
+  {path:'actividadesClaves/cliente/:id',component:ActividadesClavesComponent},
+  {path:'sociosClaves/cliente/:id',component:SociosClavesComponent},
+  {path:'ingresos/cliente/:id',component:IngresosComponent},
+  {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
 ]
 
 @NgModule({
@@ -83,6 +100,15 @@ const routes:Routes=[
       ProcesoListarComponent,
       AccionProcesosComponent,
       NuevoProcesoComponent,
+      SegmentoComponent,
+      PropuestaDeValorComponent,
+      CanalesComponent,
+      RelacionesComponent,
+      RecursosClavesComponent,
+      ActividadesClavesComponent,
+      SociosClavesComponent,
+      IngresosComponent,
+      EstructuraCostosComponent,
 
 
    ],
