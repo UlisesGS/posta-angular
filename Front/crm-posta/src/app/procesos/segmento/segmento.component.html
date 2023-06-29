@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="col-7">
+        <h4 >Segmento de Clientes</h4>
+        <button (click)="cambiarCondicion()" class="btn btn-primary">VER GUIA RECOMENDACIONES</button>
+        <div *ngIf="value" class="form-group" style="background-color: darkgray;">
+            <p style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5;">
+                Detalle quién va a ser su cliente potencial, su público objetivo.
+                <br><br>
+                ¿Quiénes son las personas que van a verse beneficiadas con su producto/servicio?
+                <br><br>
+                Describa su público objetivo con base en variables demográficas, geográficas, psicográficas y de comportamiento:
+                <ul style="margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
+                  <li>Demográficas: se toman en cuenta aspectos como los grupos de edades, el tamaño familiar, la cultura, género, profesión, nivel educativo y los ingresos familiares.</li>
+                  <li>Geográficas: lugar en donde se encuentran los diferentes clientes (país, departamento, ciudad, variables como: el clima, la estacionalidad)</li>
+                  <li>Psicográficas: aquí se identifican los sueños, anhelos, objetivos, personalidad, estilo de vida, motivaciones, actividades de ocio y valores.</li>
+                  <li>Comportamiento: valora el comportamiento del usuario, analizando elementos como los patrones de uso, sensibilidad al precio, temas de interés, cómo la persona interactúa con Internet y las plataformas sociales y digitales.</li>
+                </ul>
+            
+        </div>
+        
+        <form action="">
+            <div style="flex-basis: 100%;" class="mt-3">
+                <div class="form-group">
+                    <label for="">Demograficas: </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                        placeholder="" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Geograficas: </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                        placeholder="" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Psicograficas: </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                        placeholder="" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Comportamiento: </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                        placeholder="" ></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="form-group">
+        <button  [routerLink]="['/propuestaDeValor/cliente/', cliente.id]" class="btn btn-success">Gauardar y Continuar</button>
+        <button  [routerLink]="['/procesos']"(click)="cerrarModalAsesoria()" class="btn btn-success">Cancelar</button>
+      </div>
+</div>
