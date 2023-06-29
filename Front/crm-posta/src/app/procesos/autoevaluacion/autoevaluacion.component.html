@@ -436,7 +436,8 @@
         </form>
     </div>
     <div class="form-group">
-        <button  [routerLink]="['/segmento/cliente/', cliente.id]" class="btn btn-success">Gauardar y Continuar</button>
+        <button  [routerLink]="['/segmento/cliente/', cliente.id]" (click)="guardar()"  class="btn btn-success">Guardar y Continuar</button>
+        <button  [routerLink]="['/procesos']" (click)="guardar()" class="btn btn-success">Guardar</button>
         <button  [routerLink]="['/procesos']"(click)="cerrarModalAsesoria()" class="btn btn-success">Cancelar</button>
       </div>
 </div>

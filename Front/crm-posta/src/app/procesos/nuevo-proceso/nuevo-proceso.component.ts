@@ -109,8 +109,11 @@ this.asesoria.user = this.usuario;
   }
   public buscar(){
 this.clientService.buscarPorNombre(this.termino).subscribe(data=>{
-  this.clientes = data;
+this.clientes=data;
+this.clientes = this.clientes.filter(d => d.type !== 'businessman');
+
 })
+
   }
   public findById(id:number){
     this.clientService.getClient(id).subscribe(data=>{
