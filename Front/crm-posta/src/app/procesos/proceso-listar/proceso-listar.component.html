@@ -1,0 +1,132 @@
+
+
+<app-accion-procesos *ngIf="modal.proceso" ></app-accion-procesos>
+<app-nuevo-proceso *ngIf="modal.asesoria"></app-nuevo-proceso>
+
+
+ <div class="card" style="margin-right: 20px; margin-bottom: 20px; height: 102px; background-color: rgb(125,58,135) ; display: flex;">
+   <ul class="nav d-flex justify-content-center align-items-center" style="position: relative; height: 100%; overflow: hidden; align-items: flex-start; flex-grow: 1;">
+    <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
+   </ul>
+ </div>
+
+<div  style="margin-bottom: 5px;">
+    <div class="card-header bg-transparent" style="margin-bottom: 10px;">
+        <div class="row">
+            <div class="col">
+                <h3>Procesos</h3>
+            </div>
+
+            <div class="col text-start" style="align-self: flex-start;">
+                <a (click)="cambiarCondicion()" class="btn" style="font-size: 80%;">Filtrar
+                    <i class="fa-solid fa-filter fa-sm" type="button"></i>
+                </a>
+            </div>
+            <div class="col text-end">
+                <button (click)="abrirModalNuevoProceso()" class="btn btn-success" id="button-add"  >+Nuevo Proceso</button>
+            </div>
+        </div>
+        <div class="row"  >
+            <div class="col" *ngIf="value">
+                <label >
+                    <select  class="form-select"
+                        aria-label="Default select example" >
+                        <option [ngValue]="undefined" >--- TIPO DE CLIENTE---</option>
+                        <option value="entrepreneur" >Emprendedor</option>
+                        <option value="businessman" >Empresario</option>
+
+                    </select>
+                </label>
+            </div>
+            <div class="col" *ngIf="value">
+                <label >
+                    <select class="form-select"
+                        aria-label="Default select example" >
+                        <option [ngValue]="undefined" >--- Estado del proceso---</option>
+                        <option value="entrepreneur" >Finalizado</option>
+                        <option value="businessman" > En Proceso</option>
+                    </select>
+                </label>
+            </div>
+            <div class="col" *ngIf="value">
+              <label >
+                <select class="form-select"
+                    aria-label="Default select example" >
+                    <option [ngValue]="undefined" >--- Etapa del Proceso---</option>
+                    <option value="entrepreneur" >Finalizado</option>
+                    <option value="businessman" > En Proceso</option>
+                </select>
+            </label>
+            </div>
+            <div class="col" *ngIf="value">
+              <label >
+                <select class="form-select"
+                    aria-label="Default select example" >
+                    <option [ngValue]="undefined" >--- GEnero---</option>
+                    <option value="MALE" >Masculino</option>
+                    <option value="FEMALE" > Femenino</option>
+                    <option value="LGBTQ" >LGBTQ+</option>
+                </select>
+            </label>
+            </div>
+            <div class="col" *ngIf="value">
+              <label >
+                  <select  class="form-select form-select-sm" name="municipio"
+                  aria-label="Default select example" >
+                  <option [ngValue]="undefined" >--- Seleccionar Municipio---</option>
+                  <option *ngFor="let m of municipios" [ngValue]="m.id">{{m.name}} || {{m.country}}</option>
+                  </select>
+              </label>
+          </div>
+            <div class="col" *ngIf="value">
+              <label >
+                <select class="form-select"
+                    aria-label="Default select example" >
+                    <option [ngValue]="undefined" >--- Etapa del Proceso---</option>
+                    <option value="entrepreneur" >Finalizado</option>
+                    <option value="businessman" > En Proceso</option>
+                </select>
+            </label>
+            </div>
+
+
+
+            <div class="col" *ngIf="value">
+                <button (click)="reiniciarFiltro()"  class="btn btn-success" style="border-radius: 1em;">Reinicar Filtros</button>
+            </div>
+            <div class="col" *ngIf="value">
+              <input  type="text" class="form-control" placeholder="Buscar" >
+            </div>
+
+    </div>
+</div>
+
+
+
+<div class="table-container">
+    <table class="table table-sm"  >
+        <thead>
+            <tr>
+                <td style="width: 20%; font-size: 10px;" class="align-middle"> Tipo de Cliente</td>
+                <td style="width: 20%; font-size: 10px;" class="align-middle"> Empresa/Idea</td>
+                <td style="width: 20%; font-size: 10px;" class="align-middle"> Etapa del Proyector</td>
+                <td style="width: 20%; font-size: 10px;" class="align-middle"> Estado</td>
+                <td style="text-align: center; width: 5%; font-size: 10px;" class="align-middle"> Acciones</td>
+            </tr>
+        </thead>
+        <tbody  class="table-sm" style="margin-top: 0;">
+            <tr>
+                <th style="width: 20%;" >emprendedor</th>
+                <th style="width: 20%;"  >Empresa Uno</th>
+
+                <th style="width: 20%;" >Iniciando</th>
+
+                <th style="width: 20%;" >En proceso</th>
+                <th  style="text-align: center; width: 5%;">
+                    <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction()"></i>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <app-paginator *ngIf="paginador && !value" [paginador]="paginador"></app-paginator>
+</div>

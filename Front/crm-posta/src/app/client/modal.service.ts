@@ -8,6 +8,7 @@ export class ModalService {
   modal: boolean = false;
   action: boolean = false;
   asesoria: boolean=false;
+  proceso:boolean=false;
   private _notificar = new EventEmitter<any>()
   constructor() { }
   get notificar(): EventEmitter<any> {
@@ -36,5 +37,11 @@ export class ModalService {
 
   cerrarModalAsesoria() {
     this.asesoria = false
+  }
+  abrirModalPocesos(){
+this.proceso=true;
+  }
+  cerrarModalProceso(){
+this.proceso=false;
   }
 }
