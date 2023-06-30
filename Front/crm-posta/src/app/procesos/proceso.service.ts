@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Canvas } from './canvas';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +19,8 @@ export class ProcesoService {
   public canvasFindById(id:number):Observable<any>{
     return this.http.get<any>(`${this.urlEndPoint}/buscar/${id}`);
   }
-  
+  public canvasSave(canvas:Canvas):Observable<any>{
+    return this.http.post<any>(`${this.urlEndPoint}/save`,canvas);
+  }
+
   }

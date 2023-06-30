@@ -1,4 +1,5 @@
 import { Municipio } from "../municipio/municipio";
+import { Canvas } from "../procesos/canvas";
 import { Ciiu } from "./ciiu";
 
 export class Client{
@@ -37,8 +38,8 @@ export class Client{
   ciiu:Ciiu;
   //Atributos edad
   fechaNacimiento:Date;
-  
-  
+  canvas:Canvas;
+
 
 
 }
