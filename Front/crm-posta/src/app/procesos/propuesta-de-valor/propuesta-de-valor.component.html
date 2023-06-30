@@ -1,58 +1,56 @@
-<div class="container">
-    <div class="col-7">
-        <h4 >Propuesta de valor</h4>
-        <button (click)="cambiarCondicion()" class="btn btn-primary">VER GUIA RECOMENDACIONES</button>
-        <div *ngIf="value" class="form-group" style="background-color: darkgray;">
-            <p style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5;">
+<div class="row">
+    <div class="col-2">
+        <app-client-details></app-client-details>
+    </div>
+    <div class="col-10">
+        <h4>Propuesta de valor</h4>
+        <a (click)="cambiarCondicion()" class="btn" style="color: rgb(9, 13, 219);"><i class="fa-solid fa-plus"></i> Ver guía de Recomendaciones</a>
+        <div *ngIf="value" class="" style="background-color: rgb(174, 176, 179); border-radius: 1em; padding: 10px;">
+            <p style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 10px; line-height: 1.5">
                 GUÍA RECOMENDACIONES
-                <br><br>
-                Se deben mencionar los elementos que harán que el producto/servicio se diferencie de los que ya existen en el mercado.
-                <br><br>
+                <br>
+                Se deben mencionar los elementos que harán que el producto/servicio se diferencie de los que ya existen
+                en el mercado.
+                <br>
                 ◉ ¿Cuál es el problema o la necesidad que resuelve la idea de negocio?
-                <br><br>
+                <br>
                 ◉ ¿Qué estrategias generará para que el cliente escoja su producto o servicio como primera opción?
-                <br><br>
+                <br>
                 ◉ ¿Qué beneficios obtiene el cliente al acceder a mi producto o servicio?
-                <br><br>
+                <br>
                 Ejemplo:
-                <br><br>
+                <br>
                 Beneficios:
-                <ul style="margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
-                  <p>-Optimización de los procesos al interior de la empresa o proyecto.</p>
-                  <p>-Mejoramiento de la competitividad en el mercado local.</p>
-                  <p>-Generación de conciencia de cambio en la tecnificación de los procesos.</p>
-                  <p>-Posicionamiento de marca y good will.</p>
-                  <p>-Reconocimiento a nivel local.</p>
-                </ul>
+                <br>
+                ◉ Optimización de los procesos al interior de la empresa o proyecto.
+                <br>
+                ◉ Mejoramiento de la competitividad en el mercado local.
+                <br>
+                ◉ Generación de conciencia de cambio en la tecnificación de los procesos.
+                <br>
+                ◉ Posicionamiento de marca y good will.
+                <br>
+                ◉ Reconocimiento a nivel local.
                 
-                 
-                <ul style="margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
-                  <p><strong>Nota:</strong> Factores a tener en cuenta para construir una propuesta de valor en la metodología canvas:</p>
-                  <p><strong>Novedad:</strong> Crear un producto que no exista o una nueva idea de negocio.</p>
-                  <p><strong>Mejora del rendimiento:</strong> Mejorar la producción de tu competencia.</p>
-                  <p><strong>Utilidad:</strong> Que resuelva problemas concretamente.</p>
-                  <p><strong>Diseño:</strong> La presentación del producto de valor atractiva.</p>
-                  <p><strong>Comodidad:</strong> Se refiere a qué tan práctico es usar el producto de valor.</p>
-                  <p><strong>Accesibilidad:</strong> Sobre la facilidad de adquirir el producto.</p>
-                  <p><strong>Reducción de costes:</strong> Se hace simplificando procesos y optimizando recursos.</p>
-                  <p><strong>Reducción de riesgos:</strong> Garantías de proveedores, alianzas, socios, etc.</p>
-                </ul>
             
         </div>
-        
-        <form action="">
-            <div style="flex-basis: 100%;" class="mt-3">
-                <div class="form-group">
-                    <label for="">Propuesta de Valor: </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
-                        placeholder="" ></textarea>
+        <div>
+            <form action="">
+                <div style="flex-basis: 100%;" class="mt-3">
+                    <div class="form-group">
+                        <label for="">Propuesta de Valor: </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                            placeholder=""></textarea>
+                    </div>
                 </div>
-                
-            </div>
-        </form>
+            </form>
+        </div>
+        <div class="form-group mt-3">
+            <button [routerLink]="['/', cliente.id]" class="btn">Guardar</button>
+            <button [routerLink]="['/canales/cliente/', cliente.id]" class="btn ">Guardar y
+                Continuar</button>
+            <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()"
+                class="btn ">Cancelar</button>
+        </div>
     </div>
-    <div class="form-group">
-        <button  [routerLink]="['/canales/cliente/', cliente.id]" class="btn btn-success">Gauardar y Continuar</button>
-        <button  [routerLink]="['/procesos']"(click)="cerrarModalAsesoria()" class="btn btn-success">Cancelar</button>
-      </div>
 </div>
