@@ -1,74 +1,79 @@
-<div class="container">
-    <div class="col-7">
-        <h4 >Recursos claves</h4>
-        <button (click)="cambiarCondicion()" class="btn btn-primary">VER GUIA RECOMENDACIONES</button>
-        <div *ngIf="value" class="form-group" style="background-color: darkgray;">
-            <p style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5;">
-                GUÍA RECOMENDACIONES
-                <br><br>
-                Se deben mencionar los elementos que harán que el producto/servicio se diferencie de los que ya existen en el mercado.
-                <br><br>
-                ◉ ¿Cuál es el problema o la necesidad que resuelve la idea de negocio?
-                <br><br>
-                ◉ ¿Qué estrategias generará para que el cliente escoja su producto o servicio como primera opción?
-                <br><br>
-                ◉ ¿Qué beneficios obtiene el cliente al acceder a mi producto o servicio?
-                <br><br>
-                Ejemplo:
-                <br><br>
-                Beneficios:
-                <ul style="margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
-                  <p>-Optimización de los procesos al interior de la empresa o proyecto.</p>
-                  <p>-Mejoramiento de la competitividad en el mercado local.</p>
-                  <p>-Generación de conciencia de cambio en la tecnificación de los procesos.</p>
-                  <p>-Posicionamiento de marca y good will.</p>
-                  <p>-Reconocimiento a nivel local.</p>
-                </ul>
-                
-                 
-                <ul style="margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
-                  <p><strong>Nota:</strong> Factores a tener en cuenta para construir una propuesta de valor en la metodología canvas:</p>
-                  <p><strong>Novedad:</strong> Crear un producto que no exista o una nueva idea de negocio.</p>
-                  <p><strong>Mejora del rendimiento:</strong> Mejorar la producción de tu competencia.</p>
-                  <p><strong>Utilidad:</strong> Que resuelva problemas concretamente.</p>
-                  <p><strong>Diseño:</strong> La presentación del producto de valor atractiva.</p>
-                  <p><strong>Comodidad:</strong> Se refiere a qué tan práctico es usar el producto de valor.</p>
-                  <p><strong>Accesibilidad:</strong> Sobre la facilidad de adquirir el producto.</p>
-                  <p><strong>Reducción de costes:</strong> Se hace simplificando procesos y optimizando recursos.</p>
-                  <p><strong>Reducción de riesgos:</strong> Garantías de proveedores, alianzas, socios, etc.</p>
-                </ul>
-            
-        </div>
-        
-        <form action="">
-            <div style="flex-basis: 100%;" class="mt-3">
-                <div class="form-group">
-                    <label for="">Recursos Humanos: </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
-                        placeholder="" ></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="">Recursos Fisicos: </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
-                        placeholder="" ></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="">Recursos Intelectuales: </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
-                        placeholder="" ></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="">Recursos Tecnologicos: </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
-                        placeholder="" ></textarea>
-                </div>
-                
-            </div>
-        </form>
+<div class="row">
+    <div class="col-2">
+        <app-client-details></app-client-details>
     </div>
-    <div class="form-group">
-        <button  [routerLink]="['/actividadesClaves/cliente/', cliente.id]" class="btn btn-success">Guardar y Continuar</button>
-        <button  [routerLink]="['/procesos']"(click)="cerrarModalAsesoria()" class="btn btn-success">Cancelar</button>
-      </div>
-</div>
+    <div class="col-10">
+        <h4>Recursos claves</h4>
+        <a (click)="cambiarCondicion()" class="btn" style="color: rgb(9, 13, 219);"><i class="fa-solid fa-plus"></i> Ver
+            guía de Recomendaciones</a>
+        <div *ngIf="value" class="" style="background-color: rgb(174, 176, 179); border-radius: 1em; padding: 10px;">
+            <p style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 10px; line-height: 1.5">
+                GUÍA RECOMENDACIONES
+                <br>
+                En este punto se preguntan cuáles son los elementos esenciales que necesitan para que su modelo de
+                negocio funcione.
+                <br>
+                Esto involucra recursos humanos, financieros, de infraestructura, equipamiento, logístico,
+                intelectuales, etc. Respecto a este último, esencial para este proyecto, debe ser contemplado con
+                detenimiento, puesto que involucra el desarrollo de patentes y/o recursos bajo derechos de autor. Este
+                sería el Know How de su negocio.
+                <br>
+                ◉ ¿Qué necesitas para llevar a cabo la actividad de tu empresa?
+                <br>
 
+
+                <strong>Recursos Físicos</strong> Medios materiales, como instalaciones, edificios, vehículos, máquinas,
+                puntos de venta, y redes de distribución que te otorgan una posición ventajosa frente a los
+                competidores.
+                <br>
+                <strong>Recursos Intelectuales:</strong> Crear un producto que no exista o una nueva idea de negocio.
+                <br>
+                <strong>Recursos Humanos:</strong> Las personas de la propia organización serán claves en la medida en
+                la que sin su figura no se puede llevar a cabo una determinada actividad del modelo de negocio
+                planteado.
+                <br>
+                <strong>Recursos Financieros:</strong> Serán claves en la medida en la que nos permita obtener una
+                cierta ventaja y adelantarnos a situaciones del mercado (líneas de crédito, efectivo…,) y colocarnos en
+                una situación más competitiva.
+                <br>
+                <strong>Recursos Tecnológicos:</strong> Equipos, el internet y las aplicaciones que hacen que todos
+                puedan trabajar.
+
+
+        </div>
+        <div>
+            <form action="">
+                <div style="flex-basis: 100%;" class="mt-3">
+                    <div class="form-group">
+                        <label for="">Recursos Humanos: </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                            placeholder=""></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Recursos Fisicos: </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                            placeholder=""></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Recursos Intelectuales: </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                            placeholder=""></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Recursos Tecnologicos: </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                            placeholder=""></textarea>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="form-group mt-3">
+            <button [routerLink]="['/', cliente.id]" class="btn">Guardar</button>
+            <button [routerLink]="['/actividadesClaves/cliente/', cliente.id]" class="btn">Guardar y
+                Continuar</button>
+            <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
+        </div>
+    </div>
+
+</div>

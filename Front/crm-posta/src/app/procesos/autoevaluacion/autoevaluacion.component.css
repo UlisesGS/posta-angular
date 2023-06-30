@@ -27,3 +27,9 @@ td{
 thead{
     font-size: 13px;
 }
+button{
+    border-color: #eb9694;
+    background-color: red ;
+    color: white;
+    margin-left: 10px;
+}

@@ -1,11 +1,7 @@
-<div class="card" style="margin-right: 20px; margin-bottom: 20px; height: 102px; background-color: rgb(125,58,135) ; display: flex;">
-  <ul class="nav d-flex justify-content-center align-items-center" style="position: relative; height: 100%; overflow: hidden; align-items: flex-start; flex-grow: 1;">
-   <img src="/assets/banner.jpg" alt="" style="position: absolute; object-fit: cover; width: auto; height: 100%;">
-  </ul>
-</div>
+
 <div class="row">
 <div class="col">
-  <div class="card mb-3" style="width: 20vw;">
+  <div class="card mb-3">
     <div  class="card-header"  *ngIf="client.type ==='entrepreneur'">Emprendedor</div>
     <div  class="card-header" *ngIf="client.type ==='businessman'">Empresario</div>
     <div class="card-body">
@@ -33,7 +29,7 @@
       <p class="card-text">{{client?.ciiu.id}} - {{client?.ciiu.titulo}} </p>
     </div>
   </div>
-</div>
+</div >
 
 </div>
 

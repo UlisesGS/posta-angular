@@ -39,6 +39,7 @@ import { ActividadesClavesComponent } from './procesos/actividades-claves/activi
 import { SociosClavesComponent } from './procesos/socios-claves/socios-claves.component';
 import { IngresosComponent } from './procesos/ingresos/ingresos.component';
 import { EstructuraCostosComponent } from './procesos/estructura-costos/estructura-costos.component';
+import { BannerComponent } from './banner/banner.component';
 
 const routes:Routes=[
 
@@ -109,6 +110,7 @@ const routes:Routes=[
       SociosClavesComponent,
       IngresosComponent,
       EstructuraCostosComponent,
+      BannerComponent,
 
 
    ],
