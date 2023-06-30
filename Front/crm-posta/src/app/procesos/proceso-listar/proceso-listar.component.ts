@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
 import { Municipio } from 'src/app/municipio/municipio';
@@ -12,16 +13,40 @@ export class ProcesoListarComponent implements OnInit {
   value:boolean;
   paginador:any;
   procesos:any[]=[];
+  clientes:Client[]=[];
+  clientesProceso:Client[]=[];
   municipios:Municipio[];
   constructor(public modal:ModalService, private clienteService:ClientService){
 
   }
   ngOnInit(): void {
 this.clienteService.getClientsMunicipios().subscribe(data=>{
-  console.log(data);
+  //console.log(data);
 
   this.municipios=data;
 })
+this.clienteService.clienteListarTodos().subscribe(data=>{
+ // console.log(data);
+
+  this.clientes=data;
+  console.log(this.clientes);
+  this.clientes.forEach(cliente=>{
+    if(cliente.canvasModel==null){
+      console.log('es null');
+
+    }else{
+      this.clientesProceso.push(cliente);
+    }
+
+
+  })
+  console.log(this.clientesProceso);
+ //this.clientes= this.clientes.filter(cliente=>cliente.canvasModel==null);
+})
+
+
+
+
   }
   public cambiarCondicion(){
     if(this.value){
