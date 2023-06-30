@@ -62,10 +62,10 @@ export class AutoevaluacionComponent implements OnInit {
     this.modalService.cerrarModalAsesoria();
   }
   public guardar(){
-//console.log(this.preguntas);
+console.log(this.preguntas);
 this.selfAssessment.client=this.cliente;
 this.selfAssessment.selfAssessment=this.preguntas;
-//console.log(this.selfAssessment);
+console.log(this.selfAssessment);
 this.clienteService.guardarPreguntas(this.selfAssessment).subscribe(data=>{
   Swal.fire('Exito:', 'La autoevaluacion fue guardada con exito', 'success');
 })
