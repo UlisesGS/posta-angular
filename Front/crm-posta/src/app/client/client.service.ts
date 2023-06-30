@@ -13,7 +13,7 @@ import { Client } from './client';
 export class ClientService {
   //private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/clients"
   private urlEndPoint:string="http://localhost:8080/clients";
-  
+
   private httpHeader=new HttpHeaders({'Content-Type':'application/json'})
 
   constructor(private http:HttpClient, private router:Router) { }
@@ -67,13 +67,16 @@ export class ClientService {
 
   /* TODOS LOS PUT */
   public updateEntrepreneur(entrepreneur:Client):Observable<any>{
-   
+
+
     return this.http.put<any>(`${this.urlEndPoint}/client/${entrepreneur.id}`, entrepreneur,{headers:this.httpHeader})
   }
 
   public updateBusinessman(businessman:Client):Observable<any>{
+  //  console.log(businessman);
+
     console.log(businessman);
-    
+
     return this.http.put<any>(`${this.urlEndPoint}/client/${businessman.id}`,businessman, {headers:this.httpHeader})
   }
 /* TODOS LOS DELETE */
@@ -97,9 +100,9 @@ export class ClientService {
     public saveBusinessman(businessman:Client):Observable<any>{
       return this.http.post<any>(`${this.urlEndPoint}/save`,businessman)
     }
-   
+
     public buscarPorNombre(termino:string):Observable<any>{
       return this.http.get<any>(`${this.urlEndPoint}/search/${termino}`)
     }
-   
+
 }
