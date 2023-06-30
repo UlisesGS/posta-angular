@@ -1,9 +1,12 @@
 import { Municipio } from "../municipio/municipio";
 import { Canvas } from "../procesos/canvas";
 import { Ciiu } from "./ciiu";
+import { SelfAssessment } from './../procesos/selfAssessment';
 
 export class Client{
+
     id:number;
+    selfAssessment:SelfAssessment
     nit:string;
     name:string;
     lastName:string;
@@ -38,7 +41,7 @@ export class Client{
   ciiu:Ciiu;
   //Atributos edad
   fechaNacimiento:Date;
-  canvas:Canvas;
+  canvasModel:Canvas;
 
 
 

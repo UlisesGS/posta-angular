@@ -6,6 +6,7 @@ import { ModalService } from 'src/app/client/modal.service';
 import { ProcesoService } from '../proceso.service';
 import { Canvas } from '../canvas';
 import { SelfAssessment } from './../selfAssessment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-autoevaluacion',
@@ -15,7 +16,7 @@ import { SelfAssessment } from './../selfAssessment';
 export class AutoevaluacionComponent implements OnInit {
   selfAssessment:SelfAssessment= new SelfAssessment();
   preguntas:any[]=[]
-  canvas:Canvas= new Canvas();
+  canvasModel:Canvas= new Canvas();
   cliente: Client = new Client()
   constructor(private modalService: ModalService,
      private clienteService: ClientService,
@@ -25,10 +26,10 @@ export class AutoevaluacionComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.canvasService.canvasSave(this.canvas).subscribe(data=>{
+    this.canvasService.canvasSave(this.canvasModel).subscribe(data=>{
     //  console.log('canvas'+data);
 
-      this.canvas=data;
+      this.canvasModel=data;
 
     })
     this.rutaParametro.paramMap.subscribe(parametro => {
@@ -37,17 +38,20 @@ export class AutoevaluacionComponent implements OnInit {
         this.clienteService.getClient(id).subscribe(d => {
           this.cliente = d;
           console.log(d);
-          this.cliente.canvas=this.canvas;
+          this.cliente.canvasModel=this.canvasModel;
           this.clienteService.updateBusinessman(this.cliente).subscribe(c=>{
             this.cliente=c;
+            console.log("canvas guardado"+c);
+
           })
-         // console.log(data);
+         console.log(this.cliente);
+
 
         })
       }
     })
     //this.cliente.canvas=this.canvas;
-    console.log(this.cliente);
+   // console.log(this.cliente);
 /*
 
     //console.log(this.cliente);
@@ -59,6 +63,13 @@ export class AutoevaluacionComponent implements OnInit {
   }
   public guardar(){
 console.log(this.preguntas);
+this.selfAssessment.client=this.cliente;
+this.selfAssessment.selfAssessment=this.preguntas;
+console.log(this.selfAssessment);
+this.clienteService.guardarPreguntas(this.selfAssessment).subscribe(data=>{
+  Swal.fire('Exito:', 'La autoevaluacion fue guardada con exito', 'success');
+})
+
 
 
   }

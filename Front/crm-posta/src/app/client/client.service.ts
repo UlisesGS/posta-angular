@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Client } from './client';
+import { SelfAssessment } from './../procesos/selfAssessment';
 
 
 
@@ -104,5 +105,11 @@ export class ClientService {
     public buscarPorNombre(termino:string):Observable<any>{
       return this.http.get<any>(`${this.urlEndPoint}/search/${termino}`)
     }
+    public guardarPreguntas(selfAssessment:SelfAssessment):Observable<any>{
+      return this.http.post<any>(`${this.urlEndPoint}/selfAssessment`,selfAssessment);
+    }
+    public clienteListarTodos():Observable<any>{
+      return this.http.get<any>(`${this.urlEndPoint}/listar`)
 
+    }
 }

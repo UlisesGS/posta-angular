@@ -8,6 +8,7 @@ import { Asesoria } from 'src/app/usuario/asesoria';
 import { Usuario } from 'src/app/usuario/usuario';
 import { UsuarioService } from 'src/app/usuario/usuario.service';
 import Swal from 'sweetalert2';
+import { SelfAssessment } from './../selfAssessment';
 
 @Component({
   selector: 'app-nuevo-proceso',
@@ -18,7 +19,8 @@ export class NuevoProcesoComponent implements OnInit {
   constructor(private modalService:ModalService,
     private clientService:ClientService,
     private router:Router,
-    private usuarioService:UsuarioService){}
+    private usuarioService:UsuarioService,
+    ){}
 
   client:Client=new Client();
   municipio:Municipio[]=[];
@@ -28,6 +30,7 @@ export class NuevoProcesoComponent implements OnInit {
   termino:string;
   clientes:Client[]=[]
   usuario:Usuario = new Usuario()
+  selfAssessment:SelfAssessment[]=[];
 
   ngOnInit(): void{
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -77,7 +80,7 @@ export class NuevoProcesoComponent implements OnInit {
   public finalizar(){
 
     this.asesoria.client=this.client;
-this.asesoria.user = this.usuario;
+  this.asesoria.user = this.usuario;
     console.log(this.asesoria);
 
     this.usuarioService.asesoriaSave(this.asesoria).subscribe(data=>{
@@ -117,6 +120,7 @@ this.clientes = this.clientes.filter(d => d.type !== 'businessman');
   }
   public findById(id:number){
     this.clientService.getClient(id).subscribe(data=>{
+
       this.client= data;
       this.condicion=true;
     })
