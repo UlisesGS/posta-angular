@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
+import { CostComponent } from '../CostComponent';
 
 @Component({
   selector: 'app-estructura-costos',
@@ -13,6 +14,14 @@ export class EstructuraCostosComponent {
 
   cliente: Client = new Client()
   value:boolean;
+  //Cost Component
+  listaBackend: CostComponent[] = [];
+  amount:number;
+  nameComponent: string;
+  id:number;
+
+
+
   constructor(private modalService: ModalService,
      private clienteService: ClientService,
      private rutaParametro: ActivatedRoute) { }
@@ -42,4 +51,18 @@ export class EstructuraCostosComponent {
        this.value=true;
      }
   }
+
+  agregarValor() {
+    const nuevaEntidad: CostComponent = {
+      id:this.id,
+      amount: this.amount,
+      nameComponent: this.nameComponent
+    };
+    this.listaBackend.push(nuevaEntidad);
+    this.amount;
+    this.nameComponent;
+  }
+
+
+
 }

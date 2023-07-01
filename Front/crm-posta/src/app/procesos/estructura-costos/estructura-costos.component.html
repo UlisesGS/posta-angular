@@ -1,49 +1,70 @@
-<div class="container">
-    <div class="col-7">
-        <h4 >MODELO CANVAS/ Esctructura costos</h4>
-        <button (click)="cambiarCondicion()" class="btn btn-primary">VER GUIA RECOMENDACIONES</button>
-        <div *ngIf="value" class="form-group" style="background-color: darkgray;">
-            <p style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5;">
-                GUÍA RECOMENDACIONES
-                <br><br>
-                Se deben mencionar los elementos que harán que el producto/servicio se diferencie de los que ya existen en el mercado.
-                <br><br>
-                ◉ ¿Cuál es el problema o la necesidad que resuelve la idea de negocio?
-                <br><br>
-                ◉ ¿Qué estrategias generará para que el cliente escoja su producto o servicio como primera opción?
-                <br><br>
-                ◉ ¿Qué beneficios obtiene el cliente al acceder a mi producto o servicio?
-                <br><br>
-                Ejemplo:
-                <br><br>
-                Beneficios:
-                <ul style="margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
-                  <p>-Optimización de los procesos al interior de la empresa o proyecto.</p>
-                  <p>-Mejoramiento de la competitividad en el mercado local.</p>
-                  <p>-Generación de conciencia de cambio en la tecnificación de los procesos.</p>
-                  <p>-Posicionamiento de marca y good will.</p>
-                  <p>-Reconocimiento a nivel local.</p>
-                </ul>
-                
-                 
-                <ul style="margin-top: 10px; margin-bottom: 10px; padding-left: 20px;">
-                  <p><strong>Nota:</strong> Factores a tener en cuenta para construir una propuesta de valor en la metodología canvas:</p>
-                  <p><strong>Novedad:</strong> Crear un producto que no exista o una nueva idea de negocio.</p>
-                  <p><strong>Mejora del rendimiento:</strong> Mejorar la producción de tu competencia.</p>
-                  <p><strong>Utilidad:</strong> Que resuelva problemas concretamente.</p>
-                  <p><strong>Diseño:</strong> La presentación del producto de valor atractiva.</p>
-                  <p><strong>Comodidad:</strong> Se refiere a qué tan práctico es usar el producto de valor.</p>
-                  <p><strong>Accesibilidad:</strong> Sobre la facilidad de adquirir el producto.</p>
-                  <p><strong>Reducción de costes:</strong> Se hace simplificando procesos y optimizando recursos.</p>
-                  <p><strong>Reducción de riesgos:</strong> Garantías de proveedores, alianzas, socios, etc.</p>
-                </ul>
-            
-        </div>
-        
-        
+<div class="row">
+  <div class="col-2">
+    <app-client-details></app-client-details>
+  </div>
+  <div class="col-10">
+    <h4>Estructura de Costos</h4>
+    <a (click)="cambiarCondicion()" class="btn" style="color: rgb(9, 13, 219);"><i class="fa-solid fa-plus"></i> Ver
+      guía de Recomendaciones</a>
+    <div *ngIf="value" class="" style="background-color: rgb(174, 176, 179); border-radius: 1em; padding: 10px;">
+      <p style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 10px; line-height: 1.5;">
+        GUÍA RECOMENDACIONES
+        <br>
+        <strong>En el último bloque del lienzo deben hacer una radiografía detallada de todos los costos asociados a la
+          producción del negocio.</strong>
+        <br>
+        Esta es una lista de todo aquello que implique gastos para crear y entregar el producto/servicio, por ejemplo:
+        operarios, planta física, sitio web, materia prima, entre otros. Como parte del ejercicio, esta lista debe
+        ordenar los elementos identificados de mayor a menor en función de los gastos para considerar cómo poder
+        reducirlos u optimizarlos.
+        <br>
+        ◉ ¿Cuáles son los costes más importantes?
+        <br>
+        ◉ ¿Cuáles son los recursos y actividades de mayor coste?
+        <br>
+        ◉ ¿Cuáles son los costes fijos y variables de la empresa?
+        <br>
+         <strong>Costes fijos:</strong>  Son aquellos costes que no varían aunque la producción o las ventas aumenten, ya que no tienen una
+        relación proporcional con el producto o servicio.
+          <br>
+        <strong>Costos Variables:</strong>Costos Variables: Asimismo, estos costes aumentan proporcionalmente el volumen de la producción. Por ejemplo, si
+        ofreces un servicio digital en una plataforma que no es tuya, es posible que tengas que pagar una comisión por
+        cada uso de servicio que hagas, esto es un costo variable.
+          <br>
+        ¿Cómo podemos modificar nuestra red de valor para disminuir los costes? (Algunos ejemplos son: coworking,
+        alianzas, asociaciones, nuevos proveedores, outsourcing, etc.)
+
+
+
+
+    </div>
+    <div class="col-2 mt-3">
+      <input [(ngModel)]="nameComponent" type="text" class="form-control mb-1" placeholder="Tipo de gasto">
+      <input [(ngModel)]="amount" type="number" class="form-control" placeholder="Monto">
+      <a (click)="agregarValor()" class="btn mt-2"><i class="fa-solid fa-plus"></i> Agregar</a>
+
+      <ul>
+        <li *ngFor="let entidad of listaBackend">
+          {{ entidad.atributo1 }} - {{ entidad.atributo2 }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-2 mt-3">
+      <input [(ngModel)]="nameComponent" type="text" class="form-control mb-1" placeholder="Tipo de gasto">
+      <input [(ngModel)]="amount" type="number" class="form-control" placeholder="Monto">
+      <a (click)="agregarValor()" class="btn mt-2"><i class="fa-solid fa-plus"></i> Agregar</a>
+
+      <ul>
+        <li *ngFor="let entidad of listaBackend">
+          {{ entidad.atributo1 }} - {{ entidad.atributo2 }}
+        </li>
+      </ul>
     </div>
     <div class="form-group">
-        <button  [routerLink]="['/procesos', cliente.id]" class="btn btn-success">Guardar y Continuar</button>
-        <button  [routerLink]="['/procesos']"(click)="cerrarModalAsesoria()" class="btn btn-success">Cancelar</button>
-      </div>
+      <button [routerLink]="['/', cliente.id]" class="btn">Guardar</button>
+      <button [routerLink]="['/procesos', cliente.id]" class="btn">Guardar y Continuar</button>
+      <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
+    </div>
+
+  </div>
 </div>
