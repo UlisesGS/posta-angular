@@ -13,119 +13,116 @@ import { SelfAssessment } from './../selfAssessment';
 @Component({
   selector: 'app-nuevo-proceso',
   templateUrl: './nuevo-proceso.component.html',
-  styleUrls: ['./nuevo-proceso.component.css']
+  styleUrls: ['./nuevo-proceso.component.css'],
 })
 export class NuevoProcesoComponent implements OnInit {
-  constructor(private modalService:ModalService,
-    private clientService:ClientService,
-    private router:Router,
-    private usuarioService:UsuarioService,
-    ){}
+  constructor(
+    private modalService: ModalService,
+    private clientService: ClientService,
+    private router: Router,
+    private usuarioService: UsuarioService
+  ) {}
 
-  client:Client=new Client();
-  municipio:Municipio[]=[];
-  errores:any;
-  condicion:boolean;
-  asesoria:Asesoria=new Asesoria();
-  termino:string;
-  clientes:Client[]=[]
-  usuario:Usuario = new Usuario()
-  selfAssessment:SelfAssessment[]=[];
+  client: Client = new Client();
+  municipio: Municipio[] = [];
+  errores: any;
+  condicion: boolean;
+  asesoria: Asesoria = new Asesoria();
+  termino: string;
+  clientes: Client[] = [];
+  usuario: Usuario = new Usuario();
+  selfAssessment: SelfAssessment[] = [];
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     console.log(this.usuario);
 
-    this.condicion=false;
-    this.clientService.getClientsMunicipios().subscribe(data => {
-      this.municipio=data;
-
-    })
+    this.condicion = false;
+    this.clientService.getClientsMunicipios().subscribe((data) => {
+      this.municipio = data;
+    });
   }
 
-
-
-
-  public registrar(){
+  public registrar() {
     console.log(this.client);
 
-    this.clientService.saveClient(this.client).subscribe(data=>{
-      console.log(data);
-      this.client=data;
-      Swal.fire('Creado', `Cliente ${data.name} cargado con exito`, 'success');
-      this.condicion=true;
+    this.clientService.saveClient(this.client).subscribe(
+      (data) => {
+        console.log(data);
+        this.client = data;
+        Swal.fire(
+          'Creado',
+          `Cliente ${data.name} cargado con exito`,
+          'success'
+        );
+        this.condicion = true;
 
+        /*this.cerrarModalAsesoria();*/
+      },
+      (e) => {
+        if (e.status == 404) {
+          this.errores = e.error;
+          Swal.fire('Error:', 'complete bien los datos', 'error');
+          console.log(this.errores);
+        }
+        if (e.status == 500 || e.status == 400) {
+          console.log(e);
 
-
-      /*this.cerrarModalAsesoria();*/
-
-    },e=>{
-      if(e.status==404){
-        this.errores=e.error;
-        Swal.fire('Error:', 'complete bien los datos', 'error');
-       console.log(this.errores);
-
-
+          Swal.fire('Error: ', `Error en la carga del formulario`, 'error');
+        }
       }
-      if(e.status==500 || e.status==400){
-        console.log(e);
-
-        Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
-      }
-
-    })
+    );
   }
 
-
-  public finalizar(){
-
-    this.asesoria.client=this.client;
-  this.asesoria.user = this.usuario;
+  public finalizar() {
+    this.asesoria.client = this.client;
+    this.asesoria.user = this.usuario;
     console.log(this.asesoria);
 
-    this.usuarioService.asesoriaSave(this.asesoria).subscribe(data=>{
-      this.asesoria.advisory=data;
-      Swal.fire('Finalizada', `La asesoria de ${/* NOMBRE DE ASESOR */this.client.name} fue creada con exito`, 'success')
-      this.cerrarModalAsesoria();
-    },e=>{
-      if(e.status==404){
-        this.errores=e.error;
-        Swal.fire('Error:', 'complete bien los datos', 'error');
-       console.log(this.errores);
+    this.usuarioService.asesoriaSave(this.asesoria).subscribe(
+      (data) => {
+        this.asesoria.advisory = data;
+        Swal.fire(
+          'Finalizada',
+          `La asesoria de ${
+            /* NOMBRE DE ASESOR */ this.client.name
+          } fue creada con exito`,
+          'success'
+        );
+        this.cerrarModalAsesoria();
+      },
+      (e) => {
+        if (e.status == 404) {
+          this.errores = e.error;
+          Swal.fire('Error:', 'complete bien los datos', 'error');
+          console.log(this.errores);
+        }
+        if (e.status == 500 || e.status == 400) {
+          console.log(e);
 
-
+          Swal.fire('Error: ', `Error en la carga del formulario`, 'error');
+        }
       }
-      if(e.status==500 || e.status==400){
-        console.log(e);
-
-        Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
-      }
-
-    }
     );
-
   }
 
-
-  cerrarModalAsesoria():void{
+  cerrarModalAsesoria(): void {
     this.modalService.cerrarModalAsesoria();
   }
-  public buscar(){
-this.clientService.buscarPorNombre(this.termino).subscribe(data=>{
-this.clientes=data;
-this.clientes = this.clientes.filter(d => d.type !== 'businessman');
-
-})
-
+  public buscar() {
+    this.clientService.buscarPorNombre(this.termino).subscribe((data) => {
+      this.clientes = data;
+      this.clientes = this.clientes.filter((d) => d.type !== 'businessman');
+    });
   }
-  public findById(id:number){
-    this.clientService.getClient(id).subscribe(data=>{
-
-      this.client= data;
-      this.condicion=true;
-    })
+  public findById(id: number) {
+    this.clientService.getClient(id).subscribe((data) => {
+      
+      this.client = data;
+      this.condicion = true;
+    });
   }
-  public volver(){
-    this.condicion=false;
+  public volver() {
+    this.condicion = false;
   }
 }
