@@ -9,6 +9,8 @@ import { Usuario } from 'src/app/usuario/usuario';
 import { UsuarioService } from 'src/app/usuario/usuario.service';
 import Swal from 'sweetalert2';
 import { SelfAssessment } from './../selfAssessment';
+import { ProcesoService } from '../proceso.service';
+import { Process } from '../Process';
 
 @Component({
   selector: 'app-nuevo-proceso',
@@ -20,9 +22,10 @@ export class NuevoProcesoComponent implements OnInit {
     private modalService: ModalService,
     private clientService: ClientService,
     private router: Router,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private procesoService:ProcesoService,
   ) {}
-
+procesos:Process[]=[];
   client: Client = new Client();
   municipio: Municipio[] = [];
   errores: any;
@@ -89,7 +92,7 @@ export class NuevoProcesoComponent implements OnInit {
           } fue creada con exito`,
           'success'
         );
-        this.cerrarModalAsesoria();
+        this.cerrarModalProceso();
       },
       (e) => {
         if (e.status == 404) {
@@ -106,7 +109,7 @@ export class NuevoProcesoComponent implements OnInit {
     );
   }
 
-  cerrarModalAsesoria(): void {
+  cerrarModalProceso(): void {
     this.modalService.cerrarModalAsesoria();
   }
   public buscar() {
@@ -117,10 +120,23 @@ export class NuevoProcesoComponent implements OnInit {
   }
   public findById(id: number) {
     this.clientService.getClient(id).subscribe((data) => {
-      
+
+
       this.client = data;
       this.condicion = true;
     });
+    this.procesoService.procesosFindAll().subscribe(data=>{
+      this.procesos= data;
+      this.procesos.forEach(proceso=>{
+        if(proceso.selfAssessment.client.id==this.client.id){
+          this.cerrarModalProceso();
+
+          Swal.fire('Error: ', 'El cliente seleccionado ya tiene un proceso', 'error');
+
+        }
+      })
+    })
+
   }
   public volver() {
     this.condicion = false;
