@@ -4,13 +4,15 @@
     </div>
     <div class="col-10">
         <h4>Relaciones</h4>
-        <a (click)="cambiarCondicion()" class="btn" style="color: rgb(9, 13, 219);"><i class="fa-solid fa-plus"></i> Ver guía de Recomendaciones</a>
+        <a (click)="cambiarCondicion()" class="btn" style="color: rgb(9, 13, 219);"><i class="fa-solid fa-plus"></i> Ver
+            guía de Recomendaciones</a>
         <div *ngIf="value" class="" style="background-color: rgb(174, 176, 179); border-radius: 1em; padding: 10px;">
             <p style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 10px; line-height: 1.5">
-           
+
                 GUÍA RECOMENDACIONES
                 <br>
-                "Aquí se contempla cómo van a relacionarse con los clientes, de tal forma que quieran volver a usar su producto/servicio, a partir del vínculo de satisfacción y afecto que logren desarrollar.
+                "Aquí se contempla cómo van a relacionarse con los clientes, de tal forma que quieran volver a usar su
+                producto/servicio, a partir del vínculo de satisfacción y afecto que logren desarrollar.
                 <br>
                 Se deben mencionar los elementos que harán que el producto/servicio se diferencie de los que ya existen
                 en el mercado.
@@ -21,23 +23,21 @@
                 <br>
                 ◉ ¿Qué beneficios obtiene el cliente al acceder a mi producto o servicio?
                 <br>
-                Ejemplo:
+                <strong>Captación:</strong> Cómo ganarás clientes para tu negocio. Una estrategia de captación de clientes exitosa
+                ayudará a conseguir nuevos negocios, retener clientes leales y mejorar los ingresos de tu empresa
+                (servicio al cliente, garantías, calidad, precio). Un canal de adquisición de clientes es cualquier
+                lugar en el que las personas conocen tu marca por primera vez. (Vía Internet, correo electrónico,
+                personal)
                 <br>
-                Beneficios:
+                <strong>Fidelización:</strong> Cómo preservarás a tus clientes, incluyendo aquellos que generan mejores beneficios a tu
+                empresa. Consiste en retener clientes ganados, que continúan comprando tus productos o servicios gracias
+                a las experiencias positivas que han tenido con tu empresa.
                 <br>
-                -Optimización de los procesos al interior de la empresa o proyecto.
+                <strong>Estimulación:</strong> Trabajar con los clientes en identificar oportunidades de crecimiento y en establecer las
+                palancas estratégicas, tácticas y organizativas, que permitan obtener resultados significativos. Ej:
+                Crear curiosidad sobre nuestro producto o servicio, Anunciar primicias o lanzamientos de servicios y
+                productos en exclusiva, Ordenar la información, ofrecer descuentos y ofertas"
                 <br>
-                -Mejoramiento de la competitividad en el mercado local.
-                <br>
-                -Generación de conciencia de cambio en la tecnificación de los procesos.
-                <br>
-                -Posicionamiento de marca y good will.
-                <br>
-                -Reconocimiento a nivel local.
-                
-                
-                
-            
 
         </div>
         <div>
@@ -58,7 +58,7 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
                             placeholder=""></textarea>
                     </div>
-    
+
                 </div>
             </form>
         </div>
@@ -69,5 +69,5 @@
             <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
         </div>
     </div>
-    
+
 </div>
