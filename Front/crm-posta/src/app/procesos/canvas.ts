@@ -7,6 +7,7 @@ import { KeyRecources } from "./KeyRecources";
 import { RevenueStreams } from "./RevenueStreams";
 import { ValuePropositions } from "./ValuePropositions";
 import { CostStructure } from './CostStructure';
+import { Client } from "../client/client";
 
 export class Canvas {
   id:number;
@@ -19,7 +20,30 @@ export class Canvas {
   keyPartners:KeyPartners;
   revenueStreams:RevenueStreams;
   costStructure:CostStructure;
+  client:Client;
+/*
+private Long id;
+    @OneToOne
+    private CustomerSegments customerSegments;
+    @OneToOne
+    private ValuePropositions valuePropositions;
+    @OneToOne
+    private Channels channels;
+    @OneToOne
+    private CustomerRelationships customerRelationships;
+    @OneToOne
+    private KeyRecources keyRecources;
+    @OneToOne
+    private KeyActivities keyActivities;
+    @OneToOne
+    private KeyPartners keyPartners;
+    @OneToOne
+    private RevenueStreams revenueStreams;
+    @OneToOne
+    private CostStructure costStructure;
+    @OneToOne
+    private Client client;
 
-
+*/
 }
 

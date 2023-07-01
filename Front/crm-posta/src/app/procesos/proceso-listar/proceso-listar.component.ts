@@ -3,6 +3,8 @@ import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
 import { Municipio } from 'src/app/municipio/municipio';
+import { ProcesoService } from './../proceso.service';
+import { Process } from '../Process';
 
 @Component({
   selector: 'app-proceso-listar',
@@ -12,11 +14,15 @@ import { Municipio } from 'src/app/municipio/municipio';
 export class ProcesoListarComponent implements OnInit {
   value:boolean;
   paginador:any;
-  procesos:any[]=[];
+  procesos:Process[]=[];
   clientes:Client[]=[];
   clientesProceso:Client[]=[];
   municipios:Municipio[];
-  constructor(public modal:ModalService, private clienteService:ClientService){
+  constructor(
+    public modal:ModalService,
+    private clienteService:ClientService,
+    private procesoService:ProcesoService
+    ){
 
   }
   ngOnInit(): void {
@@ -25,6 +31,7 @@ this.clienteService.getClientsMunicipios().subscribe(data=>{
 
   this.municipios=data;
 })
+/*
 this.clienteService.clienteListarTodos().subscribe(data=>{
  // console.log(data);
 
@@ -43,7 +50,10 @@ this.clienteService.clienteListarTodos().subscribe(data=>{
   console.log(this.clientesProceso);
  //this.clientes= this.clientes.filter(cliente=>cliente.canvasModel==null);
 })
-
+*/
+this.procesoService.procesosFindAll().subscribe(data=>{
+  this.procesos=data;
+})
 
 
 

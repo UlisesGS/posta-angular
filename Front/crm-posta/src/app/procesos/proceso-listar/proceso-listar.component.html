@@ -100,21 +100,23 @@
     <table class="table table-sm"  >
         <thead>
             <tr>
-                <td style="width: 20%; font-size: 10px;" class="align-middle"> Tipo de Cliente</td>
+                <td style="width: 20%; font-size: 10px;" class="align-middle"> Tipo de Cliente </td>
+                <td style="width: 20%; font-size: 10px;" class="align-middle"> Nombre </td>
                 <td style="width: 20%; font-size: 10px;" class="align-middle"> Empresa/Idea</td>
                 <td style="width: 20%; font-size: 10px;" class="align-middle"> Etapa del Proyector</td>
                 <td style="width: 20%; font-size: 10px;" class="align-middle"> Estado</td>
                 <td style="text-align: center; width: 5%; font-size: 10px;" class="align-middle"> Acciones</td>
             </tr>
         </thead>
-        <tbody  class="table-sm" style="margin-top: 0;" *ngFor="let cliente of clientesProceso">
+        <tbody  class="table-sm" style="margin-top: 0;" *ngFor="let proceso of procesos">
             <tr>
-                <th style="width: 20%;" >{{cliente.type}}</th>
-                <th style="width: 20%;"  >{{cliente.businessIdea}}</th>
+              <th style="width: 20%;" >{{proceso.canvasModel.client.type}} </th>
+                <th style="width: 20%;" >{{proceso.canvasModel.client.name}} {{proceso.canvasModel.client.lastName}} </th>
+                <th style="width: 20%;"  >{{proceso.canvasModel.client.type=='entrepreneur'? proceso.canvasModel.client.businessIdea:'agregar despues de empresario'}}</th>
 
-                <th style="width: 20%;" >Iniciando</th>
+                <th style="width: 20%;" >{{proceso.estado}}</th>
 
-                <th style="width: 20%;" >En proceso</th>
+                <th style="width: 20%;" >{{proceso.estado=='actaCierre'?'Finalizado':'En proceso'}}</th>
                 <th  style="text-align: center; width: 5%;">
                     <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction()"></i>
                 </th>

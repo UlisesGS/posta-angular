@@ -5,7 +5,7 @@
               <div class="modal-header" style="width:850px; margin-bottom: 5px">
                   <h5 class="modal-title">Iniciando Proceso</h5>
 
-                  <button (click)="cerrarModalAsesoria()" type="button" class="btn-close" data-bs-dismiss="modal"
+                  <button (click)="cerrarModalProceso()" type="button" class="btn-close" data-bs-dismiss="modal"
                       aria-label="Close"></button>
               </div>
               <p  class="m-4"> Asesor : {{usuario.name}}  {{usuario.lastName}}</p>
@@ -43,9 +43,9 @@
 
 
                   <div class="form-group" style="margin-top: 5px; margin-bottom: 5px;">
-                      <button (click)="cerrarModalAsesoria()" [routerLink]="['/autoevaluacion/cliente/', client.id]" class="btn btn-success">Crear Proceso</button>
+                      <button (click)="cerrarModalProceso()" [routerLink]="['/autoevaluacion/cliente/', client.id]" class="btn btn-success">Crear Proceso</button>
                       <button (click)="volver()" class="btn btn-success m-2">Volver</button>
-                      <button  (click)="cerrarModalAsesoria()" class="btn btn-primary m-2">Cancelar</button>
+                      <button  (click)="cerrarModalProceso()" class="btn btn-primary m-2">Cancelar</button>
 
                   </div>
 
