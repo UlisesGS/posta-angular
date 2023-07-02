@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Canvas } from './canvas';
 import { Process } from './Process';
 import { CustomerSegments } from './CustomerSegments';
+import { ValuePropositions } from './ValuePropositions';
 
 
 
@@ -45,6 +46,9 @@ export class ProcesoService {
   }
 public segmentoSave(customerSegments:CustomerSegments):Observable<any>{
   return this.http.post<any>(`${this.urlEndPoint}/segmetento`,customerSegments)
+}
+public propuestaValorSave(valuePropositions:ValuePropositions):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/propuestaValor`,valuePropositions)
 }
 
   }
