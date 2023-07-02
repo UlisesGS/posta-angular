@@ -6,6 +6,8 @@ import { AuthService } from '../auth/auth.service';
 import { Client } from '../client/client';
 import { Municipio } from '../municipio/municipio';
 import { Observable, tap } from 'rxjs';
+import { Process } from '../procesos/Process';
+import { ProcesoService } from '../procesos/proceso.service';
 
 @Component({
   selector: 'app-main',
@@ -17,8 +19,9 @@ export class MainComponent implements OnInit {
   constructor(private serviceClient: ClientService,
     public modalservice: ModalService,
     private activatedRoute: ActivatedRoute,
-    public authService: AuthService,) { }
-
+    public authService: AuthService,
+    public procesosService:ProcesoService,) { }
+    procesos:Process[]=[];
   clients: Client[];
   client: Client;
 
@@ -37,6 +40,9 @@ export class MainComponent implements OnInit {
   public termino: string;
 
   ngOnInit(): void {
+    this.procesosService.procesosFindAllUltimo().subscribe(data=>{
+      this.procesos=data;
+    })
     this.modal = false;
 
     this.activatedRoute.paramMap.subscribe(params => {
@@ -52,8 +58,8 @@ export class MainComponent implements OnInit {
             (response.content as Client[]).forEach(cliente => console.log(cliente.name));
           })
         ).subscribe(response => {
-          
-          
+
+
           this.clients = response.content as Client[];
           this.paginador = response;
           console.log(this.paginador);

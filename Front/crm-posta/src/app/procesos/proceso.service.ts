@@ -18,6 +18,9 @@ export class ProcesoService {
    private urlProcesos:string="http://localhost:8080/process";
   constructor(private http:HttpClient) { }
 // procesos
+public procesosFindAllUltimo():Observable<any>{
+  return this.http.get<any>(`${this.urlProcesos}/ultimo`);
+}
   public procesosFindAll():Observable<any>{
     return this.http.get<any>(`${this.urlProcesos}`);
   }
