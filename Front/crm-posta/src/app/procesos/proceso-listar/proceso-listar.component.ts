@@ -54,6 +54,8 @@ this.clienteService.clienteListarTodos().subscribe(data=>{
 */
 this.procesoService.procesosFindAll().subscribe(data=>{
   this.procesos=data;
+  console.log(this.procesos);
+
 })
 
 
@@ -80,7 +82,7 @@ this.modal.abrirModalPocesos();
     this.todos();
   }
   public abrirModalNuevoProceso(){
-    
+
     this.modal.abrirModalAsesoria();
   }
 }

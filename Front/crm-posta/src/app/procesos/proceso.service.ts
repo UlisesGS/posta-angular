@@ -5,6 +5,7 @@ import { Canvas } from './canvas';
 import { Process } from './Process';
 import { CustomerSegments } from './CustomerSegments';
 import { ValuePropositions } from './ValuePropositions';
+import { Channels } from './Channels';
 
 
 
@@ -52,6 +53,9 @@ public segmentoSave(customerSegments:CustomerSegments):Observable<any>{
 }
 public propuestaValorSave(valuePropositions:ValuePropositions):Observable<any>{
   return this.http.post<any>(`${this.urlEndPoint}/propuestaValor`,valuePropositions)
+}
+public canalesSave(channels:Channels):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/canales`,channels)
 }
 
   }

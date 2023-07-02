@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
+import { Channels } from '../Channels';
+import { Process } from '../Process';
+import { ProcesoService } from '../proceso.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-canales',
@@ -11,11 +15,17 @@ import { ModalService } from 'src/app/client/modal.service';
 })
 export class CanalesComponent {
 
+  channels:Channels= new Channels();
+  proceso:Process= new Process;
+
+  procesos:Process[]=[];
   cliente: Client = new Client()
   value:boolean;
   constructor(private modalService: ModalService,
      private clienteService: ClientService,
-     private rutaParametro: ActivatedRoute) { }
+      private rutaParametro: ActivatedRoute,
+      private procesoService:ProcesoService,
+      ) { }
 
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
@@ -24,7 +34,17 @@ export class CanalesComponent {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
           console.log(data);
+          this.procesoService.procesosFindAll().subscribe(p=>{
 
+            this.procesos=p;
+            this.procesos.forEach(proceso=>{
+              if(proceso.canvasModel.client.id==this.cliente.id){
+                this.proceso=proceso;
+                console.log(proceso);
+
+              }
+            })
+          })
         })
       }
     })
@@ -42,4 +62,20 @@ export class CanalesComponent {
        this.value=true;
      }
   }
+  public guardar(){
+    this.proceso.estado='canales';
+    console.log(this.proceso);
+    this.proceso.canvasModel.channels=this.channels
+   this.procesoService.canalesSave(this.proceso.canvasModel.channels).subscribe(canales=>{
+    this.proceso.canvasModel.channels=canales;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        Swal.fire('Exito', 'Canales creado con exito', 'success');
+      })
+    })
+   })
+  }
+
+
+
 }
