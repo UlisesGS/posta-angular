@@ -6,6 +6,7 @@ import { Process } from './Process';
 import { CustomerSegments } from './CustomerSegments';
 import { ValuePropositions } from './ValuePropositions';
 import { Channels } from './Channels';
+import { CustomerRelationships } from './CustomerRelationships';
 
 
 
@@ -50,13 +51,16 @@ public procesosFindAllUltimo():Observable<any>{
   }
   // modelo canvas todos los save de los diferentes sectores
 public segmentoSave(customerSegments:CustomerSegments):Observable<any>{
-  return this.http.post<any>(`${this.urlEndPoint}/segmetento`,customerSegments)
+  return this.http.post<any>(`${this.urlEndPoint}/segmetento`,customerSegments);
 }
 public propuestaValorSave(valuePropositions:ValuePropositions):Observable<any>{
-  return this.http.post<any>(`${this.urlEndPoint}/propuestaValor`,valuePropositions)
+  return this.http.post<any>(`${this.urlEndPoint}/propuestaValor`,valuePropositions);
 }
 public canalesSave(channels:Channels):Observable<any>{
-  return this.http.post<any>(`${this.urlEndPoint}/canales`,channels)
+  return this.http.post<any>(`${this.urlEndPoint}/canales`,channels);
+}
+public relacionesSave(customerRelationships:CustomerRelationships):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/relaciones`,customerRelationships);
 }
 
   }
