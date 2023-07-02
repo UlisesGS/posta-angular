@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Canvas } from './canvas';
 import { Process } from './Process';
+import { CustomerSegments } from './CustomerSegments';
+import { ValuePropositions } from './ValuePropositions';
+import { Channels } from './Channels';
 
 
 
@@ -16,6 +19,9 @@ export class ProcesoService {
    private urlProcesos:string="http://localhost:8080/process";
   constructor(private http:HttpClient) { }
 // procesos
+public procesosFindAllUltimo():Observable<any>{
+  return this.http.get<any>(`${this.urlProcesos}/ultimo`);
+}
   public procesosFindAll():Observable<any>{
     return this.http.get<any>(`${this.urlProcesos}`);
   }
@@ -37,6 +43,20 @@ export class ProcesoService {
 
     return this.http.post<any>(`${this.urlEndPoint}/save`,canvas);
   }
+  public canvasUpdate(canvas:Canvas):Observable<any>{
 
+
+    return this.http.put<any>(`${this.urlEndPoint}/model/${canvas.id}`,canvas);
+  }
+  // modelo canvas todos los save de los diferentes sectores
+public segmentoSave(customerSegments:CustomerSegments):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/segmetento`,customerSegments)
+}
+public propuestaValorSave(valuePropositions:ValuePropositions):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/propuestaValor`,valuePropositions)
+}
+public canalesSave(channels:Channels):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/canales`,channels)
+}
 
   }

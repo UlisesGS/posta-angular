@@ -27,12 +27,12 @@
                     <th style="width: 20%;" >{{client.name}} {{client.lastName}}</th>
                     <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
                     <th style="width: 20%;"  *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
-                 
+
                     <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
                     <th style="width: 20%;"  *ngIf="client.type ==='businessman'">CIIU N° {{client?.ciiu?.id}}</th>
-                   
+
                     <th style="width: 15%;" >{{client?.municipio?.name}}</th>
-        
+
                     <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">
                         <button id="button" class="btn btn-disabled"
                             style=" background-color: red; color: white; width: 100%;">Emprendedor</button>
@@ -41,7 +41,7 @@
                         <button id="button" class="btn btn-disabled"
                             style=" background-color: rgb(136, 0, 0); color: white; width: 100%;">Empresario</button>
                     </th>
-                   
+
                     <th *ngIf="client.type!==null"  style="text-align: center; width: 5%;">
                         <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client)"></i>
                     </th>
@@ -49,4 +49,43 @@
             </tbody>
         </table>
     </div>
-    
+
+  <!-- Procesos     -->
+
+
+  <div  style="margin-bottom: 5px;">
+    <div class="card-header bg-transparent" style="margin-bottom: 10px;">
+        <div class="row">
+            <div class="col">
+                <h3>Procesos</h3>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="table table-sm"  >
+                <thead>
+                    <tr>
+                        <td style="width: 20%; font-size: 10px;" class="align-middle"> Tipo de Cliente </td>
+                        <td style="width: 20%; font-size: 10px;" class="align-middle"> Nombre </td>
+                        <td style="width: 20%; font-size: 10px;" class="align-middle"> Empresa/Idea</td>
+                        <td style="width: 20%; font-size: 10px;" class="align-middle"> Etapa del Proyector</td>
+                        <td style="width: 20%; font-size: 10px;" class="align-middle"> Estado</td>
+                        <td style="text-align: center; width: 5%; font-size: 10px;" class="align-middle"> Acciones</td>
+                    </tr>
+                </thead>
+                <tbody  class="table-sm" style="margin-top: 0;" *ngFor="let proceso of procesos">
+                    <tr>
+                      <th style="width: 20%;" >{{proceso.canvasModel.client.type}} </th>
+                        <th style="width: 20%;" >{{proceso.canvasModel.client.name}} {{proceso.canvasModel.client.lastName}} </th>
+                        <th style="width: 20%;"  >{{proceso.canvasModel.client.type=='entrepreneur'? proceso.canvasModel.client.businessIdea:'agregar despues de empresario'}}</th>
+
+                        <th style="width: 20%;" >{{proceso.estado}}</th>
+
+                        <th style="width: 20%;" >{{!proceso.termiando?'En proceso':'Finalizado'}}</th>
+                        <th  style="text-align: center; width: 5%;">
+                            <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(proceso)"></i>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>

@@ -40,6 +40,7 @@ import { SociosClavesComponent } from './procesos/socios-claves/socios-claves.co
 import { IngresosComponent } from './procesos/ingresos/ingresos.component';
 import { EstructuraCostosComponent } from './procesos/estructura-costos/estructura-costos.component';
 import { BannerComponent } from './banner/banner.component';
+import { VerProcesosComponent } from './procesos/ver-procesos/ver-procesos.component';
 
 const routes:Routes=[
 
@@ -72,6 +73,7 @@ const routes:Routes=[
   {path:'sociosClaves/cliente/:id',component:SociosClavesComponent},
   {path:'ingresos/cliente/:id',component:IngresosComponent},
   {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
+  {path:'procesos/ver/:id',component:VerProcesosComponent},
 ]
 
 @NgModule({
@@ -111,6 +113,7 @@ const routes:Routes=[
       IngresosComponent,
       EstructuraCostosComponent,
       BannerComponent,
+      VerProcesosComponent,
 
 
    ],

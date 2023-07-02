@@ -20,6 +20,8 @@ export class Process {
   selfAssessment:SelfAssessment;
   user:Usuario;
   estado:string;
+  terminado:boolean;
+  fechaAlta:string;
 
 
 }
