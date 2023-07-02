@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Canvas } from './canvas';
 import { Process } from './Process';
+import { CustomerSegments } from './CustomerSegments';
 
 
 
@@ -37,6 +38,13 @@ export class ProcesoService {
 
     return this.http.post<any>(`${this.urlEndPoint}/save`,canvas);
   }
+  public canvasUpdate(canvas:Canvas):Observable<any>{
 
+
+    return this.http.put<any>(`${this.urlEndPoint}/model/${canvas.id}`,canvas);
+  }
+public segmentoSave(customerSegments:CustomerSegments):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/segmetento`,customerSegments)
+}
 
   }
