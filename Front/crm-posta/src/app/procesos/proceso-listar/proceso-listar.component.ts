@@ -18,6 +18,7 @@ export class ProcesoListarComponent implements OnInit {
   clientes:Client[]=[];
   clientesProceso:Client[]=[];
   municipios:Municipio[];
+  procesoSeleccionado: Process;
   constructor(
     public modal:ModalService,
     private clienteService:ClientService,
@@ -66,7 +67,8 @@ this.procesoService.procesosFindAll().subscribe(data=>{
        this.value=true;
      }
   }
- public abrirModalAction(){
+ public abrirModalAction(proceso:Process){
+  this.procesoSeleccionado=proceso;
 this.modal.abrirModalPocesos();
   }
   public todos(){}
@@ -78,6 +80,7 @@ this.modal.abrirModalPocesos();
     this.todos();
   }
   public abrirModalNuevoProceso(){
+    
     this.modal.abrirModalAsesoria();
   }
 }
