@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-2">
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div  class="card-header"  *ngIf="client.type ==='entrepreneur'">Emprendedor</div>
+          <div  class="card-header" *ngIf="client.type ==='businessman'">Empresario</div>
+          <div class="card-body">
+            <h5 class="card-title">Nombre</h5>
+            <p class="card-text">{{client.name}}</p>
+            <h5 class="card-title">Apellido</h5>
+            <p class="card-text">{{client.lastName}}</p>
+            <h5 class="card-title">Documento/NIT</h5>
+            <p class="card-text">{{client.nit}}</p>
+            <h5 class="card-title">Género</h5>
+            <p class="card-text">{{client.gender}}</p>
+            <h5 class="card-title">Dirección</h5>
+            <p class="card-text">{{client.address}}</p>
+            <h5 class="card-title">Municipio</h5>
+            <p class="card-text">{{client?.municipio.name}} - {{client?.municipio.country}}</p>
+            <h5 class="card-title">Grupo Étnico</h5>
+            <p class="card-text">{{client.ethnicGroup}}</p>
+            <h5 class="card-title">Email</h5>
+            <p class="card-text">{{client.email}}</p>
+            <h5 class="card-title" *ngIf="client.type==='businessman'">Compañía</h5>
+            <p class="card-text">{{client.companyName}}</p>
+            <h5 class="card-title" *ngIf="client.type==='businessman'">N° Registro Mercantil</h5>
+            <p class="card-text">{{client.numberMercantilRegistry}}</p>
+            <h5 class="card-title" *ngIf="client.type==='businessman'">CIIU</h5>
+            <p class="card-text">{{client?.ciiu.id}} - {{client?.ciiu.titulo}} </p>
+          </div>
+        </div>
+      </div >
+
+      </div>
+  </div>
+  <div  class="col-10">
+   
+  </div>
+</div>
