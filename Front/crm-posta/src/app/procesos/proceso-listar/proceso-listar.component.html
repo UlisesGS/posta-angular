@@ -1,6 +1,6 @@
 
 
-<app-accion-procesos *ngIf="modal.proceso" ></app-accion-procesos>
+<app-accion-procesos *ngIf="modal.proceso && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-accion-procesos>
 <app-nuevo-proceso *ngIf="modal.asesoria"></app-nuevo-proceso>
 
 <div  style="margin-bottom: 5px;">
@@ -118,7 +118,7 @@
 
                 <th style="width: 20%;" >{{proceso.estado=='EstructuraCostos'?'Finalizado':'En proceso'}}</th>
                 <th  style="text-align: center; width: 5%;">
-                    <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction()"></i>
+                    <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(proceso)"></i>
                 </th>
             </tr>
         </tbody>
