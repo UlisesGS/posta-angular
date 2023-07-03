@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
@@ -24,6 +24,7 @@ export class AutoevaluacionComponent implements OnInit {
     private clienteService: ClientService,
     private rutaParametro: ActivatedRoute,
     private canvasService: ProcesoService,
+    private router:Router,
 
   ) { }
   ngOnInit(): void {
@@ -87,6 +88,28 @@ export class AutoevaluacionComponent implements OnInit {
       console.log(this.proceso);
       this.proceso.estado="AutoEvaluación";
       this.canvasService.procesosUpdate(this.proceso).subscribe(d=>{
+      })
+
+    })
+
+
+
+  }
+
+
+  public guardarYsalir() {
+    console.log(this.preguntas);
+    this.selfAssessment.client = this.cliente;
+    this.selfAssessment.selfAssessment = this.preguntas;
+    console.log(this.selfAssessment);
+    this.clienteService.guardarPreguntas(this.selfAssessment).subscribe(data => {
+      console.log(data);
+
+      this.proceso.selfAssessment=data;
+      console.log(this.proceso);
+      this.proceso.estado="AutoEvaluación";
+      this.canvasService.procesosUpdate(this.proceso).subscribe(d=>{
+        this.router.navigate(['procesos']);
         Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
       })
 

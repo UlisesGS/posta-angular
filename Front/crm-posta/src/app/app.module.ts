@@ -41,6 +41,15 @@ import { IngresosComponent } from './procesos/ingresos/ingresos.component';
 import { EstructuraCostosComponent } from './procesos/estructura-costos/estructura-costos.component';
 import { BannerComponent } from './banner/banner.component';
 import { VerProcesosComponent } from './procesos/ver-procesos/ver-procesos.component';
+import { SegmentoModalComponent } from './procesos/ver-procesos/segmento-modal/segmento-modal.component';
+import { PropuestaDeValorModalComponent } from './procesos/ver-procesos/propuesta-de-valor-modal/propuesta-de-valor-modal.component';
+import { CanalesModalComponent } from './procesos/ver-procesos/canales-modal/canales-modal.component';
+import { RelacionesModalComponent } from './procesos/ver-procesos/relaciones-modal/relaciones-modal.component';
+import { RecursosClavesModalComponent } from './procesos/ver-procesos/recursos-claves-modal/recursos-claves-modal.component';
+import { ActividadesClavesModalComponent } from './procesos/ver-procesos/actividades-claves-modal/actividades-claves-modal.component';
+import { SociosClavesModalComponent } from './procesos/ver-procesos/socios-claves-modal/socios-claves-modal.component';
+import { IngresosModalComponent } from './procesos/ver-procesos/ingresos-modal/ingresos-modal.component';
+import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructura-costos-modal/estructura-costos-modal.component';
 
 const routes:Routes=[
 
@@ -114,6 +123,15 @@ const routes:Routes=[
       EstructuraCostosComponent,
       BannerComponent,
       VerProcesosComponent,
+      SegmentoModalComponent,
+      PropuestaDeValorModalComponent,
+      CanalesModalComponent,
+      RelacionesModalComponent,
+      RecursosClavesModalComponent,
+      ActividadesClavesModalComponent,
+      SociosClavesModalComponent,
+      IngresosModalComponent,
+      EstructuraCostosModalComponent
 
 
    ],

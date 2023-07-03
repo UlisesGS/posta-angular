@@ -11,6 +11,7 @@ import { ModalService } from 'src/app/client/modal.service';
 export class UsuariolistComponent implements OnInit{
   usuarios:Usuario[]=[];
   activo:boolean
+  usuarioSeleccionado:Usuario;
 
 
   ngOnInit(): void {
@@ -22,6 +23,18 @@ export class UsuariolistComponent implements OnInit{
 
   abrirModal():void{
     this.modalService.abrirModal();
+  }
+
+  abrirModalCrearAsesor(){
+    console.log('hola');
+    
+    this.modalService.abrirModalPocesos();
+  }
+
+
+  abrirModalEditarAsesor(usuario:Usuario){
+    this.usuarioSeleccionado=usuario;
+    this.modalService.abrirVerMas();
   }
 
   public usuarioDelete(id:number): void{

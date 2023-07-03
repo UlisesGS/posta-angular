@@ -7,6 +7,11 @@ import { CustomerSegments } from './CustomerSegments';
 import { ValuePropositions } from './ValuePropositions';
 import { Channels } from './Channels';
 import { CustomerRelationships } from './CustomerRelationships';
+import { KeyRecources } from './KeyRecources';
+import { KeyPartners } from './KeyPartners';
+import { RevenueStreams } from './RevenueStreams';
+import { CostStructure } from './CostStructure';
+import { KeyActivities } from './KeyActivities';
 
 
 
@@ -62,5 +67,19 @@ public canalesSave(channels:Channels):Observable<any>{
 public relacionesSave(customerRelationships:CustomerRelationships):Observable<any>{
   return this.http.post<any>(`${this.urlEndPoint}/relaciones`,customerRelationships);
 }
-
+public recursosClavesSave(keyRecources:KeyRecources):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/recursosClaves`,keyRecources);
+}
+public actividadesClavesSave(keyActivities:KeyActivities):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/actividadesClaves`,keyActivities);
+}
+public sociosClavesSave(keyPartners:KeyPartners):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/sociosClaves`,keyPartners);
+}
+public ingresosSave(revenueStreams:RevenueStreams):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/ingresos`,revenueStreams);
+}
+public estructuraCostoSave(costStructure:CostStructure):Observable<any>{
+  return this.http.post<any>(`${this.urlEndPoint}/estructuraCostos`,costStructure);
+}
   }

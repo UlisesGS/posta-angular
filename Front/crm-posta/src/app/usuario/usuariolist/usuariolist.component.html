@@ -1,5 +1,7 @@
 
 <app-asesoria *ngIf="modalService.asesoria"></app-asesoria>
+<app-usuarioform *ngIf="modalService.proceso"></app-usuarioform>
+<app-usuarioform *ngIf="modalService.verMas && usuarioSeleccionado" [usuario]="usuarioSeleccionado"></app-usuarioform>
 
 <div  style="margin-bottom: 5px;">
   <div class="card-header bg-transparent" >
@@ -8,7 +10,7 @@
         <h3>Usuarios</h3>
     </div>
     <div class="col text-end">
-      <button routerLink="/usuarios/form" class="btn btn-success" style="border-radius: 1emcd;">Crear+</button>
+      <button (click)="abrirModalCrearAsesor()" class="btn btn-success" style="border-radius: 1emcd;">Crear+</button>
     </div>
     </div>  
     
@@ -39,7 +41,7 @@
               <th style="width: 15%;" >{{usuario.profesion}}</th>
               <th style="width: 10%;" >{{usuario.role}}</th>
               <th style="width: 15%;" >
-                <button [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-info" style="width: 100%;">Editar</button>
+                <button (click)="abrirModalEditarAsesor(usuario)" class="btn btn-info" style="width: 100%;">Editar</button>
               </th>
               <th style="width: 5%;" >
                <label class="switch">
@@ -53,3 +55,5 @@
       </tbody>
   </table>
 </div>
+
+

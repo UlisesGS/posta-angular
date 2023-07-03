@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProcesoService } from '../proceso.service';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
+import { ModalService } from 'src/app/client/modal.service';
 
 @Component({
   selector: 'app-ver-procesos',
@@ -11,24 +12,83 @@ import { ClientService } from 'src/app/client/client.service';
   styleUrls: ['./ver-procesos.component.css']
 })
 export class VerProcesosComponent implements OnInit {
-  client:Client = new Client;
-proceso:Process= new Process();
-  constructor(private rutaPorParametro: ActivatedRoute,
-    private procesoService:ProcesoService, private clienteService:ClientService){}
-  ngOnInit(): void {
-this.rutaPorParametro.paramMap.subscribe(parametro=>{
-  let id = +parametro.get('id');
-  if(id){
-    this.procesoService.procesosFindById(id).subscribe(data=>{
-      this.proceso= data;
-      console.log(this.proceso);
-this.clienteService.getClient(this.proceso.canvasModel.client.id).subscribe(data=>{
-  this.client=data;
-})
+  client: Client = new Client;
+  procesoSeleccionado : Process;
+  proceso: Process = new Process();
+  
+  constructor(
+    private rutaPorParametro: ActivatedRoute,
+    private procesoService: ProcesoService,
+    private clienteService: ClientService,
+    public modalService:ModalService) { }
 
+  ngOnInit(): void {
+    this.rutaPorParametro.paramMap.subscribe(parametro => {
+      let id = +parametro.get('id');
+      if (id) {
+        this.procesoService.procesosFindById(id).subscribe(data => {
+          this.proceso = data;
+          console.log(this.proceso);
+          this.clienteService.getClient(this.proceso.canvasModel.client.id).subscribe(data => {
+            this.client = data;
+          })
+
+        })
+      }
     })
   }
-})
+
+
+  public abrirVerMasSegmento(proceso:Process) {
+    this.procesoSeleccionado=proceso;
+    this.modalService.abrirVerMas();
   }
 
+
+  public abrirVerMasPropuesta(proceso:Process) {
+    this.procesoSeleccionado=proceso;
+    this.modalService.abrirVerMas1();
+  }
+
+
+  public abrirVerMasCanales(proceso:Process) {
+    this.procesoSeleccionado=proceso;
+    this.modalService.abrirVerMas2();
+  }
+
+
+  public abrirVerMasRelaciones(proceso:Process) {
+    this.procesoSeleccionado=proceso;
+    this.modalService.abrirVerMas3();
+  }
+
+
+  public abrirVerMasRecursosClaves(proceso:Process) {
+    this.procesoSeleccionado=proceso;
+    this.modalService.abrirVerMas4();
+  }
+
+
+  public abrirVerMasActividadesClaves(proceso:Process) {
+    this.procesoSeleccionado=proceso;
+    this.modalService.abrirVerMas5();
+  }
+
+
+  public abrirVerMasSociosClaves(proceso:Process) {
+    this.procesoSeleccionado=proceso;
+    this.modalService.abrirVerMas6();
+  }
+
+
+  public abrirVerMasIngresos(proceso:Process) {
+    this.procesoSeleccionado=proceso;
+    this.modalService.abrirVerMas7();
+  }
+
+
+  public abrirVerMasEstructuraCostos(proceso:Process) {
+    this.procesoSeleccionado=proceso;
+    this.modalService.abrirVerMas8();
+  }
 }

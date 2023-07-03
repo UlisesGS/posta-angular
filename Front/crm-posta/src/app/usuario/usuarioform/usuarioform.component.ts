@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UsuarioService } from '../usuario.service';
 import { Usuario } from '../usuario';
 import Swal from 'sweetalert2';
@@ -12,7 +12,8 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./usuarioform.component.css']
 })
 export class UsuarioformComponent implements OnInit {
-  usuario: Usuario = new Usuario();
+  @Input()usuario: Usuario = new Usuario();
+  usuario1: Usuario = new Usuario();
   public titulo: string = 'Formulario Usuario'
   public modal:boolean;
   usuarioLogin: Usuario = new Usuario();
@@ -20,7 +21,8 @@ export class UsuarioformComponent implements OnInit {
   
   constructor(private usuarioService: UsuarioService,
      private ruta: Router,
-     private rutaParametro:ActivatedRoute) {}
+     private rutaParametro:ActivatedRoute,
+     private modalService:ModalService) {}
 
 
   ngOnInit(): void {
@@ -28,9 +30,9 @@ export class UsuarioformComponent implements OnInit {
         let id=+parametro.get('id');
        if(id){
         this.usuarioService.usuarioFindById(id).subscribe(data=>{
-          this.usuario=data;
+          this.usuario1=data;
           this.titulo='Editar Usuario';
-          console.log(this.usuario);
+          console.log(this.usuario1);
         })
        }else{
         this.titulo='Crear Usuario';
@@ -41,12 +43,21 @@ export class UsuarioformComponent implements OnInit {
       
     }
 
+  public cerrarModal(){
+    this.modalService.cerrarModalProceso();
+  }
+
+  public cerrarModalEditar(){
+    this.modalService.cerrarVerMas();
+  }
+
 
   public registrar() {
-    console.log(this.usuario);
-    this.usuarioService.usuarioSave(this.usuario).subscribe(data => {
+    console.log(this.usuario1);
+    this.usuario1.role='ADVISER';
+    this.usuarioService.usuarioSave(this.usuario1).subscribe(data => {
+      this.modalService.cerrarModalProceso();
       Swal.fire('ÉXITO', `El usuario ${data.name} fue creado con exito`, 'success');
-      this.ruta.navigate(['/usuarios'])
 
     }
     , e => {
@@ -58,7 +69,7 @@ export class UsuarioformComponent implements OnInit {
 public editar(){
  // Swal.fire('En construccion', 'Esta seccion esta en construccion', 'info');
  this.usuarioService.usuarioUpdate(this.usuario).subscribe(data=>{
-  this.ruta.navigate(['/usuarios'])
+  this.modalService.cerrarVerMas();
   Swal.fire('EDITADO', `El usuario ${data.name} fue editado con exito`, 'success');
 
  },e=>{
