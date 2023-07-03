@@ -35,8 +35,10 @@ procesos:Process[]=[];
   clientes: Client[] = [];
   usuario: Usuario = new Usuario();
   selfAssessment: SelfAssessment[] = [];
-
+  habiliar:boolean=false;
+  otra=0;
   ngOnInit(): void {
+    this.otra=0;
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     console.log(this.usuario);
 
@@ -130,15 +132,22 @@ procesos:Process[]=[];
       this.procesos.forEach(proceso=>{
         if(proceso.selfAssessment.client.id==this.client.id){
           this.cerrarModalProceso();
+        this.otra=1;
 
+          this.habiliar=false;
           Swal.fire('Error: ', 'El cliente seleccionado ya tiene un proceso', 'error');
-
+          return;
         }
       })
+
+        this.habiliar=true;
+
     })
 
   }
   public volver() {
     this.condicion = false;
+    this.habiliar=false;
+    this.otra==1;
   }
 }

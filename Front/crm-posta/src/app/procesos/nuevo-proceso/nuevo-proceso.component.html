@@ -43,7 +43,7 @@
 
 
                   <div class="form-group" style="margin-top: 5px; margin-bottom: 5px;">
-                      <button (click)="cerrarModalProceso()" [routerLink]="['/autoevaluacion/cliente/', client.id]" class="btn btn-success">Crear Proceso</button>
+                      <button *ngIf="habiliar" (click)="cerrarModalProceso()" [routerLink]="['/autoevaluacion/cliente/', client.id]" class="btn btn-success">Crear Proceso</button>
                       <button (click)="volver()" class="btn btn-success m-2">Volver</button>
                       <button  (click)="cerrarModalProceso()" class="btn btn-primary m-2">Cancelar</button>
 
