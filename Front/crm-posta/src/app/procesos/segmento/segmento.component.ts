@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
@@ -35,6 +35,7 @@ export class CustomerSegments {
      private clienteService: ClientService,
       private rutaParametro: ActivatedRoute,
       private procesoService:ProcesoService,
+      private router:Router,
       ) { }
 
   ngOnInit(): void {
@@ -80,6 +81,21 @@ export class CustomerSegments {
     this.proceso.canvasModel.customerSegments=segmento;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+      })
+    })
+   })
+  }
+
+
+  public guardarYsalir(){
+    this.proceso.estado='Segmento de Clientes';
+    console.log(this.proceso);
+    this.proceso.canvasModel.customerSegments=this.customerSegments
+   this.procesoService.segmentoSave(this.proceso.canvasModel.customerSegments).subscribe(segmento=>{
+    this.proceso.canvasModel.customerSegments=segmento;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
         Swal.fire('Exito', 'Segmento creado con exito', 'success');
       })
     })

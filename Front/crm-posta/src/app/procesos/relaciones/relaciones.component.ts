@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
@@ -25,6 +25,7 @@ export class RelacionesComponent {
      private clienteService: ClientService,
       private rutaParametro: ActivatedRoute,
       private procesoService:ProcesoService,
+      private router:Router,
       ) { }
 
   ngOnInit(): void {
@@ -70,6 +71,21 @@ export class RelacionesComponent {
     this.proceso.canvasModel.customerRelationships=relacion;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+      })
+    })
+   })
+  }
+
+
+  public guardarYsalir(){
+    this.proceso.estado='Relaciones con los Clientes';
+    console.log(this.proceso);
+    this.proceso.canvasModel.customerRelationships=this.customerRelationships
+   this.procesoService.relacionesSave(this.proceso.canvasModel.customerRelationships).subscribe(relacion=>{
+    this.proceso.canvasModel.customerRelationships=relacion;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
         Swal.fire('Exito', 'Relacion creada con exito', 'success');
       })
     })

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
@@ -23,7 +23,8 @@ export class RecursosClavesComponent {
   constructor(private modalService: ModalService,
      private clienteService: ClientService,
      private rutaParametro: ActivatedRoute,
-     private procesoService:ProcesoService) { }
+     private procesoService:ProcesoService,
+     private router:Router) { }
 
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
@@ -71,6 +72,21 @@ export class RecursosClavesComponent {
     this.proceso.canvasModel.keyRecources=pro;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+      })
+    })
+   })
+  }
+
+
+  public guardarYsalir(){
+    this.proceso.estado='Recursos Claves';
+    console.log(this.proceso);
+    this.proceso.canvasModel.keyRecources=this.keyRecources
+   this.procesoService.recursosClavesSave(this.proceso.canvasModel.keyRecources).subscribe(pro=>{
+    this.proceso.canvasModel.keyRecources=pro;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
         Swal.fire('Exito', 'Recursos claves creada con exito', 'success');
       })
     })

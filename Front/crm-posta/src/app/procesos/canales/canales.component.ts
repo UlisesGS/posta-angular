@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
@@ -25,6 +25,7 @@ export class CanalesComponent {
      private clienteService: ClientService,
       private rutaParametro: ActivatedRoute,
       private procesoService:ProcesoService,
+      private router:Router,
       ) { }
 
   ngOnInit(): void {
@@ -70,12 +71,26 @@ export class CanalesComponent {
     this.proceso.canvasModel.channels=canales;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        Swal.fire('Exito', 'Canales creado con exito', 'success');
       })
     })
    })
   }
 
+
+  public guardarYsalir(){
+    this.proceso.estado='Canales';
+    console.log(this.proceso);
+    this.proceso.canvasModel.channels=this.channels
+   this.procesoService.canalesSave(this.proceso.canvasModel.channels).subscribe(canales=>{
+    this.proceso.canvasModel.channels=canales;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
+        Swal.fire('Exito', 'Canales creado con exito', 'success');
+      })
+    })
+   })
+  }
 
 
 }

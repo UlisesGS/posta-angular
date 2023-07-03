@@ -96,7 +96,7 @@ export class ActividadesClavesComponent {
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
         this.router.navigate(['procesos'])
-        Swal.fire('Exito', 'Activiades claves creada con exito', 'success');
+        Swal.fire('Exito', 'Actividades claves creada con exito', 'success');
         
       })
     })

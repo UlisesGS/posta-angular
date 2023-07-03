@@ -1,62 +1,142 @@
 
 
 
-<div class="container">
-  <div class="col-6">
-    <div class="card" style="margin-right: 20px;">
-      <div class="card-header d-flex justify-content-between">
-        <h3>{{titulo}}</h3>
-        <div class="text-end">
-          <button routerLink="/usuarios" class="btn btn-dark btn-sm">
-            <i class="bi bi-arrow-left">Volver</i>
-          </button>
+
+<div *ngIf="!usuario.id">
+<div class="abrir-modal animacion fadeIn" style="align-items: center;">
+  <div class="modal" tabindex="-1" style="display:block;">
+      <div class="modal-dialog" style="width:700px;  " role="document">
+          <div class="modal-content" style="width:700px; ">
+              <div class="modal-header" style="width:700px;">
+          <div class="container">
+            <div class="col-6">
+              <div class="card" style="margin-right: 20px; width:640px;">
+                <div class="card-header d-flex justify-content-between">
+                  <h3>{{titulo}}</h3>
+                  <div class="text-end">
+                    <button (click)="cerrarModal()" type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                  </div>
+                </div>
+          
+                <div class="card-body">
+          
+                  <form class="was-validated">
+          
+                    <div class="col-sm-8">
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" name="name" [(ngModel)]="usuario1.name" class="form-control" id="name" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="lastName" class="form-label">Apellido</label>
+                        <input type="text" name="lastName" [(ngModel)]="usuario1.lastName" class="form-control" id="lastName" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="phone" class="form-label">Telefono</label>
+                        <input type="text" name="phone" [(ngModel)]="usuario1.phone" class="form-control" id="phone" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="cedula" class="form-label">Cedula</label>
+                        <input type="cedula" name="cedula" [(ngModel)]="usuario1.cedula" class="form-control" id="cedula" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="profesion" class="form-label">Profesion</label>
+                        <input type="profesion" name="profesion" [(ngModel)]="usuario1.profesion" class="form-control" id="profesion" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" name="email" [(ngModel)]="usuario1.email" class="form-control" id="email" required>
+                      </div>
+          
+                      <div *ngIf="usuario1.role!=='ADMIN'" class="mb-3">
+          
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" [(ngModel)]="usuario1.password" class="form-control" id="password" required>
+                      </div>
+                      <div class="mb-3">
+                        <button  (click)="registrar()" class="btn btn-success" >Registrar</button>
+                      </div>
+                  </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
         </div>
-      </div>
+  </div>
+</div>
+</div>
+</div>
 
-      <div class="card-body">
 
-        <form class="was-validated">
 
-          <div class="col-sm-6">
-            <div class="mb-3">
-              <label for="name" class="form-label">Nombre</label>
-              <input type="text" name="name" [(ngModel)]="usuario.name" class="form-control" id="name" required>
-            </div>
-            <div class="mb-3">
-              <label for="lastName" class="form-label">Apellido</label>
-              <input type="text" name="lastName" [(ngModel)]="usuario.lastName" class="form-control" id="lastName" required>
-            </div>
-            <div class="mb-3">
-              <label for="phone" class="form-label">Telefono</label>
-              <input type="text" name="phone" [(ngModel)]="usuario.phone" class="form-control" id="phone" required>
-            </div>
-            <div class="mb-3">
-              <label for="cedula" class="form-label">Cedula</label>
-              <input type="cedula" name="cedula" [(ngModel)]="usuario.cedula" class="form-control" id="cedula" required>
-            </div>
-            <div class="mb-3">
-              <label for="profesion" class="form-label">Profesion</label>
-              <input type="profesion" name="profesion" [(ngModel)]="usuario.profesion" class="form-control" id="profesion" required>
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="text" name="email" [(ngModel)]="usuario.email" class="form-control" id="email" required>
-            </div>
 
-            <div *ngIf="usuario.role==='ADMIN'" class="mb-3">
-
-              <label for="password" class="form-label">Password</label>
-              <input type="password" name="password" [(ngModel)]="usuario.password" class="form-control" id="password" required>
-            </div>
-            <div class="mb-3">
-              <button *ngIf="!usuario.id" (click)="registrar()" class="btn btn-success" >Registrar</button>
-              <button *ngIf="usuario.id" (click)="editar()" class="btn btn-info">Editar</button>
-            </div>
-        </div>
-          </form>
-      </div>
+<div *ngIf="usuario.id">
+  <div class="abrir-modal animacion fadeIn" style="align-items: center;">
+    <div class="modal" tabindex="-1" style="display:block;">
+        <div class="modal-dialog" style="width:700px;  " role="document">
+            <div class="modal-content" style="width:700px; ">
+                <div class="modal-header" style="width:700px;">
+            <div class="container">
+              <div class="col-6">
+                <div class="card" style="margin-right: 20px; width:640px;">
+                  <div class="card-header d-flex justify-content-between">
+                    <h3>Editar Usuario</h3>
+                    <div class="text-end">
+                      <button (click)="cerrarModalEditar()" type="button" class="btn-close" data-bs-dismiss="modal"
+                          aria-label="Close"></button>
+                    </div>
+                  </div>
+            
+                  <div class="card-body">
+            
+                    <form class="was-validated">
+            
+                      <div class="col-sm-8">
+                        <div class="mb-3">
+                          <label for="name" class="form-label">Nombre</label>
+                          <input type="text" name="name" [(ngModel)]="usuario.name" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="lastName" class="form-label">Apellido</label>
+                          <input type="text" name="lastName" [(ngModel)]="usuario.lastName" class="form-control" id="lastName" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="phone" class="form-label">Telefono</label>
+                          <input type="text" name="phone" [(ngModel)]="usuario.phone" class="form-control" id="phone" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="cedula" class="form-label">Cedula</label>
+                          <input type="cedula" name="cedula" [(ngModel)]="usuario.cedula" class="form-control" id="cedula" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="profesion" class="form-label">Profesion</label>
+                          <input type="profesion" name="profesion" [(ngModel)]="usuario.profesion" class="form-control" id="profesion" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Email</label>
+                          <input type="text" name="email" [(ngModel)]="usuario.email" class="form-control" id="email" required>
+                        </div>
+            
+                        <div *ngIf="usuario.role!=='ADMIN'" class="mb-3">
+            
+                          <label for="password" class="form-label">Password</label>
+                          <input type="password" name="password" [(ngModel)]="usuario.password" class="form-control" id="password" required>
+                        </div>
+                        <div class="mb-3">
+                          <button (click)="editar()" class="btn btn-info">Editar</button>
+                        </div>
+                    </div>
+                      </form>
+                  </div>
+                </div>
+              </div>
+              </div>
+              </div>
+          </div>
     </div>
   </div>
   </div>
-
-
+  </div>
