@@ -1,38 +1,71 @@
-
 <div class="row">
-<div class="col">
-  <div class="card mb-3">
-    <div  class="card-header"  *ngIf="client.type ==='entrepreneur'">Emprendedor</div>
-    <div  class="card-header" *ngIf="client.type ==='businessman'">Empresario</div>
-    <div class="card-body">
-      <h5 class="card-title">Nombre</h5>
-      <p class="card-text">{{client.name}}</p>
-      <h5 class="card-title">Apellido</h5>
-      <p class="card-text">{{client.lastName}}</p>
-      <h5 class="card-title">Documento/NIT</h5>
-      <p class="card-text">{{client.nit}}</p>
-      <h5 class="card-title">Género</h5>
-      <p class="card-text">{{client.gender}}</p>
-      <h5 class="card-title">Dirección</h5>
-      <p class="card-text">{{client.address}}</p>
-      <h5 class="card-title">Municipio</h5>
-      <p class="card-text">{{client?.municipio.name}} - {{client?.municipio.country}}</p>
-      <h5 class="card-title">Grupo Étnico</h5>
-      <p class="card-text">{{client.ethnicGroup}}</p>
-      <h5 class="card-title">Email</h5>
-      <p class="card-text">{{client.email}}</p>
-      <h5 class="card-title" *ngIf="client.type==='businessman'">Compañía</h5>
-      <p class="card-text">{{client.companyName}}</p>
-      <h5 class="card-title" *ngIf="client.type==='businessman'">N° Registro Mercantil</h5>
-      <p class="card-text">{{client.numberMercantilRegistry}}</p>
-      <h5 class="card-title" *ngIf="client.type==='businessman'">CIIU</h5>
-      <p class="card-text">{{client?.ciiu.id}} - {{client?.ciiu.titulo}} </p>
+  <div class="col">
+    <div class="card">
+      <div class="card-header" style="text-align:center; padding-right: 10px;" *ngIf="client?.type ==='entrepreneur'">
+        <button class="btn btn-disabled" style="width: 100%;">
+          Emprendedor
+        </button>
+      </div>
+
+      <div class="card-header" style="text-align:center; padding-right: 10px;" *ngIf="client?.type ==='businessman'">
+        <button class="btn btn-disabled" style="width: 100%;">
+          Empresario
+        </button>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Nombre</h5>
+        <p class="card-text align-middle"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.name}}</p>
+        <h5 class="card-title">Apellido</h5>
+        <p class="card-text align-middle"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.lastName}}
+        </p>
+        <h5 class="card-title">Documento/NIT</h5>
+        <p class="card-text align-middle"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.nit}}</p>
+        <h5 class="card-title">Género</h5>
+        <p class="card-text align-middle"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.gender}}
+        </p>
+        <h5 class="card-title">Dirección</h5>
+        <p class="card-text align-middle"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.address}}
+        </p>
+        <h5 class="card-title">Municipio</h5>
+        <p class="card-text align-middle"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
+          {{client?.municipio?.name}} - {{client?.municipio?.country}}</p>
+        <h5 class="card-title">Grupo Étnico</h5>
+        <p class="card-text align-middle"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
+          {{client?.ethnicGroup}}</p>
+        <h5 class="card-title">Email</h5>
+        <p class="card-text align-middle"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.email}}</p>
+        <h5 class="card-title" *ngIf="client?.type==='businessman'">Compañía</h5>
+        <p class="card-text align-middle" *ngIf="client?.type==='businessman'"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
+          {{client?.companyName}}</p>
+        <h5 class="card-title" *ngIf="client?.type==='businessman'">N° Registro Mercantil</h5>
+        <p class="card-text align-middle" *ngIf="client?.type==='businessman'"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
+          {{client?.numberMercantilRegistry}}</p>
+        <h5 class="card-title" *ngIf="client?.type==='businessman'">CIIU</h5>
+        <p class="card-text align-middle" *ngIf="client?.type==='businessman'"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.ciiu?.id}}
+          - {{client?.ciiu?.titulo}} </p>
+
+        <h5 class="card-title" *ngIf="client?.type==='entrepreneur'">Idea de Negocio</h5>
+        <p class="card-text align-middle" *ngIf="client?.type==='entrepreneur'"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
+          {{client?.businessIdea}} </p>
+        <h5 class="card-title" *ngIf="client?.type==='entrepreneur'">Producto</h5>
+        <p class="card-text align-middle" *ngIf="client?.type==='entrepreneur'"
+          style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.product}}
+        </p>
+
+      </div>
     </div>
   </div>
-</div >
 
 </div>
-
-
-
-

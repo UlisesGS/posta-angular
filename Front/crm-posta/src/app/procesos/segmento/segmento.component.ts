@@ -73,7 +73,7 @@ export class CustomerSegments {
      }
   }
   public guardar(){
-    this.proceso.estado='segmento';
+    this.proceso.estado='Segmento de Clientes';
     console.log(this.proceso);
     this.proceso.canvasModel.customerSegments=this.customerSegments
    this.procesoService.segmentoSave(this.proceso.canvasModel.customerSegments).subscribe(segmento=>{
