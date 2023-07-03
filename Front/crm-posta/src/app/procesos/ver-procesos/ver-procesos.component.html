@@ -1,6 +1,6 @@
+<app-segmento-modal *ngIf="modalService.verMas" ></app-segmento-modal>
 <div class="row">
   <div class="col-2">
-    <div class="row">
       <div class="col">
         <div class="card mb-3">
           <div  class="card-header"  *ngIf="client.type ==='entrepreneur'">Emprendedor</div>
@@ -27,65 +27,174 @@
             <h5 class="card-title" *ngIf="client.type==='businessman'">N° Registro Mercantil</h5>
             <p class="card-text">{{client.numberMercantilRegistry}}</p>
             <h5 class="card-title" *ngIf="client.type==='businessman'">CIIU</h5>
-            <p class="card-text">{{client?.ciiu.id}} - {{client?.ciiu.titulo}} </p>
+            <p class="card-text">{{client?.ciiu?.id}} - {{client?.ciiu?.titulo}} </p>
           </div>
         </div>
       </div >
-
       </div>
-  </div>
+      <div class="col">
+      <div class="row">
+    
+        <div class="col-4">
+          <div class="card border-primary mb-3" style="max-width: 18rem;">
+            <!-- Contenido del primer card -->
+            <div class="card-header">SEGMENTO DE CLIENTES</div>
+          <div class="card-body text-primary">
+            
+            
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <button (click)="abrirVerMas()" >VER MAS</button>
+          </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card border-secondary mb-3" style="max-width: 18rem;">
+            <!-- Contenido del segundo card -->
+            <div class="card-header">PROPUESTA DE VALOR</div>
+          <div class="card-body text-secondary">
+            <h5 class="card-title">Secondary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card border-success mb-3" style="max-width: 18rem;">
+            <!-- Contenido del tercer card -->
+            <div class="card-header">CANALES</div>
+          <div class="card-body text-success">
+            <h5 class="card-title">Success card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="card border-danger mb-3" style="max-width: 18rem;">
+            <!-- Contenido del cuarto card -->
+            <div class="card-header">RELACION CON CLIENTES</div>
+          <div class="card-body text-danger">
+            <h5 class="card-title">Danger card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card border-warning mb-3" style="max-width: 18rem;">
+            <!-- Contenido del quinto card -->
+            <div class="card-header">RECURSOS CLAVES</div>
+          <div class="card-body">
+            <h5 class="card-title">Warning card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card border-info mb-3" style="max-width: 18rem;">
+            <!-- Contenido del sexto card -->
+            <div class="card-header">ACTIVIDADES CLAVES</div>
+          <div class="card-body">
+            <h5 class="card-title">Info card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="card border-light mb-3" style="max-width: 18rem;">
+            <!-- Contenido del séptimo card -->
+            <div class="card-header">SOCIOS CLAVES</div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <!-- Contenido del octavo card -->
+            <div class="card-header">INGRESOS</div>
+          <div class="card-body text-dark">
+            <h5 class="card-title">Dark card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <!-- Contenido del noveno card -->
+            <div class="card-header">ESTRUCTURA DE COSTOS</div>
+          <div class="card-body text-dark">
+            <h5 class="card-title">Dark card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+  
+  <!--
   <div  class="col-10">
     <div class="card border-primary mb-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
+      <div class="card-header">SEGMENTO DE CLIENTES</div>
       <div class="card-body text-primary">
         <h5 class="card-title">Primary card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
     <div class="card border-secondary mb-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
+      <div class="card-header">PROPUESTA DE VALOR</div>
       <div class="card-body text-secondary">
         <h5 class="card-title">Secondary card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
     <div class="card border-success mb-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
+      <div class="card-header">CANALES</div>
       <div class="card-body text-success">
         <h5 class="card-title">Success card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
     <div class="card border-danger mb-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
+      <div class="card-header">RELACION CON CLIENTES</div>
       <div class="card-body text-danger">
         <h5 class="card-title">Danger card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
     <div class="card border-warning mb-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
+      <div class="card-header">RECURSOS CLAVES</div>
       <div class="card-body">
         <h5 class="card-title">Warning card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
     <div class="card border-info mb-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
+      <div class="card-header">ACTIVIDADES CLAVES</div>
       <div class="card-body">
         <h5 class="card-title">Info card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
     <div class="card border-light mb-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
+      <div class="card-header">SOCIOS CLAVES</div>
       <div class="card-body">
         <h5 class="card-title">Light card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
     <div class="card border-dark mb-3" style="max-width: 18rem;">
-      <div class="card-header">Header</div>
+      <div class="card-header">INGRESOS</div>
+      <div class="card-body text-dark">
+        <h5 class="card-title">Dark card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+      <div class="card-header">ESTRUCTURA DE COSTOS</div>
       <div class="card-body text-dark">
         <h5 class="card-title">Dark card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -93,3 +202,5 @@
     </div>
   </div>
 </div>
+-->
+

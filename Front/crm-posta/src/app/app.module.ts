@@ -41,6 +41,7 @@ import { IngresosComponent } from './procesos/ingresos/ingresos.component';
 import { EstructuraCostosComponent } from './procesos/estructura-costos/estructura-costos.component';
 import { BannerComponent } from './banner/banner.component';
 import { VerProcesosComponent } from './procesos/ver-procesos/ver-procesos.component';
+import { SegmentoModalComponent } from './procesos/ver-procesos/segmento-modal/segmento-modal.component';
 
 const routes:Routes=[
 
@@ -114,6 +115,7 @@ const routes:Routes=[
       EstructuraCostosComponent,
       BannerComponent,
       VerProcesosComponent,
+      SegmentoModalComponent
 
 
    ],
