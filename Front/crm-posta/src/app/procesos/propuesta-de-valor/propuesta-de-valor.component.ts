@@ -63,7 +63,7 @@ export class PropuestaDeValorComponent {
      }
   }
   public guardar(){
-    this.proceso.estado='propuestaDeValor';
+    this.proceso.estado='Propuesta de Valor';
     console.log(this.proceso);
     this.proceso.canvasModel.valuePropositions=this.valuePropositions
    this.procesoService.propuestaValorSave(this.proceso.canvasModel.valuePropositions).subscribe(valor=>{
