@@ -16,10 +16,10 @@ import Swal from 'sweetalert2';
 export class RelacionesComponent {
 
   customerRelationships:CustomerRelationships= new CustomerRelationships();
-  proceso:Process= new Process;
+  proceso:Process= new Process();
 
   procesos:Process[]=[];
-  cliente: Client = new Client()
+  cliente: Client = new Client();
   value:boolean;
   constructor(private modalService: ModalService,
      private clienteService: ClientService,

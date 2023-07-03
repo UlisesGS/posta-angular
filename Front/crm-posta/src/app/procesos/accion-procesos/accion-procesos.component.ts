@@ -42,15 +42,15 @@ export class AccionProcesosComponent implements OnInit {
         this.ruta.navigate([`recursosClaves/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
-      case 'recursosClaves':
+      case 'Recursos Claves':
         this.ruta.navigate([`actividadesClaves/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
-      case 'actividadesClaves':
+      case 'Actividades Claves':
         this.ruta.navigate([`sociosClaves/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
-      case 'sociosClaves':
+      case 'Socios Claves':
         this.ruta.navigate([`ingresos/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
@@ -58,7 +58,7 @@ export class AccionProcesosComponent implements OnInit {
         this.ruta.navigate([`estructuraCostos/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
-      case 'estructuraCostos':
+      case 'Estructura Costos':
         this.ruta.navigate([`main`]);
       ;
       break;

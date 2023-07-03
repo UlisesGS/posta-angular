@@ -3,7 +3,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Ver Segmento de clientes</h5>
+                    <h5 class="modal-title">Ver ingresos</h5>
                     <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
@@ -12,10 +12,10 @@
                 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
 
                     <div class="container">
-                        <label for=""><strong>Demograficas</strong></label>
+                        <label for=""><strong>Capital propio</strong></label>
 
                         <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{proceso?.canvasModel?.customerSegments?.demograficas}}</p>
+                            {{proceso?.canvasModel?.revenueStreams?.capitalPropio}}</p>
                     </div>
 
                     
@@ -23,23 +23,10 @@
                 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
 
                     <div class="container">
-                        <label for=""><strong>Geograficas</strong></label>
+                        <label for=""><strong>Capital prestamo</strong></label>
 
                         <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{proceso?.canvasModel?.customerSegments?.geograficas}}</p>
-                    </div>
-
-                    
-                </div>
-
-
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-
-                    <div class="container">
-                        <label for=""><strong>Psicograficas</strong></label>
-
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{proceso?.canvasModel?.customerSegments?.psicograficas}}</p>
+                            {{proceso?.canvasModel?.revenueStreams?.capitalPrestamo}}</p>
                     </div>
 
                     
@@ -49,13 +36,14 @@
                 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
 
                     <div class="container">
-                        <label for=""><strong>Comportamiento</strong></label>
+                        <label for=""><strong>Canales pago</strong></label>
 
                         <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{proceso?.canvasModel?.customerSegments?.comportanmiento}}</p>
+                            {{proceso?.canvasModel?.revenueStreams?.canalesPago}}</p>
                     </div>
 
                     
                 </div>
+
             </div>
         </div>
