@@ -41,6 +41,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.procesosService.procesosFindAllUltimo().subscribe(data=>{
+      console.log(data);
+      
       this.procesos=data;
     })
     this.modal = false;

@@ -63,7 +63,7 @@ export class CanalesComponent {
      }
   }
   public guardar(){
-    this.proceso.estado='canales';
+    this.proceso.estado='Canales';
     console.log(this.proceso);
     this.proceso.canvasModel.channels=this.channels
    this.procesoService.canalesSave(this.proceso.canvasModel.channels).subscribe(canales=>{

@@ -26,19 +26,19 @@ export class AccionProcesosComponent implements OnInit {
       case 'AutoEvaluación':
       this.ruta.navigate([`segmento/cliente/${this.proceso.canvasModel.client.id}`]);
       break;
-      case 'segmento':
+      case 'Segmento de Clientes':
         this.ruta.navigate([`propuestaDeValor/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
-      case 'propuestaDeValor':
+      case 'Propuesta de Valor':
         this.ruta.navigate([`canales/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
-      case 'canales':
+      case 'Canales':
         this.ruta.navigate([`relaciones/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
-      case 'relaciones':
+      case 'Relaciones con los Clientes':
         this.ruta.navigate([`recursosClaves/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
