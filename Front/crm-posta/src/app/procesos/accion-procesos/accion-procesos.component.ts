@@ -38,7 +38,7 @@ export class AccionProcesosComponent implements OnInit {
         this.ruta.navigate([`relaciones/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
-      case 'Relaciones con los Clientes':
+      case 'Relación con los Clientes':
         this.ruta.navigate([`recursosClaves/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
@@ -46,7 +46,7 @@ export class AccionProcesosComponent implements OnInit {
         this.ruta.navigate([`actividadesClaves/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;
-      case 'Actividades Claves':
+      case 'Actividades Claves': 
         this.ruta.navigate([`sociosClaves/cliente/${this.proceso.canvasModel.client.id}`]);
       ;
       break;

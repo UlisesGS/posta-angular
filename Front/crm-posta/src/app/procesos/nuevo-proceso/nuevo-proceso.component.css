@@ -1,3 +1,15 @@
+button{
+  border-color: #eb9694;
+  background-color: red ;
+  color: white;
+  margin-left: 10px;
+}
+button:hover{
+  border-color: #eb9694;
+  background-color: rgb(241, 74, 74) ;
+  color: white;
+  margin-left: 10px;
+}
 h2{
   border-collapse: collapse;
   border: solid 2px;

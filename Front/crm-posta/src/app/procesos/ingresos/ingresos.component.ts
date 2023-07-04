@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
-import { CostComponent } from '../estructura-costos/costComponent';
+
 
 @Component({
   selector: 'app-ingresos',
