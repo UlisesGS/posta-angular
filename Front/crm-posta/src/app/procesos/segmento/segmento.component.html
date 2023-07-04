@@ -54,7 +54,9 @@
             </form>
         </div>
         <div class="form-group mt-3" >
+           
             <button (click)="guardarYsalir()" class="btn">Guardar</button>
+          
             <button [routerLink]="['/propuestaDeValor/cliente/', cliente.id]" (click)="guardar()" class="btn">Guardar y
                 Continuar</button>
             <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()"

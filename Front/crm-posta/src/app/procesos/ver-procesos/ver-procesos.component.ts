@@ -15,7 +15,7 @@ export class VerProcesosComponent implements OnInit {
   client: Client = new Client;
   procesoSeleccionado : Process;
   proceso: Process = new Process();
-  
+  valor:boolean=false;
   constructor(
     private rutaPorParametro: ActivatedRoute,
     private procesoService: ProcesoService,
