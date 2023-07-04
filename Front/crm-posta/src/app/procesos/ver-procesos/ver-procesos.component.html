@@ -1,12 +1,21 @@
-<app-segmento-modal *ngIf="modalService.verMas && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-segmento-modal>
-<app-propuesta-de-valor-modal *ngIf="modalService.verMas1 && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-propuesta-de-valor-modal>
-<app-canales-modal *ngIf="modalService.verMas2 && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-canales-modal>
-<app-relaciones-modal *ngIf="modalService.verMas3 && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-relaciones-modal>
-<app-recursos-claves-modal *ngIf="modalService.verMas4 && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-recursos-claves-modal>
-<app-actividades-claves-modal *ngIf="modalService.verMas5 && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-actividades-claves-modal>
-<app-socios-claves-modal *ngIf="modalService.verMas6 && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-socios-claves-modal>
-<app-ingresos-modal *ngIf="modalService.verMas7 && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-ingresos-modal>
-<app-estructura-costos-modal *ngIf="modalService.verMas8 && procesoSeleccionado" [proceso]="procesoSeleccionado" ></app-estructura-costos-modal>
+<app-segmento-modal *ngIf="modalService.verMas && procesoSeleccionado"
+  [proceso]="procesoSeleccionado"></app-segmento-modal>
+<app-propuesta-de-valor-modal *ngIf="modalService.verMas1 && procesoSeleccionado"
+  [proceso]="procesoSeleccionado"></app-propuesta-de-valor-modal>
+<app-canales-modal *ngIf="modalService.verMas2 && procesoSeleccionado"
+  [proceso]="procesoSeleccionado"></app-canales-modal>
+<app-relaciones-modal *ngIf="modalService.verMas3 && procesoSeleccionado"
+  [proceso]="procesoSeleccionado"></app-relaciones-modal>
+<app-recursos-claves-modal *ngIf="modalService.verMas4 && procesoSeleccionado"
+  [proceso]="procesoSeleccionado"></app-recursos-claves-modal>
+<app-actividades-claves-modal *ngIf="modalService.verMas5 && procesoSeleccionado"
+  [proceso]="procesoSeleccionado"></app-actividades-claves-modal>
+<app-socios-claves-modal *ngIf="modalService.verMas6 && procesoSeleccionado"
+  [proceso]="procesoSeleccionado"></app-socios-claves-modal>
+<app-ingresos-modal *ngIf="modalService.verMas7 && procesoSeleccionado"
+  [proceso]="procesoSeleccionado"></app-ingresos-modal>
+<app-estructura-costos-modal *ngIf="modalService.verMas8 && procesoSeleccionado"
+  [proceso]="procesoSeleccionado"></app-estructura-costos-modal>
 <div class="row">
   <div class="col-2">
     <div class="col">
@@ -16,7 +25,7 @@
             Emprendedor
           </button>
         </div>
-  
+
         <div class="card-header" style="text-align:center; padding-right: 10px;" *ngIf="client?.type ==='businessman'">
           <button class="btn btn-disabled" style="width: 100%;">
             Empresario
@@ -25,10 +34,12 @@
         <div class="card-body">
           <h5 class="card-title">Nombre</h5>
           <p class="card-text align-middle"
-            style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.name}}</p>
+            style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.name}}
+          </p>
           <h5 class="card-title">Apellido</h5>
           <p class="card-text align-middle"
-            style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.lastName}}
+            style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
+            {{client?.lastName}}
           </p>
           <h5 class="card-title">Documento/NIT</h5>
           <p class="card-text align-middle"
@@ -51,7 +62,8 @@
             {{client?.ethnicGroup}}</p>
           <h5 class="card-title">Email</h5>
           <p class="card-text align-middle"
-            style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.email}}</p>
+            style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.email}}
+          </p>
           <h5 class="card-title" *ngIf="client?.type==='businessman'">Compañía</h5>
           <p class="card-text align-middle" *ngIf="client?.type==='businessman'"
             style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
@@ -62,9 +74,10 @@
             {{client?.numberMercantilRegistry}}</p>
           <h5 class="card-title" *ngIf="client?.type==='businessman'">CIIU</h5>
           <p class="card-text align-middle" *ngIf="client?.type==='businessman'"
-            style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.ciiu?.id}}
+            style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
+            {{client?.ciiu?.id}}
             - {{client?.ciiu?.titulo}} </p>
-  
+
           <h5 class="card-title" *ngIf="client?.type==='entrepreneur'">Idea de Negocio</h5>
           <p class="card-text align-middle" *ngIf="client?.type==='entrepreneur'"
             style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
@@ -73,116 +86,131 @@
           <p class="card-text align-middle" *ngIf="client?.type==='entrepreneur'"
             style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">{{client?.product}}
           </p>
-  
+          <h5 class="card-title" *ngIf="proceso?.selfAssessment">Puntaje Autoevaluación</h5>
+          <p class="card-text align-middle" *ngIf="proceso?.selfAssessment"
+            style="border: solid 0.5px rgb(204, 204, 204);border-radius: 0.5em;padding-left: 15px; ">
+            {{proceso?.selfAssessment?.score}}
+          </p>
+
         </div>
       </div>
     </div>
-      </div>
-      <div class="col">
-      <div class="row">
-    
-        <div class="col-4">
-          <div class="card border-primary mb-3" style="max-width: 18rem;">
-            <!-- Contenido del primer card -->
-            <div class="card-header">SEGMENTO DE CLIENTES</div>
-          <div class="card-body text-primary">
+  </div>
+  <div class="col">
+    <div class="row">
+
+      <div class="col-4">
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 14rem; position: relative;">
+          <!-- Contenido del primer card -->
+          <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; "><strong>SEGMENTO DE CLIENTES <i class="fa-solid fa-users-rectangle fa-2xl"></i></strong></div>
+          <div class="card-body text-primary" style="background-color: rgb(255, 235, 180)">
+           <div style="position: absolute; bottom: 0;right: 0;">
+            <a (click)="abrirVerMasSegmento(proceso)" class="btn" ><i class="fa-solid fa-plus"></i> Ver más</a>
+           </div>
             
-            
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button (click)="abrirVerMasSegmento(proceso)" >VER MAS</button>
-          </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card border-secondary mb-3" style="max-width: 18rem;">
-            <!-- Contenido del segundo card -->
-            <div class="card-header">PROPUESTA DE VALOR</div>
-          <div class="card-body text-secondary">
-            
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button (click)="abrirVerMasPropuesta(proceso)" >VER MAS</button>
-          </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card border-success mb-3" style="max-width: 18rem;">
-            <!-- Contenido del tercer card -->
-            <div class="card-header">CANALES</div>
-          <div class="card-body text-success">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button (click)="abrirVerMasCanales(proceso)" >VER MAS</button>
-          </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-4">
-          <div class="card border-danger mb-3" style="max-width: 18rem;">
-            <!-- Contenido del cuarto card -->
-            <div class="card-header">RELACION CON CLIENTES</div>
+      <div class="col-4">
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 14rem; position: relative; ">
+          <!-- Contenido del segundo card -->
+          <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;"><strong>PROPUESTA DE VALOR <i class="fa-regular fa-gem fa-2xl"></i></strong></div>
+          <div class="card-body text-primary" style="background-color: rgb(248, 167, 167)">
+            <div style="position: absolute; bottom: 0;right: 0;">
+              <a (click)="abrirVerMasPropuesta(proceso)" class="btn" ><i class="fa-solid fa-plus"></i> Ver más</a>
+             </div>
+            
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 14rem; position: relative; ">
+          <!-- Contenido del tercer card -->
+          <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;"><strong>CANALES <i class="fa-solid fa-globe fa-2xl"></i></strong></div>
+          <div class="card-body text-primary" style="background-color: rgb(197, 236, 230)">
+            <div style="position: absolute; bottom: 0;right: 0;">
+              <a (click)="abrirVerMasCanales(proceso)" class="btn" ><i class="fa-solid fa-plus"></i> Ver más</a>
+             </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="valor">
+      <div class="col-4">
+        <div class="card border-danger mb-3" style="max-width: 18rem;">
+          <!-- Contenido del cuarto card -->
+          <div class="card-header">RELACION CON CLIENTES</div>
           <div class="card-body text-danger">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button (click)="abrirVerMasRelaciones(proceso)" >VER MAS</button>
-          </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card border-warning mb-3" style="max-width: 18rem;">
-            <!-- Contenido del quinto card -->
-            <div class="card-header">RECURSOS CLAVES</div>
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button (click)="abrirVerMasRecursosClaves(proceso)" >VER MAS</button>
-          </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card border-info mb-3" style="max-width: 18rem;">
-            <!-- Contenido del sexto card -->
-            <div class="card-header">ACTIVIDADES CLAVES</div>
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button (click)="abrirVerMasActividadesClaves(proceso)" >VER MAS</button>
-          </div>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <button (click)="abrirVerMasRelaciones(proceso)">VER MAS</button>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-4">
-          <div class="card border-light mb-3" style="max-width: 18rem;">
-            <!-- Contenido del séptimo card -->
-            <div class="card-header">SOCIOS CLAVES</div>
+      <div class="col-4">
+        <div class="card border-warning mb-3" style="max-width: 18rem;">
+          <!-- Contenido del quinto card -->
+          <div class="card-header">RECURSOS CLAVES</div>
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button (click)="abrirVerMasSociosClaves(proceso)" >VER MAS</button>
-          </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <!-- Contenido del octavo card -->
-            <div class="card-header">INGRESOS</div>
-          <div class="card-body text-dark">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button (click)="abrirVerMasIngresos(proceso)" >VER MAS</button>
-          </div>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <button (click)="abrirVerMasRecursosClaves(proceso)">VER MAS</button>
           </div>
         </div>
-        <div class="col-4">
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <!-- Contenido del noveno card -->
-            <div class="card-header">ESTRUCTURA DE COSTOS</div>
-          <div class="card-body text-dark">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button (click)="abrirVerMasEstructuraCostos(proceso)" >VER MAS</button>
-          </div>
+      </div>
+      <div class="col-4">
+        <div class="card border-info mb-3" style="max-width: 18rem;">
+          <!-- Contenido del sexto card -->
+          <div class="card-header">ACTIVIDADES CLAVES</div>
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <button (click)="abrirVerMasActividadesClaves(proceso)">VER MAS</button>
           </div>
         </div>
       </div>
     </div>
+    <div class="row" *ngIf="valor">
+      <div class="col-4">
+        <div class="card border-light mb-3" style="max-width: 18rem;">
+          <!-- Contenido del séptimo card -->
+          <div class="card-header">SOCIOS CLAVES</div>
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <button (click)="abrirVerMasSociosClaves(proceso)">VER MAS</button>
+          </div>
+        </div>
       </div>
-  
-  <!--
+      <div class="col-4">
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+          <!-- Contenido del octavo card -->
+          <div class="card-header">INGRESOS</div>
+          <div class="card-body text-dark">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <button (click)="abrirVerMasIngresos(proceso)">VER MAS</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+          <!-- Contenido del noveno card -->
+          <div class="card-header">ESTRUCTURA DE COSTOS</div>
+          <div class="card-body text-dark">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <button (click)="abrirVerMasEstructuraCostos(proceso)">VER MAS</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
   <div  class="col-10">
     <div class="card border-primary mb-3" style="max-width: 18rem;">
       <div class="card-header">SEGMENTO DE CLIENTES</div>
@@ -250,4 +278,3 @@
   </div>
 </div>
 -->
-

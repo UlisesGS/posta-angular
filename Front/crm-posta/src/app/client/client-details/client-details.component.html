@@ -1,14 +1,14 @@
-<div class="row">
+<div class="row"> 
   <div class="col">
     <div class="card">
       <div class="card-header" style="text-align:center; padding-right: 10px;" *ngIf="client?.type ==='entrepreneur'">
-        <button class="btn btn-disabled" style="width: 100%;">
+        <button class="btn btn-disabled" style="background-color: red; color: white;width: 100%;">
           Emprendedor
         </button>
       </div>
 
-      <div class="card-header" style="text-align:center; padding-right: 10px;" *ngIf="client?.type ==='businessman'">
-        <button class="btn btn-disabled" style="width: 100%;">
+      <div class="card-header" style=" text-align:center; padding-right: 10px;" *ngIf="client?.type ==='businessman'">
+        <button class="btn btn-disabled" style="width: 100%;background-color: rgb(136, 0, 0); color: white;">
           Empresario
         </button>
       </div>
