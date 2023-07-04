@@ -1,12 +1,13 @@
-<div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-left: -20%;">
-    <div  style="width: 30vw;">
+<div style="display: flex; justify-content: center; align-items: center;  margin-left: -20%;">
+    <div style="width: 30vw;">
         <div class="card" style="border-radius: 1em;">
             <section>
                 <div class="container">
                     <div class="text-center mb-5">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                        <h2 class="fw-bolder">Iniciar Sesion</h2>
-                        
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
+                                class="bi bi-envelope"></i></div>
+                        <h2 class="fw-bolder">Iniciar Sesión</h2>
+
                     </div>
                     <div class="row gx-5 justify-content-center">
                         <div class="col" style="width: 70vw;">
@@ -15,13 +16,14 @@
                                 <div class="form-floating mb-3">
                                     <input class="form-control" type="text" name="email"
                                         placeholder="Ingrese su nombre de usuario..." data-sb-validations="required"
-                                        [(ngModel)]="auth.email" />
+                                        [(ngModel)]="auth.email" autocomplete="off" />
                                     <label for="name">Email</label>
                                 </div>
                                 <!-- Email address input-->
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="password" name="password" placeholder="password123"
-                                        data-sb-validations="required,password" [(ngModel)]="auth.password" />
+                                    <input class="form-control" type="password" name="password"
+                                        placeholder="password123" data-sb-validations="required,password"
+                                        [(ngModel)]="auth.password" autocomplete="off" />
                                     <label for="email">Contraseña</label>
                                 </div>
                                 <div class="d-none" id="submitErrorMessage">
@@ -29,7 +31,8 @@
                                 </div>
                                 <!-- Submit Button-->
                                 <div class="text-center my-5">
-                                    <button class="btn btn-primary btn-lg"  id="submitButton" type=""(click)="findByUsernameAndPassword()">Aceptar</button>
+                                    <button class="btn btn-primary btn-lg" id="submitButton" type=""
+                                        (click)="findByUsernameAndPassword()">Aceptar</button>
                                 </div>
                             </form>
                         </div>
@@ -39,8 +42,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-

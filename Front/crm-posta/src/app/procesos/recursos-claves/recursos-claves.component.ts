@@ -87,7 +87,7 @@ export class RecursosClavesComponent {
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
         this.router.navigate(['procesos'])
-        Swal.fire('Exito', 'Recursos claves creada con exito', 'success');
+        Swal.fire('Exito', 'Recursos Claves creada con exito', 'success');
       })
     })
    })
