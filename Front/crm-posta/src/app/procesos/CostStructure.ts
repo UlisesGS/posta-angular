@@ -5,7 +5,8 @@ id:number;
 variableCost:CostComponent[];
 fixedCosts:CostComponent[];
 totalVariableCosts:number=0;
-totalfixedCost:number=0;
+
+totalfixedCosts:number=0;
 totalCost:number=0;
 
 totalVariable(){
@@ -15,11 +16,11 @@ totalVariable(){
 }
 totalFijo(){
   this.fixedCosts.forEach(fixed=>{
-    this.totalfixedCost+=fixed.amount;
+    this.totalfixedCosts+=fixed.amount;
   })
 }
 total(){
-  this.totalCost=this.totalVariableCosts+this.totalfixedCost
+  this.totalCost=this.totalVariableCosts+this.totalfixedCosts
 }
 
 }
