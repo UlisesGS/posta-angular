@@ -21,6 +21,12 @@ export class AccionProcesosComponent implements OnInit {
     this.modal.cerrarModalProceso();
   }
 
+  // [routerLink]="['/procesos/ver/', proceso.id]"
+  verProceso(){
+    this.ruta.navigate([`procesos/ver/${this.proceso.id}`])
+    this.modal.cerrarModalProceso();
+  }
+
   public continuarProceso(){
     switch(this.proceso.estado){
       case 'iniciando':
@@ -66,5 +72,6 @@ export class AccionProcesosComponent implements OnInit {
       ;
       break;
     }
+    this.modal.cerrarModalProceso();
   }
 }

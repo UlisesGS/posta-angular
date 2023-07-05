@@ -9,12 +9,14 @@ import { ModalService } from 'src/app/client/modal.service';
 })
 export class ActividadesClavesModalComponent {
   @Input()proceso:Process= new Process();
+  @Input()bool:boolean;
   constructor(
     private modalServide:ModalService,
   ){}
 
   ngOnInit(): void {
     console.log(this.proceso);
+    console.log(this.bool);
     
   }
 

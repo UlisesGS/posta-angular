@@ -20,11 +20,11 @@ import { KeyActivities } from './KeyActivities';
 })
 export class ProcesoService {
 
-  private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/canvas"
+  //private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/canvas"
 
- // private urlEndPoint:string="http://localhost:8080/canvas";
-   private urlProcesos:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/process"
-  // private urlProcesos:string="http://localhost:8080/process";
+  private urlEndPoint:string="http://localhost:8080/canvas";
+   //private urlProcesos:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/process"
+   private urlProcesos:string="http://localhost:8080/process";
   constructor(private http:HttpClient) { }
 // procesos
 public procesosFindAllUltimo():Observable<any>{
@@ -87,4 +87,42 @@ public ingresosSave(revenueStreams:RevenueStreams):Observable<any>{
 public estructuraCostoSave(costStructure:CostStructure):Observable<any>{
   return this.http.post<any>(`${this.urlEndPoint}/estructuraCostos`,costStructure);
 }
+
+
+  // modelo canvas todos los put de los diferentes sectores
+  public segmentoPut(customerSegments:CustomerSegments):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/segmentoPut/${customerSegments.id}`,customerSegments);
+  }
+
+  public propuestaValorPut(valuePropositions:ValuePropositions):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/propuestaValorPut/${valuePropositions.id}`,valuePropositions);
+  }
+
+  public canalesPut(channels:Channels):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/canalesPut/${channels.id}`,channels);
+  }
+
+  public relacionesPut(customerRelationships:CustomerRelationships):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/relacionesPut/${customerRelationships.id}`,customerRelationships);
+  }
+
+  public recursosClavesPut(keyRecources:KeyRecources):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/recursosClavesPut/${keyRecources.id}`,keyRecources);
+  }
+
+  public actividadesClavesPut(keyActivities:KeyActivities):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/actividadesClavesPut/${keyActivities.id}`,keyActivities);
+  }
+
+  public sociosClavesPut(keyPartners:KeyPartners):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/sociosClavesPut/${keyPartners.id}`,keyPartners);
+  }
+
+  public ingresosPut(revenueStreams:RevenueStreams):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/ingresosPut/${revenueStreams.id}`,revenueStreams);
+  }
+
+  public estructuraCostoPut(costStructure:CostStructure):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/estructuraCostoPut/${costStructure.id}`,costStructure);
+  }
   }

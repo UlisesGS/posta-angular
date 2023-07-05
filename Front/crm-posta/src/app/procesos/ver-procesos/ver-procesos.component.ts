@@ -16,6 +16,7 @@ export class VerProcesosComponent implements OnInit {
   procesoSeleccionado : Process;
   proceso: Process = new Process();
   valor:boolean=false;
+  bool1:boolean=false;
   constructor(
     private rutaPorParametro: ActivatedRoute,
     private procesoService: ProcesoService,
@@ -39,19 +40,26 @@ export class VerProcesosComponent implements OnInit {
   }
 
 
-  public abrirVerMasSegmento(proceso:Process) {
+  public abrirAesoria(){
+    this.modalService.abrirModalAsesoria();
+  }
+
+  public abrirVerMasSegmento(proceso:Process, bool:boolean) {
+    this.bool1=bool;
     this.procesoSeleccionado=proceso;
     this.modalService.abrirVerMas();
   }
 
 
-  public abrirVerMasPropuesta(proceso:Process) {
+  public abrirVerMasPropuesta(proceso:Process, bool:boolean) {
+    this.bool1=bool;
     this.procesoSeleccionado=proceso;
     this.modalService.abrirVerMas1();
   }
 
 
-  public abrirVerMasCanales(proceso:Process) {
+  public abrirVerMasCanales(proceso:Process, bool:boolean) {
+    this.bool1=bool;
     this.procesoSeleccionado=proceso;
     this.modalService.abrirVerMas2();
   }
