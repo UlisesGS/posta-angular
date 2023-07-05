@@ -40,6 +40,10 @@ export class VerProcesosComponent implements OnInit {
   }
 
 
+  public abrirAesoria(){
+    this.modalService.abrirModalAsesoria();
+  }
+
   public abrirVerMasSegmento(proceso:Process, bool:boolean) {
     this.bool1=bool;
     this.procesoSeleccionado=proceso;
