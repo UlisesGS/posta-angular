@@ -87,4 +87,42 @@ public ingresosSave(revenueStreams:RevenueStreams):Observable<any>{
 public estructuraCostoSave(costStructure:CostStructure):Observable<any>{
   return this.http.post<any>(`${this.urlEndPoint}/estructuraCostos`,costStructure);
 }
+
+
+  // modelo canvas todos los put de los diferentes sectores
+  public segmentoPut(customerSegments:CustomerSegments):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/segmentoPut/${customerSegments.id}`,customerSegments);
+  }
+
+  public propuestaValorPut(valuePropositions:ValuePropositions):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/propuestaValorPut/${valuePropositions.id}`,valuePropositions);
+  }
+
+  public canalesPut(channels:Channels):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/canalesPut/${channels.id}`,channels);
+  }
+
+  public relacionesPut(customerRelationships:CustomerRelationships):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/relacionesPut/${customerRelationships.id}`,customerRelationships);
+  }
+
+  public recursosClavesPut(keyRecources:KeyRecources):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/recursosClavesPut/${keyRecources.id}`,keyRecources);
+  }
+
+  public actividadesClavesPut(keyActivities:KeyActivities):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/actividadesClavesPut/${keyActivities.id}`,keyActivities);
+  }
+
+  public sociosClavesPut(keyPartners:KeyPartners):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/sociosClavesPut/${keyPartners.id}`,keyPartners);
+  }
+
+  public ingresosPut(revenueStreams:RevenueStreams):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/ingresosPut/${revenueStreams.id}`,revenueStreams);
+  }
+
+  public estructuraCostoPut(costStructure:CostStructure):Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/estructuraCostoPut/${costStructure.id}`,costStructure);
+  }
   }
