@@ -45,23 +45,24 @@
 
       <ul>
         <li *ngFor="let entidad of listaBackend">
-          {{ entidad.atributo1 }} - {{ entidad.atributo2 }}
+          {{ entidad.nameComponent }} - {{ entidad.amount }}
         </li>
       </ul>
     </div>
     <div class="col-2 mt-3">
-      <input [(ngModel)]="nameComponent" type="text" class="form-control mb-1" placeholder="Tipo de gasto">
-      <input [(ngModel)]="amount" type="number" class="form-control" placeholder="Monto">
-      <a (click)="agregarValor()" class="btn mt-2"><i class="fa-solid fa-plus"></i> Agregar</a> 
+      <input [(ngModel)]="nameComponent1" type="text" class="form-control mb-1" placeholder="Tipo de gasto">
+      <input [(ngModel)]="amount1" type="number" class="form-control" placeholder="Monto">
+      <a (click)="agregarValor1()" class="btn mt-2"><i class="fa-solid fa-plus"></i> Agregar</a>
 
       <ul>
-        <li *ngFor="let entidad of listaBackend">
-          {{ entidad.atributo1 }} - {{ entidad.atributo2 }}
+        <li *ngFor="let entidad1 of listaBackend2">
+          {{ entidad1.nameComponent }} - {{ entidad1.amount }}
         </li>
       </ul>
     </div>
+
     <div class="form-group">
-      <button [routerLink]="['/', cliente.id]" class="btn">Guardar</button>
+      <button [routerLink]="['/', cliente.id]" (click)="guardar()" class="btn">Guardar</button>
       <button [routerLink]="['/procesos', cliente.id]" class="btn">Guardar y Continuar</button>
       <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
     </div>

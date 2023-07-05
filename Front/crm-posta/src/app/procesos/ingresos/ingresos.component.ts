@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/client/client';
 import { ClientService } from 'src/app/client/client.service';
 import { ModalService } from 'src/app/client/modal.service';
+import Swal from 'sweetalert2';
+import { Process } from '../Process';
+import { ProcesoService } from '../proceso.service';
+import { RevenueStreams } from '../RevenueStreams';
 
 
 @Component({
@@ -10,16 +14,20 @@ import { ModalService } from 'src/app/client/modal.service';
   templateUrl: './ingresos.component.html',
   styleUrls: ['./ingresos.component.css']
 })
-export class IngresosComponent {
+export class IngresosComponent implements OnInit{
 
+  revenueStreams:RevenueStreams= new RevenueStreams();
+  proceso:Process= new Process;
+
+  procesos:Process[]=[];
   cliente: Client = new Client()
   value:boolean;
-  
-
-
   constructor(private modalService: ModalService,
      private clienteService: ClientService,
-     private rutaParametro: ActivatedRoute) { }
+      private rutaParametro: ActivatedRoute,
+      private procesoService:ProcesoService,
+      private router:Router,
+      ) { }
 
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
@@ -28,7 +36,17 @@ export class IngresosComponent {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
           console.log(data);
+          this.procesoService.procesosFindAll().subscribe(p=>{
 
+            this.procesos=p;
+            this.procesos.forEach(proceso=>{
+              if(proceso.canvasModel.client.id==this.cliente.id){
+                this.proceso=proceso;
+                console.log(proceso);
+
+              }
+            })
+          })
         })
       }
     })
@@ -46,7 +64,35 @@ export class IngresosComponent {
        this.value=true;
      }
   }
+  public guardar(){
+    this.proceso.estado='Ingresos';
+    console.log(this.proceso);
+    this.proceso.canvasModel.revenueStreams=this.revenueStreams
+   this.procesoService.ingresosSave(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
+    this.proceso.canvasModel.revenueStreams=valor;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+      })
+    })
+   })
+  }
 
-  
+
+  public guardarYsalir(){
+    this.proceso.estado='Ingresos';
+    console.log(this.proceso);
+    this.proceso.canvasModel.revenueStreams=this.revenueStreams
+   this.procesoService.ingresosSave(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
+    this.proceso.canvasModel.revenueStreams=valor;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
+        Swal.fire('Exito', 'Propuesta de Valor creada con exito', 'success');
+      })
+    })
+   })
+  }
+
+
 
 }
