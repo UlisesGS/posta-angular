@@ -49,7 +49,7 @@
         <div class="container display-flex" *ngIf="condicion">
 
           <div class="form-group" style="margin-top: 5px; margin-bottom: 5px;">
-            <button *ngIf="habiliar" (click)="cerrarModalProceso()"
+            <button  (click)="cerrarModalProceso()"
               [routerLink]="['/autoevaluacion/cliente/', client.id]" class="btn">Crear Proceso</button>
             <button (click)="volver()" class="btn">Volver</button>
             <!-- <button (click)="cerrarModalProceso()" class="btn">Cancelar</button> -->
