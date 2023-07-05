@@ -28,6 +28,7 @@ export class MainComponent implements OnInit {
   municicipios: Municipio[];
 
   clienteSeleccionado: Client;
+  procesoSeleccionado: Process;
   paginador: any;
 
 
@@ -42,7 +43,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.procesosService.procesosFindAllUltimo().subscribe(data=>{
       console.log(data);
-      
+
       this.procesos=data;
     })
     this.modal = false;
@@ -83,6 +84,10 @@ export class MainComponent implements OnInit {
   abrirModalAction(client: Client) {
     this.clienteSeleccionado = client;
     this.modalservice.abrirModalAction();
+  }
+  abrirModalActionProceso(process: Process) {
+    this.procesoSeleccionado = process;
+    this.modalservice.abrirModalPocesos();
   }
 
 

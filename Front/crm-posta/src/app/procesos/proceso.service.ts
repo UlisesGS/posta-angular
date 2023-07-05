@@ -54,6 +54,9 @@ public procesosFindAllUltimo():Observable<any>{
 
     return this.http.put<any>(`${this.urlEndPoint}/model/${canvas.id}`,canvas);
   }
+  public costosTodos():Observable<any[]>{
+    return this.http.get<any[]>(`${this.urlEndPoint}/listaCostos`);
+  }
   // modelo canvas todos los save de los diferentes sectores
 public segmentoSave(customerSegments:CustomerSegments):Observable<any>{
   return this.http.post<any>(`${this.urlEndPoint}/segmetento`,customerSegments);
