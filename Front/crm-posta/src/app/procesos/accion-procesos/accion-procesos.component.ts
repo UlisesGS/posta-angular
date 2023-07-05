@@ -23,6 +23,9 @@ export class AccionProcesosComponent implements OnInit {
 
   public continuarProceso(){
     switch(this.proceso.estado){
+      case 'iniciando':
+        this.ruta.navigate([`autoevaluacion/cliente/${this.proceso.canvasModel.client.id}`]);
+        break;
       case 'AutoEvaluación':
       this.ruta.navigate([`segmento/cliente/${this.proceso.canvasModel.client.id}`]);
       break;
