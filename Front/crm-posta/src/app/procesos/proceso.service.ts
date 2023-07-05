@@ -19,7 +19,9 @@ import { KeyActivities } from './KeyActivities';
   providedIn: 'root'
 })
 export class ProcesoService {
+
   private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/canvas"
+
  // private urlEndPoint:string="http://localhost:8080/canvas";
    private urlProcesos:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/process"
   // private urlProcesos:string="http://localhost:8080/process";
