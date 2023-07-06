@@ -1,93 +1,101 @@
 <div *ngIf="bool">
-<div class="abrir-modal animacion fadeIn" style="align-items: center;">
-    <div class="modal" tabindex="-1" style="display:flex;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Segmento de Clientes</h5>
-                    <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                    <div class="container">
-                        <label for=""><strong>Demográficas</strong></label>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;">
-                            {{proceso?.canvasModel?.customerSegments?.demograficas}}</p>
+    <div class="abrir-modal animacion fadeIn" style="align-items: center;">
+        <div class="modal" tabindex="-1" style="display:flex;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Segmento de Clientes</h5>
+                        <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                    <div class="container">
-                        <label for=""><strong>Geográficas</strong></label>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;">
-                            {{proceso?.canvasModel?.customerSegments?.geograficas}}</p>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                        <div class="container">
+                            <label for=""><strong>Demográficas</strong></label>
+                            <p
+                                style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;">
+                                {{proceso?.canvasModel?.customerSegments?.demograficas}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                    <div class="container">
-                        <label for=""><strong>Psicográficas</strong></label>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;">
-                            {{proceso?.canvasModel?.customerSegments?.psicograficas}}</p>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                        <div class="container">
+                            <label for=""><strong>Geográficas</strong></label>
+                            <p
+                                style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;">
+                                {{proceso?.canvasModel?.customerSegments?.geograficas}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                    <div class="container">
-                        <label for=""><strong>Comportamiento</strong></label>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px; max-height: 150px; overflow-y: auto;">
-                            {{proceso?.canvasModel?.customerSegments?.comportanmiento}}</p>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                        <div class="container">
+                            <label for=""><strong>Psicográficas</strong></label>
+                            <p
+                                style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;">
+                                {{proceso?.canvasModel?.customerSegments?.psicograficas}}</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                        <div class="container">
+                            <label for=""><strong>Comportamiento</strong></label>
+                            <p
+                                style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px; max-height: 150px; overflow-y: auto;">
+                                {{proceso?.canvasModel?.customerSegments?.comportanmiento}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
-        </div>
+    </div>
+</div>
 
 
 
 
-        <div *ngIf="!bool">
-            <div class="abrir-modal animacion fadeIn" style="align-items: center;">
-                <div class="modal" tabindex="-1" style="display:flex;">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Editar Segmento de Clientes</h5>
-                                <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                                <div class="container">
-                                    <label for=""><strong>Demográficas</strong></label><br>
-                                    <textarea [(ngModel)]="proceso.canvasModel.customerSegments.demograficas" style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;"></textarea>
-                                        
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                                <div class="container">
-                                    <label for=""><strong>Geográficas</strong></label><br>
-                                    <textarea [(ngModel)]="proceso.canvasModel.customerSegments.geograficas" style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;"></textarea>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                                <div class="container">
-                                    <label for=""><strong>Psicográficas</strong></label><br>
-                                    <textarea [(ngModel)]="proceso.canvasModel.customerSegments.psicograficas" style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;"></textarea>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                                <div class="container">
-                                    <label for=""><strong>Comportamiento</strong></label><br>
-                                    <textarea [(ngModel)]="proceso.canvasModel.customerSegments.comportanmiento" style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;"></textarea>
-                                </div>
-                            </div>
-                            <br>
-
-                            <div style="position: absolute; bottom: 0;right: 0;">
-                                <a (click)="editar()" class="btn" ><i class="fa-solid fa-plus"></i> Aceptar</a>
-                            </div>
+<div *ngIf="!bool">
+    <div class="abrir-modal animacion fadeIn" style="align-items: center;">
+        <div class="modal" tabindex="-1" style="display:flex;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Segmento de Clientes</h5>
+                        <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2" id="datas">
+                        <div class="container">
+                            <label for=""><strong>Demográficas</strong></label><br>
+                            <textarea [(ngModel)]="proceso.canvasModel.customerSegments.demograficas"  class="form-control"
+                                style="padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
 
                         </div>
                     </div>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                        <div class="container">
+                            <label for=""><strong>Geográficas</strong></label><br>
+                            <textarea [(ngModel)]="proceso.canvasModel.customerSegments.geograficas"  class="form-control"
+                                style="padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+                        </div>
                     </div>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                        <div class="container">
+                            <label for=""><strong>Psicográficas</strong></label><br>
+                            <textarea [(ngModel)]="proceso.canvasModel.customerSegments.psicograficas"  class="form-control"
+                                style=" padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+                        </div>
                     </div>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                        <div class="container">
+                            <label for=""><strong>Comportamiento</strong></label><br>
+                            <textarea [(ngModel)]="proceso.canvasModel.customerSegments.comportanmiento"  class="form-control"
+                                style="padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div style="position: absolute; bottom: 0;right: 0; padding-top: 10px;">
+                        <a (click)="editar()" class="btn"><i class="fa-solid fa-plus"></i> Aceptar</a>
+                    </div>
+
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
