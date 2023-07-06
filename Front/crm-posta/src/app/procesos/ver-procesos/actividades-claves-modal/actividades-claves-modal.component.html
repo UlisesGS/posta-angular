@@ -1,4 +1,4 @@
-<div class="abrir-modal animacion fadeIn" style="align-items: center;">
+<div class="abrir-modal animacion fadeIn" style="align-items: center;"  *ngIf="bool">
     <div class="modal" tabindex="-1" style="display:flex;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -18,7 +18,7 @@
                             {{proceso?.canvasModel?.keyActivities?.actividadPrincipal}}</p>
                     </div>
 
-                    
+
                 </div>
                 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
 
@@ -29,7 +29,7 @@
                             {{proceso?.canvasModel?.keyActivities?.prestacionServicio}}</p>
                     </div>
 
-                    
+
                 </div>
 
 
@@ -42,7 +42,7 @@
                             {{proceso?.canvasModel?.keyActivities?.comunicacionMarketing}}</p>
                     </div>
 
-                    
+
                 </div>
 
 
@@ -55,10 +55,61 @@
                             {{proceso?.canvasModel?.keyActivities?.postVenta}}</p>
                     </div>
 
-                    
+
                 </div>
 
             </div>
         </div>
 </div>
 </div>
+<div class="abrir-modal animacion fadeIn" style="align-items: center;" *ngIf="!bool">
+  <div class="modal" tabindex="-1" style="display:flex;">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Editar Actividades Claves</h5>
+                  <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
+                      aria-label="Close"></button>
+              </div>
+              <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2" id="datas">
+                  <div class="container">
+                      <label for=""><strong>Actividad Pricipal</strong></label><br>
+                      <textarea [(ngModel)]="proceso.canvasModel.keyActivities.actividadPrincipal"  class="form-control"
+                          style="padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+
+                  </div>
+              </div>
+              <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                  <div class="container">
+                      <label for=""><strong>Prestacion de Servicios</strong></label><br>
+                      <textarea [(ngModel)]="proceso.canvasModel.keyActivities.prestacionServicio"  class="form-control"
+                          style="padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+                  </div>
+              </div>
+              <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                  <div class="container">
+                      <label for=""><strong>Comunicacion Marketing</strong></label><br>
+                      <textarea [(ngModel)]="proceso.canvasModel.keyActivities.comunicacionMarketing"  class="form-control"
+                          style=" padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+                  </div>
+              </div>
+              <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                <div class="container">
+                    <label for=""><strong>Post Venta</strong></label><br>
+                    <textarea [(ngModel)]="proceso.canvasModel.keyActivities.postVenta"  class="form-control"
+                        style=" padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+                </div>
+            </div>
+
+              <br>
+
+              <div style="position: absolute; bottom: 0;right: 0; padding-top: 10px;">
+                  <a (click)="editar()" class="btn"><i class="fa-solid fa-plus"></i> Aceptar</a>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
