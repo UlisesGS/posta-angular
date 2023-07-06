@@ -19,6 +19,12 @@
     animation-name: fadeIn;
     -webkit-animation-name: fadeIn;
   }
+
+  .modal-dialog{
+    width: 500px;
+    max-width: 100%;
+  }
+ 
   
   @keyframes fadeIn{0%{opacity: 0}to{opacity: 1}}
   /*@-webkit-keyframes fadeIn{0%{opacity: 0}to{opacity: 1}}*/

@@ -1,54 +1,56 @@
 <div *ngIf="bool">
-<div class="abrir-modal animacion fadeIn" style="align-items: center;">
-    <div class="modal" tabindex="-1" style="display:flex;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Propuesta de Valor</h5>
-                    <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                    <div class="container">
-                        <label for=""><strong>Propuesta de Valor</strong></label>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;">
-                            {{proceso?.canvasModel?.valuePropositions?.proposition}}</p>
+    <div class="abrir-modal animacion fadeIn" style="align-items: center;">
+        <div class="modal" tabindex="-1" style="display:flex;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Propuesta de Valor</h5>
+                        <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                        <div class="container">
+                            <label for=""><strong>Propuesta de Valor</strong></label>
+                            <p
+                                style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;height: 100px; overflow-y: auto; width: 400px;">
+                                {{proceso?.canvasModel?.valuePropositions?.proposition}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
     </div>
+</div>
 
 
 
 
-        <div *ngIf="!bool">
-            <div class="abrir-modal animacion fadeIn" style="align-items: center;">
-                <div class="modal" tabindex="-1" style="display:flex;">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Editar Propuesta de Valor</h5>
-                                <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                                <div class="container">
-                                    <label for=""><strong>Propuesta de Valor</strong></label><br>
-                                    <textarea [(ngModel)]="proceso.canvasModel.valuePropositions.proposition" style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;max-height: 150px; overflow-y: auto;"></textarea>
-                                        
-                                </div>
-                            </div>
-                            <br>
-
-                            <div style="position: absolute; bottom: 0;right: 0;">
-                                <a (click)="editar()" class="btn" ><i class="fa-solid fa-plus"></i> Aceptar</a>
-                            </div>
+<div *ngIf="!bool">
+    <div class="abrir-modal animacion fadeIn" style="align-items: center;">
+        <div class="modal" tabindex="-1" style="display:flex;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Propuesta de Valor</h5>
+                        <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                        <div class="container">
+                            <label for=""><strong>Propuesta de Valor</strong></label><br>
+                            <textarea [(ngModel)]="proceso.canvasModel.valuePropositions.proposition" class="form-control"
+                                style="padding-left: 5px;height: 100px; overflow-y: auto; width: 400px;"></textarea>
 
                         </div>
                     </div>
+                    <br>
+
+                    <div style="position: absolute; bottom: 0;right: 0;">
+                        <a (click)="editar()" class="btn"><i class="fa-solid fa-plus"></i> Aceptar</a>
                     </div>
-                    </div>
+
                 </div>
+            </div>
+        </div>
+    </div>
+</div>

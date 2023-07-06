@@ -1,9 +1,9 @@
-<app-segmento-modal *ngIf="modalService.verMas && procesoSeleccionado"
-  [proceso]="procesoSeleccionado" [bool]="bool1"></app-segmento-modal>
-<app-propuesta-de-valor-modal *ngIf="modalService.verMas1 && procesoSeleccionado"
-  [proceso]="procesoSeleccionado" [bool]="bool1"></app-propuesta-de-valor-modal>
-<app-canales-modal *ngIf="modalService.verMas2 && procesoSeleccionado"
-  [proceso]="procesoSeleccionado" [bool]="bool1"></app-canales-modal>
+<app-segmento-modal *ngIf="modalService.verMas && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [bool]="bool1"></app-segmento-modal>
+<app-propuesta-de-valor-modal *ngIf="modalService.verMas1 && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [bool]="bool1"></app-propuesta-de-valor-modal>
+<app-canales-modal *ngIf="modalService.verMas2 && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [bool]="bool1"></app-canales-modal>
 <app-relaciones-modal *ngIf="modalService.verMas3 && procesoSeleccionado"
   [proceso]="procesoSeleccionado"></app-relaciones-modal>
 <app-recursos-claves-modal *ngIf="modalService.verMas4 && procesoSeleccionado"
@@ -13,10 +13,10 @@
 <app-socios-claves-modal *ngIf="modalService.verMas6 && procesoSeleccionado"
   [proceso]="procesoSeleccionado"></app-socios-claves-modal>
 <app-ingresos-modal *ngIf="modalService.verMas7 && procesoSeleccionado"
-  [proceso]="procesoSeleccionado" ></app-ingresos-modal>
+  [proceso]="procesoSeleccionado"></app-ingresos-modal>
 <app-estructura-costos-modal *ngIf="modalService.verMas8 && procesoSeleccionado"
   [proceso]="procesoSeleccionado"></app-estructura-costos-modal>
-  <app-asesoria *ngIf="modalService.asesoria"></app-asesoria>
+<app-asesoria *ngIf="modalService.asesoria"></app-asesoria>
 <div class="row">
   <div class="col-2">
     <div class="col">
@@ -101,116 +101,148 @@
     <div class="row">
 
       <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 14rem; position: relative;">
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative;">
           <!-- Contenido del primer card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; "><strong>SEGMENTO DE CLIENTES <i class="fa-solid fa-users-rectangle fa-2xl"></i></strong></div>
+          <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; ">
+            <strong>SEGMENTO DE CLIENTES <i class="fa-solid fa-users-rectangle fa-2xl"></i></strong></div>
           <div class="card-body text-primary" style="background-color: rgb(255, 235, 180)">
-           <div style="position: absolute; bottom: 0;right: 0;">
-            <a (click)="abrirVerMasSegmento(proceso, true)" class="btn" ><i class="fa-solid fa-plus"></i> Ver más</a>
-           </div>
-           <div style="position: absolute; bottom: 0;left: 0;">
-            <a (click)="abrirVerMasSegmento(proceso, false)" class="btn" ><i class="fa-solid fa-plus"></i> Editar</a>
-           </div>
-            
+            <div style="position: absolute; bottom: 0;right: 0;">
+              <a (click)="abrirVerMasSegmento(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+            </div>
+            <div style="position: absolute; bottom: 0;left: 0;">
+              <a (click)="abrirVerMasSegmento(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            </div>
+
           </div>
         </div>
       </div>
       <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 14rem; position: relative; ">
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
           <!-- Contenido del segundo card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;"><strong>PROPUESTA DE VALOR <i class="fa-regular fa-gem fa-2xl"></i></strong></div>
+          <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;">
+            <strong>PROPUESTA DE VALOR <i class="fa-regular fa-gem fa-2xl"></i></strong></div>
           <div class="card-body text-primary" style="background-color: rgb(248, 167, 167)">
             <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasPropuesta(proceso, true)" class="btn" ><i class="fa-solid fa-plus"></i> Ver más</a>
-             </div>
-             <div style="position: absolute; bottom: 0;left: 0;">
-              <a (click)="abrirVerMasPropuesta(proceso, false)" class="btn" ><i class="fa-solid fa-plus"></i> Editar</a>
-             </div>
-            
+              <a (click)="abrirVerMasPropuesta(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+            </div>
+            <div style="position: absolute; bottom: 0;left: 0;">
+              <a (click)="abrirVerMasPropuesta(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            </div>
+
           </div>
         </div>
       </div>
       <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 14rem; position: relative; ">
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
           <!-- Contenido del tercer card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;"><strong>CANALES <i class="fa-solid fa-globe fa-2xl"></i></strong></div>
+          <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;">
+            <strong>CANALES <i class="fa-solid fa-globe fa-2xl"></i></strong></div>
           <div class="card-body text-primary" style="background-color: rgb(197, 236, 230)">
             <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasCanales(proceso, true)" class="btn" ><i class="fa-solid fa-plus"></i> Ver más</a>
-             </div>
-             <div style="position: absolute; bottom: 0;left: 0;">
-              <a (click)="abrirVerMasCanales(proceso, false)" class="btn" ><i class="fa-solid fa-plus"></i> Editar</a>
-             </div>
+              <a (click)="abrirVerMasCanales(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+            </div>
+            <div style="position: absolute; bottom: 0;left: 0;">
+              <a (click)="abrirVerMasCanales(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row" *ngIf="valor">
+    <div class="row">
       <div class="col-4">
-        <div class="card border-danger mb-3" style="max-width: 18rem;">
-          <!-- Contenido del cuarto card -->
-          <div class="card-header">RELACION CON CLIENTES</div>
-          <div class="card-body text-danger">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <button (click)="abrirVerMasRelaciones(proceso)">VER MAS</button>
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative;">
+          <!-- Contenido del primer card -->
+          <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; ">
+            <strong>RELACIÓN CON CLIENTES <i class="fa-solid fa-people-arrows fa-2xl"></i></strong></div>
+          <div class="card-body text-primary" style="background-color: rgb(255, 235, 180)">
+            <div style="position: absolute; bottom: 0;right: 0;">
+              <a (click)="abrirVerMasRelaciones(proceso)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+            </div>
+            <div style="position: absolute; bottom: 0;left: 0;">
+              <a class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            </div>
+
           </div>
         </div>
       </div>
       <div class="col-4">
-        <div class="card border-warning mb-3" style="max-width: 18rem;">
-          <!-- Contenido del quinto card -->
-          <div class="card-header">RECURSOS CLAVES</div>
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <button (click)="abrirVerMasRecursosClaves(proceso)">VER MAS</button>
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
+          <!-- Contenido del segundo card -->
+          <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;">
+            <strong>RECURSOS CLAVES <i class="fa-solid fa-screwdriver-wrench fa-2xl"></i></strong></div>
+          <div class="card-body text-primary" style="background-color: rgb(248, 167, 167)">
+            <div style="position: absolute; bottom: 0;right: 0;">
+              <a (click)="abrirVerMasRecursosClaves(proceso)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+            </div>
+            <div style="position: absolute; bottom: 0;left: 0;">
+              <a class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-4">
-        <div class="card border-info mb-3" style="max-width: 18rem;">
-          <!-- Contenido del sexto card -->
-          <div class="card-header">ACTIVIDADES CLAVES</div>
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <button (click)="abrirVerMasActividadesClaves(proceso)">VER MAS</button>
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
+          <!-- Contenido del tercer card -->
+          <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;">
+            <strong>ACTIVIDADES CLAVES <i class="fa-solid fa-gears fa-2xl"></i></strong></div>
+          <div class="card-body text-primary" style="background-color: rgb(197, 236, 230)">
+            <div style="position: absolute; bottom: 0;right: 0;">
+              <a (click)="abrirVerMasActividadesClaves(proceso)" class="btn"><i class="fa-solid fa-plus"></i> Ver
+                más</a>
+            </div>
+            <div style="position: absolute; bottom: 0;left: 0;">
+              <a class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
-    <div class="row" *ngIf="valor">
+    <div class="row">
       <div class="col-4">
-        <div class="card border-light mb-3" style="max-width: 18rem;">
-          <!-- Contenido del séptimo card -->
-          <div class="card-header">SOCIOS CLAVES</div>
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <button (click)="abrirVerMasSociosClaves(proceso)">VER MAS</button>
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative;">
+          <!-- Contenido del primer card -->
+          <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; ">
+            <strong>SOCIOS CLAVES <i class="fa-solid fa-handshake fa-2xl"></i></strong></div>
+          <div class="card-body text-primary" style="background-color: rgb(255, 235, 180)">
+            <div style="position: absolute; bottom: 0;right: 0;">
+              <a (click)="abrirVerMasSociosClaves(proceso)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+            </div>
+            <div style="position: absolute; bottom: 0;left: 0;">
+              <a class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            </div>
+
           </div>
         </div>
       </div>
       <div class="col-4">
-        <div class="card border-dark mb-3" style="max-width: 18rem;">
-          <!-- Contenido del octavo card -->
-          <div class="card-header">INGRESOS</div>
-          <div class="card-body text-dark">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <button (click)="abrirVerMasIngresos(proceso)">VER MAS</button>
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
+          <!-- Contenido del segundo card -->
+          <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;">
+            <strong>INGRESOS <i class="fa-solid fa-cash-register fa-2xl"></i></strong></div>
+          <div class="card-body text-primary" style="background-color: rgb(248, 167, 167)">
+            <div style="position: absolute; bottom: 0;right: 0;">
+              <a (click)="abrirVerMasIngresos(proceso)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+            </div>
+            <div style="position: absolute; bottom: 0;left: 0;">
+              <a class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-4">
-        <div class="card border-dark mb-3" style="max-width: 18rem;">
-          <!-- Contenido del noveno card -->
-          <div class="card-header">ESTRUCTURA DE COSTOS</div>
-          <div class="card-body text-dark">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <button (click)="abrirVerMasEstructuraCostos(proceso)">VER MAS</button>
+        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
+          <!-- Contenido del tercer card -->
+          <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;">
+            <strong>ESTRUCTURA DE COSTOS <i class="fa-solid fa-circle-dollar-to-slot fa-2xl"></i></strong></div>
+          <div class="card-body text-primary" style="background-color: rgb(197, 236, 230)">
+            <div style="position: absolute; bottom: 0;right: 0;">
+              <a (click)="abrirVerMasEstructuraCostos(proceso)" class="btn"><i class="fa-solid fa-plus"></i> Ver
+                más</a>
+            </div>
+            <div style="position: absolute; bottom: 0;left: 0;">
+              <a class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            </div>
           </div>
         </div>
       </div>
