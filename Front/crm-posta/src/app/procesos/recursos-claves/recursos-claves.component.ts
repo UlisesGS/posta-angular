@@ -40,7 +40,7 @@ export class RecursosClavesComponent {
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
                 console.log(this.proceso);
-                
+
               }
             })
           })
@@ -72,6 +72,8 @@ export class RecursosClavesComponent {
     this.proceso.canvasModel.keyRecources=pro;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+       // [routerLink]="['/actividadesClaves/cliente/', cliente.id]"
+      this.router.navigate(['/actividadesClaves/cliente/', this.cliente.id])
       })
     })
    })

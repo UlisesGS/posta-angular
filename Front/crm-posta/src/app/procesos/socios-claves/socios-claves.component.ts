@@ -40,7 +40,7 @@ export class SociosClavesComponent {
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
                 console.log(this.proceso);
-                
+
               }
             })
           })
@@ -67,13 +67,15 @@ export class SociosClavesComponent {
     this.proceso.estado='Socios Claves';
     console.log(this.proceso);
     this.proceso.canvasModel.keyPartners=this.keyPartners
-    
-    
+
+
    this.procesoService.sociosClavesSave(this.proceso.canvasModel.keyPartners).subscribe(pro=>{
     this.proceso.canvasModel.keyPartners=pro;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        
+        //[routerLink]="['/ingresos/cliente/', cliente.id]"
+        this.router.navigate(['/ingresos/cliente/', this.cliente.id])
+
       })
     })
    })
@@ -84,15 +86,15 @@ export class SociosClavesComponent {
     this.proceso.estado='Socios Claves';
     console.log(this.proceso);
     this.proceso.canvasModel.keyPartners=this.keyPartners
-    
-    
+
+
    this.procesoService.sociosClavesSave(this.proceso.canvasModel.keyPartners).subscribe(pro=>{
     this.proceso.canvasModel.keyPartners=pro;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
         this.router.navigate(['procesos'])
         Swal.fire('Exito', 'Socios claves creada con exito', 'success');
-        
+
       })
     })
    })

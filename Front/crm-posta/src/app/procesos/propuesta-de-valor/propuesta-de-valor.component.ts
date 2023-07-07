@@ -71,6 +71,8 @@ export class PropuestaDeValorComponent {
     this.proceso.canvasModel.valuePropositions=valor;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        //[routerLink]="['/canales/cliente/', cliente.id]"
+        this.router.navigate(['/canales/cliente/', this.cliente.id])
       })
     })
    })
