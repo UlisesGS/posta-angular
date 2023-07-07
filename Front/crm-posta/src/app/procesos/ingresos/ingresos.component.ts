@@ -72,6 +72,8 @@ export class IngresosComponent implements OnInit{
     this.proceso.canvasModel.revenueStreams=valor;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        // [routerLink]="['/estructuraCostos/cliente/', cliente.id]"
+        this.router.navigate(['/estructuraCostos/cliente/', this.cliente.id])
       })
     })
    })
