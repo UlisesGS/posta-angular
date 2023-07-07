@@ -11,22 +11,26 @@
 
                 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
 
-                    <div class="container">
+                    <div class="container" *ngFor="let varr of listaVariable">
                         <label for=""><strong>Variable costos</strong></label>
 
                         <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{proceso?.canvasModel?.costStructure?.variableCosts}}</p>
+                            {{varr.nameComponent}}</p>
+                            <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
+                                {{varr.amount}}</p>
                     </div>
 
                     
                 </div>
                 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
 
-                    <div class="container">
+                    <div class="container" *ngFor="let varr of listaFijo">
                         <label for=""><strong>Costos fijos</strong></label>
 
                         <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{proceso?.canvasModel?.costStructure?.fixedCosts}}</p>
+                            {{varr.nameComponent}}</p>
+                            <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
+                                {{varr.amount}}</p>
                     </div>
 
                     

@@ -41,6 +41,8 @@ export class EstructuraCostosComponent {
      ) { }
 
   ngOnInit(): void {
+    
+    
     this.procesoService.costosTodos().subscribe(data=>{
       this.listaCostos= data;
     })
@@ -56,13 +58,15 @@ export class EstructuraCostosComponent {
             this.procesos.forEach(proceso=>{
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
-                console.log(proceso);
+                console.log(this.proceso);
 
               }
+
             })
           })
         })
       }
+      
     })
   }
 
