@@ -81,6 +81,7 @@ export class CustomerSegments {
     this.proceso.canvasModel.customerSegments=segmento;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['/propuestaDeValor/cliente/', this.cliente.id])
       })
     })
    })

@@ -65,37 +65,43 @@ export class VerProcesosComponent implements OnInit {
   }
 
 
-  public abrirVerMasRelaciones(proceso:Process) {
+  public abrirVerMasRelaciones(proceso:Process,bool:boolean) {
+    this.bool1=bool;
     this.procesoSeleccionado=proceso;
     this.modalService.abrirVerMas3();
   }
 
 
-  public abrirVerMasRecursosClaves(proceso:Process) {
+  public abrirVerMasRecursosClaves(proceso:Process,bool:boolean) {
+    this.bool1=bool;
     this.procesoSeleccionado=proceso;
     this.modalService.abrirVerMas4();
   }
 
 
-  public abrirVerMasActividadesClaves(proceso:Process) {
+  public abrirVerMasActividadesClaves(proceso:Process,bool:boolean) {
+    this.bool1=bool;
     this.procesoSeleccionado=proceso;
     this.modalService.abrirVerMas5();
   }
 
 
-  public abrirVerMasSociosClaves(proceso:Process) {
+  public abrirVerMasSociosClaves(proceso:Process,bool:boolean) {
+    this.bool1=bool;
     this.procesoSeleccionado=proceso;
     this.modalService.abrirVerMas6();
   }
 
 
-  public abrirVerMasIngresos(proceso:Process) {
+  public abrirVerMasIngresos(proceso:Process, bool:boolean) {
+    this.bool1=bool;
     this.procesoSeleccionado=proceso;
     this.modalService.abrirVerMas7();
   }
 
 
-  public abrirVerMasEstructuraCostos(proceso:Process) {
+  public abrirVerMasEstructuraCostos(proceso:Process,bool:boolean) {
+    this.bool1=bool;
     this.procesoSeleccionado=proceso;
     this.modalService.abrirVerMas8();
   }

@@ -79,8 +79,8 @@
     </div>
 
     <div class="form-group">
-      <button [routerLink]="['/', cliente.id]" (click)="guardar()" class="btn">Guardar</button>
-      <button [routerLink]="['/procesos', cliente.id]" class="btn">Guardar y Continuar</button>
+      <button  (click)="guardar()" class="btn">Guardar</button>
+      <button (click)="guardar()" class="btn">Guardar y Continuar</button>
       <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
     </div>
 

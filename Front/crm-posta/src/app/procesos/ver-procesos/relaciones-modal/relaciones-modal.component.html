@@ -1,4 +1,4 @@
-<div class="abrir-modal animacion fadeIn" style="align-items: center;">
+<div class="abrir-modal animacion fadeIn" style="align-items: center;" *ngIf="bool">
     <div class="modal" tabindex="-1" style="display:flex;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -18,7 +18,7 @@
                             {{proceso?.canvasModel?.customerRelationships?.captacion}}</p>
                     </div>
 
-                    
+
                 </div>
                 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
 
@@ -29,7 +29,7 @@
                             {{proceso?.canvasModel?.customerRelationships?.fidelizacion}}</p>
                     </div>
 
-                    
+
                 </div>
 
 
@@ -42,8 +42,54 @@
                             {{proceso?.canvasModel?.customerRelationships?.estimulacion}}</p>
                     </div>
 
-                    
+
                 </div>
 
             </div>
         </div>
+      </div>
+      </div>
+
+          <div class="abrir-modal animacion fadeIn" style="align-items: center;" *ngIf="!bool">
+              <div class="modal" tabindex="-1" style="display:flex;">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title">Editar Relaciones con Clientes</h5>
+                              <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
+                          </div>
+                          <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2" id="datas">
+                              <div class="container">
+                                  <label for=""><strong>Captacion</strong></label><br>
+                                  <textarea [(ngModel)]="proceso.canvasModel.customerRelationships.captacion"  class="form-control"
+                                      style="padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+
+                              </div>
+                          </div>
+                          <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                              <div class="container">
+                                  <label for=""><strong>Fidelizacion</strong></label><br>
+                                  <textarea [(ngModel)]="proceso.canvasModel.customerRelationships.fidelizacion"  class="form-control"
+                                      style="padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+                              </div>
+                          </div>
+                          <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
+                              <div class="container">
+                                  <label for=""><strong>Estimulacion</strong></label><br>
+                                  <textarea [(ngModel)]="proceso.canvasModel.customerRelationships.estimulacion"  class="form-control"
+                                      style=" padding-left: 5px;height: 100px; overflow-y: auto;"></textarea>
+                              </div>
+                          </div>
+
+                          <br>
+
+                          <div style="position: absolute; bottom: 0;right: 0; padding-top: 10px;">
+                              <a (click)="editar()" class="btn"><i class="fa-solid fa-plus"></i> Aceptar</a>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+
