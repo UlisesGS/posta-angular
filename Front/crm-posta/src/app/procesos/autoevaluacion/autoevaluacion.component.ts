@@ -88,7 +88,7 @@ export class AutoevaluacionComponent implements OnInit {
       console.log(this.proceso);
       this.proceso.estado="AutoEvaluación";
       this.canvasService.procesosUpdate(this.proceso).subscribe(d=>{
-        this.router.navigate(['segmentoCliente/cliente/',this.cliente.id]);
+        this.router.navigate(['/segmento/cliente/',this.cliente.id]);
 
       })
 
