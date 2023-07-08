@@ -33,6 +33,19 @@ public procesosFindAllUltimo():Observable<any>{
   public procesosFindAll():Observable<any>{
     return this.http.get<any>(`${this.urlProcesos}`);
   }
+  //metodos para buscar
+  public procesoFindByNombre(termino:string):Observable<any>{
+    return this.http.get<any>(`${this.urlProcesos}/buscarPorNombre/${termino}`);
+  }
+  public procesoFindByType(type:string):Observable<any>{
+    return this.http.get<any>(`${this.urlProcesos}/buscarPorType/${type}`);
+  }
+  public procesoFindByTermiando(terminado:boolean):Observable<any>{
+    return this.http.get<any>(`${this.urlProcesos}/buscarPorTerminado/${terminado}`);
+  }
+  public procesoFindByEstado(estado:string):Observable<any>{
+    return this.http.get<any>(`${this.urlProcesos}/buscarPorEstado/${estado}`);
+  }
   public procesosFindById(id:number):Observable<any>{
     return this.http.get<any>(`${this.urlProcesos}/${id}`);
   }
@@ -42,6 +55,7 @@ public procesosFindAllUltimo():Observable<any>{
   public procesosUpdate(proceso:Process):Observable<any>{
     return this.http.put<any>(`${this.urlProcesos}/${proceso.id}`,proceso);
   }
+
    // canvas model
   public canvasFindById(id:number):Observable<any>{
     return this.http.get<any>(`${this.urlEndPoint}/buscar/${id}`);
