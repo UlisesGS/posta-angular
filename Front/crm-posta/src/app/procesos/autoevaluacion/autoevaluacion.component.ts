@@ -7,7 +7,7 @@ import { ProcesoService } from '../proceso.service';
 import { Canvas } from '../canvas';
 import { SelfAssessment } from './../selfAssessment';
 import Swal from 'sweetalert2';
-import { Process } from '../Process';
+import { Process } from '../Process'; 
 
 @Component({
   selector: 'app-autoevaluacion',
