@@ -19,7 +19,7 @@ export class ActividadesClavesComponent {
   cliente: Client = new Client();
   value:boolean;
   procesos:Process[]=[];
-  proceso:Process= new Process();
+  proceso:Process= new Process(); 
   constructor(private modalService: ModalService,
      private clienteService: ClientService,
      private rutaParametro: ActivatedRoute,
