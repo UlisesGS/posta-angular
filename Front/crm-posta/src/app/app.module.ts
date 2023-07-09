@@ -50,6 +50,7 @@ import { ActividadesClavesModalComponent } from './procesos/ver-procesos/activid
 import { SociosClavesModalComponent } from './procesos/ver-procesos/socios-claves-modal/socios-claves-modal.component';
 import { IngresosModalComponent } from './procesos/ver-procesos/ingresos-modal/ingresos-modal.component';
 import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructura-costos-modal/estructura-costos-modal.component';
+import { PaginacionComponent } from './procesos/proceso-listar/paginacion/paginacion.component';
 
 const routes:Routes=[
 
@@ -83,6 +84,7 @@ const routes:Routes=[
   {path:'ingresos/cliente/:id',component:IngresosComponent},
   {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
   {path:'procesos/ver/:id',component:VerProcesosComponent},
+  {path:'proceso/page/:page',component:ProcesoListarComponent}
 ]
 
 @NgModule({
@@ -131,7 +133,8 @@ const routes:Routes=[
       ActividadesClavesModalComponent,
       SociosClavesModalComponent,
       IngresosModalComponent,
-      EstructuraCostosModalComponent
+      EstructuraCostosModalComponent,
+      PaginacionComponent
 
 
    ],

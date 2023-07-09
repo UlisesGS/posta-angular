@@ -5,6 +5,8 @@ import { ModalService } from 'src/app/client/modal.service';
 import { Municipio } from 'src/app/municipio/municipio';
 import { ProcesoService } from './../proceso.service';
 import { Process } from '../Process';
+import { ActivatedRoute } from '@angular/router';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-proceso-listar',
@@ -19,10 +21,12 @@ export class ProcesoListarComponent implements OnInit {
   clientesProceso:Client[]=[];
   municipios:Municipio[];
   procesoSeleccionado: Process;
+  proceso: Process;
   constructor(
     public modal:ModalService,
     private clienteService:ClientService,
-    private procesoService:ProcesoService
+    private procesoService:ProcesoService,
+    public activatedRoute:ActivatedRoute
     ){
 
   }
@@ -32,6 +36,7 @@ this.clienteService.getClientsMunicipios().subscribe(data=>{
 
   this.municipios=data;
 })
+this.todosPaginacion();
 /*
 this.clienteService.clienteListarTodos().subscribe(data=>{
  // console.log(data);
@@ -52,11 +57,11 @@ this.clienteService.clienteListarTodos().subscribe(data=>{
  //this.clientes= this.clientes.filter(cliente=>cliente.canvasModel==null);
 })
 */
-this.procesoService.procesosFindAll().subscribe(data=>{
+/*this.procesoService.procesosFindAll().subscribe(data=>{
   this.procesos=data;
   console.log(this.procesos);
 
-})
+})*/
 
 
 
@@ -84,5 +89,29 @@ this.modal.abrirModalPocesos();
   public abrirModalNuevoProceso(){
 
     this.modal.abrirModalAsesoria();
+  }
+
+
+  public todosPaginacion(){
+    this.activatedRoute.paramMap.subscribe(params => {
+      let page: number = +params.get('page');
+
+      if (!page) {
+        page = 0;
+      }
+      this.procesoService.procesosPaginacion(page)
+      .pipe(
+        tap(response => {
+          console.log('ClientesComponent: tap 3');
+          (response.content as Process[]).forEach(proceso => console.log(proceso));
+        })
+      ).subscribe(response => {
+        console.log(response);
+        
+        this.procesos = response.content as Process[];
+        this.paginador = response;
+      });
+
+  })
   }
 }
