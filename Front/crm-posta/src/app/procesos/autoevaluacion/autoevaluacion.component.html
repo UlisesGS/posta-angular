@@ -531,8 +531,8 @@
         </div>
 
         <div class="form-group">
-            <button (click)="guardarYsalir()" class="btn">Guardar</button>
-            <button  (click)="guardar()" class="btn">Guardar y
+            <button value="true"  [(ngModel)]="condicion" (click)="guardarYsalir()" class="btn">Guardar</button>
+            <button value="false"  [(ngModel)]="condicion" (click)="guardar()" class="btn">Guardar y
                 Continuar</button>
             <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
         </div>
