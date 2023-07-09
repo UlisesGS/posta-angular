@@ -30,6 +30,9 @@ export class ProcesoService {
 public procesosFindAllUltimo():Observable<any>{
   return this.http.get<any>(`${this.urlProcesos}/ultimo`);
 }
+  public procesosPaginacion(page:number):Observable<any>{
+    return this.http.get<any>(`${this.urlProcesos}/paginar/${page}`);
+  }
   public procesosFindAll():Observable<any>{
     return this.http.get<any>(`${this.urlProcesos}`);
   }
