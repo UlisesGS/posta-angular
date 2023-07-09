@@ -55,6 +55,7 @@ export class AutoevaluacionComponent implements OnInit {
     this.modalService.cerrarModalAsesoria();
   }
   public guardar() {
+    this.condicion=false;
     this.guardarProceso();
     /*
     this.guardarProceso();
@@ -79,6 +80,7 @@ export class AutoevaluacionComponent implements OnInit {
 
   }
 public guardarProceso(){
+
   this.rutaParametro.paramMap.subscribe(parametro => {
     let id = +parametro.get('id');
     if (id) {
@@ -111,6 +113,8 @@ public guardarProceso(){
                //   console.log(this.selfAssessment);
 
                     if(this.condicion){
+                      console.log(this.condicion);
+
                       this.router.navigate(['procesos']);
                       Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
                     }else{
@@ -138,6 +142,7 @@ public guardarProceso(){
 }
 
   public guardarYsalir() {
+    this.condicion=true
     this.guardarProceso();
 
 

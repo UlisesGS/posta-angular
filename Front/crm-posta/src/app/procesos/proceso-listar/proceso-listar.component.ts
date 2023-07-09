@@ -21,14 +21,11 @@ export class ProcesoListarComponent implements OnInit {
   clientesProceso:Client[]=[];
   municipios:Municipio[];
   procesoSeleccionado: Process;
-<<<<<<< HEAD
   termino:string;
   type:string;
   terminado:boolean;
   estado:string;
-=======
   proceso: Process;
->>>>>>> ulises
   constructor(
     public modal:ModalService,
     private clienteService:ClientService,
@@ -103,7 +100,6 @@ this.modal.abrirModalPocesos();
 
     this.modal.abrirModalAsesoria();
   }
-<<<<<<< HEAD
   public filtroPortype(){
     this.procesoService.procesoFindByType(this.type).subscribe(data=>{
       console.log(data);
@@ -134,9 +130,8 @@ this.modal.abrirModalPocesos();
       this.procesos=data;
 
     })
-=======
 
-
+  }
   public todosPaginacion(){
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
@@ -152,12 +147,11 @@ this.modal.abrirModalPocesos();
         })
       ).subscribe(response => {
         console.log(response);
-        
+
         this.procesos = response.content as Process[];
         this.paginador = response;
       });
 
   })
->>>>>>> ulises
   }
 }
