@@ -22,7 +22,7 @@
         <div class="row"  >
             <div class="col" *ngIf="value">
                 <label >
-                    <select  class="form-select"
+                    <select (click)="filtroPortype()" [(ngModel)]="type"  class="form-select"
                         aria-label="Default select example" >
                         <option [ngValue]="undefined" >--- TIPO DE CLIENTE---</option>
                         <option value="entrepreneur" >Emprendedor</option>
@@ -33,51 +33,32 @@
             </div>
             <div class="col" *ngIf="value">
                 <label >
-                    <select class="form-select"
+                    <select (click)="filtroPortermiando()" [(ngModel)]="terminado" class="form-select"
                         aria-label="Default select example" >
                         <option [ngValue]="undefined" >--- Estado del proceso---</option>
-                        <option value="entrepreneur" >Finalizado</option>
-                        <option value="businessman" > En Proceso</option>
+                        <option value="true" >Finalizado</option>
+                        <option value="false" > En Proceso</option>
                     </select>
                 </label>
             </div>
+
+
+
             <div class="col" *ngIf="value">
               <label >
-                <select class="form-select"
+                <select (click)="filtroPorEstado()" [(ngModel)]="estado" class="form-select"
                     aria-label="Default select example" >
                     <option [ngValue]="undefined" >--- Etapa del Proceso---</option>
-                    <option value="entrepreneur" >Finalizado</option>
-                    <option value="businessman" > En Proceso</option>
-                </select>
-            </label>
-            </div>
-            <div class="col" *ngIf="value">
-              <label >
-                <select class="form-select"
-                    aria-label="Default select example" >
-                    <option [ngValue]="undefined" >--- GEnero---</option>
-                    <option value="MALE" >Masculino</option>
-                    <option value="FEMALE" > Femenino</option>
-                    <option value="LGBTQ" >LGBTQ+</option>
-                </select>
-            </label>
-            </div>
-            <div class="col" *ngIf="value">
-              <label >
-                  <select  class="form-select form-select-sm" name="municipio"
-                  aria-label="Default select example" >
-                  <option [ngValue]="undefined" >--- Seleccionar Municipio---</option>
-                  <option *ngFor="let m of municipios" [ngValue]="m.id">{{m.name}} || {{m.country}}</option>
-                  </select>
-              </label>
-          </div>
-            <div class="col" *ngIf="value">
-              <label >
-                <select class="form-select"
-                    aria-label="Default select example" >
-                    <option [ngValue]="undefined" >--- Etapa del Proceso---</option>
-                    <option value="entrepreneur" >Finalizado</option>
-                    <option value="businessman" > En Proceso</option>
+                    <option value="AutoEvaluacion" >AutoEvaluacion</option>
+                    <option value="Segmento de Clientes" > Segmento de Clientes</option>
+                    <option value="Propuesta de Valor" > Propuesta de Valor</option>
+                    <option value="Canales" > Canales</option>
+                    <option value="Relación con los Clientes" >Relación con los Clientes</option>
+                    <option value="Recursos Claves" > Recursos Claves</option>
+                    <option value="Actividades Claves" > Actividades Claves</option>
+                    <option value="Socios Claves" > Socios Claves</option>
+                    <option value="Ingresos" > Ingresos</option>
+                    <option value="Estructura Costos" > Estructura Costos</option>
                 </select>
             </label>
             </div>
@@ -88,7 +69,7 @@
                 <button (click)="reiniciarFiltro()"  class="btn btn-success" style="border-radius: 1em;">Reinicar Filtros</button>
             </div>
             <div class="col" *ngIf="value">
-              <input  type="text" class="form-control" placeholder="Buscar" >
+              <input (keyup)="buscar()"  [(ngModel)]="termino"  type="text" class="form-control" placeholder="Buscar" >
             </div>
 
     </div>
@@ -100,7 +81,7 @@
     <table class="table table-sm" *ngFor="let proceso of procesos" >
         <thead>
             <tr>
-                
+
                 <td style="width: 20%; font-size: 10px;" class="align-middle"> Nombre </td>
                 <td style="width: 20%; font-size: 10px;" class="align-middle"> Empresa/Idea</td>
                 <td style="width: 20%; font-size: 10px;" class="align-middle"> Etapa del Proyector</td>
@@ -122,7 +103,7 @@
                 <th style="width: 15%;" *ngIf="!proceso.terminado">
                     <button id="button" class="btn btn-disabled"
                     style=" background-color: rgb(46, 122, 236); color: white; width: 100%;">En Proceso</button>
-                    
+
                 </th>
                 <th  style="text-align: center; width: 5%;">
                     <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(proceso)"></i>

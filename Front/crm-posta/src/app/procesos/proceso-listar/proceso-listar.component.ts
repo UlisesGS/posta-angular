@@ -19,6 +19,10 @@ export class ProcesoListarComponent implements OnInit {
   clientesProceso:Client[]=[];
   municipios:Municipio[];
   procesoSeleccionado: Process;
+  termino:string;
+  type:string;
+  terminado:boolean;
+  estado:string;
   constructor(
     public modal:ModalService,
     private clienteService:ClientService,
@@ -73,7 +77,13 @@ this.procesoService.procesosFindAll().subscribe(data=>{
   this.procesoSeleccionado=proceso;
 this.modal.abrirModalPocesos();
   }
-  public todos(){}
+  public todos(){
+    this.procesoService.procesosFindAll().subscribe(data=>{
+      this.procesos=data;
+      console.log(this.procesos);
+
+    })
+  }
   public reiniciarFiltro(){
   //  this.genero = undefined;
   //  this.type = undefined;
@@ -84,5 +94,36 @@ this.modal.abrirModalPocesos();
   public abrirModalNuevoProceso(){
 
     this.modal.abrirModalAsesoria();
+  }
+  public filtroPortype(){
+    this.procesoService.procesoFindByType(this.type).subscribe(data=>{
+      console.log(data);
+      this.procesos=data;
+
+    })
+  }
+  public filtroPortermiando(){
+    console.log(this.terminado);
+
+    this.procesoService.procesoFindByTermiando(this.terminado).subscribe(data=>{
+      this.procesos=data;
+
+    })
+  }
+  public filtroPorEstado(){
+
+
+    this.procesoService.procesoFindByEstado(this.estado).subscribe(data=>{
+      this.procesos=data;
+
+    })
+  }
+  public buscar(){
+
+
+    this.procesoService.procesoFindByNombre(this.termino).subscribe(data=>{
+      this.procesos=data;
+
+    })
   }
 }
