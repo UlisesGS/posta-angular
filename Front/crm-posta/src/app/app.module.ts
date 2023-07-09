@@ -50,7 +50,6 @@ import { ActividadesClavesModalComponent } from './procesos/ver-procesos/activid
 import { SociosClavesModalComponent } from './procesos/ver-procesos/socios-claves-modal/socios-claves-modal.component';
 import { IngresosModalComponent } from './procesos/ver-procesos/ingresos-modal/ingresos-modal.component';
 import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructura-costos-modal/estructura-costos-modal.component';
-<<<<<<< HEAD
 import { ModeloBasicoComponent } from './modelo-basico/modelo-basico.component';
 import { ModeloListaComponent } from './modelo-basico/modelo-lista/modelo-lista.component';
 import { ModeloFormComponent } from './modelo-basico/modelo-form/modelo-form.component';
@@ -59,9 +58,7 @@ import { InformacionComponent } from './modelo-basico/modelo-form/informacion/in
 import { InternoComponent } from './modelo-basico/modelo-form/interno/interno.component';
 import { DofaComponent } from './modelo-basico/modelo-form/dofa/dofa.component';
 import { ConclusionComponent } from './modelo-basico/modelo-form/conclusion/conclusion.component';
-=======
 import { PaginacionComponent } from './procesos/proceso-listar/paginacion/paginacion.component';
->>>>>>> ulises
 
 const routes:Routes=[
 
@@ -95,14 +92,11 @@ const routes:Routes=[
   {path:'ingresos/cliente/:id',component:IngresosComponent},
   {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
   {path:'procesos/ver/:id',component:VerProcesosComponent},
-<<<<<<< HEAD
   {path:'informacion/form/:id',component:InformacionComponent},
   {path:'interno/form/:id',component:InternoComponent},
   {path:'dofa/form/:id',component:DofaComponent},
   {path:'conclusion/form/:id',component:ConclusionComponent},
-=======
   {path:'proceso/page/:page',component:ProcesoListarComponent}
->>>>>>> ulises
 ]
 
 @NgModule({
@@ -152,7 +146,6 @@ const routes:Routes=[
       SociosClavesModalComponent,
       IngresosModalComponent,
       EstructuraCostosModalComponent,
-<<<<<<< HEAD
       ModeloBasicoComponent,
       ModeloListaComponent,
       ModeloFormComponent,
@@ -160,10 +153,8 @@ const routes:Routes=[
       InternoComponent,
       DofaComponent,
       ConclusionComponent,
-      
-=======
+
       PaginacionComponent
->>>>>>> ulises
 
 
    ],
