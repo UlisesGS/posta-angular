@@ -58,7 +58,10 @@ import { InternoComponent } from './modelo-basico/modelo-form/interno/interno.co
 import { DofaComponent } from './modelo-basico/modelo-form/dofa/dofa.component';
 import { ConclusionComponent } from './modelo-basico/modelo-form/conclusion/conclusion.component';
 import { PaginacionComponent } from './procesos/proceso-listar/paginacion/paginacion.component';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 706da4027fb17840b0d3aed6638d72f36597743b
 
 const routes:Routes=[
 
@@ -153,6 +156,10 @@ const routes:Routes=[
       InternoComponent,
       DofaComponent,
       ConclusionComponent,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 706da4027fb17840b0d3aed6638d72f36597743b
       PaginacionComponent
 
 
