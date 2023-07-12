@@ -53,11 +53,15 @@ import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructu
 import { ModeloBasicoComponent } from './modelo-basico/modelo-basico.component';
 import { ModeloListaComponent } from './modelo-basico/modelo-lista/modelo-lista.component';
 import { ModeloFormComponent } from './modelo-basico/modelo-form/modelo-form.component';
-import { InformacionComponent } from './modelo-basico/modelo-form/informacion/informacion.component';
-import { InternoComponent } from './modelo-basico/modelo-form/interno/interno.component';
-import { DofaComponent } from './modelo-basico/modelo-form/dofa/dofa.component';
-import { ConclusionComponent } from './modelo-basico/modelo-form/conclusion/conclusion.component';
+
+
+
+
 import { PaginacionComponent } from './procesos/proceso-listar/paginacion/paginacion.component';
+import { InformacionComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/informacion/informacion.component';
+import { InternoComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/interno/interno.component';
+import { DofaComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/dofa/dofa.component';
+import { ConclusionComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/conclusion/conclusion.component';
 
 const routes:Routes=[
 
@@ -91,11 +95,12 @@ const routes:Routes=[
   {path:'ingresos/cliente/:id',component:IngresosComponent},
   {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
   {path:'procesos/ver/:id',component:VerProcesosComponent},
-  {path:'informacion/form/:id',component:InformacionComponent},
-  {path:'interno/form/:id',component:InternoComponent},
-  {path:'dofa/form/:id',component:DofaComponent},
-  {path:'conclusion/form/:id',component:ConclusionComponent},
-  {path:'proceso/page/:page',component:ProcesoListarComponent}
+  {path:'informacion/cliente/:id',component:InformacionComponent},
+  {path:'interno/cliente/:id',component:InternoComponent},
+  {path:'dofa/cliente/:id',component:DofaComponent},
+  {path:'conclusion/cliente/:id',component:ConclusionComponent},
+  {path:'proceso/page/:page',component:ProcesoListarComponent},
+
 ]
 
 @NgModule({

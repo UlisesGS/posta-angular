@@ -68,7 +68,24 @@ export class AccionProcesosComponent implements OnInit {
       ;
       break;
       case 'Estructura Costos':
-        this.ruta.navigate([`main`]);
+        this.ruta.navigate([`informacion/cliente/${this.proceso.canvasModel.client.id}`]);
+      ;
+      break;
+      case 'Informacion Proyecto':
+        this.ruta.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
+      ;
+      break;
+      case 'Analisis Interno/Externo':
+        this.ruta.navigate([`dofa/cliente/${this.proceso.canvasModel.client.id}`]);
+      ;
+      break;
+      case 'Analisis Dofa':
+        this.ruta.navigate([`conclusion/cliente/${this.proceso.canvasModel.client.id}`]);
+      ;
+      break;
+      case 'Conclusiones':
+      //  this.ruta.navigate([`conclusion/cliente/${this.proceso.canvasModel.client.id}`]);
+      this.ruta.navigate(['/procesos']);
       ;
       break;
     }

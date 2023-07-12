@@ -41,8 +41,8 @@ export class EstructuraCostosComponent {
      ) { }
 
   ngOnInit(): void {
-    
-    
+
+
     this.procesoService.costosTodos().subscribe(data=>{
       this.listaCostos= data;
     })
@@ -66,7 +66,7 @@ export class EstructuraCostosComponent {
           })
         })
       }
-      
+
     })
   }
 
@@ -107,9 +107,41 @@ this.listaBackend2.push(this.nuevaEntidad1);
 console.log(this.listaBackend2);
 
   }
+  guardarYSalir(){
+    //this.proceso.terminado=true;
+    this.proceso.estado='Estructura Costos';
+    this.costoEntidad.fixedCosts=this.listaBackend2;
+    this.costoEntidad.variableCost= this.listaBackend;
+    this.costoEntidad.totalVariable();
+    this.costoEntidad.totalFijo();
+    this.costoEntidad.total();
+    console.log(this.costoEntidad);
+    this.proceso.canvasModel.costStructure=this.costoEntidad;
+    console.log(this.costoEntidad);
+
+    this.procesoService.estructuraCostoSave(this.costoEntidad).subscribe(costo=>{
+      this.proceso.canvasModel.costStructure=costo;
+      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+        this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+          this.router.navigate(['procesos'])
+          console.log(this.proceso);
+
+          Swal.fire('Exito', 'Estructura costos creado con exito', 'success');
+        })
+      })
+
+
+    }, e=>{
+      console.log(e);
+
+      //Swal.fire('Exito: ', `${e}`, 'success');
+    })
+
+
+  }
   guardar(){
-    this.proceso.terminado=true;
-    this.proceso.estado='Terminado';
+    //this.proceso.terminado=true;
+    this.proceso.estado='Estructura Costos';
     this.costoEntidad.fixedCosts=this.listaBackend2;
     this.costoEntidad.variableCost= this.listaBackend;
     this.costoEntidad.totalVariable();
@@ -121,7 +153,7 @@ console.log(this.listaBackend2);
       this.proceso.canvasModel.costStructure=costo;
       this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
         this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-          this.router.navigate(['procesos'])
+          this.router.navigate(['/informacion/cliente/', this.cliente.id]);
           console.log(this.proceso);
 
           Swal.fire('Exito', 'Estructura costos creado con exito', 'success');
