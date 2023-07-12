@@ -130,6 +130,10 @@ this.modal.abrirModalPocesos();
       this.procesos=data;
 
     })
+  
+  
+
+
 
   }
   public todosPaginacion(){
@@ -147,7 +151,7 @@ this.modal.abrirModalPocesos();
         })
       ).subscribe(response => {
         console.log(response);
-        
+
         this.procesos = response.content as Process[];
         this.paginador = response;
       });

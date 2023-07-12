@@ -15,7 +15,7 @@ import { Process } from '../Process';
   styleUrls: ['./autoevaluacion.component.css']
 })
 export class AutoevaluacionComponent implements OnInit {
-  condicion:boolean;
+  condicion: boolean;
   selfAssessment: SelfAssessment = new SelfAssessment();
   preguntas: any[] = [];
   canvasModel: Canvas = new Canvas();
@@ -25,7 +25,7 @@ export class AutoevaluacionComponent implements OnInit {
     private clienteService: ClientService,
     private rutaParametro: ActivatedRoute,
     private canvasService: ProcesoService,
-    private router:Router,
+    private router: Router,
 
   ) { }
   ngOnInit(): void {
@@ -55,6 +55,7 @@ export class AutoevaluacionComponent implements OnInit {
     this.modalService.cerrarModalAsesoria();
   }
   public guardar() {
+    this.condicion = false;
     this.guardarProceso();
     /*
     this.guardarProceso();
@@ -78,66 +79,70 @@ export class AutoevaluacionComponent implements OnInit {
 */
 
   }
-public guardarProceso(){
-  this.rutaParametro.paramMap.subscribe(parametro => {
-    let id = +parametro.get('id');
-    if (id) {
-      this.clienteService.getClient(id).subscribe(d => {
-        this.cliente = d;
-        this.canvasModel.client = this.cliente
-        this.selfAssessment.client = this.cliente;
-        //agregue recien
-        this.canvasService.canvasSave(this.canvasModel).subscribe(canvas => {
-          //console.log('canvas'+data);
+  public guardarProceso() {
 
-          this.canvasModel = canvas;
-          this.proceso.canvasModel = this.canvasModel;
+    this.rutaParametro.paramMap.subscribe(parametro => {
+      let id = +parametro.get('id');
+      if (id) {
+        this.clienteService.getClient(id).subscribe(d => {
+          this.cliente = d;
+          this.canvasModel.client = this.cliente
+          this.selfAssessment.client = this.cliente;
+          //agregue recien
+          this.canvasService.canvasSave(this.canvasModel).subscribe(canvas => {
+            //console.log('canvas'+data);
 
-          this.proceso.estado="AutoEvaluación";
+            this.canvasModel = canvas;
+            this.proceso.canvasModel = this.canvasModel;
 
-          this.proceso.user=JSON.parse(localStorage.getItem('usuario'))
-          this.selfAssessment.selfAssessment = this.preguntas;;
-          this.selfAssessment.client= this.cliente;
-              this.clienteService.guardarPreguntas(this.selfAssessment).subscribe(data => {
-             //   console.log(data);
-                this.selfAssessment=data;
-                this.proceso.selfAssessment=data;
-               // console.log(this.proceso);
-               this.canvasService.procesosSave(this.proceso).subscribe(data => {
+            this.proceso.estado = "AutoEvaluación";
+
+            this.proceso.user = JSON.parse(localStorage.getItem('usuario'))
+            this.selfAssessment.selfAssessment = this.preguntas;;
+            this.selfAssessment.client = this.cliente;
+            this.clienteService.guardarPreguntas(this.selfAssessment).subscribe(data => {
+              //   console.log(data);
+              this.selfAssessment = data;
+              this.proceso.selfAssessment = data;
+              // console.log(this.proceso);
+              this.canvasService.procesosSave(this.proceso).subscribe(data => {
                 this.proceso = data;
-    console.log(this.proceso);
+                console.log(this.proceso);
 
 
-               //   console.log(this.selfAssessment);
+                //   console.log(this.selfAssessment);
 
-                    if(this.condicion){
-                      this.router.navigate(['procesos']);
-                      Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
-                    }else{
-                      this.router.navigate(['/segmento/cliente/',this.cliente.id]);
-                    }
+                if (this.condicion) {
+                  console.log(this.condicion);
+
+                  this.router.navigate(['procesos']);
+                  Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
+                } else {
+                  this.router.navigate(['/segmento/cliente/', this.cliente.id]);
+                }
 
 
 
 
 
               })
-              })
+            })
 
 
-        },e=>{
-          if(e.status===500){
-            this.router.navigate(['/procesos']);
-          }
-        });
+          }, e => {
+            if (e.status === 500) {
+              this.router.navigate(['/procesos']);
+            }
+          });
 
-      })
-    }
-  })
+        })
+      }
+    })
 
-}
+  }
 
   public guardarYsalir() {
+    this.condicion = true
     this.guardarProceso();
 
 

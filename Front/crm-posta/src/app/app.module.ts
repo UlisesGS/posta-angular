@@ -53,7 +53,6 @@ import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructu
 import { ModeloBasicoComponent } from './modelo-basico/modelo-basico.component';
 import { ModeloListaComponent } from './modelo-basico/modelo-lista/modelo-lista.component';
 import { ModeloFormComponent } from './modelo-basico/modelo-form/modelo-form.component';
-
 import { InformacionComponent } from './modelo-basico/modelo-form/informacion/informacion.component';
 import { InternoComponent } from './modelo-basico/modelo-form/interno/interno.component';
 import { DofaComponent } from './modelo-basico/modelo-form/dofa/dofa.component';
@@ -92,14 +91,11 @@ const routes:Routes=[
   {path:'ingresos/cliente/:id',component:IngresosComponent},
   {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
   {path:'procesos/ver/:id',component:VerProcesosComponent},
-
   {path:'informacion/form/:id',component:InformacionComponent},
   {path:'interno/form/:id',component:InternoComponent},
   {path:'dofa/form/:id',component:DofaComponent},
   {path:'conclusion/form/:id',component:ConclusionComponent},
-
   {path:'proceso/page/:page',component:ProcesoListarComponent}
-
 ]
 
 @NgModule({
@@ -156,7 +152,6 @@ const routes:Routes=[
       InternoComponent,
       DofaComponent,
       ConclusionComponent,
-      
       PaginacionComponent
 
 
