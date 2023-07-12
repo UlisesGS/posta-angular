@@ -1,0 +1,61 @@
+.excel-table {
+    position: relative;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .excel-table th, .excel-table td {
+    border: 1px solid #000;
+    padding: 5px;
+  }
+  
+  .excel-table th {
+    background-color: #f88c8c;
+    font-weight: bold;
+    text-align: center;
+  }
+  .excel-table tbody{
+    background-color: white;
+  }
+  .excel-table input {
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px;
+    background-color: white;
+  }
+  
+  .excel-table input:focus {
+    outline: none;
+    background-color: white;
+  }
+  .autorellenadas{
+    background-color: #f8c7c7;
+  }
+  .add-row {
+    position: relative;
+    height: 25px;
+  }
+  .add-row a.btn {
+    text-align: center;
+    font-size: 18px;
+    line-height: 45px;
+    position: absolute;
+    bottom: -16px;
+    right: 0;
+  }
+
+  .table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }  
+  .row {
+    display: flex;
+  }
+  
+  .centered-col {
+    margin: 0 auto;
+  }
+  
