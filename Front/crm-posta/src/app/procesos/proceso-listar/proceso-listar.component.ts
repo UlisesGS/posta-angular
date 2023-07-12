@@ -130,12 +130,9 @@ this.modal.abrirModalPocesos();
       this.procesos=data;
 
     })
-<<<<<<< HEAD
   }
-=======
->>>>>>> 706da4027fb17840b0d3aed6638d72f36597743b
 
-  }
+  
   public todosPaginacion(){
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
