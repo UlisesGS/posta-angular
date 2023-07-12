@@ -27,22 +27,29 @@ import { CalendarioComponent } from './calendario/calendario.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AsesoriaListComponent } from './header/asesoria/asesoriaList/asesoriaList.component';
 import { ProcesoListarComponent } from './procesos/proceso-listar/proceso-listar.component';
-
+import { AccionProcesosComponent } from './procesos/accion-procesos/accion-procesos.component';
+import { NuevoProcesoComponent } from './procesos/nuevo-proceso/nuevo-proceso.component';
+import { AutoevaluacionComponent } from './procesos/autoevaluacion/autoevaluacion.component';
 import { SegmentoComponent } from './procesos/segmento/segmento.component';
 import { PropuestaDeValorComponent } from './procesos/propuesta-de-valor/propuesta-de-valor.component';
-
+import { CanalesComponent } from './procesos/canales/canales.component';
 import { RelacionesComponent } from './procesos/relaciones/relaciones.component';
 import { RecursosClavesComponent } from './procesos/recursos-claves/recursos-claves.component';
-import { AutoevaluacionComponent } from './procesos/autoevaluacion/autoevaluacion.component';
-import { SociosClavesComponent } from './procesos/socios-claves/socios-claves.component';
 import { ActividadesClavesComponent } from './procesos/actividades-claves/actividades-claves.component';
+import { SociosClavesComponent } from './procesos/socios-claves/socios-claves.component';
+import { IngresosComponent } from './procesos/ingresos/ingresos.component';
+import { EstructuraCostosComponent } from './procesos/estructura-costos/estructura-costos.component';
 import { BannerComponent } from './banner/banner.component';
 import { VerProcesosComponent } from './procesos/ver-procesos/ver-procesos.component';
 import { SegmentoModalComponent } from './procesos/ver-procesos/segmento-modal/segmento-modal.component';
-import { CanalesComponent } from './procesos/canales/canales.component';
+import { PropuestaDeValorModalComponent } from './procesos/ver-procesos/propuesta-de-valor-modal/propuesta-de-valor-modal.component';
+import { CanalesModalComponent } from './procesos/ver-procesos/canales-modal/canales-modal.component';
+import { RelacionesModalComponent } from './procesos/ver-procesos/relaciones-modal/relaciones-modal.component';
+import { RecursosClavesModalComponent } from './procesos/ver-procesos/recursos-claves-modal/recursos-claves-modal.component';
 import { ActividadesClavesModalComponent } from './procesos/ver-procesos/actividades-claves-modal/actividades-claves-modal.component';
 import { SociosClavesModalComponent } from './procesos/ver-procesos/socios-claves-modal/socios-claves-modal.component';
-
+import { IngresosModalComponent } from './procesos/ver-procesos/ingresos-modal/ingresos-modal.component';
+import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructura-costos-modal/estructura-costos-modal.component';
 import { ModeloBasicoComponent } from './modelo-basico/modelo-basico.component';
 import { ModeloListaComponent } from './modelo-basico/modelo-lista/modelo-lista.component';
 import { ModeloFormComponent } from './modelo-basico/modelo-form/modelo-form.component';
@@ -51,8 +58,7 @@ import { InternoComponent } from './modelo-basico/modelo-form/interno/interno.co
 import { DofaComponent } from './modelo-basico/modelo-form/dofa/dofa.component';
 import { ConclusionComponent } from './modelo-basico/modelo-form/conclusion/conclusion.component';
 import { PaginacionComponent } from './procesos/proceso-listar/paginacion/paginacion.component';
-import { IngresosComponent } from './procesos/ingresos/ingresos.component';
-import { EstructuraCostosComponent } from './procesos/estructura-costos/estructura-costos.component';
+
 const routes:Routes=[
 
   {path:'', redirectTo:'/login', pathMatch:'full'},
@@ -151,11 +157,7 @@ const routes:Routes=[
 
    ],
   imports: [
-
-
-
-
-BrowserModule,
+  BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
 
