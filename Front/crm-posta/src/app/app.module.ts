@@ -62,6 +62,9 @@ import { InformacionComponent } from './procesos/plan-negocio/modelo-basico/mode
 import { InternoComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/interno/interno.component';
 import { DofaComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/dofa/dofa.component';
 import { ConclusionComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/conclusion/conclusion.component';
+import { PlanFinancieroComponent } from './procesos/plan-negocio/plan-financiero/plan-financiero.component';
+import { FinancieroFormComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/financiero-form.component';
+import { PresupuestoVentasComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/presupuesto-ventas/presupuesto-ventas.component';
 
 const routes:Routes=[
 
@@ -100,6 +103,8 @@ const routes:Routes=[
   {path:'dofa/cliente/:id',component:DofaComponent},
   {path:'conclusion/cliente/:id',component:ConclusionComponent},
   {path:'proceso/page/:page',component:ProcesoListarComponent},
+  //Plan Financiero
+  {path:'ventas/cliente/:id',component:PresupuestoVentasComponent},
 
 ]
 
@@ -157,7 +162,10 @@ const routes:Routes=[
       InternoComponent,
       DofaComponent,
       ConclusionComponent,
-      PaginacionComponent
+      PaginacionComponent,
+      PlanFinancieroComponent,
+      FinancieroFormComponent,
+      PresupuestoVentasComponent
 
 
    ],

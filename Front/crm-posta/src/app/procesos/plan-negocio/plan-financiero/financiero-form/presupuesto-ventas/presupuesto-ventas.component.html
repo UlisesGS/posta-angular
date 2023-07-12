@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-2">
+        <app-client-details></app-client-details>
+    </div>
+    <div class="col-10">
+        <h4>Presupuesto de Ventas</h4>
+        <div style="text-align: center;">
+            <h4>ESTRUCTURA DEL MERCADO - UNIDADES</h4>
+        </div>
+        <div>
+            <table class="excel-table">
+                <thead style="text-align: center;">
+                  <tr>
+                    <th >Nombre del Producto(Bien o Servicio)</th>
+                    <th >Ventas Unidades Año 1</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of elementos; let i = index">
+                        <td><input type="text" [(ngModel)]="item.nombre"></td>
+                        <td><input type="text" [(ngModel)]="item.ventas"></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="add-row">
+                          <a (click)="agregarFila()" class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                        </td>
+                      </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th >Total</th>
+                        <th >$ </th>
+                      </tr>
+                </tfoot>
+              </table>
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
+            <h4>CAPACIDAD MANO DE OBRA INSTALADA</h4>
+        </div>
+        <div>
+            <table class="excel-table">
+                <thead style="text-align: center;font-size: small;">
+                  <tr>
+                    <th colspan="2">Nombre del Producto(Bien o Servicio)</th>
+                    <th >N° de Horas Año Operario Turno</th>
+                    <th >Unidades Hora Hombre</th>
+                    <th >Capacidad Instalada en Unidades por Operario Año 1</th>
+                    <th >Tiempo de Dedicación en % Año 1</th>
+                    <th >Capacidad Instalada en Unidades</th>
+                    <th >Capacidad Requerida en Unidades</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td class="autorellenadas" style="width: 13%;"></td>
+                        <td style="width: 5%;"><input type="text" ></td>
+                        <td style="width: 13%;"><input type="text" ></td>
+                        <td class="autorellenadas" style="width: 13%;"></td>
+                        <td class="autorellenadas" style="width: 13%;"></td>
+                        <td style="width: 13%;"><input type="text" ></td>
+                        <td class="autorellenadas" style="width: 13%;"></td>
+                        <td class="autorellenadas" style="width: 13%;"></td>
+                        
+                      </tr>
+                     
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4">Total</th>
+                        <th > </th>
+                        <th > </th>
+                        <th > </th>
+                        <th > </th>
+                      </tr>
+                </tfoot>
+              </table>
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
+            <h5>INCREMENTO EN % DEL PRECIO</h5>
+        </div>
+        <div class="col-5 centered-col">
+            <div  class="table-container">
+                <table class="excel-table">
+                    <thead style="text-align: center;font-size: small;">
+                      <tr>
+                        <th >Periodo</th>
+                        <th >IPC/ Inflación %</th>
+                        <th >Base + IPC</th>
+                        
+                        
+                      </tr>
+                    </thead>
+                    <tbody style="text-align: center;font-size: small;">
+                        <tr >
+                            <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
+                            <td style="width: 5%;"><input type="text" ></td>
+                            <td class="autorellenadas" style="width: 13%;"></td>
+                          </tr>
+                          <tr >
+                            <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
+                            <td style="width: 5%;"><input type="text" ></td>
+                            <td class="autorellenadas" style="width: 13%;"></td>
+                          </tr>
+                          <tr >
+                            <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
+                            <td style="width: 5%;"><input type="text" ></td>
+                            <td class="autorellenadas" style="width: 13%;"></td>
+                          </tr>
+                          <tr >
+                            <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
+                            <td style="width: 5%;"><input type="text" ></td>
+                            <td class="autorellenadas" style="width: 13%;"></td>
+                          </tr>
+                         
+                    </tbody>
+                  
+                  </table>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
