@@ -141,10 +141,12 @@ r
   public guardar(){
 
 
+
   }
   public guardarYsalir(){
 
     console.log(this.businessPlanFinancial);
+
 
   }
 }

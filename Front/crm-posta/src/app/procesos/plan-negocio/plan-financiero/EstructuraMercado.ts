@@ -4,7 +4,7 @@ export class EstructuraMercado {
   cantidad: number;
   tipo: string;
   horasOperario: number;
-  unidadHoraHombre: number=0.0;
+  unidadHoraHombre: any=0.0;
   capacidadInstaladaPorOperario: number=0.0;
   tiempoDecicacion: number;
   capacidadInstaladaUnidades: number=0.0;
