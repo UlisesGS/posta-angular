@@ -8,6 +8,7 @@ import { ClientService } from '../client.service';
 import Swal from 'sweetalert2';
 import { Usuario } from 'src/app/usuario/usuario';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-accion',
@@ -55,7 +56,7 @@ export class AccionComponent {
     this.cliente.businessIdea="";
     this.cliente.product="";
     console.log(this.cliente);
-    
+
     this.service.updateBusinessman(this.cliente).subscribe(data => {
       console.log(data);
       console.log(this.cliente);
@@ -63,7 +64,7 @@ export class AccionComponent {
       Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
 
 
-      
+
 
 
 },e=>{
@@ -90,7 +91,7 @@ convertImageToBase64(imageUrl: string): Promise<string> {
 
 
 createPdf() {
-  
+
   this.convertImageToBase64(this.imageUrl).then(base64 => {
   const documentDefinition = {
     content: [
@@ -101,92 +102,92 @@ createPdf() {
         margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
         // Márgenes de la imagen en el PDF
       },
-  
+
     // ... Estilos y otras configuraciones ...
-  
+
       { text: 'FECHA: ' + this.cliente.regdate, style: 'header' },
       { text: 'MUNICIPIO/DEPARTAMENTO: ' + this.cliente.municipio.country, style: 'header' },
       { text: 'ASESOR: ' + this.usuario.name + ' ' + this.usuario.lastName, style: 'header' },
       { text: 'DURACIÓN ASESORÍA: _______________________', style: 'header' },
-      
+
       { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-      
+
       '\n',
-      
+
       {
         columns: [
           { text: 'CLASIFICACIÓN DE CLIENTE:', style: 'fieldHeader', margin: [5, 0]},
           { text:this.cliente.type == 'entrepreneur' ? 'TIPO DE CLIENTE: EMPRENDEDOR' : 'TIPO DE CLIENTE: EMPRESARIO', style: 'fieldHeader', margin: [30, 0] }
         ]
       },
-      
+
       { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-      
+
       '\n',
-      
+
       {
         columns: [
-          { text: 'NOMBRES Y APELLIDOS: ' + this.cliente.name + ' ' + this.cliente.lastName, style: 'fieldHeader', margin: [5, 0] },
+          { text:  'NOMBRES Y APELLIDOS: ' + this.cliente.name + ' ' + this.cliente.lastName, style: 'fieldHeader', margin: [5, 0] },
           { text: 'No. DOCUMENTO/NIT: ' + this.cliente.nit, style: 'fieldHeader', margin: [30, 0] }
         ]
       },
-      
+
       { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-      
+
       '\n',
-      
+
       {
         columns: [
           { text: this.cliente.gender.includes('FEMALE') ? 'GÉNERO: FEMENINO':this.cliente.gender.includes('LGBTQ')?'GÉNERO: LGBTQ+':'GÉNERO: MASCULINO', style: 'fieldHeader', margin: [5, 0] },
-          
+
         ]
       },
-      
+
       { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-      
+
       '\n',
-      
+
       {
         columns: [
           { text: this.cliente.type == 'entrepreneur'  ? 'IDEA DE NEGOCIO: '+this.cliente.businessIdea : 'NOMBRE DE LA EMPRESA: '+this.cliente.companyName, style: 'fieldHeader', margin: [5, 0]}
         ]
       },
-      
+
       { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-      
+
       '\n',
-      
+
       {
         columns: [
           { text: this.cliente.type == 'entrepreneur' ?  'PRODUCTO: '+this.cliente.product:'NUMERO DE CIIU: '+this.cliente.ciiu, style: 'fieldHeader', margin: [5, 0] }
         ]
       },
-      
+
       { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-      
+
       '\n',
-      
+
       {
         columns: [
           { text: 'No. CELULAR: '+this.cliente.phone, style: 'fieldHeader', margin: [5, 0] },
           { text: 'CORREO ELECTRÓNICO: '+this.cliente.email, style: 'fieldHeader', margin: [30, 0] }
         ]
       },
-      
+
       { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-      
+
       '\n',
-      
+
       {
         columns: [
-          { text: 'DIRECCIÓN: '+this.cliente.address, style: 'fieldHeader', margin: [5, 0] }
+          { text: 'DIRECCIÓN: ' +this.cliente.address, style: 'fieldHeader', margin: [5, 0] }
         ]
       },
-      
+
       { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-      
-      
-      
+
+
+
       {
         text: 'Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE VILLAVICENCIO (la “CCV”) para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación personal, nombres y apellidos, números de teléfono y celular, correo electrónico, país de origen y en general toda la información solicitada para información de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a la que puede accederse en el siguiente link:',
         style: 'p'
@@ -234,7 +235,7 @@ createPdf() {
 
   pdfMake.vfs = pdfFonts.pdfMake.vfs;
   pdfMake.createPdf(documentDefinition).open();
-   
+
   })}
 
 }
