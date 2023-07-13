@@ -1,9 +1,12 @@
-import { EstructuraMercado } from "./EstructuraMercado";
+
 import { CiclicidadVentas } from './CiclicidadVentas';
+import { EstructuraMercado } from './EstructuraMercado';
+
+
 
 export class PresupuestoVenta {
   id: number;
-  estructuraMercado: EstructuraMercado[];
+  estructuraMercado: EstructuraMercado[]=[];
   totalProductos: number=0.0;
   totalCapacidadOperario: number=0.0;
   totalCapacidadInstalada: number=0.0;
@@ -31,7 +34,9 @@ export class PresupuestoVenta {
     })
 
   }
-
+public addElementos(estructuraMercado:EstructuraMercado){
+  this.estructuraMercado.push(estructuraMercado);
+}
 
 
 

@@ -8,4 +8,5 @@ export class EstructuraCompra {
   public  calculoTotal(){
     this.totalUnitario=(this.valorUnitario*this.cantidadUbnidad);
 }
+
 }

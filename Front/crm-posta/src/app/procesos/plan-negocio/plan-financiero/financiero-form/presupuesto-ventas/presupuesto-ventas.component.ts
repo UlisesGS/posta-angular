@@ -8,7 +8,9 @@ import { Client } from 'src/app/client/client';
 import { Process } from 'src/app/procesos/Process';
 import { EstructuraMercado } from '../../EstructuraMercado';
 import { CiclicidadVentas } from './../../CiclicidadVentas';
+
 import { PresupuestoVenta } from '../../PresupuestoVenta';
+
 
 @Component({
   selector: 'app-presupuesto-ventas',
@@ -31,7 +33,9 @@ export class PresupuestoVentasComponent implements OnInit {
   estructuraMercado:EstructuraMercado = new EstructuraMercado;
   ciclicidad:CiclicidadVentas= new CiclicidadVentas();
   ciclicidadVentas:CiclicidadVentas[]=[];
+
   presupuestoVenta:PresupuestoVenta=new PresupuestoVenta();
+
   constructor(
     private planFinancieroService:PlanFinancieroService,
     private rutaParametro:ActivatedRoute,
@@ -62,8 +66,20 @@ this.estructuraMercado.cantidad
     })
   }
   agregarFila() {
+
     /* agregarFila() {
   const nuevoElemento = { nombre: '', ventas: '' };
+
+    this.estructuraMercado= new EstructuraMercado()
+this.estructuraMercado.cantidad=this.cantidad;
+this.estructuraMercado.producto=this.producto;
+   // this.elementos.push({ nombre: '', ventas: '' });
+this.presupuestoVenta.addElementos(this.estructuraMercado);
+console.log(this.presupuestoVenta);
+
+
+   }
+
 
   // Verificar si el nuevo elemento ya existe en la lista
   const elementoExistente = this.elementos.find(item => item.nombre === nuevoElemento.nombre && item.ventas === nuevoElemento.ventas);
@@ -75,12 +91,16 @@ this.estructuraMercado.cantidad
 } */
    // this.elementos.push({ nombre: '', ventas: '
 
+
    this.estructuraMercado = new EstructuraMercado();
    this.estructuraMercado.cantidad=this.cantidad;
    this.estructuraMercado.producto=this.producto;
    this.estructuraMercados.push(this.estructuraMercado);
    this.presupuestoVenta.estructuraMercado=this.estructuraMercados;
     
+
+//console.log(this.estructuraMercados);
+
 
 
 
@@ -90,6 +110,7 @@ this.estructuraMercado.cantidad
    this.estructuraMercado.producto=this.producto[];
     this.businessPlanFinancial.presupuestoVenta.estructuraMercado.push(this.estructuraMercado);
     */
+
   }
 
   public llenarHoras(){
@@ -115,11 +136,15 @@ this.estructuraMercado.cantidad
     
   }
 
+r
 
   public guardar(){
 
 
   }
   public guardarYsalir(){
+
+    console.log(this.businessPlanFinancial);
+
   }
 }

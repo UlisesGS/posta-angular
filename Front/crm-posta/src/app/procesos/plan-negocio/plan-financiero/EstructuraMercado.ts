@@ -17,4 +17,8 @@ export class EstructuraMercado {
     this.capacidadInstaladaUnidades=this.capacidadInstaladaPorOperario*this.tiempoDecicacion;
     this.precioTotal=this.precioUnitario*this.cantidad;
 }
+public addElementos(cantidad,producto){
+  this.producto=producto
+  this.cantidad=cantidad;
+}
 }
