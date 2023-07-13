@@ -11,9 +11,14 @@ export class EstructuraMercado {
   precioUnitario: number;
   precioTotal: number=0.0;
   public calculos(){
+    console.log(this.horasOperario);
     this.unidadHoraHombre=(0.99*this.cantidad)/this.horasOperario;
     this.capacidadInstaladaPorOperario=this.horasOperario*this.unidadHoraHombre;
     this.capacidadInstaladaUnidades=this.capacidadInstaladaPorOperario*this.tiempoDecicacion;
     this.precioTotal=this.precioUnitario*this.cantidad;
+}
+public addElementos(cantidad,producto){
+  this.producto=producto
+  this.cantidad=cantidad;
 }
 }
