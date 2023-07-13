@@ -99,6 +99,42 @@
             </table>
         </div>
         <div style="text-align: center; margin-top: 10px;">
+            <h5>VENTAS ANUALES POR PRODUCTO</h5>
+        </div>
+        <div>
+            <table class="excel-table">
+                <thead style="text-align: center;font-size: small;">
+                    <tr>
+                        <th>Nombre del Producto(Bien o Servicio)</th>
+                        <th>Unidades a Vender</th>
+                        <th>Precio de Venta Unit.</th>
+                        <th>Ventas Totales $ Año 1</th>
+                        
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pres of presupuestoVenta.estructuraMercado">
+                        <td class="autorellenadas" style="width: 13%;"></td>
+                        <td style="width: 13%;" class="autorellenadas"></td>
+                        <td style="width: 13%;"><input type="number"></td>
+                        <td style="width: 13%;" class="autorellenadas"></td>
+
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th >Total</th>
+                        <th></th>
+                        <th>$</th>
+                        <th>$</th>
+                       
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
             <h5>INCREMENTO EN % DEL PRECIO</h5>
         </div>
         <div class="col-5 centered-col">
