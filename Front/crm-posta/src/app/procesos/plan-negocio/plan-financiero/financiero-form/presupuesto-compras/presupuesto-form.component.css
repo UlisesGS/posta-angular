@@ -56,6 +56,11 @@
   }
   
   .centered-col {
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .centered-heading {
+    text-align: center;
   }
   
