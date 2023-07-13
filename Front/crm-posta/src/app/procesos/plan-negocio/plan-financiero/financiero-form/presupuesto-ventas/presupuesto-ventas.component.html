@@ -17,15 +17,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of elementos; let i = index">
-                            <td><input type="text" [(ngModel)]="item.nombre"></td>
-                            <td><input type="text" [(ngModel)]="item.ventas"></td>
+                      <td><input type="text" [(ngModel)]="producto"></td>
+                      <td><input type="text" [(ngModel)]="cantidad"></td>
+                      <tr>
+                        <td colspan="2" class="add-row">
+                            <a (click)="agregarFila()" class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                        </td>
+                    </tr>
+                        <tr *ngFor="let item of estructuraMercados">
+                            <td>{{item.producto}}</td>
+                            <td>{{item.cantidad}}</td>
                         </tr>
-                        <tr>
-                            <td colspan="2" class="add-row">
-                                <a (click)="agregarFila()" class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
-                            </td>
-                        </tr>
+
                     </tbody>
                     <tfoot>
                         <tr>
@@ -36,7 +39,7 @@
                 </table>
             </div>
         </div>
-        
+
         <div style="text-align: center; margin-top: 10px;">
             <h5>CAPACIDAD MANO DE OBRA INSTALADA</h5>
         </div>
@@ -250,8 +253,17 @@
                             </tfoot>
                         </table>
                     </div>
+                    <div class="form-group mt-3">
+                      <button (click)="guardarYsalir()"  class="btn">Guardar</button>
+                      <button (click)="guardar()" class="btn">Guardar y Continuar</button>
+                      <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
+                    </div>
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
