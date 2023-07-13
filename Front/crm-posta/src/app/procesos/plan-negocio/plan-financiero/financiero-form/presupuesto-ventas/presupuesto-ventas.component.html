@@ -18,7 +18,7 @@
                     </thead>
                     <tbody>
                       <td><input type="text" [(ngModel)]="producto"></td>
-                      <td><input type="text" [(ngModel)]="cantidad"></td>
+                      <td><input type="number" step="any" [(ngModel)]="cantidad"></td>
                       <tr>
                         <td colspan="2" class="add-row">
                             <a (click)="agregarFila()" class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
@@ -58,15 +58,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let pres of presupuestoVenta.estructuraMercado">
                         <td class="autorellenadas" style="width: 13%;"></td>
-                        <td style="width: 5%;"><input type="text"></td>
-                        <td style="width: 13%;"><input type="text"></td>
-                        <td class="autorellenadas" style="width: 13%;"></td>
-                        <td class="autorellenadas" style="width: 13%;"></td>
-                        <td style="width: 13%;"><input type="text"></td>
-                        <td class="autorellenadas" style="width: 13%;"></td>
-                        <td class="autorellenadas" style="width: 13%;"></td>
+
+                        <td style="width: 15%;">
+                            <select [(ngModel)]="pres.tipo" class="form-select"
+                            aria-label="Default select example" >
+                            <option value="Unidad" >Unidad</option>
+                            <option value="Kilogramo" >Kilogramo</option>
+                            <option value="Libra" >Libra</option>
+                            <option value="Onza" >Onza</option>
+                            <option value="Litro" >Litro</option>
+                            <option value="Metro cubico" >Metro cubico</option>
+                            <option value="Dia" >Dia</option>
+                            <option value="Hora" >Hora</option>
+                            <option value="Minuto" >Minuto</option>
+                            <option value="Servicio" >Servicio</option>
+                            <option value="Producto" >Producto</option>
+                            <option value="Otro" >Otro</option>
+                        </select></td>
+                        <td style="width: 13%;"><input type="number" step="any" (keyup)="llenarHoras()" [(ngModel)]="pres.horasOperario"></td>
+                        <td class="autorellenadas" style="width: 13%;">{{pres.unidadHoraHombre}}</td>
+                        <td class="autorellenadas" style="width: 13%;">{{pres.capacidadInstaladaPorOperario}}</td>
+                        <td style="width: 13%;"><input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion"></td>
+                        <td class="autorellenadas" style="width: 13%;">{{pres.capacidadInstaladaUnidades}}</td>
+                        <td class="autorellenadas" style="width: 13%;">{{pres.cantidad}}</td>
 
                     </tr>
 
@@ -74,10 +90,10 @@
                 <tfoot>
                     <tr>
                         <th colspan="4">Total</th>
-                        <th> </th>
-                        <th> </th>
-                        <th> </th>
-                        <th> </th>
+                        <th>{{presupuestoVenta.totalCapacidadOperario}}</th>
+                        <th></th>
+                        <th>{{presupuestoVenta.totalCapacidadInstalada}}</th>
+                        <th>{{presupuestoVenta.totalTotal}}</th>
                     </tr>
                 </tfoot>
             </table>
