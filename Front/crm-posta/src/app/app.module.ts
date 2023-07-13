@@ -67,6 +67,7 @@ import { FinancieroFormComponent } from './procesos/plan-negocio/plan-financiero
 import { PresupuestoVentasComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/presupuesto-ventas/presupuesto-ventas.component';
 import { PresupuestoFormComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/presupuesto-compras/presupuesto-form.component';
 import { PresupuestoGastoComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/presupuesto-gasto/presupuesto-gasto.component';
+import { DetallesComponent } from './client/detalles/detalles.component';
 
 const routes:Routes=[
 
@@ -79,7 +80,7 @@ const routes:Routes=[
   {path:'clients/form/editar/entrepreneur/:id', component:FormEntrepreneurComponent},
   {path:'clients/registrar', component:RegistrarComponent},
   {path:'autoevaluacion/cliente/:id', component:AutoevaluacionComponent},
-  {path:'clients/details/:id', component:ClientDetailsComponent},
+  {path:'clients/details/:id', component:DetallesComponent},
   {path:'clients/action/:id', component:AccionComponent},
   {path:'usuarios', component:UsuariolistComponent},
   {path:'usuarios/form', component:UsuarioformComponent},
@@ -170,7 +171,8 @@ const routes:Routes=[
       FinancieroFormComponent,
       PresupuestoVentasComponent,
       PresupuestoFormComponent,
-      PresupuestoGastoComponent
+      PresupuestoGastoComponent,
+      DetallesComponent
 
 
    ],

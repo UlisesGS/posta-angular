@@ -8,52 +8,113 @@
             <h5 class="centered-heading">Consumo Materia Prima por Producto</h5>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-4">
                 <div class="centered-col">
                     <div class="col">
-                        <div style="margin-bottom: 20px;" class="col-6">
-                            <table class="excel-table" style="font-size: small;">
-                                <tr>
-                                    <th style="width: 50%;">Producto</th>
-                                    <td class="autorellenadas"></td>
-                                </tr>
-                                <tr>
-                                    <th style="width: 50%;">Unidad de Producción</th>
-                                    <td class="autorellenadas"></td>
-                                </tr>
-                            </table>
-                        </div>
                         <div style="margin-bottom: 20px;" class="col">
                             <table class="excel-table" style="font-size: small;">
                                 <thead style="text-align: center;">
                                     <tr>
-                                        <th>Materias Primas</th>
-                                        <th>Unidad de Medida</th>
-                                        <th>Valor Unitario</th>
-                                        <th>Cantidad por Unidad</th>
-                                        <th>Total Costo Unit.</th>
-
+                                        <th colspan="3">Personal Operativo</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Cargo</th>
+                                        <th>Salario Mensual $</th>
+                                        <th>Salario Año 1</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr >
-                                        <td><input type="text" ></td>
-                                      
+                                    <tr *ngFor="let item of elementos">
+                                        <td><input type="text" ></td> 
+                                        <td><input type="text" ></td> 
                                         <td class="autorellenadas">$</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="5" class="add-row">
-                                            <a  class="btn mt-2">Agregar <i
-                                                    class="fa-solid fa-plus"></i></a>
+                                        <td colspan="3" class="add-row"><a (click)="agregarFila()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th colspan="2">Total</th>
+                                        <th >Total</th>
                                         <th>$ </th>
                                         <th>$ </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="centered-col">
+                    <div class="col">
+                        <div style="margin-bottom: 20px;" class="col">
+                            <table class="excel-table" style="font-size: small;">
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th colspan="3">Personal Administrativo</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Cargo</th>
+                                        <th>Salario Mensual $</th>
+                                        <th>Salario Año 1</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of elementos1">
+                                        <td><input type="text" ></td> 
+                                        <td><input type="text" ></td> 
+                                        <td class="autorellenadas">$</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="add-row"><a (click)="agregarFila1()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >Total</th>
                                         <th>$ </th>
+                                        <th>$ </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="centered-col">
+                    <div class="col">
+                        <div style="margin-bottom: 20px;" class="col">
+                            <table class="excel-table" style="font-size: small;">
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th colspan="3">Personal Comercial y Ventas</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Cargo</th>
+                                        <th>Salario Mensual $</th>
+                                        <th>Salario Año 1</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of elementos2">
+                                        <td><input type="text" ></td> 
+                                        <td><input type="text" ></td> 
+                                        <td class="autorellenadas">$</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="add-row"><a (click)="agregarFila2()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td >Total</td>
+                                        <td>$ </td>
+                                        <td>$ </td>
                                     </tr>
                                 </tfoot>
                             </table>

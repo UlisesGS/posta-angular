@@ -61,7 +61,7 @@ export class EstructuraCostosComponent {
                 console.log(this.proceso);
 
               }
-
+ 
             })
           })
         })
