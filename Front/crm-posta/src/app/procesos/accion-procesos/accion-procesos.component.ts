@@ -84,10 +84,25 @@ export class AccionProcesosComponent implements OnInit {
       ;
       break;
       case 'Conclusiones':
-      //  this.ruta.navigate([`conclusion/cliente/${this.proceso.canvasModel.client.id}`]);
-      this.ruta.navigate(['/procesos']);
+       this.ruta.navigate([`ventas/cliente/${this.proceso.canvasModel.client.id}`]);
+      //this.ruta.navigate(['/procesos']);
       ;
       break;
+      case 'Presupuesto Venta':
+        this.ruta.navigate([`compras/cliente/${this.proceso.canvasModel.client.id}`]);
+       //this.ruta.navigate(['/procesos']);
+       ;
+       break;
+       case 'Presupuesto Compra':
+        this.ruta.navigate([`gastos/cliente/${this.proceso.canvasModel.client.id}`]);
+       //this.ruta.navigate(['/procesos']);
+       ;
+       break;
+       case 'Presupuesto Gastos/Costos':
+       // this.ruta.navigate([`gastos/cliente/${this.proceso.canvasModel.client.id}`]);
+       this.ruta.navigate(['/procesos']);
+       ;
+       break;
     }
     this.modal.cerrarModalProceso();
   }
