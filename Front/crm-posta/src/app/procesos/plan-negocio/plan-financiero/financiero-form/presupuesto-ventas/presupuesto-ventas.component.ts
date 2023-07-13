@@ -87,10 +87,10 @@ console.log(this.presupuestoVenta);
     */
 
   public guardar(){
-console.log(this.businessPlanFinancial);
+console.log(this.presupuestoVenta);
 
   }
   public guardarYsalir(){
-    console.log(this.businessPlanFinancial);
+    console.log(this.presupuestoVenta);
   }
 }
