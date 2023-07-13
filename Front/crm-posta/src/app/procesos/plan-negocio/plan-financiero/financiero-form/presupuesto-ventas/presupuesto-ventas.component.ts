@@ -6,8 +6,9 @@ import { ClientService } from 'src/app/client/client.service';
 import { ProcesoService } from 'src/app/procesos/proceso.service';
 import { Client } from 'src/app/client/client';
 import { Process } from 'src/app/procesos/Process';
-import { EstructuraMercado } from '../../estructuraMercado';
+import { EstructuraMercado } from '../../EstructuraMercado';
 import { CiclicidadVentas } from './../../CiclicidadVentas';
+import { PresupuestoVenta } from './../../PresupuestoVenta';
 
 @Component({
   selector: 'app-presupuesto-ventas',
@@ -29,6 +30,7 @@ export class PresupuestoVentasComponent implements OnInit {
   estructuraMercado:EstructuraMercado = new EstructuraMercado();
   ciclicidad:CiclicidadVentas= new CiclicidadVentas();
   ciclicidadVentas:CiclicidadVentas[]=[];
+  presupuestoVenta:PresupuestoVenta= new PresupuestoVenta()
   constructor(
     private planFinancieroService:PlanFinancieroService,
     private rutaParametro:ActivatedRoute,
@@ -61,21 +63,19 @@ this.estructuraMercado.cantidad
     })
   }
   agregarFila() {
+    this.estructuraMercado= new EstructuraMercado()
 this.estructuraMercado.cantidad=this.cantidad;
 this.estructuraMercado.producto=this.producto;
    // this.elementos.push({ nombre: '', ventas: '' });
-   if(this.estructuraMercados.length==0){
-    this.estructuraMercados.push(this.estructuraMercado)
-   }else{
-    this.estructuraMercados.forEach(merca=>{
-      merca.cantidad=this.cantidad;
-      merca.producto=this.producto
-    })
+this.presupuestoVenta.addElementos(this.estructuraMercado);
+console.log(this.presupuestoVenta);
+
+
    }
 
 
 
-console.log(this.estructuraMercados);
+//console.log(this.estructuraMercados);
 
 
 
@@ -85,12 +85,12 @@ console.log(this.estructuraMercados);
    this.estructuraMercado.producto=this.producto[];
     this.businessPlanFinancial.presupuestoVenta.estructuraMercado.push(this.estructuraMercado);
     */
-  }
+
   public guardar(){
 console.log(this.businessPlanFinancial);
 
   }
   public guardarYsalir(){
-
+    console.log(this.businessPlanFinancial);
   }
 }
