@@ -6,8 +6,9 @@ import { ClientService } from 'src/app/client/client.service';
 import { ProcesoService } from 'src/app/procesos/proceso.service';
 import { Client } from 'src/app/client/client';
 import { Process } from 'src/app/procesos/Process';
-import { EstructuraMercado } from '../../estructuraMercado';
+import { EstructuraMercado } from '../../EstructuraMercado';
 import { CiclicidadVentas } from './../../CiclicidadVentas';
+import { PresupuestoVenta } from '../../PresupuestoVenta';
 
 @Component({
   selector: 'app-presupuesto-ventas',
@@ -16,6 +17,7 @@ import { CiclicidadVentas } from './../../CiclicidadVentas';
 })
 export class PresupuestoVentasComponent implements OnInit {
 
+  
   producto:string;
   cantidad:number;
   productos:string[];
@@ -24,11 +26,12 @@ export class PresupuestoVentasComponent implements OnInit {
   businessPlanFinancial:BusinessPlanFinancial= new BusinessPlanFinancial();
   cliente:Client= new Client();
   procesos:Process[]=[];
-  proceso:Process= new Process;
+  proceso:Process= new Process();
   estructuraMercados:EstructuraMercado[]=[];
-  estructuraMercado:EstructuraMercado = new EstructuraMercado();
+  estructuraMercado:EstructuraMercado = new EstructuraMercado;
   ciclicidad:CiclicidadVentas= new CiclicidadVentas();
   ciclicidadVentas:CiclicidadVentas[]=[];
+  presupuestoVenta:PresupuestoVenta=new PresupuestoVenta();
   constructor(
     private planFinancieroService:PlanFinancieroService,
     private rutaParametro:ActivatedRoute,
@@ -43,14 +46,12 @@ this.estructuraMercado.cantidad
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          console.log(data);
           this.procesoService.procesosFindAll().subscribe(pro => {
             this.procesos=pro;
 
             this.procesos.forEach(proceso=>{
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
-                console.log(this.proceso);
 
               }
             })
@@ -61,21 +62,25 @@ this.estructuraMercado.cantidad
     })
   }
   agregarFila() {
-this.estructuraMercado.cantidad=this.cantidad;
-this.estructuraMercado.producto=this.producto;
-   // this.elementos.push({ nombre: '', ventas: '' });
-   if(this.estructuraMercados.length==0){
-    this.estructuraMercados.push(this.estructuraMercado)
-   }else{
-    this.estructuraMercados.forEach(merca=>{
-      merca.cantidad=this.cantidad;
-      merca.producto=this.producto
-    })
-   }
+    /* agregarFila() {
+  const nuevoElemento = { nombre: '', ventas: '' };
 
+  // Verificar si el nuevo elemento ya existe en la lista
+  const elementoExistente = this.elementos.find(item => item.nombre === nuevoElemento.nombre && item.ventas === nuevoElemento.ventas);
 
+  // Agregar el nuevo elemento solo si no existe en la lista
+  if (!elementoExistente) {
+    this.elementos.push(nuevoElemento);
+  }
+} */
+   // this.elementos.push({ nombre: '', ventas: '
 
-console.log(this.estructuraMercados);
+   this.estructuraMercado = new EstructuraMercado();
+   this.estructuraMercado.cantidad=this.cantidad;
+   this.estructuraMercado.producto=this.producto;
+   this.estructuraMercados.push(this.estructuraMercado);
+   this.presupuestoVenta.estructuraMercado=this.estructuraMercados;
+    
 
 
 
@@ -86,11 +91,35 @@ console.log(this.estructuraMercados);
     this.businessPlanFinancial.presupuestoVenta.estructuraMercado.push(this.estructuraMercado);
     */
   }
+
+  public llenarHoras(){
+    
+
+    this.presupuestoVenta.estructuraMercado.forEach(e=>{
+      e.calculos();
+      
+      
+    })
+    this.presupuestoVenta.calcular();
+    console.log(this.presupuestoVenta);
+    
+    /* CALCULAR  */
+  }
+
+  public llenarTipo(e:string){
+    this.estructuraMercado.tipo=e;
+   console.log(this.estructuraMercado);
+   console.log(`mostrando ${e}`);
+   
+   
+    
+  }
+
+
   public guardar(){
-console.log(this.businessPlanFinancial);
+
 
   }
   public guardarYsalir(){
-
   }
 }

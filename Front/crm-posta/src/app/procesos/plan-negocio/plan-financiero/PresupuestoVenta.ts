@@ -1,4 +1,4 @@
-import { EstructuraMercado } from "./estructuraMercado";
+import { EstructuraMercado } from "./EstructuraMercado";
 import { CiclicidadVentas } from './CiclicidadVentas';
 
 export class PresupuestoVenta {
