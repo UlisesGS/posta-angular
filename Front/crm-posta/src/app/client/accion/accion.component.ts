@@ -93,6 +93,150 @@ convertImageToBase64(imageUrl: string): Promise<string> {
 createPdf() {
 
   this.convertImageToBase64(this.imageUrl).then(base64 => {
+    const documentDefinition = {
+      content: [
+        {
+          image: base64,
+          width: 129, // Ancho de la imagen en el PDF
+          height: 106, // Alto de la imagen en el PDF
+          margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
+          // Márgenes de la imagen en el PDF
+        },
+    
+        // ... Estilos y otras configuraciones ...
+          
+        {
+          table: {
+            layout: 'noBorders', // <-- Eliminar los bordes de la tabla
+            widths: ['auto', '*'],
+            body: [
+              [
+                { text: 'FECHA:', style: 'header' },
+                { text: this.cliente.regdate, style: ['thisText', 'header'] }
+              ],
+              [
+                { text: 'MUNICIPIO/DEPARTAMENTO:', style: 'header' },
+                { text: this.cliente.municipio.country, style: ['thisText', 'header'] }
+              ],
+              [
+                { text: 'ASESOR:', style: 'header' },
+                { text: this.usuario.name + ' ' + this.usuario.lastName, style: ['thisText', 'header'] }
+              ],
+              [
+                { text: 'DURACIÓN ASESORÍA:', style: 'header' },
+                { text: '_______________________', style: ['thisText', 'header'] }
+              ]
+            ]
+          }
+        },
+    
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
+    
+        '\n',
+    
+        {
+          table: {
+            layout: 'noBorders', // <-- Eliminar los bordes de la tabla
+            widths: ['auto', '*'],
+            body: [
+              [
+                { text: 'CLASIFICACIÓN DE CLIENTE:', style: 'fieldHeader' },
+                { text: 'hola', style: ['thisText', 'fieldHeader'] }
+              ],
+              [
+                { text: 'TIPO DE CLIENTE:', style: 'fieldHeader' },
+                { text: this.cliente.type == 'entrepreneur' ? ' EMPRENDEDOR' : ' EMPRESARIO', style: ['thisText', 'fieldHeader'] }
+              ],
+              [
+                { text: 'NOMBRES Y APELLIDOS:', style: 'fieldHeader' },
+                { text: this.cliente.name + ' ' + this.cliente.lastName, style: ['thisText', 'fieldHeader'] }
+              ],
+              [
+                { text: 'No. DOCUMENTO/NIT:', style: 'fieldHeader' },
+                { text: this.cliente.nit, style: ['thisText', 'fieldHeader'] }
+              ],
+              [
+                { text: 'GÉNERO:', style: 'fieldHeader' },
+                { text: this.cliente.gender.includes('FEMALE') ? 'FEMENINO' : this.cliente.gender.includes('LGBTQ') ? 'LGBTQ+' : 'MASCULINO', style: ['thisText', 'fieldHeader'] }
+              ],
+              [
+                { text: this.cliente.type == 'entrepreneur' ? 'IDEA DE NEGOCIO:' : 'NOMBRE DE LA EMPRESA:', style: 'fieldHeader' },
+                { text: this.cliente.type == 'entrepreneur' ? this.cliente.businessIdea : this.cliente.companyName, style: ['thisText', 'fieldHeader'] }
+              ],
+              [
+                { text: this.cliente.type == 'entrepreneur' ? 'PRODUCTO:' : 'NUMERO DE CIIU:', style: 'fieldHeader' },
+                { text: this.cliente.type == 'entrepreneur' ? this.cliente.product : this.cliente.ciiu, style: ['thisText', 'fieldHeader'] }
+              ],
+              [
+                { text: 'No. CELULAR:', style: 'fieldHeader' },
+                { text: this.cliente.phone, style: ['thisText', 'fieldHeader'] }
+              ],
+              [
+                { text: 'CORREO ELECTRÓNICO:', style: 'fieldHeader' },
+                { text: this.cliente.email, style: ['thisText', 'fieldHeader'] }
+              ],
+              [
+                { text: 'DIRECCIÓN:', style: 'fieldHeader' },
+                { text: this.cliente.address, style: ['thisText', 'fieldHeader'] }
+              ]
+            ]
+          }
+        },
+    
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
+    
+        {
+          text: 'Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE VILLAVICENCIO (la “CCV”) para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación personal, nombres y apellidos, números de teléfono y celular, correo electrónico, país de origen y en general toda la información solicitada para información de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a la que puede accederse en el siguiente link:',
+          style: 'p'
+        },
+        {
+          text: 'https://s3.pagegear.co/415/78/politica_de_tratamiento_de_datos_personales_2021_ccv.pdf',
+          link: 'https://s3.pagegear.co/415/78/politica_de_tratamiento_de_datos_personales_2021_ccv.pdf',
+          style: 'link'
+        },
+        {
+          text: 'así como para el desarrollo de las funciones públicas que le han sido asignadas y demás actividades complementarias y ser informado de nuevas jornadas, eventos y/o espacios de formación que adelanta la Cámara, divulgación de la oferta académica y evaluación de los servicios de la Cámara. Reconozco y acepto que la CCV me informó que en caso de que se soliciten datos personales sensibles, la entrega de estos es meramente facultativa y no estoy obligado a entregarlos. Reconozco que se me fue informado que, como titular de mis datos personales, tengo derecho a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la autorización otorgada para su tratamiento, ser informado sobre el uso que se ha dado a los mismos, presentar quejas ante la Superintendencia de Industria y Comercio por infracción a la ley, revocar la autorización y/o solicitar la supresión de mis datos en los casos que sea procedente y acceder en forma gratuita a los mismos. De igual manera, se me indicó que puedo ejercer mis derechos como titular de mis datos personales a través de los canales dispuestos en la Política de Tratamiento de Datos Personales o a través del correo electrónico datospersonales@ccv.org.co.',
+          style: 'p'
+        }
+      ],
+      styles: {
+        header: {
+          bold: true,
+          fontSize: 12,
+        },
+        thisText: {
+          bold: true,
+          color: 'dark'
+        },
+        fieldValue: {
+          fontSize: 10,
+          margin: [5, 0]
+        },
+        p: {
+          fontSize: 10,
+          margin: [0, 10]
+        },
+        link: {
+          fontSize: 10,
+          color: 'blue',
+          margin: [0, 10],
+          decoration: 'underline'
+        },
+        fieldHeader: {
+          fontSize: 10,
+          bold: true,
+          margin: [0, 5]
+        }
+      }
+    };
+
+
+
+
+
+
+/*
+this.convertImageToBase64(this.imageUrl).then(base64 => {
   const documentDefinition = {
     content: [
       {
@@ -102,6 +246,7 @@ createPdf() {
         margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
         // Márgenes de la imagen en el PDF
       },
+
 
     // ... Estilos y otras configuraciones ...
 
@@ -197,42 +342,41 @@ createPdf() {
         link: 'https://s3.pagegear.co/415/78/politica_de_tratamiento_de_datos_personales_2021_ccv.pdf',
         style: 'link'
       },
+
       {
-        text: 'así como para el desarrollo de las funciones públicas que le han sido asignadas y demás actividades complementarias y ser informado de nuevas jornadas, eventos y/o espacios de formación que adelanta la Cámara, divulgación de la oferta académica y evaluación de los servicios de la Cámara. Reconozco y acepto que la CCV me informó que en caso de que se soliciten datos personales sensibles, la entrega de estos es meramente facultativa y no estoy obligado a entregarlos.',
-        style: 'p'
+        layout: 'noBorders',
+        table: {
+          widths: ['auto', '*'],
+          body: [
+            [ 
+              
+              { text: 'MUNICIPIO/DEPARTAMENTO: ', style: 'header' },
+              { text: this.cliente.municipio.country, style: ['thisText', 'header'] }
+            ],
+            [
+              { text: 'FECHA: ' , style: 'header' },
+              { text: this.cliente.regdate, style: ['thisText', 'header']},
+            ]
+          ]
+        }
       },
-      {
-        text: 'Reconozco que se me fue informado que, como titular de mis datos personales, tengo derecho a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la autorización otorgada para su tratamiento, ser informado sobre el uso que se ha dado a los mismos, presentar quejas ante la Superintendencia de Industria y Comercio por infracción a la ley, revocar la autorización y/o solicitar la supresión de mis datos en los casos que sea procedente y acceder en forma gratuita a los mismos. De igual manera, se me indicó que puedo ejercer mis derechos como titular de mis datos personales a través de los canales dispuestos en la Política de Tratamiento de Datos Personales o a través del correo electrónico datospersonales@ccv.org.co.',
-        style: 'p'
-      }
+
+      // Resto del contenido del documento...
+
     ],
     styles: {
       header: {
         bold: true,
         fontSize: 12
       },
-      p: {
-        fontSize: 10,
-        margin: [0, 10]
-      },
-      link: {
-        fontSize: 10,
-        color: 'blue',
-        margin: [0, 10],
-        decoration: 'underline'
-      },
-      fieldHeader: {
-        fontSize: 10,
+      thisText: {
         bold: true,
-        margin: [0, 5]
-      },
-      fieldValue: {
-        fontSize: 10,
-        margin: [0, 5]
+        color: 'darkgrey'
       }
     }
   };
 
+*/
   pdfMake.vfs = pdfFonts.pdfMake.vfs;
   pdfMake.createPdf(documentDefinition).open();
 

@@ -130,12 +130,9 @@ this.modal.abrirModalPocesos();
       this.procesos=data;
 
     })
-  
-  
-
-
-
   }
+  
+  
   public todosPaginacion(){
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
