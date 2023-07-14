@@ -19,6 +19,7 @@ import { PresupuestoVenta } from '../../PresupuestoVenta';
 })
 export class PresupuestoVentasComponent implements OnInit {
 
+<<<<<<< HEAD
   enero:number;
   febrero:number;
   marzo:number;
@@ -32,6 +33,9 @@ export class PresupuestoVentasComponent implements OnInit {
   noviembre:number;
   diciembre:number;
   totalUnidadesRequeridas:number;
+=======
+
+>>>>>>> damian
   producto:string;
   cantidad:number;
   productos:string[];
@@ -110,7 +114,7 @@ console.log(this.presupuestoVenta);
    this.estructuraMercado.producto=this.producto;
    this.estructuraMercados.push(this.estructuraMercado);
    this.presupuestoVenta.estructuraMercado=this.estructuraMercados;
-    
+
 
 //console.log(this.estructuraMercados);
 
@@ -127,6 +131,7 @@ console.log(this.presupuestoVenta);
   }
 
   public llenarHoras(){
+<<<<<<< HEAD
     
     this.presupuestoVenta.totalCapacidadOperario=0;
     this.presupuestoVenta.totalCapacidadInstalada=0;
@@ -147,12 +152,20 @@ console.log(this.presupuestoVenta);
       this.presupuestoVenta.totalTotal+=e.precioTotal;
       
       
+=======
+
+
+    this.presupuestoVenta.estructuraMercado.forEach(e=>{
+      e.calculos();
+
+
+>>>>>>> damian
     })
     
 
     
     console.log(this.presupuestoVenta);
-    
+
     /* CALCULAR  */
   }
 
@@ -190,9 +203,9 @@ console.log(this.presupuestoVenta);
     this.estructuraMercado.tipo=e;
    console.log(this.estructuraMercado);
    console.log(`mostrando ${e}`);
-   
-   
-    
+
+
+
   }
 
 r
@@ -212,10 +225,14 @@ r
     })
 
 
+<<<<<<< HEAD
     }
 
 
   
+=======
+  }
+>>>>>>> damian
   public guardarYsalir(){
 
     this.proceso.estado='Presupuesto Venta';
@@ -230,7 +247,6 @@ r
        this.router.navigate(['procesos']);
       })
     })
-
 
 
 
