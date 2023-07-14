@@ -139,10 +139,6 @@ console.log(this.presupuestoVenta);
 r
 
   public guardar(){
-<<<<<<< HEAD
-=======
-
->>>>>>> 0986d6258a51abb07ec5f6c3322fee4b4928aaf5
 
 
   }
@@ -150,9 +146,5 @@ r
 
     console.log(this.businessPlanFinancial);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0986d6258a51abb07ec5f6c3322fee4b4928aaf5
   }
 }
