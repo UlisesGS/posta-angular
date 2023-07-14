@@ -4,12 +4,12 @@ export class EstructuraMercado {
   cantidad: number;
   tipo: string;
   horasOperario: number;
-  unidadHoraHombre: any=0.0;
-  capacidadInstaladaPorOperario: number=0.0;
+  unidadHoraHombre: number;
+  capacidadInstaladaPorOperario: number;
   tiempoDecicacion: number;
-  capacidadInstaladaUnidades: number=0.0;
+  capacidadInstaladaUnidades: number;
   precioUnitario: number;
-  precioTotal: number=0.0;
+  precioTotal: number;
   public calculos(){
     console.log(this.horasOperario);
     this.unidadHoraHombre=(0.99*this.cantidad)/this.horasOperario;

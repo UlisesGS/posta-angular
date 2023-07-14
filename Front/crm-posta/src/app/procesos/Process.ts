@@ -2,6 +2,7 @@ import { Usuario } from "../usuario/usuario";
 import { Canvas } from "./canvas";
 import { SelfAssessment } from './selfAssessment';
 import { BusinessPlan } from './plan-negocio/modelo-basico/BusinessPlan';
+import { BusinessPlanFinancial } from "./plan-negocio/plan-financiero/BusinessPlanFinancial";
 
 /*}
 @OneToOne
@@ -24,6 +25,7 @@ export class Process {
   terminado:boolean;
   fechaAlta:string;
   businessPlan:BusinessPlan;
+  businessPlanFinancial:BusinessPlanFinancial;
 
 
 }
