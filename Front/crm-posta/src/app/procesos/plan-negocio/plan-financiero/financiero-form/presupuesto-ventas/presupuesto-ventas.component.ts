@@ -191,7 +191,7 @@ console.log(this.presupuestoVenta);
     this.presupuestoVenta.calculosCiclicidad();
     console.log(this.presupuestoVenta);
 */
-
+this.ciclicidad= new CiclicidadVentas();
     console.log(e.target.value);
 if(mes==='enero'){
   this.ciclicidad.calificacion=+e.target.value

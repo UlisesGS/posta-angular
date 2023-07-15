@@ -248,123 +248,122 @@
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Marzo</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'febrero')"  [(ngModel)]="listaMes[2]" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'marzo')"  [(ngModel)]="listaMes[2]" class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[2]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[2]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Abril</td>
-                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[3]" class="form-select"
+                                    <td  style="width: 22%;"><select  (click)="llenarCiclicidad($event,'abril')"  [(ngModel)]="listaMes[3]" class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[3]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[3]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Mayo</td>
-                                    <td  style="width: 22%;"><select  [(ngModel)]="listaMes[4]" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'mayo')"   [(ngModel)]="listaMes[4]" class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[4]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[4]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Junio</td>
-                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[5]" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'junio')"   [(ngModel)]="listaMes[5]" class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[5]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[5]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Julio</td>
-                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[6]" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'julio')"   [(ngModel)]="listaMes[6]" class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[6]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[6]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Agosto</td>
-                                    <td  style="width: 22%;"><select  [(ngModel)]="listaMes[7]" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'agosto')"  [(ngModel)]="listaMes[7]" class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                </tr>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[7]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[7]?.ventasAnio}}</td>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Septiembre</td>
-                                    <td  style="width: 22%;"><select  [(ngModel)]="listaMes[8]" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'septiembre')"  [(ngModel)]="listaMes[8]" class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[8]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[8]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Octubre</td>
-                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[9]"class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'octubre')"   [(ngModel)]="listaMes[9]"class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[9]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[9]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Noviembre</td>
-                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[10]" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'noviembre')"   [(ngModel)]="listaMes[10]" class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[10]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[10]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Diciembre</td>
-                                    <td  style="width: 22%;"><select  [(ngModel)]="listaMes[11]" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'diciembre')"   [(ngModel)]="listaMes[11]" class="form-select"
                                         aria-label="Default select example" >
                                         <option value=9 >Muy Alto</option>
                                         <option value=7 >Alto</option>
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[11]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[11]?.ventasAnio}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
