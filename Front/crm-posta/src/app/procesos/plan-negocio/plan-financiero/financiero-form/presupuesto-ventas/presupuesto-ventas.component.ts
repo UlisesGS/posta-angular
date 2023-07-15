@@ -9,7 +9,9 @@ import { Process } from 'src/app/procesos/Process';
 import { EstructuraMercado } from '../../EstructuraMercado';
 import { CiclicidadVentas } from './../../CiclicidadVentas';
 
-import { PresupuestoVenta } from '../../PresupuestoVenta';
+
+
+import { PresupuestoVenta } from './../../PresupuestoVenta';
 
 
 @Component({
@@ -18,8 +20,7 @@ import { PresupuestoVenta } from '../../PresupuestoVenta';
   styleUrls: ['./presupuesto-ventas.component.css']
 })
 export class PresupuestoVentasComponent implements OnInit {
-
-<<<<<<< HEAD
+/*
   enero:number;
   febrero:number;
   marzo:number;
@@ -32,10 +33,10 @@ export class PresupuestoVentasComponent implements OnInit {
   octubre:number;
   noviembre:number;
   diciembre:number;
+  */
+ listaMes:number[]=[];
   totalUnidadesRequeridas:number;
-=======
-
->>>>>>> damian
+  valorEnero=false;
   producto:string;
   cantidad:number;
   productos:string[];
@@ -61,6 +62,7 @@ export class PresupuestoVentasComponent implements OnInit {
 
     ){}
   ngOnInit(): void {
+    this.presupuestoVenta.ciclicidadVentas= [];
 this.estructuraMercado.cantidad
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
@@ -131,71 +133,88 @@ console.log(this.presupuestoVenta);
   }
 
   public llenarHoras(){
-<<<<<<< HEAD
-    
-    this.presupuestoVenta.totalCapacidadOperario=0;
-    this.presupuestoVenta.totalCapacidadInstalada=0;
-    this.totalUnidadesRequeridas=0;
-    this.presupuestoVenta.totalPrecioUnitario=0;
-    this.presupuestoVenta.totalProductos=0;
-    this.presupuestoVenta.totalPrecioUnitario=0;
-    this.presupuestoVenta.totalTotal=0;
-    this.presupuestoVenta.estructuraMercado.forEach(e=>{
-      e.calculos();
-      console.log(this.presupuestoVenta.totalCapacidadOperario);
-      
-      this.presupuestoVenta.totalCapacidadOperario+=e.capacidadInstaladaPorOperario;
-      this.presupuestoVenta.totalCapacidadInstalada+=e.capacidadInstaladaUnidades;
-      this.totalUnidadesRequeridas+=e.cantidad;
-      this.presupuestoVenta.totalProductos+=e.cantidad;
-      this.presupuestoVenta.totalPrecioUnitario+=e.precioUnitario;
-      this.presupuestoVenta.totalTotal+=e.precioTotal;
-      
-      
-=======
 
 
     this.presupuestoVenta.estructuraMercado.forEach(e=>{
       e.calculos();
 
 
->>>>>>> damian
     })
-    
 
-    
+
+
     console.log(this.presupuestoVenta);
 
     /* CALCULAR  */
   }
 
-  public llenarCiclicidad(){
-    console.log(this.enero);
-    
-    this.ciclicidad = new CiclicidadVentas();
-    
-    this.ciclicidad.calificacion = this.enero;
-    console.log(`dos ${this.ciclicidad.calificacion}`);
-    
-    this.ciclicidadVentas.push(this.ciclicidad);
+  public llenarCiclicidad(e:any,mes:string){
+  /*
+    this.presupuestoVenta.calculosCiclicidad();
+    console.log(this.presupuestoVenta);
+*/
 
-    this.presupuestoVenta.ciclicidadVentas=this.ciclicidadVentas
-   console.log(this.presupuestoVenta.ciclicidadVentas);
-   
+    console.log(e.target.value);
+if(mes==='enero'){
+
+
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    console.log('for each');
+
+    this.valorEnero=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[0]=c;
+  }
+})
+
+if(this.valorEnero==false){
+  console.log('inicial');
+
+
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+
+
+
+
+
+}
+
+   // this.ciclicidad = new CiclicidadVentas();
+
+  //  this.ciclicidad.calificacion = +e.target.value;
+ //  console.log(`dos ${this.ciclicidad.calificacion}`);
+
+  // this.ciclicidadVentas.push(this.ciclicidad);
+  // console.log(`dos ${this.ciclicidadVentas}`);
+   // this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad)
+ //  console.log(this.presupuestoVenta.ciclicidadVentas);
+//this.presupuestoVenta.calculosCiclicidad();
+//this.presupuestoVenta.ciclicidadVentas=this.ciclicidadVentas
+console.log(this.presupuestoVenta);
+
+
+/*
     this.presupuestoVenta.ciclicidadVentas.forEach(ventas=>{
-      
-      
+
+
       /*this.presupuestoVenta.totalCalificacion=();*/
 
-      console.log(`tres ${this.presupuestoVenta.totalCalificacion}`);
+   /*   console.log(`tres ${this.presupuestoVenta.totalCalificacion}`);
     })
+    */
    /* this.presupuestoVenta.ciclicidadVentas.forEach(ciclicidadVenta=>{
       ciclicidadVenta.unidadesAño=((ciclicidadVenta.calificacion/this.presupuestoVenta.totalCalificacion)*this.presupuestoVenta.totalProductos);
       ciclicidadVenta.ventasAño=((this.presupuestoVenta.totalTotal*ciclicidadVenta.unidadesAño)/this.presupuestoVenta.totalProductos);
     })*/
 
-    
-    
+
+
 
   }
 
@@ -225,14 +244,7 @@ r
     })
 
 
-<<<<<<< HEAD
-    }
-
-
-  
-=======
   }
->>>>>>> damian
   public guardarYsalir(){
 
     this.proceso.estado='Presupuesto Venta';
@@ -249,6 +261,10 @@ r
     })
 
 
+
+  }
+  ver(){
+    console.log(this.presupuestoVenta);
 
   }
 }

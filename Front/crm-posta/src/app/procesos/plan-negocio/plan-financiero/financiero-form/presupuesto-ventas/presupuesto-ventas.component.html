@@ -109,7 +109,7 @@
                         <th>Unidades a Vender</th>
                         <th>Precio de Venta Unit.</th>
                         <th>Ventas Totales $ Año 1</th>
-                        
+
 
                     </tr>
                 </thead>
@@ -129,7 +129,7 @@
                         <th>${{presupuestoVenta.totalProductos}}</th>
                         <th>${{presupuestoVenta.totalPrecioUnitario}}</th>
                         <th>${{presupuestoVenta.totalTotal}}</th>
-                       
+
                     </tr>
                 </tfoot>
             </table>
@@ -224,144 +224,144 @@
                             <tbody style="text-align: center;font-size: small;">
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Enero</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="enero" class="form-select"
+                                    <td  style="width: 22%;"><select (change)="llenarCiclicidad($event,'enero')"   class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;" ></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Febrero</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="febrero" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'febrero')"  [(ngModel)]="listaMes[1]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Marzo</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="marzo" class="form-select"
+                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad($event,'febrero')"  [(ngModel)]="listaMes[2]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Abril</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="abril" class="form-select"
+                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[3]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Mayo</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="mayo" class="form-select"
+                                    <td  style="width: 22%;"><select  [(ngModel)]="listaMes[4]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Junio</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="junio" class="form-select"
+                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[5]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Julio</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="julio" class="form-select"
+                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[6]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Agosto</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="agosto" class="form-select"
+                                    <td  style="width: 22%;"><select  [(ngModel)]="listaMes[7]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Septiembre</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="septiembre" class="form-select"
+                                    <td  style="width: 22%;"><select  [(ngModel)]="listaMes[8]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Octubre</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="octubre" class="form-select"
+                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[9]"class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Noviembre</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="noviembre " class="form-select"
+                                    <td  style="width: 22%;"><select   [(ngModel)]="listaMes[10]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Diciembre</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="diciembre" class="form-select"
+                                    <td  style="width: 22%;"><select  [(ngModel)]="listaMes[11]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>

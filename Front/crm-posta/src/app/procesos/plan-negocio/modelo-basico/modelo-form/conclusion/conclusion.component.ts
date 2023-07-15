@@ -64,8 +64,8 @@ export class ConclusionComponent {
           this.proceso.businessPlan=this.businessPlan;
           this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
             this.proceso=pro;
-           // this.router.navigate([`dofa/cliente/${this.proceso.canvasModel.client.id}`]);
-           this.router.navigate(['/procesos'])
+           this.router.navigate([`ventas/cliente/${this.proceso.canvasModel.client.id}`]);
+           //this.router.navigate(['/procesos'])
           })
         })
 
