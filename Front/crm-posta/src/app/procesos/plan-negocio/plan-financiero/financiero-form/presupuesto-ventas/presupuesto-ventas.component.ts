@@ -36,7 +36,18 @@ export class PresupuestoVentasComponent implements OnInit {
   */
  listaMes:number[]=[];
   totalUnidadesRequeridas:number;
-  valorEnero=false;
+  valor1=false;
+  valor2=false;
+  valor3=false;
+  valor4=false;
+  valor5=false;
+  valor6=false;
+  valor7=false;
+  valor8=false;
+  valor9=false;
+  valor10=false;
+  valor11=false;
+  valor12=false;
   producto:string;
   cantidad:number;
   productos:string[];
@@ -135,9 +146,28 @@ console.log(this.presupuestoVenta);
   public llenarHoras(){
 
 
+    this.presupuestoVenta.totalCapacidadOperario=0;
+    this.presupuestoVenta.totalCapacidadInstalada=0;
+    this.totalUnidadesRequeridas=0;
+    this.presupuestoVenta.totalPrecioUnitario=0;
+    this.presupuestoVenta.totalProductos=0;
+    this.presupuestoVenta.totalPrecioUnitario=0;
+    this.presupuestoVenta.totalTotal=0;
     this.presupuestoVenta.estructuraMercado.forEach(e=>{
       e.calculos();
+      console.log(this.presupuestoVenta.totalCapacidadOperario);
 
+      this.presupuestoVenta.totalCapacidadOperario+=e.capacidadInstaladaPorOperario;
+      this.presupuestoVenta.totalCapacidadInstalada+=e.capacidadInstaladaUnidades;
+      this.totalUnidadesRequeridas+=e.cantidad;
+      this.presupuestoVenta.totalProductos+=e.cantidad;
+      this.presupuestoVenta.totalPrecioUnitario+=e.precioUnitario;
+      this.presupuestoVenta.totalTotal+=e.precioTotal;
+
+
+
+    this.presupuestoVenta.estructuraMercado.forEach(e=>{
+      e.calculos();
 
     })
 
@@ -146,7 +176,15 @@ console.log(this.presupuestoVenta);
     console.log(this.presupuestoVenta);
 
     /* CALCULAR  */
+  })
   }
+
+
+
+
+
+    /* CALCULAR  */
+
 
   public llenarCiclicidad(e:any,mes:string){
   /*
@@ -156,35 +194,257 @@ console.log(this.presupuestoVenta);
 
     console.log(e.target.value);
 if(mes==='enero'){
-
-
   this.ciclicidad.calificacion=+e.target.value
   this.ciclicidad.mes=mes;
-
 this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
   if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
     console.log('for each');
 
-    this.valorEnero=true;
+    this.valor1=true;
     c.calificacion= +e.target.value;
     this.presupuestoVenta.ciclicidadVentas[0]=c;
+    this.presupuestoVenta.calculosCiclicidad();
   }
 })
-
-if(this.valorEnero==false){
+if(this.valor1==false){
   console.log('inicial');
-
-
   this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
   this.presupuestoVenta.calculosCiclicidad();
 }
-
-
-
-
-
 }
 
+
+
+
+if(mes==='febrero'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor2=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[1]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor2==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+
+
+
+
+if(mes==='marzo'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor3=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[2]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor3==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+
+
+
+
+if(mes==='abril'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor4=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[3]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor4==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+if(mes==='mayo'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor5=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[4]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor5==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+if(mes==='junio'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor6=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[5]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor6==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+if(mes==='julio'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor7=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[6]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor7==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+if(mes==='agosto'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor8=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[7]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor8==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+if(mes==='septiembre'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor9=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[8]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor9==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+if(mes==='octubre'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor10=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[9]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor10==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+if(mes==='noviembre'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor11=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[10]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor11==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
+if(mes==='diciembre'){
+  this.ciclicidad.calificacion=+e.target.value
+  this.ciclicidad.mes=mes;
+this.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+  if(c.mes==mes){
+    this.presupuestoVenta.totalCalificacion=0;
+    console.log('for each');
+
+    this.valor12=true;
+    c.calificacion= +e.target.value;
+    this.presupuestoVenta.ciclicidadVentas[11]=c;
+    this.presupuestoVenta.calculosCiclicidad();
+  }
+})
+if(this.valor12==false){
+  console.log('inicial');
+  this.presupuestoVenta.ciclicidadVentas.push(this.ciclicidad);
+  this.presupuestoVenta.calculosCiclicidad();
+}
+}
    // this.ciclicidad = new CiclicidadVentas();
 
   //  this.ciclicidad.calificacion = +e.target.value;
