@@ -19,7 +19,6 @@ import { PresupuestoVenta } from '../../PresupuestoVenta';
 })
 export class PresupuestoVentasComponent implements OnInit {
 
-<<<<<<< HEAD
   enero:number;
   febrero:number;
   marzo:number;
@@ -33,9 +32,6 @@ export class PresupuestoVentasComponent implements OnInit {
   noviembre:number;
   diciembre:number;
   totalUnidadesRequeridas:number;
-=======
-
->>>>>>> damian
   producto:string;
   cantidad:number;
   productos:string[];
@@ -88,11 +84,11 @@ this.estructuraMercado.cantidad
   const nuevoElemento = { nombre: '', ventas: '' };
 
     this.estructuraMercado= new EstructuraMercado()
-this.estructuraMercado.cantidad=this.cantidad;
-this.estructuraMercado.producto=this.producto;
+ this.estructuraMercado.cantidad=this.cantidad;
+ this.estructuraMercado.producto=this.producto;
    // this.elementos.push({ nombre: '', ventas: '' });
-this.presupuestoVenta.addElementos(this.estructuraMercado);
-console.log(this.presupuestoVenta);
+ this.presupuestoVenta.addElementos(this.estructuraMercado);
+ console.log(this.presupuestoVenta);
 
 
    }
@@ -105,7 +101,7 @@ console.log(this.presupuestoVenta);
   if (!elementoExistente) {
     this.elementos.push(nuevoElemento);
   }
-} */
+ */
    // this.elementos.push({ nombre: '', ventas: '
 
 
@@ -116,12 +112,12 @@ console.log(this.presupuestoVenta);
    this.presupuestoVenta.estructuraMercado=this.estructuraMercados;
 
 
-//console.log(this.estructuraMercados);
+  //console.log(this.estructuraMercados);
 
 
 
 
-/*
+ /*
 
    this.estructuraMercado.cantidad=this.cantidad[];
    this.estructuraMercado.producto=this.producto[];
@@ -131,7 +127,6 @@ console.log(this.presupuestoVenta);
   }
 
   public llenarHoras(){
-<<<<<<< HEAD
     
     this.presupuestoVenta.totalCapacidadOperario=0;
     this.presupuestoVenta.totalCapacidadInstalada=0;
@@ -151,15 +146,11 @@ console.log(this.presupuestoVenta);
       this.presupuestoVenta.totalPrecioUnitario+=e.precioUnitario;
       this.presupuestoVenta.totalTotal+=e.precioTotal;
       
-      
-=======
 
 
     this.presupuestoVenta.estructuraMercado.forEach(e=>{
       e.calculos();
 
-
->>>>>>> damian
     })
     
 
@@ -167,6 +158,7 @@ console.log(this.presupuestoVenta);
     console.log(this.presupuestoVenta);
 
     /* CALCULAR  */
+  })
   }
 
   public llenarCiclicidad(){
@@ -200,15 +192,13 @@ console.log(this.presupuestoVenta);
   }
 
   public llenarTipo(e:string){
-    this.estructuraMercado.tipo=e;
+   this.estructuraMercado.tipo=e;
    console.log(this.estructuraMercado);
    console.log(`mostrando ${e}`);
 
 
 
   }
-
-r
 
   public guardar(){
     this.proceso.estado='Presupuesto Venta';
@@ -225,14 +215,11 @@ r
     })
 
 
-<<<<<<< HEAD
     }
 
 
   
-=======
-  }
->>>>>>> damian
+  
   public guardarYsalir(){
 
     this.proceso.estado='Presupuesto Venta';
@@ -251,4 +238,5 @@ r
 
 
   }
+
 }
