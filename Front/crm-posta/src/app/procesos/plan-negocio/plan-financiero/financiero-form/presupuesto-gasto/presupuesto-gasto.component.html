@@ -24,7 +24,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of elementos">
+                                    <tr *ngFor="let item of materiaPrima">
                                         <td><input type="text" ></td> 
                                         <td><input type="text" ></td> 
                                         <td class="autorellenadas">$</td>
@@ -97,7 +97,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of elementos1">
+                                    <tr *ngFor="let item of materiaPrima1">
                                         <td><input type="text" ></td> 
                                         <td><input type="text" ></td> 
                                         <td class="autorellenadas">$</td>
@@ -170,7 +170,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of elementos2">
+                                    <tr *ngFor="let item of materiaPrima2">
                                         <td><input type="text" ></td> 
                                         <td><input type="text" ></td> 
                                         <td class="autorellenadas">$</td>
@@ -279,7 +279,7 @@
             </div>
             <div class="col">
                 <div style="text-align: center; margin-top: 10px;">
-                    <h4>INCREMENTO EN % DEL PRECIO</h4>
+                    <h6>INCREMENTO EN % DEL PRECIO</h6>
                 </div>
                 <div class="col centered-col">
                     <div class="table-container">
@@ -294,34 +294,148 @@
                             <tbody style="text-align: center;font-size: small;">
                                 <tr>
                                     <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
-                                    <td style="width: 5%;"><input type="text"></td>
+                                    <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
-                                    <td style="width: 5%;"><input type="text"></td>
+                                    <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
-                                    <td style="width: 5%;"><input type="text"></td>
+                                    <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
-                                    <td style="width: 5%;"><input type="text"></td>
+                                    <td class="autorellenadas" style="width: 13%;"></td>
                                     <td class="autorellenadas" style="width: 13%;"></td>
                                 </tr>
-        
                             </tbody>
-        
                         </table>
                     </div>
                 </div>
             </div>
-            
         </div>
         <div class="row">
+            <div class="centered-col mt-2">
+                <h5 class="centered-heading">OTROS COSTOS DE PRODUCCION Y GASTOS DE ADMINISTRACIÓN Y VENTAS</h5>
+            </div>
+            <div class="col-4">
+                <div class="centered-col">
+                    <div class="col">
+                        <div style="margin-bottom: 20px;" class="col">
+                            <table class="excel-table" style="font-size: small;">
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th colspan="3">Costos Operativos</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th>Mensual $</th>
+                                        <th>Año 1</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of operativos">
+                                        <td><input type="text" ></td> 
+                                        <td><input type="text" ></td> 
+                                        <td class="autorellenadas">$</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="add-row"><a (click)="agregarCostoOperativo()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >Subtotal</th>
+                                        <th>$ </th>
+                                        <th>$ </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="centered-col">
+                    <div class="col">
+                        <div style="margin-bottom: 20px;" class="col">
+                            <table class="excel-table" style="font-size: small;">
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th colspan="3">Gastos Administrativos</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th>Mensual $</th>
+                                        <th>Año 1</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of administrativos">
+                                        <td><input type="text" ></td> 
+                                        <td><input type="text" ></td> 
+                                        <td class="autorellenadas">$</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="add-row"><a (click)="agregarGastoAdministrativo()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >Subtotal</th>
+                                        <th>$ </th>
+                                        <th>$ </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="centered-col">
+                    <div class="col">
+                        <div style="margin-bottom: 20px;" class="col">
+                            <table class="excel-table" style="font-size: small;">
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th colspan="3">Gastos de Ventas</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th>Mensual $</th>
+                                        <th>Año 1</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of ventas">
+                                        <td><input type="text" ></td> 
+                                        <td><input type="text" ></td> 
+                                        <td class="autorellenadas">$</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="add-row"><a (click)="agregarGastoVenta()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >Subtotal</th>
+                                        <th>$ </th>
+                                        <th>$ </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
         </div>
     </div>
