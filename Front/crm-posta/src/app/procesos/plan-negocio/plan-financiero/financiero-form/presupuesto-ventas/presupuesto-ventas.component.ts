@@ -20,28 +20,6 @@ import { PresupuestoVenta } from './../../PresupuestoVenta';
   styleUrls: ['./presupuesto-ventas.component.css']
 })
 export class PresupuestoVentasComponent implements OnInit {
-<<<<<<< HEAD
-
-=======
-/*
->>>>>>> 71c3be1ca6d6dcd67505a8044d3f228e35f9799e
-  enero:number;
-  febrero:number;
-  marzo:number;
-  abril:number;
-  mayo:number;
-  junio:number;
-  julio:number;
-  agosto:number;
-  septiembre:number;
-  octubre:number;
-  noviembre:number;
-  diciembre:number;
-  */
- listaMes:number[]=[];
-  totalUnidadesRequeridas:number;
-<<<<<<< HEAD
-=======
   valor1=false;
   valor2=false;
   valor3=false;
@@ -54,7 +32,20 @@ export class PresupuestoVentasComponent implements OnInit {
   valor10=false;
   valor11=false;
   valor12=false;
->>>>>>> 71c3be1ca6d6dcd67505a8044d3f228e35f9799e
+  enero:number;
+  febrero:number;
+  marzo:number;
+  abril:number;
+  mayo:number;
+  junio:number;
+  julio:number;
+  agosto:number;
+  septiembre:number;
+  octubre:number;
+  noviembre:number;
+  diciembre:number;
+ listaMes:number[]=[];
+  totalUnidadesRequeridas:number;
   producto:string;
   cantidad:number;
   productos:string[];
@@ -151,12 +142,7 @@ this.estructuraMercado.cantidad
   }
 
   public llenarHoras(){
-<<<<<<< HEAD
     
-=======
-
-
->>>>>>> 71c3be1ca6d6dcd67505a8044d3f228e35f9799e
     this.presupuestoVenta.totalCapacidadOperario=0;
     this.presupuestoVenta.totalCapacidadInstalada=0;
     this.totalUnidadesRequeridas=0;
@@ -174,11 +160,7 @@ this.estructuraMercado.cantidad
       this.presupuestoVenta.totalProductos+=e.cantidad;
       this.presupuestoVenta.totalPrecioUnitario+=e.precioUnitario;
       this.presupuestoVenta.totalTotal+=e.precioTotal;
-<<<<<<< HEAD
       
-=======
-
->>>>>>> 71c3be1ca6d6dcd67505a8044d3f228e35f9799e
 
 
     this.presupuestoVenta.estructuraMercado.forEach(e=>{
@@ -517,15 +499,11 @@ console.log(this.presupuestoVenta);
     })
 
 
-<<<<<<< HEAD
     }
 
 
   
   
-=======
-  }
->>>>>>> 71c3be1ca6d6dcd67505a8044d3f228e35f9799e
   public guardarYsalir(){
 
     this.proceso.estado='Presupuesto Venta';
@@ -544,12 +522,4 @@ console.log(this.presupuestoVenta);
 
 
   }
-<<<<<<< HEAD
-
-=======
-  ver(){
-    console.log(this.presupuestoVenta);
-
-  }
->>>>>>> 71c3be1ca6d6dcd67505a8044d3f228e35f9799e
 }
