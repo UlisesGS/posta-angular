@@ -1,19 +1,144 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Client } from 'src/app/client/client';
+import { ClientService } from 'src/app/client/client.service';
+import { Process } from 'src/app/procesos/Process';
+import { ProcesoService } from 'src/app/procesos/proceso.service';
+import { PresupuestoCompra } from './../../PresupuestoCompra';
+
+import { EstructuraMercado } from '../../EstructuraMercado';
+import { EstructuraCompra } from './../../EstructuraCompras';
+import { PlanFinancieroService } from '../../plan-financiero.service';
 
 @Component({
   selector: 'app-presupuesto-form',
   templateUrl: './presupuesto-form.component.html',
   styleUrls: ['./presupuesto-form.component.css']
 })
-export class PresupuestoFormComponent {
- 
-  elementos: any[] = []; // Inicializa la lista vacía o con elementos existentes
-  
+export class PresupuestoFormComponent implements OnInit {
+  i=0;
+  materiaPrima:string[]=[];
+  unidadesDeMedida:string[]=[];
+  valorUnitario:number[]=[];
+  cantidadUnidad:number[]=[];
+  totalUnitario:number[]=[];
+  cantidadP:number=0;
+  cliente:Client = new Client;
+  procesos:Process[]=[];
+  proceso:Process = new Process;
+  estructuraCompra:EstructuraCompra = new EstructuraCompra()
+ estructuraCompras:EstructuraCompra[]=[]
+  presupuestoCompra:PresupuestoCompra = new PresupuestoCompra();
+  constructor(private rutaParametro:ActivatedRoute,
+    private clienteService:ClientService,
+    private procesoService:ProcesoService,
+    private planFinancialService:PlanFinancieroService,
+    private router:Router ){}
+  ngOnInit(): void {
+    //this.presupuestoVenta.ciclicidadVentas= [];
+  //  this.estructuraMercado.cantidad
+;
+        this.rutaParametro.paramMap.subscribe(parametro => {
+          let id = +parametro.get('id');
+          if (id) {
+            this.clienteService.getClient(id).subscribe(data => {
+              this.cliente = data;
+              this.procesoService.procesosFindAll().subscribe(pro => {
+                this.procesos=pro;
 
-  agregarFila() {
-    this.elementos.push({ nombre: '', ventas: '' });
+                this.procesos.forEach(proceso=>{
+                  if(proceso.canvasModel.client.id==this.cliente.id){
+                    this.proceso=proceso;
+
+                    proceso.businessPlanFinancial.presupuestoVenta.estructuraMercado.forEach(mercado=>{
+                      this.crearPresupuestoCompra(mercado);
+                      this.cantidadP+=1;
+                      console.log(this.cantidadP);
+
+                    })
+
+                  }
+
+                })
+              })
+
+            })
+          }
+        })
   }
- 
-  
+//procesos?.businessPlanFinancial?.presupuestoVenta?.estructuraMercado
+  elementos: any[] = []; // Inicializa la lista vacía o con elementos existentes
+
+
+  agregarFila(producto:string) {
+this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra=>{
+  if(compra.nombreProcucto==producto){
+    console.log(producto);
+   //  this.elementos.push({ nombre: '', ventas: '' });
+
+
+     // this.estructuraCompra= new EstructuraCompra();
+    //  this.estructuraCompra.materiaPrima=this.materiaPrima[this.i];
+    // this.estructuraCompra.tipo=this.unidadesDeMedida[this.i];
+   //   this.estructuraCompra.valorUnitario=this.valorUnitario[this.i];
+   //  this.estructuraCompra.cantidadUbnidad=this.cantidadUnidad[this.i];
+   compra.total=0
+
+   this.estructuraCompra.totalUnitario= this.estructuraCompra.valorUnitario*this.estructuraCompra.cantidadUbnidad;
+   //this.estructuraCompra.
+   this.estructuraCompras.push(this.estructuraCompra);
+
+  compra.estructuraCompras= this.estructuraCompras;
+  compra.sacarTotales();
+
+
+
+
+
+
+
+  }
+})
+
+this.estructuraCompra= new EstructuraCompra();
+
+
+//this.proceso.businessPlanFinancial.presupuestoCompra.forEach()
+console.log(this.proceso);
+
+this.i++
+  }
+
+  public crearPresupuestoCompra(estructuraMercado:EstructuraMercado){
+    this.presupuestoCompra = new PresupuestoCompra();
+    this.presupuestoCompra.cantidadProducto=estructuraMercado.cantidad;
+    this.presupuestoCompra.nombreProcucto= estructuraMercado.producto;
+    this.presupuestoCompra.tipoProducto= estructuraMercado.tipo;
+    this.proceso.businessPlanFinancial.presupuestoCompra.push(this.presupuestoCompra);
+    console.log(this.proceso);
+
+  }
+  public guardarYsalir(){
+  console.log(this.proceso);
+  /*
+  this.proceso.estado='Presupuesto Compra';
+
+this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data=>{
+this.router.navigate(['/procesos'])
+
+})
+*/
+  }
+  public guardar(){
+    console.log(this.proceso);
+    /*
+this.proceso.estado='Presupuesto Compra'
+
+this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data=>{
+this.router.navigate(['gastos/cliente/',this.cliente.id])
+
+})
+*/
+  }
 
 }

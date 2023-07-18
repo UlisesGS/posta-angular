@@ -12,7 +12,8 @@ export class AccionProcesosComponent implements OnInit {
 
   @Input()proceso:Process = new Process();
 
-  constructor(public modal:ModalService,
+  constructor(
+    public modal:ModalService,
     private ruta:Router){}
   ngOnInit(): void {
 
