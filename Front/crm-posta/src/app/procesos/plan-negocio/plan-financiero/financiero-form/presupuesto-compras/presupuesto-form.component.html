@@ -9,17 +9,17 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <div class="centered-col">
+                <div class="centered-col" *ngFor="let item of proceso?.businessPlanFinancial?.presupuestoCompra">
                     <div class="col">
                         <div style="margin-bottom: 20px;" class="col-6">
                             <table class="excel-table" style="font-size: small;">
                                 <tr>
                                     <th style="width: 50%;">Producto</th>
-                                    <td class="autorellenadas"></td>
+                                    <td class="autorellenadas">{{item.nombreProcucto}}</td>
                                 </tr>
                                 <tr>
                                     <th style="width: 50%;">Unidad de Producción</th>
-                                    <td class="autorellenadas"></td>
+                                    <td class="autorellenadas">{{item.cantidadProducto}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -35,27 +35,37 @@
 
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr *ngFor="let item of elementos">
-                                        <td><input type="text" [(ngModel)]="item.item1"></td>
-                                        <td><input type="text" [(ngModel)]="item.item2"></td>
-                                        <td><input type="text" [(ngModel)]="item.item3"></td>
-                                        <td><input type="text" [(ngModel)]="item.item4"></td>
-                                        <td class="autorellenadas">$</td>
+                                <tbody >
+
+                                  <td><input type="text" [(ngModel)]="estructuraCompras.materiaPrima"></td>
+                                  <td><input type="text"  [(ngModel)]="estructuraCompras.tipo"></td>
+                                  <td><input type="number" step="any" [(ngModel)]="estructuraCompras.valorUnitario"></td>
+                                  <td><input type="number" step="any" [(ngModel)]="estructuraCompras.cantidadUbnidad"></td>
+                                  <td class="autorellenadas"></td>
+                                  <tr>
+                                    <td colspan="5" class="add-row">
+                                        <a (click)="agregarFila(item.nombreProcucto)" class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                                <!--
+                                    <tr ngIf="presupuestaCompra.estructuraCompras"  *ngFor="let item of presupuestoCompra.estructuraCompras">
+                                        <td>{{item.materiaPrima}}</td>
+                                        <td>{{item.tipo}}</td>
+                                        <td>{{item.valorUnitario}}</td>
+                                        <td>{{item.cantidadUbnidad}}</td>
+                                        <td class="autorellenadas">${{item.totalUnitario}}</td>
                                     </tr>
+                                    -->
                                     <tr>
-                                        <td colspan="5" class="add-row">
-                                            <a (click)="agregarFila()" class="btn mt-2">Agregar <i
-                                                    class="fa-solid fa-plus"></i></a>
-                                        </td>
+
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th colspan="2">Total</th>
-                                        <th>$ </th>
-                                        <th>$ </th>
-                                        <th>$ </th>
+                                        <th colspan="4">Total</th>
+                                        <th>${{presupuestoCompra.total}} </th>
+
+
                                     </tr>
                                 </tfoot>
                             </table>
@@ -80,11 +90,11 @@
                             </tr>
                         </thead>
                         <tbody style="text-align: center;font-size: small;">
-                            <tr>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                            <tr *ngFor="let item of proceso?.businessPlanFinancial?.presupuestoCompra" >
+                                <td class="autorellenadas" style="width: 13%;">{{item.nombreProcucto}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{item.cantidadProducto}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{item.total}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{item.cantidadProducto*item.total}}</td>
                             </tr>
                         </tbody>
                         <tfoot>
@@ -134,12 +144,18 @@
                                 <td style="width: 5%;"><input type="text"></td>
                                 <td class="autorellenadas" style="width: 13%;"></td>
                             </tr>
-    
+
                         </tbody>
-    
+
                     </table>
                 </div>
             </div>
+
+        </div>
+        <div class="form-group mt-3">
+          <button (click)="guardarYsalir()"  class="btn">Guardar</button>
+          <button (click)="guardar()" class="btn">Guardar y Continuar</button>
+          <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
         </div>
     </div>
 
