@@ -12,9 +12,15 @@ import { Process } from 'src/app/procesos/Process';
   styleUrls: ['./presupuesto-gasto.component.css']
 })
 export class PresupuestoGastoComponent {
-  elementos: any[] = []; // Inicializa la lista vacía o con elementos existentes
-  elementos1: any[] = [];
-  elementos2: any[] = [];
+  
+  materiaPrima: any[] = []; // Inicializa la lista vacía o con elementos existentes
+  materiaPrima1: any[] = [];
+  materiaPrima2: any[] = [];
+
+  operativos:any[]=[];
+  administrativos:any[]=[];
+  ventas:any[]=[];
+
   cliente:Client=new Client();
   procesos:Process[]=[];
   proceso:Process= new Process();
@@ -27,18 +33,26 @@ export class PresupuestoGastoComponent {
     private router:Router,
   ){}
 
-  
-  
-
-
   agregarFila() {
-    this.elementos.push({ nombre: '', ventas: '' });
+    this.materiaPrima.push({ nombre: '', ventas: '' });
   }
   agregarFila1() {
-    this.elementos1.push({ nombre: '', ventas: '' });
+    this.materiaPrima1.push({ nombre: '', ventas: '' });
   }
   agregarFila2() {
-    this.elementos2.push({ nombre: '', ventas: '' });
+    this.materiaPrima2.push({ nombre: '', ventas: '' }); 
   }
+
+  agregarCostoOperativo() {
+    this.operativos.push({ nombre: '', ventas: '' });
+  }
+  agregarGastoAdministrativo() {
+    this.administrativos.push({ nombre: '', ventas: '' });
+  }
+  agregarGastoVenta() {
+    this.ventas.push({ nombre: '', ventas: '' });
+  }
+  
+
 
 }

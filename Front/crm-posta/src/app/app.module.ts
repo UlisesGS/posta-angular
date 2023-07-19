@@ -68,6 +68,8 @@ import { PresupuestoVentasComponent } from './procesos/plan-negocio/plan-financi
 import { PresupuestoFormComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/presupuesto-compras/presupuesto-form.component';
 import { PresupuestoGastoComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/presupuesto-gasto/presupuesto-gasto.component';
 import { DetallesComponent } from './client/detalles/detalles.component';
+import { PlanInversionComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/plan-inversion/plan-inversion.component';
+
 
 const routes:Routes=[
 
@@ -110,6 +112,7 @@ const routes:Routes=[
   {path:'ventas/cliente/:id',component:PresupuestoVentasComponent},
   {path:'compras/cliente/:id',component:PresupuestoFormComponent},
   {path:'gastos/cliente/:id',component:PresupuestoGastoComponent},
+  {path:'inversion/cliente/:id',component:PlanInversionComponent},
 ]
 
 @NgModule({
@@ -172,7 +175,9 @@ const routes:Routes=[
       PresupuestoVentasComponent,
       PresupuestoFormComponent,
       PresupuestoGastoComponent,
-      DetallesComponent
+      DetallesComponent,
+      PlanInversionComponent,
+     
 
 
    ],
