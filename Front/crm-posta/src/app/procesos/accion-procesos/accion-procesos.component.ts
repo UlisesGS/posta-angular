@@ -100,8 +100,8 @@ export class AccionProcesosComponent implements OnInit {
        ;
        break;
        case 'Presupuesto Gastos/Costos':
-       // this.ruta.navigate([`gastos/cliente/${this.proceso.canvasModel.client.id}`]);
-       this.ruta.navigate(['/procesos']);
+        this.ruta.navigate([`inversion/cliente/${this.proceso.canvasModel.client.id}`]);
+      
        ;
        break;
     }
