@@ -152,6 +152,10 @@ console.log(this.proceso);
   
     this.proceso.estado='Presupuesto Compra';
 
+    this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
+      console.log(data1);
+      
+    })
     this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data=>{
       console.log(data);
       
@@ -165,6 +169,11 @@ console.log(this.proceso);
     console.log(this.proceso);
     
     this.proceso.estado='Presupuesto Compra'
+
+    this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
+      console.log(data1);
+      
+    })
 
     this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data=>{
       console.log(data);

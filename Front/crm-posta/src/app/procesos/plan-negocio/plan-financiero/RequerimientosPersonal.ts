@@ -1,13 +1,13 @@
 import { OtrosCostos } from "./OtrosCostos";
-import { Personal } from "./personal";
+import { Personal } from "./Personal";
 
 export class RequerimientosPersonal {
   id: number;
   personal: Personal[];
   subTotal: number=0.0;
   subTotalAnual: number=0.0;
-  parafiscales: number;
-  totalParafiscales: number;
+  parafiscales: number=0.0;
+  totalParafiscales: number=0.0;
   seguridadSocial: number;
   totalSeguridadSocial: number;
   cesantias: number;
