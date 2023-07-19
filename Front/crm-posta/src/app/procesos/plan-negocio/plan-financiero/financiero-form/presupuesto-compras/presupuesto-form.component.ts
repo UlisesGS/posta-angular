@@ -9,6 +9,7 @@ import { PresupuestoCompra } from './../../PresupuestoCompra';
 import { EstructuraMercado } from '../../EstructuraMercado';
 import { EstructuraCompra } from './../../EstructuraCompras';
 import { PlanFinancieroService } from '../../plan-financiero.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-presupuesto-form',
@@ -17,6 +18,9 @@ import { PlanFinancieroService } from '../../plan-financiero.service';
 })
 export class PresupuestoFormComponent implements OnInit {
   i=0;
+  totalUnitarios:number=0;
+  totalAnuales:number=0;
+  nombreP:string;
   materiaPrima:string[]=[];
   unidadesDeMedida:string[]=[];
   valorUnitario:number[]=[];
@@ -27,6 +31,7 @@ export class PresupuestoFormComponent implements OnInit {
   procesos:Process[]=[];
   proceso:Process = new Process;
   estructuraCompra:EstructuraCompra = new EstructuraCompra()
+  estructuraCompra2:EstructuraCompra = new EstructuraCompra()
  estructuraCompras:EstructuraCompra[]=[]
   presupuestoCompra:PresupuestoCompra = new PresupuestoCompra();
   constructor(private rutaParametro:ActivatedRoute,
@@ -71,8 +76,15 @@ export class PresupuestoFormComponent implements OnInit {
 
 
   agregarFila(producto:string) {
+    this.totalUnitarios=0
+    this.totalAnuales=0
 this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra=>{
+  
   if(compra.nombreProcucto==producto){
+    this.nombreP=compra.nombreProcucto
+    
+    console.log(this.estructuraCompra);
+    
     console.log(producto);
    //  this.elementos.push({ nombre: '', ventas: '' });
 
@@ -82,31 +94,48 @@ this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra=>{
     // this.estructuraCompra.tipo=this.unidadesDeMedida[this.i];
    //   this.estructuraCompra.valorUnitario=this.valorUnitario[this.i];
    //  this.estructuraCompra.cantidadUbnidad=this.cantidadUnidad[this.i];
-   compra.total=0
+   compra.total=0;
 
    this.estructuraCompra.totalUnitario= this.estructuraCompra.valorUnitario*this.estructuraCompra.cantidadUbnidad;
    //this.estructuraCompra.
-   this.estructuraCompras.push(this.estructuraCompra);
-
-  compra.estructuraCompras= this.estructuraCompras;
+   //this.estructuraCompras.push(this.estructuraCompra);
+    console.log(compra.estructuraCompras);
+    
+  if(compra.estructuraCompras==null){
+    compra.estructuraCompras=[];
+  }
+   compra.estructuraCompras.push(this.estructuraCompra);
   compra.sacarTotales();
-
-
-
+  
 
 
 
 
   }
+  console.log(this.totalUnitarios);
+  console.log(this.totalAnuales);
+  
+  this.totalUnitarios+=compra.total;
+  this.totalAnuales+=compra.totalAnual;
+  this.i++
+  console.log(this.i);
+
+  console.log(`paso ${this.totalUnitarios}`);
+  console.log(`pas ${this.totalAnuales}`);
 })
 
+ this.nombreP= this.presupuestoCompra.nombreProcucto
+ this.estructuraCompras=[];
 this.estructuraCompra= new EstructuraCompra();
+
+
 
 
 //this.proceso.businessPlanFinancial.presupuestoCompra.forEach()
 console.log(this.proceso);
 
-this.i++
+
+
   }
 
   public crearPresupuestoCompra(estructuraMercado:EstructuraMercado){
@@ -119,26 +148,31 @@ this.i++
 
   }
   public guardarYsalir(){
-  console.log(this.proceso);
-  /*
-  this.proceso.estado='Presupuesto Compra';
+    console.log(this.proceso);
+  
+    this.proceso.estado='Presupuesto Compra';
 
-this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data=>{
-this.router.navigate(['/procesos'])
+    this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data=>{
+      console.log(data);
+      
+    this.router.navigate(['/procesos'])
+    Swal.fire('Exito', 'Presupuesto Compra creada con exito', 'success');
 
-})
-*/
+    })
+
   }
   public guardar(){
     console.log(this.proceso);
-    /*
-this.proceso.estado='Presupuesto Compra'
+    
+    this.proceso.estado='Presupuesto Compra'
 
-this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data=>{
-this.router.navigate(['gastos/cliente/',this.cliente.id])
+    this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data=>{
+      console.log(data);
+      
+    this.router.navigate(['gastos/cliente/',this.cliente.id])
 
-})
-*/
+    })
+
   }
 
 }

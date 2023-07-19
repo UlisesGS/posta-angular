@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { PlanFinancieroService } from '../../plan-financiero.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClientService } from 'src/app/client/client.service';
+import { ProcesoService } from 'src/app/procesos/proceso.service';
+import { Client } from 'src/app/client/client';
+import { Process } from 'src/app/procesos/Process';
 
 @Component({
   selector: 'app-presupuesto-gasto',
@@ -6,6 +12,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./presupuesto-gasto.component.css']
 })
 export class PresupuestoGastoComponent {
+  
   materiaPrima: any[] = []; // Inicializa la lista vacía o con elementos existentes
   materiaPrima1: any[] = [];
   materiaPrima2: any[] = [];
@@ -13,6 +20,18 @@ export class PresupuestoGastoComponent {
   operativos:any[]=[];
   administrativos:any[]=[];
   ventas:any[]=[];
+
+  cliente:Client=new Client();
+  procesos:Process[]=[];
+  proceso:Process= new Process();
+
+  constructor(
+    private planFinancieroService:PlanFinancieroService,
+    private rutaParametro:ActivatedRoute,
+    private clienteService:ClientService,
+    private procesoService:ProcesoService,
+    private router:Router,
+  ){}
 
   agregarFila() {
     this.materiaPrima.push({ nombre: '', ventas: '' });

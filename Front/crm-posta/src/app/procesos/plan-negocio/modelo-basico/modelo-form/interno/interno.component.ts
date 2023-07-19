@@ -8,6 +8,7 @@ import { ProcesoService } from 'src/app/procesos/proceso.service';
 import { BusinessPlan } from './../../BusinessPlan';
 import { InternalExternalAnalysis } from '../../InternalExternalAnalysis';
 import { ModeloBasicoService } from './../../modelo-basico.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-interno',
@@ -90,6 +91,7 @@ export class InternoComponent {
               this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
                 this.proceso=pro;
                 this.router.navigate(['/procesos']);
+                Swal.fire('Exito', 'Analisis interno y externo creada con exito', 'success');
               //  this.router.navigate([`dofa/cliente/${this.proceso.canvasModel.client.id}`]);
               })
             })

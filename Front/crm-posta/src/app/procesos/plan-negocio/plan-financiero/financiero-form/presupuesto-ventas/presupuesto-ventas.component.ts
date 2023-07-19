@@ -12,6 +12,7 @@ import { CiclicidadVentas } from './../../CiclicidadVentas';
 
 
 import { PresupuestoVenta } from './../../PresupuestoVenta';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -20,22 +21,6 @@ import { PresupuestoVenta } from './../../PresupuestoVenta';
   styleUrls: ['./presupuesto-ventas.component.css']
 })
 export class PresupuestoVentasComponent implements OnInit {
-/*
-  enero:number;
-  febrero:number;
-  marzo:number;
-  abril:number;
-  mayo:number;
-  junio:number;
-  julio:number;
-  agosto:number;
-  septiembre:number;
-  octubre:number;
-  noviembre:number;
-  diciembre:number;
-  */
- listaMes:number[]=[];
-  totalUnidadesRequeridas:number;
   valor1=false;
   valor2=false;
   valor3=false;
@@ -48,6 +33,20 @@ export class PresupuestoVentasComponent implements OnInit {
   valor10=false;
   valor11=false;
   valor12=false;
+  enero:number;
+  febrero:number;
+  marzo:number;
+  abril:number;
+  mayo:number;
+  junio:number;
+  julio:number;
+  agosto:number;
+  septiembre:number;
+  octubre:number;
+  noviembre:number;
+  diciembre:number;
+ listaMes:number[]=[];
+  totalUnidadesRequeridas:number;
   producto:string;
   cantidad:number;
   productos:string[];
@@ -101,11 +100,11 @@ this.estructuraMercado.cantidad
   const nuevoElemento = { nombre: '', ventas: '' };
 
     this.estructuraMercado= new EstructuraMercado()
-this.estructuraMercado.cantidad=this.cantidad;
-this.estructuraMercado.producto=this.producto;
+ this.estructuraMercado.cantidad=this.cantidad;
+ this.estructuraMercado.producto=this.producto;
    // this.elementos.push({ nombre: '', ventas: '' });
-this.presupuestoVenta.addElementos(this.estructuraMercado);
-console.log(this.presupuestoVenta);
+ this.presupuestoVenta.addElementos(this.estructuraMercado);
+ console.log(this.presupuestoVenta);
 
 
    }
@@ -118,7 +117,7 @@ console.log(this.presupuestoVenta);
   if (!elementoExistente) {
     this.elementos.push(nuevoElemento);
   }
-} */
+ */
    // this.elementos.push({ nombre: '', ventas: '
 
 
@@ -129,12 +128,12 @@ console.log(this.presupuestoVenta);
    this.presupuestoVenta.estructuraMercado=this.estructuraMercados;
 
 
-//console.log(this.estructuraMercados);
+  //console.log(this.estructuraMercados);
 
 
 
 
-/*
+ /*
 
    this.estructuraMercado.cantidad=this.cantidad[];
    this.estructuraMercado.producto=this.producto[];
@@ -144,8 +143,7 @@ console.log(this.presupuestoVenta);
   }
 
   public llenarHoras(){
-
-
+    
     this.presupuestoVenta.totalCapacidadOperario=0;
     this.presupuestoVenta.totalCapacidadInstalada=0;
     this.totalUnidadesRequeridas=0;
@@ -163,7 +161,7 @@ console.log(this.presupuestoVenta);
       this.presupuestoVenta.totalProductos+=e.cantidad;
       this.presupuestoVenta.totalPrecioUnitario+=e.precioUnitario;
       this.presupuestoVenta.totalTotal+=e.precioTotal;
-
+      
 
 
     this.presupuestoVenta.estructuraMercado.forEach(e=>{
@@ -479,15 +477,13 @@ console.log(this.presupuestoVenta);
   }
 
   public llenarTipo(e:string){
-    this.estructuraMercado.tipo=e;
+   this.estructuraMercado.tipo=e;
    console.log(this.estructuraMercado);
    console.log(`mostrando ${e}`);
 
 
 
   }
-
-r
 
   public guardar(){
     this.proceso.estado='Presupuesto Venta';
@@ -504,7 +500,11 @@ r
     })
 
 
-  }
+    }
+
+
+  
+  
   public guardarYsalir(){
 
     this.proceso.estado='Presupuesto Venta';
@@ -517,14 +517,11 @@ r
       this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
         this.proceso=pro;
        this.router.navigate(['procesos']);
+       Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
       })
     })
 
 
-
-  }
-  ver(){
-    console.log(this.presupuestoVenta);
 
   }
 }

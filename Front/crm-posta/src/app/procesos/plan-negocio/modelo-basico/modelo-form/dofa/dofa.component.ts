@@ -8,6 +8,7 @@ import { ProcesoService } from 'src/app/procesos/proceso.service';
 import { DofaAnalisis } from './../../DofaAnalisis';
 import { BusinessPlan } from './../../BusinessPlan';
 import { ModeloBasicoService } from '../../modelo-basico.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dofa',
@@ -87,6 +88,7 @@ export class DofaComponent {
               this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
                 this.proceso=pro;
                 this.router.navigate(['/procesos']);
+                Swal.fire('Exito', 'Analisis dofa creada con exito', 'success');
               //  this.router.navigate([`dofa/cliente/${this.proceso.canvasModel.client.id}`]);
               })
             })

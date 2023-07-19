@@ -4,4 +4,4 @@ export class CostComponent {
   amount:number;
 
 }
-//el ulises se la come
+//el ulises se la come y el leandro tambien(damian tambien)
