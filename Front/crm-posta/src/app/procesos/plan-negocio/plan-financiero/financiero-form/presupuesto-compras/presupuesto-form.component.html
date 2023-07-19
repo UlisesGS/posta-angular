@@ -37,33 +37,45 @@
                                 </thead>
                                 <tbody >
 
-                                  <td><input type="text" [(ngModel)]="estructuraCompras.materiaPrima"></td>
-                                  <td><input type="text"  [(ngModel)]="estructuraCompras.tipo"></td>
-                                  <td><input type="number" step="any" [(ngModel)]="estructuraCompras.valorUnitario"></td>
-                                  <td><input type="number" step="any" [(ngModel)]="estructuraCompras.cantidadUbnidad"></td>
+                                  <td><input type="text" [(ngModel)]="estructuraCompra.materiaPrima"></td>
+                                  <td style="width: 25%;">
+                                    <select [(ngModel)]="estructuraCompra.tipo" class="form-select"
+                                    aria-label="Default select example" >
+                                    <option value="UNIDAD" >Unidad</option>
+                                    <option value="KILOGRAMO" >Kilogramo</option>
+                                    <option value="LIBRA" >Libra</option>
+                                    <option value="ONZA" >Onza</option>
+                                    <option value="LITRO" >Litro</option>
+                                    <option value="METRO CUBICO" >Metro cubico</option>
+                                    <option value="DIA" >Dia</option>
+                                    <option value="HORA" >Hora</option>
+                                    <option value="MINUTO" >Minuto</option>
+                                    <option value="SERVICIO" >Servicio</option>
+                                    <option value="PRODUCTO" >Producto</option>
+                                    <option value="OTRO" >Otro</option>
+                                </select></td>
+                                  <td><input type="number" step="any" [(ngModel)]="estructuraCompra.valorUnitario"></td>
+                                  <td><input type="number" step="any" [(ngModel)]="estructuraCompra.cantidadUbnidad"></td>
                                   <td class="autorellenadas"></td>
                                   <tr>
                                     <td colspan="5" class="add-row">
                                         <a (click)="agregarFila(item.nombreProcucto)" class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                     </td>
                                 </tr>
-                                <!--
-                                    <tr ngIf="presupuestaCompra.estructuraCompras"  *ngFor="let item of presupuestoCompra.estructuraCompras">
-                                        <td>{{item.materiaPrima}}</td>
-                                        <td>{{item.tipo}}</td>
-                                        <td>{{item.valorUnitario}}</td>
-                                        <td>{{item.cantidadUbnidad}}</td>
-                                        <td class="autorellenadas">${{item.totalUnitario}}</td>
+                                
+                                    <tr *ngFor="let i of item.estructuraCompras" >
+                                        <td>{{i.materiaPrima}}</td>
+                                        <td>{{i.tipo}}</td>
+                                        <td>{{i.valorUnitario}}</td>
+                                        <td>{{i.cantidadUbnidad}}</td>
+                                        <td class="autorellenadas">${{i.totalUnitario}}</td>
                                     </tr>
-                                    -->
-                                    <tr>
-
-                                    </tr>
+                                    
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th colspan="4">Total</th>
-                                        <th>${{presupuestoCompra.total}} </th>
+                                        <th>${{item.total}} </th>
 
 
                                     </tr>
@@ -94,15 +106,15 @@
                                 <td class="autorellenadas" style="width: 13%;">{{item.nombreProcucto}}</td>
                                 <td class="autorellenadas" style="width: 13%;">{{item.cantidadProducto}}</td>
                                 <td class="autorellenadas" style="width: 13%;">{{item.total}}</td>
-                                <td class="autorellenadas" style="width: 13%;">{{item.cantidadProducto*item.total}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{item.totalAnual}}</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>Total</th>
                                 <th> </th>
-                                <th>$ </th>
-                                <th>$ </th>
+                                <th>${{totalUnitarios}}</th>
+                                <th>${{totalAnuales}}</th>
                             </tr>
                         </tfoot>
                     </table>

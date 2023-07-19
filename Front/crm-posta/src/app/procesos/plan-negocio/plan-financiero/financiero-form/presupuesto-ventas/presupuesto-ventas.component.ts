@@ -12,6 +12,7 @@ import { CiclicidadVentas } from './../../CiclicidadVentas';
 
 
 import { PresupuestoVenta } from './../../PresupuestoVenta';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -516,6 +517,7 @@ console.log(this.presupuestoVenta);
       this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
         this.proceso=pro;
        this.router.navigate(['procesos']);
+       Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
       })
     })
 

@@ -8,6 +8,7 @@ import { ProcesoService } from 'src/app/procesos/proceso.service';
 import { BusinessPlan } from './../../BusinessPlan';
 import { ProyectInformation } from './../../ProyectInformation';
 import { ModeloBasicoService } from './../../modelo-basico.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-informacion',
@@ -88,6 +89,7 @@ this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data
           this.proceso=pro;
         //  this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
         this.router.navigate(['/procesos']);
+        Swal.fire('Exito', 'Informacion del Proyecto creada con exito', 'success');
         })
       })
     })
