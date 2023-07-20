@@ -62,7 +62,7 @@
                                         <a (click)="agregarFila(item.nombreProcucto)" class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                     </td>
                                 </tr>
-                                
+
                                     <tr *ngFor="let i of item.estructuraCompras" >
                                         <td>{{i.materiaPrima}}</td>
                                         <td>{{i.tipo}}</td>
@@ -70,7 +70,7 @@
                                         <td>{{i.cantidadUbnidad}}</td>
                                         <td class="autorellenadas">${{i.totalUnitario}}</td>
                                     </tr>
-                                    
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -138,23 +138,23 @@
                         <tbody style="text-align: center;font-size: small;">
                             <tr>
                                 <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc1}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc1+100}}</td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc2}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc2+100}}</td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc3}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc3+100}}</td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc3}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc3+100}}</td>
                             </tr>
 
                         </tbody>
