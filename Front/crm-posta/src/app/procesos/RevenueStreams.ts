@@ -1,7 +1,7 @@
 export class RevenueStreams {
   id:number;
-  capitalPorpio:number;
-  capitalPrestamo:number;
+  capitalPorpio:string;
+  capitalPrestamo:string;
   canalesPago:string;
 
 }
