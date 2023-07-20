@@ -21,80 +21,103 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of activosFijos">
-                                    <td><input type="text" ></td> 
-                                    <td><input type="text" ></td> 
-                                    <td><input type="text" ></td>
-                                    <td class="autorellenadas">$</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="add-row"><a (click)="agregarActivo()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
+                              <tr >
+                                <td><input type="text" [(ngModel)]="activoFijo.tipo"></td>
+                                <td><input type="number" step="any" [(ngModel)]="activoFijo.aportesPropios"></td>
+                                <td><input type="number" step="any" [(ngModel)]="activoFijo.inversionRequerida"></td>
+                                <td class="autorellenadas">{{activoFijo.creditoRequerido}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="add-row"><a (click)="agregarActivo()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                </td>
+                            </tr>
+                            <tr *ngFor="let i of planDeInversion.activoFijo">
+                                <td>{{i.tipo}}</td>
+                                <td>{{i.aportesPropios}}</td>
+                                <td>{{i.inversionRequerida}}</td>
+                                <td>{{i.creditoRequerido}}</td>
+                            </tr>
                                     <th colspan="4">Maquinaria y Equipamiento</th>
-                                </tr>
-                                <tr *ngFor="let item of maquinaria">
-                                    <td><input type="text" ></td> 
-                                    <td><input type="text" ></td> 
-                                    <td><input type="text" ></td>
-                                    <td class="autorellenadas">$</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="add-row"><a (click)="agregarMaquinaria()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
-                                    </td>
-                                </tr>
+
+                                    <tr >
+                                      <td><input type="text" [(ngModel)]="maquinaria.tipo"></td>
+                                      <td><input type="number" step="any" [(ngModel)]="maquinaria.aportesPropios"></td>
+                                      <td><input type="number" step="any" [(ngModel)]="maquinaria.inversionRequerida"></td>
+                                      <td class="autorellenadas">{{activoFijo.creditoRequerido}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="3" class="add-row"><a (click)="agregarMaquinaria()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                      </td>
+                                  </tr>
+                                  <tr *ngFor="let i of planDeInversion.maquinariaEquipo">
+                                      <td>{{i.tipo}}</td>
+                                      <td>{{i.aportesPropios}}</td>
+                                      <td>{{i.inversionRequerida}}</td>
+                                      <td>{{i.creditoRequerido}}</td>
+                                  </tr>
                                 <tr>
                                     <th>Total Maquinaria</th>
-                                    <th>$</th>
-                                    <th>$</th>
-                                    <th>$</th>
+                                    <th>${{planDeInversion.maquinariaPropio}}</th>
+                                    <th>${{planDeInversion.maquinariaInversion}}</th>
+                                    <th>${{planDeInversion.maquinariaCredito}}</th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Muebles y Enseres</th>
                                 </tr>
-                                <tr *ngFor="let item of muebles">
-                                    <td><input type="text" ></td> 
-                                    <td><input type="text" ></td> 
-                                    <td><input type="text" ></td>
-                                    <td class="autorellenadas">$</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="add-row"><a (click)="agregarMuebles()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
-                                    </td>
-                                </tr>
+                                <tr >
+                                  <td><input type="text" [(ngModel)]="mueble.tipo"></td>
+                                  <td><input type="number" step="any" [(ngModel)]="mueble.aportesPropios"></td>
+                                  <td><input type="number" step="any" [(ngModel)]="mueble.inversionRequerida"></td>
+                                  <td class="autorellenadas">{{mueble.creditoRequerido}}</td>
+                              </tr>
+                              <tr>
+                                  <td colspan="3" class="add-row"><a (click)="agregarMuebles()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                  </td>
+                              </tr>
+                              <tr *ngFor="let i of planDeInversion.mueblesEnseres">
+                                  <td>{{i.tipo}}</td>
+                                  <td>{{i.aportesPropios}}</td>
+                                  <td>{{i.inversionRequerida}}</td>
+                                  <td>{{i.creditoRequerido}}</td>
+                              </tr>
                                 <tr>
                                     <th>Total Muebles y Enseres</th>
-                                    <th>$</th>
-                                    <th>$</th>
-                                    <th>$</th>
+                                    <th>${{planDeInversion.mueblesPropio}}</th>
+                                    <th>${{planDeInversion.mueblesInversion}}</th>
+                                    <th>${{planDeInversion.muebleCredito}}</th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Vehículos</th>
                                 </tr>
-                                <tr *ngFor="let item of vehiculos">
-                                    <td><input type="text" ></td> 
-                                    <td><input type="text" ></td> 
-                                    <td><input type="text" ></td>
-                                    <td class="autorellenadas">$</td>
-                                </tr>
+                                <tr >
+                                  <td><input type="text" [(ngModel)]="vehiculo.tipo"></td>
+                                  <td><input type="number" step="any" [(ngModel)]="vehiculo.aportesPropios"></td>
+                                  <td><input type="number" step="any" [(ngModel)]="vehiculo.inversionRequerida"></td>
+                                  <td class="autorellenadas">{{vehiculo.creditoRequerido}}</td>
+                              </tr>
+                              <tr>
+                                  <td colspan="3" class="add-row"><a (click)="agregarVehiculos()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                  </td>
+                              </tr>
+                              <tr *ngFor="let i of planDeInversion.vehiculos">
+                                  <td>{{i.tipo}}</td>
+                                  <td>{{i.aportesPropios}}</td>
+                                  <td>{{i.inversionRequerida}}</td>
+                                  <td>{{i.creditoRequerido}}</td>
+                              </tr>
                                 <tr>
-                                    <td colspan="4" class="add-row"><a (click)="agregarVehiculos()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <th>$</th>
-                                    <th>$</th>
-                                    <th>$</th>
+                                    <th>Total Vehiculos</th>
+                                    <th>${{planDeInversion.vehiculosPropio}}</th>
+                                    <th>${{planDeInversion.vehiculosInversion}}</th>
+                                    <th>${{planDeInversion.vehiculosCredito}}</th>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th >Subtotal</th>
-                                    <th>$ </th>
-                                    <th>$ </th>
-                                    <th>$ </th>
+                                    <th >Total Inversión Fija</th>
+                                    <th>${{planDeInversion.totalPropio}}</th>
+                                    <th>${{planDeInversion.totalInversion}}</th>
+                                    <th>${{planDeInversion.totalCredito}}</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -102,6 +125,10 @@
                 </div>
             </div>
         </div>
-
+        <div class="form-group mt-3">
+          <button (click)="guardarYsalir()"  class="btn">Guardar</button>
+          <button (click)="guardar()" class="btn">Guardar y Continuar</button>
+          <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
+        </div>
     </div>
 </div>

@@ -51,7 +51,13 @@ export class AccionComponent {
   }
 
   public cambiarTipo() {
-    this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
+    if (this.cliente.type == 'entrepreneur') {
+      this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
+
+    } else {
+      this.ruta.navigate([`clients/form/editar/entrepreneur/${this.cliente.id}`]);
+    }
+  //  this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
     /*this.cliente.type="businessman";
     this.cliente.businessIdea="";
     this.cliente.product="";
@@ -102,9 +108,9 @@ createPdf() {
           margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
           // Márgenes de la imagen en el PDF
         },
-    
+
         // ... Estilos y otras configuraciones ...
-          
+
         {
           table: {
             layout: 'noBorders', // <-- Eliminar los bordes de la tabla
@@ -129,11 +135,11 @@ createPdf() {
             ]
           }
         },
-    
+
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-    
+
         '\n',
-    
+
         {
           table: {
             layout: 'noBorders', // <-- Eliminar los bordes de la tabla
@@ -182,9 +188,9 @@ createPdf() {
             ]
           }
         },
-    
+
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-    
+
         {
           text: 'Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE VILLAVICENCIO (la “CCV”) para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación personal, nombres y apellidos, números de teléfono y celular, correo electrónico, país de origen y en general toda la información solicitada para información de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a la que puede accederse en el siguiente link:',
           style: 'p'
@@ -348,8 +354,8 @@ this.convertImageToBase64(this.imageUrl).then(base64 => {
         table: {
           widths: ['auto', '*'],
           body: [
-            [ 
-              
+            [
+
               { text: 'MUNICIPIO/DEPARTAMENTO: ', style: 'header' },
               { text: this.cliente.municipio.country, style: ['thisText', 'header'] }
             ],
