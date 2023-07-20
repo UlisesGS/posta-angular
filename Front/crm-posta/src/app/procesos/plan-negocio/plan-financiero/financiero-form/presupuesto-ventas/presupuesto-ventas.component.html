@@ -150,23 +150,23 @@
                     <tbody style="text-align: center;font-size: small;">
                         <tr>
                             <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
-                            <td style="width: 5%;"><input type="text"></td>
-                            <td class="autorellenadas" style="width: 13%;"></td>
+                            <td style="width: 5%;"><input type="number" (change)="llenaripc1()" [(ngModel)]="businessPlanFinancial.ipc1"> </td>
+                            <td class="autorellenadas" style="width: 13%;">{{icp1}}</td>
                         </tr>
                         <tr>
                             <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
-                            <td style="width: 5%;"><input type="text"></td>
-                            <td class="autorellenadas" style="width: 13%;"></td>
+                            <td style="width: 5%;"><input type="number" (change)="llenaripc2()" [(ngModel)]="businessPlanFinancial.ipc2"></td>
+                            <td class="autorellenadas" style="width: 13%;">{{icp2}}</td>
                         </tr>
                         <tr>
                             <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
-                            <td style="width: 5%;"><input type="text"></td>
-                            <td class="autorellenadas" style="width: 13%;"></td>
+                            <td style="width: 5%;"><input type="number" (change)="llenaripc3()" [(ngModel)]="businessPlanFinancial.ipc3"></td>
+                            <td class="autorellenadas" style="width: 13%;">{{icp3}}</td>
                         </tr>
                         <tr>
                             <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
-                            <td style="width: 5%;"><input type="text"></td>
-                            <td class="autorellenadas" style="width: 13%;"></td>
+                            <td style="width: 5%;"><input type="number" (change)="llenaripc4()" [(ngModel)]="businessPlanFinancial.ipc4"></td>
+                            <td class="autorellenadas" style="width: 13%;">{{icp4}}</td>
                         </tr>
 
                     </tbody>
