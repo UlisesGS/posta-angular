@@ -1,4 +1,4 @@
-import { Inversion } from "./inversion";
+import { Inversion } from "./Inversion";
 
 export class PlanInversion {
   id: number;
