@@ -18,6 +18,10 @@ export class ModalService {
   verMas6: boolean = false;
   verMas7: boolean = false;
   verMas8: boolean = false;
+  auto: boolean = false;
+  canvas: boolean = false;
+  negocios: boolean = false;
+  financiero: boolean = false;
 
   private _notificar = new EventEmitter<any>()
   constructor() { }
@@ -121,4 +125,34 @@ export class ModalService {
   cerrarVerMas8() {
     this.verMas8 = false;
   }
+
+  abrirTestAuto() {
+    this.auto = true;
+  }
+  cerrarTestAuto() {
+    this.auto = false;
+  }
+
+  abrirTestCanvas() {
+    this.canvas = true;
+  }
+  cerrarTestCanvas() {
+    this.canvas = false;
+  }
+
+  abrirTestNegocios() {
+    this.negocios = true;
+  }
+  cerrarTestNegocios() {
+    this.negocios = false;
+  }
+
+  abrirTestFinanciero() {
+    this.financiero = true;
+  }
+  cerrarTestFinanciero() {
+    this.financiero = false;
+  }
+
+
 }

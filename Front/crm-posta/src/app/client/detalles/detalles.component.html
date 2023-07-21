@@ -1,3 +1,7 @@
+<app-modal-detalles *ngIf="modalService.auto && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB" [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB"></app-modal-detalles>
+<app-modal-detalles *ngIf="modalService.canvas && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB" [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB"></app-modal-detalles>
+<app-modal-detalles *ngIf="modalService.negocios && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB" [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB"></app-modal-detalles>
+<app-modal-detalles *ngIf="modalService.financiero && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB" [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB"></app-modal-detalles>
 <div class="row">
     <div class="col-2">
         <app-client-details></app-client-details>
@@ -16,7 +20,7 @@
                             <span class="left-align">AUTOEVALUACIÓN</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
                           </button>
                           <button  *ngIf="proceso?.selfAssessment!==null" style="background-color: rgb(34, 197, 89); color: white;width: 80%;" class="btn btn-disabled" >
-                            <span class="left-align">AUTOEVALUACIÓN</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
+                            <span class="left-align">AUTOEVALUACIÓN</span><i class="fa-solid fa-pen-to-square right-align" type="button" (click)="abrirTestAuto(proceso, 'finalizado', 'incompleto', 'incompleto', 'incompleto')"></i>
                           </button>
                     </div>
                     <div style="margin: 10px;">
@@ -26,12 +30,12 @@
                     </div>
                     <div style="margin: 10px;">
                         <button *ngIf="proceso?.canvasModel?.costStructure===null" class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
-                            <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
+                            <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align" type="button" (click)="abrirTestAuto(proceso, 'finalizado', 'continuar', 'continuar', 'continuar')"></i>
                           </button>
                     </div>
                     <div style="margin: 10px;">
                         <button *ngIf="proceso?.canvasModel?.costStructure!==null" class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
-                            <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
+                            <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align" type="button" (click)="abrirTestAuto(proceso, 'finalizado', 'finalizado', 'incompleto', 'incompleto')"></i>
                           </button>
                     </div>
                     <div style="margin: 10px;">
@@ -39,15 +43,21 @@
                             <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
                           </button>
                           <button *ngIf="proceso?.businessPlan?.conclusion===null && proceso?.businessPlan!==null" class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
-                            <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
+                            <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align" type="button" (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'continuar', 'continuar')"></i>
                           </button>
                           <button *ngIf="proceso?.businessPlan?.conclusion!==null" class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
-                            <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
+                            <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align" type="button" (click)="abrirTestAuto(proceso, 'finalizado', 'finalizado', 'finalizado', 'incompleto')"></i>
                           </button>
                     </div>
                     <div style="margin: 10px;">
-                        <button class="btn btn-disabled" style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
+                        <button *ngIf="proceso?.businessPlanFinancial===null" class="btn btn-disabled" style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
                             <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
+                          </button>
+                          <button *ngIf="proceso?.businessPlanFinancial?.planInversion===null && proceso?.businessPlanFinancial!==null" class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
+                            <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i class="fa-solid fa-pen-to-square right-align" type="button" (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'finalizado', 'continuar')"></i>
+                          </button>
+                          <button *ngIf="proceso?.businessPlanFinancial?.planInversion!==null" class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+                            <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i class="fa-solid fa-pen-to-square right-align" type="button" (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'finalizado', 'finalizado')"></i>
                           </button>
                     </div>
                     <div style="margin: 10px;">

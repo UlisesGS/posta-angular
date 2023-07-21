@@ -69,7 +69,7 @@ import { PresupuestoFormComponent } from './procesos/plan-negocio/plan-financier
 import { PresupuestoGastoComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/presupuesto-gasto/presupuesto-gasto.component';
 import { DetallesComponent } from './client/detalles/detalles.component';
 import { PlanInversionComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/plan-inversion/plan-inversion.component';
-
+import { ModalDetallesComponent } from './client/detalles/modal-detalles/modal-detalles.component';
 
 const routes:Routes=[
 
@@ -177,6 +177,7 @@ const routes:Routes=[
       PresupuestoGastoComponent,
       DetallesComponent,
       PlanInversionComponent,
+      ModalDetallesComponent,
      
 
 
