@@ -80,10 +80,13 @@
 
     <div class="form-group">
 
+      
 
       <button  (click)="guardarYSalir()" class="btn">Guardar</button>
       <button (click)="guardar()" class="btn">Guardar y Continuar</button>
       <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
+      <button [routerLink]="['/ingresos/cliente/',cliente.id,'editar',proceso.id]" (click)="cerrarModalAsesoria()"
+                class="btn ">Volver</button>
     </div>
 
   </div>

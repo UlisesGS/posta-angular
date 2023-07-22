@@ -70,6 +70,8 @@
             <button (click)="guardarYsalir()" class="btn">Guardar</button>
             <button (click)="guardar()"  class="btn">Guardar y Continuar</button>
             <button routerLink="/procesos"   class="btn">Cancelar</button>
+            <button [routerLink]="['/informacion/cliente/',cliente.id,'editar',proceso.id]" (click)="cerrarModalAsesoria()"
+                class="btn ">Volver</button>
         </div>
     </div>
 </div>

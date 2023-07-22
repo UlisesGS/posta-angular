@@ -59,9 +59,15 @@
             </form>
         </div>
         <div class="form-group mt-3">
-            <button (click)="guardarYsalir()" class="btn">Guardar</button>
-            <button  (click)="guardar()" class="btn">Guardar y Continuar</button>
+            <button *ngIf="keyPartners.id" (click)="editarYsalir()" class="btn">Editar</button>
+
+          <button *ngIf="keyPartners.id" (click)="editar()" class="btn">Editar y
+              Continuar</button>
+            <button *ngIf="!keyPartners.id" (click)="guardarYsalir()" class="btn">Guardar</button>
+            <button *ngIf="!keyPartners.id"  (click)="guardar()" class="btn">Guardar y Continuar</button>
             <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
+            <button [routerLink]="['/actividadesClaves/cliente/',cliente.id,'editar',proceso.id]" (click)="cerrarModalAsesoria()"
+                class="btn ">Volver</button>
         </div>
     </div>
 </div>

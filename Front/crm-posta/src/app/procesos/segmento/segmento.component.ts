@@ -136,7 +136,7 @@ export class CustomerSegments {
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
         this.router.navigate(['procesos'])
-        Swal.fire('Exito', 'Segmento creado con exito', 'success');
+        Swal.fire('Exito', 'Segmento editado con exito', 'success');
       })
     })
    })

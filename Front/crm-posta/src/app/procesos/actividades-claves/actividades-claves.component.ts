@@ -39,7 +39,19 @@ export class ActividadesClavesComponent {
             this.procesos.forEach(proceso=>{
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
-                console.log(this.proceso);
+                
+                // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.keyActivities=this.proceso.canvasModel.keyActivities;
+                    console.log(this.keyActivities);
+                    
+                  })
+                }
 
               }
             })
@@ -98,6 +110,45 @@ export class ActividadesClavesComponent {
         this.router.navigate(['procesos'])
         Swal.fire('Exito', 'Actividades claves creada con exito', 'success');
 
+      })
+    })
+   })
+  }
+
+
+  public editar(){
+    this.proceso.estado='Actividades Claves';
+    console.log(this.proceso);
+    this.proceso.canvasModel.keyActivities=this.keyActivities
+    console.log(this.keyActivities);
+    console.log(this.proceso);
+
+
+   this.procesoService.actividadesClavesPut(this.proceso.canvasModel.keyActivities).subscribe(pro=>{
+    this.proceso.canvasModel.keyActivities=pro;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['sociosClaves/cliente/', this.cliente.id])
+      })
+    })
+   })
+  }
+
+
+  public editarYsalir(){
+    this.proceso.estado='Actividades Claves';
+    console.log(this.proceso);
+    this.proceso.canvasModel.keyActivities=this.keyActivities
+    console.log(this.keyActivities);
+    console.log(this.proceso);
+
+
+   this.procesoService.actividadesClavesPut(this.proceso.canvasModel.keyActivities).subscribe(pro=>{
+    this.proceso.canvasModel.keyActivities=pro;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
+        Swal.fire('Exito', 'Actividades claves eidtadas con exito', 'success');
       })
     })
    })

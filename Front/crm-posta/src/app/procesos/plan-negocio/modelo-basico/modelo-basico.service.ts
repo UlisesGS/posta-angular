@@ -54,7 +54,7 @@ export class ModeloBasicoService {
   }
 
   public planUpdateProyect(proyect:ProyectInformation):Observable<any>{
-    return this.http.put<any>(`${this.urlEndPoint}/proyectPut/${proyect.id}`, proyect )
+    return this.http.put<any>(`${this.urlEndPoint}/informacionPut/${proyect.id}`, proyect )
   }
 
   public planUpdateAnalisis(analisis:InternalExternalAnalysis):Observable<any>{

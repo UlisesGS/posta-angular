@@ -39,7 +39,20 @@ export class SociosClavesComponent {
             this.procesos.forEach(proceso=>{
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
-                console.log(this.proceso);
+                
+                
+                // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.keyPartners=this.proceso.canvasModel.keyPartners;
+                    console.log(this.keyPartners);
+                    
+                  })
+                }
 
               }
             })
@@ -93,7 +106,47 @@ export class SociosClavesComponent {
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
         this.router.navigate(['procesos'])
-        Swal.fire('Exito', 'Socios claves creada con exito', 'success');
+        Swal.fire('Exito', 'Socios claves creado con exito', 'success');
+
+      })
+    })
+   })
+  }
+
+
+
+
+  public editar(){
+    this.proceso.estado='Socios Claves';
+    console.log(this.proceso);
+    this.proceso.canvasModel.keyPartners=this.keyPartners
+
+
+   this.procesoService.sociosClavesPut(this.proceso.canvasModel.keyPartners).subscribe(pro=>{
+    this.proceso.canvasModel.keyPartners=pro;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        //[routerLink]="['/ingresos/cliente/', cliente.id]"
+        this.router.navigate(['/ingresos/cliente/', this.cliente.id])
+
+      })
+    })
+   })
+  }
+
+
+  public editarYsalir(){
+    this.proceso.estado='Socios Claves';
+    console.log(this.proceso);
+    this.proceso.canvasModel.keyPartners=this.keyPartners
+
+
+   this.procesoService.sociosClavesPut(this.proceso.canvasModel.keyPartners).subscribe(pro=>{
+    this.proceso.canvasModel.keyPartners=pro;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
+        Swal.fire('Exito', 'Socios claves editados con exito', 'success');
 
       })
     })
