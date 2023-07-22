@@ -8,9 +8,9 @@
                         <br>
                         <input type="text" name="name" [(ngModel)]="empresario.name" placeholder="Nombre" class="form-control" required>
                     </label>
-                    
+
                 </div>
-                
+
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
@@ -90,10 +90,11 @@
                     <select [(ngModel)]="empresario.studyLevel" class="form-select form-select-sm" name="studyLevel"
                         ngModel="" aria-label="Default select example" >
                         <option [ngValue]="undefined">--- Seleccionar Nivel Escolaridad ---</option>
-                        <option value="SECUNDARIO">SECUNDARIO</option>
-                        <option value="TERCIARIO">TERCIARIO</option>
-                        <option value="UNIVERSITARIO ">UNIVERSITARIO </option>
-
+                        <option value="PRIMARIO">PRIMARIO</option>
+                        <option value="TECNICO">TECNICO</option>
+                        <option value="TECNOLOGO ">TECNOLOGO </option>
+                        <option value="POSTGRADO ">POSTGRADO </option>
+                       
                     </select>
                 </label>
                 <div style="flex-basis: 50%;">
@@ -128,7 +129,7 @@
                     <label class="form-check-label" for="disability1"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
                 </div>
-                
+
             </div>
         </div>
 

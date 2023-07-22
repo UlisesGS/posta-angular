@@ -49,15 +49,25 @@ export class CustomerSegments {
 
             this.procesos=p;
             this.procesos.forEach(proceso=>{
+              this.proceso=proceso;
               if(proceso.canvasModel.client.id==this.cliente.id){
-                this.proceso=proceso;
+                // para editar
+                let idEditar = +parametro.get('idEditar');
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.customerSegments=this.proceso.canvasModel.customerSegments;
+                  })
+                }
+
+
                 console.log(proceso);
 
               }
             })
           })
         })
-      } 
+      }
     })
   }
 
@@ -93,6 +103,35 @@ export class CustomerSegments {
     console.log(this.proceso);
     this.proceso.canvasModel.customerSegments=this.customerSegments
    this.procesoService.segmentoSave(this.proceso.canvasModel.customerSegments).subscribe(segmento=>{
+    this.proceso.canvasModel.customerSegments=segmento;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
+        Swal.fire('Exito', 'Segmento creado con exito', 'success');
+      })
+    })
+   })
+  }
+  public editar(){
+    this.proceso.estado='Segmento de Clientes';
+    console.log(this.proceso);
+    this.proceso.canvasModel.customerSegments=this.customerSegments
+   this.procesoService.segmentoPut(this.proceso.canvasModel.customerSegments).subscribe(segmento=>{
+    this.proceso.canvasModel.customerSegments=segmento;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['/propuestaDeValor/cliente/', this.cliente.id])
+      })
+    })
+   })
+  }
+
+
+  public editarYsalir(){
+    this.proceso.estado='Segmento de Clientes';
+    console.log(this.proceso);
+    this.proceso.canvasModel.customerSegments=this.customerSegments
+   this.procesoService.segmentoPut(this.proceso.canvasModel.customerSegments).subscribe(segmento=>{
     this.proceso.canvasModel.customerSegments=segmento;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
