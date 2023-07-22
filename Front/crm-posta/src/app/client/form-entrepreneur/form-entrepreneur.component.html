@@ -28,7 +28,7 @@
 
                         <br>
                         <select class="form-select form-select-sm" name="gender" [(ngModel)]="emprendedor.gender"
-                            aria-label="Default select example" required> 
+                            aria-label="Default select example" required>
                             <option [ngValue]="undefined">--- Seleccionar Género ---</option>
                             <option value="MALE">Masculino</option>
                             <option value="FEMALE">Femenino</option>
@@ -90,9 +90,10 @@
                     <select class="form-select form-select-sm" name="studyLevel" [(ngModel)]="emprendedor.studyLevel"
                         aria-label="Default select example" required>
                         <option [ngValue]="undefined">--- Seleccionar Nivel Escolaridad ---</option>
-                        <option value="SECUNDARIO">SECUNDARIO</option>
-                        <option value="TERCIARIO">TERCIARIO</option>
-                        <option value="UNIVERSITARIO ">UNIVERSITARIO </option>
+                        <option value="PRIMARIO">PRIMARIO</option>
+                        <option value="TECNICO">TECNICO</option>
+                        <option value="TECNOLOGO ">TECNOLOGO </option>
+                        <option value="POSTGRADO ">POSTGRADO </option>
 
                     </select>
                 </label>
@@ -191,7 +192,7 @@
 
                             </select>
                         </label>
-                        
+
                     </div>
 
                     <div style="flex-basis: 50%;">

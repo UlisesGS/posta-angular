@@ -113,6 +113,28 @@ const routes:Routes=[
   {path:'compras/cliente/:id',component:PresupuestoFormComponent},
   {path:'gastos/cliente/:id',component:PresupuestoGastoComponent},
   {path:'inversion/cliente/:id',component:PlanInversionComponent},
+  // para editar
+  // canvas
+  {path:'segmento/cliente/:id/editar/:idEditar',component:SegmentoComponent},
+  {path:'propuestaDeValor/cliente/:id/editar/:idEditar',component:PropuestaDeValorComponent},
+  {path:'canales/cliente/:id/editar/:idEditar',component:CanalesComponent},
+  {path:'relaciones/cliente/:id/editar/:idEditar',component:RelacionesComponent},
+  {path:'recursosClaves/cliente/:id/editar/:idEditar',component:RecursosClavesComponent},
+  {path:'actividadesClaves/cliente/:id/editar/:idEditar',component:ActividadesClavesComponent},
+  {path:'sociosClaves/cliente/:id/editar/:idEditar',component:SociosClavesComponent},
+  {path:'ingresos/cliente/:id/editar/:idEditar',component:IngresosComponent},
+  {path:'estructuraCostos/cliente/:id/editar/:idEditar',component:EstructuraCostosComponent},
+// plan basico
+  {path:'informacion/cliente/:id/editar/:idEditar',component:InformacionComponent},
+  {path:'interno/cliente/:id/editar/:idEditar',component:InternoComponent},
+  {path:'dofa/cliente/:id/editar/:idEditar',component:DofaComponent},
+  {path:'conclusion/cliente/:id/editar/:idEditar',component:ConclusionComponent},
+// plan financiero
+
+  {path:'ventas/cliente/:id/editar/:idEditar',component:PresupuestoVentasComponent},
+  {path:'compras/cliente/:id/editar/:idEditar',component:PresupuestoFormComponent},
+  {path:'gastos/cliente/:id/editar/:idEditar',component:PresupuestoGastoComponent},
+  {path:'inversion/cliente/:id/editar/:idEditar',component:PlanInversionComponent},
 ]
 
 @NgModule({
@@ -178,7 +200,7 @@ const routes:Routes=[
       DetallesComponent,
       PlanInversionComponent,
       ModalDetallesComponent,
-     
+
 
 
    ],

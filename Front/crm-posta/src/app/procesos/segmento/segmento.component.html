@@ -55,9 +55,13 @@
         </div>
         <div class="form-group mt-3" >
 
-            <button (click)="guardarYsalir()" class="btn">Guardar</button>
+          <button *ngIf="customerSegments.id" (click)="editarYsalir()" class="btn">Editar</button>
 
-            <button (click)="guardar()" class="btn">Guardar y
+          <button *ngIf="customerSegments.id" (click)="editar()" class="btn">Editar y
+              Continuar</button>
+            <button *ngIf="!customerSegments.id" (click)="guardarYsalir()" class="btn">Guardar</button>
+
+            <button *ngIf="!customerSegments.id" (click)="guardar()" class="btn">Guardar y
                 Continuar</button>
             <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()"
                 class="btn">Cancelar</button>
