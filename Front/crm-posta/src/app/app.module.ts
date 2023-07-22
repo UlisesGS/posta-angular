@@ -118,6 +118,8 @@ const routes:Routes=[
   {path:'compras/cliente/:id',component:PresupuestoFormComponent},
   {path:'gastos/cliente/:id',component:PresupuestoGastoComponent},
   {path:'inversion/cliente/:id',component:PlanInversionComponent},
+
+  
   // para editar
   // canvas
   {path:'segmento/cliente/:id/editar/:idEditar',component:SegmentoComponent},

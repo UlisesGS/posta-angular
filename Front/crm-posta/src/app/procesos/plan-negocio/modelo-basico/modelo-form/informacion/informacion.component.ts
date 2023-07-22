@@ -47,7 +47,20 @@ export class InformacionComponent {
             this.procesos.forEach(proceso=>{
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
-                console.log(this.proceso);
+                
+                
+                // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.proyectInformation=this.proceso.businessPlan.proyectInformation;
+                    console.log(this.proyectInformation);
+                    
+                  })
+                }
 
               }
             })
@@ -57,6 +70,12 @@ export class InformacionComponent {
       }
     })
   }
+
+  cerrarModalAsesoria(): void {
+    this.modalService.cerrarModalAsesoria();
+  }
+
+
   guardar(){
 
 this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data=>{
@@ -95,4 +114,46 @@ this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data
     })
 
   }
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+/*  REVISAR. EN TODOS LOS NGMODEL EN LA PAGINA ME MUESTRA EN TODOS HOLA, MIENTRAS QUE EL JSON HAY TRES QUE DICEN CHAU  */
+/*------------------------------------------------------------------------------------------------------------------------*/
+  editar(){
+
+    this.modeloBasicoService.planUpdateProyect(this.proyectInformation).subscribe(data=>{
+      this.businessPlan.proyectInformation=data;
+      // en el proximo cambiar a put hdp
+      console.log(this.businessPlan);
+      this.proceso.estado='Informacion Proyecto'
+      this.modeloBasicoService.planUpdateBusinessPlan(this.businessPlan).subscribe(plan=>{
+        this.businessPlan=plan;
+        this.proceso.businessPlan=this.businessPlan;
+        this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+          this.proceso=pro;
+    
+          this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
+        })
+      })
+    })
+    
+      }
+      editarYsalir(){
+        this.modeloBasicoService.planUpdateProyect(this.proyectInformation).subscribe(data=>{
+          this.businessPlan.proyectInformation=data;
+          // en el proximo cambiar a put hdp
+          console.log(this.businessPlan);
+          this.proceso.estado='Informacion Proyecto'
+          this.modeloBasicoService.planUpdateBusinessPlan(this.businessPlan).subscribe(plan=>{
+            this.businessPlan=plan;
+            this.proceso.businessPlan=this.businessPlan;
+            this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+              this.proceso=pro;
+            //  this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
+            this.router.navigate(['/procesos']);
+            Swal.fire('Exito', 'Informacion del Proyecto creada con exito', 'success');
+            })
+          })
+        })
+    
+      }
 }

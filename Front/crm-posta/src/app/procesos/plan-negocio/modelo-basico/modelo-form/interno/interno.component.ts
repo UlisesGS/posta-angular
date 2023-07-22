@@ -43,7 +43,7 @@ export class InternoComponent {
                 if(proceso.canvasModel.client.id==this.cliente.id){
                   this.proceso=proceso;
                   this.proceso.businessPlan=proceso.businessPlan;
-                 // console.log(this.proceso);
+                  console.log(this.proceso);
 
                 }
               })
@@ -54,6 +54,12 @@ export class InternoComponent {
       })
 
     }
+
+    cerrarModalAsesoria(): void {
+      this.modalService.cerrarModalAsesoria();
+    }
+
+
     guardar(){
       this.modeloBasicoService.planSaveAnalisis(this.internalExternalAnalysis).subscribe(data=>{
         this.businessPlan.analisis=data;
@@ -62,7 +68,7 @@ export class InternoComponent {
         console.log(this.proceso);
 
         // en el proximo cambiar a put hdp
-        //console.log(this.businessPlan);
+        console.log(this.businessPlan);
 
         this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
           this.businessPlan=plan;
