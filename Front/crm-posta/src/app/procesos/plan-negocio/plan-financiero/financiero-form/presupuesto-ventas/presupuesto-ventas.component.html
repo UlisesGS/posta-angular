@@ -59,7 +59,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let pres of presupuestoVenta.estructuraMercado">
-                        <td class="autorellenadas" style="width: 13%;"></td>
+                        <td class="autorellenadas" style="width: 13%;">{{pres.producto}}</td>
 
                         <td style="width: 15%; transform: scale(0.75);">
                             <select [(ngModel)]="pres.tipo" class="form-select"
@@ -77,8 +77,8 @@
                             <option value="PRODUCTO" >Producto</option>
                             <option value="OTRO" >Otro</option>
                         </select></td>
-                        <td style="width: 13%;"><input type="number" step="any" (keyup)="llenarHoras()" [(ngModel)]="pres.horasOperario"></td>
-                        <td class="autorellenadas" style="width: 13%;">{{pres.unidadHoraHombre}}</td>
+                        <td style="width: 13%;"><input type="number"  (keyup)="llenarHoras()" [(ngModel)]="pres.horasOperario"></td>
+                        <td class="autorellenadas" step="0.01" style="width: 13%;">{{pres.unidadHoraHombre}}</td>
                         <td class="autorellenadas" style="width: 13%;">{{pres.capacidadInstaladaPorOperario}}</td>
                         <td style="width: 13%;"><input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion"></td>
                         <td class="autorellenadas" style="width: 13%;">{{pres.capacidadInstaladaUnidades}}</td>

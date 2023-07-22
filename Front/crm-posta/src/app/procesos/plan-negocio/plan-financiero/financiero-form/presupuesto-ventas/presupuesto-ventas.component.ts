@@ -100,29 +100,7 @@ export class PresupuestoVentasComponent implements OnInit {
   }
   agregarFila() {
 
-    /* agregarFila() {
-  const nuevoElemento = { nombre: '', ventas: '' };
-
-    this.estructuraMercado= new EstructuraMercado()
- this.estructuraMercado.cantidad=this.cantidad;
- this.estructuraMercado.producto=this.producto;
-   // this.elementos.push({ nombre: '', ventas: '' });
- this.presupuestoVenta.addElementos(this.estructuraMercado);
- console.log(this.presupuestoVenta);
-
-
-   }
-
-
-  // Verificar si el nuevo elemento ya existe en la lista
-  const elementoExistente = this.elementos.find(item => item.nombre === nuevoElemento.nombre && item.ventas === nuevoElemento.ventas);
-
-  // Agregar el nuevo elemento solo si no existe en la lista
-  if (!elementoExistente) {
-    this.elementos.push(nuevoElemento);
-  }
- */
-    // this.elementos.push({ nombre: '', ventas: '
+ 
 
 
     this.estructuraMercado = new EstructuraMercado();
@@ -132,18 +110,12 @@ export class PresupuestoVentasComponent implements OnInit {
     this.presupuestoVenta.estructuraMercado = this.estructuraMercados;
 
 
-    //console.log(this.estructuraMercados);
+  }
 
-
-
-
-    /*
-
-      this.estructuraMercado.cantidad=this.cantidad[];
-      this.estructuraMercado.producto=this.producto[];
-       this.businessPlanFinancial.presupuestoVenta.estructuraMercado.push(this.estructuraMercado);
-       */
-
+  //separa miles y dos decimales
+  formatNumberWithTwoDecimals(value: number): string {
+    const formattedValue = value.toFixed(2); // Redondear a dos decimales
+    return Number(formattedValue).toLocaleString(); // Agregar separador de miles
   }
 
   public llenarHoras() {

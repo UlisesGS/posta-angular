@@ -93,6 +93,8 @@ const routes:Routes=[
   {path:'calendario',component:CalendarioComponent},
   {path:'asesorias',component:AsesoriaListComponent},
   {path:'procesos',component:ProcesoListarComponent},
+
+  //Modelo Canvas
   {path:'segmento/cliente/:id',component:SegmentoComponent},
   {path:'propuestaDeValor/cliente/:id',component:PropuestaDeValorComponent},
   {path:'canales/cliente/:id',component:CanalesComponent},
@@ -102,7 +104,10 @@ const routes:Routes=[
   {path:'sociosClaves/cliente/:id',component:SociosClavesComponent},
   {path:'ingresos/cliente/:id',component:IngresosComponent},
   {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
+  
   {path:'procesos/ver/:id',component:VerProcesosComponent},
+
+  //Plan de Negocios
   {path:'informacion/cliente/:id',component:InformacionComponent},
   {path:'interno/cliente/:id',component:InternoComponent},
   {path:'dofa/cliente/:id',component:DofaComponent},
