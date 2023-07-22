@@ -18,11 +18,11 @@ export class EstructuraCostosModalComponent {
 
   ngOnInit(): void {
     console.log(this.proceso);
-    this.listaVariable=this.proceso.canvasModel.costStructure.variableCost;
+    this.listaVariable=this.proceso.canvasModel.costStructure.costosVariables;
     console.log(this.listaVariable);
     
-    this.listaFijo=this.proceso.canvasModel.costStructure.fixedCosts;
-    console.log(this.listaFijo);
+    this.listaFijo=this.proceso.canvasModel.costStructure.costosFijos;
+    console.log(this.listaFijo); 
     
     
   }

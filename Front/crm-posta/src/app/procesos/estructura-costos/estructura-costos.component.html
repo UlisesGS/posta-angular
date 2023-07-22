@@ -38,42 +38,46 @@
 
 
     </div>
-    <div class="col-2 mt-3">
+    <div class="col-7 mt-3">
       <label>Costo Variable
         <br>
-        <select [(ngModel)]="nuevaEntidad" class="form-select form-select-sm"
-            name="typeOfCompany" aria-label="Default select example" >
-            <option [ngValue]="undefined">--- Seleccionar Costo variables ---</option>
-            <option *ngFor="let e of listaCostos" [ngValue]="e">{{e.id}} || {{e.nameComponent}}</option>
-        </select>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" [(ngModel)]="nameComponent" placeholder="Tipo" >
+          </div>
+          <div class="col">
+            <input [(ngModel)]="amount" type="number" class="form-control" placeholder="Monto"  >
+          </div>
+          <div class="col">
+            <a (click)="agregarValor()" class="btn"><i class="fa-solid fa-plus"></i> Agregar</a>
+          </div>
+          
+        </div>
     </label>
-
-      <input [(ngModel)]="amount" type="number" class="form-control" placeholder="Monto">
-      <a (click)="agregarValor()" class="btn mt-2"><i class="fa-solid fa-plus"></i> Agregar</a>
-
       <ul>
         <li *ngFor="let entidad of listaBackend">
-          {{ entidad.nameComponent }} - {{ entidad.amount }}
+          {{ entidad.nameComponent }} - {{ entidad.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}
         </li>
       </ul>
     </div>
-    <div class="col-2 mt-3">
+    <div class="col-7 mt-3">
       <label>Costo Fijo
         <br>
-        <select [(ngModel)]="nuevaEntidad1" class="form-select form-select-sm"
-            name="typeOfCompany" aria-label="Default select example" >
-            <option [ngValue]="undefined">--- Seleccionar Costo Fijo ---</option>
-            <option *ngFor="let e of listaCostos" [ngValue]="e">{{e.id}} || {{e.nameComponent}}</option>
-        </select>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" [(ngModel)]="nameComponent1" placeholder="Tipo" >
+          </div>
+          <div class="col">
+            <input [(ngModel)]="amount1" type="number" class="form-control" placeholder="Monto"  >
+          </div>
+          <div class="col">
+            <a (click)="agregarValor1()" class="btn "><i class="fa-solid fa-plus"></i> Agregar</a>
+          </div>
+        </div>
     </label>
-
-
-      <input [(ngModel)]="amount1" type="number" class="form-control" placeholder="Monto">
-      <a (click)="agregarValor1()" class="btn mt-2"><i class="fa-solid fa-plus"></i> Agregar</a>
-
       <ul>
         <li *ngFor="let entidad1 of listaBackend2">
-          {{ entidad1.nameComponent }} - {{ entidad1.amount }}
+          {{ entidad1.nameComponent }} - {{ entidad1.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}
         </li>
       </ul>
     </div>

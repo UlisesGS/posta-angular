@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientComponent } from './client/client.component';
+import {CommonModule} from '@angular/common'
 
 import { FormsModule } from '@angular/forms';
 import { MunicipioComponent } from './municipio/municipio.component';
@@ -207,7 +208,7 @@ const routes:Routes=[
       DetallesComponent,
       PlanInversionComponent,
       ModalDetallesComponent,
-
+      
 
 
    ],
@@ -218,6 +219,7 @@ const routes:Routes=[
 
     FormsModule,
     RouterModule.forRoot(routes),
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
