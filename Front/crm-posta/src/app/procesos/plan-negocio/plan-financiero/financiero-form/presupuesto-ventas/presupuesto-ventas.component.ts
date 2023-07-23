@@ -13,6 +13,7 @@ import { CiclicidadVentas } from './../../CiclicidadVentas';
 
 import { PresupuestoVenta } from './../../PresupuestoVenta';
 import Swal from 'sweetalert2';
+import { EstructuraCompra } from './../../EstructuraCompras';
 
 
 @Component({
@@ -90,28 +91,48 @@ export class PresupuestoVentasComponent implements OnInit {
               if (proceso.canvasModel.client.id == this.cliente.id) {
                 this.proceso = proceso;
 
+
               }
             })
           })
 
         })
       }
+      let idEditar = +parametro.get('idEditar');
+      if (idEditar){
+        this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+          this.proceso= data;
+          this.presupuestoVenta=this.proceso.businessPlanFinancial.presupuestoVenta;
+          console.log(this.presupuestoVenta);
+          this.businessPlanFinancial= this.proceso.businessPlanFinancial;
+
+        })
+      }
     })
+
   }
   agregarFila() {
 
- 
+
 
 
     this.estructuraMercado = new EstructuraMercado();
     this.estructuraMercado.cantidad = this.cantidad;
     this.estructuraMercado.producto = this.producto;
-    this.estructuraMercados.push(this.estructuraMercado);
-    this.presupuestoVenta.estructuraMercado = this.estructuraMercados;
-
-
+   // this.estructuraMercados.push(this.estructuraMercado);
+   // this.presupuestoVenta.estructuraMercado = this.estructuraMercados;
+this.presupuestoVenta.estructuraMercado.push(this.estructuraMercado)
+this.cantidad=0;
+this,this.producto=""
   }
+  sacarItem(estructuraMercado:EstructuraMercado){
+    console.log(estructuraMercado);
 
+  //lista = lista.filter(item => item !== elementoAEliminar);
+  this.presupuestoVenta.estructuraMercado=this.presupuestoVenta.estructuraMercado.filter(item => item!== estructuraMercado);
+  this.cantidad=0;
+  this,this.producto=""
+}
   //separa miles y dos decimales
   formatNumberWithTwoDecimals(value: number): string {
     const formattedValue = value.toFixed(2); // Redondear a dos decimales
@@ -119,6 +140,7 @@ export class PresupuestoVentasComponent implements OnInit {
   }
 
   public llenarHoras() {
+console.log(this.presupuestoVenta.estructuraMercado);
 
     this.presupuestoVenta.totalCapacidadOperario = 0;
     this.presupuestoVenta.totalCapacidadInstalada = 0;
@@ -128,7 +150,16 @@ export class PresupuestoVentasComponent implements OnInit {
     this.presupuestoVenta.totalPrecioUnitario = 0;
     this.presupuestoVenta.totalTotal = 0;
     this.presupuestoVenta.estructuraMercado.forEach(e => {
-      e.calculos();
+      /* esto es una prueba para editar
+       this.unidadHoraHombre=(0.99*this.cantidad)/this.horasOperario;
+    this.capacidadInstaladaPorOperario=this.horasOperario*this.unidadHoraHombre;
+    this.capacidadInstaladaUnidades=this.capacidadInstaladaPorOperario*this.tiempoDecicacion;
+    this.precioTotal=this.precioUnitario*this.cantidad;
+      */
+     // e.calculos();
+     e.unidadHoraHombre=(0.99 * e.cantidad/e.horasOperario);
+     e.capacidadInstaladaPorOperario= e.horasOperario * e.unidadHoraHombre;
+     e.precioTotal = e.precioUnitario* e.cantidad;
       console.log(this.presupuestoVenta.totalCapacidadOperario);
 
       this.presupuestoVenta.totalCapacidadOperario += e.capacidadInstaladaPorOperario;
@@ -138,10 +169,10 @@ export class PresupuestoVentasComponent implements OnInit {
       this.presupuestoVenta.totalPrecioUnitario += e.precioUnitario;
       this.presupuestoVenta.totalTotal += e.precioTotal;
 
-
+    })
 
       this.presupuestoVenta.estructuraMercado.forEach(e => {
-        e.calculos();
+      //  e.calculos();
 
       })
 
@@ -150,7 +181,7 @@ export class PresupuestoVentasComponent implements OnInit {
       console.log(this.presupuestoVenta);
 
       /* CALCULAR  */
-    })
+
   }
 
 
