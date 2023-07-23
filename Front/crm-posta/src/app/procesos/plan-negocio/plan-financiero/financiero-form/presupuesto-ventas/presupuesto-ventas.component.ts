@@ -102,6 +102,9 @@ export class PresupuestoVentasComponent implements OnInit {
       if (idEditar){
         this.procesoService.procesosFindById(idEditar).subscribe(data=>{
           this.proceso= data;
+          this.proceso.businessPlanFinancial.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+            this.listaMes.push(c.calificacion);
+          })
           this.presupuestoVenta=this.proceso.businessPlanFinancial.presupuestoVenta;
           console.log(this.presupuestoVenta);
           this.businessPlanFinancial= this.proceso.businessPlanFinancial;
@@ -185,11 +188,21 @@ console.log(this.presupuestoVenta.estructuraMercado);
   }
 
 
+compararTipo(){
 
+}
 
 
   /* CALCULAR  */
+  compararMunicipio(o1: CiclicidadVentas, o2: CiclicidadVentas):boolean{
+    this.listaMes
 
+    if(o1 === undefined && o2 === undefined){
+      return true;
+    }
+
+     return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  }
 
   public llenarCiclicidad(e: any, mes: string) {
     /*
@@ -198,9 +211,12 @@ console.log(this.presupuestoVenta.estructuraMercado);
   */
     this.ciclicidad = new CiclicidadVentas();
     console.log(e.target.value);
+    console.log(mes);
+
     if (mes === 'enero') {
       this.ciclicidad.calificacion = +e.target.value
       this.ciclicidad.mes = mes;
+
       this.presupuestoVenta.ciclicidadVentas.forEach(c => {
         if (c.mes == mes) {
           this.presupuestoVenta.totalCalificacion = 0;
@@ -209,6 +225,8 @@ console.log(this.presupuestoVenta.estructuraMercado);
           this.valor1 = true;
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[0] = c;
+          console.log(this.presupuestoVenta.ciclicidadVentas[0]);
+
           this.presupuestoVenta.calculosCiclicidad();
         }
       })
@@ -555,5 +573,38 @@ console.log(this.presupuestoVenta.estructuraMercado);
 
 
 
+  }
+  editarYsalir(){
+    // no esta modificando
+    //this.proceso.estado = 'Presupuesto Venta';
+    console.log(this.proceso);
+
+    this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
+    this.planFinancieroService.planFinancialSave(this.businessPlanFinancial).subscribe(plan => {
+      this.businessPlanFinancial = plan;
+      this.proceso.businessPlanFinancial = this.businessPlanFinancial;
+      this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
+        this.proceso = pro;
+        this.router.navigate(['procesos']);
+        Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
+      })
+    })
+
+  }
+  editar(){
+    // no esta modificando
+  //  this.proceso.estado = 'Presupuesto Venta';
+    console.log(this.proceso);
+
+    this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
+
+    this.planFinancieroService.planFinancialSave(this.businessPlanFinancial).subscribe(plan => {
+      this.businessPlanFinancial = plan;
+      this.proceso.businessPlanFinancial = this.businessPlanFinancial;
+      this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
+        this.proceso = pro;
+        this.router.navigate([`compras/cliente/${this.proceso.canvasModel.client.id}`]);
+      })
+    })
   }
 }
