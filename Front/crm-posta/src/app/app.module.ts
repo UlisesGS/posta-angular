@@ -105,7 +105,7 @@ const routes:Routes=[
   {path:'sociosClaves/cliente/:id',component:SociosClavesComponent},
   {path:'ingresos/cliente/:id',component:IngresosComponent},
   {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
-  
+
   {path:'procesos/ver/:id',component:VerProcesosComponent},
 
   //Plan de Negocios
@@ -120,7 +120,7 @@ const routes:Routes=[
   {path:'gastos/cliente/:id',component:PresupuestoGastoComponent},
   {path:'inversion/cliente/:id',component:PlanInversionComponent},
 
-  
+
   // para editar
   // canvas
   {path:'segmento/cliente/:id/editar/:idEditar',component:SegmentoComponent},
@@ -143,6 +143,29 @@ const routes:Routes=[
   {path:'compras/cliente/:id/editar/:idEditar',component:PresupuestoFormComponent},
   {path:'gastos/cliente/:id/editar/:idEditar',component:PresupuestoGastoComponent},
   {path:'inversion/cliente/:id/editar/:idEditar',component:PlanInversionComponent},
+
+   // para ver
+  // canvas
+  {path:'segmento/cliente/:id/ver/:idVer',component:SegmentoComponent},
+  {path:'propuestaDeValor/cliente/:id/ver/:idVer',component:PropuestaDeValorComponent},
+  {path:'canales/cliente/:id/ver/:idVer',component:CanalesComponent},
+  {path:'relaciones/cliente/:id/ver/:idVer',component:RelacionesComponent},
+  {path:'recursosClaves/cliente/:id/ver/:idVer',component:RecursosClavesComponent},
+  {path:'actividadesClaves/cliente/:id/ver/:idVer',component:ActividadesClavesComponent},
+  {path:'sociosClaves/cliente/:id/ver/:idVer',component:SociosClavesComponent},
+  {path:'ingresos/cliente/:id/ver/:idVer',component:IngresosComponent},
+  {path:'estructuraCostos/cliente/:id/ver/:idVer',component:EstructuraCostosComponent},
+// plan basico
+  {path:'informacion/cliente/:id/ver/:idVer',component:InformacionComponent},
+  {path:'interno/cliente/:id/ver/:idVer',component:InternoComponent},
+  {path:'dofa/cliente/:id/ver/:idVer',component:DofaComponent},
+  {path:'conclusion/cliente/:id/ver/:idVer',component:ConclusionComponent},
+// plan financiero
+
+  {path:'ventas/cliente/:id/ver/:idVer',component:PresupuestoVentasComponent},
+  {path:'compras/cliente/:id/ver/:idVer',component:PresupuestoFormComponent},
+  {path:'gastos/cliente/:id/ver/:idVer',component:PresupuestoGastoComponent},
+  {path:'inversion/cliente/:id/ver/:idVer',component:PlanInversionComponent},
 ]
 
 @NgModule({
@@ -208,7 +231,7 @@ const routes:Routes=[
       DetallesComponent,
       PlanInversionComponent,
       ModalDetallesComponent,
-      
+
 
 
    ],
