@@ -1,56 +1,138 @@
-<div class="abrir-modal animacion fadeIn" style="align-items: center;">
-    <div class="modal" tabindex="-1" style="display:flex;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Estructura de costos</h5>
-                    <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <!-- <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2"> -->
-                    <div class="col">
+<div *ngIf="bool">
+    <div class="abrir-modal animacion fadeIn" style="align-items: center;">
+        <div class="modal" tabindex="-1" style="display:flex;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Estructura de costos</h5>
+                        <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+
+                    <div class="col" style="margin-top: 20px;">
                         <div class="row" style="padding-left: 10px;">
-                            <label for="" ><strong>Costos Variables</strong></label>
+                            <label for=""><strong>Costos Variables</strong></label>
                         </div>
                         <div class="row" style="padding-left: 10px;">
-                            <div  *ngFor="let varr of listaVariable">
-                                <p style="padding-left: 5px;">
-                                    <strong>{{varr.nameComponent}}:</strong> {{varr.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</p>
+                            <div *ngFor="let varr of listaVariable">
+                                <p>
+                                    <strong>{{varr.nameComponent}}:</strong> {{varr.amount.toLocaleString('en-US', {
+                                    style: 'currency', currency: 'USD' })}}
+                                </p>
                             </div>
                         </div>
                     </div>
-                    
-                    
-                <!-- </div> -->
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                    <div class="container" *ngFor="let varr of listaFijo">
-                        <label for=""><strong>Costos fijos</strong></label>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{varr.nameComponent}}</p>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{varr.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</p>
+                    <div class="col">
+                        <div class="row" style="padding-left: 10px;">
+                            <label for=""><strong>Costos fijos</strong></label>
+                        </div>
+                        <div class="row" style="padding-left: 10px;">
+                            <div *ngFor="let varr of listaFijo">
+                                <p>
+                                    <strong>{{varr.nameComponent}}:</strong> {{varr.amount.toLocaleString('en-US', {
+                                    style: 'currency', currency: 'USD' })}}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                    <div class="container">
-                        <label for=""><strong>Total variable costos</strong></label>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{proceso?.canvasModel?.costStructure?.totalCostosVariables.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</p>
+                    <div class="col">
+                        <div class="container">
+                            <label for=""><strong>Total Costos Variables</strong></label>
+                            <p>
+                                {{proceso?.canvasModel?.costStructure?.totalCostosVariables.toLocaleString('en-US', {
+                                style: 'currency', currency: 'USD' })}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                    <div class="container">
-                        <label for=""><strong>Total costos fijos</strong></label>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{proceso?.canvasModel?.costStructure?.totalCostosFijos.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</p>
+                    <div class="col">
+                        <div class="container">
+                            <label for=""><strong>Total Costos Fijos</strong></label>
+                            <p>
+                                {{proceso?.canvasModel?.costStructure?.totalCostosFijos.toLocaleString('en-US', { style:
+                                'currency', currency: 'USD' })}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-2">
-                    <div class="container">
-                        <label for=""><strong>Costo total</strong></label>
-                        <p style="border: solid 0.5px; border-radius: 0.5em; padding-left: 5px;">
-                            {{proceso?.canvasModel?.costStructure?.totalCostos.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</p>
+                    <div class="col">
+                        <div class="container">
+                            <label for=""><strong>Total de Costos</strong></label>
+                            <p>
+                                {{proceso?.canvasModel?.costStructure?.totalCostos.toLocaleString('en-US', { style:
+                                'currency', currency: 'USD' })}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div *ngIf="!bool">
+
+    <div class="abrir-modal animacion fadeIn" style="align-items: center;">
+        <div class="modal" tabindex="-1" style="display:flex;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Estructura de costos</h5>
+                        <button (click)="cerrarVerMas()" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+
+                    <div class="col mt-3" style="margin-left: 10px;">
+                        <label>Costo Variable
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" [(ngModel)]="nameComponent"
+                                        placeholder="Tipo">
+                                </div>
+                                <div class="col">
+                                    <input [(ngModel)]="amount" type="number" class="form-control" placeholder="Monto">
+                                </div>
+                                <div class="col">
+                                    <a (click)="agregarValor()" class="btn"><i class="fa-solid fa-plus"></i> Agregar</a>
+                                </div>
+
+                            </div>
+                        </label>
+                        <ul>
+                            <li *ngFor="let entidad of proceso?.canvasModel?.costStructure?.costosVariables">
+                                {{ entidad.nameComponent }} - {{ entidad.amount.toLocaleString('en-US', { style:
+                                'currency', currency: 'USD' }) }}
+                                <a (click)="eliminarVariable(entidad)" class="btn-close" style="margin-left: 10px;"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col mt-3" style="margin-left: 10px;">
+                        <label>Costo Fijo
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" [(ngModel)]="nameComponent1"
+                                        placeholder="Tipo">
+                                </div>
+                                <div class="col">
+                                    <input [(ngModel)]="amount1" type="number" class="form-control" placeholder="Monto">
+                                </div>
+                                <div class="col">
+                                    <a (click)="agregarValor1()" class="btn "><i class="fa-solid fa-plus"></i>
+                                        Agregar</a>
+                                </div>
+                            </div>
+                        </label>
+                        <ul>
+                            <li *ngFor="let entidad1 of proceso?.canvasModel?.costStructure?.costosFijos">
+                                {{ entidad1.nameComponent }} - {{ entidad1.amount.toLocaleString('en-US', { style:
+                                'currency', currency: 'USD' }) }}
+                                <a (click)="eliminarFijo(entidad1)" class="btn-close" style="margin-left: 10px;"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="position: absolute; bottom: 0;right: 0;">
+                        <a (click)="editar()" class="btn"><i class="fa-solid fa-plus"></i> Aceptar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button (click)="ver()">Ver</button>
+</div>

@@ -27,7 +27,7 @@
                         <button *ngIf="proceso?.canvasModel===null" class="btn btn-disabled" style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
                             <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
                           </button>
-                    </div>
+                    </div> 
                     <div style="margin: 10px;">
                         <button *ngIf="proceso?.canvasModel?.costStructure===null" class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
                             <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align" type="button" (click)="abrirTestAuto(proceso, 'finalizado', 'continuar', 'continuar', 'continuar')"></i>
@@ -60,13 +60,57 @@
                             <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i class="fa-solid fa-pen-to-square right-align" type="button" (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'finalizado', 'finalizado')"></i>
                           </button>
                     </div>
-                    <div style="margin: 10px;">
+                    <!-- <div style="margin: 10px;">
                         <button class="btn btn-disabled" style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
                             <span class="left-align">ACTA DE CIERRE</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
                           </button>
+                    </div> -->
+                    <div class="m-4">
+                      <a href="assets/CompromisoEmprendedor.pdf" target="_blank" (click)="imprimirCompromiso()"><i class="fa-solid fa-file fa-2xl"></i> Documento de Compromiso</a>
                     </div>
+                    <div class="m-4">
+                      <input type="file" (change)="onFileSelected($event)">
+                      <button (click)="uploadImage()">Subir Imagen</button>
+                    </div>
+                    <div class="m-4">
+                      <button (click)="getImageUrl()">Ver Ímagen</button>
+                    </div>
+                    <div class="m-4">
+                      <a *ngIf="imageUrl" [href]="imageUrl" target="_blank">Abrir imagen en otra pestaña</a>
+                    </div>
+                    <div class="m-4">
+                      <a href="assets/EncuestaEmprendedor.pdf" target="_blank" (click)="imprimirEncuesta()"><i class="fa-solid fa-file fa-2xl"></i> Encuesta de Satisfacción</a>
+                    </div>
+                    <div class="m-4">
+                      <input type="file" (change)="onFileSelected($event)">
+                      <button (click)="uploadImageEncuesta()">Subir Imagen</button>
+                    </div>
+                    <div class="m-4">
+                      <button (click)="getImageUrlEncuesta()">Ver Ímagen</button>
+                    </div>
+                    <div class="m-4">
+                      <a *ngIf="imageUrlEncuesta" [href]="imageUrlEncuesta" target="_blank">Abrir imagen en otra pestaña</a>
+                    </div>
+                    <div class="m-4">
+                      <a href="assets/ActaCierreEmprendedor.pdf" target="_blank" (click)="imprimirActa()"><i class="fa-solid fa-file fa-2xl"></i> Acta de Cierre</a>
+                    </div>
+                    <div class="m-4">
+                      <input type="file" (change)="onFileSelected($event)">
+                      <button (click)="uploadImageCierre()">Subir Imagen</button>
+                    </div>
+                    <div class="m-4">
+                      <button (click)="getImageUrlCierre()">Ver Ímagen</button>
+                    </div>
+                    <div class="m-4">
+                      <a *ngIf="imageUrlCierre" [href]="imageUrlCierre" target="_blank">Abrir imagen en otra pestaña</a>
+                    </div>
+                    
                 </div>
+                
+                
             </div>
         </div>
+        
     </div>
+    
 </div>
