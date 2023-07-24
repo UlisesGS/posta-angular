@@ -101,6 +101,9 @@ export class PresupuestoVentasComponent implements OnInit {
       let idEditar = +parametro.get('idEditar');
       if (idEditar){
         this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+          console.log(data);
+
+
           this.proceso= data;
           this.proceso.businessPlanFinancial.presupuestoVenta.ciclicidadVentas.forEach(c=>{
             this.listaMes.push(c.calificacion);
@@ -175,7 +178,7 @@ console.log(this.presupuestoVenta.estructuraMercado);
     })
 
       this.presupuestoVenta.estructuraMercado.forEach(e => {
-      //  e.calculos();
+        e.calculos();
 
       })
 
