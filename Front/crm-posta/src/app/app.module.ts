@@ -71,6 +71,7 @@ import { PresupuestoGastoComponent } from './procesos/plan-negocio/plan-financie
 import { DetallesComponent } from './client/detalles/detalles.component';
 import { PlanInversionComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/plan-inversion/plan-inversion.component';
 import { ModalDetallesComponent } from './client/detalles/modal-detalles/modal-detalles.component';
+import { VerPuntajeComponent } from './procesos/autoevaluacion/ver-puntaje/ver-puntaje.component';
 
 const routes:Routes=[
 
@@ -94,7 +95,7 @@ const routes:Routes=[
   {path:'calendario',component:CalendarioComponent},
   {path:'asesorias',component:AsesoriaListComponent},
   {path:'procesos',component:ProcesoListarComponent},
-
+  {path:'puntajeAutoevaluacion/cliente/:id', component:VerPuntajeComponent},
   //Modelo Canvas
   {path:'segmento/cliente/:id',component:SegmentoComponent},
   {path:'propuestaDeValor/cliente/:id',component:PropuestaDeValorComponent},
@@ -231,6 +232,7 @@ const routes:Routes=[
       DetallesComponent,
       PlanInversionComponent,
       ModalDetallesComponent,
+      VerPuntajeComponent,
 
 
 
