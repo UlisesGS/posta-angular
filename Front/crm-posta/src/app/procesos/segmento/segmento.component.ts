@@ -117,7 +117,7 @@ export class SegmentoComponent implements OnInit {
     })
   }
   public editar() {
-    this.proceso.estado = 'Segmento de Clientes';
+
     console.log(this.proceso);
     this.proceso.canvasModel.customerSegments = this.customerSegments
     this.procesoService.segmentoPut(this.proceso.canvasModel.customerSegments).subscribe(segmento => {
@@ -132,7 +132,7 @@ export class SegmentoComponent implements OnInit {
 
 
   public editarYsalir() {
-    this.proceso.estado = 'Segmento de Clientes';
+
     console.log(this.proceso);
     this.proceso.canvasModel.customerSegments = this.customerSegments
     this.procesoService.segmentoPut(this.proceso.canvasModel.customerSegments).subscribe(segmento => {

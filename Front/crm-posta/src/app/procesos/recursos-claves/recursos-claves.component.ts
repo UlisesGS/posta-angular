@@ -110,7 +110,7 @@ export class RecursosClavesComponent {
 
 
   public editar(){
-    this.proceso.estado='Recursos Claves';
+
     console.log(this.proceso);
     this.proceso.canvasModel.keyRecources=this.keyRecources
    this.procesoService.recursosClavesPut(this.proceso.canvasModel.keyRecources).subscribe(pro=>{
@@ -126,7 +126,7 @@ export class RecursosClavesComponent {
 
 
   public editarYsalir(){
-    this.proceso.estado='Recursos Claves';
+
     console.log(this.proceso);
     this.proceso.canvasModel.keyRecources=this.keyRecources
    this.procesoService.recursosClavesPut(this.proceso.canvasModel.keyRecources).subscribe(pro=>{

@@ -110,7 +110,7 @@ export class RelacionesComponent {
 
 
   public editar(){
-    this.proceso.estado='Relación con los Clientes';
+
     console.log(this.proceso);
     this.proceso.canvasModel.customerRelationships=this.customerRelationships
    this.procesoService.relacionesPut(this.proceso.canvasModel.customerRelationships).subscribe(relacion=>{
@@ -126,7 +126,7 @@ export class RelacionesComponent {
 
 
   public editarYsalir(){
-    this.proceso.estado='Relación con los Clientes';
+
     console.log(this.proceso);
     this.proceso.canvasModel.customerRelationships=this.customerRelationships
    this.procesoService.relacionesPut(this.proceso.canvasModel.customerRelationships).subscribe(relacion=>{
