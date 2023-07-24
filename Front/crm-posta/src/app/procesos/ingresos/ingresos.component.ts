@@ -111,7 +111,7 @@ export class IngresosComponent implements OnInit{
 
 
   public editar(){
-    this.proceso.estado='Ingresos';
+
     console.log(this.proceso);
     this.proceso.canvasModel.revenueStreams=this.revenueStreams
    this.procesoService.ingresosPut(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
@@ -127,7 +127,7 @@ export class IngresosComponent implements OnInit{
 
 
   public editarYsalir(){
-    this.proceso.estado='Ingresos';
+
     console.log(this.proceso);
     this.proceso.canvasModel.revenueStreams=this.revenueStreams
    this.procesoService.ingresosPut(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{

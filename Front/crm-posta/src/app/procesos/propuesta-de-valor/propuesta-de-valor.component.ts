@@ -109,7 +109,7 @@ export class PropuestaDeValorComponent {
 
 
   public editar(){
-    this.proceso.estado='Propuesta de Valor';
+
     console.log(this.proceso);
     this.proceso.canvasModel.valuePropositions=this.valuePropositions
    this.procesoService.propuestaValorPut(this.proceso.canvasModel.valuePropositions).subscribe(valor=>{
@@ -124,7 +124,7 @@ export class PropuestaDeValorComponent {
 
 
   public editarYsalir(){
-    this.proceso.estado='Propuesta de Valor';
+
     console.log(this.proceso);
     this.proceso.canvasModel.valuePropositions=this.valuePropositions
    this.procesoService.propuestaValorPut(this.proceso.canvasModel.valuePropositions).subscribe(valor=>{

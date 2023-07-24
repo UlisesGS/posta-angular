@@ -107,7 +107,7 @@ export class CanalesComponent {
 
 
   public editar(){
-    this.proceso.estado='Canales';
+ 
     console.log(this.proceso);
     this.proceso.canvasModel.channels=this.channels
    this.procesoService.canalesPut(this.proceso.canvasModel.channels).subscribe(canales=>{
@@ -122,7 +122,7 @@ export class CanalesComponent {
 
 
   public editarYsalir(){
-    this.proceso.estado='Canales';
+
     console.log(this.proceso);
     this.proceso.canvasModel.channels=this.channels
    this.procesoService.canalesPut(this.proceso.canvasModel.channels).subscribe(canales=>{

@@ -117,7 +117,7 @@ export class SociosClavesComponent {
 
 
   public editar(){
-    this.proceso.estado='Socios Claves';
+
     console.log(this.proceso);
     this.proceso.canvasModel.keyPartners=this.keyPartners
 
@@ -136,7 +136,7 @@ export class SociosClavesComponent {
 
 
   public editarYsalir(){
-    this.proceso.estado='Socios Claves';
+
     console.log(this.proceso);
     this.proceso.canvasModel.keyPartners=this.keyPartners
 
