@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./presupuesto-gasto.component.css']
 })
 export class PresupuestoGastoComponent {
-  
+
   materiaPrima1: Personal[] = []; // Inicializa la lista vacía o con elementos existentes
   materia1:Personal=new Personal();
   materiaPrima2: Personal[] = [];
@@ -55,7 +55,7 @@ export class PresupuestoGastoComponent {
 
 
   ngOnInit(): void {
-    
+
         this.rutaParametro.paramMap.subscribe(parametro => {
           let id = +parametro.get('id');
           if (id) {
@@ -67,8 +67,9 @@ export class PresupuestoGastoComponent {
                 this.procesos.forEach(proceso=>{
                   if(proceso.canvasModel.client.id==this.cliente.id){
                     this.proceso=proceso;
+                    console.log(proceso);
 
-                    
+
 
                   }
 
@@ -87,23 +88,23 @@ export class PresupuestoGastoComponent {
 
     this.materiaPrima1.push(this.materia1);
     console.log(this.materiaPrima1);
-    
+
     this.operativo.personal=this.materiaPrima1;
 
     this.operativo.subTotal=0;
     this.operativo.subTotalAnual=0;
-    
+
     this.operativo.parafiscalesCalculos();
     this.gastoCosto.operativo=this.operativo
 
 
     console.log(this.operativo);
-    
+
     this.materia1=new Personal();
   }
   agregarFila1() {
 
-    
+
 
     this.materia2.anual();
 
@@ -139,7 +140,7 @@ export class PresupuestoGastoComponent {
   //  this.proceso.businessPlanFinancial.gastoCosto.comercialVentas=this.gastoCosto.comercialVentas;
 
     console.log(this.proceso);
-    
+
 
     this.materia3=new Personal();
   }
@@ -195,7 +196,7 @@ export class PresupuestoGastoComponent {
 
     this.ventasL=new OtrosCostos();
   }
-  
+
 
 
   public guardarYsalir(){
@@ -205,17 +206,17 @@ export class PresupuestoGastoComponent {
     this.proceso.businessPlanFinancial.gastoCosto.administrativo=this.gastoCosto.administrativo;
 
    console.log(this.proceso);
-  
-  
+
+
     this.proceso.estado='Presupuesto Gastos/Costos';
 
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
       console.log(data1);
-      
+
     })
     this.planFinancialService.gastosPut(this.proceso.businessPlanFinancial).subscribe(data=>{
       console.log(data);
-      
+
     this.router.navigate(['/procesos'])
     Swal.fire('Exito', 'Presupuesto Gastos/Costos creado con exito', 'success');
 
@@ -228,17 +229,17 @@ export class PresupuestoGastoComponent {
     this.proceso.businessPlanFinancial.gastoCosto.operativo=this.gastoCosto.operativo;
     this.proceso.businessPlanFinancial.gastoCosto.administrativo=this.gastoCosto.administrativo;
    console.log(this.proceso);
-    
+
     this.proceso.estado='Presupuesto Gastos/Costos'
 
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
       console.log(data1);
-      
+
     })
 
     this.planFinancialService.gastosPut(this.proceso.businessPlanFinancial).subscribe(data=>{
       console.log(data);
-      
+
     this.router.navigate(['inversion/cliente/',this.cliente.id])
 
     })

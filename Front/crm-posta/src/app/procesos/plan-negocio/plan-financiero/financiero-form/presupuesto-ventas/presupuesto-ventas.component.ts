@@ -138,6 +138,7 @@ this,this.producto=""
   this.presupuestoVenta.estructuraMercado=this.presupuestoVenta.estructuraMercado.filter(item => item!== estructuraMercado);
   this.cantidad=0;
   this,this.producto=""
+
 }
   //separa miles y dos decimales
   formatNumberWithTwoDecimals(value: number): string {
@@ -156,6 +157,10 @@ console.log(this.presupuestoVenta.estructuraMercado);
     this.presupuestoVenta.totalPrecioUnitario = 0;
     this.presupuestoVenta.totalTotal = 0;
     this.presupuestoVenta.estructuraMercado.forEach(e => {
+
+
+
+
       /* esto es una prueba para editar
        this.unidadHoraHombre=(0.99*this.cantidad)/this.horasOperario;
     this.capacidadInstaladaPorOperario=this.horasOperario*this.unidadHoraHombre;
@@ -165,7 +170,9 @@ console.log(this.presupuestoVenta.estructuraMercado);
      // e.calculos();
      e.unidadHoraHombre=(0.99 * e.cantidad/e.horasOperario);
      e.capacidadInstaladaPorOperario= e.horasOperario * e.unidadHoraHombre;
+     e.capacidadInstaladaUnidades=e.capacidadInstaladaPorOperario*e.tiempoDecicacion;
      e.precioTotal = e.precioUnitario* e.cantidad;
+
       console.log(this.presupuestoVenta.totalCapacidadOperario);
 
       this.presupuestoVenta.totalCapacidadOperario += e.capacidadInstaladaPorOperario;
@@ -176,18 +183,21 @@ console.log(this.presupuestoVenta.estructuraMercado);
       this.presupuestoVenta.totalTotal += e.precioTotal;
 
     })
+if(this.presupuestoVenta.id){
 
+}else{
       this.presupuestoVenta.estructuraMercado.forEach(e => {
-        e.calculos();
+   //     e.calculos();
 
       })
 
-
+    }
+console.log(this.presupuestoVenta.totalCapacidadInstalada);
 
       console.log(this.presupuestoVenta);
 
       /* CALCULAR  */
-
+      
   }
 
 
