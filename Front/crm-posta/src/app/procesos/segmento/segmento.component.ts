@@ -39,6 +39,7 @@ export class SegmentoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.customerSegments=new CustomerSegments();
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
       if (id) {
@@ -54,11 +55,15 @@ export class SegmentoComponent implements OnInit {
                 // para editar
                 let idEditar = +parametro.get('idEditar');
                 if (idEditar) {
+                  console.log('entro al if');
                   this.procesoService.procesosFindById(idEditar).subscribe(data => {
                     //console.log(data);
 
                     this.proceso = data;
-                    this.customerSegments = this.proceso.canvasModel.customerSegments;
+                    this.customerSegments.comportanmiento = this.proceso.canvasModel.customerSegments.comportanmiento;
+                    this.customerSegments.demograficas = this.proceso.canvasModel.customerSegments.demograficas;
+                    this.customerSegments.geograficas = this.proceso.canvasModel.customerSegments.geograficas;
+                    this.customerSegments.psicograficas = this.proceso.canvasModel.customerSegments.psicograficas;
                     console.log(this.customerSegments);
 
                   })
