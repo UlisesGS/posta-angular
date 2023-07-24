@@ -29,26 +29,7 @@ export class AutoevaluacionComponent implements OnInit {
 
   ) { }
   ngOnInit(): void {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //this.cliente.canvas=this.canvas;
-    // console.log(this.cliente);
-    /*
-
-        //console.log(this.cliente);
-    */
+    
   }
 
   cerrarModalAsesoria(): void {
@@ -57,26 +38,7 @@ export class AutoevaluacionComponent implements OnInit {
   public guardar() {
     this.condicion = false;
     this.guardarProceso();
-    /*
-    this.guardarProceso();
-    console.log(this.preguntas);
-    this.selfAssessment.client = this.cliente;
-    this.selfAssessment.selfAssessment = this.preguntas;
-    console.log(this.selfAssessment);
-    this.clienteService.guardarPreguntas(this.selfAssessment).subscribe(data => {
-      console.log(data);
-
-      this.proceso.selfAssessment=data;
-      console.log(this.proceso);
-      this.proceso.estado="AutoEvaluación";
-      this.canvasService.procesosUpdate(this.proceso).subscribe(d=>{
-        this.router.navigate(['/segmento/cliente/',this.cliente.id]);
-
-      })
-
-    })
-
-*/
+   
 
   }
   public guardarProceso() {
@@ -115,7 +77,7 @@ export class AutoevaluacionComponent implements OnInit {
                 if (this.condicion) {
                   console.log(this.condicion);
 
-                  this.router.navigate(['procesos']);
+                  this.router.navigate(['puntajeAutoevaluacion/cliente/',this.cliente.id]);
                   Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
                 } else {
                   this.router.navigate(['/segmento/cliente/', this.cliente.id]);

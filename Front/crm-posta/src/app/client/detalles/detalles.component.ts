@@ -23,7 +23,9 @@ export class DetallesComponent {
   negociosB:string;
   financieroB:string;
 
-
+  compromiso:boolean=false;
+  encuesta:boolean=false;
+  cierre:boolean=false;
 
   constructor(
     private procesoService: ProcesoService,
@@ -117,11 +119,7 @@ export class DetallesComponent {
     );
   }
 
-  // getImageUrl() {
-  //   console.log(this.imageUrl);
-    
-  //   this.imageUrl = this.imagenService.getImageUrl(this.proceso);
-  // }
+
 
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
@@ -137,7 +135,9 @@ export class DetallesComponent {
               
               if (proceso.canvasModel.client.id == this.cliente.id) {
                 this.proceso = proceso;
-               
+                this.getImageUrl();
+                this.getImageUrlCierre();
+                this.getImageUrlEncuesta();
               }
             })
           })
@@ -145,6 +145,7 @@ export class DetallesComponent {
         })
       }
     })
+    
   }
 
 
@@ -205,6 +206,28 @@ export class DetallesComponent {
     setTimeout(() => {
       document.body.removeChild(iframe);
     }, 1000); // Esperar un segundo antes de eliminar el iframe
+  }
+
+  condicionCompromiso(){
+    if(this.compromiso){
+      this.compromiso=false;
+    }else{
+      this.compromiso=true;
+    }
+  }
+  condicionEncuesta(){
+    if(this.encuesta){
+      this.encuesta=false;
+    }else{
+      this.encuesta=true;
+    }
+  }
+  condicionCierre(){
+    if(this.cierre){
+      this.cierre=false;
+    }else{
+      this.cierre=true;
+    }
   }
 
 }

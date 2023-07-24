@@ -175,7 +175,7 @@ console.log(this.presupuestoVenta.estructuraMercado);
     })
 
       this.presupuestoVenta.estructuraMercado.forEach(e => {
-      //  e.calculos();
+        e.calculos();
 
       })
 
