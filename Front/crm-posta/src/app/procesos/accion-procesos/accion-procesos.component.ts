@@ -2,19 +2,30 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalService } from 'src/app/client/modal.service';
 import { Process } from '../Process';
 import { Router } from '@angular/router';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import pdfMake from 'pdfmake/build/pdfmake';
 
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-accion-procesos',
   templateUrl: './accion-procesos.component.html',
   styleUrls: ['./accion-procesos.component.css']
 })
 export class AccionProcesosComponent implements OnInit {
+  
 
   @Input()proceso:Process = new Process();
+  
+  imageUrl ="/assets/camaraHD.jpg";
 
   constructor(
     public modal:ModalService,
-    private ruta:Router){}
+    private ruta:Router,
+    private http:HttpClient,
+    
+    ){}
+    
   ngOnInit(): void {
 
   }
@@ -107,4 +118,7 @@ export class AccionProcesosComponent implements OnInit {
     }
     this.modal.cerrarModalProceso();
   }
+
+ 
+  
 }
