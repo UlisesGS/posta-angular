@@ -44,7 +44,7 @@ export class CanalesComponent {
                 
                 // para editar
                 let idEditar = +parametro.get('idEditar');
-                console.log('no entro al if');
+                console.log('entro al if');
                 
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
