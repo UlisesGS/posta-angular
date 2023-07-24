@@ -2,25 +2,25 @@ import { CostComponent } from "./CostComponent";
 
 export class CostStructure {
 id:number;
-variableCost:CostComponent[];
-fixedCosts:CostComponent[];
-totalVariableCosts:number=0;
+costosVariables:CostComponent[];
+costosFijos:CostComponent[];
+totalCostosVariables:number=0;
 
-totalfixedCosts:number=0;
-totalCost:number=0;
+totalCostosFijos:number=0;
+totalCostos:number=0;
 
 totalVariable(){
-  this.variableCost.forEach(variable=>{
-    this.totalVariableCosts+=variable.amount;
+  this.costosVariables.forEach(variable=>{
+    this.totalCostosVariables+=variable.amount;
   })
 }
 totalFijo(){
-  this.fixedCosts.forEach(fixed=>{
-    this.totalfixedCosts+=fixed.amount;
+  this.costosFijos.forEach(fixed=>{
+    this.totalCostosFijos+=fixed.amount;
   })
 }
 total(){
-  this.totalCost=this.totalVariableCosts+this.totalfixedCosts
+  this.totalCostos=this.totalCostosVariables+this.totalCostosFijos
 }
 
 }

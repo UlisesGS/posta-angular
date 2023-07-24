@@ -9,6 +9,7 @@ import { ProcesoService } from '../proceso.service';
 import Swal from 'sweetalert2';
 import { Process } from '../Process';
 
+
 @Component({
   selector: 'app-estructura-costos',
   templateUrl: './estructura-costos.component.html',
@@ -17,34 +18,37 @@ import { Process } from '../Process';
 export class EstructuraCostosComponent {
 
   cliente: Client = new Client()
-  value:boolean;
+  value: boolean;
   //Cost Component
   listaBackend: CostComponent[] = [];
   listaBackend2: CostComponent[] = [];
-  amount:number;
+  amount: number;
   nameComponent: string;
-  amount1:number;
+  amount1: number;
   nameComponent1: string;
-  id:number;
-  costoEntidad:CostStructure  = new CostStructure;
-  listaCostos:CostComponent[]=[];
-  nuevaEntidad:CostComponent= new CostComponent;
-  nuevaEntidad1:CostComponent= new CostComponent;
-  proceso:Process= new Process;
+  id: number;
+  costoEntidad: CostStructure = new CostStructure;
+  listaCostos: CostComponent[] = [];
+  nuevaEntidad: CostComponent = new CostComponent;
+  nuevaEntidad1: CostComponent = new CostComponent;
+  proceso: Process = new Process;
 
-  procesos:Process[]=[];
+  procesos: Process[] = [];
   constructor(private modalService: ModalService,
-     private clienteService: ClientService,
-     private rutaParametro: ActivatedRoute,
-     private procesoService:ProcesoService,
-     private router:Router,
-     ) { }
+    private clienteService: ClientService,
+    private rutaParametro: ActivatedRoute,
+    private procesoService: ProcesoService,
+    private router: Router,
+    
+  ) {
+    
+   }
 
   ngOnInit(): void {
 
 
-    this.procesoService.costosTodos().subscribe(data=>{
-      this.listaCostos= data;
+    this.procesoService.costosTodos().subscribe(data => {
+      this.listaCostos = data;
     })
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
@@ -52,16 +56,16 @@ export class EstructuraCostosComponent {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
           console.log(data);
-          this.procesoService.procesosFindAll().subscribe(p=>{
+          this.procesoService.procesosFindAll().subscribe(p => {
 
-            this.procesos=p;
-            this.procesos.forEach(proceso=>{
-              if(proceso.canvasModel.client.id==this.cliente.id){
-                this.proceso=proceso;
+            this.procesos = p;
+            this.procesos.forEach(proceso => {
+              if (proceso.canvasModel.client.id == this.cliente.id) {
+                this.proceso = proceso;
                 console.log(this.proceso);
 
               }
- 
+
             })
           })
         })
@@ -75,54 +79,48 @@ export class EstructuraCostosComponent {
   }
 
 
-  cambiarCondicion(){
-    if(this.value){
-      this.value=false;
-     }else{
-       this.value=true;
-     }
+  cambiarCondicion() {
+    if (this.value) {
+      this.value = false;
+    } else {
+      this.value = true;
+    }
   }
 
   agregarValor() {
-    /*
-    const nuevaEntidad: CostComponent = {
-      id:this.id,
-      amount: this.amount,
-      nameComponent: this.nameComponent
-    };
-    this.listaBackend.push(nuevaEntidad);
-    this.amount;
-    this.nameComponent;
-    console.log(this.listaBackend);
-*/
-this.nuevaEntidad.amount=this.amount;
-this.listaBackend.push(this.nuevaEntidad);
-console.log(this.listaBackend);
+    this.nuevaEntidad= new CostComponent;
+     this.nuevaEntidad.amount=this.amount;
+     this.nuevaEntidad.nameComponent=this.nameComponent;
+     this.listaBackend.push(this.nuevaEntidad);
+     console.log(this.listaBackend);
 
+    
 
   }
   agregarValor1() {
-    this.nuevaEntidad1.amount=this.amount1;
-this.listaBackend2.push(this.nuevaEntidad1);
-console.log(this.listaBackend2);
+    this.nuevaEntidad1= new CostComponent;
+    this.nuevaEntidad1.amount = this.amount1;
+    this.nuevaEntidad1.nameComponent = this.nameComponent1;
+    this.listaBackend2.push(this.nuevaEntidad1);
+    console.log(this.listaBackend2);
 
   }
-  guardarYSalir(){
+  guardarYSalir() {
     //this.proceso.terminado=true;
-    this.proceso.estado='Estructura Costos';
-    this.costoEntidad.fixedCosts=this.listaBackend2;
-    this.costoEntidad.variableCost= this.listaBackend;
+    this.proceso.estado = 'Estructura Costos';
+    this.costoEntidad.costosFijos = this.listaBackend2;
+    this.costoEntidad.costosVariables = this.listaBackend;
     this.costoEntidad.totalVariable();
     this.costoEntidad.totalFijo();
     this.costoEntidad.total();
     console.log(this.costoEntidad);
-    this.proceso.canvasModel.costStructure=this.costoEntidad;
+    this.proceso.canvasModel.costStructure = this.costoEntidad;
     console.log(this.costoEntidad);
 
-    this.procesoService.estructuraCostoSave(this.costoEntidad).subscribe(costo=>{
-      this.proceso.canvasModel.costStructure=costo;
-      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
-        this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+    this.procesoService.estructuraCostoSave(this.costoEntidad).subscribe(costo => {
+      this.proceso.canvasModel.costStructure = costo;
+      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
+        this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
           this.router.navigate(['procesos'])
           console.log(this.proceso);
 
@@ -131,7 +129,7 @@ console.log(this.listaBackend2);
       })
 
 
-    }, e=>{
+    }, e => {
       console.log(e);
 
       //Swal.fire('Exito: ', `${e}`, 'success');
@@ -139,38 +137,70 @@ console.log(this.listaBackend2);
 
 
   }
-  guardar(){
-    //this.proceso.terminado=true;
-    this.proceso.estado='Estructura Costos';
-    this.costoEntidad.fixedCosts=this.listaBackend2;
-    this.costoEntidad.variableCost= this.listaBackend;
+  // guardar() {
+  //   //this.proceso.terminado=true;
+  //   this.proceso.estado = 'Estructura Costos';
+  //   this.costoEntidad.costosFijos = this.listaBackend2;
+  //   this.costoEntidad.costosVariables = this.listaBackend;
+  //   this.costoEntidad.totalVariable();
+  //   this.costoEntidad.totalFijo();
+  //   this.costoEntidad.total();
+  //   console.log(this.costoEntidad);
+
+  //   this.proceso.canvasModel.costStructure = this.costoEntidad;
+
+  //   this.procesoService.estructuraCostoSave(this.costoEntidad).subscribe(costo => {
+  //     console.log(costo);
+      
+  //     this.proceso.canvasModel.costStructure = costo;
+  //     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
+  //       this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
+  //         this.router.navigate(['/informacion/cliente/', this.cliente.id]);
+  //         console.log(this.proceso);
+
+  //         Swal.fire('Exito', 'Estructura costos creado con exito', 'success');
+  //       })
+  //     })
+
+
+  //   }, e => {
+  //     console.log(e);
+
+  //     //Swal.fire('Exito: ', `${e}`, 'success');
+  //   })
+  guardar() {
+    this.proceso.estado = 'Estructura Costos';
+    this.costoEntidad.costosFijos = this.listaBackend2;
+    this.costoEntidad.costosVariables = this.listaBackend;
     this.costoEntidad.totalVariable();
     this.costoEntidad.totalFijo();
     this.costoEntidad.total();
     console.log(this.costoEntidad);
-    this.proceso.canvasModel.costStructure=this.costoEntidad;
-    this.procesoService.estructuraCostoSave(this.costoEntidad).subscribe(costo=>{
-      this.proceso.canvasModel.costStructure=costo;
-      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
-        this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+  
+    this.proceso.canvasModel.costStructure = this.costoEntidad;
+  
+    this.procesoService.estructuraCostoSave(this.costoEntidad).subscribe(costo => {
+      console.log(costo); // Verifica la respuesta del servidor
+  
+      this.proceso.canvasModel.costStructure = costo; // Usa el objeto 'costo' recibido en lugar de 'this.costoEntidad'
+      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
+        this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
           this.router.navigate(['/informacion/cliente/', this.cliente.id]);
           console.log(this.proceso);
-
+  
           Swal.fire('Exito', 'Estructura costos creado con exito', 'success');
-        })
-      })
-
-
-    }, e=>{
+        });
+      });
+    }, e => {
       console.log(e);
-
-      //Swal.fire('Exito: ', `${e}`, 'success');
-    })
-
-
+      // Swal.fire('Exito: ', `${e}`, 'success');
+    });
   }
 
 
+  }
+//probando dar formato moneda a los input
 
 
-}
+
+

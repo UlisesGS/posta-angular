@@ -15,28 +15,28 @@ import Swal from 'sweetalert2';
   styleUrls: ['./segmento.component.css']
 })
 export class SegmentoComponent implements OnInit {
-/*
-export class CustomerSegments {
-  id:number;
-  demograficas:string;
-  geograficas:string;
-  psicograficas:string;
-  comportanmiento:string;
+  /*
+  export class CustomerSegments {
+    id:number;
+    demograficas:string;
+    geograficas:string;
+    psicograficas:string;
+    comportanmiento:string;
 
-}
-*/
-  customerSegments:CustomerSegments= new CustomerSegments();
-  proceso:Process= new Process;
+  }
+  */
+  customerSegments: CustomerSegments = new CustomerSegments();
+  proceso: Process = new Process;
 
-  procesos:Process[]=[];
+  procesos: Process[] = [];
   cliente: Client = new Client()
-  value:boolean;
+  value: boolean;
   constructor(private modalService: ModalService,
-     private clienteService: ClientService,
-      private rutaParametro: ActivatedRoute,
-      private procesoService:ProcesoService,
-      private router:Router,
-      ) { }
+    private clienteService: ClientService,
+    private rutaParametro: ActivatedRoute,
+    private procesoService: ProcesoService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
@@ -44,24 +44,28 @@ export class CustomerSegments {
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          console.log(data);
-          this.procesoService.procesosFindAll().subscribe(p=>{
+          //console.log(data);
+          this.procesoService.procesosFindAll().subscribe(p => {
 
-            this.procesos=p;
-            this.procesos.forEach(proceso=>{
-              this.proceso=proceso;
-              if(proceso.canvasModel.client.id==this.cliente.id){
+            this.procesos = p;
+            this.procesos.forEach(proceso => {
+              this.proceso = proceso;
+              if (proceso.canvasModel.client.id == this.cliente.id) {
                 // para editar
                 let idEditar = +parametro.get('idEditar');
-                if(idEditar){
-                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
-                    this.proceso=data;
-                    this.customerSegments=this.proceso.canvasModel.customerSegments;
+                if (idEditar) {
+                  this.procesoService.procesosFindById(idEditar).subscribe(data => {
+                    //console.log(data);
+
+                    this.proceso = data;
+                    this.customerSegments = this.proceso.canvasModel.customerSegments;
+                    console.log(this.customerSegments);
+
                   })
                 }
 
 
-                console.log(proceso);
+                //   console.log(proceso);
 
               }
             })
@@ -76,69 +80,69 @@ export class CustomerSegments {
   }
 
 
-  cambiarCondicion(){
-    if(this.value){
-      this.value=false;
-     }else{
-       this.value=true;
-     }
+  cambiarCondicion() {
+    if (this.value) {
+      this.value = false;
+    } else {
+      this.value = true;
+    }
   }
-  public guardar(){
-    this.proceso.estado='Segmento de Clientes';
+  public guardar() {
+    this.proceso.estado = 'Segmento de Clientes';
     console.log(this.proceso);
-    this.proceso.canvasModel.customerSegments=this.customerSegments
-   this.procesoService.segmentoSave(this.proceso.canvasModel.customerSegments).subscribe(segmento=>{
-    this.proceso.canvasModel.customerSegments=segmento;
-    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
-      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        this.router.navigate(['/propuestaDeValor/cliente/', this.cliente.id])
+    this.proceso.canvasModel.customerSegments = this.customerSegments
+    this.procesoService.segmentoSave(this.proceso.canvasModel.customerSegments).subscribe(segmento => {
+      this.proceso.canvasModel.customerSegments = segmento;
+      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
+        this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
+          this.router.navigate(['/propuestaDeValor/cliente/', this.cliente.id])
+        })
       })
     })
-   })
-  }
-
-
-  public guardarYsalir(){
-    this.proceso.estado='Segmento de Clientes';
-    console.log(this.proceso);
-    this.proceso.canvasModel.customerSegments=this.customerSegments
-   this.procesoService.segmentoSave(this.proceso.canvasModel.customerSegments).subscribe(segmento=>{
-    this.proceso.canvasModel.customerSegments=segmento;
-    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
-      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        this.router.navigate(['procesos'])
-        Swal.fire('Exito', 'Segmento creado con exito', 'success');
-      })
-    })
-   })
-  }
-  public editar(){
-    this.proceso.estado='Segmento de Clientes';
-    console.log(this.proceso);
-    this.proceso.canvasModel.customerSegments=this.customerSegments
-   this.procesoService.segmentoPut(this.proceso.canvasModel.customerSegments).subscribe(segmento=>{
-    this.proceso.canvasModel.customerSegments=segmento;
-    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
-      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        this.router.navigate(['/propuestaDeValor/cliente/', this.cliente.id])
-      })
-    })
-   })
   }
 
 
-  public editarYsalir(){
-    this.proceso.estado='Segmento de Clientes';
+  public guardarYsalir() {
+    this.proceso.estado = 'Segmento de Clientes';
     console.log(this.proceso);
-    this.proceso.canvasModel.customerSegments=this.customerSegments
-   this.procesoService.segmentoPut(this.proceso.canvasModel.customerSegments).subscribe(segmento=>{
-    this.proceso.canvasModel.customerSegments=segmento;
-    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
-      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        this.router.navigate(['procesos'])
-        Swal.fire('Exito', 'Segmento editado con exito', 'success');
+    this.proceso.canvasModel.customerSegments = this.customerSegments
+    this.procesoService.segmentoSave(this.proceso.canvasModel.customerSegments).subscribe(segmento => {
+      this.proceso.canvasModel.customerSegments = segmento;
+      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
+        this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
+          this.router.navigate(['procesos'])
+          Swal.fire('Exito', 'Segmento creado con exito', 'success');
+        })
       })
     })
-   })
+  }
+  public editar() {
+    this.proceso.estado = 'Segmento de Clientes';
+    console.log(this.proceso);
+    this.proceso.canvasModel.customerSegments = this.customerSegments
+    this.procesoService.segmentoPut(this.proceso.canvasModel.customerSegments).subscribe(segmento => {
+      this.proceso.canvasModel.customerSegments = segmento;
+      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
+        this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
+          this.router.navigate(['/propuestaDeValor/cliente/', this.cliente.id])
+        })
+      })
+    })
+  }
+
+
+  public editarYsalir() {
+    this.proceso.estado = 'Segmento de Clientes';
+    console.log(this.proceso);
+    this.proceso.canvasModel.customerSegments = this.customerSegments
+    this.procesoService.segmentoPut(this.proceso.canvasModel.customerSegments).subscribe(segmento => {
+      this.proceso.canvasModel.customerSegments = segmento;
+      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
+        this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
+          this.router.navigate(['procesos'])
+          Swal.fire('Exito', 'Segmento editado con exito', 'success');
+        })
+      })
+    })
   }
 }
