@@ -12,6 +12,7 @@ import { KeyPartners } from './KeyPartners';
 import { RevenueStreams } from './RevenueStreams';
 import { CostStructure } from './CostStructure';
 import { KeyActivities } from './KeyActivities';
+import { URL } from './../url';
 
 
 
@@ -20,11 +21,11 @@ import { KeyActivities } from './KeyActivities';
 })
 export class ProcesoService {
 
-  private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/canvas"
+  //private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/canvas"
 
-  //private urlEndPoint:string="http://localhost:8080/canvas";
-   private urlProcesos:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/process"
- // private urlProcesos:string="http://localhost:8080/process";
+  private urlEndPoint:string=`${URL}/canvas`;
+  // private urlProcesos:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/process"
+  private urlProcesos:string=`${URL}/process`;
   constructor(private http:HttpClient) { }
 // procesos
 public procesosFindAllUltimo():Observable<any>{
