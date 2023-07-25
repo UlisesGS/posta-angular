@@ -129,6 +129,7 @@
           <button (click)="guardarYsalir()"  class="btn">Guardar</button>
           <button (click)="guardar()" class="btn">Guardar y Continuar</button>
           <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
+          <button [routerLink]="['/gastos/cliente/',cliente.id,'editar', proceso?.id]"  class="btn">Volver</button>
         </div>
     </div>
 </div>

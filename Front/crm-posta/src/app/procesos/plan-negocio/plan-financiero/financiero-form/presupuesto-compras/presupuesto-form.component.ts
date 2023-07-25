@@ -27,6 +27,7 @@ export class PresupuestoFormComponent implements OnInit {
   cantidadUnidad: number[] = [];
   totalUnitario: number[] = [];
   cantidadP: number = 0;
+  idEditar:number;
   cliente: Client = new Client;
   procesos: Process[] = [];
   proceso: Process = new Process;
@@ -45,12 +46,12 @@ export class PresupuestoFormComponent implements OnInit {
     ;
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
-      let idEditar = + parametro.get('idEditar');
-      if (idEditar) {
+      this.idEditar = + parametro.get('idEditar');
+      if (this.idEditar) {
         this.procesoService.procesosFindAll().subscribe(data=>{
           this.procesos=data;
           this.procesos.forEach(p => {
-            if (p.id == idEditar) {
+            if (p.id == this.idEditar) {
               this.proceso = p;
               console.log(this.proceso);
               //this.presupuestoCompra= this.proceso.businessPlanFinancial.presupuestoCompra;
@@ -63,7 +64,7 @@ export class PresupuestoFormComponent implements OnInit {
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          if (idEditar) {
+          if (this.idEditar) {
 console.log("estoy editando");
 
           } else {
@@ -97,7 +98,18 @@ console.log('no estoy editando');
   //procesos?.businessPlanFinancial?.presupuestoVenta?.estructuraMercado
   elementos: any[] = []; // Inicializa la lista vacía o con elementos existentes
 
+sacarFila(presupuestoCompra:PresupuestoCompra,e:EstructuraCompra){
+ // this.estructuraCompra= new EstructuraCompra()
+  console.log(presupuestoCompra);
+  console.log(e);
+  this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pre=>{
+  pre.estructuraCompras=  pre.estructuraCompras.filter(estructura=>estructura!=e);
+  })
 
+
+
+ //this.presupuestoCompra.estructuraCompras=this.proceso.businessPlanFinancial.presupuestoCompra
+}
   agregarFila(producto: string) {
     this.totalUnitarios = 0
     this.totalAnuales = 0
@@ -203,6 +215,33 @@ console.log('no estoy editando');
       console.log(data);
 
       this.router.navigate(['gastos/cliente/', this.cliente.id])
+
+    })
+
+  }
+  editar(){
+    this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
+      console.log(data1);
+
+    })
+
+    this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data => {
+      console.log(data);
+
+      this.router.navigate(['gastos/cliente/', this.cliente.id])
+
+    })
+  }
+  editarYsalir(){
+    this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
+      console.log(data1);
+
+    })
+    this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data => {
+      console.log(data);
+
+      this.router.navigate(['/procesos'])
+      Swal.fire('Exito', 'Presupuesto Compra Editado con exito', 'success');
 
     })
 

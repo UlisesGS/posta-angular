@@ -21,6 +21,8 @@
                                         <th>Cargo</th>
                                         <th>Salario Mensual $</th>
                                         <th>Salario Año 1</th>
+                                        <th>Accion</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,6 +39,7 @@
                                         <td>{{i.cargo}}</td>
                                         <td>{{i.salarioMensual}}</td>
                                         <td>{{i.salariaAnual}}</td>
+                                        <td><button (click)="sacarOperativo(i)" class="btn-close "></button></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -99,6 +102,7 @@
                                         <th>Cargo</th>
                                         <th>Salario Mensual $</th>
                                         <th>Salario Año 1</th>
+                                        <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -115,6 +119,7 @@
                                         <td>{{i.cargo}}</td>
                                         <td>{{i.salarioMensual}}</td>
                                         <td>{{i.salariaAnual}}</td>
+                                        <td><button (click)="sacarAdministrativo(i)" class="btn-close "></button></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -177,6 +182,8 @@
                                         <th>Cargo</th>
                                         <th>Salario Mensual $</th>
                                         <th>Salario Año 1</th>
+                                        <th>Accion</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -193,6 +200,7 @@
                                         <td>{{i.cargo}}</td>
                                         <td>{{i.salarioMensual}}</td>
                                         <td>{{i.salariaAnual}}</td>
+                                        <td><button (click)="sacarVentas(i)" class="btn-close "></button></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -350,6 +358,7 @@
                                         <th>Concepto</th>
                                         <th>Mensual $</th>
                                         <th>Año 1</th>
+                                        <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -366,6 +375,7 @@
                                         <td>{{i.concepto}}</td>
                                         <td>{{i.gastoMensual}}</td>
                                         <td>{{i.gastoAnual}}</td>
+                                        <td><button (click)="sacarOperativoCostos(i)" class="btn-close "></button></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -393,6 +403,7 @@
                                         <th>Concepto</th>
                                         <th>Mensual $</th>
                                         <th>Año 1</th>
+                                        <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -409,6 +420,7 @@
                                         <td>{{i.concepto}}</td>
                                         <td>{{i.gastoMensual}}</td>
                                         <td>{{i.gastoAnual}}</td>
+                                        <td><button (click)="sacarAdministrativoCostos(i)" class="btn-close "></button></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -436,6 +448,7 @@
                                         <th>Concepto</th>
                                         <th>Mensual $</th>
                                         <th>Año 1</th>
+                                        <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -443,6 +456,7 @@
                                         <td><input type="text" [(ngModel)]="ventasL.concepto"></td>
                                         <td><input type="number" step="any" [(ngModel)]="ventasL.gastoMensual"></td>
                                         <td class="autorellenadas">{{ventasL.gastoAnual}}</td>
+
                                     </tr>
                                     <tr>
                                         <td colspan="3" class="add-row"><a (click)="agregarGastoVenta()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
@@ -452,6 +466,7 @@
                                         <td>{{i.concepto}}</td>
                                         <td>{{i.gastoMensual}}</td>
                                         <td>{{i.gastoAnual}}</td>
+                                        <td><button (click)="sacarVentaCostos(i)" class="btn-close "></button></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -469,9 +484,10 @@
 
         </div>
         <div class="form-group mt-3">
-            <button (click)="guardarYsalir()"  class="btn">Guardar</button>
-            <button (click)="guardar()" class="btn">Guardar y Continuar</button>
-            <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
+          <button *ngIf="!idEditar" (click)="guardarYsalir()"  class="btn">Guardar</button>
+          <button *ngIf="!idEditar"(click)="guardar()" class="btn">Guardar y Continuar</button>
+          <button *ngIf="idEditar" (click)="editarYsalir()"  class="btn">Editar</button>
+          <button *ngIf="idEditar" (click)="editar()" class="btn">Editar y Continuar</button>
             <button [routerLink]="['/compras/cliente/',cliente.id,'editar', proceso?.id]"  class="btn">Volver</button>
           </div>
     </div>
