@@ -13,13 +13,15 @@ export class UsuarioService implements OnInit{
 
   constructor(private http:HttpClient,
     private modalService:ModalService) { }
+
  // private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/users";
   private urlEndPoint:string=`${URL}/users`;
+
   private httpHeader=new HttpHeaders({'Content-Type':'application/json'});
 
   ngOnInit(): void {
 
-  }
+  } 
 
 
   /* TODOS LOS GET */

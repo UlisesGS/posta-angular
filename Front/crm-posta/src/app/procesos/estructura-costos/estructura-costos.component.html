@@ -57,6 +57,7 @@
       <ul>
         <li *ngFor="let entidad of listaBackend">
           {{ entidad.nameComponent }} - {{ entidad.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}
+          <a (click)="eliminarVariable(entidad)" class="btn-close" style="margin-left: 10px;"></a>
         </li>
       </ul>
     </div>
@@ -78,16 +79,20 @@
       <ul>
         <li *ngFor="let entidad1 of listaBackend2">
           {{ entidad1.nameComponent }} - {{ entidad1.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}
+          <a (click)="eliminarFijo(entidad1)" class="btn-close" style="margin-left: 10px;"></a>
         </li>
       </ul>
     </div>
 
     <div class="form-group">
 
-      
+      <button *ngIf="costoEntidad.id" (click)="editarYsalir()" class="btn">Editar</button>
 
-      <button  (click)="guardarYSalir()" class="btn">Guardar</button>
-      <button (click)="guardar()" class="btn">Guardar y Continuar</button>
+          <button *ngIf="costoEntidad.id" (click)="editar()" class="btn">Editar y
+              Continuar</button>
+
+      <button *ngIf="!proceso?.canvasModel?.costStructure"  (click)="guardarYSalir()" class="btn">Guardar</button>
+      <button *ngIf="!proceso?.canvasModel?.costStructure" (click)="guardar()" class="btn">Guardar y Continuar</button>
       <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
       <button [routerLink]="['/ingresos/cliente/',cliente.id,'editar',proceso.id]" (click)="cerrarModalAsesoria()"
                 class="btn ">Volver</button>

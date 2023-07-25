@@ -128,7 +128,11 @@ export class ActividadesClavesComponent {
     this.proceso.canvasModel.keyActivities=pro;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        this.router.navigate(['sociosClaves/cliente/', this.cliente.id])
+        if(this.proceso.canvasModel.keyPartners){
+          this.router.navigate([`/sociosClaves/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+        }else{
+          this.router.navigate(['/sociosClaves/cliente/', this.cliente.id])
+        }
       })
     })
    })

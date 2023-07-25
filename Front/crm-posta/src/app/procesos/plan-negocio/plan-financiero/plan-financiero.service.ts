@@ -12,7 +12,9 @@ export class PlanFinancieroService {
 
  //private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/financial"
 
+
  private urlEndPoint:string=`${URL}/financial`;
+
   constructor(private http:HttpClient) { }
   public planFinancialSave(businessPlanFinancial:BusinessPlanFinancial):Observable<any>{
     return this.http.post<any>(`${this.urlEndPoint}`,businessPlanFinancial);

@@ -51,9 +51,6 @@ import { ActividadesClavesModalComponent } from './procesos/ver-procesos/activid
 import { SociosClavesModalComponent } from './procesos/ver-procesos/socios-claves-modal/socios-claves-modal.component';
 import { IngresosModalComponent } from './procesos/ver-procesos/ingresos-modal/ingresos-modal.component';
 import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructura-costos-modal/estructura-costos-modal.component';
-import { ModeloBasicoComponent } from './modelo-basico/modelo-basico.component';
-import { ModeloListaComponent } from './modelo-basico/modelo-lista/modelo-lista.component';
-import { ModeloFormComponent } from './modelo-basico/modelo-form/modelo-form.component';
 
 
 
@@ -216,9 +213,6 @@ const routes:Routes=[
       SociosClavesModalComponent,
       IngresosModalComponent,
       EstructuraCostosModalComponent,
-      ModeloBasicoComponent,
-      ModeloListaComponent,
-      ModeloFormComponent,
       InformacionComponent,
       InternoComponent,
       DofaComponent,

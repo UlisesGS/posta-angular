@@ -14,7 +14,9 @@ export class ModeloBasicoService {
 
   //private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/plan"
 
+
   private urlEndPoint:string=`${URL}/plan`;
+
   constructor(private http:HttpClient) { }
 
   // TODOS LOS GET

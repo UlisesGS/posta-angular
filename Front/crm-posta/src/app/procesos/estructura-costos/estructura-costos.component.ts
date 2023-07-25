@@ -62,7 +62,21 @@ export class EstructuraCostosComponent {
             this.procesos.forEach(proceso => {
               if (proceso.canvasModel.client.id == this.cliente.id) {
                 this.proceso = proceso;
-                console.log(this.proceso);
+                
+                
+                // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.costoEntidad=this.proceso.canvasModel.costStructure;
+                    this.listaBackend = this.costoEntidad.costosVariables
+                    this.listaBackend2 = this.costoEntidad.costosFijos
+                    
+                  })
+                }
 
               }
 
@@ -105,6 +119,21 @@ export class EstructuraCostosComponent {
     console.log(this.listaBackend2);
 
   }
+
+  eliminarVariable(costoComponent:CostComponent){
+    console.log(costoComponent);
+    this.listaBackend= this.listaBackend.filter(item => item!== costoComponent)
+      
+  }
+  eliminarFijo(costoComponent:CostComponent){
+    console.log(costoComponent);
+    this.listaBackend2= this.listaBackend2.filter(item => item!== costoComponent)
+      
+  }
+
+
+
+
   guardarYSalir() {
     //this.proceso.terminado=true;
     this.proceso.estado = 'Estructura Costos';
@@ -127,47 +156,10 @@ export class EstructuraCostosComponent {
           Swal.fire('Exito', 'Estructura costos creado con exito', 'success');
         })
       })
-
-
-    }, e => {
-      console.log(e);
-
-      //Swal.fire('Exito: ', `${e}`, 'success');
     })
 
-
   }
-  // guardar() {
-  //   //this.proceso.terminado=true;
-  //   this.proceso.estado = 'Estructura Costos';
-  //   this.costoEntidad.costosFijos = this.listaBackend2;
-  //   this.costoEntidad.costosVariables = this.listaBackend;
-  //   this.costoEntidad.totalVariable();
-  //   this.costoEntidad.totalFijo();
-  //   this.costoEntidad.total();
-  //   console.log(this.costoEntidad);
-
-  //   this.proceso.canvasModel.costStructure = this.costoEntidad;
-
-  //   this.procesoService.estructuraCostoSave(this.costoEntidad).subscribe(costo => {
-  //     console.log(costo);
-      
-  //     this.proceso.canvasModel.costStructure = costo;
-  //     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
-  //       this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
-  //         this.router.navigate(['/informacion/cliente/', this.cliente.id]);
-  //         console.log(this.proceso);
-
-  //         Swal.fire('Exito', 'Estructura costos creado con exito', 'success');
-  //       })
-  //     })
-
-
-  //   }, e => {
-  //     console.log(e);
-
-  //     //Swal.fire('Exito: ', `${e}`, 'success');
-  //   })
+ 
   guardar() {
     this.proceso.estado = 'Estructura Costos';
     this.costoEntidad.costosFijos = this.listaBackend2;
@@ -186,20 +178,61 @@ export class EstructuraCostosComponent {
       this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
         this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
           this.router.navigate(['/informacion/cliente/', this.cliente.id]);
-          console.log(this.proceso);
-  
-          Swal.fire('Exito', 'Estructura costos creado con exito', 'success');
         });
       });
-    }, e => {
-      console.log(e);
-      // Swal.fire('Exito: ', `${e}`, 'success');
     });
   }
 
 
+
+  editarYSalir() {
+    this.costoEntidad.costosFijos = this.listaBackend2;
+    this.costoEntidad.costosVariables = this.listaBackend;
+    this.costoEntidad.totalVariable();
+    this.costoEntidad.totalFijo();
+    this.costoEntidad.total();
+    this.proceso.canvasModel.costStructure = this.costoEntidad;
+
+    this.procesoService.estructuraCostoPut(this.costoEntidad).subscribe(costo => {
+      this.proceso.canvasModel.costStructure = costo;
+      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
+        this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
+          this.router.navigate(['procesos'])
+          
+
+          Swal.fire('Exito', 'Estructura costos editado con exito', 'success');
+        })
+      })
+    })
+
   }
-//probando dar formato moneda a los input
+
+
+
+  editar() {
+    console.log(this.costoEntidad);
+    
+    this.costoEntidad.costosFijos = this.listaBackend2;
+    this.costoEntidad.costosVariables = this.listaBackend;
+  
+    this.proceso.canvasModel.costStructure = this.costoEntidad;
+  
+    this.procesoService.estructuraCostoPut(this.costoEntidad).subscribe(costo => {
+  
+      this.proceso.canvasModel.costStructure = costo;
+      this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
+        this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
+          if(this.proceso?.businessPlan?.proyectInformation){
+            this.router.navigate([`/informacion/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+          }else{
+            this.router.navigate(['/informacion/cliente/', this.cliente.id]);
+          }
+        });
+      });
+    });
+  }
+  }
+
 
 
 

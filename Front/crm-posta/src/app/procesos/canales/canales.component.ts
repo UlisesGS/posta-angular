@@ -114,7 +114,11 @@ export class CanalesComponent {
     this.proceso.canvasModel.channels=canales;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        this.router.navigate(['/relaciones/cliente/', this.cliente.id])
+        if(this.proceso.canvasModel.customerRelationships){
+          this.router.navigate([`/relaciones/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+        }else{
+          this.router.navigate(['/relaciones/cliente/', this.cliente.id])
+        }
       })
     })
    })
