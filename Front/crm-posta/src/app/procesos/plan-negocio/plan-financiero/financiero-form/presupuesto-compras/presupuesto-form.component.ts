@@ -97,7 +97,14 @@ console.log('no estoy editando');
   //procesos?.businessPlanFinancial?.presupuestoVenta?.estructuraMercado
   elementos: any[] = []; // Inicializa la lista vacía o con elementos existentes
 
+sacarFila(presupuestoCompra:PresupuestoCompra,e:EstructuraCompra){
+  console.log(presupuestoCompra);
+  console.log(e);
 
+
+
+ //this.presupuestoCompra.estructuraCompras=this.proceso.businessPlanFinancial.presupuestoCompra
+}
   agregarFila(producto: string) {
     this.totalUnitarios = 0
     this.totalAnuales = 0

@@ -32,7 +32,7 @@
                                         <th>Valor Unitario</th>
                                         <th>Cantidad por Unidad</th>
                                         <th>Total Costo Unit.</th>
-
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody >
@@ -66,8 +66,9 @@
                                         <td>{{i.tipo}}</td>
                                         <td>{{i.valorUnitario}}</td>
                                         <td>{{i.cantidadUbnidad}}</td>
-                                        <td class="autorellenadas">${{i.totalUnitario}}</td>
-                                    </tr>
+                                        <td class="autorellenadas">${{i.totalUnitario}} </td>
+                                    <td><button (click)="sacarFila(item,i)" class="btn-close "></button></td>
+                                      </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>

@@ -9,8 +9,8 @@ import { Process } from 'src/app/procesos/Process';
 })
 export class ImagenService {
 
-  private baseUrl:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080"
-  //private baseUrl = 'http://localhost:8080'; // Reemplaza con la URL base de tu backend
+  //private baseUrl:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080"
+  private baseUrl = 'http://localhost:8080'; // Reemplaza con la URL base de tu backend
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,7 @@ export class ImagenService {
   getImageBlob(proceso:Process): Observable<Blob> {
     return this.http.get(`${this.baseUrl}/imagenCompromiso/${proceso.id}`, { responseType: 'blob' });
   }
-  
+
   uploadImageEncuesta(file: File, proceso:Process): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
