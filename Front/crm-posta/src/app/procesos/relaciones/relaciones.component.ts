@@ -117,8 +117,11 @@ export class RelacionesComponent {
     this.proceso.canvasModel.customerRelationships=relacion;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        // [routerLink]="['/recursosClaves/cliente/', cliente.id]"
-        this.router.navigate(['/recursosClaves/cliente/', this.cliente.id])
+        if(this.proceso.canvasModel.keyRecources){
+          this.router.navigate([`/recursosClaves/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+        }else{
+          this.router.navigate(['/recursosClaves/cliente/', this.cliente.id])
+        }
       })
     })
    })

@@ -126,8 +126,11 @@ export class SociosClavesComponent {
     this.proceso.canvasModel.keyPartners=pro;
     this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
-        //[routerLink]="['/ingresos/cliente/', cliente.id]"
-        this.router.navigate(['/ingresos/cliente/', this.cliente.id])
+        if(this.proceso.canvasModel.revenueStreams){
+          this.router.navigate([`/ingresos/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+        }else{
+          this.router.navigate(['/ingresos/cliente/', this.cliente.id])
+        }
 
       })
     })
