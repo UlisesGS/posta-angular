@@ -59,11 +59,8 @@ export class SegmentoComponent implements OnInit {
                   this.procesoService.procesosFindById(idEditar).subscribe(data => {
                     //console.log(data);
 
-                    this.proceso = data;
-                    this.customerSegments.comportanmiento = this.proceso.canvasModel.customerSegments.comportanmiento;
-                    this.customerSegments.demograficas = this.proceso.canvasModel.customerSegments.demograficas;
-                    this.customerSegments.geograficas = this.proceso.canvasModel.customerSegments.geograficas;
-                    this.customerSegments.psicograficas = this.proceso.canvasModel.customerSegments.psicograficas;
+                    this.proceso=data;
+                    this.customerSegments=this.proceso.canvasModel.customerSegments;
                     console.log(this.customerSegments);
 
                   })
@@ -129,7 +126,13 @@ export class SegmentoComponent implements OnInit {
       this.proceso.canvasModel.customerSegments = segmento;
       this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
         this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
-          this.router.navigate(['/propuestaDeValor/cliente/', this.cliente.id])
+          if(this.proceso.canvasModel.valuePropositions){
+            this.router.navigate([`/propuestaDeValor/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+          }else{
+            this.router.navigate(['/propuestaDeValor/cliente/', this.cliente.id])
+          }
+
+          
         })
       })
     })

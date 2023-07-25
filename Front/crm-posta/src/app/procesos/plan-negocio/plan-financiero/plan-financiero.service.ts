@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BusinessPlanFinancial } from './BusinessPlanFinancial';
 import { Observable } from 'rxjs';
+import { URL } from './../../../url';
 
 
 @Injectable({
@@ -11,7 +12,11 @@ export class PlanFinancieroService {
 
  //private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/financial"
 
-  private urlEndPoint:string="http://localhost:8080/financial";
+
+
+ private urlEndPoint:string=`${URL}/financial`;
+
+
   constructor(private http:HttpClient) { }
   public planFinancialSave(businessPlanFinancial:BusinessPlanFinancial):Observable<any>{
     return this.http.post<any>(`${this.urlEndPoint}`,businessPlanFinancial);

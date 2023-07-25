@@ -221,7 +221,7 @@ const routes:Routes=[
       SociosClavesModalComponent,
       IngresosModalComponent,
       EstructuraCostosModalComponent,
-      
+
       InformacionComponent,
       InternoComponent,
       DofaComponent,

@@ -24,7 +24,7 @@ export class ImagenService {
   getImageBlob(proceso:Process): Observable<Blob> {
     return this.http.get(`${this.baseUrl}/imagenCompromiso/${proceso.id}`, { responseType: 'blob' });
   }
-  
+
   uploadImageEncuesta(file: File, proceso:Process): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
