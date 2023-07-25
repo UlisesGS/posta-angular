@@ -23,6 +23,8 @@ export class DetallesComponent {
   negociosB:string;
   financieroB:string;
 
+  tipoVer:string;
+
   compromiso:boolean=false;
   encuesta:boolean=false;
   cierre:boolean=false;
@@ -48,13 +50,15 @@ export class DetallesComponent {
     if (this.file) {
       this.imagenService.uploadImage(this.file,this.proceso).subscribe(
         (response) => {
-          console.log(response); // Maneja la respuesta del backend
+          console.log(response); 
+          // Maneja la respuesta del backend
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre
         }
       );
     }
+    window.location.reload();
   }
   getImageUrl() {
     this.imagenService.getImageBlob(this.proceso).subscribe(
@@ -64,7 +68,7 @@ export class DetallesComponent {
         
       },
       (error) => {
-        console.error(error); // Maneja el error, si ocurre
+        //console.error(error); // Maneja el error, si ocurre
       }
     );
   }
@@ -73,13 +77,15 @@ export class DetallesComponent {
     if (this.file) {
       this.imagenService.uploadImageEncuesta(this.file,this.proceso).subscribe(
         (response) => {
-          console.log(response); // Maneja la respuesta del backend
+          console.log(response);
+          window.location.reload(); // Maneja la respuesta del backend
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre
         }
       );
     }
+    window.location.reload();
   }
   getImageUrlEncuesta() {
     this.imagenService.getImageBlobEncuesta(this.proceso).subscribe(
@@ -89,7 +95,7 @@ export class DetallesComponent {
         
       },
       (error) => {
-        console.error(error); // Maneja el error, si ocurre
+        //console.error(error); // Maneja el error, si ocurre
       }
     );
   }
@@ -98,23 +104,28 @@ export class DetallesComponent {
     if (this.file) {
       this.imagenService.uploadImageCierre(this.file,this.proceso).subscribe(
         (response) => {
-          console.log(response); // Maneja la respuesta del backend
+          console.log(response);
+          window.location.reload(); // Maneja la respuesta del backend
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre
         }
       );
     }
+    window.location.reload();
   }
   getImageUrlCierre() {
     this.imagenService.getImageBlobCierre(this.proceso).subscribe(
       (blob) => {
         this.imageUrlCierre = URL.createObjectURL(blob);
-        console.log(this.imageUrl);
+        
         
       },
       (error) => {
-        console.error(error); // Maneja el error, si ocurre
+        if(error.status==500){
+          
+          
+        }
       }
     );
   }
@@ -135,9 +146,17 @@ export class DetallesComponent {
               
               if (proceso.canvasModel.client.id == this.cliente.id) {
                 this.proceso = proceso;
-                this.getImageUrl();
-                this.getImageUrlCierre();
-                this.getImageUrlEncuesta();
+                if(this.proceso.documentoCompromiso){
+                  this.getImageUrl();
+                }
+                if(this.proceso.encuestaSatisfaccion){
+                  this.getImageUrlEncuesta();
+                }
+                if(this.proceso.actaCierre){
+                  this.getImageUrlCierre();
+                }
+                
+                
               }
             })
           })
@@ -149,14 +168,15 @@ export class DetallesComponent {
   }
 
 
-  public abrirTestAuto(proceso: Process, autoB:string, canvasB:string, negociosB:string, financieroB:string) {
+  public abrirTestAuto(proceso: Process, autoB:string, canvasB:string, negociosB:string, financieroB:string, tipoVer:string) {
 
-
+    this.tipoVer=tipoVer;
     this.autoB=autoB
     this.canvasB=canvasB
     this.negociosB=negociosB
     this.financieroB=financieroB
     this.procesoSeleccionado = proceso;
+    console.log(this.tipoVer);
     console.log(this.autoB);
     console.log(this.canvasB);
     console.log(this.negociosB);
@@ -212,7 +232,7 @@ export class DetallesComponent {
     if(this.compromiso){
       this.compromiso=false;
     }else{
-      this.compromiso=true;
+      this.compromiso=true; 
     }
   }
   condicionEncuesta(){

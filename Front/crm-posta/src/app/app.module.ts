@@ -55,6 +55,7 @@ import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructu
 
 
 
+
 import { PaginacionComponent } from './procesos/proceso-listar/paginacion/paginacion.component';
 import { InformacionComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/informacion/informacion.component';
 import { InternoComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/interno/interno.component';
@@ -69,10 +70,14 @@ import { DetallesComponent } from './client/detalles/detalles.component';
 import { PlanInversionComponent } from './procesos/plan-negocio/plan-financiero/financiero-form/plan-inversion/plan-inversion.component';
 import { ModalDetallesComponent } from './client/detalles/modal-detalles/modal-detalles.component';
 import { VerPuntajeComponent } from './procesos/autoevaluacion/ver-puntaje/ver-puntaje.component';
+import { ModeloListaComponent } from './procesos/plan-negocio/modelo-basico/modelo-lista/modelo-lista.component';
 
 const routes:Routes=[
 
   {path:'', redirectTo:'/login', pathMatch:'full'},
+
+  {path:'clients/verBasico/:id', component:ModeloListaComponent},
+  
   {path:'clients', component:ClientComponent},
   {path:'clients/page/:page', component:ClientComponent},
   {path:'clients/form/businessman', component:FormClientComponent},
@@ -105,6 +110,7 @@ const routes:Routes=[
   {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
 
   {path:'procesos/ver/:id',component:VerProcesosComponent},
+  
 
   //Plan de Negocios
   {path:'informacion/cliente/:id',component:InformacionComponent},
@@ -144,6 +150,8 @@ const routes:Routes=[
 
    // para ver
   // canvas
+  {path:'puntajeAutoevaluacion/ver/:idVer', component:VerPuntajeComponent},
+  {path:'procesos/verLienzo/:idVer',component:VerProcesosComponent},
   {path:'segmento/cliente/:id/ver/:idVer',component:SegmentoComponent},
   {path:'propuestaDeValor/cliente/:id/ver/:idVer',component:PropuestaDeValorComponent},
   {path:'canales/cliente/:id/ver/:idVer',component:CanalesComponent},
@@ -213,6 +221,7 @@ const routes:Routes=[
       SociosClavesModalComponent,
       IngresosModalComponent,
       EstructuraCostosModalComponent,
+
       InformacionComponent,
       InternoComponent,
       DofaComponent,
@@ -227,10 +236,12 @@ const routes:Routes=[
       PlanInversionComponent,
       ModalDetallesComponent,
       VerPuntajeComponent,
+      ModeloListaComponent,
 
 
 
    ],
+   
   imports: [
   BrowserModule,
     HttpClientModule,

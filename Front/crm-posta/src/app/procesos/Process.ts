@@ -26,6 +26,9 @@ export class Process {
   fechaAlta:string;
   businessPlan:BusinessPlan;
   businessPlanFinancial:BusinessPlanFinancial;
+  documentoCompromiso:string;
+  encuestaSatisfaccion:string;
+  actaCierre:string;
 
 
 }

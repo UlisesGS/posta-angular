@@ -32,11 +32,15 @@
                 </tbody>
             </table>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="!idVer">
             <button   [routerLink]="['/segmento/cliente/', cliente.id]" class="btn">Continuar</button>
             <!-- <button  (click)="guardar()" class="btn">Guardar y
                 Continuar</button> -->
             <button [routerLink]="['/procesos']"  class="btn">Salir</button>
+        </div>
+        <div class="form-group" *ngIf="idVer">
+            <button   [routerLink]="['/clients/details/', cliente.id]" class="btn">Volver</button>
+           
         </div>
     </div>
 </div>
