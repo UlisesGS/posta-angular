@@ -15,8 +15,10 @@ export class VerProcesosComponent implements OnInit {
   client: Client = new Client;
   procesoSeleccionado : Process;
   proceso: Process = new Process();
+  procesos: Process [];
   valor:boolean=false;
   bool1:boolean=false;
+  idVer:number;
   constructor(
     private rutaPorParametro: ActivatedRoute,
     private procesoService: ProcesoService,
@@ -26,11 +28,18 @@ export class VerProcesosComponent implements OnInit {
   ngOnInit(): void {
     this.rutaPorParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
+      this.idVer=+parametro.get('idVer')
+      if(this.idVer){
+        this.procesoService.procesosFindById(this.idVer).subscribe(proce=>{
+          this.proceso=proce;
+          this.client=this.proceso?.canvasModel?.client;
+        })
+      }
       if (id) {
         this.procesoService.procesosFindById(id).subscribe(data => {
           this.proceso = data;
           console.log(this.proceso);
-          this.clienteService.getClient(this.proceso.canvasModel.client.id).subscribe(data => {
+          this.clienteService.getClient(this.proceso?.canvasModel?.client?.id).subscribe(data => {
             this.client = data;
           })
 

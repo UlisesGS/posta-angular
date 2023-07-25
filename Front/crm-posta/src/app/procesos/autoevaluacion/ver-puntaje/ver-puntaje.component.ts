@@ -14,6 +14,7 @@ export class VerPuntajeComponent implements OnInit {
   cliente: Client = new Client();
   proceso: Process = new Process();
   procesos: Process [];
+  idVer:number;
 
   constructor(private clientService:ClientService,
     private procesoService:ProcesoService,
@@ -22,6 +23,23 @@ export class VerPuntajeComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(parametro=>{
       let id=+parametro.get('id')
+      this.idVer=+parametro.get('idVer')
+      if(this.idVer){
+        this.clientService.getClient(this.idVer).subscribe(data=>{
+          this.cliente=data;
+          this.procesoService.procesosFindAll().subscribe(procesos=>{
+            this.procesos=procesos;
+            this.procesos.forEach(p=>{
+              if(p.selfAssessment?.client?.id==this.cliente?.id){
+                this.proceso=p;
+                console.log(this.proceso);
+                
+              }
+              
+            })
+          })
+        })
+      }
       if(id){
         this.clientService.getClient(id).subscribe(data=>{
           this.cliente=data;
