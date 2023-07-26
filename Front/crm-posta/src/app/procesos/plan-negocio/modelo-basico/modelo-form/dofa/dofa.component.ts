@@ -33,51 +33,48 @@ export class DofaComponent {
     ngOnInit(): void {
       this.rutaParametro.paramMap.subscribe(parametro => {
         let id = +parametro.get('id');
-         this.idVer1 = +parametro.get('idVer1');
+        this.idVer1 = +parametro.get('idVer1');
         if (id) {
           this.clienteService.getClient(id).subscribe(data => {
             this.cliente = data;
             console.log(data);
             this.procesoService.procesosFindAll().subscribe(pro => {
-              this.procesos=pro;
-
-              this.procesos.forEach(proceso=>{
-                if(proceso.canvasModel.client.id==this.cliente.id){
-                  this.proceso=proceso;
+              this.procesos = pro;
+    
+              this.procesos.forEach(proceso => {
+                if (proceso.canvasModel.client.id == this.cliente.id) {
+                  this.proceso = proceso;
                   console.log(this.proceso);
-                    //para ver
-                if (this.idVer1) {
-                  this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
-                    this.proceso = data;
-                    this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
-                    console.log(this.dofaAnalisis);
-
-
-
-                   // para editar
-                let idEditar = +parametro.get('idEditar');
-                console.log('no entro al if');
-                
-                if(idEditar){
-                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
-                    console.log(data);
-                    
-                    this.proceso=data;
-                    this.businessPlan=this.proceso.businessPlan;
-                    this.dofaAnalisis=this.proceso.businessPlan.dofaAnalisis;
-                    console.log(this.dofaAnalisis);
-                    
-                  })
+    
+                  // para ver
+                  if (this.idVer1) {
+                    this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
+                      this.proceso = data;
+                      this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
+                      console.log(this.dofaAnalisis);
+    
+                      // para editar
+                      let idEditar = +parametro.get('idEditar');
+                      console.log('no entro al if');
+    
+                      if (idEditar) {
+                        this.procesoService.procesosFindById(idEditar).subscribe(data => {
+                          console.log(data);
+    
+                          this.proceso = data;
+                          this.businessPlan = this.proceso.businessPlan;
+                          this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
+                          console.log(this.dofaAnalisis);
+                        });
+                      }
+                    });
+                  }
                 }
-
-
-                }
-              })
-            })
-
-          })
+              });
+            });
+          });
         }
-      })
+      });
     }
     guardar(){
       this.modeloBasicoService.planSaveDofa(this.dofaAnalisis).subscribe(data=>{
