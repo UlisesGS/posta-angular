@@ -420,7 +420,7 @@ public  totalCostos(r:RequerimientosPersonal){
       .subscribe((data) => {
         console.log(data);
 if(this.proceso.businessPlanFinancial.planInversion){
-  this.router.navigate(['inversion/cliente/', this.cliente.id,'/editar/',this.proceso.id]);
+  this.router.navigate(['inversion/cliente/', this.cliente.id,'editar',this.proceso.id]);
 }else{
   this.router.navigate(['inversion/cliente/', this.cliente.id]);
 }
