@@ -53,6 +53,9 @@ export class PresupuestoFormComponent implements OnInit {
           this.procesos.forEach(p => {
             if (p.id == this.idEditar) {
               this.proceso = p;
+              console.log(p);
+
+
               console.log(this.proceso);
               //this.presupuestoCompra= this.proceso.businessPlanFinancial.presupuestoCompra;
 
