@@ -121,6 +121,8 @@ sacarFila(presupuestoCompra:PresupuestoCompra,e:EstructuraCompra){
         console.log(this.estructuraCompra);
 
         console.log(producto);
+        console.log(this.proceso);
+
         //  this.elementos.push({ nombre: '', ventas: '' });
 
 
