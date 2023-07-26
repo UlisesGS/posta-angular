@@ -43,6 +43,23 @@ export class DofaComponent {
                   this.proceso=proceso;
                   console.log(this.proceso);
 
+
+                   // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    console.log(data);
+                    
+                    this.proceso=data;
+                    this.businessPlan=this.proceso.businessPlan;
+                    this.dofaAnalisis=this.proceso.businessPlan.dofaAnalisis;
+                    console.log(this.dofaAnalisis);
+                    
+                  })
+                }
+
                 }
               })
             })
@@ -95,4 +112,54 @@ export class DofaComponent {
           })
 
         }
+
+
+
+
+        editar(){
+          this.modeloBasicoService.planUpdateDofa(this.dofaAnalisis).subscribe(data=>{
+            this.businessPlan.dofaAnalisis=data;
+            this.proceso.businessPlan.dofaAnalisis=data;
+            console.log(this.proceso);
+    
+            // en el proximo cambiar a put hdp
+            //console.log(this.businessPlan);
+    
+            this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
+              this.businessPlan=plan;
+              this.proceso.businessPlan=this.businessPlan;
+              this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+                this.proceso=pro;
+                if(this.proceso?.businessPlan?.conclusion){
+                  this.router.navigate([`/conclusion/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+                }else{
+                  this.router.navigate(['/conclusion/cliente/', this.cliente.id]);
+                }
+              })
+            })
+          })
+    
+            }
+            editarYsalir(){
+    
+              this.modeloBasicoService.planUpdateDofa(this.dofaAnalisis).subscribe(data=>{
+                this.businessPlan.dofaAnalisis=data;
+                this.proceso.businessPlan.dofaAnalisis=data;
+                console.log(this.proceso);
+                // en el proximo cambiar a put hdp
+              //  console.log(this.businessPlan);
+    
+                this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
+                  this.businessPlan=plan;
+                  this.proceso.businessPlan=this.businessPlan;
+                  this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+                    this.proceso=pro;
+                    this.router.navigate(['/procesos']);
+                    Swal.fire('Exito', 'Dofa dofa editada con exito', 'success');
+                  //  this.router.navigate([`dofa/cliente/${this.proceso.canvasModel.client.id}`]);
+                  })
+                })
+              })
+    
+            }
 }
