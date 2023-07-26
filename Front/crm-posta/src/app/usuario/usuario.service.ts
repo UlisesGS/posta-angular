@@ -4,7 +4,7 @@ import { Observable, map } from 'rxjs';
 import { Usuario } from './usuario';
 import { Asesoria } from './asesoria';
 import { ModalService } from '../client/modal.service';
-import { URL } from './../url';
+import { URL } from './../URL';
 
 @Injectable({
   providedIn: 'root'

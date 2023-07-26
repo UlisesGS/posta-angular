@@ -43,6 +43,7 @@ export class ModeloListaComponent implements OnInit{
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
+      let idVer=+parametro.get('idVer');
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
@@ -63,6 +64,27 @@ export class ModeloListaComponent implements OnInit{
 
         })
       }
+      if (idVer) {
+        this.clienteService.getClient(idVer).subscribe(data => {
+          this.cliente = data;
+          console.log(data);
+          this.procesoService.procesosFindAll().subscribe(pro => {
+            this.procesos = pro;
+
+            this.procesos.forEach(proceso => {
+              
+              if (proceso.canvasModel.client.id == this.cliente.id) {
+                this.proceso = proceso;
+                
+                
+                
+              }
+            })
+          })
+
+        })
+      }
+
     })
     
   }
@@ -72,6 +94,27 @@ export class ModeloListaComponent implements OnInit{
       this.informacion=false;
     }else{
       this.informacion=true;
+    }
+  }
+  condicionAnalisis(){
+    if(this.analisis){
+      this.analisis=false;
+    }else{
+      this.analisis=true;
+    }
+  }
+  condicionDofa(){
+    if(this.dofa){
+      this.dofa=false;
+    }else{
+      this.dofa=true;
+    }
+  }
+  condicionConclusion(){
+    if(this.conclusion){
+      this.conclusion=false;
+    }else{
+      this.conclusion=true;
     }
   }
 

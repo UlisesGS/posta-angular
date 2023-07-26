@@ -20,6 +20,7 @@ export class ConclusionComponent {
   value:boolean;
   procesos:Process[]=[];
   proceso:Process= new Process();
+  idVer1:number;
 
   constructor(private modalService: ModalService,
     private clienteService: ClientService,
@@ -31,6 +32,7 @@ export class ConclusionComponent {
     ngOnInit(): void {
       this.rutaParametro.paramMap.subscribe(parametro => {
         let id = +parametro.get('id');
+        this.idVer1 = +parametro.get('idVer1');
         if (id) {
           this.clienteService.getClient(id).subscribe(data => {
             this.cliente = data;
@@ -42,6 +44,17 @@ export class ConclusionComponent {
                 if(proceso.canvasModel.client.id==this.cliente.id){
                   this.proceso=proceso;
                   console.log(this.proceso);
+
+
+                    //para ver
+                if (this.idVer1) {
+                  this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
+                    this.proceso = data;
+                    this.businessPlan.conclusion = this.proceso?.businessPlan?.conclusion;
+                    console.log(this.businessPlan?.conclusion);
+
+                  })
+                }
 
 
                     // para editar
@@ -56,6 +69,7 @@ export class ConclusionComponent {
                     
                   })
                 }
+
 
                 }
               })

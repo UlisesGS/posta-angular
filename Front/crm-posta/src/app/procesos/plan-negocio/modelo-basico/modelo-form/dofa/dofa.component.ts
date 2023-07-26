@@ -22,6 +22,8 @@ export class DofaComponent {
   proceso:Process= new Process();
   dofaAnalisis:DofaAnalisis= new DofaAnalisis();
   businessPlan:BusinessPlan= new BusinessPlan();
+  idVer1:number;
+
   constructor(private modalService: ModalService,
     private clienteService: ClientService,
     private rutaParametro: ActivatedRoute,
@@ -31,6 +33,7 @@ export class DofaComponent {
     ngOnInit(): void {
       this.rutaParametro.paramMap.subscribe(parametro => {
         let id = +parametro.get('id');
+         this.idVer1 = +parametro.get('idVer1');
         if (id) {
           this.clienteService.getClient(id).subscribe(data => {
             this.cliente = data;
@@ -42,6 +45,13 @@ export class DofaComponent {
                 if(proceso.canvasModel.client.id==this.cliente.id){
                   this.proceso=proceso;
                   console.log(this.proceso);
+                    //para ver
+                if (this.idVer1) {
+                  this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
+                    this.proceso = data;
+                    this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
+                    console.log(this.dofaAnalisis);
+
 
 
                    // para editar
@@ -59,6 +69,7 @@ export class DofaComponent {
                     
                   })
                 }
+
 
                 }
               })

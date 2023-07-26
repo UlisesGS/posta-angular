@@ -5,8 +5,9 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Client } from './client';
 import { SelfAssessment } from './../procesos/selfAssessment';
+import { URL } from '../URL';
 
-import { URL } from './../url';
+
 
 
 

@@ -22,6 +22,7 @@ export class InternoComponent {
   value:boolean;
   procesos:Process[]=[];
   proceso:Process= new Process();
+  idVer1: number;
 
   constructor(private modalService: ModalService,
     private clienteService: ClientService,
@@ -32,6 +33,7 @@ export class InternoComponent {
     ngOnInit(): void {
       this.rutaParametro.paramMap.subscribe(parametro => {
         let id = +parametro.get('id');
+        this.idVer1 = +parametro.get('idVer1');
         if (id) {
           this.clienteService.getClient(id).subscribe(data => {
             this.cliente = data;
@@ -59,6 +61,16 @@ export class InternoComponent {
                   })
                 }
 
+
+                     //para ver
+                if (this.idVer1) {
+                  this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
+                    this.proceso = data;
+                    this.internalExternalAnalysis = this.proceso.businessPlan.analisis;
+                    console.log(this.internalExternalAnalysis);
+
+                  })
+                }
                 }
               })
             })

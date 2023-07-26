@@ -26,7 +26,7 @@ export class VerProcesosComponent implements OnInit {
     public modalService:ModalService) { }
 
   ngOnInit(): void {
-    this.rutaPorParametro.paramMap.subscribe(parametro => {
+    this.rutaPorParametro.paramMap.subscribe(parametro => { 
       let id = +parametro.get('id');
       this.idVer=+parametro.get('idVer')
       if(this.idVer){

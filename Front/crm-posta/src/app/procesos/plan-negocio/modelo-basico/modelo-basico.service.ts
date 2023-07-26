@@ -5,7 +5,7 @@ import { BusinessPlan } from './BusinessPlan';
 import { ProyectInformation } from './ProyectInformation';
 import { DofaAnalisis } from './DofaAnalisis';
 import { InternalExternalAnalysis } from './InternalExternalAnalysis';
-import { URL } from './../../../url';
+import { URL } from './../../../URL';
 
 @Injectable({
   providedIn: 'root'

@@ -10,8 +10,8 @@ import { ProyectInformation } from './../../ProyectInformation';
 import { ModeloBasicoService } from './../../modelo-basico.service';
 import Swal from 'sweetalert2';
 
-@Component({
-  selector: 'app-informacion',
+@Component({ 
+  selector: 'app-informacion', 
   templateUrl: './informacion.component.html',
   styleUrls: ['./informacion.component.css']
 })
@@ -19,47 +19,58 @@ export class InformacionComponent {
 
 
   cliente: Client = new Client();
-  value:boolean;
-  procesos:Process[]=[];
-  proceso:Process= new Process();
-  businessPlan:BusinessPlan= new BusinessPlan();
-  proyectInformation:ProyectInformation= new ProyectInformation();
+  value: boolean;
+  procesos: Process[] = [];
+  proceso: Process = new Process();
+  businessPlan: BusinessPlan = new BusinessPlan();
+  proyectInformation: ProyectInformation = new ProyectInformation();
+  idVer1: number;
 
   constructor(private modalService: ModalService,
     private clienteService: ClientService,
     private rutaParametro: ActivatedRoute,
-    private procesoService:ProcesoService,
-    private modeloBasicoService:ModeloBasicoService,
-    private router:Router) { }
+    private procesoService: ProcesoService,
+    private modeloBasicoService: ModeloBasicoService,
+    private router: Router) { }
 
 
 
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
+      this.idVer1 = +parametro.get('idVer1');
+
+
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
           console.log(data);
           this.procesoService.procesosFindAll().subscribe(pro => {
-            this.procesos=pro;
-
-            this.procesos.forEach(proceso=>{
-              if(proceso.canvasModel.client.id==this.cliente.id){
-                this.proceso=proceso;
-                
-                
+            this.procesos = pro;
+            this.procesos.forEach(proceso => {
+              if (proceso.canvasModel.client.id == this.cliente.id) {
+                this.proceso = proceso;
                 // para editar
                 let idEditar = +parametro.get('idEditar');
                 console.log('no entro al if');
+
                 
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
                     this.businessPlan=this.proceso.businessPlan;
                     this.proyectInformation=this.proceso.businessPlan.proyectInformation;
+
                     console.log(this.proyectInformation);
-                    
+                  })
+                }
+                //para ver
+                if (this.idVer1) {
+                  this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
+                    this.proceso = data;
+                    this.proyectInformation = this.proceso.businessPlan.proyectInformation;
+                    console.log(this.proyectInformation);
+
                   })
                 }
 
@@ -77,54 +88,55 @@ export class InformacionComponent {
   }
 
 
-  guardar(){
+  guardar() {
 
-this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data=>{
-  this.businessPlan.proyectInformation=data;
-  // en el proximo cambiar a put hdp
-  console.log(this.businessPlan);
-  this.proceso.estado='Informacion Proyecto'
-  this.modeloBasicoService.planSaveBusinessPlan(this.businessPlan).subscribe(plan=>{
-    this.businessPlan=plan;
-    this.proceso.businessPlan=this.businessPlan;
-    this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
-      this.proceso=pro;
-
-      this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
-    })
-  })
-})
-
-  }
-  guardarYsalir(){
-    this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data=>{
-      this.businessPlan.proyectInformation=data;
+    this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data => {
+      this.businessPlan.proyectInformation = data;
       // en el proximo cambiar a put hdp
       console.log(this.businessPlan);
-      this.proceso.estado='Informacion Proyecto'
-      this.modeloBasicoService.planSaveBusinessPlan(this.businessPlan).subscribe(plan=>{
-        this.businessPlan=plan;
-        this.proceso.businessPlan=this.businessPlan;
-        this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
-          this.proceso=pro;
-        //  this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
-        this.router.navigate(['/procesos']);
-        Swal.fire('Exito', 'Informacion del Proyecto creada con exito', 'success');
+      this.proceso.estado = 'Informacion Proyecto'
+      this.modeloBasicoService.planSaveBusinessPlan(this.businessPlan).subscribe(plan => {
+        this.businessPlan = plan;
+        this.proceso.businessPlan = this.businessPlan;
+        this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
+          this.proceso = pro;
+
+          this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
+        })
+      })
+    })
+
+  }
+  guardarYsalir() {
+    this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data => {
+      this.businessPlan.proyectInformation = data;
+      // en el proximo cambiar a put hdp
+      console.log(this.businessPlan);
+      this.proceso.estado = 'Informacion Proyecto'
+      this.modeloBasicoService.planSaveBusinessPlan(this.businessPlan).subscribe(plan => {
+        this.businessPlan = plan;
+        this.proceso.businessPlan = this.businessPlan;
+        this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
+          this.proceso = pro;
+          //  this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
+          this.router.navigate(['/procesos']);
+          Swal.fire('Exito', 'Informacion del Proyecto creada con exito', 'success');
         })
       })
     })
 
   }
 
-/*------------------------------------------------------------------------------------------------------------------------*/
-/*  REVISAR. EN TODOS LOS NGMODEL EN LA PAGINA ME MUESTRA EN TODOS HOLA, MIENTRAS QUE EL JSON HAY TRES QUE DICEN CHAU  */
-/*------------------------------------------------------------------------------------------------------------------------*/
-  editar(){
+  /*------------------------------------------------------------------------------------------------------------------------*/
+  /*  REVISAR. EN TODOS LOS NGMODEL EN LA PAGINA ME MUESTRA EN TODOS HOLA, MIENTRAS QUE EL JSON HAY TRES QUE DICEN CHAU  */
+  /*------------------------------------------------------------------------------------------------------------------------*/
+  editar() {
 
-    this.modeloBasicoService.planUpdateProyect(this.proyectInformation).subscribe(data=>{
-      this.businessPlan.proyectInformation=data;
+    this.modeloBasicoService.planUpdateProyect(this.proyectInformation).subscribe(data => {
+      this.businessPlan.proyectInformation = data;
       // en el proximo cambiar a put hdp
       console.log(this.businessPlan);
+
       
       this.modeloBasicoService.planUpdateBusinessPlan(this.businessPlan).subscribe(plan=>{
         this.businessPlan=plan;
@@ -159,7 +171,10 @@ this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data
             Swal.fire('Exito', 'Informacion del Proyecto editado con exito', 'success');
             })
           })
+
         })
-    
-      }
+      })
+    })
+
+  }
 }
