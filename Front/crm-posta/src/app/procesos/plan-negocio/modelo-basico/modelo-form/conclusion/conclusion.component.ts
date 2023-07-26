@@ -45,6 +45,7 @@ export class ConclusionComponent {
                   this.proceso=proceso;
                   console.log(this.proceso);
 
+
                     //para ver
                 if (this.idVer1) {
                   this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
@@ -54,6 +55,22 @@ export class ConclusionComponent {
 
                   })
                 }
+
+
+                    // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.businessPlan=this.proceso.businessPlan;
+                    this.businessPlan.conclusion=this.proceso.businessPlan.conclusion;
+                    
+                  })
+                }
+
+
                 }
               })
             })
@@ -105,4 +122,40 @@ export class ConclusionComponent {
 
         }
 
+
+
+
+        editar(){
+    
+            this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
+              this.businessPlan=plan;
+              this.proceso.businessPlan=this.businessPlan;
+              this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+                this.proceso=pro;
+                if(this.proceso?.businessPlanFinancial?.presupuestoVenta){
+                  this.router.navigate([`/ventas/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+                }else{
+                  this.router.navigate(['/ventas/cliente/', this.cliente.id]);
+                }
+              })
+            })
+    
+    
+            }
+            editarYsalir(){
+    
+    
+                this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
+                  this.businessPlan=plan;
+                  this.proceso.businessPlan=this.businessPlan;
+                  this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+                    this.proceso=pro;
+                    this.router.navigate(['/procesos']);
+                    Swal.fire('Exito', 'Conclusiones editada con exito', 'success');
+                  //  this.router.navigate([`dofa/cliente/${this.proceso.canvasModel.client.id}`]);
+                  })
+                })
+    
+    
+            }
 }

@@ -27,7 +27,7 @@ export class PresupuestoFormComponent implements OnInit {
   cantidadUnidad: number[] = [];
   totalUnitario: number[] = [];
   cantidadP: number = 0;
-  idEditar:number;
+  idEditar: number;
   cliente: Client = new Client;
   procesos: Process[] = [];
   proceso: Process = new Process;
@@ -48,11 +48,14 @@ export class PresupuestoFormComponent implements OnInit {
       let id = +parametro.get('id');
       this.idEditar = + parametro.get('idEditar');
       if (this.idEditar) {
-        this.procesoService.procesosFindAll().subscribe(data=>{
-          this.procesos=data;
+        this.procesoService.procesosFindAll().subscribe(data => {
+          this.procesos = data;
           this.procesos.forEach(p => {
             if (p.id == this.idEditar) {
               this.proceso = p;
+              console.log(p);
+
+
               console.log(this.proceso);
               //this.presupuestoCompra= this.proceso.businessPlanFinancial.presupuestoCompra;
 
@@ -65,10 +68,10 @@ export class PresupuestoFormComponent implements OnInit {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
           if (this.idEditar) {
-console.log("estoy editando");
+            console.log("estoy editando");
 
           } else {
-console.log('no estoy editando');
+            console.log('no estoy editando');
 
             this.procesoService.procesosFindAll().subscribe(pro => {
               this.procesos = pro;
@@ -98,18 +101,18 @@ console.log('no estoy editando');
   //procesos?.businessPlanFinancial?.presupuestoVenta?.estructuraMercado
   elementos: any[] = []; // Inicializa la lista vacía o con elementos existentes
 
-sacarFila(presupuestoCompra:PresupuestoCompra,e:EstructuraCompra){
- // this.estructuraCompra= new EstructuraCompra()
-  console.log(presupuestoCompra);
-  console.log(e);
-  this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pre=>{
-  pre.estructuraCompras=  pre.estructuraCompras.filter(estructura=>estructura!=e);
-  })
+  sacarFila(presupuestoCompra: PresupuestoCompra, e: EstructuraCompra) {
+    // this.estructuraCompra= new EstructuraCompra()
+    console.log(presupuestoCompra);
+    console.log(e);
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pre => {
+      pre.estructuraCompras = pre.estructuraCompras.filter(estructura => estructura != e);
+    })
 
 
 
- //this.presupuestoCompra.estructuraCompras=this.proceso.businessPlanFinancial.presupuestoCompra
-}
+    //this.presupuestoCompra.estructuraCompras=this.proceso.businessPlanFinancial.presupuestoCompra
+  }
   agregarFila(producto: string) {
     this.totalUnitarios = 0
     this.totalAnuales = 0
@@ -121,6 +124,8 @@ sacarFila(presupuestoCompra:PresupuestoCompra,e:EstructuraCompra){
         console.log(this.estructuraCompra);
 
         console.log(producto);
+        console.log(this.proceso);
+
         //  this.elementos.push({ nombre: '', ventas: '' });
 
 
@@ -219,7 +224,7 @@ sacarFila(presupuestoCompra:PresupuestoCompra,e:EstructuraCompra){
     })
 
   }
-  editar(){
+  editar() {
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
       console.log(data1);
 
@@ -228,11 +233,15 @@ sacarFila(presupuestoCompra:PresupuestoCompra,e:EstructuraCompra){
     this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data => {
       console.log(data);
 
-      this.router.navigate(['gastos/cliente/', this.cliente.id])
+      if(this.proceso?.businessPlanFinancial?.gastoCosto){
+        this.router.navigate([`/gastos/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+      }else{
+        this.router.navigate(['/gastos/cliente/', this.cliente.id]);
+      }
 
     })
   }
-  editarYsalir(){
+  editarYsalir() {
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
       console.log(data1);
 

@@ -16,10 +16,10 @@ export class ClientDetailsComponent implements OnInit{
   client:Client;
   verContacto:boolean;
 
- 
-  
 
-  constructor(private serviceClient:ClientService, 
+
+
+  constructor(private serviceClient:ClientService,
     private activate:ActivatedRoute,){
 
   }
@@ -27,7 +27,9 @@ export class ClientDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.activate.paramMap.subscribe(data=>{
       let id:number= +data.get('id');
+
       let idVer:number=+data.get('idVer');
+
       if(id){
         this.serviceClient.getClient(id).subscribe(data=>{
           this.client=data;
@@ -43,10 +45,17 @@ export class ClientDetailsComponent implements OnInit{
           console.log(data);
           
           console.log(this.client);
-          
+
         })
       }
-      
+      if(idVer){
+        this.serviceClient.getClient(idVer).subscribe(data=>{
+          this.client=data;
+          console.log(this.client);
+
+        })
+      }
+
     })
   }
 
@@ -54,5 +63,5 @@ export class ClientDetailsComponent implements OnInit{
 
   }
 
-  
+
 

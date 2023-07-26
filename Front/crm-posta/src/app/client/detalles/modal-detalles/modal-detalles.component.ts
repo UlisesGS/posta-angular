@@ -43,13 +43,13 @@ export class ModalDetallesComponent {
       this.ruta.navigate([`procesos/verLienzo/${this.proceso.id}`]);
       break;
       case 'negocio':
+
         this.ruta.navigate([`clients/${this.proceso.canvasModel.client.id}/verBasico/${this.proceso.id}`]);
+
       ;
       break;
       case 'Propuesta de Valor':
         this.ruta.navigate([`canales/cliente/${this.proceso.canvasModel.client.id}`]);
-      
-      
        ;
        break;
     }
