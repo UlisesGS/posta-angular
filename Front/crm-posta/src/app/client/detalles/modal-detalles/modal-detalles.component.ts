@@ -37,13 +37,13 @@ export class ModalDetallesComponent {
   
     switch(this.tipoVer){
       case 'autoEvaluacion':
-        this.ruta.navigate([`puntajeAutoevaluacion/ver/${this.proceso.canvasModel.client.id}`]);
+        this.ruta.navigate([`puntajeAutoevaluacion/ver/${this.proceso.selfAssessment.client.id}`]); 
         break;
       case 'canvas':
       this.ruta.navigate([`procesos/verLienzo/${this.proceso.id}`]);
       break;
       case 'negocio':
-        this.ruta.navigate([`clients/verBasico/${this.proceso.id}`]);
+        this.ruta.navigate([`clients/${this.proceso.canvasModel.client.id}/verBasico/${this.proceso.id}`]);
       ;
       break;
       case 'Propuesta de Valor':

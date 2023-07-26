@@ -12,7 +12,7 @@ import { KeyPartners } from './KeyPartners';
 import { RevenueStreams } from './RevenueStreams';
 import { CostStructure } from './CostStructure';
 import { KeyActivities } from './KeyActivities';
-import { URL } from './../url';
+import { URL } from './../URL';
 
 
 

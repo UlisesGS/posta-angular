@@ -76,7 +76,7 @@ const routes:Routes=[
 
   {path:'', redirectTo:'/login', pathMatch:'full'},
 
-  {path:'clients/verBasico/:id', component:ModeloListaComponent},
+  
   
   {path:'clients', component:ClientComponent},
   {path:'clients/page/:page', component:ClientComponent},
@@ -162,6 +162,8 @@ const routes:Routes=[
   {path:'ingresos/cliente/:id/ver/:idVer',component:IngresosComponent},
   {path:'estructuraCostos/cliente/:id/ver/:idVer',component:EstructuraCostosComponent},
 // plan basico
+{path:'clients/:id/verBasico/:idVer1', component:ModeloListaComponent},
+
   {path:'informacion/cliente/:id/ver/:idVer',component:InformacionComponent},
   {path:'interno/cliente/:id/ver/:idVer',component:InternoComponent},
   {path:'dofa/cliente/:id/ver/:idVer',component:DofaComponent},
