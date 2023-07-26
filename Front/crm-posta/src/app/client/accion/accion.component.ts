@@ -166,6 +166,12 @@ continuarProceso(){
 
      ;
      break;
+     case 'Plan Financiero finalizado':
+      console.log('entre');
+      this.ruta.navigate([`inversion/cliente/${this.proceso.canvasModel.client.id}`]);
+
+
+     break;
   }
 }
 

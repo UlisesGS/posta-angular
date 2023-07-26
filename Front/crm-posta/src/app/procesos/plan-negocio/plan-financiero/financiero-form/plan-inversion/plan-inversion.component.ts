@@ -42,6 +42,7 @@ export class PlanInversionComponent implements OnInit {
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
+      let idEditar=+parametro.get('idEditar');
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
@@ -61,12 +62,39 @@ export class PlanInversionComponent implements OnInit {
 
         })
       }
+      if(idEditar){
+        this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+          this.proceso= data;
+          this.planDeInversion= this.proceso.businessPlanFinancial.planInversion;
+
+        })
+      }
     })
   }
+  eliminarActivo(a:Inversion){
+    this.planDeInversion.activoFijo= this.planDeInversion.activoFijo.filter(f=>f!=a);
+    this.activosFijos = this.activosFijos.filter(activo=>activo!=a);
+  }
+  eliminarMaquinaria(a:Inversion){
+    this.planDeInversion.maquinariaEquipo= this.planDeInversion.maquinariaEquipo.filter(f=>f!=a);
+    this.maquinarias = this.maquinarias.filter(activo=>activo!=a);
+  }
+  eliminarMueble(a:Inversion){
+
+    this.planDeInversion.maquinariaEquipo= this.planDeInversion.maquinariaEquipo.filter(f=>f!=a);
+    this.maquinarias = this.maquinarias.filter(activo=>activo!=a);
+  }
+  eliminarVehiculo(a:Inversion){
+
+    this.planDeInversion.vehiculos= this.planDeInversion.vehiculos.filter(f=>f!=a);
+    this.vehiculos = this.vehiculos.filter(activo=>activo!=a);
+  }
+
   agregarActivo() {
     this.activoFijo.creditoRequerido = 0;
     this.activoFijo.totalCredito();
     this.activosFijos.push(this.activoFijo);
+    this.activoFijo = new Inversion();
     this.planDeInversion.activoFijo = this.activosFijos;
     this.planDeInversion.activoCredito = 0;
     this.planDeInversion.activoPropio = 0;
@@ -77,12 +105,13 @@ export class PlanInversionComponent implements OnInit {
     this.planDeInversion.totalCredito = 0;
     this.planDeInversion.calculoTotal();
     //this.activosFijos.push();
-    this.activoFijo = new Inversion();
+
   }
   agregarMaquinaria() {
     this.maquinaria.creditoRequerido = 0;
     this.maquinaria.totalCredito();
     this.maquinarias.push(this.maquinaria);
+    this.maquinaria = new Inversion();
     this.planDeInversion.maquinariaEquipo = this.maquinarias;
     this.planDeInversion.maquinariaPropio = 0;
     this.planDeInversion.maquinariaInversion = 0;
@@ -93,12 +122,13 @@ export class PlanInversionComponent implements OnInit {
     this.planDeInversion.totalCredito = 0;
     this.planDeInversion.calculoTotal();
     //this.activosFijos.push();
-    this.maquinaria = new Inversion();
+
   }
   agregarMuebles() {
     this.mueble.creditoRequerido = 0;
     this.mueble.totalCredito();
     this.muebles.push(this.mueble);
+    this.mueble = new Inversion();
     this.planDeInversion.mueblesEnseres = this.muebles;
     this.planDeInversion.mueblesPropio = 0;
     this.planDeInversion.mueblesInversion = 0;
@@ -109,13 +139,14 @@ export class PlanInversionComponent implements OnInit {
     this.planDeInversion.totalCredito = 0;
     this.planDeInversion.calculoTotal();
     //this.activosFijos.push();
-    this.mueble = new Inversion();
+
   }
   agregarVehiculos() {
     this.vehiculo.creditoRequerido = 0;
     this.vehiculo.totalCredito();
     this.vehiculos.push(this.vehiculo);
     this.planDeInversion.vehiculos = this.vehiculos;
+    this.vehiculo = new Inversion();
     this.planDeInversion.vehiculosPropio = 0;
     this.planDeInversion.vehiculosInversion = 0;
     this.planDeInversion.vehiculosCredito = 0;
@@ -126,13 +157,16 @@ export class PlanInversionComponent implements OnInit {
     this.planDeInversion.calculoTotal();
 
     //this.activosFijos.push();
-    this.vehiculo = new Inversion();
+
   }
 
 
   public guardarYsalir() {
+    if(!this.proceso.businessPlanFinancial.planInversion){
+      this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
+    }
 
-    this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
+   // this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
     /*
     this.proceso.businessPlanFinancial.planInversion.activoFijo=this.activosFijos;
     this.proceso.businessPlanFinancial.planInversion.maquinariaEquipo=this.maquinarias;
@@ -159,11 +193,16 @@ export class PlanInversionComponent implements OnInit {
 
   }
   public guardar() {
-    this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
-    this.proceso.businessPlanFinancial.planInversion.activoFijo=this.activosFijos;
-    this.proceso.businessPlanFinancial.planInversion.maquinariaEquipo=this.maquinarias;
-    this.proceso.businessPlanFinancial.planInversion.mueblesEnseres=this.muebles;
-    this.proceso.businessPlanFinancial.planInversion.vehiculos=this.vehiculos;
+    if(!this.proceso.businessPlanFinancial.planInversion){
+      this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
+    }
+    this.proceso.businessPlanFinancial.planInversion= this.planDeInversion;
+
+
+   // this.proceso.businessPlanFinancial.planInversion.activoFijo=this.activosFijos;
+   // this.proceso.businessPlanFinancial.planInversion.maquinariaEquipo=this.maquinarias;
+    //this.proceso.businessPlanFinancial.planInversion.mueblesEnseres=this.muebles;
+    //this.proceso.businessPlanFinancial.planInversion.vehiculos=this.vehiculos;
    console.log(this.proceso);
 
 
