@@ -56,6 +56,7 @@ export class InformacionComponent {
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
+                    this.businessPlan=this.proceso.businessPlan;
                     this.proyectInformation=this.proceso.businessPlan.proyectInformation;
                     console.log(this.proyectInformation);
                     
@@ -124,14 +125,19 @@ this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data
       this.businessPlan.proyectInformation=data;
       // en el proximo cambiar a put hdp
       console.log(this.businessPlan);
-      this.proceso.estado='Informacion Proyecto'
+      
       this.modeloBasicoService.planUpdateBusinessPlan(this.businessPlan).subscribe(plan=>{
         this.businessPlan=plan;
         this.proceso.businessPlan=this.businessPlan;
         this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
           this.proceso=pro;
     
-          this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
+          if(this.proceso?.businessPlan?.analisis){
+            this.router.navigate([`/interno/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+          }else{
+            this.router.navigate(['/interno/cliente/', this.cliente.id]);
+          }
+
         })
       })
     })
@@ -142,7 +148,7 @@ this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data
           this.businessPlan.proyectInformation=data;
           // en el proximo cambiar a put hdp
           console.log(this.businessPlan);
-          this.proceso.estado='Informacion Proyecto'
+  
           this.modeloBasicoService.planUpdateBusinessPlan(this.businessPlan).subscribe(plan=>{
             this.businessPlan=plan;
             this.proceso.businessPlan=this.businessPlan;
@@ -150,7 +156,7 @@ this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data
               this.proceso=pro;
             //  this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
             this.router.navigate(['/procesos']);
-            Swal.fire('Exito', 'Informacion del Proyecto creada con exito', 'success');
+            Swal.fire('Exito', 'Informacion del Proyecto editado con exito', 'success');
             })
           })
         })

@@ -43,7 +43,21 @@ export class InternoComponent {
                 if(proceso.canvasModel.client.id==this.cliente.id){
                   this.proceso=proceso;
                   this.proceso.businessPlan=proceso.businessPlan;
-                  console.log(this.proceso);
+                  
+                  
+                  // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.businessPlan=this.proceso.businessPlan;
+                    this.internalExternalAnalysis=this.proceso.businessPlan.analisis;
+                    console.log(this.internalExternalAnalysis);
+                    
+                  })
+                }
 
                 }
               })
@@ -104,4 +118,53 @@ export class InternoComponent {
           })
 
         }
+
+
+
+
+        editar(){
+          this.modeloBasicoService.planUpdateAnalisis(this.internalExternalAnalysis).subscribe(data=>{
+            this.businessPlan.analisis=data;
+            this.proceso.businessPlan.analisis=data;
+            console.log(this.proceso);
+    
+            // en el proximo cambiar a put hdp
+            console.log(this.businessPlan);
+    
+            this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
+              this.businessPlan=plan;
+              this.proceso.businessPlan=this.businessPlan;
+              this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+                this.proceso=pro;
+                if(this.proceso?.businessPlan?.dofaAnalisis){
+                  this.router.navigate([`/dofa/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+                }else{
+                  this.router.navigate(['/dofa/cliente/', this.cliente.id]);
+                }
+              })
+            })
+          })
+    
+            }
+            editarYsalir(){
+    
+              this.modeloBasicoService.planUpdateAnalisis(this.internalExternalAnalysis).subscribe(data=>{
+                this.businessPlan.analisis=data;
+                this.proceso.businessPlan.analisis=data;
+                console.log(this.proceso);
+                // en el proximo cambiar a put hdp
+              //  console.log(this.businessPlan);
+    
+                this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
+                  this.businessPlan=plan;
+                  this.proceso.businessPlan=this.businessPlan;
+                  this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+                    this.proceso=pro;
+                    this.router.navigate(['/procesos']);
+                    Swal.fire('Exito', 'Analisis interno y externo editada con exito', 'success');
+                  })
+                })
+              })
+    
+            }
 }

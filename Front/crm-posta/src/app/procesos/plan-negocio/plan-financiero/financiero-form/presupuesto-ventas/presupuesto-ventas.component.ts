@@ -616,7 +616,15 @@ compararTipo(){
       this.proceso.businessPlanFinancial = this.businessPlanFinancial;
       this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
         this.proceso = pro;
-        this.router.navigate([`compras/cliente/${this.proceso.canvasModel.client.id}`]);
+        if(this.proceso?.businessPlanFinancial?.presupuestoCompra.length>0){
+          console.log('primero');
+          
+          this.router.navigate([`/compras/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+        }else{
+          console.log('segundo');
+          
+          this.router.navigate(['/compras/cliente/', this.cliente.id]);
+        }
       })
     })
   }

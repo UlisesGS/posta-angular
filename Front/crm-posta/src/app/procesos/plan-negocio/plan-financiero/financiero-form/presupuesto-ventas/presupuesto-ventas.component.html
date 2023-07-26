@@ -383,6 +383,8 @@
                       <button *ngIf="presupuestoVenta.id" (click)="editarYsalir()"  class="btn">Editar</button>
                       <button *ngIf="presupuestoVenta.id" (click)="editar()" class="btn">Editar y Continuar</button>
                       <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
+                      <button [routerLink]="['/conclusion/cliente/',cliente.id,'editar',proceso.id]"
+                        class="btn ">Volver</button>
                     </div>
                 </div>
 
