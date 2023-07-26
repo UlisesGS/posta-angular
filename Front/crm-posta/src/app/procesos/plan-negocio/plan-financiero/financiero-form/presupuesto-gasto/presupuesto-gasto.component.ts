@@ -215,6 +215,9 @@ public  totalCostos(r:RequerimientosPersonal){
   }
   agregarFila1() {
     this.materia2.anual();
+    if (this.administrativo.personal == null) {
+      this.administrativo.personal = [];
+    }
 
     //this.materiaPrima2.push(this.materia2);
 
@@ -234,7 +237,9 @@ public  totalCostos(r:RequerimientosPersonal){
   }
   agregarFila2() {
     this.materia3.anual();
-
+    if (this.ventas.personal == null) {
+      this.ventas.personal = [];
+    }
     this.ventas.personal.push(this.materia3);
     this.materia3 = new Personal();
     this.ponerEnCero(this.ventas);
@@ -254,7 +259,9 @@ public  totalCostos(r:RequerimientosPersonal){
 
   agregarCostoOperativo() {
     this.operativos.anual();
-
+    if (this.operativo.costos == null) {
+      this.operativo.costos = [];
+    }
     //this.operativosLista.push(this.operativos);
 
     // this.operativo.costos = this.operativosLista;
@@ -270,7 +277,9 @@ public  totalCostos(r:RequerimientosPersonal){
   }
   agregarGastoAdministrativo() {
     this.administrativos.anual();
-
+    if (this.administrativo.costos == null) {
+      this.administrativo.costos = [];
+    }
     // this.administrativosLista.push(this.administrativos);
 
     // this.administrativo.costos = this.administrativosLista;
@@ -286,7 +295,9 @@ public  totalCostos(r:RequerimientosPersonal){
   }
   agregarGastoVenta() {
     this.ventasL.anual();
-
+    if (this.ventas.costos == null) {
+      this.ventas.costos = [];
+    }
     //  this.ventasLista.push(this.ventasL);
 
     //this.ventas.costos = this.ventasLista;
