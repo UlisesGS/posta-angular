@@ -178,6 +178,7 @@ const routes:Routes=[
   {path:'inversion/cliente/:id/ver/:idVer',component:PlanInversionComponent},
 //Diagnostico Empresarial
 {path:'empresario/diagnostico',component:DiagnosticoComponent},
+{path:'empresario/diagnostico/cliente/:id',component:DiagnosticoComponent},
 
 
 

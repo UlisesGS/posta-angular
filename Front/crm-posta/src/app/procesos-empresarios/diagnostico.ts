@@ -2,7 +2,7 @@ import { ConceptoGenerales } from "./concepto-generales";
 
 export class Diagnostico {
 id:number;
-conceptosGenerales:ConceptoGenerales[];
+conceptosGenerales:ConceptoGenerales[]=[];
 gestionEstrategica:number[];
 gestionProductividad:number[];
 gestionOperacional:number[];
