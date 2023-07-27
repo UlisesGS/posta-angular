@@ -123,7 +123,8 @@ export class NuevoProcesoComponent implements OnInit {
   public findById(id: number) {
     this.clientService.getClient(id).subscribe((data) => {
       this.client = data;
-if(this.client.type==='entrepreneur'){
+      this.condicion=true;
+/*if(this.client.type==='entrepreneur'){
   console.log('entrepreneur');
 
 
@@ -133,7 +134,7 @@ if(this.client.type==='entrepreneur'){
 
   Swal.fire('Reparacion', 'Esta etapa se encuentra en reparacion', 'info');
   this.cerrarModalProceso();
-}
+}*/
 
 
     });
@@ -182,7 +183,13 @@ if(this.client.type==='entrepreneur'){
     })
 if(bool==false){
   this.cerrarModalProceso();
-  this.router.navigate(['/autoevaluacion/cliente/', this.client.id]);
+  if(this.client.type==='entrepreneur'){
+    this.router.navigate(['/autoevaluacion/cliente/', this.client.id]);
+  }else{
+    this.router.navigate(['/empresario/diagnostico/cliente/',this.client.id])
+
+  }
+
 
 
 
