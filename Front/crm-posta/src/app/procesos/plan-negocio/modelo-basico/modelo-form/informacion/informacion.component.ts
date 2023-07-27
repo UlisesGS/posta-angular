@@ -173,8 +173,5 @@ export class InformacionComponent {
           })
 
         })
-      })
-    })
-
-  }
-}
+      }
+    }

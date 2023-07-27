@@ -71,6 +71,8 @@ import { PlanInversionComponent } from './procesos/plan-negocio/plan-financiero/
 import { ModalDetallesComponent } from './client/detalles/modal-detalles/modal-detalles.component';
 import { VerPuntajeComponent } from './procesos/autoevaluacion/ver-puntaje/ver-puntaje.component';
 import { ModeloListaComponent } from './procesos/plan-negocio/modelo-basico/modelo-lista/modelo-lista.component';
+import { ProcesosEmpresariosComponent } from './procesos-empresarios/procesos-empresarios.component';
+import { DiagnosticoComponent } from './procesos-empresarios/diagnostico/diagnostico.component';
 
 const routes:Routes=[
 
@@ -174,6 +176,12 @@ const routes:Routes=[
   {path:'compras/cliente/:id/ver/:idVer',component:PresupuestoFormComponent},
   {path:'gastos/cliente/:id/ver/:idVer',component:PresupuestoGastoComponent},
   {path:'inversion/cliente/:id/ver/:idVer',component:PlanInversionComponent},
+//Diagnostico Empresarial
+{path:'empresario/diagnostico',component:DiagnosticoComponent},
+
+
+
+
 ]
 
 @NgModule({
@@ -239,6 +247,8 @@ const routes:Routes=[
       ModalDetallesComponent,
       VerPuntajeComponent,
       ModeloListaComponent,
+      ProcesosEmpresariosComponent,
+      DiagnosticoComponent,
 
 
 
