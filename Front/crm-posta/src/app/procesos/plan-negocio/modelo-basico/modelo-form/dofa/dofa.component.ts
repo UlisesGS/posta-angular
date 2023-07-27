@@ -46,7 +46,38 @@ export class DofaComponent {
                 if (proceso.canvasModel.client.id == this.cliente.id) {
                   this.proceso = proceso;
                   console.log(this.proceso);
+                  // para ver
+                  if (this.idVer1) {
+                    this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
+                      this.proceso = data;
+                      this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
+                      console.log(this.dofaAnalisis);
+    
+                      // para editar
+                      let idEditar = +parametro.get('idEditar');
+                      console.log('no entro al if');
+    
+                      if (idEditar) {
+                        this.procesoService.procesosFindById(idEditar).subscribe(data => {
+                          console.log(data);
+    
+                          this.proceso = data;
+                          this.businessPlan = this.proceso.businessPlan;
+                          this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
+                          console.log(this.dofaAnalisis);
+                        });
+                      }
+                    });
+                  }
+                }
+              });
+            });
+          });
+        }
+=======
+=======
 
+>>>>>>> d551e7ec3437528b553bb2ef30ab3aa5eebea937
                     //para ver
                 if (this.idVer1) {
                   this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
@@ -125,7 +156,6 @@ export class DofaComponent {
             });
           });
         }
-
       });
     }
     guardar(){
