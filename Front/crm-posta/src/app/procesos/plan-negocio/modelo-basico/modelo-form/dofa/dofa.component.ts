@@ -30,6 +30,7 @@ export class DofaComponent {
     private procesoService:ProcesoService,
     private modeloBasicoService:ModeloBasicoService,
     private router:Router) { }
+    /*
     ngOnInit(): void {
       this.rutaParametro.paramMap.subscribe(parametro => {
         let id = +parametro.get('id');
@@ -45,22 +46,72 @@ export class DofaComponent {
                 if (proceso.canvasModel.client.id == this.cliente.id) {
                   this.proceso = proceso;
                   console.log(this.proceso);
-    
+
+                    //para ver
+                if (this.idVer1) {
+                  this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
+                    this.proceso = data;
+                    this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
+                    console.log(this.dofaAnalisis);
+
+
+
+                   // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    console.log(data);
+
+                    this.proceso=data;
+                    this.businessPlan=this.proceso.businessPlan;
+                    this.dofaAnalisis=this.proceso.businessPlan.dofaAnalisis;
+                    console.log(this.dofaAnalisis);
+
+                  })
+                }
+
+
+                }
+                  )
+            })
+
+          })
+        }
+      })
+    }*/
+    ngOnInit(): void {
+      this.rutaParametro.paramMap.subscribe(parametro => {
+        let id = +parametro.get('id');
+        this.idVer1 = +parametro.get('idVer1');
+        if (id) {
+          this.clienteService.getClient(id).subscribe(data => {
+            this.cliente = data;
+            console.log(data);
+            this.procesoService.procesosFindAll().subscribe(pro => {
+              this.procesos = pro;
+
+              this.procesos.forEach(proceso => {
+                if (proceso.canvasModel.client.id == this.cliente.id) {
+                  this.proceso = proceso;
+                  console.log(this.proceso);
+
                   // para ver
                   if (this.idVer1) {
                     this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
                       this.proceso = data;
                       this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
                       console.log(this.dofaAnalisis);
-    
+
                       // para editar
                       let idEditar = +parametro.get('idEditar');
                       console.log('no entro al if');
-    
+
                       if (idEditar) {
                         this.procesoService.procesosFindById(idEditar).subscribe(data => {
                           console.log(data);
-    
+
                           this.proceso = data;
                           this.businessPlan = this.proceso.businessPlan;
                           this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
@@ -74,6 +125,7 @@ export class DofaComponent {
             });
           });
         }
+
       });
     }
     guardar(){
@@ -129,10 +181,10 @@ export class DofaComponent {
             this.businessPlan.dofaAnalisis=data;
             this.proceso.businessPlan.dofaAnalisis=data;
             console.log(this.proceso);
-    
+
             // en el proximo cambiar a put hdp
             //console.log(this.businessPlan);
-    
+
             this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
               this.businessPlan=plan;
               this.proceso.businessPlan=this.businessPlan;
@@ -146,17 +198,17 @@ export class DofaComponent {
               })
             })
           })
-    
+
             }
             editarYsalir(){
-    
+
               this.modeloBasicoService.planUpdateDofa(this.dofaAnalisis).subscribe(data=>{
                 this.businessPlan.dofaAnalisis=data;
                 this.proceso.businessPlan.dofaAnalisis=data;
                 console.log(this.proceso);
                 // en el proximo cambiar a put hdp
               //  console.log(this.businessPlan);
-    
+
                 this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
                   this.businessPlan=plan;
                   this.proceso.businessPlan=this.businessPlan;
@@ -168,6 +220,6 @@ export class DofaComponent {
                   })
                 })
               })
-    
+
             }
 }

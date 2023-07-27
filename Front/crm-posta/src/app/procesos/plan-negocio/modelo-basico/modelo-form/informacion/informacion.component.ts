@@ -10,8 +10,8 @@ import { ProyectInformation } from './../../ProyectInformation';
 import { ModeloBasicoService } from './../../modelo-basico.service';
 import Swal from 'sweetalert2';
 
-@Component({ 
-  selector: 'app-informacion', 
+@Component({
+  selector: 'app-informacion',
   templateUrl: './informacion.component.html',
   styleUrls: ['./informacion.component.css']
 })
@@ -54,7 +54,7 @@ export class InformacionComponent {
                 let idEditar = +parametro.get('idEditar');
                 console.log('no entro al if');
 
-                
+
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
@@ -137,13 +137,13 @@ export class InformacionComponent {
       // en el proximo cambiar a put hdp
       console.log(this.businessPlan);
 
-      
+
       this.modeloBasicoService.planUpdateBusinessPlan(this.businessPlan).subscribe(plan=>{
         this.businessPlan=plan;
         this.proceso.businessPlan=this.businessPlan;
         this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
           this.proceso=pro;
-    
+
           if(this.proceso?.businessPlan?.analisis){
             this.router.navigate([`/interno/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
           }else{
@@ -153,14 +153,14 @@ export class InformacionComponent {
         })
       })
     })
-    
+
       }
       editarYsalir(){
         this.modeloBasicoService.planUpdateProyect(this.proyectInformation).subscribe(data=>{
           this.businessPlan.proyectInformation=data;
           // en el proximo cambiar a put hdp
           console.log(this.businessPlan);
-  
+
           this.modeloBasicoService.planUpdateBusinessPlan(this.businessPlan).subscribe(plan=>{
             this.businessPlan=plan;
             this.proceso.businessPlan=this.businessPlan;
@@ -174,4 +174,6 @@ export class InformacionComponent {
 
         })
       }
+
     }
+

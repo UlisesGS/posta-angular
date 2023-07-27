@@ -13,19 +13,19 @@ import pdfMake from 'pdfmake/build/pdfmake';
   styleUrls: ['./accion-procesos.component.css']
 })
 export class AccionProcesosComponent implements OnInit {
-  
+
 
   @Input()proceso:Process = new Process();
-  
+
   imageUrl ="/assets/camaraHD.jpg";
 
   constructor(
     public modal:ModalService,
     private ruta:Router,
     private http:HttpClient,
-    
+
     ){}
-    
+
   ngOnInit(): void {
 
   }
@@ -40,6 +40,8 @@ export class AccionProcesosComponent implements OnInit {
   }
 
   public continuarProceso(){
+   console.log(this.proceso.estado);
+
     switch(this.proceso.estado){
       case 'iniciando':
         this.ruta.navigate([`autoevaluacion/cliente/${this.proceso.canvasModel.client.id}`]);
@@ -112,13 +114,21 @@ export class AccionProcesosComponent implements OnInit {
        break;
        case 'Presupuesto Gastos/Costos':
         this.ruta.navigate([`inversion/cliente/${this.proceso.canvasModel.client.id}`]);
-      
+
        ;
+       break;
+       case 'Plan Financiero finalizado':
+        console.log('entre');
+        this.ruta.navigate([`/inversion/cliente/${this.proceso.canvasModel.client.id}/editar/${this.proceso.id}`])
+
+
+
+
        break;
     }
     this.modal.cerrarModalProceso();
   }
 
- 
-  
+
+
 }

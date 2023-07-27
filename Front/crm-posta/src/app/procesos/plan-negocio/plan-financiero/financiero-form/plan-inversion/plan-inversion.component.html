@@ -18,6 +18,7 @@
                                     <th>Aportes de Rescursos Porpios</th>
                                     <th>Inversión requerida</th>
                                     <th>Crédito Requerido</th>
+                                    <th>Accion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,6 +37,7 @@
                                 <td>{{i.aportesPropios}}</td>
                                 <td>{{i.inversionRequerida}}</td>
                                 <td>{{i.creditoRequerido}}</td>
+                                <td><button (click)="eliminarActivo(i)" class="btn-close "></button></td>
                             </tr>
                                     <th colspan="4">Maquinaria y Equipamiento</th>
 
@@ -54,6 +56,7 @@
                                       <td>{{i.aportesPropios}}</td>
                                       <td>{{i.inversionRequerida}}</td>
                                       <td>{{i.creditoRequerido}}</td>
+                                      <td><button (click)="eliminarMaquinaria(i)" class="btn-close "></button></td>
                                   </tr>
                                 <tr>
                                     <th>Total Maquinaria</th>
@@ -79,6 +82,7 @@
                                   <td>{{i.aportesPropios}}</td>
                                   <td>{{i.inversionRequerida}}</td>
                                   <td>{{i.creditoRequerido}}</td>
+                                  <td><button (click)="eliminarMueble(i)" class="btn-close "></button></td>
                               </tr>
                                 <tr>
                                     <th>Total Muebles y Enseres</th>
@@ -104,6 +108,7 @@
                                   <td>{{i.aportesPropios}}</td>
                                   <td>{{i.inversionRequerida}}</td>
                                   <td>{{i.creditoRequerido}}</td>
+                                  <td><button (click)="eliminarVehiculo(i)" class="btn-close "></button></td>
                               </tr>
                                 <tr>
                                     <th>Total Vehiculos</th>
@@ -126,8 +131,8 @@
             </div>
         </div>
         <div class="form-group mt-3">
-          <button (click)="guardarYsalir()"  class="btn">Guardar</button>
-          <button (click)="guardar()" class="btn">Guardar y Continuar</button>
+          <button (click)="guardarYsalir()"  class="btn">{{planDeInversion.id?'Editar':'Guardar'}}</button>
+          <button (click)="guardar()" class="btn">{{planDeInversion.id?'Editar y continuar':'Guardar y Finalizar'}}</button>
           <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
           <button [routerLink]="['/gastos/cliente/',cliente.id,'editar', proceso?.id]"  class="btn">Volver</button>
         </div>
