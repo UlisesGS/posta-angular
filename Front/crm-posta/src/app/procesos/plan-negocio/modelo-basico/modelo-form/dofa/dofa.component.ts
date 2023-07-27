@@ -46,9 +46,6 @@ export class DofaComponent {
                 if (proceso.canvasModel.client.id == this.cliente.id) {
                   this.proceso = proceso;
                   console.log(this.proceso);
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
                   // para ver
                   if (this.idVer1) {
                     this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
@@ -159,11 +156,6 @@ export class DofaComponent {
             });
           });
         }
-<<<<<<< HEAD
->>>>>>> 2f125c2a14d8eea358227721291be43c719a3d64
-=======
-
->>>>>>> d551e7ec3437528b553bb2ef30ab3aa5eebea937
       });
     }
     guardar(){
