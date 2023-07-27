@@ -4,7 +4,7 @@
     </div>
     <div class="col-10">
         <h2 class="btn btn-disabled">Diagnóstico Empresarial</h2>
-        
+
         <div class="row">
             <div class="col-6">
                 <div>
@@ -34,15 +34,15 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
+                                        <select  [(ngModel)]="concepto[0].diagEmpr"class="form-select form-select-sm" name="d0"
+                                            aria-label="Default select example" id="d0">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea  [(ngModel)]="concepto[0].observaciones" class="form-control" id="o0" rows="1"
+                                            name="observaciones1" placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -52,19 +52,19 @@
                                             relacionados
                                             con el pago de la seguridad laboral del personal (seguridad social y pensiones
                                             administración de riesgos profesionales, fondos de cesantías)?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select  [(ngModel)]="concepto[1].diagEmpr" class="form-select form-select-sm" name="d1" id="d1"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[1].observaciones" class="form-control" id="o1" rows="1"
+                                            name="o1" placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -72,19 +72,20 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿Lleva libros de contabilidad, actas, de reformas, y de
                                             información legal? ¿se encuentran al día y debidamente registrados y archivados?
-    
+
                                         </label>
                                     </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+
+                                      <td style="width: 3%;" class="mantener">
+                                        <select  [(ngModel)]="concepto[2].diagEmpr" class="form-select form-select-sm" name="d2" id="d2"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[2].observaciones" class="form-control" id="o2" rows="1"
+                                            name="o2" placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -93,7 +94,7 @@
                                         <label for="pregunta1">¿Tiene definidas las responsabilidades y funciones de cada
                                             puesto
                                             de trabajo o cargos que desempeñan cada uno de los integrantes de la empresa?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -112,7 +113,7 @@
                                     <td style="width: 3%;">5</td>
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa cuenta con un reglamento interno de trabajo?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -131,7 +132,7 @@
                                     <td style="width: 3%;">6</td>
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿Cuentan con manual de procesos?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -151,7 +152,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿Se tienen establecidas claramente la misión, visión, valores
                                             corportativos y política de calidad de la empresa?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -171,7 +172,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿Se tienen indicadores: financieros, comerciales, producción,
                                             calidad?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -192,7 +193,7 @@
                                         <label for="pregunta1">¿Tiene claramente definido el producto y el cliente hacia el
                                             cual
                                             está dirigido?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -213,7 +214,7 @@
                                         <label for="pregunta1">¿Ha analizado la competencia y el entorno en general
                                             (productos
                                             sustitutos, competidores potenciales, proveedores, clientes)?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -232,7 +233,7 @@
                                     <td style="width: 3%;">11</td>
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa cuenta con una imagen corporativa?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -252,7 +253,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa dispone de un portafolio de productos/ servicios
                                             suficientemente?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -275,7 +276,7 @@
                                             y verificables en un plazo de tiempo definido, con asignación del responsable de
                                             su
                                             cumplimiento?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -296,7 +297,7 @@
                                         <label for="pregunta1">¿La empresa tiene definidas estrategias para comercializar
                                             sus
                                             servicios?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -316,7 +317,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa cuenta con instalaciones y ésta ubicada
                                             geográficamente permitiendo el fácil acceso a clientes y proveedores?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -336,7 +337,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿Cuenta con herramientas y maquinaria necesaria para la
                                             fabricación de sus productos o prestación de servicios?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -357,7 +358,7 @@
                                         <label for="pregunta1">¿Se cuenta con áreas organizadas para las fabricación de los
                                             productos o servicios, almacenamiento de materias primas, productos en proceso y
                                             productos terminados?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -378,7 +379,7 @@
                                         <label for="pregunta1">¿Cuenta con la disponibilidad de mano de obra calificada para
                                             la
                                             fabricación de productos o prestación de servicios?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -398,7 +399,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa conoce y aplica las normas ambientales en el
                                             desarrollo de su actividad?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -419,7 +420,7 @@
                                         <label for="pregunta1">¿La disponibilidad de materia prima está garantizada a
                                             mediano y
                                             largo plazo?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -440,7 +441,7 @@
                                         <label for="pregunta1">¿Posee un sistema de contabilidad y costos que ofrece
                                             información
                                             confiable y oportuna para la toma de decisiones?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -459,7 +460,7 @@
                                     <td style="width: 3%;">22</td>
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa realiza presupuestos?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -478,7 +479,7 @@
                                     <td style="width: 3%;">23</td>
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿Posee Cuenta de Ahorro o Cuenta Corriente?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -493,10 +494,11 @@
                                             name="remarks" placeholder=""></textarea>
                                     </td>
                                 </tr>
-    
+
                             </tbody>
                         </table>
                     </form>
+                    <button (click)="verDiagnostico()">Ver</button>
                 </div>
             </div>
         </div>
@@ -543,7 +545,7 @@
                                         <label for="pregunta1">¿La empresa cuenta con metas comerciales medibles y
                                             verificables en un plazo de tiempo definido, con asignación del responsable de
                                             su cumplimiento?.
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -563,8 +565,8 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa asigna recursos para el mercadeo de sus
                                             servicios? (promociones, material publicitario, otros).
-    
-    
+
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -584,7 +586,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa evalúa periódicamente sus mecanismos de promoción
                                             y publicidad para medir su efectividad y/o continuidad?.
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -604,7 +606,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa Investiga tendencias del sector y de su producto
                                             o servicio a nivel Local, Nacional e Internacional?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -624,7 +626,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa dispone de catálogos, portafolio o flayers con
                                             las especificaciones técnicas sus productos o servicios?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -644,7 +646,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa cumple con los requisitos de tiempo de entrega a
                                             sus clientes?.
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -664,7 +666,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa elabora pruebas piloto de cada producto, antes de
                                             ser lanzado al mercado?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -684,7 +686,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa promueve la creación de nuevos productos y o
                                             servicios para su negocio entre sus colaboradores?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -704,7 +706,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa Investiga periódicamente a la competencia?
                                             (Precios, productos, servicio)
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -724,7 +726,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿Los precios de la empresa están determinados con base en el
                                             conocimiento de sus costos, de la demanda y de la competencia?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -744,7 +746,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa establece estrategias por cada canal de
                                             distribución?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -764,7 +766,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa tiene registrada su marca (marcas) e implementa
                                             estrategias para su posicionamiento?.
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -784,7 +786,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa cuenta con imagen corporativa? (Manual de Imagen
                                             Corporativa)
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -804,7 +806,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa cuenta con un plan de fidelización para los
                                             clientes
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -823,7 +825,7 @@
                                     <td style="width: 20%;"><strong>Merchandising</strong></td>
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa cuenta con material de merchandising?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -843,7 +845,7 @@
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa ofrece a sus clientes productos complementarios a
                                             su producto estrella?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -862,7 +864,7 @@
                                     <td style="width: 20%;"><strong>Internacionalización</strong></td>
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿La empresa exporta o importa bienes o servicios?
-    
+
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
@@ -885,9 +887,9 @@
                             </tbody>
                         </table>
                     </form>
-    
+
                 </div>
-    
+
             </div>
         </div>
         <div class="row">
@@ -906,7 +908,7 @@
                                 <th style="width: 3%;" colspan="3">2. GESTIÓN DE LA PRODUCTIVIDAD Y DEL TALENTO HUMANO</th>
                                 <th style="width: 20%;">CALIFICACIÓN</th>
                             </tr>
-    
+
                         </thead>
                         <tbody>
                             <tr>
@@ -915,7 +917,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -934,7 +936,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con una estructura organizacional
                                         (Organigrama, Manual de funciones y responsabilidades)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -953,7 +955,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa evalúa las competencias y habilidades periódicamente
                                         de sus trabajadores?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -972,7 +974,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿En la empresa se cumplen las normas Tributarias, Contables,
                                         Laborales y Comerciales?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -991,7 +993,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa realiza grupos de trabajo para planear las
                                         estrategias del mes(comerciales, marketing)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1009,7 +1011,7 @@
                                 <td style="width: 20%;"><strong>Manejo de Indicadores</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿En la empresa se manejan indicadores de Gestión y Productividad?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1028,7 +1030,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con procesos de selección de nuevos empleados
                                         (pruebas psicológicas, psicotécnicas y de conocimiento)
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1047,7 +1049,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa realiza procesos de inducción, reinducción y
                                         capacitación a los nuevos y antiguos empleados?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1066,7 +1068,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿ La empresa cuenta Seguridad y Salud en el Trabajo (equipo de
                                         trabajo, manuales, procedimientos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1085,7 +1087,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa maneja incentivos y recompensas por productividad y
                                         ventas y cumplimientos de metas?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1105,7 +1107,7 @@
                                     <label for="pregunta1">¿Cuentan con canales de comunicación ágiles, asertivos y
                                         oportunos los diferentes niveles de personal de la compañía (directivos, técnicos,
                                         administrativos, otros)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1124,7 +1126,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿Realizan evaluación de desempeño a todos los colaboradores de la
                                         empresa?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1142,7 +1144,7 @@
                                 <td style="width: 20%;"><strong>Organizacional</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa hace medición del clima organizacional?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1181,7 +1183,7 @@
                                 <th style="width: 3%;" colspan="3">3.GESTIÓN DE PRODUCTIVIDAD OPERACIONAL</th>
                                 <th style="width: 20%;">CALIFICACIÓN</th>
                             </tr>
-    
+
                         </thead>
                         <tbody>
                             <tr>
@@ -1190,8 +1192,8 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un manuales de procesos (existen fichas
                                         técnicas de todas las materias primas, productos terminados, maquinaria y equipo)?
-    
-    
+
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1211,8 +1213,8 @@
                                     <label for="pregunta1">¿La empresa cuenta con un plan de producción (objetivos,
                                         estrategias, flujogramas o protocolos de procesos para los bienes y servicios que
                                         produce)?
-    
-    
+
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1231,7 +1233,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1250,7 +1252,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1269,7 +1271,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1288,7 +1290,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1307,7 +1309,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1326,7 +1328,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1345,7 +1347,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1364,7 +1366,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1383,7 +1385,7 @@
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas corporativas,
                                         Visión, Misión, Estrategia y Objetivos)?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1396,7 +1398,7 @@
                                     </select>
                                 </td>
                             </tr>
-    
+
                             <tr>
                                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
                                     Puntaje Total
@@ -1423,7 +1425,7 @@
                                 <th style="width: 3%;" colspan="3">4.GESTIÓN DE CALIDAD</th>
                                 <th style="width: 20%;">CALIFICACIÓN</th>
                             </tr>
-    
+
                         </thead>
                         <tbody>
                             <tr>
@@ -1431,7 +1433,7 @@
                                 <td style="width: 20%;"><strong>Implementación</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un sistema de calidad definido?
-    
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1444,8 +1446,8 @@
                                     </select>
                                 </td>
                             </tr>
-    
-    
+
+
                             <tr>
                                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
                                     Puntaje Total

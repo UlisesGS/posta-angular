@@ -78,8 +78,8 @@ const routes:Routes=[
 
   {path:'', redirectTo:'/login', pathMatch:'full'},
 
-  
-  
+
+
   {path:'clients', component:ClientComponent},
   {path:'clients/page/:page', component:ClientComponent},
   {path:'clients/form/businessman', component:FormClientComponent},
@@ -112,7 +112,7 @@ const routes:Routes=[
   {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
 
   {path:'procesos/ver/:id',component:VerProcesosComponent},
-  
+
 
   //Plan de Negocios
   {path:'informacion/cliente/:id',component:InformacionComponent},
@@ -178,6 +178,7 @@ const routes:Routes=[
   {path:'inversion/cliente/:id/ver/:idVer',component:PlanInversionComponent},
 //Diagnostico Empresarial
 {path:'empresario/diagnostico',component:DiagnosticoComponent},
+{path:'empresario/diagnostico/cliente/:id',component:DiagnosticoComponent},
 
 
 
@@ -253,7 +254,7 @@ const routes:Routes=[
 
 
    ],
-   
+
   imports: [
   BrowserModule,
     HttpClientModule,
