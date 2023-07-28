@@ -74,6 +74,7 @@ import { ModeloListaComponent } from './procesos/plan-negocio/modelo-basico/mode
 import { ProcesosEmpresariosComponent } from './procesos-empresarios/procesos-empresarios.component';
 import { DiagnosticoComponent } from './procesos-empresarios/diagnostico/diagnostico.component';
 import { ResultadosComponent } from './procesos-empresarios/resultados/resultados.component';
+import { EconomicoComponent } from './procesos-empresarios/economico/economico.component';
 
 const routes:Routes=[
 
@@ -179,10 +180,12 @@ const routes:Routes=[
   {path:'inversion/cliente/:id/ver/:idVer',component:PlanInversionComponent},
 //Diagnostico Empresarial
 {path:'empresario/diagnostico',component:DiagnosticoComponent},
-
-{path:'empresario/resultados',component:ResultadosComponent},
-
 {path:'empresario/diagnostico/cliente/:id',component:DiagnosticoComponent},
+{path:'empresario/resultados',component:ResultadosComponent},
+{path:'empresario/resultados/cliente/:id',component:ResultadosComponent},
+{path:'empresario/economico',component:EconomicoComponent},
+{path:'empresario/economico/cliente/:id',component:EconomicoComponent},
+
 
 
 
@@ -256,6 +259,7 @@ const routes:Routes=[
       ProcesosEmpresariosComponent,
       DiagnosticoComponent,
       ResultadosComponent,
+      EconomicoComponent,
 
 
 
