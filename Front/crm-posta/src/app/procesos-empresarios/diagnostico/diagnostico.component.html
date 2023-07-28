@@ -37,15 +37,15 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
+                                        <select  [(ngModel)]="concepto[0].diagEmpr"class="form-select form-select-sm" name="d0"
+                                            aria-label="Default select example" id="d0">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea  [(ngModel)]="concepto[0].observaciones" class="form-control" id="o0" rows="1"
+                                            name="observaciones1" placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -60,36 +60,38 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select  [(ngModel)]="concepto[1].diagEmpr" class="form-select form-select-sm" name="d1" id="d1"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[1].observaciones" class="form-control" id="o1" rows="1"
+                                            name="o1" placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">3</td>
                                     <td style="width: 70%;">
                                         <label for="pregunta1">¿Lleva libros de contabilidad, actas, de reformas, y de
-                                            información legal? ¿se encuentran al día y debidamente registrados y
-                                            archivados?
+
+                                            información legal? ¿se encuentran al día y debidamente registrados y archivados?
+
 
                                         </label>
                                     </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+
+                                      <td style="width: 3%;" class="mantener">
+                                        <select  [(ngModel)]="concepto[2].diagEmpr" class="form-select form-select-sm" name="d2" id="d2"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[2].observaciones" class="form-control" id="o2" rows="1"
+                                            name="o2" placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -98,21 +100,21 @@
                                         <label for="pregunta1">¿Tiene definidas las responsabilidades y funciones de
                                             cada
                                             puesto
-                                            de trabajo o cargos que desempeñan cada uno de los integrantes de la
-                                            empresa?
+
+                                            de trabajo o cargos que desempeñan cada uno de los integrantes de la empresa?
+
 
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[3].diagEmpr" class="form-select form-select-sm" name="d3" id="d3"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[3].observaciones" class="form-control" name="d3" id="d3" rows="1" placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -123,15 +125,15 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[4].diagEmpr" class="form-select form-select-sm" name="d4" id="d4"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[4].observaciones" class="form-control" name="d4" id="d4" rows="1"
+                                             placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,15 +144,14 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[5].diagEmpr" class="form-select form-select-sm" name="d5" id="d5"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[5].observaciones" class="form-control" name="d5" id="d5" rows="1" placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -163,15 +164,15 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[6].diagEmpr" class="form-select form-select-sm" name="d6" id="d6"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[6].observaciones" class="form-control" name="d6" id="d6" rows="1"
+                                             placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -184,15 +185,15 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[7].diagEmpr" class="form-select form-select-sm" name="d7" id="d7"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[7].observaciones" class="form-control" name="d7" id="d7" rows="1"
+                                           placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -206,15 +207,15 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[8].diagEmpr" class="form-select form-select-sm" name="d8" id="d8"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[8].observaciones" class="form-control" name="d8" id="d8" rows="1"
+                                            placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -227,14 +228,14 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[9].diagEmpr" class="form-select form-select-sm" name="d9" id="d9"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
+                                        <textarea [(ngModel)]="concepto[9].observaciones" class="form-control" name="d9" id="d9" rows="1"
                                             name="remarks" placeholder=""></textarea>
                                     </td>
                                 </tr>
@@ -246,15 +247,15 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[10].diagEmpr" class="form-select form-select-sm" name="d10" id="d10"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[10].observaciones" class="form-control" name="d10" id="d10" rows="1"
+                                             placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -267,15 +268,15 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[11].diagEmpr" class="form-select form-select-sm" name="d11" id="d11"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[11].observaciones" class="form-control" name="d11" id="d11" rows="1"
+                                            placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -291,15 +292,15 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select [(ngModel)]="concepto[12].diagEmpr" class="form-select form-select-sm" name="d12" id="d12"
                                             aria-label="Default select example">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
+                                        <textarea [(ngModel)]="concepto[12].observaciones" class="form-control" name="d12" id="d12" rows="1"
+                                             placeholder=""></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -313,16 +314,16 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[13].diagEmpr" class="form-select form-select-sm" name="d13" id="d13"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[13].observaciones" class="form-control" id="o13" rows="1"
+                                          name="13" placeholder=""></textarea>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">15</td>
@@ -333,16 +334,16 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[14].diagEmpr" class="form-select form-select-sm" name="d14" id="d14"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[14].observaciones" class="form-control" id="o14" rows="1"
+                                          name="o14" placeholder=""></textarea>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">16</td>
@@ -353,16 +354,16 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[15].diagEmpr" class="form-select form-select-sm" name="d15" id="d15"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[15].observaciones" class="form-control" id="o15" rows="1"
+                                          name="o15" placeholder=""></textarea>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">17</td>
@@ -376,16 +377,16 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[16].diagEmpr" class="form-select form-select-sm" name="d16" id="d16"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[16].observaciones" class="form-control" id="o16" rows="1"
+                                          name="o16" placeholder=""></textarea>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">18</td>
@@ -398,16 +399,16 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[17].diagEmpr" class="form-select form-select-sm" name="d17" id="d17"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[17].observaciones" class="form-control" id="o17" rows="1"
+                                          name="o17" placeholder=""></textarea>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">19</td>
@@ -418,16 +419,16 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[18].diagEmpr" class="form-select form-select-sm" name="d18" id="d18"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[18].observaciones" class="form-control" id="o18" rows="1"
+                                          name="o18" placeholder=""></textarea>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">20</td>
@@ -439,16 +440,16 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[19].diagEmpr" class="form-select form-select-sm" name="d19" id="d19"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[19].observaciones" class="form-control" id="o19" rows="1"
+                                          name="o19" placeholder=""></textarea>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">21</td>
@@ -460,16 +461,16 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[20].diagEmpr" class="form-select form-select-sm" name="d20" id="d20"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[20].observaciones" class="form-control" id="o20" rows="1"
+                                          name="o20" placeholder=""></textarea>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">22</td>
@@ -479,16 +480,16 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[21].diagEmpr" class="form-select form-select-sm" name="d21" id="d21"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[21].observaciones" class="form-control" id="o21" rows="1"
+                                          name="o21" placeholder=""></textarea>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 3%;">23</td>
@@ -498,21 +499,22 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
+                                      <select  [(ngModel)]="concepto[22].diagEmpr" class="form-select form-select-sm" name="d22" id="d22"
+                                          aria-label="Default select example">
+                                          <option value="SI">SI</option>
+                                          <option value="NO">NO</option>
+                                      </select>
+                                  </td>
+                                  <td style="width: 20%;">
+                                      <textarea [(ngModel)]="concepto[22].observaciones" class="form-control" id="o22" rows="1"
+                                          name="o22" placeholder=""></textarea>
+                                  </td>
                                 </tr>
 
                             </tbody>
                         </table>
                     </form>
+                    <button (click)="verDiagnostico()">Ver</button>
                 </div>
             </div>
         </div>
@@ -543,7 +545,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                        <select  [(ngModel)]="estrategicas[0]" class="form-select form-select-sm" name="e0"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -565,7 +567,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[1]" class="form-select form-select-sm" name="e1"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -586,7 +588,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[2]" class="form-select form-select-sm" name="e2"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -607,7 +609,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[3]" class="form-select form-select-sm" name="e3"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -628,7 +630,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[4]" class="form-select form-select-sm" name="e4"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -649,7 +651,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[5]" class="form-select form-select-sm" name="e5"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -670,7 +672,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[6]" class="form-select form-select-sm" name="e6"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -691,7 +693,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[7]" class="form-select form-select-sm" name="e7"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -711,7 +713,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[8]" class="form-select form-select-sm" name="e8"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -731,7 +733,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[9]" class="form-select form-select-sm" name="e9"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -752,7 +754,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[10]" class="form-select form-select-sm" name="e10"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -772,7 +774,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[11]" class="form-select form-select-sm" name="e11"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -793,7 +795,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[12]" class="form-select form-select-sm" name="e12"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -814,7 +816,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[13]" class="form-select form-select-sm" name="e13"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -834,7 +836,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[14]" class="form-select form-select-sm" name="e14"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -853,7 +855,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[15]" class="form-select form-select-sm" name="e15"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -874,7 +876,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[16]" class="form-select form-select-sm" name="e16"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -893,7 +895,7 @@
                                         </label>
                                     </td>
                                     <td style="width: 3%;" class="mantener">
-                                        <select class="form-select form-select-sm" name=""
+                                      <select  [(ngModel)]="estrategicas[17]" class="form-select form-select-sm" name="e17"
                                             aria-label="Default select example">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -912,6 +914,8 @@
                             </tbody>
                         </table>
                     </form>
+
+                    <button (click)="verEstrategica()">ver Estra</button>
 
                 </div>
 
@@ -948,8 +952,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[0]" class="form-select form-select-sm" name="p0">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -968,8 +973,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[1]" class="form-select form-select-sm" name="p1">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -989,8 +995,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[2]" class="form-select form-select-sm" name="p2">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1009,8 +1016,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[3]" class="form-select form-select-sm" name="p3">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1029,8 +1037,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[4]" class="form-select form-select-sm" name="p4">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1043,14 +1052,16 @@
                                 <td style="width: 3%;">6</td>
                                 <td style="width: 20%;"><strong>Manejo de Indicadores</strong></td>
                                 <td style="width: 70%;">
-                                    <label for="pregunta1">¿En la empresa se manejan indicadores de Gestión y
-                                        Productividad?
+
+                                    <label for="pregunta1">¿En la empresa se manejan indicadores de Gestión y Productividad?
+
 
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[5]" class="form-select form-select-sm" name="p5">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1070,8 +1081,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[6]" class="form-select form-select-sm" name="p6">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1090,8 +1102,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[7]" class="form-select form-select-sm" name="p7">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1111,8 +1124,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[8]" class="form-select form-select-sm" name="p8">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1132,8 +1146,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[9]" class="form-select form-select-sm" name="p9">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1154,8 +1169,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[10]" class="form-select form-select-sm" name="p10">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1175,8 +1191,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[11]" class="form-select form-select-sm" name="p11">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1194,8 +1211,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="produc[12]" class="form-select form-select-sm" name="p12">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1213,6 +1231,7 @@
                         </tbody>
                     </table>
                 </form>
+                <button (click)="verProductividad()">Ver Productividad</button>
             </div>
         </div>
         <div class="row">
@@ -1238,17 +1257,18 @@
                                 <td style="width: 3%;">1</td>
                                 <td style="width: 20%;"><strong>Procesos</strong></td>
                                 <td style="width: 70%;">
-                                    <label for="pregunta1">¿La empresa cuenta con un manuales de procesos (existen
-                                        fichas
-                                        técnicas de todas las materias primas, productos terminados, maquinaria y
-                                        equipo)?
+
+                                    <label for="pregunta1">¿La empresa cuenta con un manuales de procesos (existen fichas
+                                        técnicas de todas las materias primas, productos terminados, maquinaria y equipo)?
+
 
 
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[0]" class="form-select form-select-sm" name="op0">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1270,8 +1290,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[1]" class="form-select form-select-sm" name="op1">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1281,7 +1302,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">1</td>
+                                <td style="width: 3%;">3</td>
                                 <td style="width: 20%;"><strong>Plan Estratégico</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas
@@ -1291,8 +1312,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[2]" class="form-select form-select-sm" name="op2">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1302,7 +1324,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">1</td>
+                                <td style="width: 3%;">4</td>
                                 <td style="width: 20%;"><strong>Plan Estratégico</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas
@@ -1312,8 +1334,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[3]" class="form-select form-select-sm" name="op3">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1323,7 +1346,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">1</td>
+                                <td style="width: 3%;">5</td>
                                 <td style="width: 20%;"><strong>Plan Estratégico</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas
@@ -1333,8 +1356,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[4]" class="form-select form-select-sm" name="op4">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1344,7 +1368,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">1</td>
+                                <td style="width: 3%;">6</td>
                                 <td style="width: 20%;"><strong>Plan Estratégico</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas
@@ -1354,8 +1378,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[5]" class="form-select form-select-sm" name="op5">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1365,7 +1390,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">1</td>
+                                <td style="width: 3%;">7</td>
                                 <td style="width: 20%;"><strong>Plan Estratégico</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas
@@ -1375,8 +1400,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[6]" class="form-select form-select-sm" name="op6">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1386,7 +1412,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">1</td>
+                                <td style="width: 3%;">8</td>
                                 <td style="width: 20%;"><strong>Plan Estratégico</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas
@@ -1396,8 +1422,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[7]" class="form-select form-select-sm" name="op7">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1407,7 +1434,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">1</td>
+                                <td style="width: 3%;">9</td>
                                 <td style="width: 20%;"><strong>Plan Estratégico</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas
@@ -1417,8 +1444,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[8]" class="form-select form-select-sm" name="op8">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1428,7 +1456,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">1</td>
+                                <td style="width: 3%;">10</td>
                                 <td style="width: 20%;"><strong>Plan Estratégico</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas
@@ -1438,8 +1466,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[9]" class="form-select form-select-sm" name="op9">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1449,7 +1478,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">1</td>
+                                <td style="width: 3%;">11</td>
                                 <td style="width: 20%;"><strong>Plan Estratégico</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un plan estratégico (Metas
@@ -1459,8 +1488,9 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+
+                                  <select  [(ngModel)]="operacion[10]" class="form-select form-select-sm" name="op10">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1469,6 +1499,8 @@
                                     </select>
                                 </td>
                             </tr>
+
+                                    <button (click)="verOperacion()">Ver Operacion</button>
 
                             <tr>
                                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
@@ -1496,6 +1528,9 @@
                                 <th style="width: 3%;" colspan="3">4.GESTIÓN DE CALIDAD</th>
                                 <th style="width: 20%;">CALIFICACIÓN</th>
                             </tr>
+
+
+
                         </thead>
                         <tbody>
                             <tr>
@@ -1503,6 +1538,7 @@
                                 <td style="width: 20%;"><strong>Implementación</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con un sistema de calidad definido?
+
 
                                     </label>
                                 </td>
@@ -1780,6 +1816,7 @@
                                 <td style="width: 20%;"><strong>Innovación</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">En la empresa se investiga y se obtiene información sobre nuevas tecnologías, respecto a procesos, mercados, procesos administrativos, nuevas tendencias del producto o servicio?.
+
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
@@ -1793,7 +1830,7 @@
                                     </select>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
                                     Puntaje Total
