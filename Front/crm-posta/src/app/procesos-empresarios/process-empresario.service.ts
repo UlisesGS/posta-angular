@@ -14,8 +14,8 @@ export class ProcessEmpresarioService {
   public procesoEmpresarioFindAll(): Observable<any> {
     return this.http.get<any>(`${this.url}/ultimo`);
   }
-  public procesoEmpresarioFindById(procesoEmpresario: ProcessEmpresario): Observable<any> {
-    return this.http.get<any>(`${this.url}/${procesoEmpresario.id}`);
+  public procesoEmpresarioFindById(id:number): Observable<any> {
+    return this.http.get<any>(`${this.url}/${id}`);
   }
   //metodos post
   public procesoEmpresarioSave(procesoEmpresario: ProcessEmpresario): Observable<any> {

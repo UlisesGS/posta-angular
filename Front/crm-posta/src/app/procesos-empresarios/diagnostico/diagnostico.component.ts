@@ -39,6 +39,10 @@ export class DiagnosticoComponent implements OnInit {
   usuario: Usuario = new Usuario();
   constructor(private clienteService: ClientService, private processEmpresarioService: ProcessEmpresarioService, private ruta: Router, private parametro: ActivatedRoute) { }
   ngOnInit(): void {
+    this.consolidado=true;
+    this.processEmpresarioService.procesoEmpresarioFindById(1).subscribe(data=>{
+      this.procesoEmpresario=data;
+    })
     this.procesoEmpresario.diagnosticoEmpresarial= new DiagnosticoEmpresarial();
     this.procesoEmpresario.diagnosticoEmpresarial.diagnostico= new Diagnostico();
     //console.log(this.concepto.length);
@@ -89,9 +93,12 @@ export class DiagnosticoComponent implements OnInit {
     this.procesoEmpresario.user = this.usuario;
     this.procesoEmpresario.estado = 'Diagnostico'
     console.log(this.procesoEmpresario);
+   // this.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales
 
     //llamar al back para que saque todos los totales
     this.processEmpresarioService.procesoEmpresarioSave(this.procesoEmpresario).subscribe(data => {
+      this.procesoEmpresario=data;
+      this.consolidado=true;
       Swal.fire('Exito:', 'El Diagnostico de Empresario fue creado con exito', 'success');
     })
 
