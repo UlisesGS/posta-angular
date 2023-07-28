@@ -48,10 +48,14 @@
                                         <span class="d-inline-block bg-primary rounded-circle p-1"></span>
                                         Continuar con el Proceso
                                     </a></li>
-                                <li><a class="dropdown-item d-flex align-items-center gap-2 py-2">
+                                <li *ngIf="tipoVer=='canvas'"><a class="dropdown-item d-flex align-items-center gap-2 py-2" (click)="imprimirCanvas()">
                                         <span class="d-inline-block bg-primary rounded-circle p-1"></span>
                                         Imprimir este Proceso
                                     </a></li>
+                                    <li *ngIf="tipoVer=='negocio'"><a class="dropdown-item d-flex align-items-center gap-2 py-2" (click)="imprimirNegocio()">
+                                        <span class="d-inline-block bg-primary rounded-circle p-1"></span>
+                                        Imprimir este Proceso
+                                    </a></li>   
 
                             </ul>
                         </div>

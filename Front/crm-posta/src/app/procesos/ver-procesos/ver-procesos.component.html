@@ -4,18 +4,18 @@
   [bool]="bool1"></app-propuesta-de-valor-modal>
 <app-canales-modal *ngIf="modalService.verMas2 && procesoSeleccionado" [proceso]="procesoSeleccionado"
   [bool]="bool1"></app-canales-modal>
-<app-relaciones-modal *ngIf="modalService.verMas3 && procesoSeleccionado"
-  [proceso]="procesoSeleccionado" [bool]="bool1"></app-relaciones-modal>
-<app-recursos-claves-modal *ngIf="modalService.verMas4 && procesoSeleccionado"
-  [proceso]="procesoSeleccionado"  [bool]="bool1"></app-recursos-claves-modal>
-<app-actividades-claves-modal *ngIf="modalService.verMas5 && procesoSeleccionado"
-  [proceso]="procesoSeleccionado"  [bool]="bool1"></app-actividades-claves-modal>
-<app-socios-claves-modal *ngIf="modalService.verMas6 && procesoSeleccionado"
-  [proceso]="procesoSeleccionado"  [bool]="bool1"></app-socios-claves-modal>
-<app-ingresos-modal *ngIf="modalService.verMas7 && procesoSeleccionado"
-  [proceso]="procesoSeleccionado"  [bool]="bool1"></app-ingresos-modal>
-<app-estructura-costos-modal *ngIf="modalService.verMas8 && procesoSeleccionado"
-  [proceso]="procesoSeleccionado"  [bool]="bool1"></app-estructura-costos-modal>
+<app-relaciones-modal *ngIf="modalService.verMas3 && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [bool]="bool1"></app-relaciones-modal>
+<app-recursos-claves-modal *ngIf="modalService.verMas4 && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [bool]="bool1"></app-recursos-claves-modal>
+<app-actividades-claves-modal *ngIf="modalService.verMas5 && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [bool]="bool1"></app-actividades-claves-modal>
+<app-socios-claves-modal *ngIf="modalService.verMas6 && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [bool]="bool1"></app-socios-claves-modal>
+<app-ingresos-modal *ngIf="modalService.verMas7 && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [bool]="bool1"></app-ingresos-modal>
+<app-estructura-costos-modal *ngIf="modalService.verMas8 && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [bool]="bool1"></app-estructura-costos-modal>
 <app-asesoria *ngIf="modalService.asesoria"></app-asesoria>
 <div class="row">
   <div class="col-2">
@@ -101,158 +101,212 @@
     <div class="row">
 
       <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative;">
+        <div class="card border-0 mb-3" style="max-width: 19rem; height: 12em; position: relative;">
           <!-- Contenido del primer card -->
           <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; ">
-            <strong>SEGMENTO DE CLIENTES <i class="fa-solid fa-users-rectangle fa-2xl"></i></strong></div>
-          <div class="card-body text-primary" style="background-color: rgb(255, 235, 180)">
-            <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasSegmento(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
-            </div>
-            <div style="position: absolute; bottom: 0;left: 0;">
-              <a (click)="abrirVerMasSegmento(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            <strong>SEGMENTO DE CLIENTES <i class="fa-solid fa-users-rectangle fa-2xl"></i></strong>
+          </div>
+          <div class="card-body text-primary" style="background-color: rgb(255, 235, 180); padding: 0;">
+            <div style="display: flex; justify-content: space-between; position: absolute; bottom: 0; width: 100%;">
+              <div style="order: 1;">
+                <a (click)="abrirVerMasSegmento(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+              </div>
+              <div style="order: 2;">
+                <a (click)="abrirVerMasSegmento(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+              </div>
+              <div style="order: 3;">
+                <a (click)="imprimirSegmento()" class="btn"><i class="fa-solid fa-plus"></i> Imprimir</a>
+              </div>
             </div>
 
           </div>
         </div>
       </div>
       <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
+        <div class="card border-0 mb-3" style="max-width: 19rem; height: 12em; position: relative;">
           <!-- Contenido del segundo card -->
           <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;">
-            <strong>PROPUESTA DE VALOR <i class="fa-regular fa-gem fa-2xl"></i></strong></div>
-          <div class="card-body text-primary" style="background-color: rgb(248, 167, 167)">
-            <div style="position: absolute; bottom: 0;right: 0;">
+            <strong>PROPUESTA DE VALOR <i class="fa-regular fa-gem fa-2xl"></i></strong>
+          </div>
+          <div class="card-body text-primary" style="background-color: rgb(248, 167, 167); padding: 0;">
+            <div style="display: flex; justify-content: space-between; position: absolute; bottom: 0; width: 100%;">
+           
+            <div style="order: 1;">
               <a (click)="abrirVerMasPropuesta(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
             </div>
-            <div style="position: absolute; bottom: 0;left: 0;">
+            <div style="order: 2;">
               <a (click)="abrirVerMasPropuesta(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
             </div>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
-          <!-- Contenido del tercer card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;">
-            <strong>CANALES <i class="fa-solid fa-globe fa-2xl"></i></strong></div>
-          <div class="card-body text-primary" style="background-color: rgb(197, 236, 230)">
-            <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasCanales(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
-            </div>
-            <div style="position: absolute; bottom: 0;left: 0;">
-              <a (click)="abrirVerMasCanales(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+            <div style="order: 3;">
+              <a (click)="imprimirPropuesta()" class="btn"><i class="fa-solid fa-plus"></i> Imprimir</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative;">
-          <!-- Contenido del primer card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; ">
-            <strong>RELACIÓN CON CLIENTES <i class="fa-solid fa-people-arrows fa-2xl"></i></strong></div>
-          <div class="card-body text-primary" style="background-color: rgb(255, 235, 180)">
-            <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasRelaciones(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
-            </div>
-            <div style="position: absolute; bottom: 0;left: 0;">
-              <a (click)="abrirVerMasRelaciones(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
-            </div>
-
+    <div class="col-4">
+      <div class="card border-0 mb-3" style="max-width: 19rem; height: 12em; position: relative;">
+        <!-- Contenido del tercer card -->
+        <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;">
+          <strong>CANALES <i class="fa-solid fa-globe fa-2xl"></i></strong>
+        </div>
+        <div class="card-body text-primary" style="background-color: rgb(197, 236, 230); padding: 0;">
+          <div style="display: flex; justify-content: space-between; position: absolute; bottom: 0; width: 100%;">
+          <div style="order: 1;">
+            <a (click)="abrirVerMasCanales(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+          </div>
+          <div style="order: 2;">
+            <a (click)="abrirVerMasCanales(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+          </div>
+          <div style="order: 3;">
+            <a (click)="imprimirCanales()" class="btn"><i class="fa-solid fa-plus"></i> Imprimir</a>
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
-          <!-- Contenido del segundo card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;">
-            <strong>RECURSOS CLAVES <i class="fa-solid fa-screwdriver-wrench fa-2xl"></i></strong></div>
-          <div class="card-body text-primary" style="background-color: rgb(248, 167, 167)">
-            <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasRecursosClaves(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
-            </div>
-            <div style="position: absolute; bottom: 0;left: 0;">
-              <a (click)="abrirVerMasRecursosClaves(proceso,false)"class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
-          <!-- Contenido del tercer card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;">
-            <strong>ACTIVIDADES CLAVES <i class="fa-solid fa-gears fa-2xl"></i></strong></div>
-          <div class="card-body text-primary" style="background-color: rgb(197, 236, 230)">
-            <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasActividadesClaves(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver
-                más</a>
-            </div>
-            <div style="position: absolute; bottom: 0;left: 0;">
-              <a (click)="abrirVerMasActividadesClaves(proceso,false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative;">
-          <!-- Contenido del primer card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; ">
-            <strong>SOCIOS CLAVES <i class="fa-solid fa-handshake fa-2xl"></i></strong></div>
-          <div class="card-body text-primary" style="background-color: rgb(255, 235, 180)">
-            <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasSociosClaves(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
-            </div>
-            <div style="position: absolute; bottom: 0;left: 0;">
-              <a (click)="abrirVerMasSociosClaves(proceso,false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
-          <!-- Contenido del segundo card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;">
-            <strong>INGRESOS <i class="fa-solid fa-cash-register fa-2xl"></i></strong></div>
-          <div class="card-body text-primary" style="background-color: rgb(248, 167, 167)">
-            <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasIngresos(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
-            </div>
-            <div style="position: absolute; bottom: 0;left: 0;">
-              <a  (click)="abrirVerMasIngresos(proceso,false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card border-0 mb-3" style="max-width: 18rem; height: 12em; position: relative; ">
-          <!-- Contenido del tercer card -->
-          <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;">
-            <strong>ESTRUCTURA DE COSTOS <i class="fa-solid fa-circle-dollar-to-slot fa-2xl"></i></strong></div>
-          <div class="card-body text-primary" style="background-color: rgb(197, 236, 230)">
-            <div style="position: absolute; bottom: 0;right: 0;">
-              <a (click)="abrirVerMasEstructuraCostos(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver
-                más</a>
-            </div>
-            <div style="position: absolute; bottom: 0;left: 0;">
-              <a (click)="abrirVerMasEstructuraCostos(proceso,false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-    <div class="form-group" *ngIf="idVer">
-      <button   [routerLink]="['/clients/details/', client.id]" class="btn">Volver</button>
-     
   </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="card border-0 mb-3" style="max-width: 19rem; height: 12em; position: relative;">
+        <!-- Contenido del primer card -->
+        <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; ">
+          <strong>RELACIÓN CON CLIENTES <i class="fa-solid fa-people-arrows fa-2xl"></i></strong>
+        </div>
+        <div class="card-body text-primary" style="background-color: rgb(255, 235, 180); padding: 0;">
+          <div style="display: flex; justify-content: space-between; position: absolute; bottom: 0; width: 100%;">
+          <div style="order: 1;">
+            <a (click)="abrirVerMasRelaciones(proceso, true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+          </div>
+          <div style="order: 2;">
+            <a (click)="abrirVerMasRelaciones(proceso, false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+          </div>
+          <div style="order: 3;">
+            <a (click)="imprimirRelaciones()" class="btn"><i class="fa-solid fa-plus"></i> Imprimir</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card border-0 mb-3" style="max-width: 19rem; height: 12em; position: relative;">
+        <!-- Contenido del segundo card -->
+        <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;">
+          <strong>RECURSOS CLAVES <i class="fa-solid fa-screwdriver-wrench fa-2xl"></i></strong>
+        </div>
+        <div class="card-body text-primary" style="background-color: rgb(248, 167, 167); padding: 0;">
+          <div style="display: flex; justify-content: space-between; position: absolute; bottom: 0; width: 100%;">
+          <div style="order: 3;">
+            <a (click)="abrirVerMasRecursosClaves(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver
+              más</a>
+          </div>
+          <div style="order: 3;">
+            <a (click)="abrirVerMasRecursosClaves(proceso,false)" class="btn"><i class="fa-solid fa-plus"></i>
+              Editar</a>
+          </div>
+          <div style="order: 3;">
+            <a (click)="imprimirRecursosClaves()" class="btn"><i class="fa-solid fa-plus"></i> Imprimir</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card border-0 mb-3" style="max-width: 19rem; height: 12em; position: relative;">
+        <!-- Contenido del tercer card -->
+        <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;">
+          <strong>ACTIVIDADES CLAVES <i class="fa-solid fa-gears fa-2xl"></i></strong>
+        </div>
+        <div class="card-body text-primary" style="background-color: rgb(197, 236, 230);padding: 0;">
+          <div style="display: flex; justify-content: space-between; position: absolute; bottom: 0; width: 100%;">
+          <div style="order: 1;">
+            <a (click)="abrirVerMasActividadesClaves(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver
+              más</a>
+          </div>
+          <div style="order: 2;">
+            <a (click)="abrirVerMasActividadesClaves(proceso,false)" class="btn"><i class="fa-solid fa-plus"></i>
+              Editar</a>
+          </div>
+          <div style="order: 3;">
+            <a (click)="imprimirActividadesClaves()" class="btn"><i class="fa-solid fa-plus"></i> Imprimir</a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
   </div>
-  
+  <div class="row">
+    <div class="col-4">
+      <div class="card border-0 mb-3" style="max-width: 19rem; height: 12em; position: relative;">
+        <!-- Contenido del primer card -->
+        <div class="card-header text-center border-0" style="background-color: rgb(252, 194, 34);color: white; ">
+          <strong>SOCIOS CLAVES <i class="fa-solid fa-handshake fa-2xl"></i></strong>
+        </div>
+        <div class="card-body text-primary" style="background-color: rgb(255, 235, 180);padding: 0;">
+          <div style="display: flex; justify-content: space-between; position: absolute; bottom: 0; width: 100%;">
+          <div style="order: 1;">
+            <a (click)="abrirVerMasSociosClaves(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+          </div>
+          <div style="order: 2;">
+            <a (click)="abrirVerMasSociosClaves(proceso,false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+          </div>
+          <div style="order: 3;">
+            <a (click)="imprimirSociosClaves()" class="btn"><i class="fa-solid fa-plus"></i> Imprimir</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card border-0 mb-3" style="max-width: 19rem; height: 12em; position: relative;">
+        <!-- Contenido del segundo card -->
+        <div class="card-header text-center border-0" style="background-color: rgb(253, 85, 85);color: white;">
+          <strong>INGRESOS <i class="fa-solid fa-cash-register fa-2xl"></i></strong>
+        </div>
+        <div class="card-body text-primary" style="background-color: rgb(248, 167, 167);padding: 0;">
+          <div style="display: flex; justify-content: space-between; position: absolute; bottom: 0; width: 100%;">
+          <div style="order: 1;">
+            <a (click)="abrirVerMasIngresos(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver más</a>
+          </div>
+          <div style="order: 2;">
+            <a (click)="abrirVerMasIngresos(proceso,false)" class="btn"><i class="fa-solid fa-plus"></i> Editar</a>
+          </div>
+          <div style="order: 3;">
+            <a (click)="imprimirIngresos()" class="btn"><i class="fa-solid fa-plus"></i> Imprimir</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card border-0 mb-3" style="max-width: 19rem; height: 12em; position: relative;">
+        <!-- Contenido del tercer card -->
+        <div class="card-header text-center border-0" style="background-color: rgb(142, 214, 202);color: white;">
+          <strong>ESTRUCTURA DE COSTOS <i class="fa-solid fa-circle-dollar-to-slot fa-2xl"></i></strong>
+        </div>
+        <div class="card-body text-primary" style="background-color: rgb(197, 236, 230);padding: 0;">
+          <div style="display: flex; justify-content: space-between; position: absolute; bottom: 0; width: 100%;">
+          <div style="order: 1;">
+            <a (click)="abrirVerMasEstructuraCostos(proceso,true)" class="btn"><i class="fa-solid fa-plus"></i> Ver
+              más</a>
+          </div>
+          <div style="order: 2;">
+            <a (click)="abrirVerMasEstructuraCostos(proceso,false)" class="btn"><i class="fa-solid fa-plus"></i>
+              Editar</a>
+          </div>
+          <div style="order: 3;">
+            <a (click)="imprimirCostoEstructura()" class="btn"><i class="fa-solid fa-plus"></i> Imprimir</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="idVer">
+    <button [routerLink]="['/clients/details/', client.id]" class="btn">Volver</button>
+
+  </div>
 </div>
 
-
+</div>
