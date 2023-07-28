@@ -73,6 +73,7 @@ import { VerPuntajeComponent } from './procesos/autoevaluacion/ver-puntaje/ver-p
 import { ModeloListaComponent } from './procesos/plan-negocio/modelo-basico/modelo-lista/modelo-lista.component';
 import { ProcesosEmpresariosComponent } from './procesos-empresarios/procesos-empresarios.component';
 import { DiagnosticoComponent } from './procesos-empresarios/diagnostico/diagnostico.component';
+import { ResultadosComponent } from './procesos-empresarios/resultados/resultados.component';
 
 const routes:Routes=[
 
@@ -178,7 +179,11 @@ const routes:Routes=[
   {path:'inversion/cliente/:id/ver/:idVer',component:PlanInversionComponent},
 //Diagnostico Empresarial
 {path:'empresario/diagnostico',component:DiagnosticoComponent},
+
+{path:'empresario/resultados',component:ResultadosComponent},
+
 {path:'empresario/diagnostico/cliente/:id',component:DiagnosticoComponent},
+
 
 
 
@@ -250,6 +255,7 @@ const routes:Routes=[
       ModeloListaComponent,
       ProcesosEmpresariosComponent,
       DiagnosticoComponent,
+      ResultadosComponent,
 
 
 

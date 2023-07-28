@@ -32,6 +32,15 @@ this.diagnostico.conceptosGenerales=[]
   operacional:boolean=false;
   calidad:boolean=false;
 
+  innovacion:boolean=false;
+  financiero:boolean=false;
+  logistica:boolean=false;
+  digital:boolean=false;
+  ambiental:boolean=false;
+  intelectual:boolean=false;
+  consolidado:boolean=false;
+
+
   verDiagnostico(){
     console.log(this.concepto);
     this.diagnostico.conceptosGenerales=this.concepto;
@@ -54,6 +63,7 @@ this.diagnostico.conceptosGenerales=[]
     console.log(this.diagnostico);
 
   }
+
 
 
   condicionConceptos(){
@@ -89,6 +99,55 @@ this.diagnostico.conceptosGenerales=[]
       this.calidad=false;
     }else{
       this.calidad=true;
+    }
+  }
+  condicionInnovacion(){
+    if(this.innovacion){
+      this.innovacion=false;
+    }else{
+      this.innovacion=true;
+    }
+  }
+  condicionFinanciero(){
+    if(this.financiero){
+      this.financiero=false;
+    }else{
+      this.financiero=true;
+    }
+  }
+  condicionLogistica(){
+    if(this.logistica){
+      this.logistica=false;
+    }else{
+      this.logistica=true;
+    }
+  }
+  condicionDigitalizacion(){
+    if(this.digital){
+      this.digital=false;
+    }else{
+      this.digital=true;
+    }
+  }
+  condicionAmbiental(){
+    if(this.ambiental){
+      this.ambiental=false;
+    }else{
+      this.ambiental=true;
+    }
+  }
+  condicionIntelectual(){
+    if(this.intelectual){
+      this.intelectual=false;
+    }else{
+      this.intelectual=true;
+    }
+  }
+  condicionConsolidado(){
+    if(this.consolidado){
+      this.consolidado=false;
+    }else{
+      this.consolidado=true;
     }
   }
 }
