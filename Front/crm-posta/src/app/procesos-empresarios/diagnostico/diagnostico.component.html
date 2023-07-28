@@ -514,7 +514,6 @@
                             </tbody>
                         </table>
                     </form>
-                    <button (click)="verDiagnostico()">Ver</button>
                 </div>
             </div>
         </div>
@@ -915,7 +914,7 @@
                         </table>
                     </form>
 
-                    <button (click)="verEstrategica()">ver Estra</button>
+
 
                 </div>
 
@@ -1231,7 +1230,7 @@
                         </tbody>
                     </table>
                 </form>
-                <button (click)="verProductividad()">Ver Productividad</button>
+
             </div>
         </div>
         <div class="row">
@@ -1499,10 +1498,7 @@
                                     </select>
                                 </td>
                             </tr>
-
-                                    <button (click)="verOperacion()">Ver Operacion</button>
-
-                            <tr>
+                                                               <tr>
                                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
                                     Puntaje Total
                                 </td>
@@ -1543,7 +1539,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
+                                  <select  [(ngModel)]="calidada[0]" class="form-select form-select-sm" name="cal0">
                                         aria-label="Default select example">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -1561,8 +1557,8 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="calidada[1]" class="form-select form-select-sm" name="cal1">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1581,8 +1577,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="calidada[2]" class="form-select form-select-sm" name="cal2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1601,8 +1596,8 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="calidada[3]" class="form-select form-select-sm" name="cal3">
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1622,8 +1617,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="calidada[4]" class="form-select form-select-sm" name="cal4">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1640,8 +1634,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="calidada[5]" class="form-select form-select-sm" name="cal5">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1661,8 +1654,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="calidada[6]" class="form-select form-select-sm" name="cal6">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1679,8 +1671,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="calidada[7]" class="form-select form-select-sm" name="cal7">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1698,8 +1689,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="calidada[8]" class="form-select form-select-sm" name="cal8">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1716,8 +1706,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="calidada[9]" class="form-select form-select-sm" name="cal9">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1727,6 +1716,7 @@
                                 </td>
                             </tr>
                             <tr>
+                             
                                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
                                     Puntaje Total
                                 </td>
@@ -1764,8 +1754,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="inovaciones[0]" class="form-select form-select-sm" name="inov0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1783,8 +1772,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="inovaciones[1]" class="form-select form-select-sm" name="inov1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1801,8 +1789,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="inovaciones[2]" class="form-select form-select-sm" name="inov2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1820,8 +1807,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="inovaciones[3]" class="form-select form-select-sm" name="inov3">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1867,8 +1853,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[0]" class="form-select form-select-sm" name="fina0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1885,8 +1870,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[1]" class="form-select form-select-sm" name="fina1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1903,8 +1887,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[2]" class="form-select form-select-sm" name="fina2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1921,8 +1904,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[3]" class="form-select form-select-sm" name="fina3">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1939,8 +1921,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[4]" class="form-select form-select-sm" name="fina4">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1957,8 +1938,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[5]" class="form-select form-select-sm" name="fina5">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1975,8 +1955,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[6]" class="form-select form-select-sm" name="fina6">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -1989,12 +1968,11 @@
                                 <td style="width: 3%;">8</td>
                                 <td style="width: 20%;"><strong>Crecimiento</strong></td>
                                 <td style="width: 70%;">
-                                    <label for="pregunta1">¿La empresa evalúa el crecimiento del negocio frente a las inversiones realizadas y conoce el retorno sobre su inversión?. 
+                                    <label for="pregunta1">¿La empresa evalúa el crecimiento del negocio frente a las inversiones realizadas y conoce el retorno sobre su inversión?.
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[7]" class="form-select form-select-sm" name="fina7">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2011,8 +1989,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[8]" class="form-select form-select-sm" name="fina8">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2029,8 +2006,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[9]" class="form-select form-select-sm" name="fina9">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2047,8 +2023,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[10]" class="form-select form-select-sm" name="fina10">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2065,8 +2040,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[11]" class="form-select form-select-sm" name="fina11">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2083,8 +2057,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[12]" class="form-select form-select-sm" name="fina12">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2101,8 +2074,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[13]" class="form-select form-select-sm" name="fina13">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2112,15 +2084,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">5</td>
+                                <td style="width: 3%;">15</td>
                                 <td style="width: 20%;"><strong>Conocimiento Sector</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La Empresa conoce indicadores de comportamiento del sector económico de su actividad empresarial?
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[14]" class="form-select form-select-sm" name="fina14">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2130,15 +2101,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 3%;">16</td> 
+                                <td style="width: 3%;">16</td>
                                 <td style="width: 20%;"><strong>Estratégia Financiera</strong></td>
                                 <td style="width: 70%;">
                                     <label for="pregunta1">¿La empresa cuenta con metas financieras medibles y verificables en un plazo de tiempo definido, con asignación del responsable de su cumplimiento?
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="financieras[15]" class="form-select form-select-sm" name="fina15">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2184,8 +2154,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="logisticas[0]" class="form-select form-select-sm" name="log0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2203,8 +2172,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="logisticas[1]" class="form-select form-select-sm" name="log1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2222,8 +2190,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="logisticas[2]" class="form-select form-select-sm" name="log2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2241,8 +2208,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="logisticas[3]" class="form-select form-select-sm" name="log3">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2260,8 +2226,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="logisticas[4]" class="form-select form-select-sm" name="log4">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2279,8 +2244,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="logisticas[5]" class="form-select form-select-sm" name="log5">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2289,7 +2253,7 @@
                                     </select>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
                                     Puntaje Total
@@ -2326,8 +2290,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="digitales[0]" class="form-select form-select-sm" name="dig0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2344,8 +2307,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="digitales[1]" class="form-select form-select-sm" name="dig1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2362,8 +2324,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="digitales[2]" class="form-select form-select-sm" name="dig2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2376,12 +2337,11 @@
                                 <td style="width: 3%;">4</td>
                                 <td style="width: 20%;"><strong>Almacenamiento de Datos</strong></td>
                                 <td style="width: 70%;">
-                                    <label for="pregunta1">¿La empresa hace uso o tiene acceso a la tecnología de big data, nube? 
+                                    <label for="pregunta1">¿La empresa hace uso o tiene acceso a la tecnología de big data, nube?
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="digitales[3]" class="form-select form-select-sm" name="dig3">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2398,8 +2358,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="digitales[4]" class="form-select form-select-sm" name="dig4">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2412,12 +2371,11 @@
                                 <td style="width: 3%;">6</td>
                                 <td style="width: 20%;"><strong>Mejora Productos</strong></td>
                                 <td style="width: 70%;">
-                                    <label for="pregunta1">¿La empresa ha buscado expertos para la transformación tecnológica de sus productos y/o servicios? 
+                                    <label for="pregunta1">¿La empresa ha buscado expertos para la transformación tecnológica de sus productos y/o servicios?
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="digitales[5]" class="form-select form-select-sm" name="dig5">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2426,8 +2384,8 @@
                                     </select>
                                 </td>
                             </tr>
-                           
-                            
+
+
                             <tr>
                                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
                                     Puntaje Total
@@ -2464,8 +2422,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="ambientales[0]" class="form-select form-select-sm" name="amb0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2482,8 +2439,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="ambientales[1]" class="form-select form-select-sm" name="amb1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2500,8 +2456,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="ambientales[2]" class="form-select form-select-sm" name="amb2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2518,8 +2473,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="ambientales[3]" class="form-select form-select-sm" name="amb3">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2536,8 +2490,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="ambientales[4]" class="form-select form-select-sm" name="amb4">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2554,8 +2507,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="ambientales[5]" class="form-select form-select-sm" name="amb5">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2572,8 +2524,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="ambientales[6]" class="form-select form-select-sm" name="amb6">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2590,8 +2541,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="ambientales[7]" class="form-select form-select-sm" name="amb7">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2608,8 +2558,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="ambientales[8]" class="form-select form-select-sm" name="amb8">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2650,12 +2599,11 @@
                                 <td style="width: 3%;">1</td>
                                 <td style="width: 20%;"><strong>Derecho de Autor</strong></td>
                                 <td style="width: 70%;">
-                                    <label for="pregunta1">¿La empresa ha hecho gestión de los derechos de autor? 
+                                    <label for="pregunta1">¿La empresa ha hecho gestión de los derechos de autor?
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="intelectuales[0]" class="form-select form-select-sm" name="int0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2672,8 +2620,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="intelectuales[1]" class="form-select form-select-sm" name="int1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2690,8 +2637,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="intelectuales[2]" class="form-select form-select-sm" name="int2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2708,8 +2654,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="intelectuales[3]" class="form-select form-select-sm" name="int3">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2726,8 +2671,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="intelectuales[4]" class="form-select form-select-sm" name="int4">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2744,8 +2688,7 @@
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    <select class="form-select form-select-sm" name=""
-                                        aria-label="Default select example">
+                                  <select  [(ngModel)]="intelectuales[5]" class="form-select form-select-sm" name="int5">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -2763,6 +2706,7 @@
                         </tbody>
                     </table>
                 </form>
+                <button (click)="sacarTotales()">Sacar Totales</button>
             </div>
         </div>
         <div class="row">
@@ -2785,124 +2729,124 @@
                             <tr>
                                 <td style="width: 3%;">1</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong>GESTIÓN ESTRATÉGICA COMERCIAL Y DE MARKETING	
-                                    </strong> 
+                                    <label for="pregunta1"><strong>GESTIÓN ESTRATÉGICA COMERCIAL Y DE MARKETING
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 3%;">2</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong>GESTIÓN DE LA PRODUCTIVIDAD Y DEL TALENTO HUMANO	
-	
-                                    </strong> 
+                                    <label for="pregunta1"><strong>GESTIÓN DE LA PRODUCTIVIDAD Y DEL TALENTO HUMANO
+
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 3%;">3</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong>GESTIÓN DE LA PRODUCTIVIDAD OPERACIONAL	
-	
-                                    </strong> 
+                                    <label for="pregunta1"><strong>GESTIÓN DE LA PRODUCTIVIDAD OPERACIONAL
+
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td style="width: 3%;">4</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong>GESTIÓN DE CALIDAD	
-	
-                                    </strong> 
+                                    <label for="pregunta1"><strong>GESTIÓN DE CALIDAD
+
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 3%;">5</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong>GESTIÓN DE LA INNOVACIÓN 	
-	
-                                    </strong> 
+                                    <label for="pregunta1"><strong>GESTIÓN DE LA INNOVACIÓN
+
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 3%;">6</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong>GESTIÓN FINANCIERA Y CONTABLE	
-	
-                                    </strong> 
+                                    <label for="pregunta1"><strong>GESTIÓN FINANCIERA Y CONTABLE
+
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 3%;">7</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong> GESTIÓN LOGÍSTICA	
+                                    <label for="pregunta1"><strong> GESTIÓN LOGÍSTICA
 
-                                    </strong> 
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 3%;">8</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong>GESTIÓN DE TRANSFORMACIÓN DIGÍTAL	
-	
-                                    </strong> 
+                                    <label for="pregunta1"><strong>GESTIÓN DE TRANSFORMACIÓN DIGÍTAL
+
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 3%;">9</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong>GESTIÓN DE SOSTENIBILIDAD AMBIENTAL 	
-	
-                                    </strong> 
+                                    <label for="pregunta1"><strong>GESTIÓN DE SOSTENIBILIDAD AMBIENTAL
+
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 3%;">10</td>
                                 <td style="width: 94%;">
-                                    <label for="pregunta1"><strong>GESTIÓN DE LA  PROPIEDAD INTELECTUAL E INDUSTRIAL	
-	
-                                    </strong> 
+                                    <label for="pregunta1"><strong>GESTIÓN DE LA  PROPIEDAD INTELECTUAL E INDUSTRIAL
+
+                                    </strong>
                                     </label>
                                 </td>
                                 <td style="width: 3%;" class="mantener">
-                                    
+
                                 </td>
                             </tr>
-                            
+
                              <tr>
                                 <td colspan="2" style="text-align: center; background-color: rgb(240, 240, 118);">
                                     Puntaje Total

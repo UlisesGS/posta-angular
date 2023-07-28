@@ -17,10 +17,16 @@ export class DiagnosticoComponent implements OnInit{
   diagnostico:Diagnostico= new Diagnostico();
   conceptoGenerales:ConceptoGenerales= new ConceptoGenerales();
   concepto:ConceptoGenerales[]=[new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales, new ConceptoGenerales,new ConceptoGenerales];
- estrategicas:number[]=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,16,17];
+ estrategicas:number[]=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
  produc:number[]=[0,1,2,3,4,5,6,7,8,9,10,11,12]
  operacion:number[]=[0,1,2,3,4,5,6,7,8,9,10]
- //calidada:number[]=[0,1,2,3,4,5,6,7,8,9,10]
+ calidada:number[]=[0,1,2,3,4,5,6,7,8,9];
+ inovaciones:number[]=[0,1,2,3];
+ financieras:number[]=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+ logisticas:number[]=[0,1,2,3,4,5];
+ digitales:number[]=[0,1,2,3,4];
+ ambientales:number[]=[0,2,3,4,5,6,7,8]
+ intelectuales:number[]=[0,1,2,3,4];
   ngOnInit(): void {
 //console.log(this.concepto.length);
 
@@ -61,6 +67,28 @@ this.diagnostico.conceptosGenerales=[]
   verOperacion(){
     this.diagnostico.gestionOperacional=this.operacion;
     console.log(this.diagnostico);
+
+  }
+  verCalidad(){
+    this.diagnostico.gestionCalidad=this.calidada;
+  }
+  sacarTotales(){
+
+ this.diagnostico.conceptosGenerales=this.concepto;
+ this.diagnostico.gestionEstrategica=this.estrategicas;
+ this.diagnostico.gestionProductividad=this.produc;
+ this.diagnostico.gestionOperacional=this.operacion;
+ this.diagnostico.gestionCalidad=this.calidada;
+ this.diagnostico.gestionInnovacion=this.inovaciones;
+ this.diagnostico.gestionFinanciera=this.financieras;
+ this.diagnostico.gestionLogistica= this.logisticas;
+ this.diagnostico.gestionDigital=this.digitales;
+ this.diagnostico.gestionAmbiental=this.ambientales;
+ this.diagnostico.gestionIntelectual= this.intelectuales;
+ console.log(this.diagnostico);
+ //llamar al back para que saque todos los totales
+
+
 
   }
 
