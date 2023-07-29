@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProcessEmpresario } from '../process-empresario';
 import { Diagnostico } from '../diagnostico';
 import { ConceptoGenerales } from '../concepto-generales';
-import { lastDayOfDecade, parseJSON } from 'date-fns';
+import { isThisISOWeek, lastDayOfDecade, parseJSON } from 'date-fns';
 import { ProcessEmpresarioService } from './../process-empresario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/client/client';
@@ -12,12 +12,14 @@ import Swal from 'sweetalert2';
 import { DiagnosticoEmpresarial } from '../diagnostico-empresarial';
 
 
+
 @Component({
   selector: 'app-diagnostico',
   templateUrl: './diagnostico.component.html',
   styleUrls: ['./diagnostico.component.css']
 })
 export class DiagnosticoComponent implements OnInit {
+  total:number=0;
   //para llenar guardemos todo
   procesos: ProcessEmpresario = new ProcessEmpresario();
   // esto es para mapear el diagnostico
@@ -72,9 +74,14 @@ export class DiagnosticoComponent implements OnInit {
   intelectual: boolean = false;
   consolidado: boolean = false;
 
-
+continuar(){
+  //'empresario/resultados/cliente/:id
+  this.ruta.navigate(['/empresario/resultados/cliente/',this.cliente.id])
+}
 
   sacarTotales() {
+    this.total=0;
+console.log(this.estrategicas);
 
     this.diagnostico.conceptosGenerales = this.concepto;
     this.diagnostico.gestionEstrategica = this.estrategicas;
@@ -98,6 +105,12 @@ export class DiagnosticoComponent implements OnInit {
     //llamar al back para que saque todos los totales
     this.processEmpresarioService.procesoEmpresarioSave(this.procesoEmpresario).subscribe(data => {
       this.procesoEmpresario=data;
+      console.log(data);
+
+      this.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
+        this.total+=t;
+      })
+
       this.consolidado=true;
       Swal.fire('Exito:', 'El Diagnostico de Empresario fue creado con exito', 'success');
     })
@@ -191,4 +204,11 @@ export class DiagnosticoComponent implements OnInit {
       this.consolidado = true;
     }
   }
+  // esto estaba en el html
+  /*
+  <div>
+          <span class="left-align">CONSOLIDADO </span><i class="fa-solid fa-caret-down fa-xl right-align" type="button"
+            (click)="condicionConsolidado()"></i>
+        </div>
+  */
 }
