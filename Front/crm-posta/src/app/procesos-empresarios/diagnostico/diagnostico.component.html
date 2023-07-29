@@ -519,522 +519,6 @@
       </div>
     </div> -->
 <!--aca decia leandro -->
-    <div class="col-10"> 
-        <h2 class="btn btn-disabled">Diagnóstico Empresarial</h2>
-
-        <div class="row">
-            <div class="col-6">
-                <div>
-                    <span class="left-align">CONCEPTOS GENERALES DE LA EMPRESA </span><i
-                        class="fa-solid fa-caret-down fa-xl right-align" type="button"
-                        (click)="condicionConceptos()"></i>
-                </div>
-            </div>
-            <div *ngIf="conceptos" class="col-8">
-                <div>
-                    <form action="">
-                        <table class="table table-bordered" style="border: solid 1px;">
-                            <thead>
-                                <tr>
-                                    <th style="width: 3%;">N°</th>
-                                    <th style="width: 70%; ">CONCEPTOS GENERALES DE LA EMPRESA
-                                    <th style="width: 3%;">CUMPLIMIENTO</th>
-                                    <th style="width: 20%;">OBSERVACIONES</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="width: 3%;">1</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Cumple con los documentos y registros necesarios
-                                            legalmente
-                                            (comerciales, tributarios, uso del suelo, registro Invima, concepto
-                                            sanitario,
-                                            concepto bomberos, licencia ambiental)?
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select  [(ngModel)]="concepto[0].diagEmpr"class="form-select form-select-sm" name="d0"
-                                            aria-label="Default select example" id="d0">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea  [(ngModel)]="concepto[0].observaciones" class="form-control" id="o0" rows="1"
-                                            name="observaciones1" placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">2</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Cumple con todos los requisitos legales vigentes
-                                            relacionados
-                                            con el pago de la seguridad laboral del personal (seguridad social y
-                                            pensiones
-                                            administración de riesgos profesionales, fondos de cesantías)?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select  [(ngModel)]="concepto[1].diagEmpr" class="form-select form-select-sm" name="d1" id="d1"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[1].observaciones" class="form-control" id="o1" rows="1"
-                                            name="o1" placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">3</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Lleva libros de contabilidad, actas, de reformas, y de
-
-                                            información legal? ¿se encuentran al día y debidamente registrados y archivados?
-
-
-                                        </label>
-                                    </td>
-
-                                      <td style="width: 3%;" class="mantener">
-                                        <select  [(ngModel)]="concepto[2].diagEmpr" class="form-select form-select-sm" name="d2" id="d2"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[2].observaciones" class="form-control" id="o2" rows="1"
-                                            name="o2" placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">4</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Tiene definidas las responsabilidades y funciones de
-                                            cada
-                                            puesto
-
-                                            de trabajo o cargos que desempeñan cada uno de los integrantes de la empresa?
-
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[3].diagEmpr" class="form-select form-select-sm" name="d3" id="d3"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[3].observaciones" class="form-control" name="d3" id="d3" rows="1" placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">5</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿La empresa cuenta con un reglamento interno de trabajo?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[4].diagEmpr" class="form-select form-select-sm" name="d4" id="d4"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[4].observaciones" class="form-control" name="d4" id="d4" rows="1"
-                                             placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">6</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Cuentan con manual de procesos?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[5].diagEmpr" class="form-select form-select-sm" name="d5" id="d5"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[5].observaciones" class="form-control" name="d5" id="d5" rows="1" placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">7</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Se tienen establecidas claramente la misión, visión,
-                                            valores
-                                            corportativos y política de calidad de la empresa?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[6].diagEmpr" class="form-select form-select-sm" name="d6" id="d6"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[6].observaciones" class="form-control" name="d6" id="d6" rows="1"
-                                             placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">8</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Se tienen indicadores: financieros, comerciales,
-                                            producción,
-                                            calidad?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[7].diagEmpr" class="form-select form-select-sm" name="d7" id="d7"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[7].observaciones" class="form-control" name="d7" id="d7" rows="1"
-                                           placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">9</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Tiene claramente definido el producto y el cliente hacia
-                                            el
-                                            cual
-                                            está dirigido?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[8].diagEmpr" class="form-select form-select-sm" name="d8" id="d8"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[8].observaciones" class="form-control" name="d8" id="d8" rows="1"
-                                            placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">10</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Ha analizado la competencia y el entorno en general
-                                            (productos
-                                            sustitutos, competidores potenciales, proveedores, clientes)?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[9].diagEmpr" class="form-select form-select-sm" name="d9" id="d9"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[9].observaciones" class="form-control" name="d9" id="d9" rows="1"
-                                            name="remarks" placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">11</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿La empresa cuenta con una imagen corporativa?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[10].diagEmpr" class="form-select form-select-sm" name="d10" id="d10"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[10].observaciones" class="form-control" name="d10" id="d10" rows="1"
-                                             placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">12</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿La empresa dispone de un portafolio de productos/
-                                            servicios
-                                            suficientemente?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[11].diagEmpr" class="form-select form-select-sm" name="d11" id="d11"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[11].observaciones" class="form-control" name="d11" id="d11" rows="1"
-                                            placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">13</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿La empresa cuenta con metas (comerciales - fiancieras),
-                                            medibles
-                                            y verificables en un plazo de tiempo definido, con asignación del
-                                            responsable de
-                                            su
-                                            cumplimiento?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                        <select [(ngModel)]="concepto[12].diagEmpr" class="form-select form-select-sm" name="d12" id="d12"
-                                            aria-label="Default select example">
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <textarea [(ngModel)]="concepto[12].observaciones" class="form-control" name="d12" id="d12" rows="1"
-                                             placeholder=""></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">14</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿La empresa tiene definidas estrategias para
-                                            comercializar
-                                            sus
-                                            servicios?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[13].diagEmpr" class="form-select form-select-sm" name="d13" id="d13"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[13].observaciones" class="form-control" id="o13" rows="1"
-                                          name="13" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">15</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿La empresa cuenta con instalaciones y ésta ubicada
-                                            geográficamente permitiendo el fácil acceso a clientes y proveedores?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[14].diagEmpr" class="form-select form-select-sm" name="d14" id="d14"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[14].observaciones" class="form-control" id="o14" rows="1"
-                                          name="o14" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">16</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Cuenta con herramientas y maquinaria necesaria para la
-                                            fabricación de sus productos o prestación de servicios?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[15].diagEmpr" class="form-select form-select-sm" name="d15" id="d15"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[15].observaciones" class="form-control" id="o15" rows="1"
-                                          name="o15" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">17</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Se cuenta con áreas organizadas para las fabricación de
-                                            los
-                                            productos o servicios, almacenamiento de materias primas, productos en
-                                            proceso y
-                                            productos terminados?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[16].diagEmpr" class="form-select form-select-sm" name="d16" id="d16"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[16].observaciones" class="form-control" id="o16" rows="1"
-                                          name="o16" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">18</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Cuenta con la disponibilidad de mano de obra calificada
-                                            para
-                                            la
-                                            fabricación de productos o prestación de servicios?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[17].diagEmpr" class="form-select form-select-sm" name="d17" id="d17"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[17].observaciones" class="form-control" id="o17" rows="1"
-                                          name="o17" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">19</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿La empresa conoce y aplica las normas ambientales en el
-                                            desarrollo de su actividad?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[18].diagEmpr" class="form-select form-select-sm" name="d18" id="d18"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[18].observaciones" class="form-control" id="o18" rows="1"
-                                          name="o18" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">20</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿La disponibilidad de materia prima está garantizada a
-                                            mediano y
-                                            largo plazo?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[19].diagEmpr" class="form-select form-select-sm" name="d19" id="d19"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[19].observaciones" class="form-control" id="o19" rows="1"
-                                          name="o19" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">21</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Posee un sistema de contabilidad y costos que ofrece
-                                            información
-                                            confiable y oportuna para la toma de decisiones?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[20].diagEmpr" class="form-select form-select-sm" name="d20" id="d20"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[20].observaciones" class="form-control" id="o20" rows="1"
-                                          name="o20" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">22</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿La empresa realiza presupuestos?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[21].diagEmpr" class="form-select form-select-sm" name="d21" id="d21"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[21].observaciones" class="form-control" id="o21" rows="1"
-                                          name="o21" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 3%;">23</td>
-                                    <td style="width: 70%;">
-                                        <label for="pregunta1">¿Posee Cuenta de Ahorro o Cuenta Corriente?
-
-                                        </label>
-                                    </td>
-                                    <td style="width: 3%;" class="mantener">
-                                      <select  [(ngModel)]="concepto[22].diagEmpr" class="form-select form-select-sm" name="d22" id="d22"
-                                          aria-label="Default select example">
-                                          <option value="SI">SI</option>
-                                          <option value="NO">NO</option>
-                                      </select>
-                                  </td>
-                                  <td style="width: 20%;">
-                                      <textarea [(ngModel)]="concepto[22].observaciones" class="form-control" id="o22" rows="1"
-                                          name="o22" placeholder=""></textarea>
-                                  </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </form>
-                    <button (click)="verDiagnostico()">Ver</button>
-                </div>
-            </div>
-          </div>
 <!--aca estaban las lineas -->
     <div class="row">
       <div class="col-6">
@@ -2020,7 +1504,7 @@
               </tr>
               <tr>
                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
-                  Puntaje Total
+
                 </td>
                 <td style="text-align: center; background-color: rgb(240, 240, 118);"></td>
               </tr>
@@ -2240,7 +1724,7 @@
               <tr>
 
                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
-                  Puntaje Total
+
                 </td>
                 <td style="text-align: center; background-color: rgb(240, 240, 118);"></td>
               </tr>
@@ -2343,7 +1827,7 @@
 
               <tr>
                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
-                  Puntaje Total
+
                 </td>
                 <td style="text-align: center; background-color: rgb(240, 240, 118);"></td>
               </tr>
@@ -2927,7 +2411,7 @@
 
               <tr>
                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
-                  Puntaje Total
+                  Puntaje Total :
                 </td>
                 <td style="text-align: center; background-color: rgb(240, 240, 118);"></td>
               </tr>
@@ -3117,7 +2601,7 @@
               </tr>
               <tr>
                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
-                  Puntaje Total
+                  Puntaje Total :
                 </td>
                 <td style="text-align: center; background-color: rgb(240, 240, 118);"></td>
               </tr>
@@ -3247,22 +2731,22 @@
               </tr>
               <tr>
                 <td colspan="3" style="text-align: center; background-color: rgb(240, 240, 118);">
-                  Puntaje Total
+                  Puntaje Total :
                 </td>
                 <td style="text-align: center; background-color: rgb(240, 240, 118);"></td>
               </tr>
             </tbody>
           </table>
         </form>
-        <button (click)="sacarTotales()">Sacar Totales</button>
+        <div class="form-group mt-3">
+        <button (click)="sacarTotales()">Guardar y Ver Totales</button>
+        <button [routerLink]="['/procesos']"  class="btn">cancelar</button>
+         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-6">
-        <div>
-          <span class="left-align">CONSOLIDADO </span><i class="fa-solid fa-caret-down fa-xl right-align" type="button"
-            (click)="condicionConsolidado()"></i>
-        </div>
+
       </div>
       <div *ngIf="consolidado" class="col-8">
         <form action="">
@@ -3399,13 +2883,23 @@
                 <td colspan="2" style="text-align: center; background-color: rgb(240, 240, 118);">
                   Puntaje Total :
                 </td>
-                <td style="text-align: center; background-color: rgb(240, 240, 118);"></td>
+                <td style="text-align: center; background-color: rgb(240, 240, 118);">{{total}}</td>
               </tr>
             </tbody>
           </table>
         </form>
       </div>
     </div>
-  
+
+  </div>
+  <div class="form-group mt-3" *ngIf="consolidado">
+
+
+
+
+    <button   (click)="continuar()" class="btn">Continuar</button>
+
+    <button [routerLink]="['/procesos']"  class="btn">Volver</button>
+
 </div>
 </div>
