@@ -18,6 +18,7 @@ procesos:ProcessEmpresario[]=[];
 cliente:Client= new Client();
   constructor(private procesoEmpresarioservice: ProcessEmpresarioService,private ruta:ActivatedRoute, private clienteServicio:ClientService){}
   ngOnInit(): void {
+    //this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados.
 this.ruta.paramMap.subscribe(parametro=>{
   let id = + parametro.get('id')
   this.clienteServicio.getClient(id).subscribe(clien=>{
