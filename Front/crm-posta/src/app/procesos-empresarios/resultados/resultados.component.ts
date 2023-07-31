@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProcessEmpresario } from '../process-empresario';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from 'src/app/client/client.service';
 import { ProcessEmpresarioService } from '../process-empresario.service';
 import { Client } from 'src/app/client/client';
 import { lastDayOfDecade } from 'date-fns';
 import { AnalisisResultados } from '../analisis-resultados';
+import { Process } from 'src/app/procesos/Process';
 
 @Component({
   selector: 'app-resultados',
@@ -14,9 +15,15 @@ import { AnalisisResultados } from '../analisis-resultados';
 })
 export class ResultadosComponent implements OnInit{
 procesoEmpresario:ProcessEmpresario= new ProcessEmpresario()
-procesos:ProcessEmpresario[]=[];
+//procesos:ProcessEmpresario[]=[];
 cliente:Client= new Client();
-  constructor(private procesoEmpresarioservice: ProcessEmpresarioService,private ruta:ActivatedRoute, private clienteServicio:ClientService){}
+procesos:Process[]=[];
+proceso:Process = new Process();
+  constructor(private procesoEmpresarioservice: ProcessEmpresarioService,
+    private ruta:ActivatedRoute,
+    private clienteServicio:ClientService,
+private router:Router,
+    ){}
   ngOnInit(): void {
     //this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados.
 this.ruta.paramMap.subscribe(parametro=>{
@@ -26,11 +33,13 @@ this.ruta.paramMap.subscribe(parametro=>{
     this.procesoEmpresarioservice.procesoEmpresarioFindAll().subscribe(data=>{
       this.procesos= data;
       this.procesos.forEach(p=>{
-        if(p.client.id=this.cliente.id){
-          this.procesoEmpresario= p;
+        if(p.processEmpresario.client.id=this.cliente.id){
+          this.proceso= p;
+
+          this.procesoEmpresario = this.proceso.processEmpresario;
           this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados=new AnalisisResultados();
           console.log('hola');
-          
+
           console.log(p);
 
         }
@@ -42,9 +51,13 @@ this.ruta.paramMap.subscribe(parametro=>{
 
 
   guardar(){
+
     console.log(this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados);
-    //this.procesoEmpresarioservice.
-    
+    this.procesoEmpresarioservice.procesoEmpresarioSave(this.procesoEmpresario).subscribe(data=>{
+      console.log(data);
+      this.router.navigate(['/empresario/economico/cliente/',this.cliente.id]);
+    })
+
   }
 
 

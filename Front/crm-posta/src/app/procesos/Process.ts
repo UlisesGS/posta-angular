@@ -3,6 +3,7 @@ import { Canvas } from "./canvas";
 import { SelfAssessment } from './selfAssessment';
 import { BusinessPlan } from './plan-negocio/modelo-basico/BusinessPlan';
 import { BusinessPlanFinancial } from "./plan-negocio/plan-financiero/BusinessPlanFinancial";
+import { ProcessEmpresario } from "../procesos-empresarios/process-empresario";
 
 /*}
 @OneToOne
@@ -29,6 +30,7 @@ export class Process {
   documentoCompromiso:string;
   encuestaSatisfaccion:string;
   actaCierre:string;
+  processEmpresario:ProcessEmpresario;
 
 
 }

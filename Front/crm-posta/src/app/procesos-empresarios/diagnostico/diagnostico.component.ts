@@ -110,7 +110,7 @@ console.log(this.estrategicas);
       this.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
         this.total+=t;
       })
-
+      
       this.consolidado=true;
       Swal.fire('Exito:', 'El Diagnostico de Empresario fue creado con exito', 'success');
     })
