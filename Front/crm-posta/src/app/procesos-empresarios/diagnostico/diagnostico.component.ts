@@ -10,6 +10,8 @@ import { Usuario } from 'src/app/usuario/usuario';
 import { ClientService } from 'src/app/client/client.service';
 import Swal from 'sweetalert2';
 import { DiagnosticoEmpresarial } from '../diagnostico-empresarial';
+import { Process } from 'src/app/procesos/Process';
+import { ProcesoService } from 'src/app/procesos/proceso.service';
 
 
 
@@ -25,6 +27,8 @@ export class DiagnosticoComponent implements OnInit {
   // esto es para mapear el diagnostico
   diagnostico: Diagnostico = new Diagnostico();
   conceptoGenerales: ConceptoGenerales = new ConceptoGenerales();
+  procesosS:Process[]=[];
+  proceso:Process=new Process();
   concepto: ConceptoGenerales[] = [new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales];
   estrategicas: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
   produc: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -39,7 +43,7 @@ export class DiagnosticoComponent implements OnInit {
   procesoEmpresario: ProcessEmpresario = new ProcessEmpresario()
   cliente: Client = new Client();
   usuario: Usuario = new Usuario();
-  constructor(private clienteService: ClientService, private processEmpresarioService: ProcessEmpresarioService, private ruta: Router, private parametro: ActivatedRoute) { }
+  constructor(private clienteService: ClientService, private processEmpresarioService: ProcessEmpresarioService, private ruta: Router, private parametro: ActivatedRoute, private process:ProcesoService) { }
   ngOnInit(): void {
    /* this.consolidado=true;
     this.processEmpresarioService.procesoEmpresarioFindById(1).subscribe(data=>{
@@ -47,6 +51,10 @@ export class DiagnosticoComponent implements OnInit {
     })*/
     this.procesoEmpresario.diagnosticoEmpresarial= new DiagnosticoEmpresarial();
     this.procesoEmpresario.diagnosticoEmpresarial.diagnostico= new Diagnostico();
+    this.proceso=new Process();
+    this.proceso.processEmpresario = new ProcessEmpresario();
+    this.proceso.processEmpresario.diagnosticoEmpresarial = new DiagnosticoEmpresarial();
+    this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico= new  Diagnostico();
     //console.log(this.concepto.length);
     this.parametro.paramMap.subscribe(p => {
       let id = +p.get('id');
@@ -54,6 +62,7 @@ export class DiagnosticoComponent implements OnInit {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
           this.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+          
         })
       }
     })
@@ -98,20 +107,28 @@ console.log(this.estrategicas);
     this.procesoEmpresario.client = this.cliente
     this.procesoEmpresario.diagnosticoEmpresarial.diagnostico = this.diagnostico;
     this.procesoEmpresario.user = this.usuario;
-    this.procesoEmpresario.estado = 'Diagnostico'
+    
     console.log(this.procesoEmpresario);
    // this.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales
-
+    this.proceso.processEmpresario=this.procesoEmpresario
+    console.log(this.proceso.processEmpresario);
+    
     //llamar al back para que saque todos los totales
-    this.processEmpresarioService.procesoEmpresarioSave(this.procesoEmpresario).subscribe(data => {
-      this.procesoEmpresario=data;
-      console.log(data);
+    this.processEmpresarioService.procesoEmpresarioSave(this.proceso).subscribe(data => {
+      this.proceso.processEmpresario=data;
+      console.log(this.proceso.processEmpresario);
 
-      this.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
+      this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
         this.total+=t;
       })
       
       this.consolidado=true;
+      //this.procesoEmpresario.estado = 'Diagnostico'
+      this.proceso.estado= 'Diagnostico';
+      this.process.procesosSave(this.proceso).subscribe(dato=>{
+        console.log(dato);
+        
+      })
       Swal.fire('Exito:', 'El Diagnostico de Empresario fue creado con exito', 'success');
     })
 

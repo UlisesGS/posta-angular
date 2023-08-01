@@ -151,6 +151,8 @@ this.modal.abrirModalPocesos();
 
         this.procesos = response.content as Process[];
         this.paginador = response;
+        console.log(this.procesos);
+        
       });
 
   })

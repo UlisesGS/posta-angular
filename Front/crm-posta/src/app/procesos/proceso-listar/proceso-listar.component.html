@@ -91,8 +91,10 @@
         </thead>
         <tbody  class="table-sm" style="margin-top: 0;" >
             <tr>
-                <th style="width: 15%;" >{{proceso.canvasModel.client.name}} {{proceso.canvasModel.client.lastName}} </th>
-                <th style="width: 15%;"  >{{proceso.canvasModel.client.type=='entrepreneur'? proceso.canvasModel.client.businessIdea:'agregar despues de empresario'}}</th>
+                <th *ngIf="proceso?.canvasModel?.client?.type=='entrepreneur'" style="width: 15%;" >{{proceso.canvasModel.client.name +' '+ proceso.canvasModel.client.lastName}} </th>
+                <th *ngIf="proceso?.processEmpresario?.client?.type=='businessman'" style="width: 15%;" >{{proceso.processEmpresario.client.name +' '+proceso.processEmpresario.client.lastName}} </th>
+                <th *ngIf="proceso?.canvasModel?.client?.type=='entrepreneur'" style="width: 15%;" >{{proceso.canvasModel.client.businessIdea}}</th>
+                <th *ngIf="proceso?.processEmpresario?.client?.type=='businessman'" style="width: 15%;" >{{proceso.processEmpresario.client.companyName}}</th>
 
                 <th style="width: 20%;" >{{proceso.estado}}</th>
 
