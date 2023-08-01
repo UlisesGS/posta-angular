@@ -7,6 +7,7 @@ import { Client } from 'src/app/client/client';
 import { lastDayOfDecade } from 'date-fns';
 import { AnalisisResultados } from '../analisis-resultados';
 import { Process } from 'src/app/procesos/Process';
+import { ProcesoService } from 'src/app/procesos/proceso.service';
 
 @Component({
   selector: 'app-resultados',
@@ -22,6 +23,7 @@ proceso:Process = new Process();
   constructor(private procesoEmpresarioservice: ProcessEmpresarioService,
     private ruta:ActivatedRoute,
     private clienteServicio:ClientService,
+    private process:ProcesoService,
 private router:Router,
     ){}
   ngOnInit(): void {
@@ -30,33 +32,49 @@ this.ruta.paramMap.subscribe(parametro=>{
   let id = + parametro.get('id')
   this.clienteServicio.getClient(id).subscribe(clien=>{
     this.cliente= clien;
-    this.procesoEmpresarioservice.procesoEmpresarioFindAll().subscribe(data=>{
+    this.process.procesosFindAll().subscribe(data=>{
       this.procesos= data;
-      this.procesos.forEach(p=>{
-        if(p.processEmpresario.client.id=this.cliente.id){
-          this.proceso= p;
+      
+      this.procesos.forEach(pr=>{
+        console.log(pr);
+        
+       
+          if(pr.processEmpresario?.client?.id == this.cliente.id){
+            console.log(pr);
+            
+              this.proceso=pr
+              this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados=new AnalisisResultados();
+          }
+        })
+          
+          
 
-          this.procesoEmpresario = this.proceso.processEmpresario;
-          this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados=new AnalisisResultados();
-          console.log('hola');
+          
+          
 
-          console.log(p);
-
-        }
+        })
       })
     })
-  })
-})
   }
+
+  
 
 
   guardar(){
-
-    console.log(this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados);
-    this.procesoEmpresarioservice.procesoEmpresarioSave(this.procesoEmpresario).subscribe(data=>{
+    this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data=>{
       console.log(data);
+      this.proceso.estado='Resultados'
+
+      this.process.procesosUpdate(this.proceso).subscribe(dato=>{
+
+      })
+
       this.router.navigate(['/empresario/economico/cliente/',this.cliente.id]);
+
+    
     })
+
+    
 
   }
 
