@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientComponent } from './client/client.component';
-import {CommonModule} from '@angular/common'
+import { CommonModule } from '@angular/common'
 
 import { FormsModule } from '@angular/forms';
 import { MunicipioComponent } from './municipio/municipio.component';
@@ -52,10 +52,6 @@ import { SociosClavesModalComponent } from './procesos/ver-procesos/socios-clave
 import { IngresosModalComponent } from './procesos/ver-procesos/ingresos-modal/ingresos-modal.component';
 import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructura-costos-modal/estructura-costos-modal.component';
 
-
-
-
-
 import { PaginacionComponent } from './procesos/proceso-listar/paginacion/paginacion.component';
 import { InformacionComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/informacion/informacion.component';
 import { InternoComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/interno/interno.component';
@@ -75,121 +71,109 @@ import { ProcesosEmpresariosComponent } from './procesos-empresarios/procesos-em
 import { DiagnosticoComponent } from './procesos-empresarios/diagnostico/diagnostico.component';
 import { ResultadosComponent } from './procesos-empresarios/resultados/resultados.component';
 import { EconomicoComponent } from './procesos-empresarios/economico/economico.component';
+import { PlanAccionComponent } from './procesos-empresarios/plan-accion/plan-accion.component';
 
-const routes:Routes=[
+const routes: Routes = [
 
-  {path:'', redirectTo:'/login', pathMatch:'full'},
-
-
-
-  {path:'clients', component:ClientComponent},
-  {path:'clients/page/:page', component:ClientComponent},
-  {path:'clients/form/businessman', component:FormClientComponent},
-  {path:'clients/form/entrepreneur', component:FormEntrepreneurComponent},
-  {path:'clients/form/editar/businessman/:id', component:FormClientComponent},
-  {path:'clients/form/editar/entrepreneur/:id', component:FormEntrepreneurComponent},
-  {path:'clients/registrar', component:RegistrarComponent},
-  {path:'autoevaluacion/cliente/:id', component:AutoevaluacionComponent},
-  {path:'clients/details/:id', component:DetallesComponent},
-  {path:'clients/action/:id', component:AccionComponent},
-  {path:'usuarios', component:UsuariolistComponent},
-  {path:'usuarios/form', component:UsuarioformComponent},
-  {path:'usuarios/form/:id', component:UsuarioformComponent},
-  {path:'municipios', component:MunicipioComponent},
-  {path:'login',component:LoginComponent},
-  {path:'main',component:MainComponent},
-  {path:'calendario',component:CalendarioComponent},
-  {path:'asesorias',component:AsesoriaListComponent},
-  {path:'procesos',component:ProcesoListarComponent},
-  {path:'puntajeAutoevaluacion/cliente/:id', component:VerPuntajeComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'clients', component: ClientComponent },
+  { path: 'clients/page/:page', component: ClientComponent },
+  { path: 'clients/form/businessman', component: FormClientComponent },
+  { path: 'clients/form/entrepreneur', component: FormEntrepreneurComponent },
+  { path: 'clients/form/editar/businessman/:id', component: FormClientComponent },
+  { path: 'clients/form/editar/entrepreneur/:id', component: FormEntrepreneurComponent },
+  { path: 'clients/registrar', component: RegistrarComponent },
+  { path: 'autoevaluacion/cliente/:id', component: AutoevaluacionComponent },
+  { path: 'clients/details/:id', component: DetallesComponent },
+  { path: 'clients/action/:id', component: AccionComponent },
+  { path: 'usuarios', component: UsuariolistComponent },
+  { path: 'usuarios/form', component: UsuarioformComponent },
+  { path: 'usuarios/form/:id', component: UsuarioformComponent },
+  { path: 'municipios', component: MunicipioComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'main', component: MainComponent },
+  { path: 'calendario', component: CalendarioComponent },
+  { path: 'asesorias', component: AsesoriaListComponent },
+  { path: 'procesos', component: ProcesoListarComponent },
+  { path: 'puntajeAutoevaluacion/cliente/:id', component: VerPuntajeComponent },
   //Modelo Canvas
-  {path:'segmento/cliente/:id',component:SegmentoComponent},
-  {path:'propuestaDeValor/cliente/:id',component:PropuestaDeValorComponent},
-  {path:'canales/cliente/:id',component:CanalesComponent},
-  {path:'relaciones/cliente/:id',component:RelacionesComponent},
-  {path:'recursosClaves/cliente/:id',component:RecursosClavesComponent},
-  {path:'actividadesClaves/cliente/:id',component:ActividadesClavesComponent},
-  {path:'sociosClaves/cliente/:id',component:SociosClavesComponent},
-  {path:'ingresos/cliente/:id',component:IngresosComponent},
-  {path:'estructuraCostos/cliente/:id',component:EstructuraCostosComponent},
-
-  {path:'procesos/ver/:id',component:VerProcesosComponent},
-
-
+  { path: 'segmento/cliente/:id', component: SegmentoComponent },
+  { path: 'propuestaDeValor/cliente/:id', component: PropuestaDeValorComponent },
+  { path: 'canales/cliente/:id', component: CanalesComponent },
+  { path: 'relaciones/cliente/:id', component: RelacionesComponent },
+  { path: 'recursosClaves/cliente/:id', component: RecursosClavesComponent },
+  { path: 'actividadesClaves/cliente/:id', component: ActividadesClavesComponent },
+  { path: 'sociosClaves/cliente/:id', component: SociosClavesComponent },
+  { path: 'ingresos/cliente/:id', component: IngresosComponent },
+  { path: 'estructuraCostos/cliente/:id', component: EstructuraCostosComponent },
+  { path: 'procesos/ver/:id', component: VerProcesosComponent },
   //Plan de Negocios
-  {path:'informacion/cliente/:id',component:InformacionComponent},
-  {path:'interno/cliente/:id',component:InternoComponent},
-  {path:'dofa/cliente/:id',component:DofaComponent},
-  {path:'conclusion/cliente/:id',component:ConclusionComponent},
-  {path:'proceso/page/:page',component:ProcesoListarComponent},
+  { path: 'informacion/cliente/:id', component: InformacionComponent },
+  { path: 'interno/cliente/:id', component: InternoComponent },
+  { path: 'dofa/cliente/:id', component: DofaComponent },
+  { path: 'conclusion/cliente/:id', component: ConclusionComponent },
+  { path: 'proceso/page/:page', component: ProcesoListarComponent },
   //Plan Financiero
-  {path:'ventas/cliente/:id',component:PresupuestoVentasComponent},
-  {path:'compras/cliente/:id',component:PresupuestoFormComponent},
-  {path:'gastos/cliente/:id',component:PresupuestoGastoComponent},
-  {path:'inversion/cliente/:id',component:PlanInversionComponent},
-
-
+  { path: 'ventas/cliente/:id', component: PresupuestoVentasComponent },
+  { path: 'compras/cliente/:id', component: PresupuestoFormComponent },
+  { path: 'gastos/cliente/:id', component: PresupuestoGastoComponent },
+  { path: 'inversion/cliente/:id', component: PlanInversionComponent },
   // para editar
   // canvas
-  {path:'segmento/cliente/:id/editar/:idEditar',component:SegmentoComponent},
-  {path:'propuestaDeValor/cliente/:id/editar/:idEditar',component:PropuestaDeValorComponent},
-  {path:'canales/cliente/:id/editar/:idEditar',component:CanalesComponent},
-  {path:'relaciones/cliente/:id/editar/:idEditar',component:RelacionesComponent},
-  {path:'recursosClaves/cliente/:id/editar/:idEditar',component:RecursosClavesComponent},
-  {path:'actividadesClaves/cliente/:id/editar/:idEditar',component:ActividadesClavesComponent},
-  {path:'sociosClaves/cliente/:id/editar/:idEditar',component:SociosClavesComponent},
-  {path:'ingresos/cliente/:id/editar/:idEditar',component:IngresosComponent},
-  {path:'estructuraCostos/cliente/:id/editar/:idEditar',component:EstructuraCostosComponent},
-// plan basico
-  {path:'informacion/cliente/:id/editar/:idEditar',component:InformacionComponent},
-  {path:'interno/cliente/:id/editar/:idEditar',component:InternoComponent},
-  {path:'dofa/cliente/:id/editar/:idEditar',component:DofaComponent},
-  {path:'conclusion/cliente/:id/editar/:idEditar',component:ConclusionComponent},
-// plan financiero
-
-  {path:'ventas/cliente/:id/editar/:idEditar',component:PresupuestoVentasComponent},
-  {path:'compras/cliente/:id/editar/:idEditar',component:PresupuestoFormComponent},
-  {path:'gastos/cliente/:id/editar/:idEditar',component:PresupuestoGastoComponent},
-  {path:'inversion/cliente/:id/editar/:idEditar',component:PlanInversionComponent},
-
-   // para ver
+  { path: 'segmento/cliente/:id/editar/:idEditar', component: SegmentoComponent },
+  { path: 'propuestaDeValor/cliente/:id/editar/:idEditar', component: PropuestaDeValorComponent },
+  { path: 'canales/cliente/:id/editar/:idEditar', component: CanalesComponent },
+  { path: 'relaciones/cliente/:id/editar/:idEditar', component: RelacionesComponent },
+  { path: 'recursosClaves/cliente/:id/editar/:idEditar', component: RecursosClavesComponent },
+  { path: 'actividadesClaves/cliente/:id/editar/:idEditar', component: ActividadesClavesComponent },
+  { path: 'sociosClaves/cliente/:id/editar/:idEditar', component: SociosClavesComponent },
+  { path: 'ingresos/cliente/:id/editar/:idEditar', component: IngresosComponent },
+  { path: 'estructuraCostos/cliente/:id/editar/:idEditar', component: EstructuraCostosComponent },
+  // plan basico
+  { path: 'informacion/cliente/:id/editar/:idEditar', component: InformacionComponent },
+  { path: 'interno/cliente/:id/editar/:idEditar', component: InternoComponent },
+  { path: 'dofa/cliente/:id/editar/:idEditar', component: DofaComponent },
+  { path: 'conclusion/cliente/:id/editar/:idEditar', component: ConclusionComponent },
+  // plan financiero
+  { path: 'ventas/cliente/:id/editar/:idEditar', component: PresupuestoVentasComponent },
+  { path: 'compras/cliente/:id/editar/:idEditar', component: PresupuestoFormComponent },
+  { path: 'gastos/cliente/:id/editar/:idEditar', component: PresupuestoGastoComponent },
+  { path: 'inversion/cliente/:id/editar/:idEditar', component: PlanInversionComponent },
+  // para ver
   // canvas
-  {path:'puntajeAutoevaluacion/ver/:idVer', component:VerPuntajeComponent},
-  {path:'procesos/verLienzo/:idVer',component:VerProcesosComponent},
-  {path:'segmento/cliente/:id/ver/:idVer',component:SegmentoComponent},
-  {path:'propuestaDeValor/cliente/:id/ver/:idVer',component:PropuestaDeValorComponent},
-  {path:'canales/cliente/:id/ver/:idVer',component:CanalesComponent},
-  {path:'relaciones/cliente/:id/ver/:idVer',component:RelacionesComponent},
-  {path:'recursosClaves/cliente/:id/ver/:idVer',component:RecursosClavesComponent},
-  {path:'actividadesClaves/cliente/:id/ver/:idVer',component:ActividadesClavesComponent},
-  {path:'sociosClaves/cliente/:id/ver/:idVer',component:SociosClavesComponent},
-  {path:'ingresos/cliente/:id/ver/:idVer',component:IngresosComponent},
-  {path:'estructuraCostos/cliente/:id/ver/:idVer',component:EstructuraCostosComponent},
-// plan basico
-{path:'clients/:id/verBasico/:idVer1', component:ModeloListaComponent},
+  { path: 'puntajeAutoevaluacion/ver/:idVer', component: VerPuntajeComponent },
+  { path: 'procesos/verLienzo/:idVer', component: VerProcesosComponent },
+  { path: 'segmento/cliente/:id/ver/:idVer', component: SegmentoComponent },
+  { path: 'propuestaDeValor/cliente/:id/ver/:idVer', component: PropuestaDeValorComponent },
+  { path: 'canales/cliente/:id/ver/:idVer', component: CanalesComponent },
+  { path: 'relaciones/cliente/:id/ver/:idVer', component: RelacionesComponent },
+  { path: 'recursosClaves/cliente/:id/ver/:idVer', component: RecursosClavesComponent },
+  { path: 'actividadesClaves/cliente/:id/ver/:idVer', component: ActividadesClavesComponent },
+  { path: 'sociosClaves/cliente/:id/ver/:idVer', component: SociosClavesComponent },
+  { path: 'ingresos/cliente/:id/ver/:idVer', component: IngresosComponent },
+  { path: 'estructuraCostos/cliente/:id/ver/:idVer', component: EstructuraCostosComponent },
+  // plan basico
+  { path: 'clients/:id/verBasico/:idVer1', component: ModeloListaComponent },
 
-  {path:'informacion/cliente/:id/ver/:idVer',component:InformacionComponent},
-  {path:'interno/cliente/:id/ver/:idVer',component:InternoComponent},
-  {path:'dofa/cliente/:id/ver/:idVer',component:DofaComponent},
-  {path:'conclusion/cliente/:id/ver/:idVer',component:ConclusionComponent},
-// plan financiero
+  { path: 'informacion/cliente/:id/ver/:idVer', component: InformacionComponent },
+  { path: 'interno/cliente/:id/ver/:idVer', component: InternoComponent },
+  { path: 'dofa/cliente/:id/ver/:idVer', component: DofaComponent },
+  { path: 'conclusion/cliente/:id/ver/:idVer', component: ConclusionComponent },
+  // plan financiero
 
-  {path:'ventas/cliente/:id/ver/:idVer',component:PresupuestoVentasComponent},
-  {path:'compras/cliente/:id/ver/:idVer',component:PresupuestoFormComponent},
-  {path:'gastos/cliente/:id/ver/:idVer',component:PresupuestoGastoComponent},
-  {path:'inversion/cliente/:id/ver/:idVer',component:PlanInversionComponent},
-//Diagnostico Empresarial
-{path:'empresario/diagnostico',component:DiagnosticoComponent},
-{path:'empresario/diagnostico/cliente/:id',component:DiagnosticoComponent},
-{path:'empresario/resultados',component:ResultadosComponent},
-{path:'empresario/resultados/cliente/:id',component:ResultadosComponent},
-{path:'empresario/economico',component:EconomicoComponent},
-{path:'empresario/economico/cliente/:id',component:EconomicoComponent},
-
-
-
-
-
+  { path: 'ventas/cliente/:id/ver/:idVer', component: PresupuestoVentasComponent },
+  { path: 'compras/cliente/:id/ver/:idVer', component: PresupuestoFormComponent },
+  { path: 'gastos/cliente/:id/ver/:idVer', component: PresupuestoGastoComponent },
+  { path: 'inversion/cliente/:id/ver/:idVer', component: PlanInversionComponent },
+  //Diagnostico Empresarial
+  { path: 'empresario/diagnostico', component: DiagnosticoComponent },
+  { path: 'empresario/diagnostico/cliente/:id', component: DiagnosticoComponent },
+  { path: 'empresario/resultados', component: ResultadosComponent },
+  { path: 'empresario/resultados/cliente/:id', component: ResultadosComponent },
+  { path: 'empresario/economico', component: EconomicoComponent },
+  { path: 'empresario/economico/cliente/:id', component: EconomicoComponent },
+  //Plan de Accion
+  { path: 'empresario/accion', component: PlanAccionComponent },
 
 ]
 
@@ -215,58 +199,56 @@ const routes:Routes=[
     MainComponent,
     HeaderSuperiorComponent,
 
-      CalendarioComponent,
-      AsesoriaListComponent,
-      ProcesoListarComponent,
-      AccionProcesosComponent,
-      NuevoProcesoComponent,
-      SegmentoComponent,
-      PropuestaDeValorComponent,
-      CanalesComponent,
-      RelacionesComponent,
-      RecursosClavesComponent,
-      ActividadesClavesComponent,
-      SociosClavesComponent,
-      IngresosComponent,
-      EstructuraCostosComponent,
-      BannerComponent,
-      VerProcesosComponent,
-      SegmentoModalComponent,
-      PropuestaDeValorModalComponent,
-      CanalesModalComponent,
-      RelacionesModalComponent,
-      RecursosClavesModalComponent,
-      ActividadesClavesModalComponent,
-      SociosClavesModalComponent,
-      IngresosModalComponent,
-      EstructuraCostosModalComponent,
+    CalendarioComponent,
+    AsesoriaListComponent,
+    ProcesoListarComponent,
+    AccionProcesosComponent,
+    NuevoProcesoComponent,
+    SegmentoComponent,
+    PropuestaDeValorComponent,
+    CanalesComponent,
+    RelacionesComponent,
+    RecursosClavesComponent,
+    ActividadesClavesComponent,
+    SociosClavesComponent,
+    IngresosComponent,
+    EstructuraCostosComponent,
+    BannerComponent,
+    VerProcesosComponent,
+    SegmentoModalComponent,
+    PropuestaDeValorModalComponent,
+    CanalesModalComponent,
+    RelacionesModalComponent,
+    RecursosClavesModalComponent,
+    ActividadesClavesModalComponent,
+    SociosClavesModalComponent,
+    IngresosModalComponent,
+    EstructuraCostosModalComponent,
 
-      InformacionComponent,
-      InternoComponent,
-      DofaComponent,
-      ConclusionComponent,
-      PaginacionComponent,
-      PlanFinancieroComponent,
-      FinancieroFormComponent,
-      PresupuestoVentasComponent,
-      PresupuestoFormComponent,
-      PresupuestoGastoComponent,
-      DetallesComponent,
-      PlanInversionComponent,
-      ModalDetallesComponent,
-      VerPuntajeComponent,
-      ModeloListaComponent,
-      ProcesosEmpresariosComponent,
-      DiagnosticoComponent,
-      ResultadosComponent,
-      EconomicoComponent,
-
-
-
-   ],
+    InformacionComponent,
+    InternoComponent,
+    DofaComponent,
+    ConclusionComponent,
+    PaginacionComponent,
+    PlanFinancieroComponent,
+    FinancieroFormComponent,
+    PresupuestoVentasComponent,
+    PresupuestoFormComponent,
+    PresupuestoGastoComponent,
+    DetallesComponent,
+    PlanInversionComponent,
+    ModalDetallesComponent,
+    VerPuntajeComponent,
+    ModeloListaComponent,
+    ProcesosEmpresariosComponent,
+    DiagnosticoComponent,
+    ResultadosComponent,
+    EconomicoComponent,
+    PlanAccionComponent,
+  ],
 
   imports: [
-  BrowserModule,
+    BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
 
