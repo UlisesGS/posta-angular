@@ -131,8 +131,8 @@ this.modal.abrirModalPocesos();
 
     })
   }
-  
-  
+
+
   public todosPaginacion(){
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
@@ -141,20 +141,21 @@ this.modal.abrirModalPocesos();
         page = 0;
       }
       this.procesoService.procesosPaginacion(page)
-      .pipe(
+      /*.pipe(
         tap(response => {
           console.log('ClientesComponent: tap 3');
           (response.content as Process[]).forEach(proceso => console.log(proceso));
         })
-      ).subscribe(response => {
+      )*/.subscribe(response => {
         console.log(response);
 
         this.procesos = response.content as Process[];
         this.paginador = response;
         console.log(this.procesos);
-        
+
       });
 
   })
   }
+
 }
