@@ -44,6 +44,18 @@ this.ruta.paramMap.subscribe(parametro=>{
             
               this.proceso=pr
               this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados=new AnalisisResultados();
+
+              // para editar
+              let idEditar = +parametro.get('idEditar');
+              console.log('no entro al if');
+              
+              if(idEditar){
+                this.process.procesosFindById(idEditar).subscribe(data=>{
+                  this.proceso=data;
+                  console.log(this.proceso);
+                  
+                })
+              }
           }
         })
           
@@ -81,5 +93,14 @@ this.ruta.paramMap.subscribe(parametro=>{
 
   guardarYcontinuar(){
 
+  }
+
+
+  editar(){
+    if(this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico){
+      this.router.navigate([`/economico/empresario/${this.cliente.id}/editar/${this.proceso.id}`])
+    }else{
+      this.router.navigate(['/empresario/economico/cliente/', this.cliente.id])
+    }
   }
 }
