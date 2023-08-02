@@ -8,6 +8,7 @@ import { ClientService } from 'src/app/client/client.service';
 import { ProcesoService } from 'src/app/procesos/proceso.service';
 import { AnalisisEconomico } from '../analisis-economico';
 import { Indicador } from './../indicador';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-economico',
@@ -29,6 +30,11 @@ indicador4:Indicador = new Indicador();
 indicador5:Indicador = new Indicador();
 indicador6:Indicador = new Indicador();
 indicador7:Indicador = new Indicador();
+indicador8:Indicador = new Indicador();
+indicador9:Indicador = new Indicador();
+indicador10:Indicador = new Indicador();
+analisisEconomico:AnalisisEconomico = new AnalisisEconomico();
+
   constructor(
     private procesoEmpresarioservice: ProcessEmpresarioService,
     private ruta:ActivatedRoute,
@@ -69,9 +75,32 @@ this.ruta.paramMap.subscribe(parametro=>{
 
 
   guardar(){
+this.analisisEconomico.ventasMes=this.indicador1;
+this.analisisEconomico.aumentoVentas=this.indicador2;
+this.analisisEconomico.empleosFormales=this.indicador3;
+this.analisisEconomico.empleosInformales=this.indicador4;
+this.analisisEconomico.empleosNuevos=this.indicador5;
+//si no
+this.analisisEconomico.empresaExportando=this.indicador6;
+this.analisisEconomico.ventassExportacion=this.indicador7;
+//sino todo lo que sigue
+this.analisisEconomico.diversificacionProductos=this.indicador8;
+this.analisisEconomico.aperturaNuevosMercados=this.indicador9;
+this.analisisEconomico.accesoOtrasFuentes=this.indicador10;
+console.log(this.analisisEconomico);
+this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico= this.analisisEconomico;
+console.log(this.proceso);
+this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data=>{
+ // this.proceso = data;
+ this.proceso.estado='Economico';
+  this.process.procesosUpdate(this.proceso).subscribe(p=>{
+    Swal.fire('Exito', 'Analisis Economico creado con exito', 'success');
+    this.router.navigate(['/procesos'])
+  })
 
-console.log(this.indicador1);
-console.log(this.indicador2);
+})
+
+
 
 
   }
