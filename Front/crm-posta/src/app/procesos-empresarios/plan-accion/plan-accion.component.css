@@ -1,0 +1,50 @@
+h2{
+    border-collapse: collapse;
+    border: solid 2px;
+    border-color: #eb9694;
+    background-color: red ;
+    color: white;
+    font-size: 18;
+}
+h2:hover{
+    border-collapse: collapse;
+    border: solid 2px;
+    border-color: #eb9694;
+    background-color: red ;
+    color: white;
+    font-size: 18;
+}
+th{
+    vertical-align: middle;
+    background-color: rgb(224, 217, 217);
+    text-align: center;
+}
+td{
+    vertical-align: middle;
+    
+}
+/* .mantener{
+    vertical-align: middle;
+    font-size: 15px;
+    text-align: center;
+} */
+thead{
+    font-size: 13px;
+}
+button{
+    border-color: #eb9694;
+    background-color: red ;
+    color: white;
+    margin-left: 10px;
+}
+.left-align {
+    float: left;
+  }
+  
+  .right-align {
+    margin-top: 10px;
+    float: right;
+    
+    
+    
+  }
