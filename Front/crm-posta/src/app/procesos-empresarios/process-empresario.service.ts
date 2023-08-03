@@ -24,9 +24,12 @@ export class ProcessEmpresarioService {
   }
   // metodos put
   public updateProcesoEconomico(procesoEmpresario: Process): Observable<any> {
-    return this.http.put<any>(`${this.url}/economico`, procesoEmpresario);
+    return this.http.put<any>(`${this.url}/economico/${procesoEmpresario.processEmpresario.diagnosticoEmpresarial.analisisEconomico.id}`, procesoEmpresario);
   }
   public updateProcesoDiagnostico(procesoEmpresario: Process): Observable<any> {
-    return this.http.put<any>(`${this.url}/diagnostico`, procesoEmpresario);
+    return this.http.put<any>(`${this.url}/diagnostico/${procesoEmpresario.processEmpresario.diagnosticoEmpresarial.diagnostico.id}`, procesoEmpresario);
+  }
+  public updateProcesoResultado(procesoEmpresario: Process): Observable<any> {
+    return this.http.put<any>(`${this.url}/diagnostico/${procesoEmpresario.processEmpresario.diagnosticoEmpresarial.analisisResultados.id}`, procesoEmpresario);
   }
 }
