@@ -2745,7 +2745,7 @@
         </form>
         <div class="form-group mt-3">
         <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="sacarTotales()">Guardar y Ver Totales</button>
-        <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="sacarTotales()" class="btn">Editar</button>
+        <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="editar()" class="btn">Editar</button>
         <button [routerLink]="['/procesos']"  class="btn">cancelar</button>
          </div>
       </div>

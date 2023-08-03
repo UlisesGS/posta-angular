@@ -71,6 +71,7 @@ export class DiagnosticoComponent implements OnInit {
             this.process.procesosFindById(idEditar).subscribe(data=>{
               this.proceso=data;
               this.procesoEmpresario=this.proceso.processEmpresario
+              this.diagnostico=this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico
               this.procesoEmpresario.diagnosticoEmpresarial=this.proceso.processEmpresario.diagnosticoEmpresarial
               this.procesoEmpresario.diagnosticoEmpresarial.diagnostico=this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico
               this.concepto = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.conceptosGenerales
@@ -141,7 +142,7 @@ continuar(){
     console.log(this.proceso);
     
     //llamar al back para que saque todos los totales
-   /* this.processEmpresarioService.procesoEmpresarioSave(this.proceso).subscribe(data => {
+    this.processEmpresarioService.procesoEmpresarioSave(this.proceso).subscribe(data => {
       this.proceso.processEmpresario=data;
 
       this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
@@ -156,17 +157,49 @@ continuar(){
 
       })
       Swal.fire('Exito:', 'El Diagnostico de Empresario fue creado con exito', 'success');
-    })*/
+    })
 
 
   }
 
 
   editar(){
+    this.total=0;
+    console.log(this.estrategicas);
+    
+    this.diagnostico.conceptosGenerales = this.concepto;
+    this.diagnostico.gestionEstrategica = this.estrategicas;
+    this.diagnostico.gestionProductividad = this.produc;
+    this.diagnostico.gestionOperacional = this.operacion;
+    this.diagnostico.gestionCalidad = this.calidada;
+    this.diagnostico.gestionInnovacion = this.inovaciones;
+    this.diagnostico.gestionFinanciera = this.financieras;
+    this.diagnostico.gestionLogistica = this.logisticas;
+    this.diagnostico.gestionDigital = this.digitales;
+    this.diagnostico.gestionAmbiental = this.ambientales;
+    this.diagnostico.gestionIntelectual = this.intelectuales;
+    this.procesoEmpresario.client = this.cliente
+    this.procesoEmpresario.diagnosticoEmpresarial.diagnostico = this.diagnostico;
+    this.procesoEmpresario.user = this.usuario;
+   // this.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales
+    this.proceso.processEmpresario=this.procesoEmpresario
+
+    console.log(this.proceso);
+    
+    //llamar al back para que saque todos los totales
+    this.processEmpresarioService.updateProcesoDiagnostico(this.proceso).subscribe(data=>{
+      console.log(data);
+      
+    })
+      
+   
+
     if(this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados){
       this.ruta.navigate([`/resultados/empresario/${this.cliente.id}/editar/${this.proceso.id}`])
+      Swal.fire('Exito:', 'El Diagnostico de Empresario fue editado con exito', 'success');
     }else{
       this.ruta.navigate(['/empresario/resultados/cliente/', this.cliente.id])
+      Swal.fire('Exito:', 'El Diagnostico de Empresario fue editado con exito', 'success');
     }
   }
 
