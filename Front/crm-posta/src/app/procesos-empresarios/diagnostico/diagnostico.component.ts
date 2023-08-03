@@ -63,6 +63,33 @@ export class DiagnosticoComponent implements OnInit {
           this.cliente = data;
           this.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
 
+          // para editar
+          let idEditar = +p.get('idEditar');
+          console.log('no entro al if');
+          
+          if(idEditar){
+            this.process.procesosFindById(idEditar).subscribe(data=>{
+              this.proceso=data;
+              this.procesoEmpresario=this.proceso.processEmpresario
+              this.procesoEmpresario.diagnosticoEmpresarial=this.proceso.processEmpresario.diagnosticoEmpresarial
+              this.procesoEmpresario.diagnosticoEmpresarial.diagnostico=this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico
+              this.concepto = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.conceptosGenerales
+              this.estrategicas = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionEstrategica
+              this.produc = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionProductividad
+              this.operacion = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionOperacional
+              this.calidada = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionCalidad
+              this.inovaciones = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionInnovacion
+              this.financieras = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionFinanciera
+              this.logisticas = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionLogistica
+              this.digitales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionDigital
+              this.ambientales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionAmbiental
+              this.intelectuales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionIntelectual
+              console.log(this.proceso);
+              
+              
+            })
+          }
+
         })
       }
     })
@@ -84,13 +111,15 @@ export class DiagnosticoComponent implements OnInit {
   consolidado: boolean = false;
 
 continuar(){
-  //'empresario/resultados/cliente/:id
-  this.ruta.navigate(['/empresario/resultados/cliente/',this.cliente.id])
+  if(this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados){
+    this.ruta.navigate([`/resultados/empresario/${this.cliente.id}/editar/${this.proceso.id}`])
+  }else{
+    this.ruta.navigate(['/empresario/resultados/cliente/', this.cliente.id])
+  }
 }
 
   sacarTotales() {
     this.total=0;
-console.log(this.estrategicas);
 
     this.diagnostico.conceptosGenerales = this.concepto;
     this.diagnostico.gestionEstrategica = this.estrategicas;
@@ -103,20 +132,17 @@ console.log(this.estrategicas);
     this.diagnostico.gestionDigital = this.digitales;
     this.diagnostico.gestionAmbiental = this.ambientales;
     this.diagnostico.gestionIntelectual = this.intelectuales;
-    console.log(this.diagnostico);
     this.procesoEmpresario.client = this.cliente
     this.procesoEmpresario.diagnosticoEmpresarial.diagnostico = this.diagnostico;
     this.procesoEmpresario.user = this.usuario;
-
-    console.log(this.procesoEmpresario);
    // this.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales
     this.proceso.processEmpresario=this.procesoEmpresario
-    console.log(this.proceso.processEmpresario);
 
+    console.log(this.proceso);
+    
     //llamar al back para que saque todos los totales
-    this.processEmpresarioService.procesoEmpresarioSave(this.proceso).subscribe(data => {
+   /* this.processEmpresarioService.procesoEmpresarioSave(this.proceso).subscribe(data => {
       this.proceso.processEmpresario=data;
-      console.log(this.proceso.processEmpresario);
 
       this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
         this.total+=t;
@@ -130,9 +156,18 @@ console.log(this.estrategicas);
 
       })
       Swal.fire('Exito:', 'El Diagnostico de Empresario fue creado con exito', 'success');
-    })
+    })*/
 
 
+  }
+
+
+  editar(){
+    if(this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados){
+      this.ruta.navigate([`/resultados/empresario/${this.cliente.id}/editar/${this.proceso.id}`])
+    }else{
+      this.ruta.navigate(['/empresario/resultados/cliente/', this.cliente.id])
+    }
   }
 
 
