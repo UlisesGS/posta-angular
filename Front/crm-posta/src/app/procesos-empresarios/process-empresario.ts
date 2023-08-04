@@ -10,5 +10,6 @@ estado:string;
 terminado:boolean;
 fechaAlta:string;
 diagnosticoEmpresarial:	DiagnosticoEmpresarial;
+informeDiagnostico:boolean;
 planDeAccion:string;
 }
