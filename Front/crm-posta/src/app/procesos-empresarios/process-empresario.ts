@@ -1,6 +1,7 @@
 import { Client } from "../client/client";
 import { Usuario } from "../usuario/usuario";
 import { DiagnosticoEmpresarial } from "./diagnostico-empresarial";
+import { PlanDeAccion } from "./plan-de-accion";
 
 export class ProcessEmpresario {
 id:number;
@@ -11,5 +12,6 @@ terminado:boolean;
 fechaAlta:string;
 diagnosticoEmpresarial:	DiagnosticoEmpresarial;
 informeDiagnostico:boolean;
-planDeAccion:string;
+planDeAccion:PlanDeAccion;
+
 }

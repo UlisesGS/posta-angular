@@ -172,8 +172,20 @@ const routes: Routes = [
   { path: 'empresario/resultados/cliente/:id', component: ResultadosComponent },
   { path: 'empresario/economico', component: EconomicoComponent },
   { path: 'empresario/economico/cliente/:id', component: EconomicoComponent },
+
+  //para editar
+  //Diagnostico Empresarial
+  { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent },
+  { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent },
+  { path: 'economico/empresario/:id/editar/:idEditar', component: EconomicoComponent },
+
   //Plan de Accion
   { path: 'empresario/accion', component: PlanAccionComponent },
+  { path: 'empresario/accion/cliente/:id', component: PlanAccionComponent },
+
+  //para editar
+  //Plan de Accion
+  { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent },
 
 ]
 

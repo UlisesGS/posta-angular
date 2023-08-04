@@ -138,10 +138,11 @@
                 </table>
             </form>
         </div>
-        <button class="btn" (click)="guardar()">Guardar</button>
+        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="guardar()" class="btn">Guardar</button>
+            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="editar()" class="btn">Editar</button>
         <button [routerLink]="['/procesos']"
                 class="btn ">Cancelar</button>
-                <!--<button [routerLink]="['/segmento/cliente/',cliente.id,'editar',proceso.id]"
-                class="btn ">Volver</button>-->
+                <button [routerLink]="['/diagnostico/empresario/',cliente.id,'editar',proceso.id]"
+                class="btn ">Volver</button>
     </div>
 </div>

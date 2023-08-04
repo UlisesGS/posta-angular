@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import pdfMake from 'pdfmake/build/pdfmake';
+import Swal from 'sweetalert2';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -114,16 +115,26 @@ export class AccionProcesosComponent implements OnInit {
        break;
        case 'Presupuesto Gastos/Costos':
         this.ruta.navigate([`inversion/cliente/${this.proceso.canvasModel.client.id}`]);
-
        ;
        break;
        case 'Plan Financiero finalizado':
-        console.log('entre');
-        this.ruta.navigate([`/inversion/cliente/${this.proceso.canvasModel.client.id}/editar/${this.proceso.id}`])
+        this.ruta.navigate([`/empresario/diagnostico/cliente/${this.proceso.processEmpresario.client.id}`])
+       break;
 
 
 
-
+       case 'Diagnostico':
+        this.ruta.navigate([`/empresario/resultados/cliente/${this.proceso.processEmpresario.client.id}`])
+       break;
+       case 'Resultados':
+        this.ruta.navigate([`/empresario/economico/cliente/${this.proceso.processEmpresario.client.id}`])
+       break;
+       case 'Economico':
+        this.ruta.navigate([`/empresario/accion/cliente/${this.proceso.processEmpresario.client.id}`])
+       break;
+       // MODIFICAR
+       case 'Plan Accion':
+        this.ruta.navigate([`/accion/empresario/${this.proceso.processEmpresario.client.id}/editar/${this.proceso.id}`])
        break;
     }
     this.modal.cerrarModalProceso();
