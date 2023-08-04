@@ -78,7 +78,7 @@ export class EconomicoComponent {
                   this.indicador8=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.diversificacionProductos;
                   this.indicador9=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aperturaNuevosMercados;
                   this.indicador10=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.accesoOtrasFuentes;
-                  console.log(this.proceso);
+                 // console.log(this.proceso);
 
                 })
               }
@@ -125,5 +125,12 @@ export class EconomicoComponent {
 
 
 
+  }
+  editar(){
+    console.log(this.proceso);
+
+    this.procesoEmpresarioservice.updateProcesoEconomico(this.proceso).subscribe(data=>{
+      Swal.fire('Modificado: ', 'Analisis econocico editado con exito', 'success');
+    })
   }
 }
