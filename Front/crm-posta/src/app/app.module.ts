@@ -181,6 +181,11 @@ const routes: Routes = [
 
   //Plan de Accion
   { path: 'empresario/accion', component: PlanAccionComponent },
+  { path: 'empresario/accion/cliente/:id', component: PlanAccionComponent },
+
+  //para editar
+  //Plan de Accion
+  { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent },
 
 ]
 

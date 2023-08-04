@@ -121,16 +121,16 @@ export class EconomicoComponent {
       })
 
     })
-
-
-
-
   }
   editar(){
     console.log(this.proceso);
 
     this.procesoEmpresarioservice.updateProcesoEconomico(this.proceso).subscribe(data=>{
-      Swal.fire('Modificado: ', 'Analisis econocico editado con exito', 'success');
     })
+    if(this.proceso.processEmpresario.planDeAccion){
+      this.router.navigate([`/economico/accion/${this.cliente.id}/editar/${this.proceso.id}`])
+    }else{
+      this.router.navigate(['/empresario/accion/cliente/', this.cliente.id])
+    }
   }
 }
