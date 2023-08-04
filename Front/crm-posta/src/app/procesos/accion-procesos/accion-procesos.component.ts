@@ -130,7 +130,11 @@ export class AccionProcesosComponent implements OnInit {
         this.ruta.navigate([`/empresario/economico/cliente/${this.proceso.processEmpresario.client.id}`])
        break;
        case 'Economico':
-        Swal.fire('AGUANTE BOCA', 'BOCAAAAA BOOOCAAAAA', 'success')
+        this.ruta.navigate([`/empresario/accion/cliente/${this.proceso.processEmpresario.client.id}`])
+       break;
+       // MODIFICAR
+       case 'Plan Accion':
+        this.ruta.navigate([`/accion/empresario/${this.proceso.processEmpresario.client.id}/editar/${this.proceso.id}`])
        break;
     }
     this.modal.cerrarModalProceso();
