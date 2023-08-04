@@ -8,6 +8,7 @@ import { lastDayOfDecade } from 'date-fns';
 import { AnalisisResultados } from '../analisis-resultados';
 import { Process } from 'src/app/procesos/Process';
 import { ProcesoService } from 'src/app/procesos/proceso.service';
+import { DiagnosticoEmpresarial } from '../diagnostico-empresarial';
 
 @Component({
   selector: 'app-resultados',
@@ -34,42 +35,49 @@ this.ruta.paramMap.subscribe(parametro=>{
     this.cliente= clien;
     this.process.procesosFindAll().subscribe(data=>{
       this.procesos= data;
-      
+
       this.procesos.forEach(pr=>{
         console.log(pr);
-        
-       
+
+
           if(pr.processEmpresario?.client?.id == this.cliente.id){
             console.log(pr);
-            
+
               this.proceso=pr
               this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados=new AnalisisResultados();
 
               // para editar
               let idEditar = +parametro.get('idEditar');
               console.log('no entro al if');
-              
+
               if(idEditar){
+                this.proceso= new Process()
+                this.proceso.processEmpresario= new ProcessEmpresario();
+                this.proceso.processEmpresario.diagnosticoEmpresarial= new DiagnosticoEmpresarial();
+                this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados=new AnalisisResultados();
+
                 this.process.procesosFindById(idEditar).subscribe(data=>{
                   this.proceso=data;
-                  console.log(this.proceso);
-                  
+
+
+               //   console.log(this.proceso);
+
                 })
               }
           }
         })
-          
-          
 
-          
-          
+
+
+
+
 
         })
       })
     })
   }
 
-  
+
 
 
   guardar(){
@@ -83,10 +91,10 @@ this.ruta.paramMap.subscribe(parametro=>{
 
       this.router.navigate(['/empresario/economico/cliente/',this.cliente.id]);
 
-    
+
     })
 
-    
+
 
   }
 
@@ -97,6 +105,12 @@ this.ruta.paramMap.subscribe(parametro=>{
 
 
   editar(){
+    console.log(this.proceso);
+
+    this.procesoEmpresarioservice.updateProcesoResultado(this.proceso).subscribe(data=>{
+      console.log("editado");
+
+    })
     if(this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico){
       this.router.navigate([`/economico/empresario/${this.cliente.id}/editar/${this.proceso.id}`])
     }else{
