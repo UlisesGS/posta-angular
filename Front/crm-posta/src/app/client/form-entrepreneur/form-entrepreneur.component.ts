@@ -22,7 +22,7 @@ export class FormEntrepreneurComponent implements OnInit {
   emprendedor:Client= new Client();
   municipios:Municipio[]=[];
   errores:any;
-  
+
 
   ngOnInit(): void {
     this.clientService.getClientsMunicipios().subscribe(data=>{
@@ -42,6 +42,7 @@ export class FormEntrepreneurComponent implements OnInit {
   }
 public registrar(){
   this.emprendedor.type="entrepreneur";
+  this.emprendedor.user= JSON.parse(localStorage.getItem('usuario'))
   console.log(this.emprendedor);
   this.clientService.saveEntrepreneur(this.emprendedor).subscribe(data=>{
     Swal.fire(`ÉXITO`, `Emprendedor ${data.name} fue creado con exito`, `success`)
