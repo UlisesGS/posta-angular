@@ -54,7 +54,7 @@ export class InformacionComponent {
           this.procesoService.procesosFindAll().subscribe(pro => {
             this.procesos = pro;
             this.procesos.forEach(proceso => {
-              if (proceso.canvasModel.client.id == this.cliente.id) {
+              if (proceso?.canvasModel?.client?.id == this.cliente.id) {
                 this.proceso = proceso;
                 // para editar
                 let idEditar = +parametro.get('idEditar');

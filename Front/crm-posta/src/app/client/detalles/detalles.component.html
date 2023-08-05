@@ -154,7 +154,7 @@
               <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"></i>
             </button>
-            <button *ngIf="proceso?.processEmpresario!==null"
+            <button *ngIf="proceso?.processEmpresario!==null && proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico===null"
               style="background-color: rgb(58, 144, 224); color: white;width: 80%;" class="btn btn-disabled">
               <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"
@@ -168,14 +168,7 @@
           </button>
           </div>
           <div style="margin: 10px;">
-            <button *ngIf="proceso?.processEmpresario?.informeDiagnostico===false" class="btn btn-disabled"
-              style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
-              <span class="left-align">INFORME DE DIAGNÓSTICO EMPRESARIAL</span><i class="fa-solid fa-pen-to-square right-align"
-                type="button" (click)="imprimirPDF()"></i>
-            </button>
-          </div>
-          <div style="margin: 10px;">
-            <button *ngIf="proceso?.processEmpresario?.informeDiagnostico===true" class="btn btn-disabled"
+            <button  class="btn btn-disabled"
               style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
               <span class="left-align">INFORME DE DIAGNÓSTICO EMPRESARIAL</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button" (click)="imprimirPDF()"
@@ -184,18 +177,12 @@
           </div>
           
           <div style="margin: 10px;">
-            <button *ngIf="proceso?.processEmpresario?.planAccion===null" class="btn btn-disabled"
+            <button  class="btn btn-disabled" *ngIf="proceso?.processEmpresario?.planAccion===null"
               style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
               <span class="left-align">PLAN DE ACCIÓN</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"></i>
             </button>
-            <button *ngIf="proceso?.processEmpresario?.planAccion!==null && proceso?.processEmpresario?.planAccion?.talentoHumano===null"
-              class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
-              <span class="left-align">PLAN DE ACCIÓN</span><i class="fa-solid fa-pen-to-square right-align"
-                type="button"
-                ></i>
-            </button>
-            <button *ngIf="proceso?.businessPlan?.conclusion!==null" class="btn btn-disabled"
+            <button *ngIf="proceso?.processEmpresario?.planAccion!==null" class="btn btn-disabled"
               style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
               <span class="left-align">PLAN DE ACCIÓN</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"
@@ -217,17 +204,17 @@
             </div>
           </div>
           <div class="m-2">
-            <a href="assets/EncuestaImpacto.pdf" target="_blank" class="btn" ><i
+            <a href="assets/EncuestaImpacto.pdf" target="_blank" class="btn" (click)="imprimirImpacto()"><i
                 class="fa-solid fa-file fa-2xl"></i> Encuesta Impácto Económico</a>
-            <i class="fa-solid fa-caret-down fa-xl" ></i>
+            <i class="fa-solid fa-caret-down fa-xl"(click)="condicionImpacto()" ></i>
           </div>
           <div *ngIf="impacto">
-            <div class="m-2 col-6" *ngIf="imageUrl==null">
+            <div class="m-2 col-6" *ngIf="imageUrlImpacto==null">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImage()">Subir Imagen</button>
+              <button class="btn mt-2" (click)="uploadImageImpacto()">Subir Imagen</button>
             </div>
             <div class="m-2">
-              <a *ngIf="imageUrl" [href]="imageUrl" target="_blank" class="btn">Abrir imagen en otra pestaña</a>
+              <a *ngIf="imageUrlImpacto" [href]="imageUrlImpacto" target="_blank" class="btn">Abrir imagen en otra pestaña</a>
             </div>
           </div>
           <div class="m-2">

@@ -116,8 +116,10 @@
                     </tbody>
                 </table>
             </form>
-            <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico?.id" (click)="guardar()" class="btn">Guardar</button>
-            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico?.id" (click)="editar()" class="btn">Editar</button>
+            <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico?.id" (click)="guardarYsalir()" class="btn">Guardar</button>
+            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico?.id" (click)="editarYsalir()" class="btn">Editar</button>
+            <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico?.id" (click)="guardar()" class="btn">Guardar Y Continuar</button>
+            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico?.id" (click)="editar()" class="btn">Editar Y Continuar</button>
             <button [routerLink]="['/procesos']" class="btn">Cancelar</button>
             <button [routerLink]="['/resultados/empresario/',cliente.id,'editar',proceso.id]" class="btn ">Volver</button>
         </div>
