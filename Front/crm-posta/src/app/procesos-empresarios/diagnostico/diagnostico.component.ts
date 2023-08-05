@@ -28,6 +28,7 @@ export class DiagnosticoComponent implements OnInit {
   diagnostico: Diagnostico = new Diagnostico();
   conceptoGenerales: ConceptoGenerales = new ConceptoGenerales();
   procesosS:Process[]=[];
+  procesosSS:Process[]=[];
   proceso:Process=new Process();
   concepto: ConceptoGenerales[] = [new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales, new ConceptoGenerales];
   estrategicas: number[] = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
@@ -63,11 +64,37 @@ export class DiagnosticoComponent implements OnInit {
           this.cliente = data;
           this.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
 
+
+          this.process.procesosFindAll().subscribe(pro => {
+            console.log('holaaa');
+            this.procesosSS=pro;
+            
+
+            this.procesosSS.forEach(proceso=>{
+              
+              
+              if(proceso?.selfAssessment?.client?.id==this.cliente.id){
+                this.proceso=proceso;
+                console.log('hola');
+                
+                
+                
+                
+                }
+
+              })
+            })
+          
+
+
+
           // para editar
           let idEditar = +p.get('idEditar');
           console.log('no entro al if');
           
           if(idEditar){
+            console.log('hhh');
+            
             this.process.procesosFindById(idEditar).subscribe(data=>{
               this.proceso=data;
               this.procesoEmpresario=this.proceso.processEmpresario
@@ -161,6 +188,54 @@ continuar(){
 
 
   }
+
+
+
+  sacarTotalesCambiarTipo() {
+    console.log("entre a este");
+    
+    this.total=0;
+
+    this.diagnostico.conceptosGenerales = this.concepto;
+    this.diagnostico.gestionEstrategica = this.estrategicas;
+    this.diagnostico.gestionProductividad = this.produc;
+    this.diagnostico.gestionOperacional = this.operacion;
+    this.diagnostico.gestionCalidad = this.calidada;
+    this.diagnostico.gestionInnovacion = this.inovaciones;
+    this.diagnostico.gestionFinanciera = this.financieras;
+    this.diagnostico.gestionLogistica = this.logisticas;
+    this.diagnostico.gestionDigital = this.digitales;
+    this.diagnostico.gestionAmbiental = this.ambientales;
+    this.diagnostico.gestionIntelectual = this.intelectuales;
+    this.procesoEmpresario.client = this.cliente
+    this.procesoEmpresario.diagnosticoEmpresarial.diagnostico = this.diagnostico;
+    this.procesoEmpresario.user = this.usuario;
+   // this.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales
+    this.proceso.processEmpresario=this.procesoEmpresario
+
+    console.log(this.proceso);
+    
+    //llamar al back para que saque todos los totales
+    this.processEmpresarioService.procesoEmpresarioSave(this.proceso).subscribe(data => {
+      this.proceso.processEmpresario=data;
+
+      this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
+        this.total+=t;
+      })
+
+      this.consolidado=true;
+      //this.procesoEmpresario.estado = 'Diagnostico'
+      this.proceso.estado= 'Diagnostico';
+      this.process.procesosUpdate(this.proceso).subscribe(dato=>{
+        console.log(dato);
+
+      })
+      Swal.fire('Exito:', 'El Diagnostico de Empresario fue creado con exito', 'success');
+    })
+
+
+  }
+
 
 
   editar(){
