@@ -72,6 +72,7 @@ import { DiagnosticoComponent } from './procesos-empresarios/diagnostico/diagnos
 import { ResultadosComponent } from './procesos-empresarios/resultados/resultados.component';
 import { EconomicoComponent } from './procesos-empresarios/economico/economico.component';
 import { PlanAccionComponent } from './procesos-empresarios/plan-accion/plan-accion.component';
+import { MensajesComponent } from './mensajes/mensajes.component';
 
 const routes: Routes = [
 
@@ -160,7 +161,6 @@ const routes: Routes = [
   { path: 'dofa/cliente/:id/ver/:idVer', component: DofaComponent },
   { path: 'conclusion/cliente/:id/ver/:idVer', component: ConclusionComponent },
   // plan financiero
-
   { path: 'ventas/cliente/:id/ver/:idVer', component: PresupuestoVentasComponent },
   { path: 'compras/cliente/:id/ver/:idVer', component: PresupuestoFormComponent },
   { path: 'gastos/cliente/:id/ver/:idVer', component: PresupuestoGastoComponent },
@@ -186,6 +186,9 @@ const routes: Routes = [
   //para editar
   //Plan de Accion
   { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent },
+
+  //Mensajes
+  { path: 'mensajes/crear', component: MensajesComponent },
 
 ]
 
@@ -257,6 +260,7 @@ const routes: Routes = [
     ResultadosComponent,
     EconomicoComponent,
     PlanAccionComponent,
+    MensajesComponent,
   ],
 
   imports: [
