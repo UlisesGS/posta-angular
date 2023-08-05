@@ -224,6 +224,21 @@ export class DetallesComponent {
     this.modalService.abrirTestAuto();
   }
 
+  public abrirEmpresarial(proceso: Process, autoB: string, canvasB: string, tipoVer: string) {
+
+    this.tipoVer = tipoVer;
+    this.autoB = autoB
+    this.canvasB = canvasB
+    this.procesoSeleccionado = proceso;
+    console.log(this.tipoVer);
+    console.log(this.autoB);
+    console.log(this.canvasB);
+    this.modalService.abrirTestAuto();
+  }
+
+
+
+
   imprimirActa() {
     const pdfUrl = 'assets/ActaCierreEmprendedor.pdf'; // Reemplaza con la ruta correcta a tu archivo PDF
     const iframe = document.createElement('iframe');

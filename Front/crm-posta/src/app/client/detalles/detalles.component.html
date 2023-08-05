@@ -1,12 +1,10 @@
 <app-modal-detalles *ngIf="modalService.auto && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
   [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB" [tipoVer]="tipoVer"></app-modal-detalles>
-<app-modal-detalles *ngIf="modalService.canvas && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
-  [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB" [tipoVer]="tipoVer"></app-modal-detalles>
-<app-modal-detalles *ngIf="modalService.negocios && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
-  [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB" [tipoVer]="tipoVer"></app-modal-detalles>
-<app-modal-detalles *ngIf="modalService.financiero && procesoSeleccionado" [proceso]="procesoSeleccionado"
-  [autoB]="autoB" [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB"
-  [tipoVer]="tipoVer"></app-modal-detalles>
+
+  <app-modal-detalles *ngIf="modalService.auto && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
+  [canvasB]="canvasB" [tipoVer]="tipoVer"></app-modal-detalles>
+
+
 <div class="row">
   <div class="col-2">
     <app-client-details></app-client-details>
@@ -157,13 +155,13 @@
             <button *ngIf="proceso?.processEmpresario!==null && proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico===null"
               style="background-color: rgb(58, 144, 224); color: white;width: 80%;" class="btn btn-disabled">
               <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span><i class="fa-solid fa-pen-to-square right-align"
-                type="button"
+                type="button" (click)="abrirEmpresarial(proceso,'continuar', 'continuar', 'diagnostico')"
                 ></i>
             </button>
             <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico!==null"
             style="background-color: rgb(34, 197, 89); color: white;width: 80%;" class="btn btn-disabled">
             <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span><i class="fa-solid fa-pen-to-square right-align"
-              type="button" 
+              type="button" (click)="abrirEmpresarial(proceso,'finalizado', 'continuar', 'diagnostico')"
               ></i>
           </button>
           </div>
@@ -185,7 +183,7 @@
             <button *ngIf="proceso?.processEmpresario?.planAccion!==null" class="btn btn-disabled"
               style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
               <span class="left-align">PLAN DE ACCIÓN</span><i class="fa-solid fa-pen-to-square right-align"
-                type="button"
+                type="button" (click)="abrirEmpresarial(proceso,'finalizado', 'finalizado', 'planAccion')"
                 ></i>
             </button>
           </div>
