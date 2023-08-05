@@ -48,7 +48,7 @@ export class InternoComponent {
               this.procesos=pro;
 
               this.procesos.forEach(proceso=>{
-                if(proceso.canvasModel.client.id==this.cliente.id){
+                if(proceso?.canvasModel?.client?.id==this.cliente.id){
                   this.proceso=proceso;
                   this.proceso.businessPlan=proceso.businessPlan;
                   

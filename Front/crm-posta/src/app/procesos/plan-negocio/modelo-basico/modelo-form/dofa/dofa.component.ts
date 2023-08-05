@@ -49,7 +49,7 @@ export class DofaComponent {
               this.procesos = pro;
 
               this.procesos.forEach(proceso => {
-                if (proceso.canvasModel.client.id == this.cliente.id) {
+                if (proceso?.canvasModel?.client?.id == this.cliente.id) {
                   this.proceso = proceso;
                   console.log(this.proceso);
 

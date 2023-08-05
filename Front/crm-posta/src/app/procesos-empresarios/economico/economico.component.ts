@@ -116,12 +116,40 @@ export class EconomicoComponent {
       // this.proceso = data;
       this.proceso.estado = 'Economico';
       this.process.procesosUpdate(this.proceso).subscribe(p => {
+        this.router.navigate(['/empresario/accion/cliente/', this.cliente.id])
+      })
+
+    })
+  }
+
+  guardarYsalir() {
+    this.analisisEconomico.ventasMes = this.indicador1;
+    this.analisisEconomico.aumentoVentas = this.indicador2;
+    this.analisisEconomico.empleosFormales = this.indicador3;
+    this.analisisEconomico.empleosInformales = this.indicador4;
+    this.analisisEconomico.empleosNuevos = this.indicador5;
+    //si no
+    this.analisisEconomico.empresaExportando = this.indicador6;
+    this.analisisEconomico.ventassExportacion = this.indicador7;
+    //sino todo lo que sigue
+    this.analisisEconomico.diversificacionProductos = this.indicador8;
+    this.analisisEconomico.aperturaNuevosMercados = this.indicador9;
+    this.analisisEconomico.accesoOtrasFuentes = this.indicador10;
+    console.log(this.analisisEconomico);
+    this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico = this.analisisEconomico;
+    console.log(this.proceso);
+    this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => {
+      // this.proceso = data;
+      this.proceso.estado = 'Economico';
+      this.process.procesosUpdate(this.proceso).subscribe(p => {
         Swal.fire('Exito', 'Analisis Economico creado con exito', 'success');
         this.router.navigate(['/procesos'])
       })
 
     })
   }
+
+
   editar(){
     console.log(this.proceso);
 
@@ -132,5 +160,16 @@ export class EconomicoComponent {
     }else{
       this.router.navigate(['/empresario/accion/cliente/', this.cliente.id])
     }
+  }
+
+
+  editarYsalir(){
+    console.log(this.proceso);
+
+    this.procesoEmpresarioservice.updateProcesoEconomico(this.proceso).subscribe(data=>{
+    })
+    
+      this.router.navigate(['/procesos'])
+      Swal.fire('Exito', 'Analisis Economico editado con exito', 'success');
   }
 }

@@ -9,6 +9,7 @@ import { AnalisisResultados } from '../analisis-resultados';
 import { Process } from 'src/app/procesos/Process';
 import { ProcesoService } from 'src/app/procesos/proceso.service';
 import { DiagnosticoEmpresarial } from '../diagnostico-empresarial';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-resultados',
@@ -89,8 +90,8 @@ this.ruta.paramMap.subscribe(parametro=>{
 
       })
 
-      this.router.navigate(['/empresario/economico/cliente/',this.cliente.id]);
-
+      this.router.navigate(['/procesos']);
+      Swal.fire('Exito', 'Analisis Resultados creados con exito', 'success');
 
     })
 
@@ -100,11 +101,38 @@ this.ruta.paramMap.subscribe(parametro=>{
 
 
   guardarYcontinuar(){
+    this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data=>{
+      console.log(data);
+      this.proceso.estado='Resultados'
+
+      this.process.procesosUpdate(this.proceso).subscribe(dato=>{
+
+      })
+
+      this.router.navigate(['/empresario/economico/cliente/',this.cliente.id]);
+
+
+    })
+
 
   }
 
 
   editar(){
+    console.log(this.proceso);
+
+    this.procesoEmpresarioservice.updateProcesoResultado(this.proceso).subscribe(data=>{
+      console.log("editado");
+
+    })
+    
+      this.router.navigate([`/procesos`])
+      Swal.fire('Exito', 'Analisis Resultados editados con exito', 'success');
+  }
+
+
+
+  editarYcontinuar(){
     console.log(this.proceso);
 
     this.procesoEmpresarioservice.updateProcesoResultado(this.proceso).subscribe(data=>{

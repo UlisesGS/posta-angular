@@ -40,7 +40,7 @@ export class IngresosComponent implements OnInit{
 
             this.procesos=p;
             this.procesos.forEach(proceso=>{
-              if(proceso.canvasModel.client.id==this.cliente.id){
+              if(proceso?.canvasModel?.client?.id==this.cliente.id){
                 this.proceso=proceso;
                 
                 // para editar

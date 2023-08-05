@@ -78,8 +78,8 @@
                 </table>
             </form>
         </div>
-        <button *ngIf="!proceso?.processEmpresario?.planAccion?.id" (click)="guardar()" class="btn">Guardar</button>
-            <button *ngIf="proceso?.processEmpresario?.planAccion?.id" (click)="editar()" class="btn">Editar</button>
+        <button *ngIf="!proceso?.processEmpresario?.planDeAccion?.id" (click)="guardar()" class="btn">Guardar</button>
+            <button *ngIf="proceso?.processEmpresario?.planDeAccion?.id" (click)="editar()" class="btn">Editar</button>
         <button [routerLink]="['/procesos']"
                 class="btn ">Cancelar</button>
                 <button [routerLink]="['/economico/empresario/',cliente.id,'editar',proceso.id]"
