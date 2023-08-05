@@ -26,56 +26,63 @@
                     <tbody>
                         <tr>
                             <td style="width: 10%;">Lineamientos Básicos Estratégicos</td>
-                            <td style="width: 10%;"><textarea name="a1" id="a1" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a2" id="a2" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a3" id="a3" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a4" id="a4" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.objetivoEstrategico" name="a1" id="a1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.actividadEstrategica" name="a2" id="a2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.responsable" name="a3" id="a3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.aliadosEstrategicos" name="a4" id="a4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaInicio" name="a5" id="a5" class="form-control" ></td>
+                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaCierre" name="a5" id="a5" class="form-control" ></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.cumplimiento" name="a5" id="a5" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.observaciones" name="a5" id="a5" class="form-control" ></textarea></td>
+
                         </tr>
                         <tr>
                             <td style="width: 10%;">Mercadeo y Ventas</td>
-                            <td style="width: 10%;"><textarea name="a1" id="a1" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a2" id="a2" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a3" id="a3" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a4" id="a4" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.objetivoEstrategico"  name="b1" id="b1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.actividadEstrategica"  name="b2" id="b2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.responsable"  name="b3" id="b3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.aliadosEstrategicos"  name="b4" id="b4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaInicio"  name="b5" id="b5" class="form-control" ></td>
+                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaCierre"  name="b5" id="b5" class="form-control" ></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.cumplimiento"  name="b5" id="b5" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.observaciones"  name="b5" id="b5" class="form-control" ></textarea></td>
+
                         </tr>
                         <tr>
                             <td style="width: 10%;">Producción y Operaciones</td>
-                            <td style="width: 10%;"><textarea name="a1" id="a1" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a2" id="a2" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a3" id="a3" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a4" id="a4" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.objetivoEstrategico" name="c1" id="c1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.actividadEstrategica" name="c2" id="c2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.responsable" name="c3" id="c3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.aliadosEstrategicos" name="c4" id="c4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaInicio" name="c5" id="c5" class="form-control" ></td>
+                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaCierre" name="c5" id="c5" class="form-control" ></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.cumplimiento" name="c5" id="c5" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.observaciones" name="c5" id="c5" class="form-control" ></textarea></td>
+
                         </tr>
                         <tr>
                             <td style="width: 10%;">Talento Humano</td>
-                            <td style="width: 10%;"><textarea name="a1" id="a1" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a2" id="a2" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a3" id="a3" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a4" id="a4" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea name="a5" id="a5" class="form-control" ></textarea></td>
-                            
+
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.objetivoEstrategico" name="d1" id="d1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.actividadEstrategica" name="d2" id="d2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.responsable" name="d3" id="d3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.aliadosEstrategicos" name="d4" id="d4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaInicio" name="d5" id="d5" class="form-control" ></td>
+                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaCierre" name="d5" id="d5" class="form-control" ></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.cumplimiento" name="d5" id="d5" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.observaciones" name="d5" id="d5" class="form-control" ></textarea></td>
+
+
                         </tr>
-                        
                     </tbody>
                 </table>
             </form>
         </div>
+        <button *ngIf="!proceso?.processEmpresario?.planDeAccion?.id" (click)="guardar()" class="btn">Guardar</button>
+            <button *ngIf="proceso?.processEmpresario?.planDeAccion?.id" (click)="editar()" class="btn">Editar</button>
+        <button [routerLink]="['/procesos']"
+                class="btn ">Cancelar</button>
+                <button [routerLink]="['/economico/empresario/',cliente.id,'editar',proceso.id]"
+                class="btn ">Volver</button>
     </div>
 </div>
