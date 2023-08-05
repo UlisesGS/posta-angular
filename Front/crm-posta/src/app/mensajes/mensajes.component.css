@@ -1,0 +1,22 @@
+.mensaje-item {
+    cursor: pointer;
+  }
+  
+  .mensaje-info {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .mensaje-destinatario {
+    flex: 1;
+  }
+  
+  .mensaje-asunto {
+    margin-left: 10px; /* Ajusta el espacio entre el destinatario y el asunto según sea necesario */
+  }
+  
+  .mensaje-fecha {
+    text-align: right;
+  }
+  
+  
