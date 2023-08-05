@@ -43,4 +43,12 @@ export class ImagenService {
   getImageBlobCierre(proceso:Process): Observable<Blob> {
     return this.http.get(`${this.baseUrl}/imagenCierre/${proceso.id}`, { responseType: 'blob' });
   }
+  uploadImageImpacto(file: File, proceso:Process): Observable<string> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post<string>(`${this.baseUrl}/uploadImpacto/${proceso.id}`, formData);
+  }
+  getImageBlobImpacto(proceso:Process): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}/imagenImpacto/${proceso.id}`, { responseType: 'blob' });
+  }
 }

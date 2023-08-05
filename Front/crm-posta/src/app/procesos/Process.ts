@@ -30,6 +30,7 @@ export class Process {
   documentoCompromiso:string;
   encuestaSatisfaccion:string;
   actaCierre:string;
+  impacto:string;
   processEmpresario:ProcessEmpresario;
 
 
