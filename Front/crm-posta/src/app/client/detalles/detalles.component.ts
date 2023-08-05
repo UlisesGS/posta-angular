@@ -44,6 +44,7 @@ export class DetallesComponent {
   imageUrl: string | null = null;
   imageUrlEncuesta: string | null = null;
   imageUrlCierre: string | null = null;
+  imageUrlImpacto: string | null = null;
 
   onFileSelected(event: any) {
     this.file = event.target.files[0];
@@ -128,6 +129,31 @@ export class DetallesComponent {
       }
     );
   }
+  uploadImageImpacto() {
+    if (this.file) {
+      this.imagenService.uploadImageImpacto(this.file, this.proceso).subscribe(
+        (response) => {
+          console.log(response);
+          window.location.reload(); // Maneja la respuesta del backend
+        },
+        (error) => {
+          console.error(error); // Maneja el error, si ocurre
+        }
+      );
+    }
+    window.location.reload();
+  }
+  getImageUrlImpacto() {
+    this.imagenService.getImageBlobImpacto(this.proceso).subscribe(
+      (blob) => {
+        this.imageUrlCierre = URL.createObjectURL(blob);
+      },
+      (error) => {
+        if (error.status == 500) {
+        }
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
@@ -152,6 +178,7 @@ export class DetallesComponent {
                 if (this.proceso.actaCierre) {
                   this.getImageUrlCierre();
                 }
+                
 
               }else 
               if (proceso?.processEmpresario?.client?.id == this.cliente.id) {
@@ -165,6 +192,9 @@ export class DetallesComponent {
                 }
                 if (this.proceso.actaCierre) {
                   this.getImageUrlCierre();
+                }
+                if (this.proceso.impacto) {
+                  this.getImageUrlImpacto();
                 }
 
               }
@@ -225,6 +255,20 @@ export class DetallesComponent {
   }
   imprimirEncuesta() {
     const pdfUrl = 'assets/EncuestaEmprendedor.pdf'; // Reemplaza con la ruta correcta a tu archivo PDF
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = pdfUrl;
+    document.body.appendChild(iframe);
+
+    iframe.contentWindow?.focus();
+    iframe.contentWindow?.print();
+
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 1000); // Esperar un segundo antes de eliminar el iframe
+  }
+  imprimirImpacto() {
+    const pdfUrl = 'assets/EncuestaImpacto.pdf'; // Reemplaza con la ruta correcta a tu archivo PDF
     const iframe = document.createElement('iframe');
     iframe.style.display = 'none';
     iframe.src = pdfUrl;
