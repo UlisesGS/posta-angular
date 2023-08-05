@@ -139,7 +139,9 @@
             </form>
         </div>
         <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="guardar()" class="btn">Guardar</button>
+        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="guardarYcontinuar()" class="btn">Guardar y Continuar</button>
             <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="editar()" class="btn">Editar</button>
+            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="editarYcontinuar()" class="btn">Editar y Continuar</button>
         <button [routerLink]="['/procesos']"
                 class="btn ">Cancelar</button>
                 <button [routerLink]="['/diagnostico/empresario/',cliente.id,'editar',proceso.id]"
