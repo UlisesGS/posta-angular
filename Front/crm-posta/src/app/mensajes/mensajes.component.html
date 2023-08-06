@@ -3,7 +3,7 @@
         <div>
             <button class="btn btn-primary" (click)="mostrarFormulario()">{{botonMensaje}}</button> 
         </div>
-        <div>
+        <div *ngIf="!mostrar">
             <button class="btn btn-primary my-2" (click)="cambiarVistaMensajes()">{{ botonVistaMensajes }}</button>
         </div>
     </div>
@@ -32,36 +32,42 @@
 
 
   
-  <div class=" col-10 mt-4">
-    <h2 *ngIf="!vistaMensajes">Mensajes Enviados</h2>
-    <h2 *ngIf="vistaMensajes">Mensajes Recibidos</h2>
-    <ul class="list-group">
-        <li *ngFor="let mensaje of mensajesMostrados" class="list-group-item mensaje-item" (click)="mostrarMensajeCompleto(mensaje)">
-          <div class="mensaje-info">
-            <div class="mensaje-destinatario col-3"><strong>{{ mensaje.destinatario.name }} {{ mensaje.destinatario.lastName }}</strong></div>
-            <div class="mensaje-asunto col-8" >{{ mensaje.asunto }}</div>
-            <div class="mensaje-fecha col-1">{{ mensaje.fehcaEnvio | date:'dd-MM-yy' }}</div>
+  <div class=" col-10 mt-4" *ngIf="!mostrar"> 
+    <div *ngIf="!mensajeSeleccionado; else mensajeCompleto">
+      <h2 *ngIf="!vistaMensajes">Mensajes Enviados</h2>
+      <h2 *ngIf="vistaMensajes">Mensajes Recibidos</h2>
+      <ul class="list-group">
+          <li *ngFor="let mensaje of mensajesMostrados" class="list-group-item mensaje-item" (click)="mostrarMensajeCompleto(mensaje)">
+            <div class="mensaje-info">
+              <div class="mensaje-destinatario col-3"><strong>{{ mensaje.destinatario.name }} {{ mensaje.destinatario.lastName }}</strong></div>
+              <div class="mensaje-asunto col-8" >{{ mensaje.asunto }}</div>
+              <div class="mensaje-fecha col-1">{{ mensaje.fehcaEnvio | date:'dd-MM-yy' }}</div>
+            </div>
+          </li>
+        </ul>
+     
+    </div>
+    <ng-template #mensajeCompleto>
+      <div *ngIf="mensajeSeleccionado" class="col-10 mt-4">
+        <a (click)="volverALista()" type="button" style="float: right;"> <i class="fa-solid fa-xmark fa-xl"></i></a>
+        <h2>Mensaje Completo</h2>
+        <div class="form-group">
+            <label for="fechaEnvio">Fecha de Envío:</label>
+            <input type="text" class="form-control" id="fechaEnvio" [value]=" mensajeSeleccionado.fehcaEnvio | date:'dd-MM-yy' " readonly>
           </div>
-        </li>
-      </ul>
-  </div>
-  <div *ngIf="mensajeSeleccionado" class="col-10 mt-4">
-    <h2>Mensaje Completo</h2>
-    <div class="form-group">
-        <label for="fechaEnvio">Fecha de Envío:</label>
-        <input type="text" class="form-control" id="fechaEnvio" [value]=" mensajeSeleccionado.fehcaEnvio | date:'dd-MM-yy' " readonly>
+        <div class="form-group">
+          <label for="destinatario">Destinatario:</label>
+          <input type="text" class="form-control" id="destinatario" [value]="mensajeSeleccionado.destinatario.name + ' ' + mensajeSeleccionado.destinatario.lastName" readonly>
+        </div>
+        <div class="form-group">
+          <label for="asunto">Asunto:</label>
+          <input type="text" class="form-control" id="asunto" [value]="mensajeSeleccionado.asunto" readonly>
+        </div>
+        <div class="form-group">
+          <label for="contenido">Contenido:</label>
+          <textarea rows="4" class="form-control" id="contenido" readonly>{{ mensajeSeleccionado.contenido }}</textarea>
+        </div>
       </div>
-    <div class="form-group">
-      <label for="destinatario">Destinatario:</label>
-      <input type="text" class="form-control" id="destinatario" [value]="mensajeSeleccionado.destinatario.name + ' ' + mensajeSeleccionado.destinatario.lastName" readonly>
-    </div>
-    <div class="form-group">
-      <label for="asunto">Asunto:</label>
-      <input type="text" class="form-control" id="asunto" [value]="mensajeSeleccionado.asunto" readonly>
-    </div>
-    <div class="form-group">
-      <label for="contenido">Contenido:</label>
-      <textarea rows="4" class="form-control" id="contenido" readonly>{{ mensajeSeleccionado.contenido }}</textarea>
-    </div>
-    
+    </ng-template>
   </div>
+  
