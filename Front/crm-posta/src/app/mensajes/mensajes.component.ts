@@ -19,7 +19,7 @@ export class MensajesComponent implements OnInit {
   botonMensaje: string = 'Nuevo Mensaje';
   mensajesMostrados: Mensaje[] = [];
   vistaMensajes: boolean = false;
-  botonVistaMensajes: string = 'Enviados';
+  botonVistaMensajes: string = 'Recibidos';
   mensajeSeleccionado: Mensaje | null = null
   
 
@@ -97,13 +97,13 @@ export class MensajesComponent implements OnInit {
   cambiarVistaMensajes(): void {
     if(this.vistaMensajes){
       this.vistaMensajes=false
-      this.botonVistaMensajes="Enviados"
+      this.botonVistaMensajes="Recibidos"
       this.filtrarMensajes();
      
       
     }else{
       this.vistaMensajes=true
-      this.botonVistaMensajes="Recibidos"
+      this.botonVistaMensajes="Enviados"
       this.filtrarMensajes();
       
       
@@ -131,10 +131,12 @@ export class MensajesComponent implements OnInit {
          console.log(this.mensajesMostrados);
     }
   }
-  mostrarMensajeCompleto(mensaje: Mensaje): void {
-    this.mensajeSeleccionado = mensaje; // Crear una propiedad para almacenar el mensaje seleccionado
+  mostrarMensajeCompleto(mensaje: any) {
+    this.mensajeSeleccionado = mensaje;
   }
-
+  volverALista() {
+    this.mensajeSeleccionado = null;
+  }
 
  
 }
