@@ -8,7 +8,7 @@
                     <button (click)="cerrarModalAsesoria()" type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <p  class="m-4"> Asesor : {{usuario.name}}  {{usuario.lastName}}</p>
+                <p  class="m-4"> Asesor : {{usuario?.name}}  {{usuario?.lastName}}</p>
                 <div class="container display-flex" *ngIf="!condicion">
                   <div class="col-7 m-2" >
                     <input (keyup)="buscar()"  [(ngModel)]="termino" type="text" class="form-control" placeholder="Buscar por Nombre" >

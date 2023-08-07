@@ -17,40 +17,40 @@ import Swal from 'sweetalert2';
 })
 export class HeaderComponent implements OnInit {
   @HostBinding('class.is-open')
-public modal:boolean;
-public termino:string;
-usuario:Usuario= new Usuario()
-clientes:Client[]=[]
-  constructor(public authService:AuthService
-    , public modalService:ModalService
-    ,private clienteService:ClientService
+  public modal: boolean;
+  public termino: string;
+  usuario: Usuario = new Usuario()
+  clientes: Client[] = []
+  constructor(public authService: AuthService
+    , public modalService: ModalService
+    , private clienteService: ClientService
     , private busquedaService: BusquedaService
-    ,private ruta:Router,
-    ){}
+    , private ruta: Router,
+  ) { }
 
   ngOnInit(): void {
-    this.modal=false;
-    this.usuario=JSON.parse(localStorage.getItem('usuario'))
+    this.modal = false;
+    this.usuario = JSON.parse(localStorage.getItem('usuario'))
+  }
+
+
+
+  abrirModalAsesoria(): void {
+    this.modalService.abrirModalAsesoria();
+  }
+  public setLlenar() {
+    //this.clienteService.buscarPorNombre(this.termino).subscribe(data=>{
+    //this.clientes=data;
+    //})
+    //console.log(this.clientes);
+    this.busquedaService.setTermino(this.termino);
+  }
+  public cerrarSesion() {
+    this.authService.logaut();
+    Swal.fire("Sesion", 'la sesion fue cerrada con exito', 'success');
+    this.ruta.navigate(['/login'])
   }
 
   
-
-  abrirModalAsesoria():void{
-    this.modalService.abrirModalAsesoria();
-  }
-  public setLlenar(){
-//this.clienteService.buscarPorNombre(this.termino).subscribe(data=>{
-  //this.clientes=data;
-//})
-//console.log(this.clientes);
-this.busquedaService.setTermino(this.termino);
-  }
-  public cerrarSesion(){
-localStorage.removeItem('usuario')
-this.usuario=null;
-Swal.fire("Sesion", 'la sesion fue cerrada con exito', 'success');
-this.ngOnInit()
-this.ruta.navigate(['/login'])
-  }
 
 }
