@@ -23,6 +23,9 @@ export class ModalService {
   negocios: boolean = false;
   financiero: boolean = false;
 
+  diagnostico: boolean = false;
+  planAccion: boolean = false;
+
   private _notificar = new EventEmitter<any>()
   constructor() { }
   get notificar(): EventEmitter<any> {
@@ -132,14 +135,13 @@ export class ModalService {
   cerrarTestAuto() {
     this.auto = false;
   }
-
+/*
   abrirTestCanvas() {
     this.canvas = true;
   }
   cerrarTestCanvas() {
     this.canvas = false;
   }
-
   abrirTestNegocios() {
     this.negocios = true;
   }
@@ -153,6 +155,22 @@ export class ModalService {
   cerrarTestFinanciero() {
     this.financiero = false;
   }
+
+
+
+  abrirDiagnostico() {
+    this.diagnostico = true;
+  }
+  cerrarDiagnostico() {
+    this.diagnostico = false;
+  }
+
+  abrirPlanAccion() {
+    this.planAccion = true;
+  }
+  cerrarPlanAccion() {
+    this.planAccion = false;
+  }*/
 
 
 }

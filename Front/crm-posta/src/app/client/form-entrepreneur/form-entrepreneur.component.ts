@@ -6,6 +6,7 @@ import { Municipio } from 'src/app/municipio/municipio';
 import Swal from 'sweetalert2';
 import { ModalService } from '../modal.service';
 import { Client } from '../client';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class FormEntrepreneurComponent implements OnInit {
   constructor(private clientService:ClientService
     ,private router:Router
     , public modalservice:ModalService
-    , private rutaParametro:ActivatedRoute
+    , private rutaParametro:ActivatedRoute,
+    private authService: AuthService
     ){}
   emprendedor:Client= new Client();
   municipios:Municipio[]=[];
@@ -42,7 +44,11 @@ export class FormEntrepreneurComponent implements OnInit {
   }
 public registrar(){
   this.emprendedor.type="entrepreneur";
+<<<<<<< HEAD
   this.emprendedor.user= JSON.parse(localStorage.getItem('usuario'))
+=======
+  this.emprendedor.user=this.authService.devolverUsuario();
+>>>>>>> 3a1a895a1cd06bb4f63c5910a1b91f242570f73c
   console.log(this.emprendedor);
   this.clientService.saveEntrepreneur(this.emprendedor).subscribe(data=>{
     Swal.fire(`ÉXITO`, `Emprendedor ${data.name} fue creado con exito`, `success`)

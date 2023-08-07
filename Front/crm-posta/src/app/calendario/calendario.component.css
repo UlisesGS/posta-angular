@@ -1,57 +1,35 @@
-.calendar {
-  text-align: center;
-  margin: 20px auto;
+#calendarContainer {
+  background-color: #f7f7f7; /* Color de fondo del calendario */
+  border-radius: 10px; /* Borde redondeado para un aspecto más agradable */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  padding: 10px; /* Espaciado interno para separar el contenido del borde */
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+/* Estilos para los botones del calendario */
+.fc-button {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: #ffffff; /* Color de texto del botón */
+  border-color: #007bff; /* Color del borde del botón */
+  border-radius: 5px; /* Borde redondeado para los botones */
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+/* Estilos para el texto del título del calendario */
+.fc-toolbar-title {
+  font-size: 20px; /* Tamaño de fuente del título */
+  font-weight: bold; /* Texto en negrita */
+  color: #007bff; /* Color del texto del título */
 }
 
-th,
-td {
-  padding: 10px;
-  border: 1px solid #ccc;
+/* Estilos para los días festivos */
+.fc-day-sat, .fc-day-sun {
+  background-color: #f0f0f0; /* Color de fondo de los días festivos */
+  border-radius: 50%; /* Borde redondeado para marcar los días festivos */
 }
 
-.day {
-  position: relative;
-  height: 100px;
-  cursor: pointer;
-}
-
-.day.currentMonth {
-  background-color: #f2f2f2;
-}
-
-.date {
-  font-weight: bold;
-}
-
-.events {
-  position: absolute;
-  top: 20px;
-  left: 10px;
-}
-
-.event {
-  background-color: #ffc107;
-  padding: 2px 5px;
-  margin-bottom: 5px;
-}
-
-.title {
-  font-weight: bold;
-}
-
-.time {
-  font-size: 12px;
-  color: #555;
+/* Estilos para los eventos en el calendario */
+.fc-event {
+  background-color: #28a745; /* Color de fondo de los eventos */
+  color: #ffffff; /* Color de texto de los eventos */
+  border-color: #28a745; /* Color del borde de los eventos */
+  border-radius: 5px; /* Borde redondeado para los eventos */
 }

@@ -23,9 +23,9 @@ export class NuevoProcesoComponent implements OnInit {
     private clientService: ClientService,
     private router: Router,
     private usuarioService: UsuarioService,
-    private procesoService:ProcesoService,
-  ) {}
-  procesos:Process[];
+    private procesoService: ProcesoService,
+  ) { }
+  procesos: Process[];
   client: Client = new Client();
   municipio: Municipio[] = [];
   errores: any;
@@ -35,10 +35,10 @@ export class NuevoProcesoComponent implements OnInit {
   clientes: Client[] = [];
   usuario: Usuario = new Usuario();
   selfAssessment: SelfAssessment[] = [];
-  habiliar:boolean=false;
-  otra=0;
+  habiliar: boolean = false;
+  otra = 0;
   ngOnInit(): void {
-    this.otra=0;
+    this.otra = 0;
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     console.log(this.usuario);
 
@@ -117,24 +117,24 @@ export class NuevoProcesoComponent implements OnInit {
   public buscar() {
     this.clientService.buscarPorNombre(this.termino).subscribe((data) => {
       this.clientes = data;
-   //   this.clientes = this.clientes.filter((d) => d.type !== 'businessman');
+      //   this.clientes = this.clientes.filter((d) => d.type !== 'businessman');
     });
   }
   public findById(id: number) {
     this.clientService.getClient(id).subscribe((data) => {
       this.client = data;
-      this.condicion=true;
-/*if(this.client.type==='entrepreneur'){
-  console.log('entrepreneur');
-
-
-  this.condicion = true;
-}else{
-
-
-  Swal.fire('Reparacion', 'Esta etapa se encuentra en reparacion', 'info');
-  this.cerrarModalProceso();
-}*/
+      this.condicion = true;
+      /*if(this.client.type==='entrepreneur'){
+        console.log('entrepreneur');
+      
+      
+        this.condicion = true;
+      }else{
+      
+      
+        Swal.fire('Reparacion', 'Esta etapa se encuentra en reparacion', 'info');
+        this.cerrarModalProceso();
+      }*/
 
 
     });
@@ -159,47 +159,47 @@ export class NuevoProcesoComponent implements OnInit {
   }
   public volver() {
     this.condicion = false;
-    this.habiliar=false;
-    this.otra==1;
+    this.habiliar = false;
+    this.otra == 1;
   }
-  llevar(){
-  //  console.log('hola');
-  let bool:boolean=false;
+  llevar() {
+    //  console.log('hola');
+    let bool: boolean = false;
     console.log(this.client);
     let id = this.client.id;
-   this.procesoService.procesosFindAll().subscribe(pro=>{
-    this.procesos=pro;
-    console.log(pro);
-    this.procesos.forEach(p=>{
+    this.procesoService.procesosFindAll().subscribe(pro => {
+      this.procesos = pro;
+      console.log(pro);
+      this.procesos.forEach(p => {
 
-      if(p.selfAssessment?.client?.id==this.client.id){
-        console.log('entro al if ');
-        bool=true;
-        this.cerrarModalProceso()
-        Swal.fire('Error', 'El cliente seleccionado ya tiene un proceso asignado', 'error');
+        if (p.selfAssessment?.client?.id == this.client.id) {
+          console.log('entro al if ');
+          bool = true;
+          this.cerrarModalProceso()
+          Swal.fire('Error', 'El cliente seleccionado ya tiene un proceso asignado', 'error');
+
+        }
+
+      })
+      if (bool == false) {
+        this.cerrarModalProceso();
+        if (this.client.type === 'entrepreneur') {
+          this.router.navigate(['/autoevaluacion/cliente/', this.client.id]);
+        } else {
+          this.router.navigate(['/empresario/diagnostico/cliente/', this.client.id])
+
+        }
+
+
+
 
       }
 
+
+      //  pro.canvasModel.client.id===this.client.id?
+
+
     })
-if(bool==false){
-  this.cerrarModalProceso();
-  if(this.client.type==='entrepreneur'){
-    this.router.navigate(['/autoevaluacion/cliente/', this.client.id]);
-  }else{
-    this.router.navigate(['/empresario/diagnostico/cliente/',this.client.id])
-
-  }
-
-
-
-
-}
-
-
-  //  pro.canvasModel.client.id===this.client.id?
-
-
-   })
 
 
 

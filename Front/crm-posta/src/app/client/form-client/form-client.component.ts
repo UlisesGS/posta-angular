@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalService } from '../modal.service';
 import { Ciiu } from '../ciiu';
+import { AuthService } from './../../auth/auth.service';
 
 @Component({
   selector: 'app-form-client',
@@ -26,7 +27,8 @@ export class FormClientComponent implements OnInit {
   constructor(private service: ClientService
     , private router: Router
     , public modalservice: ModalService
-    , private rutaParametro: ActivatedRoute) { }
+    , private rutaParametro: ActivatedRoute,
+    private authServic:AuthService) { }
   ngOnInit(): void {
     this.service.getClientsMunicipios().subscribe(data => {
       this.municipios = data;
@@ -57,7 +59,11 @@ export class FormClientComponent implements OnInit {
 
   public registrar() {
     this.empresario.type="businessman";
+<<<<<<< HEAD
     this.empresario.user= JSON.parse(localStorage.getItem('usuario'))
+=======
+    this.empresario.user=this.authServic.devolverUsuario();
+>>>>>>> 3a1a895a1cd06bb4f63c5910a1b91f242570f73c
     console.log(this.empresario);
     this.service.saveBusinessman(this.empresario).subscribe(data => {
       Swal.fire('ÉXITO', `Empresario ${data.name} fue creado con exito`, 'success')

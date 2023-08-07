@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientComponent } from './client/client.component';
 import { CommonModule } from '@angular/common'
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { FormsModule } from '@angular/forms';
 import { MunicipioComponent } from './municipio/municipio.component';
@@ -23,7 +24,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { MainComponent } from './main/main.component';
 import { HeaderSuperiorComponent } from './header/header-superior/header-superior.component';
 
-import { CalendarioComponent } from './calendario/calendario.component';
+
 //import { CalendarModule as AngularCalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AsesoriaListComponent } from './header/asesoria/asesoriaList/asesoriaList.component';
@@ -72,6 +73,11 @@ import { DiagnosticoComponent } from './procesos-empresarios/diagnostico/diagnos
 import { ResultadosComponent } from './procesos-empresarios/resultados/resultados.component';
 import { EconomicoComponent } from './procesos-empresarios/economico/economico.component';
 import { PlanAccionComponent } from './procesos-empresarios/plan-accion/plan-accion.component';
+import { MensajesComponent } from './mensajes/mensajes.component';
+import { CalendarioComponent } from './calendario/calendario.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 const routes: Routes = [
 
@@ -92,7 +98,7 @@ const routes: Routes = [
   { path: 'municipios', component: MunicipioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'main', component: MainComponent },
-  { path: 'calendario', component: CalendarioComponent },
+  
   { path: 'asesorias', component: AsesoriaListComponent },
   { path: 'procesos', component: ProcesoListarComponent },
   { path: 'puntajeAutoevaluacion/cliente/:id', component: VerPuntajeComponent },
@@ -160,7 +166,6 @@ const routes: Routes = [
   { path: 'dofa/cliente/:id/ver/:idVer', component: DofaComponent },
   { path: 'conclusion/cliente/:id/ver/:idVer', component: ConclusionComponent },
   // plan financiero
-
   { path: 'ventas/cliente/:id/ver/:idVer', component: PresupuestoVentasComponent },
   { path: 'compras/cliente/:id/ver/:idVer', component: PresupuestoFormComponent },
   { path: 'gastos/cliente/:id/ver/:idVer', component: PresupuestoGastoComponent },
@@ -187,6 +192,11 @@ const routes: Routes = [
   //Plan de Accion
   { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent },
 
+  //Mensajes
+  { path: 'mensajes', component: MensajesComponent },
+
+  //Calendario
+  { path: 'calendario', component: CalendarioComponent },
 ]
 
 @NgModule({
@@ -211,7 +221,7 @@ const routes: Routes = [
     MainComponent,
     HeaderSuperiorComponent,
 
-    CalendarioComponent,
+    
     AsesoriaListComponent,
     ProcesoListarComponent,
     AccionProcesosComponent,
@@ -257,18 +267,29 @@ const routes: Routes = [
     ResultadosComponent,
     EconomicoComponent,
     PlanAccionComponent,
+    MensajesComponent,
+    CalendarioComponent,
+    
+    
   ],
 
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
     FormsModule,
     RouterModule.forRoot(routes),
     CommonModule,
+    FullCalendarModule,
+    NgbModule,
+    
+    
+   
   ],
-  providers: [],
+  providers: [
+   
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
