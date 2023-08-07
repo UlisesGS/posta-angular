@@ -63,13 +63,9 @@ export class PlanAccionComponent {
                 this.process.procesosFindById(idEditar).subscribe(data => {
 
                   this.proceso = data;
-<<<<<<< HEAD
-
-=======
                   console.log(this.proceso);
-                  
-                  
->>>>>>> dfc9f048dcabcd9ce7baa6543b80a3c2e9ac3f85
+
+
 
                 })
               }
