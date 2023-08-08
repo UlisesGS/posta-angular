@@ -6,40 +6,51 @@ import { Usuario } from 'src/app/usuario/usuario';
 import { Auth } from '../auth';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  titulo:string='Login Usuario';
-  usuario:Usuario = new Usuario;
-  auth:Auth = new Auth()
+  titulo: string = 'Login Usuario';
+  usuario: Usuario = new Usuario;
+  auth: Auth = new Auth()
   constructor(
-    private usuarioService:UsuarioService,
-    private authService:AuthService,
-    private ruta:Router){}
+    private usuarioService: UsuarioService,
+    private authService: AuthService,
+    private ruta: Router) { }
 
   ngOnInit(): void {
-    
-  }
-
-
-
-
-  public findByUsernameAndPassword(){
-   this.usuarioService.usuarioFindByEmail(this.auth.email).subscribe(data=>{
-    this.usuario=data;
-    if(this.usuario.password==this.auth.password){
-      Swal.fire('Usuario: ', 'Usuario correcto', 'success');
-      this.authService.saveLogin(this.usuario)
-      this.ruta.navigate(['/main']);
-    }else{
-      Swal.fire('Error: ', 'Usuario o contraseña incorrecto', 'error');
+    if(this.authService.isLogin()){
+      this.ruta.navigate(['/main'])
     }
-   },e=>{
-    Swal.fire('Error: ', 'Usuario o contraseña incorrecto', 'error');
-   })
   }
+
+  public login() {
+    if (this.auth.password == null || this.auth.email == null) {
+      Swal.fire('Error: ', 'Usuario o contraseña vacio', 'error');
+      return;
+    }
+    //traigo el us para guardarlo en login
+    this.usuarioService.usuarioFindByEmail(this.auth.email).subscribe(data=>{
+      this.usuario=data;
+      
+    })
+    
+    this.authService.login(this.auth).subscribe(response => {
+      this.authService.saveLogin(this.usuario);//guardo us que se logueo
+      this.authService.saveToken(response.token);//guardo token
+    
+      let us = this.authService.usuario;
+      Swal.fire('Login: ', `hola ${us.name}`, 'success');
+      this.ruta.navigate(['/main']);
+    },err => {
+      if(err.status == 401){
+        Swal.fire('Error: ', 'Usuario o contraseña incorrecto', 'error');
+      }
+    })
+  }
+
 
 }
