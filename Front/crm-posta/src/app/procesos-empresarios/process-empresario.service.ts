@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { URL } from './../URL';
 import { Observable } from 'rxjs';
 import { ProcessEmpresario } from './process-empresario';
+import { Process } from '../procesos/Process';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +19,17 @@ export class ProcessEmpresarioService {
     return this.http.get<any>(`${this.url}/${id}`);
   }
   //metodos post
-  public procesoEmpresarioSave(procesoEmpresario: ProcessEmpresario): Observable<any> {
+  public procesoEmpresarioSave(procesoEmpresario: Process): Observable<any> {
     return this.http.post<any>(`${this.url}`, procesoEmpresario);
   }
   // metodos put
-  public updateProcesoEconomico(procesoEmpresario: ProcessEmpresario): Observable<any> {
-    return this.http.put<any>(`${this.url}/economico`, procesoEmpresario);
+  public updateProcesoEconomico(procesoEmpresario: Process): Observable<any> {
+    return this.http.put<any>(`${this.url}/economico/${procesoEmpresario.processEmpresario.diagnosticoEmpresarial.analisisEconomico.id}`, procesoEmpresario);
   }
-  public updateProcesoDiagnostico(procesoEmpresario: ProcessEmpresario): Observable<any> {
-    return this.http.put<any>(`${this.url}/diagnostico`, procesoEmpresario);
+  public updateProcesoDiagnostico(procesoEmpresario: Process): Observable<any> {
+    return this.http.put<any>(`${this.url}/diagnostico/${procesoEmpresario.processEmpresario.diagnosticoEmpresarial.diagnostico.id}`, procesoEmpresario);
+  }
+  public updateProcesoResultado(procesoEmpresario: Process): Observable<any> {
+    return this.http.put<any>(`${this.url}/resultados/${procesoEmpresario.processEmpresario.diagnosticoEmpresarial.analisisResultados.id}`, procesoEmpresario);
   }
 }

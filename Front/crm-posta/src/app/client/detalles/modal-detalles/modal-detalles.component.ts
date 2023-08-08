@@ -32,9 +32,6 @@ export class ModalDetallesComponent {
 
   public cerrarTest() {
     this.modalService.cerrarTestAuto();
-    this.modalService.cerrarTestCanvas();
-    this.modalService.cerrarTestNegocios();
-    this.modalService.cerrarTestFinanciero();
   }
 
   
@@ -57,6 +54,14 @@ export class ModalDetallesComponent {
       break;
       case 'Propuesta de Valor':
         this.ruta.navigate([`canales/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'diagnostico':
+        this.ruta.navigate([`empresario/diagnostico/cliente/${this.proceso.processEmpresario.client.id}`]);
+       ;
+       break;
+       case 'planAccion':
+        this.ruta.navigate([`empresario/accion/cliente/${this.proceso.processEmpresario.client.id}`]);
        ;
        break;
     }

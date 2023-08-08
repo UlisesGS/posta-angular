@@ -1,13 +1,9 @@
 export class Indicador {
-id:number;
-ventasMes:string;
-aumentoventas:string;
-empleosFormales:string;
-empleosInformales:string;
-empleosNuevos:string;
-empresasExportando:string;
-ventasExportacion:string;
-diversificacionProductos:string;
-aperturaNuevosMercados:string;
-accesoOtrasFuentes:string;
+  id:number;
+  mes1:string;
+  mes2:string;
+  mes3:string;
+  mes4:string;
+  mes5:string;
+  observaciones:string;
 }

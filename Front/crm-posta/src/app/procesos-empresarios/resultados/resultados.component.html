@@ -15,7 +15,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionEstrategica" name="1" id="1" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
     
@@ -27,7 +27,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionProductividad" name="2" id="2" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                         
@@ -40,7 +40,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionOperacional" name="3" id="3" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                         
@@ -53,7 +53,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionCalidad" name="4" id="4" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                         
@@ -66,7 +66,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionInnovacion" name="5" id="5" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                         
@@ -79,7 +79,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionFinanciera" name="6" id="6" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                         
@@ -92,7 +92,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionLogistica" name="7" id="7" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                         
@@ -105,7 +105,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionDigital" name="8" id="8" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                         
@@ -118,7 +118,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionAmbiental" name="9" id="9" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                         
@@ -131,13 +131,20 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionIntelectual" name="10" id="10" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </form>
         </div>
-        
+        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="guardar()" class="btn">Guardar</button>
+        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="guardarYcontinuar()" class="btn">Guardar y Continuar</button>
+            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="editar()" class="btn">Editar</button>
+            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="editarYcontinuar()" class="btn">Editar y Continuar</button>
+        <button [routerLink]="['/procesos']"
+                class="btn ">Cancelar</button>
+                <button [routerLink]="['/diagnostico/empresario/',cliente.id,'editar',proceso.id]"
+                class="btn ">Volver</button>
     </div>
 </div>

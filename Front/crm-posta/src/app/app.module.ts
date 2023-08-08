@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientComponent } from './client/client.component';
 import { CommonModule } from '@angular/common'
+
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 import { FormsModule } from '@angular/forms';
 import { MunicipioComponent } from './municipio/municipio.component';
@@ -23,7 +28,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { MainComponent } from './main/main.component';
 import { HeaderSuperiorComponent } from './header/header-superior/header-superior.component';
 
-import { CalendarioComponent } from './calendario/calendario.component';
+
 //import { CalendarModule as AngularCalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AsesoriaListComponent } from './header/asesoria/asesoriaList/asesoriaList.component';
@@ -52,10 +57,6 @@ import { SociosClavesModalComponent } from './procesos/ver-procesos/socios-clave
 import { IngresosModalComponent } from './procesos/ver-procesos/ingresos-modal/ingresos-modal.component';
 import { EstructuraCostosModalComponent } from './procesos/ver-procesos/estructura-costos-modal/estructura-costos-modal.component';
 
-
-
-
-
 import { PaginacionComponent } from './procesos/proceso-listar/paginacion/paginacion.component';
 import { InformacionComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/informacion/informacion.component';
 import { InternoComponent } from './procesos/plan-negocio/modelo-basico/modelo-form/interno/interno.component';
@@ -75,6 +76,7 @@ import { ProcesosEmpresariosComponent } from './procesos-empresarios/procesos-em
 import { DiagnosticoComponent } from './procesos-empresarios/diagnostico/diagnostico.component';
 import { ResultadosComponent } from './procesos-empresarios/resultados/resultados.component';
 import { EconomicoComponent } from './procesos-empresarios/economico/economico.component';
+
 import { AuthGuard } from './usuario/guards/auth.guard';
 import { TokenInterceptor } from './usuario/interceptors/token.interceptor';
 import { AuthInterceptor } from './usuario/interceptors/auth.interceptor';
@@ -194,6 +196,25 @@ const routes: Routes = [
 
 
 
+
+import { PlanAccionComponent } from './procesos-empresarios/plan-accion/plan-accion.component';
+import { MensajesComponent } from './mensajes/mensajes.component';
+import { CalendarioComponent } from './calendario/calendario.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+
+  //para editar
+  //Plan de Accion
+  { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent },
+
+  //Mensajes
+  { path: 'mensajes', component: MensajesComponent },
+
+  //Calendario
+  { path: 'calendario', component: CalendarioComponent },
+
 ]
 
 @NgModule({
@@ -218,7 +239,7 @@ const routes: Routes = [
     MainComponent,
     HeaderSuperiorComponent,
 
-    CalendarioComponent,
+
     AsesoriaListComponent,
     ProcesoListarComponent,
     AccionProcesosComponent,
@@ -264,7 +285,11 @@ const routes: Routes = [
     ResultadosComponent,
     EconomicoComponent,
 
-
+    PlanAccionComponent,
+    MensajesComponent,
+    CalendarioComponent,
+    
+    
 
   ],
 
@@ -272,15 +297,25 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
     FormsModule,
     RouterModule.forRoot(routes),
     CommonModule,
+    FullCalendarModule,
+    NgbModule,
+    
+    
+   
   ],
+  providers: [
+   
+    
+  ],
+
   providers: [
     {provide: HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi: true},
     {provide: HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi: true}
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
