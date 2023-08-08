@@ -137,8 +137,23 @@ export class CalendarioComponent implements OnInit{
     detallesEventoDiv.innerHTML = `
       <h4>${eventoClickeado.title}</h4>
       <p><strong>Fecha de inicio:</strong> ${eventoClickeado.start}</p>
-      <!-- Aquí puedes mostrar más detalles del evento según las propiedades adicionales que hayas agregado -->
-      <pre>${JSON.stringify(eventoClickeado.extendedProps, null, 2)}</pre>
+      <p><strong>Cliente:</strong> ${eventoClickeado.cliente?.name} ${eventoClickeado.cliente?.lastName}</p>
+      <p><strong>Contenido:</strong> ${eventoClickeado.contenido}</p>
+      <!-- Puedes mostrar más detalles según las propiedades adicionales del evento -->
     `;
+    
   }
+
+
+
+
+//Aca esta todo para mostrar lo que hay al hacer click en el evento
+  cargarCalendarios() {
+    this.getAllCalendariosByUserId();
+  }
+  ngAfterViewInit(): void {
+    this.cargarCalendarios();
+  }
+  // Método para mostrar detalles del evento en un modal
+ 
 }
