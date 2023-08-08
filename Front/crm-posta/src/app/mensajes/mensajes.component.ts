@@ -55,11 +55,9 @@ export class MensajesComponent implements OnInit {
     this.usuarioService.usuarioFindAll().subscribe(
       (usuarios) => {
         this.usuario=this.authService.devolverUsuario();
-        
         this.usuarios=usuarios.filter((usuario)=>
         usuario.id!=this.usuario.id
         )
-         
       },
       (error) => {
         console.error('Error al obtener la lista de usuarios:', error);

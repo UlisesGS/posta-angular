@@ -108,9 +108,11 @@ export class AsesoriaComponent implements OnInit {
     this.modalService.cerrarModalAsesoria();
   }
   public buscar() {
-    this.clientService.buscarPorNombre(this.termino).subscribe(data => {
-      this.clientes = data;
-    })
+    if(this.termino != ""){
+      this.clientService.buscarPorNombre(this.termino).subscribe(data => {
+        this.clientes = data;
+      })
+    }
   }
   public findById(id: number) {
     this.clientService.getClient(id).subscribe(data => {

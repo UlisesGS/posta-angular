@@ -23,12 +23,15 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError(e =>{
         if (e.status == 401) {
+
           if(this.authService.isLogin){
             this.authService.logaut();
           }
           this.router.navigate(['/login']);
         }
         if(e.status == 403){
+          
+          
           Swal.fire('Acceso denegado',`Hola ${this.authService.nameUsuario()} no tienes acceso`,'error')
           this.router.navigate(['/main']);
         }

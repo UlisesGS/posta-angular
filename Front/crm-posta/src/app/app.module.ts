@@ -78,8 +78,18 @@ import { ResultadosComponent } from './procesos-empresarios/resultados/resultado
 import { EconomicoComponent } from './procesos-empresarios/economico/economico.component';
 
 import { AuthGuard } from './usuario/guards/auth.guard';
+import { AdminGuard } from './usuario/guards/admin.guard';
 import { TokenInterceptor } from './usuario/interceptors/token.interceptor';
 import { AuthInterceptor } from './usuario/interceptors/auth.interceptor';
+
+
+
+import { PlanAccionComponent } from './procesos-empresarios/plan-accion/plan-accion.component';
+import { MensajesComponent } from './mensajes/mensajes.component';
+import { CalendarioComponent } from './calendario/calendario.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 const routes: Routes = [
 
@@ -97,7 +107,7 @@ const routes: Routes = [
   { path: 'autoevaluacion/cliente/:id', component: AutoevaluacionComponent, canActivate: [AuthGuard] },
   { path: 'clients/details/:id', component: DetallesComponent, canActivate: [AuthGuard] },
   { path: 'clients/action/:id', component: AccionComponent , canActivate: [AuthGuard]},
-  { path: 'usuarios', component: UsuariolistComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios', component: UsuariolistComponent,  canActivate: [AuthGuard,AdminGuard] },
   { path: 'usuarios/form', component: UsuarioformComponent, canActivate: [AuthGuard] },
   { path: 'usuarios/form/:id', component: UsuarioformComponent , canActivate: [AuthGuard]},
   { path: 'municipios', component: MunicipioComponent, canActivate: [AuthGuard] },
@@ -197,23 +207,17 @@ const routes: Routes = [
 
 
 
-import { PlanAccionComponent } from './procesos-empresarios/plan-accion/plan-accion.component';
-import { MensajesComponent } from './mensajes/mensajes.component';
-import { CalendarioComponent } from './calendario/calendario.component';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 
   //para editar
   //Plan de Accion
-  { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent },
+  { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent,canActivate: [AuthGuard] },
 
   //Mensajes
-  { path: 'mensajes', component: MensajesComponent },
+  { path: 'mensajes', component: MensajesComponent,canActivate: [AuthGuard] },
 
   //Calendario
-  { path: 'calendario', component: CalendarioComponent },
+  { path: 'calendario', component: CalendarioComponent,canActivate: [AuthGuard] },
 
 ]
 
@@ -294,7 +298,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
 
   imports: [
-    BrowserModule,
+
+
+  BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -306,10 +312,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     
    
   ],
-  providers: [
-   
-    
-  ],
+
 
   providers: [
     {provide: HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi: true},
