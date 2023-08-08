@@ -45,7 +45,7 @@ export class AccionComponent implements OnInit {
       this.procesos = lista;
       this.procesos.forEach(p => {
         if (p?.selfAssessment?.client?.id == this.cliente.id || p?.processEmpresario?.client?.id == this.cliente.id) {
-          this.condicion = true;
+          
           this.proceso = p;
           console.log(this.proceso);
 
@@ -58,18 +58,14 @@ export class AccionComponent implements OnInit {
   }
 
   iniciarProceso() {
-    let tipo: string = "";
-    this.procesos.forEach(p => {
-      if (p?.selfAssessment?.client?.id == this.cliente.id) {
+      if (this.proceso?.selfAssessment?.client?.id == this.cliente.id) {
         this.condicion = true;
-        tipo = p.selfAssessment.client.type;
       }
 
-      if (p?.processEmpresario?.client?.id == this.cliente.id) {
+      if (this.proceso?.processEmpresario?.client?.id == this.cliente.id) {
         this.condicion2 = true;
-        tipo = p.processEmpresario.client.type;
       }
-    })
+    
 
     console.log(this.proceso);
     console.log(this.condicion);
@@ -265,12 +261,19 @@ export class AccionComponent implements OnInit {
     if (this.cliente.type == 'entrepreneur') {
       if(this.proceso?.selfAssessment?.id){
         this.proceso.estadoAnteriorEmprendedor=this.proceso.estado;
+        if(this.proceso.estadoAnteriorEmpresario){
+          this.proceso.estado=this.proceso.estadoAnteriorEmpresario;
+        }
       }
       this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
 
     } else {
       if(this.proceso?.processEmpresario?.id){
         this.proceso.estadoAnteriorEmpresario=this.proceso.estado;
+        if(this.proceso.estadoAnteriorEmprendedor){
+          this.proceso.estado=this.proceso.estadoAnteriorEmprendedor;
+        }
+        
         
       }
       this.ruta.navigate([`clients/form/editar/entrepreneur/${this.cliente.id}`]);
