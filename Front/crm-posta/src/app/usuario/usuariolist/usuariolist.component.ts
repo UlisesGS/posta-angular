@@ -10,11 +10,13 @@ import { ModalService } from 'src/app/client/modal.service';
 })
 export class UsuariolistComponent implements OnInit{
   usuarios:Usuario[]=[];
+  usuario:Usuario = new Usuario();
   activo:boolean
   usuarioSeleccionado:Usuario;
 
 
   ngOnInit(): void {
+    this.usuario= JSON.parse(localStorage.getItem('usuario'));
     this.todos();
   }
 
@@ -27,7 +29,7 @@ export class UsuariolistComponent implements OnInit{
 
   abrirModalCrearAsesor(){
     console.log('hola');
-    
+
     this.modalService.abrirModalPocesos();
   }
 
@@ -52,6 +54,7 @@ export class UsuariolistComponent implements OnInit{
       this.usuarios=data;
 this.activo=data.active;
       console.log(data);
+      this.usuarios = this.usuarios.filter(u=>u.id==this.usuario.id);
 
 
     })

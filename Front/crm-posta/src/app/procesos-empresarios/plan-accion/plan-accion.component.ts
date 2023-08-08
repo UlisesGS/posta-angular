@@ -64,8 +64,8 @@ export class PlanAccionComponent {
 
                   this.proceso = data;
                   console.log(this.proceso);
-                  
-                  
+
+
 
                 })
               }
@@ -85,10 +85,11 @@ export class PlanAccionComponent {
 
 
   guardar() {
-    
+
    this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => {
       this.proceso.estado = 'Plan Accion';
       this.process.procesosUpdate(this.proceso).subscribe(p => {
+        Swal.fire('Exito', 'El plan de Accion fue creado con exito', 'success');
         this.router.navigate(['/procesos'])
       })
 
@@ -96,6 +97,9 @@ export class PlanAccionComponent {
   }
 
   editar(){
-    console.log(this.proceso);
+    this.procesoEmpresarioservice.updatePlanDeAccion(this.proceso).subscribe(data=>{
+      Swal.fire('Exito', 'El plan de Accion fue editado con exito', 'success')
+      this.router.navigate(['/procesos']);
+    })
   }
 }

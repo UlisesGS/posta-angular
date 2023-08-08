@@ -24,7 +24,7 @@ export class FormEntrepreneurComponent implements OnInit {
   emprendedor:Client= new Client();
   municipios:Municipio[]=[];
   errores:any;
-  
+
 
   ngOnInit(): void {
     this.clientService.getClientsMunicipios().subscribe(data=>{

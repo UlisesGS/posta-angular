@@ -32,4 +32,8 @@ export class ProcessEmpresarioService {
   public updateProcesoResultado(procesoEmpresario: Process): Observable<any> {
     return this.http.put<any>(`${this.url}/resultados/${procesoEmpresario.processEmpresario.diagnosticoEmpresarial.analisisResultados.id}`, procesoEmpresario);
   }
+
+  public updatePlanDeAccion(procesoEmpresario: Process): Observable<any> {
+    return this.http.put<any>(`${this.url}/planAccion/${procesoEmpresario.processEmpresario.planDeAccion.id}`, procesoEmpresario);
+  }
 }
