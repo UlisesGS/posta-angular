@@ -2,6 +2,7 @@ import { Municipio } from "../municipio/municipio";
 import { Canvas } from "../procesos/canvas";
 import { Ciiu } from "./ciiu";
 import { SelfAssessment } from './../procesos/selfAssessment';
+import { Usuario } from "../usuario/usuario";
 
 export class Client{
 
@@ -42,6 +43,7 @@ export class Client{
   //Atributos edad
   fechaNacimiento:Date;
   canvasModel:Canvas;
+  user:Usuario;
 
 
 
