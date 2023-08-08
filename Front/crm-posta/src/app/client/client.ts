@@ -2,11 +2,7 @@ import { Municipio } from "../municipio/municipio";
 import { Canvas } from "../procesos/canvas";
 import { Ciiu } from "./ciiu";
 import { SelfAssessment } from './../procesos/selfAssessment';
-<<<<<<< HEAD
-import { Usuario } from 'src/app/usuario/usuario';
-=======
 import { Usuario } from "../usuario/usuario";
->>>>>>> 3a1a895a1cd06bb4f63c5910a1b91f242570f73c
 
 export class Client{
 

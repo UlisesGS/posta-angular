@@ -59,11 +59,7 @@ export class FormClientComponent implements OnInit {
 
   public registrar() {
     this.empresario.type="businessman";
-<<<<<<< HEAD
-    this.empresario.user= JSON.parse(localStorage.getItem('usuario'))
-=======
     this.empresario.user=this.authServic.devolverUsuario();
->>>>>>> 3a1a895a1cd06bb4f63c5910a1b91f242570f73c
     console.log(this.empresario);
     this.service.saveBusinessman(this.empresario).subscribe(data => {
       Swal.fire('ÉXITO', `Empresario ${data.name} fue creado con exito`, 'success')
