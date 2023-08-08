@@ -53,39 +53,46 @@
                 <div style="flex-basis: 100%;" class="mt-3">
                     <div class="form-group">
                         <label for="">Informacion: </label>
-                        <textarea [(ngModel)]="channels.informacion" class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                        <textarea [(ngModel)]="channels.informacion" class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks1"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Evaluacion: </label>
-                        <textarea [(ngModel)]="channels.evaluacion" class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                        <textarea [(ngModel)]="channels.evaluacion" class="form-control" id="exampleFormControlTextarea2" rows="3" name="remarks2"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Compra: </label>
-                        <textarea [(ngModel)]="channels.compra" class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                        <textarea [(ngModel)]="channels.compra" class="form-control" id="exampleFormControlTextarea2" rows="3" name="remarks3"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Entrega: </label>
-                        <textarea [(ngModel)]="channels.entrega" class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                        <textarea [(ngModel)]="channels.entrega" class="form-control" id="exampleFormControlTextarea4" rows="3" name="remarks4"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Postventa: </label>
-                        <textarea [(ngModel)]="channels.postVenta" class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                        <textarea [(ngModel)]="channels.postVenta" class="form-control" id="exampleFormControlTextarea4" rows="3" name="remarks4"
                             placeholder=""></textarea>
                     </div>
                 </div>
             </form>
         </div>
         <div class="form-group mt-3">
-            <button (click)="guardarYsalir()" class="btn">Guardar</button>
-            <button (click)="guardar()" class="btn">Guardar y
+
+            <button *ngIf="channels.id" (click)="editarYsalir()" class="btn">Editar</button>
+
+          <button *ngIf="channels.id" (click)="editar()" class="btn">Editar y
+              Continuar</button>
+
+            <button *ngIf="!channels.id" (click)="guardarYsalir()" class="btn">Guardar</button>
+            <button *ngIf="!channels.id" (click)="guardar()" class="btn">Guardar y
                 Continuar</button>
-            <!-- <button [routerLink]="['/relaciones/cliente/', cliente.id]" (click)="guardar()" class="btn">Guardar y
-                Continuar</button> -->
+            
             <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>
+            <button [routerLink]="['/propuestaDeValor/cliente/',cliente.id,'editar',proceso.id]" (click)="cerrarModalAsesoria()"
+                class="btn ">Volver</button>
         </div>
     </div>
 </div>

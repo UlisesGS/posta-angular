@@ -4,4 +4,4 @@ export class CostComponent {
   amount:number;
 
 }
-//el ulises se la come
+

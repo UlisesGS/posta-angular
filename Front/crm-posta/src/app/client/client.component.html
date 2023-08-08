@@ -1,6 +1,6 @@
 <app-registrar *ngIf="modalservice.modal"></app-registrar>
 <app-asesoria *ngIf="modalservice.asesoria"></app-asesoria>
-<app-accion *ngIf="modalservice.action && clienteSeleccionado" [cliente]="clienteSeleccionado"></app-accion>
+<app-accion *ngIf="modalservice.action && clienteSeleccionado" [cliente]="clienteSeleccionado"  [procesos]="procesos"></app-accion>
 
 
 <!-- <div class="btn-group mb-5 " role="group" aria-label="Basic example">
@@ -85,14 +85,14 @@
             <tr>
                 <th style="width: 20%;" >{{client.name}} {{client.lastName}}</th>
                 <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">{{client.businessIdea}}</th>
-                
+
                 <th style="width: 20%;"  *ngIf="client.type ==='businessman'">{{client.companyName}}</th>
-             
+
                 <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">{{client.product}}</th>
                 <th style="width: 20%;"  *ngIf="client.type ==='businessman'">CIIU N° {{client?.ciiu?.id}}</th>
-               
+
                 <th style="width: 20%;" >{{client?.municipio?.name}}</th>
-    
+
                 <th style="width: 20%;"  *ngIf="client.type ==='entrepreneur'">
                     <button id="button" class="btn btn-disabled"
                         style=" background-color: red; color: white; width: 100%;">Emprendedor</button>
@@ -101,9 +101,9 @@
                     <button id="button" class="btn btn-disabled"
                         style=" background-color: rgb(136, 0, 0); color: white; width: 100%;">Empresario</button>
                 </th>
-               
+
                 <th *ngIf="client.type!==null"  style="text-align: center; width: 5%;">
-                    <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client)"></i>
+                    <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client,procesos)"></i>
                 </th>
             </tr>
         </tbody>

@@ -1,0 +1,16 @@
+.left-align {
+    float: left;
+  }
+  
+  .right-align {
+    margin-top: 10px;
+    float: right;
+    
+    
+    
+  }
+  
+  a{
+    color: rgb(72, 72, 240);
+    text-decoration: none;
+  }

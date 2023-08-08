@@ -9,22 +9,22 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <div class="centered-col">
+                <div class="centered-col" *ngFor="let item of proceso?.businessPlanFinancial?.presupuestoCompra">
                     <div class="col">
                         <div style="margin-bottom: 20px;" class="col-6">
                             <table class="excel-table" style="font-size: small;">
                                 <tr>
                                     <th style="width: 50%;">Producto</th>
-                                    <td class="autorellenadas"></td>
+                                    <td class="autorellenadas">{{item.nombreProcucto}}</td>
                                 </tr>
                                 <tr>
                                     <th style="width: 50%;">Unidad de Producción</th>
-                                    <td class="autorellenadas"></td>
+                                    <td class="autorellenadas">{{item.cantidadProducto}}</td>
                                 </tr>
                             </table>
                         </div>
-                        <div style="margin-bottom: 20px;" class="col">
-                            <table class="excel-table" style="font-size: small;">
+                        <div style="margin-bottom: 20px;font-size: small;" class="col">
+                            <table class="excel-table" >
                                 <thead style="text-align: center;">
                                     <tr>
                                         <th>Materias Primas</th>
@@ -32,30 +32,48 @@
                                         <th>Valor Unitario</th>
                                         <th>Cantidad por Unidad</th>
                                         <th>Total Costo Unit.</th>
-
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr *ngFor="let item of elementos">
-                                        <td><input type="text" [(ngModel)]="item.item1"></td>
-                                        <td><input type="text" [(ngModel)]="item.item2"></td>
-                                        <td><input type="text" [(ngModel)]="item.item3"></td>
-                                        <td><input type="text" [(ngModel)]="item.item4"></td>
-                                        <td class="autorellenadas">$</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="5" class="add-row">
-                                            <a (click)="agregarFila()" class="btn mt-2">Agregar <i
-                                                    class="fa-solid fa-plus"></i></a>
-                                        </td>
-                                    </tr>
+                                <tbody >
+                                  <td><input type="text" [(ngModel)]="estructuraCompra.materiaPrima"></td>
+                                  <td style="width: 20%; transform: scale(0.75);">
+                                    <select [(ngModel)]="estructuraCompra.tipo" class="form-select"
+                                    aria-label="Default select example" >
+                                    <option value="UNIDAD" >Unidad</option>
+                                    <option value="KILOGRAMO" >Kilogramo</option>
+                                    <option value="LIBRA" >Libra</option>
+                                    <option value="ONZA" >Onza</option>
+                                    <option value="LITRO" >Litro</option>
+                                    <option value="METRO CUBICO" >Metro cubico</option>
+                                    <option value="DIA" >Dia</option>
+                                    <option value="HORA" >Hora</option>
+                                    <option value="MINUTO" >Minuto</option>
+                                    <option value="SERVICIO" >Servicio</option>
+                                    <option value="PRODUCTO" >Producto</option>
+                                    <option value="OTRO" >Otro</option>
+                                </select></td>
+                                  <td><input type="number" step="any" [(ngModel)]="estructuraCompra.valorUnitario"></td>
+                                  <td><input type="number" step="any" [(ngModel)]="estructuraCompra.cantidadUbnidad"></td>
+                                  <td class="autorellenadas"></td>
+                                  <tr>
+                                    <td colspan="5" class="add-row">
+                                        <a (click)="agregarFila(item.nombreProcucto)" class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                                    <tr *ngFor="let i of item.estructuraCompras" >
+                                        <td>{{i.materiaPrima}}</td>
+                                        <td>{{i.tipo}}</td>
+                                        <td>{{i.valorUnitario}}</td>
+                                        <td>{{i.cantidadUbnidad}}</td>
+                                        <td class="autorellenadas">${{i.totalUnitario}} </td>
+                                    <td><button (click)="sacarFila(item,i)" class="btn-close "></button></td>
+                                      </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th colspan="2">Total</th>
-                                        <th>$ </th>
-                                        <th>$ </th>
-                                        <th>$ </th>
+                                        <th colspan="4">Total</th>
+                                        <th>${{item.total}} </th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -65,81 +83,89 @@
             </div>
         </div>
         <div class="row">
-            <div class="centered-col">
-                <h5 class="centered-heading">Unidades a Producir</h5>
+            <div class="col">
+                <div class="centered-col">
+                    <h5 class="centered-heading">Unidades a Producir</h5>
+                </div>
+                <div class="col centered-col">
+                    <div class="table-container">
+                        <table class="excel-table">
+                            <thead style="text-align: center;font-size: small;">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Unidades Año 1</th>
+                                    <th>Costo Unitario</th>
+                                    <th>Costo Total Año 1</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;font-size: small;">
+                                <tr *ngFor="let item of proceso?.businessPlanFinancial?.presupuestoCompra" >
+                                    <td class="autorellenadas" style="width: 13%;">{{item.nombreProcucto}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{item.cantidadProducto}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{item.total}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{item.totalAnual}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Total</th>
+                                    <th> </th>
+                                    <th>${{totalUnitarios}}</th>
+                                    <th>${{totalAnuales}}</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="col centered-col">
-                <div class="table-container">
-                    <table class="excel-table">
-                        <thead style="text-align: center;font-size: small;">
-                            <tr>
-                                <th>Producto</th>
-                                <th>Unidades Año 1</th>
-                                <th>Costo Unitario</th>
-                                <th>Costo Total Año 1</th>
-                            </tr>
-                        </thead>
-                        <tbody style="text-align: center;font-size: small;">
-                            <tr>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Total</th>
-                                <th> </th>
-                                <th>$ </th>
-                                <th>$ </th>
-                            </tr>
-                        </tfoot>
-                    </table>
+            <div class="col">
+                <div style="text-align: center; margin-top: 10px;">
+                    <h6>INCREMENTO EN % DEL PRECIO</h6>
+                </div>
+                <div class="col centered-col">
+                    <div class="table-container">
+                        <table class="excel-table">
+                            <thead style="text-align: center;font-size: small;">
+                                <tr>
+                                    <th>Periodo</th>
+                                    <th>IPC/ Inflación %</th>
+                                    <th>Base + IPC</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;font-size: small;">
+                                <tr>
+                                    <td class="autorellenadas" style="width: 10%;">AÑO 2</td>
+                                    <td class="autorellenadas" style="width: 20%;">{{proceso?.businessPlanFinancial?.ipc1}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc1+100}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="autorellenadas" style="width: 10%;"> AÑO 3</td>
+                                    <td class="autorellenadas" style="width: 20%;">{{proceso?.businessPlanFinancial?.ipc2}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc2+100}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="autorellenadas" style="width: 10%;">AÑO 4</td>
+                                    <td class="autorellenadas" style="width: 20%;">{{proceso?.businessPlanFinancial?.ipc3}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc3+100}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="autorellenadas" style="width: 10%;">AÑO 5</td>
+                                    <td class="autorellenadas" style="width: 20%;">{{proceso?.businessPlanFinancial?.ipc3}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc3+100}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div style="text-align: center; margin-top: 10px;">
-                <h4>INCREMENTO EN % DEL PRECIO</h4>
-            </div>
-            <div class="col centered-col">
-                <div class="table-container">
-                    <table class="excel-table">
-                        <thead style="text-align: center;font-size: small;">
-                            <tr>
-                                <th>Periodo</th>
-                                <th>IPC/ Inflación %</th>
-                                <th>Base + IPC</th>
-                            </tr>
-                        </thead>
-                        <tbody style="text-align: center;font-size: small;">
-                            <tr>
-                                <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                            </tr>
-                            <tr>
-                                <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                            </tr>
-                            <tr>
-                                <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                            </tr>
-                            <tr>
-                                <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                            </tr>
-    
-                        </tbody>
-    
-                    </table>
-                </div>
-            </div>
+        <div class="form-group mt-3">
+          <button *ngIf="!idEditar" (click)="guardarYsalir()"  class="btn">Guardar</button>
+          <button *ngIf="!idEditar"(click)="guardar()" class="btn">Guardar y Continuar</button>
+          <button *ngIf="idEditar" (click)="editarYsalir()"  class="btn">Editar</button>
+          <button *ngIf="idEditar" (click)="editar()" class="btn">Editar y Continuar</button>
+          <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
+          <button [routerLink]="['/ventas/cliente/',cliente.id,'editar', proceso?.businessPlanFinancial?.presupuestoVenta.id]"  class="btn">Volver</button>
         </div>
     </div>
 

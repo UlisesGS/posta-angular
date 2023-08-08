@@ -1,1 +1,65 @@
-<p>modelo-lista works!</p>
+<div class="row">
+    <div class="col-2">
+        <app-client-details></app-client-details>
+    </div>
+    <div class="col-10">
+        <div class="row">
+            <div class="card-body">
+                <div style="margin: 10px;">
+                    <button class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+                        <span class="left-align">INFORMACIÓN DEL PROYECTO</span><i
+                        class="fa-solid fa-caret-down fa-xl right-align" type="button" (click)="condicionInformacion()"></i>
+                    </button>
+                </div>
+                <div *ngIf="informacion">
+                    
+                    <app-informacion></app-informacion>
+
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="card-body">
+                <div style="margin: 10px;">
+                    <button class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+                        <span class="left-align">ANÁLISIS INTERNO Y EXTERNO</span><i
+                        class="fa-solid fa-caret-down fa-xl right-align" type="button" (click)="condicionAnalisis()"></i>
+                    </button>
+                </div>
+                <div *ngIf="analisis">
+                    <app-interno></app-interno>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card-body">
+                <div style="margin: 10px;">
+                    <button class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+                        <span class="left-align">ANÁLISIS DOFA</span><i
+                        class="fa-solid fa-caret-down fa-xl right-align" type="button" (click)="condicionDofa()"></i>
+                    </button>
+                </div>
+                <div *ngIf="dofa">
+                    <app-dofa></app-dofa>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="card-body">
+                <div style="margin: 10px;">
+                    <button class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+                        <span class="left-align">CONCLUSIONES</span><i
+                        class="fa-solid fa-caret-down fa-xl right-align" type="button" (click)="condicionConclusion()"></i>
+                    </button>
+                </div>
+                <div *ngIf="conclusion">
+                    <app-conclusion></app-conclusion>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

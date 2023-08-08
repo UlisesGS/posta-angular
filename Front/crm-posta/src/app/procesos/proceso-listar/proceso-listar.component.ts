@@ -141,12 +141,12 @@ this.modal.abrirModalPocesos();
         page = 0;
       }
       this.procesoService.procesosPaginacion(page)
-      .pipe(
-        tap(response => {
-          console.log('ClientesComponent: tap 3');
-          (response.content as Process[]).forEach(proceso => console.log(proceso));
-        })
-      ).subscribe(response => {
+      // .pipe(
+      //   tap(response => {
+      //     console.log('ClientesComponent: tap 3');
+      //     (response.content as Process[]).forEach(proceso => console.log(proceso));
+      //   })
+       .subscribe(response => {
         console.log(response);
 
         this.procesos = response.content as Process[];

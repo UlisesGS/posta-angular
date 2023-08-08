@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Municipio } from '../municipio/municipio';
 import { AuthService } from '../auth/auth.service';
 import { BusquedaService } from '../busqueda.service';
+import { ProcesoService } from './../procesos/proceso.service';
+import { Process } from '../procesos/Process';
 
 
 
@@ -22,16 +24,17 @@ export class ClientComponent implements OnInit{
 
 datosFiltrados:string;
 
-
+  procesos:Process[]=[];
+  proceso:Process= new Process();
   clients:Client[];
-  client:Client;
+  client:Client= new Client();
 
   municicipios:Municipio[];
 
   clienteSeleccionado:Client;
   paginador:any;
 
-
+condicion:boolean= false;
 public value:boolean;
 public genero:string;
 public type:string;
@@ -48,6 +51,7 @@ exite:boolean;
     private activatedRoute:ActivatedRoute,
     public authService:AuthService,
     public busquedaService:BusquedaService,
+    public procesoService:ProcesoService,
     ){}
 
 
@@ -80,6 +84,13 @@ this.serviceClient.getClientsMunicipios().subscribe(data=>{
 
 
 })
+this.condicion=false;
+this.procesoService.procesosFindAll().subscribe(lista=>{
+  this.procesos= lista;
+  console.log(this.procesos);
+
+
+ })
 }
 buscarNav(){
 
@@ -124,7 +135,7 @@ console.log("buscar"+this.termino);
           })
         ).subscribe(response => {
           console.log(response);
-          
+
           this.clients = response.content as Client[];
           this.paginador = response;
         });
@@ -169,9 +180,17 @@ console.log("buscar"+this.termino);
     this.modalservice.abrirModal();
   }
 
-  abrirModalAction(client:Client){
+  abrirModalAction(client:Client,procesos:Process[]){
+    /*this.procesoService.procesosFindAll().subscribe(data=>{
+      this.procesos= data;
+
+    })*/
     this.clienteSeleccionado=client;
+
+
+
     this.modalservice.abrirModalAction();
+
   }
   public filtrarPorMunicipio(){
     console.log(this.municipio);

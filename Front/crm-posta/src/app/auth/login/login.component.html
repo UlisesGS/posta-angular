@@ -11,7 +11,7 @@
                     </div>
                     <div class="row gx-5 justify-content-center">
                         <div class="col" style="width: 70vw;">
-                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="post">
                                 <!-- Name input-->
                                 <div class="form-floating mb-3">
                                     <input class="form-control" type="text" name="email"
@@ -31,8 +31,8 @@
                                 </div>
                                 <!-- Submit Button-->
                                 <div class="text-center my-5">
-                                    <button class="btn btn-primary btn-lg" id="submitButton" type=""
-                                        (click)="findByUsernameAndPassword()">Aceptar</button>
+                                    <button class="btn btn-primary btn-lg" id="submitButton" 
+                                        (click)="login()">Aceptar</button>
                                 </div>
                             </form>
                         </div>

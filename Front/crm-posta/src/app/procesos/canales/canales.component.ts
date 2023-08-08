@@ -41,7 +41,19 @@ export class CanalesComponent {
             this.procesos.forEach(proceso=>{
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
-                console.log(proceso);
+                
+                // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.channels=this.proceso.canvasModel.channels;
+                    console.log(this.channels);
+                    
+                  })
+                }
 
               }
             })
@@ -88,6 +100,41 @@ export class CanalesComponent {
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
         this.router.navigate(['procesos'])
         Swal.fire('Exito', 'Canales creado con exito', 'success');
+      })
+    })
+   })
+  }
+
+
+  public editar(){
+ 
+    console.log(this.proceso);
+    this.proceso.canvasModel.channels=this.channels
+   this.procesoService.canalesPut(this.proceso.canvasModel.channels).subscribe(canales=>{
+    this.proceso.canvasModel.channels=canales;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        if(this.proceso.canvasModel.customerRelationships){
+          this.router.navigate([`/relaciones/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+        }else{
+          this.router.navigate(['/relaciones/cliente/', this.cliente.id])
+        }
+      })
+    })
+   })
+  }
+
+
+  public editarYsalir(){
+
+    console.log(this.proceso);
+    this.proceso.canvasModel.channels=this.channels
+   this.procesoService.canalesPut(this.proceso.canvasModel.channels).subscribe(canales=>{
+    this.proceso.canvasModel.channels=canales;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
+        Swal.fire('Exito', 'Canales editados con exito', 'success');
       })
     })
    })

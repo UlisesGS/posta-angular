@@ -36,7 +36,7 @@
     position: relative;
     height: 25px;
   }
-  .add-row a.btn {
+  .add-row a.btn { 
     text-align: center;
     font-size: 18px;
     line-height: 45px;
@@ -63,3 +63,9 @@
   .centered-heading {
     text-align: center;
   }
+  button{
+    border-color: #eb9694;
+    background-color: red ;
+    color: white;
+    margin-left: 10px;
+}

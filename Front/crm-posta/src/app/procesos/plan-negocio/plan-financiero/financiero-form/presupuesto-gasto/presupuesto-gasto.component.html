@@ -21,24 +21,67 @@
                                         <th>Cargo</th>
                                         <th>Salario Mensual $</th>
                                         <th>Salario Año 1</th>
+                                        <th>Accion</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of elementos">
-                                        <td><input type="text" ></td> 
-                                        <td><input type="text" ></td> 
-                                        <td class="autorellenadas">$</td>
+                                    <tr >
+                                        <td><input type="text" [(ngModel)]="materia1.cargo"></td>
+                                        <td><input type="number" step="any" [(ngModel)]="materia1.salarioMensual"></td>
+                                        <td class="autorellenadas">{{materia1.salariaAnual}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" class="add-row"><a (click)="agregarFila()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
+                                    <tr *ngFor="let i of operativo.personal">
+                                        <td>{{i.cargo}}</td>
+                                        <td>{{i.salarioMensual}}</td>
+                                        <td>{{i.salariaAnual}}</td>
+                                        <td><button (click)="sacarOperativo(i)" class="btn-close "></button></td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
+                                        <th >Subtotal</th>
+                                        <th>$ {{operativo.subTotal}}</th>
+                                        <th>$ {{operativo.subTotalAnual}}</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Parafiscales</td>
+                                        <td class="autorellenadas">$ {{operativo.parafiscales}}</td>
+                                        <td class="autorellenadas">$ {{operativo.totalParafiscales}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Seguridad Social</td>
+                                        <td class="autorellenadas">$ {{operativo.seguridadSocial}}</td>
+                                        <td class="autorellenadas">$ {{operativo.totalSeguridadSocial}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Cesantías</td>
+                                        <td class="autorellenadas">$ {{operativo.cesantias}}</td>
+                                        <td class="autorellenadas">$ {{operativo.totalCesantias}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Interes sobre Censatías</td>
+                                        <td class="autorellenadas">$ {{operativo.interesesCesantias}}</td>
+                                        <td class="autorellenadas">$ {{operativo.totalInteresesCesantias}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Prima de Servicios</td>
+                                        <td class="autorellenadas">$ {{operativo.primaServicios}}</td>
+                                        <td class="autorellenadas">$ {{operativo.totalPrimaServicios}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas" >Vacaciones</td>
+                                        <td class="autorellenadas">$ {{operativo.vacaciones}}</td>
+                                        <td class="autorellenadas">$ {{operativo.totalVacaciones}}</td>
+                                    </tr>
+                                    <tr>
                                         <th >Total</th>
-                                        <th>$ </th>
-                                        <th>$ </th>
+                                        <th>$ {{operativo.totalMensual}}</th>
+                                        <th>$ {{operativo.totalAnual}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -59,24 +102,66 @@
                                         <th>Cargo</th>
                                         <th>Salario Mensual $</th>
                                         <th>Salario Año 1</th>
+                                        <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of elementos1">
-                                        <td><input type="text" ></td> 
-                                        <td><input type="text" ></td> 
-                                        <td class="autorellenadas">$</td>
+                                    <tr>
+                                        <td><input type="text" [(ngModel)]="materia2.cargo"></td>
+                                        <td><input type="number" step="any" [(ngModel)]="materia2.salarioMensual"></td>
+                                        <td class="autorellenadas">{{materia2.salariaAnual}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" class="add-row"><a (click)="agregarFila1()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
+                                    <tr *ngFor="let i of administrativo.personal">
+                                        <td>{{i.cargo}}</td>
+                                        <td>{{i.salarioMensual}}</td>
+                                        <td>{{i.salariaAnual}}</td>
+                                        <td><button (click)="sacarAdministrativo(i)" class="btn-close "></button></td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
+                                        <th >Subtotal</th>
+                                        <th>$ {{administrativo.subTotal}}</th>
+                                        <th>$ {{administrativo.subTotalAnual}}</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Parafiscales</td>
+                                        <td class="autorellenadas">$ {{administrativo.parafiscales}}</td>
+                                        <td class="autorellenadas">$ {{administrativo.totalParafiscales}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Seguridad Social</td>
+                                        <td class="autorellenadas">$ {{administrativo.seguridadSocial}}</td>
+                                        <td class="autorellenadas">$ {{administrativo.totalSeguridadSocial}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Cesantías</td>
+                                        <td class="autorellenadas">$ {{administrativo.cesantias}}</td>
+                                        <td class="autorellenadas">$ {{administrativo.totalCesantias}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Interes sobre Censatías</td>
+                                        <td class="autorellenadas">$ {{administrativo.interesesCesantias}}</td>
+                                        <td class="autorellenadas">$ {{administrativo.totalInteresesCesantias}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Prima de Servicios</td>
+                                        <td class="autorellenadas">$ {{administrativo.primaServicios}}</td>
+                                        <td class="autorellenadas">$ {{administrativo.totalPrimaServicios}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas" >Vacaciones</td>
+                                        <td class="autorellenadas">$ {{administrativo.vacaciones}}</td>
+                                        <td class="autorellenadas">$ {{administrativo.totalVacaciones}}</td>
+                                    </tr>
+                                    <tr>
                                         <th >Total</th>
-                                        <th>$ </th>
-                                        <th>$ </th>
+                                        <th>$ {{administrativo.totalMensual}}</th>
+                                        <th>$ {{administrativo.totalAnual}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -97,24 +182,67 @@
                                         <th>Cargo</th>
                                         <th>Salario Mensual $</th>
                                         <th>Salario Año 1</th>
+                                        <th>Accion</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of elementos2">
-                                        <td><input type="text" ></td> 
-                                        <td><input type="text" ></td> 
-                                        <td class="autorellenadas">$</td>
+                                    <tr>
+                                        <td><input type="text" [(ngModel)]="materia3.cargo"></td>
+                                        <td><input type="number" step="any" [(ngModel)]="materia3.salarioMensual"></td>
+                                        <td class="autorellenadas">{{materia3.salariaAnual}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" class="add-row"><a (click)="agregarFila2()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
+                                    <tr *ngFor="let i of ventas.personal">
+                                        <td>{{i.cargo}}</td>
+                                        <td>{{i.salarioMensual}}</td>
+                                        <td>{{i.salariaAnual}}</td>
+                                        <td><button (click)="sacarVentas(i)" class="btn-close "></button></td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td >Total</td>
-                                        <td>$ </td>
-                                        <td>$ </td>
+                                        <th >Subtotal</th>
+                                        <th>$ {{ventas.subTotal}}</th>
+                                        <th>$ {{ventas.subTotalAnual}}</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Parafiscales</td>
+                                        <td class="autorellenadas">$ {{ventas.parafiscales}}</td>
+                                        <td class="autorellenadas">$ {{ventas.totalParafiscales}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Seguridad Social</td>
+                                        <td class="autorellenadas">$ {{ventas.seguridadSocial}}</td>
+                                        <td class="autorellenadas">$ {{ventas.totalSeguridadSocial}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Cesantías</td>
+                                        <td class="autorellenadas">$ {{ventas.cesantias}}</td>
+                                        <td class="autorellenadas">$ {{ventas.totalCesantias}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Interes sobre Censatías</td>
+                                        <td class="autorellenadas">$ {{ventas.interesesCesantias}}</td>
+                                        <td class="autorellenadas">$ {{ventas.totalInteresesCesantias}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas">Prima de Servicios</td>
+                                        <td class="autorellenadas">$ {{ventas.primaServicios}}</td>
+                                        <td class="autorellenadas">$ {{ventas.totalPrimaServicios}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="autorellenadas" >Vacaciones</td>
+                                        <td class="autorellenadas">$ {{ventas.vacaciones}}</td>
+                                        <td class="autorellenadas">$ {{ventas.totalVacaciones}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th >Total</th>
+                                        <th>$ {{ventas.totalMensual}}</th>
+                                        <th>$ {{ventas.totalAnual}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -132,74 +260,236 @@
                     <table class="excel-table">
                         <thead style="text-align: center;font-size: small;">
                             <tr>
-                                <th>Producto</th>
-                                <th>Unidades Año 1</th>
-                                <th>Costo Unitario</th>
-                                <th>Costo Total Año 1</th>
+                                <th>Parafiscales y Prestaciones Sociales</th>
+                                <th>Tasa</th>
                             </tr>
                         </thead>
                         <tbody style="text-align: center;font-size: small;">
                             <tr>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                                <td class="autorellenadas">Parafiscales</td>
+                                <td class="autorellenadas">4,00% </td>
+                            </tr>
+                            <tr>
+                                <td class="autorellenadas">Seguridad Social</td>
+                                <td class="autorellenadas">20,50% </td>
+                            </tr>
+                            <tr>
+                                <td class="autorellenadas">Cesantías</td>
+                                <td class="autorellenadas">8,33% </td>
+                            </tr>
+                            <tr>
+                                <td class="autorellenadas">Interes sobre Censatías</td>
+                                <td class="autorellenadas">0,12% </td>
+                            </tr>
+                            <tr>
+                                <td class="autorellenadas">Prima de Servicios</td>
+                                <td class="autorellenadas">8,33% </td>
+                            </tr>
+                            <tr>
+                                <td class="autorellenadas" >Vacaciones</td>
+                                <td class="autorellenadas">4,17% </td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>Total</th>
-                                <th> </th>
-                                <th>$ </th>
-                                <th>$ </th>
+                                <th>45,45%</th>
+
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div style="text-align: center; margin-top: 10px;">
-                <h4>INCREMENTO EN % DEL PRECIO</h4>
-            </div>
-            <div class="col centered-col">
-                <div class="table-container">
-                    <table class="excel-table">
-                        <thead style="text-align: center;font-size: small;">
-                            <tr>
-                                <th>Periodo</th>
-                                <th>IPC/ Inflación %</th>
-                                <th>Base + IPC</th>
-                            </tr>
-                        </thead>
-                        <tbody style="text-align: center;font-size: small;">
-                            <tr>
+            <div class="col">
+                <div style="text-align: center; margin-top: 10px;">
+                    <h6>INCREMENTO EN % DEL PRECIO</h6>
+                </div>
+                <div class="col centered-col">
+                    <div class="table-container">
+                        <table class="excel-table">
+                            <thead style="text-align: center;font-size: small;">
+                                <tr>
+                                    <th>Periodo</th>
+                                    <th>IPC/ Inflación %</th>
+                                    <th>Base + IPC</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;font-size: small;">
+                              <tr>
                                 <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc1}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc1+100}}</td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc2}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc2+100}}</td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc3}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc3+100}}</td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
-                                <td style="width: 5%;"><input type="text"></td>
-                                <td class="autorellenadas" style="width: 13%;"></td>
+                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc3}}</td>
+                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc3+100}}</td>
                             </tr>
-    
-                        </tbody>
-    
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="centered-col mt-2">
+                <h5 class="centered-heading">OTROS COSTOS DE PRODUCCION Y GASTOS DE ADMINISTRACIÓN Y VENTAS</h5>
+            </div>
+            <div class="col-4">
+                <div class="centered-col">
+                    <div class="col">
+                        <div style="margin-bottom: 20px;" class="col">
+                            <table class="excel-table" style="font-size: small;">
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th colspan="3">Costos Operativos</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th>Mensual $</th>
+                                        <th>Año 1</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" [(ngModel)]="operativos.concepto"></td>
+                                        <td><input type="number" step="any" [(ngModel)]="operativos.gastoMensual"></td>
+                                        <td class="autorellenadas">{{operativos.gastoAnual}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="add-row"><a (click)="agregarCostoOperativo()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let i of operativo.costos">
+                                        <td>{{i.concepto}}</td>
+                                        <td>{{i.gastoMensual}}</td>
+                                        <td>{{i.gastoAnual}}</td>
+                                        <td><button (click)="sacarOperativoCostos(i)" class="btn-close "></button></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >Subtotal</th>
+                                        <th>$ {{operativo.totalCostoMensual}}</th>
+                                        <th>$ {{operativo.totalCostoAnual}}</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="centered-col">
+                    <div class="col">
+                        <div style="margin-bottom: 20px;" class="col">
+                            <table class="excel-table" style="font-size: small;">
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th colspan="3">Gastos Administrativos</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th>Mensual $</th>
+                                        <th>Año 1</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" [(ngModel)]="administrativos.concepto"></td>
+                                        <td><input type="number" step="any" [(ngModel)]="administrativos.gastoMensual"></td>
+                                        <td class="autorellenadas">{{administrativos.gastoAnual}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="add-row"><a (click)="agregarGastoAdministrativo()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let i of administrativo.costos">
+                                        <td>{{i.concepto}}</td>
+                                        <td>{{i.gastoMensual}}</td>
+                                        <td>{{i.gastoAnual}}</td>
+                                        <td><button (click)="sacarAdministrativoCostos(i)" class="btn-close "></button></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >Subtotal</th>
+                                        <th>$ {{administrativo.totalCostoMensual}}</th>
+                                        <th>$ {{administrativo.totalCostoAnual}}</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="centered-col">
+                    <div class="col">
+                        <div style="margin-bottom: 20px;" class="col">
+                            <table class="excel-table" style="font-size: small;">
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th colspan="3">Gastos de Ventas</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th>Mensual $</th>
+                                        <th>Año 1</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" [(ngModel)]="ventasL.concepto"></td>
+                                        <td><input type="number" step="any" [(ngModel)]="ventasL.gastoMensual"></td>
+                                        <td class="autorellenadas">{{ventasL.gastoAnual}}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="add-row"><a (click)="agregarGastoVenta()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let i of ventas.costos">
+                                        <td>{{i.concepto}}</td>
+                                        <td>{{i.gastoMensual}}</td>
+                                        <td>{{i.gastoAnual}}</td>
+                                        <td><button (click)="sacarVentaCostos(i)" class="btn-close "></button></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >Subtotal</th>
+                                        <th>$ {{ventas.totalCostoMensual}}</th>
+                                        <th>$ {{ventas.totalCostoAnual}}</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group mt-3">
+          <button *ngIf="!idEditar" (click)="guardarYsalir()"  class="btn">Guardar</button>
+          <button *ngIf="!idEditar"(click)="guardar()" class="btn">Guardar y Continuar</button>
+          <button *ngIf="idEditar" (click)="editarYsalir()"  class="btn">Editar</button>
+          <button *ngIf="idEditar" (click)="editar()" class="btn">Editar y Continuar</button>
+            <button [routerLink]="['/compras/cliente/',cliente.id,'editar', proceso?.id]"  class="btn">Volver</button>
+          </div>
     </div>
 
 

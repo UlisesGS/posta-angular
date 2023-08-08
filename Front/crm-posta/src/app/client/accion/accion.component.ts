@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalService } from '../modal.service';
 import { Client } from '../client';
 import { Router } from '@angular/router';
@@ -8,6 +8,8 @@ import { ClientService } from '../client.service';
 import Swal from 'sweetalert2';
 import { Usuario } from 'src/app/usuario/usuario';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { ProcesoService } from 'src/app/procesos/proceso.service';
+import { Process } from 'src/app/procesos/Process';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -15,19 +17,166 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
   templateUrl: './accion.component.html',
   styleUrls: ['./accion.component.css']
 })
-export class AccionComponent {
+export class AccionComponent  implements OnInit{
 
 
   @Input()cliente:Client = new Client();
+
+  @Input()procesos:Process[]
+
   errores:any;
+  condicion:boolean = false;
   usuario:Usuario=new Usuario();
-  imageUrl ="/assets/camaraHD.jpg"
+  imageUrl ="/assets/camaraHD.jpg";
+ // procesos:Process[]=[];
+  proceso:Process= new Process();
   constructor(private modalService:ModalService,
     private ruta:Router,
     private service:ClientService,
-    private http:HttpClient
+    private http:HttpClient,
+    private procesoService:ProcesoService,
     ){}
+  ngOnInit(): void {
+   // this.condicion=false;
+   /*
+   this.procesoService.procesosFindAll().subscribe(lista=>{
+    this.procesos= lista;
+   this.procesos.forEach(p=>{
+    if(p.selfAssessment.client.id==this.cliente.id){
+      this.condicion= true;
+      this.proceso=p;
+      console.log(this.proceso);
 
+    }
+
+
+   })
+   })
+   */
+  }
+
+iniciarProceso(){
+this.procesos.forEach(p=>{
+  if(p.canvasModel.client.id==this.cliente.id){
+this.condicion=true;
+this.proceso=p;
+  }
+})
+
+//console.log(this.condicion);
+
+
+if ( this.condicion==true){
+  Swal.fire('Error:', 'El cliente ya contiene un proceso asignado', 'question');
+
+}else{
+  this.ruta.navigate([`autoevaluacion/cliente/${this.cliente.id}`]);
+}
+
+}
+
+continuarProceso(){
+  this.procesos.forEach(p=>{
+    if(p.canvasModel.client.id==this.cliente.id){
+  this.condicion=true;
+  this.proceso=p;
+    }
+  })
+  //console.log(this.procesos);
+
+
+  if ( this.condicion ==false){
+    this.ruta.navigate([`autoevaluacion/cliente/${this.cliente.id}`]);
+
+  }else{
+    //this.ruta.navigate([`autoevaluacion/cliente/${this.proceso.canvasModel.client.id}`]);
+
+  switch(this.proceso.estado){
+    case 'iniciando':
+      this.ruta.navigate([`autoevaluacion/cliente/${this.cliente.id}`]);
+      break;
+    case 'AutoEvaluación':
+    this.ruta.navigate([`segmento/cliente/${this.cliente.id}`]);
+    break;
+    case 'Segmento de Clientes':
+      this.ruta.navigate([`propuestaDeValor/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Propuesta de Valor':
+      this.ruta.navigate([`canales/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Canales':
+      this.ruta.navigate([`relaciones/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Relación con los Clientes':
+      this.ruta.navigate([`recursosClaves/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Recursos Claves':
+      this.ruta.navigate([`actividadesClaves/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Actividades Claves':
+      this.ruta.navigate([`sociosClaves/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Socios Claves':
+      this.ruta.navigate([`ingresos/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Ingresos':
+      this.ruta.navigate([`estructuraCostos/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Estructura Costos':
+      this.ruta.navigate([`informacion/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Informacion Proyecto':
+      this.ruta.navigate([`interno/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Analisis Interno/Externo':
+      this.ruta.navigate([`dofa/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Analisis Dofa':
+      this.ruta.navigate([`conclusion/cliente/${this.cliente.id}`]);
+    ;
+    break;
+    case 'Conclusiones':
+     this.ruta.navigate([`ventas/cliente/${this.cliente.id}`]);
+    //this.ruta.navigate(['/procesos']);
+    ;
+    break;
+    case 'Presupuesto Venta':
+      this.ruta.navigate([`compras/cliente/${this.cliente.id}`]);
+     //this.ruta.navigate(['/procesos']);
+     ;
+     break;
+     case 'Presupuesto Compra':
+      this.ruta.navigate([`gastos/cliente/${this.cliente.id}`]);
+     //this.ruta.navigate(['/procesos']);
+     ;
+     break;
+     case 'Presupuesto Gastos/Costos':
+      this.ruta.navigate([`inversion/cliente/${this.cliente.id}`]);
+
+     ;
+     break;
+     case 'Plan Financiero finalizado':
+      console.log('entre');
+      this.ruta.navigate([`inversion/cliente/${this.proceso.canvasModel.client.id}`]);
+
+
+     break;
+  }
+}
+
+ this.modalService.cerrarModalAction();
+}
 
   cerrarModalAction(): void {
     this.modalService.cerrarModalAction();
@@ -51,7 +200,13 @@ export class AccionComponent {
   }
 
   public cambiarTipo() {
-    this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
+    if (this.cliente.type == 'entrepreneur') {
+      this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
+
+    } else {
+      this.ruta.navigate([`clients/form/editar/entrepreneur/${this.cliente.id}`]);
+    }
+  //  this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
     /*this.cliente.type="businessman";
     this.cliente.businessIdea="";
     this.cliente.product="";
@@ -102,9 +257,9 @@ createPdf() {
           margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
           // Márgenes de la imagen en el PDF
         },
-    
+
         // ... Estilos y otras configuraciones ...
-          
+
         {
           table: {
             layout: 'noBorders', // <-- Eliminar los bordes de la tabla
@@ -129,11 +284,11 @@ createPdf() {
             ]
           }
         },
-    
+
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-    
+
         '\n',
-    
+
         {
           table: {
             layout: 'noBorders', // <-- Eliminar los bordes de la tabla
@@ -182,9 +337,9 @@ createPdf() {
             ]
           }
         },
-    
+
         { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 595 - 2 * 40, y2: 10 }] },
-    
+
         {
           text: 'Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE VILLAVICENCIO (la “CCV”) para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación personal, nombres y apellidos, números de teléfono y celular, correo electrónico, país de origen y en general toda la información solicitada para información de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a la que puede accederse en el siguiente link:',
           style: 'p'
@@ -348,8 +503,8 @@ this.convertImageToBase64(this.imageUrl).then(base64 => {
         table: {
           widths: ['auto', '*'],
           body: [
-            [ 
-              
+            [
+
               { text: 'MUNICIPIO/DEPARTAMENTO: ', style: 'header' },
               { text: this.cliente.municipio.country, style: ['thisText', 'header'] }
             ],

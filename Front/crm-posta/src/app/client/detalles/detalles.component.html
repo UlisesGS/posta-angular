@@ -1,62 +1,168 @@
+<app-modal-detalles *ngIf="modalService.auto && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
+  [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB" [tipoVer]="tipoVer"></app-modal-detalles>
+<app-modal-detalles *ngIf="modalService.canvas && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
+  [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB" [tipoVer]="tipoVer"></app-modal-detalles>
+<app-modal-detalles *ngIf="modalService.negocios && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
+  [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB" [tipoVer]="tipoVer"></app-modal-detalles>
+<app-modal-detalles *ngIf="modalService.financiero && procesoSeleccionado" [proceso]="procesoSeleccionado"
+  [autoB]="autoB" [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB" [tipoVer]="tipoVer"></app-modal-detalles>
 <div class="row">
-    <div class="col-2">
-        <app-client-details></app-client-details>
-    </div>
-    <div class="col-10">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <button class="btn btn-disabled" style="background-color: red; color: white;width: 100%;">
-                        Perfil
-                      </button>
-                </div>
-                <div class="card-body">
-                    <div style="margin: 10px;" >
-                        <button  *ngIf="proceso?.selfAssessment===null" style="background-color: rgb(213, 218, 215); color: white;width: 80%;" class="btn btn-disabled" >
-                            <span class="left-align">AUTOEVALUACIÓN</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
-                          </button>
-                          <button  *ngIf="proceso?.selfAssessment!==null" style="background-color: rgb(34, 197, 89); color: white;width: 80%;" class="btn btn-disabled" >
-                            <span class="left-align">AUTOEVALUACIÓN</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
-                          </button>
-                    </div>
-                    <div style="margin: 10px;">
-                        <button *ngIf="proceso?.canvasModel===null" class="btn btn-disabled" style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
-                            <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
-                          </button>
-                    </div>
-                    <div style="margin: 10px;">
-                        <button *ngIf="proceso?.canvasModel?.costStructure===null" class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
-                            <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
-                          </button>
-                    </div>
-                    <div style="margin: 10px;">
-                        <button *ngIf="proceso?.canvasModel?.costStructure!==null" class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
-                            <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
-                          </button>
-                    </div>
-                    <div style="margin: 10px;">
-                        <button *ngIf="proceso?.businessPlan===null" class="btn btn-disabled" style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
-                            <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
-                          </button>
-                          <button *ngIf="proceso?.businessPlan?.conclusion===null && proceso?.businessPlan!==null" class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
-                            <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
-                          </button>
-                          <button *ngIf="proceso?.businessPlan?.conclusion!==null" class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
-                            <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
-                          </button>
-                    </div>
-                    <div style="margin: 10px;">
-                        <button class="btn btn-disabled" style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
-                            <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
-                          </button>
-                    </div>
-                    <div style="margin: 10px;">
+  <div class="col-2">
+    <app-client-details></app-client-details>
+  </div>
+  <div class="col-10"> 
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <button class="btn btn-disabled" style="background-color: red; color: white;width: 100%;">
+            Perfil
+          </button>
+        </div>
+        <div class="card-body">
+          <div style="margin: 10px;">
+            <button *ngIf="proceso?.selfAssessment===null"
+              style="background-color: rgb(213, 218, 215); color: white;width: 80%;" class="btn btn-disabled">
+              <span class="left-align">AUTOEVALUACIÓN</span><i class="fa-solid fa-pen-to-square right-align"
+                type="button"></i>
+            </button>
+            <button *ngIf="proceso?.selfAssessment!==null"
+              style="background-color: rgb(34, 197, 89); color: white;width: 80%;" class="btn btn-disabled">
+              <span class="left-align">AUTOEVALUACIÓN</span><i class="fa-solid fa-pen-to-square right-align"
+                type="button"
+                (click)="abrirTestAuto(proceso, 'finalizado', 'incompleto', 'incompleto', 'incompleto', 'autoEvaluacion')"></i>
+            </button>
+          </div>
+          <div style="margin: 10px;">
+            <button *ngIf="proceso?.canvasModel===null" class="btn btn-disabled"
+              style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
+              <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align"
+                type="button"></i>
+            </button>
+          </div>
+          <div style="margin: 10px;">
+            <button *ngIf="proceso?.canvasModel?.costStructure===null" class="btn btn-disabled"
+              style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
+              <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align"
+                type="button" (click)="abrirTestAuto(proceso, 'finalizado', 'continuar', 'continuar', 'continuar', 'canvas')"></i>
+            </button>
+          </div>
+          <div style="margin: 10px;">
+            <button *ngIf="proceso?.canvasModel?.costStructure!==null" class="btn btn-disabled"
+              style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+              <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align"
+                type="button"
+                (click)="abrirTestAuto(proceso, 'finalizado', 'finalizado', 'incompleto', 'incompleto', 'canvas')"></i>
+            </button>
+          </div>
+          <div style="margin: 10px;">
+            <button *ngIf="proceso?.businessPlan===null" class="btn btn-disabled"
+              style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
+              <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align"
+                type="button"></i>
+            </button>
+            <button *ngIf="proceso?.businessPlan?.conclusion===null && proceso?.businessPlan!==null"
+              class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
+              <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align"
+                type="button" (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'continuar', 'continuar', 'negocio')"></i>
+            </button>
+            <button *ngIf="proceso?.businessPlan?.conclusion!==null" class="btn btn-disabled"
+              style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+              <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align"
+                type="button"
+                (click)="abrirTestAuto(proceso, 'finalizado', 'finalizado', 'finalizado', 'incompleto','negocio')"></i>
+            </button>
+          </div>
+          <div style="margin: 10px;">
+            <button *ngIf="proceso?.businessPlanFinancial===null" class="btn btn-disabled"
+              style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
+              <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i
+                class="fa-solid fa-pen-to-square right-align" type="button"></i>
+            </button>
+            <button
+              *ngIf="proceso?.businessPlanFinancial?.planInversion===null && proceso?.businessPlanFinancial!==null"
+              class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
+              <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i
+                class="fa-solid fa-pen-to-square right-align" type="button"
+                (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'finalizado', 'continuar', 'financiero')"></i>
+            </button>
+            <button *ngIf="proceso?.businessPlanFinancial?.planInversion!==null" class="btn btn-disabled"
+              style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+              <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i
+                class="fa-solid fa-pen-to-square right-align" type="button"
+                (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'finalizado', 'finalizado', 'financiero')"></i>
+            </button>
+          </div>
+          <!-- <div style="margin: 10px;">
                         <button class="btn btn-disabled" style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
                             <span class="left-align">ACTA DE CIERRE</span><i class="fa-solid fa-pen-to-square right-align" type="button"></i>
                           </button>
-                    </div>
-                </div>
+                    </div> -->
+                    
+                      <div class="m-2">
+                        <a href="assets/CompromisoEmprendedor.pdf" target="_blank" class="btn" (click)="imprimirCompromiso()"><i
+                            class="fa-solid fa-file fa-2xl"></i> Documento de Compromiso</a>
+                            <i class="fa-solid fa-caret-down fa-xl" (click)="condicionCompromiso()"></i>
+                      </div>
+                      <div *ngIf="compromiso">
+                        <div class="m-2 col-6" *ngIf="imageUrl==null">
+                          <input type="file" class="form-control col" (change)="onFileSelected($event)">
+                          <button class="btn mt-2" (click)="uploadImage()">Subir Imagen</button>
+                        </div>
+                        <!-- <div class="m-2">
+                          <button class="btn btn-primary" (click)="getImageUrl()">Ver Ímagen</button>
+                        </div> -->
+                        <div class="m-2">
+                          <a *ngIf="imageUrl" [href]="imageUrl" target="_blank" class="btn">Abrir imagen en otra pestaña</a>
+                        </div>
+                      </div>
+
+                      
+                   
+          
+
+
+
+
+          <div class="m-2">
+            <a href="assets/EncuestaEmprendedor.pdf" target="_blank" class="btn" (click)="imprimirEncuesta()"><i
+                class="fa-solid fa-file fa-2xl"></i> Encuesta de Satisfacción</a>
+                <i class="fa-solid fa-caret-down fa-xl" (click)="condicionEncuesta()"></i>
+          </div>
+          <div *ngIf="encuesta">
+            <div class="m-2 col-6" *ngIf="imageUrlEncuesta==null">
+              <input type="file" class="form-control col" (change)="onFileSelected($event)">
+              <button class="btn mt-2" (click)="uploadImageEncuesta()">Subir Imagen</button>
             </div>
+            <div class="m-2">
+              <a *ngIf="imageUrlEncuesta" [href]="imageUrlEncuesta" class="btn" target="_blank">Abrir imagen en otra pestaña</a>
+            </div>
+          </div>
+         
+
+
+
+          <div class="m-2">
+            <a href="assets/ActaCierreEmprendedor.pdf" target="_blank"  class="btn" (click)="imprimirActa()"><i
+                class="fa-solid fa-file fa-2xl"></i> Acta de Cierre</a>
+                <i class="fa-solid fa-caret-down fa-xl" (click)="condicionCierre()"></i>
+          </div>
+          <div *ngIf="cierre">
+            <div class="m-2 col-6" *ngIf="imageUrlCierre==null">
+              <input type="file" class="form-control col" (change)="onFileSelected($event)">
+              <button class="btn mt-2" (click)="uploadImageCierre()">Subir Imagen</button>
+            </div>
+            <div class="m-2">
+              <a *ngIf="imageUrlCierre" [href]="imageUrlCierre" class="btn" target="_blank">Abrir imagen en otra pestaña</a>
+            </div>
+          </div>
+          
+
         </div>
+
+
+      </div>
     </div>
+
+  </div>
+
 </div>

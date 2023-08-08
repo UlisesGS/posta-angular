@@ -39,7 +39,20 @@ export class RecursosClavesComponent {
             this.procesos.forEach(proceso=>{
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
-                console.log(this.proceso);
+                
+                
+                // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.keyRecources=this.proceso.canvasModel.keyRecources;
+                    console.log(this.keyRecources);
+                    
+                  })
+                }
 
               }
             })
@@ -90,6 +103,41 @@ export class RecursosClavesComponent {
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
         this.router.navigate(['procesos'])
         Swal.fire('Exito', 'Recursos Claves creada con exito', 'success');
+      })
+    })
+   })
+  }
+
+
+  public editar(){
+
+    console.log(this.proceso);
+    this.proceso.canvasModel.keyRecources=this.keyRecources
+   this.procesoService.recursosClavesPut(this.proceso.canvasModel.keyRecources).subscribe(pro=>{
+    this.proceso.canvasModel.keyRecources=pro;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        if(this.proceso.canvasModel.keyActivities){
+          this.router.navigate([`/actividadesClaves/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+        }else{
+          this.router.navigate(['/actividadesClaves/cliente/', this.cliente.id])
+        }
+      })
+    })
+   })
+  }
+
+
+  public editarYsalir(){
+
+    console.log(this.proceso);
+    this.proceso.canvasModel.keyRecources=this.keyRecources
+   this.procesoService.recursosClavesPut(this.proceso.canvasModel.keyRecources).subscribe(pro=>{
+    this.proceso.canvasModel.keyRecources=pro;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
+        Swal.fire('Exito', 'Recursos Claves editada con exito', 'success');
       })
     })
    })

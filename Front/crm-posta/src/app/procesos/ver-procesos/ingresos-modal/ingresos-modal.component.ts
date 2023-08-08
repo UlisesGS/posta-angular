@@ -20,7 +20,7 @@ export class IngresosModalComponent {
   ){}
 
   ngOnInit(): void {
-    console.log(this.proceso);
+   
     
     
   }

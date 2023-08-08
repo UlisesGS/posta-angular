@@ -5,6 +5,7 @@ import { BusinessPlan } from './BusinessPlan';
 import { ProyectInformation } from './ProyectInformation';
 import { DofaAnalisis } from './DofaAnalisis';
 import { InternalExternalAnalysis } from './InternalExternalAnalysis';
+import { URL } from './../../../URL';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,11 @@ export class ModeloBasicoService {
 
   //private urlEndPoint:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/plan"
 
-  private urlEndPoint:string="http://localhost:8080/plan";
+
+
+  private urlEndPoint:string=`${URL}/plan`;
+
+
   constructor(private http:HttpClient) { }
 
   // TODOS LOS GET
@@ -54,7 +59,7 @@ export class ModeloBasicoService {
   }
 
   public planUpdateProyect(proyect:ProyectInformation):Observable<any>{
-    return this.http.put<any>(`${this.urlEndPoint}/proyectPut/${proyect.id}`, proyect )
+    return this.http.put<any>(`${this.urlEndPoint}/informacionPut/${proyect.id}`, proyect )
   }
 
   public planUpdateAnalisis(analisis:InternalExternalAnalysis):Observable<any>{

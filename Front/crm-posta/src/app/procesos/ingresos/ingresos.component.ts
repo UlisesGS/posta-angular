@@ -42,7 +42,19 @@ export class IngresosComponent implements OnInit{
             this.procesos.forEach(proceso=>{
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
-                console.log(proceso);
+                
+                // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.revenueStreams=this.proceso.canvasModel.revenueStreams;
+                    console.log(this.revenueStreams);
+                    
+                  })
+                }
 
               }
             })
@@ -95,6 +107,42 @@ export class IngresosComponent implements OnInit{
    })
   }
 
+
+
+
+  public editar(){
+
+    console.log(this.proceso);
+    this.proceso.canvasModel.revenueStreams=this.revenueStreams
+   this.procesoService.ingresosPut(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
+    this.proceso.canvasModel.revenueStreams=valor;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        if(this.proceso.canvasModel.costStructure){
+          this.router.navigate([`/estructuraCostos/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+        }else{
+          this.router.navigate(['/estructuraCostos/cliente/', this.cliente.id])
+        }
+      })
+    })
+   })
+  }
+
+
+  public editarYsalir(){
+
+    console.log(this.proceso);
+    this.proceso.canvasModel.revenueStreams=this.revenueStreams
+   this.procesoService.ingresosPut(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
+    this.proceso.canvasModel.revenueStreams=valor;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
+        Swal.fire('Exito', 'Propuesta de Valor editada con exito', 'success');
+      })
+    })
+   })
+  }
 
 
 }

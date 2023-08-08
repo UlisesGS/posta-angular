@@ -29,8 +29,8 @@ export class PresupuestoVenta {
 
     })
     this.ciclicidadVentas.forEach(ciclicidadVenta=>{
-      ciclicidadVenta.unidadesAño=((ciclicidadVenta.calificacion/this.totalCalificacion)*this.totalProductos);
-      ciclicidadVenta.ventasAño=((this.totalTotal*ciclicidadVenta.unidadesAño)/this.totalProductos);
+      ciclicidadVenta.unidadesAnio=((ciclicidadVenta.calificacion/this.totalCalificacion)*this.totalProductos);
+      ciclicidadVenta.ventasAnio=((this.totalTotal*ciclicidadVenta.unidadesAnio)/this.totalProductos);
     })
 
   }

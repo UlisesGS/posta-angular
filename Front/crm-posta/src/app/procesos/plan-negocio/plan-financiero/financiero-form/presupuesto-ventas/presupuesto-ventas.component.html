@@ -26,7 +26,8 @@
                     </tr>
                         <tr *ngFor="let item of presupuestoVenta.estructuraMercado">
                             <td>{{item.producto}}</td>
-                            <td>{{item.cantidad}}</td>
+                            <td>{{item.cantidad}} <button (click)="sacarItem(item)" class="btn btn-danger btn-sm">X</button></td>
+
                         </tr>
 
                     </tbody>
@@ -59,17 +60,17 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let pres of presupuestoVenta.estructuraMercado">
-                        <td class="autorellenadas" style="width: 13%;"></td>
+                        <td class="autorellenadas" style="width: 13%;">{{pres.producto}}</td>
 
-                        <td style="width: 15%;">
-                            <select [(ngModel)]="pres.tipo" class="form-select"
+                        <td style="width: 15%; transform: scale(0.75);">
+                            <select [compareWith]="compararTipo"  [(ngModel)]="pres.tipo" class="form-select"
                             aria-label="Default select example" >
                             <option value="UNIDAD" >Unidad</option>
                             <option value="KILOGRAMO" >Kilogramo</option>
                             <option value="LIBRA" >Libra</option>
                             <option value="ONZA" >Onza</option>
                             <option value="LITRO" >Litro</option>
-                            <option value="METRO CUBICO" >Metro cubico</option>
+                            <option value="METRO_CUBICO" >Metro cubico</option>
                             <option value="DIA" >Dia</option>
                             <option value="HORA" >Hora</option>
                             <option value="MINUTO" >Minuto</option>
@@ -77,8 +78,8 @@
                             <option value="PRODUCTO" >Producto</option>
                             <option value="OTRO" >Otro</option>
                         </select></td>
-                        <td style="width: 13%;"><input type="number" step="any" (keyup)="llenarHoras()" [(ngModel)]="pres.horasOperario"></td>
-                        <td class="autorellenadas" style="width: 13%;">{{pres.unidadHoraHombre}}</td>
+                        <td style="width: 13%;"><input type="number"  (keyup)="llenarHoras()" [(ngModel)]="pres.horasOperario"></td>
+                        <td class="autorellenadas" step="0.01" style="width: 13%;">{{pres.unidadHoraHombre}}</td>
                         <td class="autorellenadas" style="width: 13%;">{{pres.capacidadInstaladaPorOperario}}</td>
                         <td style="width: 13%;"><input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion"></td>
                         <td class="autorellenadas" style="width: 13%;">{{pres.capacidadInstaladaUnidades}}</td>
@@ -109,7 +110,7 @@
                         <th>Unidades a Vender</th>
                         <th>Precio de Venta Unit.</th>
                         <th>Ventas Totales $ Año 1</th>
-                        
+
 
                     </tr>
                 </thead>
@@ -129,7 +130,7 @@
                         <th>${{presupuestoVenta.totalProductos}}</th>
                         <th>${{presupuestoVenta.totalPrecioUnitario}}</th>
                         <th>${{presupuestoVenta.totalTotal}}</th>
-                       
+
                     </tr>
                 </tfoot>
             </table>
@@ -150,23 +151,23 @@
                     <tbody style="text-align: center;font-size: small;">
                         <tr>
                             <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
-                            <td style="width: 5%;"><input type="text"></td>
-                            <td class="autorellenadas" style="width: 13%;"></td>
+                            <td style="width: 5%;"><input type="number" (change)="llenaripc1()" [(ngModel)]="businessPlanFinancial.ipc1"> </td>
+                            <td class="autorellenadas" style="width: 13%;">{{icp1}}</td>
                         </tr>
                         <tr>
                             <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
-                            <td style="width: 5%;"><input type="text"></td>
-                            <td class="autorellenadas" style="width: 13%;"></td>
+                            <td style="width: 5%;"><input type="number" (change)="llenaripc2()" [(ngModel)]="businessPlanFinancial.ipc2"></td>
+                            <td class="autorellenadas" style="width: 13%;">{{icp2}}</td>
                         </tr>
                         <tr>
                             <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
-                            <td style="width: 5%;"><input type="text"></td>
-                            <td class="autorellenadas" style="width: 13%;"></td>
+                            <td style="width: 5%;"><input type="number" (change)="llenaripc3()" [(ngModel)]="businessPlanFinancial.ipc3"></td>
+                            <td class="autorellenadas" style="width: 13%;">{{icp3}}</td>
                         </tr>
                         <tr>
                             <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
-                            <td style="width: 5%;"><input type="text"></td>
-                            <td class="autorellenadas" style="width: 13%;"></td>
+                            <td style="width: 5%;"><input type="number" (change)="llenaripc4()" [(ngModel)]="businessPlanFinancial.ipc4"></td>
+                            <td class="autorellenadas" style="width: 13%;">{{icp4}}</td>
                         </tr>
 
                     </tbody>
@@ -224,147 +225,146 @@
                             <tbody style="text-align: center;font-size: small;">
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Enero</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="enero" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'enero')" [(ngModel)]="listaMes[0]"   class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[0]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[0]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Febrero</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="febrero" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'febrero')"  [(ngModel)]="listaMes[1]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[1]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[1]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Marzo</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="marzo" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'marzo')"  [(ngModel)]="listaMes[2]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[2]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[2]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Abril</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="abril" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"   (click)="llenarCiclicidad($event,'abril')"  [(ngModel)]="listaMes[3]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[3]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[3]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Mayo</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="mayo" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'mayo')"   [(ngModel)]="listaMes[4]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[4]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[4]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Junio</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="junio" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'junio')"   [(ngModel)]="listaMes[5]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[5]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[5]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Julio</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="julio" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'julio')"   [(ngModel)]="listaMes[6]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[6]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[6]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Agosto</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="agosto" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'agosto')"  [(ngModel)]="listaMes[7]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                </tr>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[7]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[7]?.ventasAnio}}</td>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Septiembre</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="septiembre" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'septiembre')"  [(ngModel)]="listaMes[8]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[8]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[8]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Octubre</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="octubre" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'octubre')"   [(ngModel)]="listaMes[9]"class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[9]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[9]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Noviembre</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="noviembre " class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'noviembre')"   [(ngModel)]="listaMes[10]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[10]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[10]?.ventasAnio}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Diciembre</td>
-                                    <td  style="width: 22%;"><select (click)="llenarCiclicidad()" [(ngModel)]="diciembre" class="form-select"
+                                    <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'diciembre')"   [(ngModel)]="listaMes[11]" class="form-select"
                                         aria-label="Default select example" >
-                                        <option value="9" >Muy Alto</option>
-                                        <option value="7" >Alto</option>
-                                        <option value="5" >Normal</option>
-                                        <option value="3" >Bajo</option>
+                                        <option value=9 >Muy Alto</option>
+                                        <option value=7 >Alto</option>
+                                        <option value=5 >Normal</option>
+                                        <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
-                                    <td class="autorellenadas" style="width: 13%;"></td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[11]?.unidadesAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[11]?.ventasAnio}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -378,9 +378,13 @@
                         </table>
                     </div>
                     <div class="form-group mt-3">
-                      <button (click)="guardarYsalir()"  class="btn">Guardar</button>
-                      <button (click)="guardar()" class="btn">Guardar y Continuar</button>
+                      <button  *ngIf="!presupuestoVenta.id" (click)="guardarYsalir()"  class="btn">Guardar</button>
+                      <button  *ngIf="!presupuestoVenta.id" (click)="guardar()" class="btn">Guardar y Continuar</button>
+                      <button *ngIf="presupuestoVenta.id" (click)="editarYsalir()"  class="btn">Editar</button>
+                      <button *ngIf="presupuestoVenta.id" (click)="editar()" class="btn">Editar y Continuar</button>
                       <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
+                      <button [routerLink]="['/conclusion/cliente/',cliente.id,'editar',proceso.id]"
+                        class="btn ">Volver</button>
                     </div>
                 </div>
 

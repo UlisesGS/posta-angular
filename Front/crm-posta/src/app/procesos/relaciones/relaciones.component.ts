@@ -41,7 +41,20 @@ export class RelacionesComponent {
             this.procesos.forEach(proceso=>{
               if(proceso.canvasModel.client.id==this.cliente.id){
                 this.proceso=proceso;
-                console.log(proceso);
+                
+                
+                // para editar
+                let idEditar = +parametro.get('idEditar');
+                console.log('no entro al if');
+                
+                if(idEditar){
+                  this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.customerRelationships=this.proceso.canvasModel.customerRelationships;
+                    console.log(this.customerRelationships);
+                    
+                  })
+                }
 
               }
             })
@@ -89,6 +102,42 @@ export class RelacionesComponent {
       this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
         this.router.navigate(['procesos'])
         Swal.fire('Exito', 'Relacion creada con exito', 'success');
+      })
+    })
+   })
+  }
+
+
+
+  public editar(){
+
+    console.log(this.proceso);
+    this.proceso.canvasModel.customerRelationships=this.customerRelationships
+   this.procesoService.relacionesPut(this.proceso.canvasModel.customerRelationships).subscribe(relacion=>{
+    this.proceso.canvasModel.customerRelationships=relacion;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        if(this.proceso.canvasModel.keyRecources){
+          this.router.navigate([`/recursosClaves/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
+        }else{
+          this.router.navigate(['/recursosClaves/cliente/', this.cliente.id])
+        }
+      })
+    })
+   })
+  }
+
+
+  public editarYsalir(){
+
+    console.log(this.proceso);
+    this.proceso.canvasModel.customerRelationships=this.customerRelationships
+   this.procesoService.relacionesPut(this.proceso.canvasModel.customerRelationships).subscribe(relacion=>{
+    this.proceso.canvasModel.customerRelationships=relacion;
+    this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas=>{
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data=>{
+        this.router.navigate(['procesos'])
+        Swal.fire('Exito', 'Relacion editada con exito', 'success');
       })
     })
    })

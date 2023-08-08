@@ -1,4 +1,4 @@
-import { Inversion } from "./inversion";
+import { Inversion } from "./Inversion";
 
 export class PlanInversion {
   id: number;
@@ -19,9 +19,13 @@ export class PlanInversion {
   totalPropio: number=0.0;
   totalInversion: number=0.0;
   totalCredito: number=0.0;
+  activoInvesion:number=0.0;
+  activoPropio:number=0.0;
   public fijo(){
     this.activoFijo.forEach(fijo=>{
       this.activoCredito+=fijo.creditoRequerido;
+      this.activoInvesion+=fijo.inversionRequerida;
+      this.activoPropio+=fijo.aportesPropios;
     })
   }
   public maquinaria(){
@@ -47,9 +51,9 @@ this.vehiculos.forEach(v=>{
 })
   }
   public calculoTotal(){
-    this.totalPropio=(this.maquinariaPropio+this.mueblesPropio+this.vehiculosPropio);
-    this.totalInversion=(this.maquinariaInversion+this.mueblesInversion+this.vehiculosInversion);
-    this.totalCredito=(this.activoCredito+this.totalPropio+this.totalInversion+this.totalCredito);
+    this.totalPropio=(this.maquinariaPropio+this.mueblesPropio+this.vehiculosPropio+this.activoPropio);
+    this.totalInversion=(this.maquinariaInversion+this.mueblesInversion+this.vehiculosInversion+this.activoInvesion);
+    this.totalCredito=(this.totalInversion-this.totalPropio);
   }
 
 }

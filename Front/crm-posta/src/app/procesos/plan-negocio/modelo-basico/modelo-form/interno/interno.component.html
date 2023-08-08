@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="!idVer1">
     <div class="col-2">
         <app-client-details></app-client-details>
     </div>
@@ -9,57 +9,57 @@
                 <div style="flex-basis: 100%;" class="mt-3">
                     <div class="form-group">
                         <label for="">Público Objetivo: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.publicoObjetivo"  class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.publicoObjetivo"  class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks1"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Actividad Principal de la Empresa: </label>
-                        <textarea [(ngModel)]="internalExternalAnalysis.actividadPrincipal"  class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea [(ngModel)]="internalExternalAnalysis.actividadPrincipal"  class="form-control" id="exampleFormControlTextarea2" rows="2" name="remarks2"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label   for="">Propuesta de Valor: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.propuestaValor"  class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.propuestaValor"  class="form-control" id="exampleFormControlTextarea3" rows="2" name="remarks3"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label  for="">Comercialización: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.comercializacion" class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.comercializacion" class="form-control" id="exampleFormControlTextarea4" rows="2" name="remarks4"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label  for="">Operación: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.operacion"  class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.operacion"  class="form-control" id="exampleFormControlTextarea5" rows="2" name="remarks5"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label  for="">Equipo de Trabajo: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.equipoTrabajo" class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.equipoTrabajo" class="form-control" id="exampleFormControlTextarea6" rows="2" name="remarks6"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label  for="">Competencias: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.competencias" class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.competencias" class="form-control" id="exampleFormControlTextarea7" rows="2" name="remarks7"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label  for="">Medio Digitales: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.mediosDigitales"  class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.mediosDigitales"  class="form-control" id="exampleFormControlTextarea8" rows="2" name="remarks8"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label  for="">Recursos Necesarios: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.recursosNecesarios"  class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.recursosNecesarios"  class="form-control" id="exampleFormControlTextarea9" rows="2" name="remarks9"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label  for="">Legal: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.legal"  class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.legal"  class="form-control" id="exampleFormControlTextarea10" rows="2" name="remarks10"
                             placeholder=""></textarea>
                     </div>
                     <div class="form-group">
                         <label  for="">Fuentes de Financiación: </label>
-                        <textarea  [(ngModel)]="internalExternalAnalysis.fuenteFinanciacion" class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        <textarea  [(ngModel)]="internalExternalAnalysis.fuenteFinanciacion" class="form-control" id="exampleFormControlTextarea11" rows="2" name="remarks11"
                             placeholder=""></textarea>
                     </div>
 
@@ -67,9 +67,84 @@
             </form>
         </div>
         <div class="form-group mt-3">
-            <button (click)="guardarYsalir()" class="btn">Guardar</button>
-            <button (click)="guardar()"  class="btn">Guardar y Continuar</button>
+            <button *ngIf="internalExternalAnalysis.id" (click)="editarYsalir()" class="btn">Editar</button>
+
+          <button *ngIf="internalExternalAnalysis.id" (click)="editar()" class="btn">Editar y
+              Continuar</button>
+            <button *ngIf="!internalExternalAnalysis.id" (click)="guardarYsalir()" class="btn">Guardar</button>
+            <button *ngIf="!internalExternalAnalysis.id" (click)="guardar()"  class="btn">Guardar y Continuar</button>
             <button routerLink="/procesos"   class="btn">Cancelar</button>
+            <button [routerLink]="['/informacion/cliente/',cliente.id,'editar',proceso.id]" (click)="cerrarModalAsesoria()"
+                class="btn ">Volver</button>
         </div>
     </div>
+</div>
+
+
+<div class="col" *ngIf="idVer1">
+    <h4>Análisis Interno y Externo</h4>
+    <div>
+        <form action="">
+            <div style="flex-basis: 100%;" class="mt-3">
+                <div class="form-group">
+                    <label for="">Público Objetivo: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.publicoObjetivo"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Actividad Principal de la Empresa: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.actividadPrincipal"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label   for="">Propuesta de Valor: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.propuestaValor"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label  for="">Comercialización: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.comercializacion" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label  for="">Operación: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.operacion"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label  for="">Equipo de Trabajo: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.equipoTrabajo" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label  for="">Competencias: </label>
+                    <textarea  [(ngModel)]="internalExternalAnalysis.competencias" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label  for="">Medio Digitales: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.mediosDigitales"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label  for="">Recursos Necesarios: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.recursosNecesarios"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label  for="">Legal: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.legal"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label  for="">Fuentes de Financiación: </label>
+                    <textarea disabled [(ngModel)]="internalExternalAnalysis.fuenteFinanciacion" class="form-control" id="exampleFormControlTextarea1" rows="2" name="remarks"
+                        placeholder=""></textarea>
+                </div>
+
+            </div>
+            <button class="btn" (click)="imprimirInterno()">Imprimir</button>
+        </form>
+    </div>
+   
 </div>
