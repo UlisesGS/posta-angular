@@ -5,6 +5,7 @@ import { Client } from 'src/app/client/client';
 import { BusquedaService } from 'src/app/busqueda.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Usuario } from 'src/app/usuario/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-superior',
@@ -21,7 +22,9 @@ export class HeaderSuperiorComponent implements OnInit{
     constructor(public modalService:ModalService,
       private clienteService:ClientService,
        private busquedaService: BusquedaService,
-       public authService:AuthService){}
+       public authService:AuthService,
+       private ruta:Router,
+       ){}
 
     ngOnInit(): void {
       this.modal=false;
@@ -37,5 +40,8 @@ export class HeaderSuperiorComponent implements OnInit{
   //})
   //console.log(this.clientes);
   this.busquedaService.setTermino(this.termino);
+    }
+    panel(){
+this.ruta.navigate(['/panel/',this.usuario.id])
     }
 }

@@ -76,7 +76,10 @@ export class ClientComponent implements OnInit {
         ).subscribe(response => {
           this.clients = response.content as Client[];
           this.paginador = response;
-          this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+          if(this.usuario.role!='ADMIN'){
+            this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+          }
         });
 
     })
@@ -101,7 +104,10 @@ export class ClientComponent implements OnInit {
 
     this.serviceClient.buscarPorNombre(this.busquedaService.getTermino()).subscribe(data => {
       this.clients = data;
-      this.clients = this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+      if(this.usuario.role!='ADMIN'){
+        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+      }
       this.exite = false
 
     }, e => {
@@ -119,7 +125,10 @@ export class ClientComponent implements OnInit {
 
     this.serviceClient.buscarPorNombre(this.termino).subscribe(data => {
       this.clients = data;
-      this.clients = this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+      if(this.usuario.role!='ADMIN'){
+        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+      }
     })
     // en el html {{busquedaService.getTermino().length>0  && busquedaService.getTermino().length!=0?buscar(busquedaService.getTermino()):""}}
   }
@@ -142,7 +151,10 @@ export class ClientComponent implements OnInit {
 
           this.clients = response.content as Client[];
           this.paginador = response;
-          this.clients = this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+          if(this.usuario.role!='ADMIN'){
+            this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+          }
         });
 
     })
@@ -170,7 +182,10 @@ export class ClientComponent implements OnInit {
     console.log(this.genero);
     this.serviceClient.getClientsGender(0, this.genero).subscribe(data => {
       this.clients = data.content;
-      this.clients = this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+      if(this.usuario.role!='ADMIN'){
+        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+      }
     })
 
 
@@ -178,7 +193,10 @@ export class ClientComponent implements OnInit {
   public filtroPorType() {
     this.serviceClient.getClientType(0, this.type).subscribe(data => {
       this.clients = data.content;
-      this.clients = this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+      if(this.usuario.role!='ADMIN'){
+        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+      }
     })
   }
 
@@ -204,7 +222,10 @@ export class ClientComponent implements OnInit {
 
     this.serviceClient.getClientsMunicipiosPage(0, this.municipio).subscribe(data => {
       this.clients = data.content;
-      this.clients = this.clients.filter(c=>c.user?.id==this.usuario?.id);
+      if(this.usuario.role!='ADMIN'){
+        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+      }
       console.log(data);
 
     })

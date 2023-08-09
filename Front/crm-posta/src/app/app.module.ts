@@ -77,12 +77,15 @@ import { MensajesComponent } from './mensajes/mensajes.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PanelComponent } from './usuario/panel/panel.component';
 
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'clients', component: ClientComponent },
+  { path: 'panel/:id', component: PanelComponent },
+
   { path: 'clients/page/:page', component: ClientComponent },
   { path: 'clients/form/businessman', component: FormClientComponent },
   { path: 'clients/form/entrepreneur', component: FormEntrepreneurComponent },
@@ -98,7 +101,7 @@ const routes: Routes = [
   { path: 'municipios', component: MunicipioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'main', component: MainComponent },
-  
+
   { path: 'asesorias', component: AsesoriaListComponent },
   { path: 'procesos', component: ProcesoListarComponent },
   { path: 'puntajeAutoevaluacion/cliente/:id', component: VerPuntajeComponent },
@@ -221,7 +224,7 @@ const routes: Routes = [
     MainComponent,
     HeaderSuperiorComponent,
 
-    
+
     AsesoriaListComponent,
     ProcesoListarComponent,
     AccionProcesosComponent,
@@ -269,8 +272,9 @@ const routes: Routes = [
     PlanAccionComponent,
     MensajesComponent,
     CalendarioComponent,
-    
-    
+    PanelComponent,
+
+
   ],
 
   imports: [
@@ -282,13 +286,13 @@ const routes: Routes = [
     CommonModule,
     FullCalendarModule,
     NgbModule,
-    
-    
-   
+
+
+
   ],
   providers: [
-   
-    
+
+
   ],
   bootstrap: [AppComponent]
 })
