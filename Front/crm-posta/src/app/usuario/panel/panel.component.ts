@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../usuario';
 import { UsuarioService } from './../usuario.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,7 +15,7 @@ export class PanelComponent implements OnInit {
   repita:string;
   condicion:boolean=false;
   usuario:Usuario= new Usuario();
-  constructor(private usuariosService:UsuarioService,private rutaParametro:ActivatedRoute){}
+  constructor(private ruta:Router, private usuariosService:UsuarioService,private rutaParametro:ActivatedRoute){}
   ngOnInit(): void {
 this.rutaParametro.paramMap.subscribe(p=>{
 let id = + p.get('id');
@@ -35,10 +35,19 @@ if(id){
   }
 cambiar(){
 if(this.actual== this.usuario.password && this.nueva==this.repita){
-  Swal.fire('Exito:', 'Contraseña cambiada con exito', 'success');
+  this.usuario.password= this.nueva;
+
   //poner el metodo del back para cambiar la contraseña
+  this.usuariosService.usuarioUpdate(this.usuario).subscribe(s=>{
+
+    Swal.fire('Exito:', 'Contraseña cambiada con exito', 'success');
+  })
+
 }else{
   Swal.fire('Error:', 'Contraseñas Incorrectas', 'error');
 }
+}
+inicio(){
+this.ruta.navigate(['/main'])
 }
 }
