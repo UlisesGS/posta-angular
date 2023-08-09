@@ -28,7 +28,7 @@ export class HeaderSuperiorComponent implements OnInit{
 
     ngOnInit(): void {
       this.modal=false;
-      this.usuario=this.authService.devolverUsuario()
+      this.usuario=JSON.parse(localStorage.getItem('usuario'))
     }
 
     abrirModalAsesoria():void{
@@ -42,6 +42,8 @@ export class HeaderSuperiorComponent implements OnInit{
   this.busquedaService.setTermino(this.termino);
     }
     panel(){
-this.ruta.navigate(['/panel/',this.usuario.id])
+      this.usuario=JSON.parse(localStorage.getItem('usuario'))
+
+this.ruta.navigate(['/panel/',this.usuario?.id])
     }
 }
