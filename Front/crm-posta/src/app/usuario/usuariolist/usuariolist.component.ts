@@ -54,7 +54,7 @@ export class UsuariolistComponent implements OnInit{
       this.usuarios=data;
 this.activo=data.active;
       console.log(data);
-      this.usuarios = this.usuarios.filter(u=>u.id==this.usuario.id);
+    //  this.usuarios = this.usuarios.filter(u=>u.id==this.usuario.id);
 
 
     })

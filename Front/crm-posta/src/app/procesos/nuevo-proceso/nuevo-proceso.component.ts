@@ -117,6 +117,11 @@ export class NuevoProcesoComponent implements OnInit {
   public buscar() {
     this.clientService.buscarPorNombre(this.termino).subscribe((data) => {
       this.clientes = data;
+      if(this.usuario.role!='ADMIN'){
+        this.clientes= this.clientes.filter(f=>f.user.id==this.usuario.id);
+        
+
+      }
       //   this.clientes = this.clientes.filter((d) => d.type !== 'businessman');
     });
   }
@@ -126,12 +131,12 @@ export class NuevoProcesoComponent implements OnInit {
       this.condicion = true;
       /*if(this.client.type==='entrepreneur'){
         console.log('entrepreneur');
-      
-      
+
+
         this.condicion = true;
       }else{
-      
-      
+
+
         Swal.fire('Reparacion', 'Esta etapa se encuentra en reparacion', 'info');
         this.cerrarModalProceso();
       }*/
