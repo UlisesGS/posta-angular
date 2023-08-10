@@ -110,6 +110,8 @@ this.modal.abrirModalPocesos();
     this.modal.abrirModalAsesoria();
   }
   public filtroPortype(){
+    console.log(this.type);
+
     this.procesoService.procesoFindByType(this.type).subscribe(data=>{
       console.log(data);
       this.procesos=data;
