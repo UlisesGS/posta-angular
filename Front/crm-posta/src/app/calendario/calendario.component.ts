@@ -99,11 +99,11 @@ export class CalendarioComponent implements OnInit {
   // 
   getAllCalendariosByUserId() {
     this.usuario = this.authService.devolverUsuario();
-    this.calendarioService
-      .getAllCalendariosByUserId(this.usuario.id)
-      .subscribe((calendarios) => {
+    console.log(this.usuario);
+    this.calendarioService.getAllCalendariosByUserId(this.usuario.id).subscribe((calendarios) => {
         console.log('Calendarios del usuario:', calendarios);
         this.calendarOptions.events = calendarios.map((calendario) => {
+          
           const fechaHoraUTC = new Date(calendario.fecha);
           const fechaHoraZonaHoraria = utcToZonedTime(fechaHoraUTC, 'America/Bogota');
   
