@@ -163,7 +163,6 @@ const routes: Routes = [
   { path: 'estructuraCostos/cliente/:id/ver/:idVer', component: EstructuraCostosComponent },
   // plan basico
   { path: 'clients/:id/verBasico/:idVer1', component: ModeloListaComponent },
-
   { path: 'informacion/cliente/:id/ver/:idVer', component: InformacionComponent },
   { path: 'interno/cliente/:id/ver/:idVer', component: InternoComponent },
   { path: 'dofa/cliente/:id/ver/:idVer', component: DofaComponent },
@@ -179,7 +178,7 @@ const routes: Routes = [
   { path: 'empresario/resultados', component: ResultadosComponent },
   { path: 'empresario/resultados/cliente/:id', component: ResultadosComponent },
   { path: 'empresario/economico', component: EconomicoComponent },
-  { path: 'empresario/economico/cliente/:id', component: EconomicoComponent },
+  { path: 'empresario/economico/cliente/:id', component: EconomicoComponent }, 
 
   //para editar
   //Diagnostico Empresarial
@@ -194,6 +193,10 @@ const routes: Routes = [
   //para editar
   //Plan de Accion
   { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent },
+
+  //Para Ver
+  { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent },
+  { path: 'accion/empresario/:id/ver/:idVer', component: PlanAccionComponent },
 
   //Mensajes
   { path: 'mensajes', component: MensajesComponent },

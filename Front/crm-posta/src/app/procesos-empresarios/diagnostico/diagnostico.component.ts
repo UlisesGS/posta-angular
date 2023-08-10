@@ -21,6 +21,8 @@ import { ProcesoService } from 'src/app/procesos/proceso.service';
   styleUrls: ['./diagnostico.component.css']
 })
 export class DiagnosticoComponent implements OnInit {
+  idEditar:number;
+  idVer:number;
   total:number=0;
   //para llenar guardemos todo
   procesos: ProcessEmpresario = new ProcessEmpresario();
@@ -46,56 +48,64 @@ export class DiagnosticoComponent implements OnInit {
   usuario: Usuario = new Usuario();
   constructor(private clienteService: ClientService, private processEmpresarioService: ProcessEmpresarioService, private ruta: Router, private parametro: ActivatedRoute, private process:ProcesoService) { }
   ngOnInit(): void {
-   /* this.consolidado=true;
-    this.processEmpresarioService.procesoEmpresarioFindById(1).subscribe(data=>{
-      this.procesoEmpresario=data;
-    })*/
+  
     this.procesoEmpresario.diagnosticoEmpresarial= new DiagnosticoEmpresarial();
     this.procesoEmpresario.diagnosticoEmpresarial.diagnostico= new Diagnostico();
     this.proceso=new Process();
     this.proceso.processEmpresario = new ProcessEmpresario();
     this.proceso.processEmpresario.diagnosticoEmpresarial = new DiagnosticoEmpresarial();
     this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico= new  Diagnostico();
-    //console.log(this.concepto.length);
+    
     this.parametro.paramMap.subscribe(p => {
       let id = +p.get('id');
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
           this.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
-
-
           this.process.procesosFindAll().subscribe(pro => {
             console.log('holaaa');
             this.procesosSS=pro;
-            
-
             this.procesosSS.forEach(proceso=>{
-              
-              
               if(proceso?.selfAssessment?.client?.id==this.cliente.id){
-                this.proceso=proceso;
-                console.log('hola');
-                
-                
-                
-                
                 }
 
               })
             })
-          
-
-
-
           // para editar
-          let idEditar = +p.get('idEditar');
-          console.log('no entro al if');
+           this.idEditar = +p.get('idEditar');
+            //para ver
+            this.idVer = +p.get('idVer');
           
-          if(idEditar){
-            console.log('hhh');
+          if(this.idEditar){
+           
             
-            this.process.procesosFindById(idEditar).subscribe(data=>{
+            this.process.procesosFindById(this.idEditar).subscribe(data=>{
+              this.proceso=data;
+              this.procesoEmpresario=this.proceso.processEmpresario
+              this.diagnostico=this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico
+              this.procesoEmpresario.diagnosticoEmpresarial=this.proceso.processEmpresario.diagnosticoEmpresarial
+              this.procesoEmpresario.diagnosticoEmpresarial.diagnostico=this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico
+              this.concepto = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.conceptosGenerales
+              this.estrategicas = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionEstrategica
+              this.produc = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionProductividad
+              this.operacion = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionOperacional
+              this.calidada = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionCalidad
+              this.inovaciones = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionInnovacion
+              this.financieras = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionFinanciera
+              this.logisticas = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionLogistica
+              this.digitales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionDigital
+              this.ambientales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionAmbiental
+              this.intelectuales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionIntelectual
+              console.log(this.proceso);
+              
+              
+            })
+          }
+          if(this.idVer){
+            console.log(this.proceso);
+            
+            this.process.procesosFindById(this.idVer).subscribe(data=>{
+              
               this.proceso=data;
               this.procesoEmpresario=this.proceso.processEmpresario
               this.diagnostico=this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico

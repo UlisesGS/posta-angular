@@ -57,7 +57,8 @@ export class ModalDetallesComponent {
        ;
        break;
        case 'diagnostico':
-        this.ruta.navigate([`empresario/diagnostico/cliente/${this.proceso.processEmpresario.client.id}`]);
+        // 'diagnostico/empresario/:id/editar/:idEditar'
+        this.ruta.navigate([`diagnostico/empresario/${this.proceso.processEmpresario.client.id}/ver/${this.proceso.id}`]);
        ;
        break;
        case 'planAccion':

@@ -69,3 +69,16 @@
     color: white;
     margin-left: 10px;
 }
+.cell-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-close {
+  margin-right: 10px; /* Espacio entre el ícono y la variable */
+}
+
+.total-unitario {
+  text-align: right; /* Alineación a la derecha de la variable */
+}

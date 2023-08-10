@@ -26,15 +26,22 @@
                     </tr>
                         <tr *ngFor="let item of presupuestoVenta.estructuraMercado">
                             <td>{{item.producto}}</td>
-                            <td>{{item.cantidad}} <button (click)="sacarItem(item)" class="btn btn-danger btn-sm">X</button></td>
+                            <td>
+                                <div class="cell-content">
+                                    <a (click)="sacarItem(item)" class="btn-close"></a>
+                                    <span class="salaria-anual">
+                                        {{item.cantidad}}
+                                    </span>
+                                </div>
+                                 </td>
 
                         </tr>
 
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Total</th>
-                            <th>${{totalUnidadesRequeridas}}</th>
+                            <th style="text-align: left;">Total</th>
+                            <th style="text-align: right;">{{totalUnidadesRequeridas}}</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -62,7 +69,7 @@
                     <tr *ngFor="let pres of presupuestoVenta.estructuraMercado">
                         <td class="autorellenadas" style="width: 13%;">{{pres.producto}}</td>
 
-                        <td style="width: 15%; transform: scale(0.75);">
+                        <td style="width: 15%;">
                             <select [compareWith]="compararTipo"  [(ngModel)]="pres.tipo" class="form-select"
                             aria-label="Default select example" >
                             <option value="UNIDAD" >Unidad</option>
@@ -77,13 +84,26 @@
                             <option value="SERVICIO" >Servicio</option>
                             <option value="PRODUCTO" >Producto</option>
                             <option value="OTRO" >Otro</option>
-                        </select></td>
-                        <td style="width: 13%;"><input type="number"  (keyup)="llenarHoras()" [(ngModel)]="pres.horasOperario"></td>
-                        <td class="autorellenadas" step="0.01" style="width: 13%;">{{pres.unidadHoraHombre}}</td>
-                        <td class="autorellenadas" style="width: 13%;">{{pres.capacidadInstaladaPorOperario}}</td>
-                        <td style="width: 13%;"><input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion"></td>
-                        <td class="autorellenadas" style="width: 13%;">{{pres.capacidadInstaladaUnidades}}</td>
-                        <td class="autorellenadas" style="width: 13%;">{{pres.cantidad}}</td>
+                        </select>
+                    </td>
+                        <td style="width: 13%;">
+                            <select name="tipo" id="" (click)="llenarHoras()" class="form-select" [(ngModel)]="pres.horasOperario" style="width: 100%; margin: 0; padding: 5px;">
+                                <option value=2880>2280</option>
+                                <option value=1440>1440</option>
+                            </select>
+                            <!-- <input type="number"  (keyup)="llenarHoras()" [(ngModel)]="pres.horasOperario"> -->
+                        </td>
+                        <td class="autorellenadas" step="0.01" style="text-align: right;width: 13%;">{{pres.unidadHoraHombre?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).replace('$', '')}}</td>
+                        <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.capacidadInstaladaPorOperario}}</td>
+                        <td style="width: 13%;">
+                            <select name="tipo1" id="" (click)="llenarHoras()" class="form-select" [(ngModel)]="pres.tiempoDecicacion" style="width: 100%; margin: 0; padding: 5px;">
+                                <option value=100>100%</option>
+                                <option value=50>50%</option>
+                            </select>
+                            <!-- <input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion"> -->
+                        </td>
+                        <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.capacidadInstaladaUnidades/100}}</td>
+                        <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.cantidad}}</td>
 
                     </tr>
 
@@ -91,10 +111,10 @@
                 <tfoot>
                     <tr>
                         <th colspan="4">Total</th>
-                        <th>${{presupuestoVenta.totalCapacidadOperario}}</th>
+                        <th style="text-align: right;">{{presupuestoVenta.totalCapacidadOperario}}</th>
                         <th></th>
-                        <th>${{presupuestoVenta.totalCapacidadInstalada}}</th>
-                        <th>${{totalUnidadesRequeridas}}</th>
+                        <th style="text-align: right;">{{presupuestoVenta.totalCapacidadInstalada/100}}</th>
+                        <th style="text-align: right;">{{totalUnidadesRequeridas}}</th>
                     </tr>
                 </tfoot>
             </table>
@@ -117,9 +137,10 @@
                 <tbody>
                     <tr *ngFor="let pres of presupuestoVenta.estructuraMercado">
                         <td class="autorellenadas" style="width: 13%;">{{pres.producto}}</td>
-                        <td style="width: 13%;" class="autorellenadas">{{pres.cantidad}}</td>
-                        <td style="width: 13%;"><input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.precioUnitario"></td>
-                        <td style="width: 13%;" class="autorellenadas">{{pres.precioTotal}}</td>
+                        <td style="width: 13%;text-align: right;" class="autorellenadas">{{pres.cantidad}}</td>
+                        <td style="width: 13%;text-align: right;"><input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.precioUnitario"></td>
+                        <td style="width: 13%;text-align: right;" class="autorellenadas">{{pres.precioTotal?.toLocaleString('en-US', {
+                            style: 'currency', currency: 'USD' })}}</td>
 
                     </tr>
 
@@ -127,9 +148,11 @@
                 <tfoot>
                     <tr>
                         <th >Total</th>
-                        <th>${{presupuestoVenta.totalProductos}}</th>
-                        <th>${{presupuestoVenta.totalPrecioUnitario}}</th>
-                        <th>${{presupuestoVenta.totalTotal}}</th>
+                        <th style="text-align: right;">{{presupuestoVenta.totalProductos}}</th>
+                        <th style="text-align: right;">{{presupuestoVenta.totalPrecioUnitario?.toLocaleString('en-US', {
+                            style: 'currency', currency: 'USD' })}}</th>
+                        <th style="text-align: right;">{{presupuestoVenta.totalTotal?.toLocaleString('en-US', {
+                            style: 'currency', currency: 'USD' })}}</th>
 
                     </tr>
                 </tfoot>
@@ -138,7 +161,7 @@
         <div style="text-align: center; margin-top: 10px;">
             <h5>INCREMENTO EN % DEL PRECIO</h5>
         </div>
-        <div class="col-5 centered-col">
+        <div class="col-3 centered-col">
             <div class="table-container">
                 <table class="excel-table">
                     <thead style="text-align: center;font-size: small;">
@@ -152,22 +175,22 @@
                         <tr>
                             <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
                             <td style="width: 5%;"><input type="number" (change)="llenaripc1()" [(ngModel)]="businessPlanFinancial.ipc1"> </td>
-                            <td class="autorellenadas" style="width: 13%;">{{icp1}}</td>
+                            <td class="autorellenadas" style="width: 13%;text-align: right;">{{icp1}}%</td>
                         </tr>
                         <tr>
                             <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
                             <td style="width: 5%;"><input type="number" (change)="llenaripc2()" [(ngModel)]="businessPlanFinancial.ipc2"></td>
-                            <td class="autorellenadas" style="width: 13%;">{{icp2}}</td>
+                            <td class="autorellenadas" style="width: 13%;text-align: right;">{{icp2}}%</td>
                         </tr>
                         <tr>
                             <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
                             <td style="width: 5%;"><input type="number" (change)="llenaripc3()" [(ngModel)]="businessPlanFinancial.ipc3"></td>
-                            <td class="autorellenadas" style="width: 13%;">{{icp3}}</td>
+                            <td class="autorellenadas" style="width: 13%;text-align: right;">{{icp3}}%</td>
                         </tr>
                         <tr>
                             <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
                             <td style="width: 5%;"><input type="number" (change)="llenaripc4()" [(ngModel)]="businessPlanFinancial.ipc4"></td>
-                            <td class="autorellenadas" style="width: 13%;">{{icp4}}</td>
+                            <td class="autorellenadas" style="width: 13%;text-align: right;">{{icp4}}%</td>
                         </tr>
 
                     </tbody>
@@ -232,8 +255,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[0]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[0]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[0]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[0]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Febrero</td>
@@ -244,8 +268,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[1]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[1]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[1]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[1]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Marzo</td>
@@ -256,8 +281,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[2]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[2]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[2]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[2]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Abril</td>
@@ -268,8 +294,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[3]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[3]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[3]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[3]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Mayo</td>
@@ -280,8 +307,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[4]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[4]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[4]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[4]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Junio</td>
@@ -292,8 +320,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[5]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[5]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[5]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[5]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Julio</td>
@@ -304,8 +333,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[6]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[6]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[6]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[6]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Agosto</td>
@@ -316,8 +346,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[7]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[7]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[7]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[7]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Septiembre</td>
                                     <td  style="width: 10%; transform: scale(0.75);"><select [compareWith]="compararMunicipio"  (click)="llenarCiclicidad($event,'septiembre')"  [(ngModel)]="listaMes[8]" class="form-select"
@@ -327,8 +358,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[8]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[8]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[8]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[8]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Octubre</td>
@@ -339,8 +371,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[9]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[9]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[9]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[9]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Noviembre</td>
@@ -351,8 +384,9 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[10]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[10]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[10]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[10]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                                 <tr>
                                     <td class="autorellenadas" style="width: 13%;">Diciembre</td>
@@ -363,16 +397,18 @@
                                         <option value=5 >Normal</option>
                                         <option value=3 >Bajo</option>
                                     </select></td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[11]?.unidadesAnio}}</td>
-                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[11]?.ventasAnio}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[11]?.unidadesAnio?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
+                                    <td class="autorellenadas" style="width: 13%;">{{this.presupuestoVenta?.ciclicidadVentas[11]?.ventasAnio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>Total</th>
                                     <th>{{presupuestoVenta.totalCalificacion}}</th>
-                                    <th>total cantidad</th>
-                                    <th>{{presupuestoVenta.totalTotal}}</th>
+                                    <th>Total cantidad</th>
+                                    <th style="text-align: right;">{{presupuestoVenta.totalTotal?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
                                 </tr>
                             </tfoot>
                         </table>

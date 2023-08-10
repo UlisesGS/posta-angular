@@ -18,7 +18,7 @@
                                     <th>Aportes de Rescursos Porpios</th>
                                     <th>Inversión requerida</th>
                                     <th>Crédito Requerido</th>
-                                    <th>Accion</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,10 +34,20 @@
                             </tr>
                             <tr *ngFor="let i of planDeInversion.activoFijo">
                                 <td>{{i.tipo}}</td>
-                                <td>{{i.aportesPropios}}</td>
-                                <td>{{i.inversionRequerida}}</td>
-                                <td>{{i.creditoRequerido}}</td>
-                                <td><button (click)="eliminarActivo(i)" class="btn-close "></button></td>
+                                <td style="text-align: right;">{{i.aportesPropios?.toLocaleString('en-US', {
+                                    style: 'currency', currency: 'USD' })}}</td>
+                                <td style="text-align: right;">{{i.inversionRequerida?.toLocaleString('en-US', {
+                                    style: 'currency', currency: 'USD' })}}</td>
+                                <td>
+                                    <div class="cell-content">
+                                        <a (click)="eliminarActivo(i)" class="btn-close "></a>
+                                        <span class="salaria-anual">
+                                            {{i?.creditoRequerido?.toLocaleString('en-US', {
+                                                style: 'currency', currency: 'USD' })}}
+                                        </span>
+                                    </div>
+                                    </td>
+                                
                             </tr>
                                     <th colspan="4">Maquinaria y Equipamiento</th>
 
@@ -53,16 +63,30 @@
                                   </tr>
                                   <tr *ngFor="let i of planDeInversion.maquinariaEquipo">
                                       <td>{{i.tipo}}</td>
-                                      <td>{{i.aportesPropios}}</td>
-                                      <td>{{i.inversionRequerida}}</td>
-                                      <td>{{i.creditoRequerido}}</td>
-                                      <td><button (click)="eliminarMaquinaria(i)" class="btn-close "></button></td>
+                                      <td style="text-align: right;">{{i.aportesPropios?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
+                                      <td style="text-align: right;">{{i.inversionRequerida?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</td>
+                                      <td >
+                                        <div class="cell-content">
+                                            <a (click)="eliminarMaquinaria(i)" class="btn-close "></a>
+                                            <span class="salaria-anual">
+                                                {{i.creditoRequerido?.toLocaleString('en-US', {
+                                                    style: 'currency', currency: 'USD' })}}
+                                            </span>
+                                        </div>
+                                        
+                                        </td>
+                                      
                                   </tr>
                                 <tr>
                                     <th>Total Maquinaria</th>
-                                    <th>${{planDeInversion.maquinariaPropio}}</th>
-                                    <th>${{planDeInversion.maquinariaInversion}}</th>
-                                    <th>${{planDeInversion.maquinariaCredito}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.maquinariaPropio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.maquinariaInversion?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.maquinariaCredito?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Muebles y Enseres</th>
@@ -71,7 +95,8 @@
                                   <td><input type="text" [(ngModel)]="mueble.tipo"></td>
                                   <td><input type="number" step="any" [(ngModel)]="mueble.aportesPropios"></td>
                                   <td><input type="number" step="any" [(ngModel)]="mueble.inversionRequerida"></td>
-                                  <td class="autorellenadas">{{mueble.creditoRequerido}}</td>
+                                  <td class="autorellenadas">{{mueble.creditoRequerido?.toLocaleString('en-US', {
+                                    style: 'currency', currency: 'USD' })}}</td>
                               </tr>
                               <tr>
                                   <td colspan="4" class="add-row"><a (click)="agregarMuebles()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
@@ -79,16 +104,30 @@
                               </tr>
                               <tr *ngFor="let i of planDeInversion.mueblesEnseres">
                                   <td>{{i.tipo}}</td>
-                                  <td>{{i.aportesPropios}}</td>
-                                  <td>{{i.inversionRequerida}}</td>
-                                  <td>{{i.creditoRequerido}}</td>
-                                  <td><button (click)="eliminarMueble(i)" class="btn-close "></button></td>
+                                  <td style="text-align: right;">{{i.aportesPropios?.toLocaleString('en-US', {
+                                    style: 'currency', currency: 'USD' })}}</td>
+                                  <td style="text-align: right;">{{i.inversionRequerida?.toLocaleString('en-US', {
+                                    style: 'currency', currency: 'USD' })}}</td>
+                                  <td>
+                                    <div class="cell-content">
+                                        <a (click)="eliminarMueble(i)" class="btn-close "></a>
+                                        <span class="salaria-anual">
+                                            {{i.creditoRequerido?.toLocaleString('en-US', {
+                                                style: 'currency', currency: 'USD' })}}
+                                        </span>
+                                    </div>
+                                    
+                                    </td>
+                                  
                               </tr>
                                 <tr>
                                     <th>Total Muebles y Enseres</th>
-                                    <th>${{planDeInversion.mueblesPropio}}</th>
-                                    <th>${{planDeInversion.mueblesInversion}}</th>
-                                    <th>${{planDeInversion.muebleCredito}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.mueblesPropio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.mueblesInversion?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.muebleCredito?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Vehículos</th>
@@ -97,7 +136,8 @@
                                   <td><input type="text" [(ngModel)]="vehiculo.tipo"></td>
                                   <td><input type="number" step="any" [(ngModel)]="vehiculo.aportesPropios"></td>
                                   <td><input type="number" step="any" [(ngModel)]="vehiculo.inversionRequerida"></td>
-                                  <td class="autorellenadas">{{vehiculo.creditoRequerido}}</td>
+                                  <td class="autorellenadas">{{vehiculo.creditoRequerido?.toLocaleString('en-US', {
+                                    style: 'currency', currency: 'USD' })}}</td>
                               </tr>
                               <tr>
                                   <td colspan="4" class="add-row"><a (click)="agregarVehiculos()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
@@ -107,22 +147,37 @@
                                   <td>{{i.tipo}}</td>
                                   <td>{{i.aportesPropios}}</td>
                                   <td>{{i.inversionRequerida}}</td>
-                                  <td>{{i.creditoRequerido}}</td>
-                                  <td><button (click)="eliminarVehiculo(i)" class="btn-close "></button></td>
+                                  <td>
+                                    <div class="cell-content">
+                                        <a (click)="eliminarVehiculo(i)" class="btn-close "></a>
+                                        <span class="salaria-anual">
+                                            {{i.creditoRequerido?.toLocaleString('en-US', {
+                                                style: 'currency', currency: 'USD' })}}
+                                        </span>
+
+                                    </div>
+                                    </td>
+                                 
                               </tr>
                                 <tr>
                                     <th>Total Vehiculos</th>
-                                    <th>${{planDeInversion.vehiculosPropio}}</th>
-                                    <th>${{planDeInversion.vehiculosInversion}}</th>
-                                    <th>${{planDeInversion.vehiculosCredito}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.vehiculosPropio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.vehiculosInversion?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.vehiculosCredito?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th >Total Inversión Fija</th>
-                                    <th>${{planDeInversion.totalPropio}}</th>
-                                    <th>${{planDeInversion.totalInversion}}</th>
-                                    <th>${{planDeInversion.totalCredito}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.totalPropio?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.totalInversion?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
+                                    <th style="text-align: right;">{{planDeInversion.totalCredito?.toLocaleString('en-US', {
+                                        style: 'currency', currency: 'USD' })}}</th>
                                 </tr>
                             </tfoot>
                         </table>
