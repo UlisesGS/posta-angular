@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-2">
+    <div class="col-2" *ngIf="!idVer">
         <app-client-details></app-client-details>
     </div>
-    <div class="col-10">
+    <div class="col-10" *ngIf="!idVer">
         <h2 class="btn btn-disabled">Anális de Resultados</h2>
         <div class="col-8">
             <form action="">
@@ -10,141 +10,320 @@
                     <tbody>
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>1. GESTIÓN ESTRATÉGICA COMERCIAL Y DE MARKETING</strong> 
+                                <strong>1. GESTIÓN ESTRATÉGICA COMERCIAL Y DE MARKETING</strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionEstrategica" name="1" id="1" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionEstrategica"
+                                    name="1" id="1" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
-    
+
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>2. GESTIÓN DE LA PRODUCTIVIDAD Y DEL TALENTO HUMANO								
-                            </strong> 
+                                <strong>2. GESTIÓN DE LA PRODUCTIVIDAD Y DEL TALENTO HUMANO
+                                </strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionProductividad" name="2" id="2" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionProductividad"
+                                    name="2" id="2" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>3. GESTIÓN DE LA PRODUCTIVIDAD OPERACIONAL								
-                                    
-                            </strong> 
+                                <strong>3. GESTIÓN DE LA PRODUCTIVIDAD OPERACIONAL
+
+                                </strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionOperacional" name="3" id="3" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionOperacional"
+                                    name="3" id="3" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>4. GESTIÓN DE CALIDAD								
-                                    
-                            </strong> 
+                                <strong>4. GESTIÓN DE CALIDAD
+
+                                </strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionCalidad" name="4" id="4" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionCalidad"
+                                    name="4" id="4" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>5. GESTIÓN DE LA INNOVACIÓN 								
-                                    
-                            </strong> 
+                                <strong>5. GESTIÓN DE LA INNOVACIÓN
+
+                                </strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionInnovacion" name="5" id="5" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionInnovacion"
+                                    name="5" id="5" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>6. GESTIÓN FINANCIERA Y CONTABLE								
-                                    
-                            </strong> 
+                                <strong>6. GESTIÓN FINANCIERA Y CONTABLE
+
+                                </strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionFinanciera" name="6" id="6" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionFinanciera"
+                                    name="6" id="6" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>7. GESTIÓN LOGÍSTICA								
-                                    
-                            </strong> 
+                                <strong>7. GESTIÓN LOGÍSTICA
+
+                                </strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionLogistica" name="7" id="7" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionLogistica"
+                                    name="7" id="7" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>8. GESTIÓN DE TRANSFORMACIÓN DIGÍTAL								
-                                    
-                            </strong> 
+                                <strong>8. GESTIÓN DE TRANSFORMACIÓN DIGÍTAL
+
+                                </strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionDigital" name="8" id="8" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionDigital"
+                                    name="8" id="8" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>9. SOSTENIBILIDAD AMBIENTAL								
-                                    
-                            </strong> 
+                                <strong>9. SOSTENIBILIDAD AMBIENTAL
+
+                                </strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionAmbiental" name="9" id="9" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionAmbiental"
+                                    name="9" id="9" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <th style="font-size: 14px;">
-                               <strong>10. GESTIÓN PROPIEDAD INTELECTUAL E INDUSTRIAL								
-                                    
-                            </strong> 
+                                <strong>10. GESTIÓN PROPIEDAD INTELECTUAL E INDUSTRIAL
+
+                                </strong>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <textarea [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionIntelectual" name="10" id="10" class="form-control" rows="4"></textarea>
+                                <textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionIntelectual"
+                                    name="10" id="10" class="form-control" rows="4"></textarea>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </form>
         </div>
-        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="guardar()" class="btn">Guardar</button>
-        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="guardarYcontinuar()" class="btn">Guardar y Continuar</button>
-            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="editar()" class="btn">Editar</button>
-            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="editarYcontinuar()" class="btn">Editar y Continuar</button>
-        <button [routerLink]="['/procesos']"
-                class="btn ">Cancelar</button>
-                <button [routerLink]="['/diagnostico/empresario/',cliente.id,'editar',proceso.id]"
-                class="btn ">Volver</button>
+        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="guardar()"
+            class="btn">Guardar</button>
+        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+            (click)="guardarYcontinuar()" class="btn">Guardar y Continuar</button>
+        <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id" (click)="editar()"
+            class="btn">Editar</button>
+        <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+            (click)="editarYcontinuar()" class="btn">Editar y Continuar</button>
+        <button [routerLink]="['/procesos']" class="btn ">Cancelar</button>
+        <button [routerLink]="['/diagnostico/empresario/',cliente.id,'editar',proceso.id]" class="btn ">Volver</button>
+    </div>
+    <div class="col" *ngIf="idVer">
+        <h2 class="btn btn-disabled">Anális de Resultados</h2>
+        <div class="col">
+            <form action="">
+                <table class="table table-bordered" style="border: solid 1px;">
+                    <tbody>
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>1. GESTIÓN ESTRATÉGICA COMERCIAL Y DE MARKETING</strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionEstrategica"
+                                    name="1" id="1" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>2. GESTIÓN DE LA PRODUCTIVIDAD Y DEL TALENTO HUMANO
+                                </strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionProductividad"
+                                    name="2" id="2" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>3. GESTIÓN DE LA PRODUCTIVIDAD OPERACIONAL
+
+                                </strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionOperacional"
+                                    name="3" id="3" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>4. GESTIÓN DE CALIDAD
+
+                                </strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionCalidad"
+                                    name="4" id="4" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>5. GESTIÓN DE LA INNOVACIÓN
+
+                                </strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionInnovacion"
+                                    name="5" id="5" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>6. GESTIÓN FINANCIERA Y CONTABLE
+
+                                </strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionFinanciera"
+                                    name="6" id="6" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>7. GESTIÓN LOGÍSTICA
+
+                                </strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionLogistica"
+                                    name="7" id="7" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>8. GESTIÓN DE TRANSFORMACIÓN DIGÍTAL
+
+                                </strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionDigital"
+                                    name="8" id="8" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>9. SOSTENIBILIDAD AMBIENTAL
+
+                                </strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionAmbiental"
+                                    name="9" id="9" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="font-size: 14px;">
+                                <strong>10. GESTIÓN PROPIEDAD INTELECTUAL E INDUSTRIAL
+
+                                </strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionIntelectual"
+                                    name="10" id="10" class="form-control" rows="4"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
 </div>

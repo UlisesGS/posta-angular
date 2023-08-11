@@ -189,6 +189,7 @@ const routes: Routes = [
   { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent },
   { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent },
   { path: 'economico/empresario/:id/editar/:idEditar', component: EconomicoComponent },
+  
 
   //Plan de Accion
   { path: 'empresario/accion', component: PlanAccionComponent },
@@ -201,6 +202,7 @@ const routes: Routes = [
   //Para Ver
   { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent },
   { path: 'accion/empresario/:id/ver/:idVer', component: PlanAccionComponent },
+  { path: 'resultados/empresario/:id/ver/:idVer', component: ResultadosComponent },
 
   //Mensajes
   { path: 'mensajes', component: MensajesComponent },
