@@ -5810,19 +5810,11 @@
         </form>
       </div>
     </div>
-   
-  
-  </div>
-  <div class="row mt-5" >
     <app-economico [idVer]="idVer" class="col"></app-economico>
-
+    
+    <app-resultados [idVer]="idVer" class="col"></app-resultados>
+    <div class="form-group mt-3">
+      <button [routerLink]="['/clients/details/',cliente.id]"  class="btn">Volver</button>
   </div>
-  <div class="form-group mt-3">
-    <button [routerLink]="['/clients/details/',cliente.id]"  class="btn">Volver</button>
-</div>
-
-  
-
-
-
+  </div>
 </div>

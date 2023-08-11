@@ -2,7 +2,7 @@
     <div class="col-2" *ngIf="!idVer">
         <app-client-details></app-client-details>
     </div>
-    <div class="col-10">
+    <div class="col-10" *ngIf="!idVer">
         <h2 class="btn btn-disabled">Anális de Economico</h2>
         <div class="col-11">
             <form action="">
@@ -124,6 +124,123 @@
                 <button [routerLink]="['/procesos']" class="btn">Cancelar</button>
                 <button [routerLink]="['/resultados/empresario/',cliente.id,'editar',proceso.id]" class="btn ">Volver</button>
             </div>
+            
+        </div>
+    </div>
+    <div class="col" *ngIf="idVer">
+        <h2 class="btn btn-disabled">Anális de Economico</h2>
+        <div class="col">
+            <form action="">
+                <table class="table table-bordered" style="border: solid 1px;">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">INDICADOR</th>
+                            <th style="width: 10%;">MES 1</th>
+                            <th style="width: 10%;">MES 2</th>
+                            <th style="width: 10%;">MES 3</th>
+                            <th style="width: 10%;">MES 4</th>
+                            <th style="width: 10%;">MES 5</th>
+                            <th style="width: 40%;">OBSERVACIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width: 10%;">Ventas en el mes</td>
+
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador1.mes1" name="a1" id="a1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador1.mes2" name="a2" id="a2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador1.mes3" name="a3" id="a3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador1.mes4" name="a4" id="a4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador1.mes5" name="a5" id="a5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador1.observaciones" name="a6" id="a6" class="form-control" rows="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Aumento en ventas</td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador2.mes1" name="b1" id="b1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea  disabled [(ngModel)]="indicador2.mes2" name="b2" id="b2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador2.mes3" name="b3" id="b3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador2.mes4" name="b4" id="b4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador2.mes5" name="b5" id="b5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador2.observaciones" name="b6" id="b6" class="form-control" rows="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Empleos Formales</td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador3.mes1" name="c1" id="c1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador3.mes2" name="c3" id="c3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador3.mes3" name="c4" id="c4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador3.mes4" name="c5" id="c5" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador3.mes5" name="c5" id="c5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador3.observaciones" name="c6" id="c6" class="form-control" rows="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Empleos Informales</td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador4.mes1" name="d1" id="d1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador4.mes2" name="d2" id="d2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador4.mes3" name="d3" id="d3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador4.mes4" name="d4" id="d4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador4.mes5" name="d5" id="d5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador4.observaciones" name="d6" id="d6" class="form-control" rows="4" ></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Empleos Nuevos</td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador5.mes1" name="e1" id="e1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador5.mes2" name="e2" id="e2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador5.mes3" name="e3" id="e3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador5.mes4" name="e4" id="e4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador5.mes5" name="e5" id="e5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador5.observaciones" name="e6" id="e6" class="form-control" rows="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Empresa Expostando(SI-NO)</td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador6.mes1" name="f1" id="f1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador6.mes2" name="f2" id="f2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador6.mes3" name="f3" id="f3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador6.mes4" name="f4" id="f4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador6.mes5" name="f5" id="f5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador6.observaciones" name="f6" id="f6" class="form-control" rows="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Ventas por Exportación</td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador7.mes1" name="g1" id="g1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador7.mes2" name="g2" id="g2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador7.mes3" name="g3" id="g3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador7.mes4" name="g4" id="g4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador7.mes5" name="g5" id="g5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador7.observaciones" name="g6" id="g6" class="form-control" rows="4"></textarea></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Diversificación de Productos(SI-NO)</td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador8.mes1" name="h1" id="h1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador8.mes2" name="h2" id="h2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador8.mes3" name="h3" id="h3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador8.mes4" name="h4" id="h4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador8.mes5" name="h5" id="h5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador8.observaciones" name="h6" id="h6" class="form-control" rows="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Apertura de Nuevos Mercados(SI-NO)</td>
+
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador9.mes1" name="i1" id="i1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador9.mes2" name="i2" id="i2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador9.mes3" name="i3" id="i3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador9.mes4" name="i4" id="i4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador9.mes5" name="i5" id="i5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador9.observaciones" name="i6" id="i6" class="form-control" rows="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Acceso a Otras Fuentes de Financiación(SI-NO)</td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador10.mes1" name="j1" id="j1" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador10.mes2" name="j2" id="j2" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador10.mes3" name="j3" id="j3" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador10.mes4" name="j4" id="j4" class="form-control" ></textarea></td>
+                            <td style="width: 10%;"><textarea disabled [(ngModel)]="indicador10.mes5" name="j5" id="j5" class="form-control" ></textarea></td>
+                            <td style="width: 30%;"><textarea disabled [(ngModel)]="indicador10.observaciones" name="j6" id="j6" class="form-control" rows="4"></textarea></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
             
         </div>
     </div>

@@ -18,8 +18,7 @@ import Swal from 'sweetalert2';
 export class EconomicoComponent {
   @Input()idVer:number;
 
-  procesoEmpresario: ProcessEmpresario = new ProcessEmpresario()
-  //procesos:ProcessEmpresario[]=[];
+  procesoEmpresario: ProcessEmpresario = new ProcessEmpresario()//procesos:ProcessEmpresario[]=[];
   cliente: Client = new Client();
   procesos: Process[] = [];
   proceso: Process = new Process();
@@ -43,33 +42,19 @@ export class EconomicoComponent {
     private router: Router,
   ) { }
   ngOnInit(): void {
-    console.log(this.idVer);
-    
-    //this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados.
     this.ruta.paramMap.subscribe(parametro => {
       let id = + parametro.get('id')
       this.clienteServicio.getClient(id).subscribe(clien => {
         this.cliente = clien;
         this.process.procesosFindAll().subscribe(data => {
           this.procesos = data;
-
           this.procesos.forEach(pr => {
-            console.log(pr);
-
-
             if (pr.processEmpresario?.client?.id == this.cliente.id) {
-              console.log(pr);
-
-              this.proceso = pr
-
               // para editar
               let idEditar = +parametro.get('idEditar');
-              console.log('no entro al if');
-
               if (idEditar) {
                 this.process.procesosFindById(idEditar).subscribe(data => {
                   this.proceso = data;
-
                   this.indicador1=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventasMes;
                   this.indicador2=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aumentoVentas;
                   this.indicador3=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosFormales;
@@ -80,14 +65,11 @@ export class EconomicoComponent {
                   this.indicador8=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.diversificacionProductos;
                   this.indicador9=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aperturaNuevosMercados;
                   this.indicador10=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.accesoOtrasFuentes;
-                 // console.log(this.proceso);
-
                 })
               }
               if (this.idVer) {
                 this.process.procesosFindById(this.idVer).subscribe(data => {
                   this.proceso = data;
-
                   this.indicador1=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventasMes;
                   this.indicador2=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aumentoVentas;
                   this.indicador3=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosFormales;
@@ -98,18 +80,10 @@ export class EconomicoComponent {
                   this.indicador8=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.diversificacionProductos;
                   this.indicador9=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aperturaNuevosMercados;
                   this.indicador10=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.accesoOtrasFuentes;
-                 // console.log(this.proceso);
-
                 })
               }
             }
           })
-
-
-
-
-
-
         })
       })
     })
@@ -128,10 +102,8 @@ export class EconomicoComponent {
     //sino todo lo que sigue
     this.analisisEconomico.diversificacionProductos = this.indicador8;
     this.analisisEconomico.aperturaNuevosMercados = this.indicador9;
-    this.analisisEconomico.accesoOtrasFuentes = this.indicador10;
-    console.log(this.analisisEconomico);
-    this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico = this.analisisEconomico;
-    console.log(this.proceso);
+    this.analisisEconomico.accesoOtrasFuentes = this.indicador10;console.log(this.analisisEconomico);
+    this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico = this.analisisEconomico; console.log(this.proceso);
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => {
       // this.proceso = data;
       this.proceso.estado = 'Economico';
@@ -154,10 +126,8 @@ export class EconomicoComponent {
     //sino todo lo que sigue
     this.analisisEconomico.diversificacionProductos = this.indicador8;
     this.analisisEconomico.aperturaNuevosMercados = this.indicador9;
-    this.analisisEconomico.accesoOtrasFuentes = this.indicador10;
-    console.log(this.analisisEconomico);
-    this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico = this.analisisEconomico;
-    console.log(this.proceso);
+    this.analisisEconomico.accesoOtrasFuentes = this.indicador10; console.log(this.analisisEconomico);
+    this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico = this.analisisEconomico;console.log(this.proceso);
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => {
       // this.proceso = data;
       this.proceso.estado = 'Economico';
@@ -171,8 +141,6 @@ export class EconomicoComponent {
 
 
   editar(){
-    console.log(this.proceso);
-
     this.procesoEmpresarioservice.updateProcesoEconomico(this.proceso).subscribe(data=>{
     })
     if(this.proceso.processEmpresario.planDeAccion){
@@ -184,8 +152,6 @@ export class EconomicoComponent {
 
 
   editarYsalir(){
-    console.log(this.proceso);
-
     this.procesoEmpresarioservice.updateProcesoEconomico(this.proceso).subscribe(data=>{
     })
     

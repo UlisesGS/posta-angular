@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProcessEmpresario } from '../process-empresario';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from 'src/app/client/client.service';
@@ -16,132 +16,93 @@ import Swal from 'sweetalert2';
   templateUrl: './resultados.component.html',
   styleUrls: ['./resultados.component.css']
 })
-export class ResultadosComponent implements OnInit{
-procesoEmpresario:ProcessEmpresario= new ProcessEmpresario()
-//procesos:ProcessEmpresario[]=[];
-cliente:Client= new Client();
-procesos:Process[]=[];
-proceso:Process = new Process();
+export class ResultadosComponent implements OnInit {
+  @Input()idVer:number;
+  procesoEmpresario: ProcessEmpresario = new ProcessEmpresario()
+  cliente: Client = new Client();
+  procesos: Process[] = [];
+  proceso: Process = new Process();
   constructor(private procesoEmpresarioservice: ProcessEmpresarioService,
-    private ruta:ActivatedRoute,
-    private clienteServicio:ClientService,
-    private process:ProcesoService,
-private router:Router,
-    ){}
+    private ruta: ActivatedRoute,
+    private clienteServicio: ClientService,
+    private process: ProcesoService,
+    private router: Router,
+  ) { }
   ngOnInit(): void {
-    //this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados.
-this.ruta.paramMap.subscribe(parametro=>{
-  let id = + parametro.get('id')
-  this.clienteServicio.getClient(id).subscribe(clien=>{
-    this.cliente= clien;
-    this.process.procesosFindAll().subscribe(data=>{
-      this.procesos= data;
-
-      this.procesos.forEach(pr=>{
-        console.log(pr);
-
-
-          if(pr.processEmpresario?.client?.id == this.cliente.id){
-            console.log(pr);
-
-              this.proceso=pr
-              this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados=new AnalisisResultados();
-
+    
+    this.ruta.paramMap.subscribe(parametro => {
+      let id = + parametro.get('id')
+      this.clienteServicio.getClient(id).subscribe(clien => {
+        this.cliente = clien;
+        this.process.procesosFindAll().subscribe(data => {
+          this.procesos = data;
+          this.procesos.forEach(pr => {
+            if (pr.processEmpresario?.client?.id == this.cliente.id) {
+              this.proceso = pr
+              this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados = new AnalisisResultados();
               // para editar
               let idEditar = +parametro.get('idEditar');
-              console.log('no entro al if');
-
-              if(idEditar){
-                this.proceso= new Process()
-                this.proceso.processEmpresario= new ProcessEmpresario();
-                this.proceso.processEmpresario.diagnosticoEmpresarial= new DiagnosticoEmpresarial();
-                this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados=new AnalisisResultados();
-
-                this.process.procesosFindById(idEditar).subscribe(data=>{
-                  this.proceso=data;
-
-
-               //   console.log(this.proceso);
-
+              if (idEditar) {
+                this.proceso = new Process()
+                this.proceso.processEmpresario = new ProcessEmpresario();
+                this.proceso.processEmpresario.diagnosticoEmpresarial = new DiagnosticoEmpresarial();
+                this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados = new AnalisisResultados();
+                this.process.procesosFindById(idEditar).subscribe(data => {
+                  this.proceso = data;
                 })
               }
-          }
-        })
-
-
-
-
-
-
+              //Para Ver
+              if (this.idVer) {
+                this.proceso = new Process()
+                this.proceso.processEmpresario = new ProcessEmpresario();
+                this.proceso.processEmpresario.diagnosticoEmpresarial = new DiagnosticoEmpresarial();
+                this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados = new AnalisisResultados();
+                this.process.procesosFindById(this.idVer).subscribe(data => {
+                  this.proceso = data;
+                })
+              }
+            }
+          })
         })
       })
     })
   }
-
-
-
-
-  guardar(){
-    this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data=>{
-      console.log(data);
-      this.proceso.estado='Resultados'
-
-      this.process.procesosUpdate(this.proceso).subscribe(dato=>{
-
+  guardar() {
+    this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => { console.log(data);
+      this.proceso.estado = 'Resultados'
+      this.process.procesosUpdate(this.proceso).subscribe(dato => {
       })
-
       this.router.navigate(['/procesos']);
       Swal.fire('Exito', 'Analisis Resultados creados con exito', 'success');
-
     })
-
-
-
   }
 
 
-  guardarYcontinuar(){
-    this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data=>{
-      console.log(data);
-      this.proceso.estado='Resultados'
-
-      this.process.procesosUpdate(this.proceso).subscribe(dato=>{
-
+  guardarYcontinuar() {
+    this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => { console.log(data);
+      this.proceso.estado = 'Resultados'
+      this.process.procesosUpdate(this.proceso).subscribe(dato => {
       })
-
-      this.router.navigate(['/empresario/economico/cliente/',this.cliente.id]);
-
-
+      this.router.navigate(['/empresario/economico/cliente/', this.cliente.id]);
     })
-
-
   }
 
-
-  editar(){
-    console.log(this.proceso);
-
-    this.procesoEmpresarioservice.updateProcesoResultado(this.proceso).subscribe(data=>{
-      console.log("editado");
-
+  editar() {
+    this.procesoEmpresarioservice.updateProcesoResultado(this.proceso).subscribe(data => {
     })
-    
-      this.router.navigate([`/procesos`])
-      Swal.fire('Exito', 'Analisis Resultados editados con exito', 'success');
+
+    this.router.navigate([`/procesos`])
+    Swal.fire('Exito', 'Analisis Resultados editados con exito', 'success');
   }
 
 
 
-  editarYcontinuar(){
-    console.log(this.proceso);
-
-    this.procesoEmpresarioservice.updateProcesoResultado(this.proceso).subscribe(data=>{
-      console.log("editado");
-
+  editarYcontinuar() {
+    this.procesoEmpresarioservice.updateProcesoResultado(this.proceso).subscribe(data => {
     })
-    if(this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico){
+    if (this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico) {
       this.router.navigate([`/economico/empresario/${this.cliente.id}/editar/${this.proceso.id}`])
-    }else{
+    } else {
       this.router.navigate(['/empresario/economico/cliente/', this.cliente.id])
     }
   }
