@@ -78,6 +78,7 @@ export class ActividadesClavesComponent {
 
   public guardar(){
     this.proceso.estado='Actividades Claves';
+    this.proceso.estadoAnteriorEmprendedor='Actividades Claves'
     console.log(this.proceso);
     this.proceso.canvasModel.keyActivities=this.keyActivities
     console.log(this.keyActivities);
@@ -97,6 +98,7 @@ export class ActividadesClavesComponent {
 
   public guardarYsalir(){
     this.proceso.estado='Actividades Claves';
+    this.proceso.estadoAnteriorEmprendedor='Actividades Claves'
     console.log(this.proceso);
     this.proceso.canvasModel.keyActivities=this.keyActivities
     console.log(this.keyActivities);

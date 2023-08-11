@@ -78,6 +78,7 @@ export class IngresosComponent implements OnInit{
   }
   public guardar(){
     this.proceso.estado='Ingresos';
+    this.proceso.estadoAnteriorEmprendedor='Ingresos'
     console.log(this.proceso);
     this.proceso.canvasModel.revenueStreams=this.revenueStreams
    this.procesoService.ingresosSave(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
@@ -94,6 +95,7 @@ export class IngresosComponent implements OnInit{
 
   public guardarYsalir(){
     this.proceso.estado='Ingresos';
+    this.proceso.estadoAnteriorEmprendedor='Ingresos'
     console.log(this.proceso);
     this.proceso.canvasModel.revenueStreams=this.revenueStreams
    this.procesoService.ingresosSave(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{

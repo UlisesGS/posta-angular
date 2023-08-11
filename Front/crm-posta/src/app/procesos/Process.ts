@@ -32,6 +32,8 @@ export class Process {
   actaCierre:string;
   impacto:string;
   processEmpresario:ProcessEmpresario;
+  estadoAnteriorEmprendedor:string;
+  estadoAnteriorEmpresario:string;
 
 
 }

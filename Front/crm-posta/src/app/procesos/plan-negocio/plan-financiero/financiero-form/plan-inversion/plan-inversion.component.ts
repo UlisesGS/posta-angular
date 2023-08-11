@@ -178,6 +178,7 @@ export class PlanInversionComponent implements OnInit {
 
 
     this.proceso.estado='Plan Financiero finalizado';
+    this.proceso.estadoAnteriorEmprendedor='Plan Financiero finalizado';
 
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
       console.log(data1);
@@ -207,6 +208,7 @@ export class PlanInversionComponent implements OnInit {
 
 
     this.proceso.estado='Plan Financiero finalizado';
+    this.proceso.estadoAnteriorEmprendedor='Plan Financiero finalizado';
 
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
       console.log(data1);

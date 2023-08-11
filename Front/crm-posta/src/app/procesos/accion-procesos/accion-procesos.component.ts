@@ -122,7 +122,9 @@ export class AccionProcesosComponent implements OnInit {
        break;
 
 
-
+       case 'iniciando2':
+        this.ruta.navigate([`/empresario/diagnostico/cliente/${this.proceso.processEmpresario.client.id}`])
+       break;
        case 'Diagnostico':
         this.ruta.navigate([`/empresario/resultados/cliente/${this.proceso.processEmpresario.client.id}`])
        break;

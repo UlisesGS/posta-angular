@@ -41,6 +41,8 @@ export class ResultadosComponent implements OnInit {
               this.proceso = pr
               this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados = new AnalisisResultados();
               // para editar
+              console.log(this.proceso);
+              
               let idEditar = +parametro.get('idEditar');
               if (idEditar) {
                 this.proceso = new Process()
@@ -67,10 +69,12 @@ export class ResultadosComponent implements OnInit {
       })
     })
   }
+
   guardar() {
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => { console.log(data);
       this.proceso.estado = 'Resultados'
       this.process.procesosUpdate(this.proceso).subscribe(dato => {
+
       })
       this.router.navigate(['/procesos']);
       Swal.fire('Exito', 'Analisis Resultados creados con exito', 'success');
@@ -78,10 +82,12 @@ export class ResultadosComponent implements OnInit {
   }
 
 
+
   guardarYcontinuar() {
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => { console.log(data);
       this.proceso.estado = 'Resultados'
       this.process.procesosUpdate(this.proceso).subscribe(dato => {
+
       })
       this.router.navigate(['/empresario/economico/cliente/', this.cliente.id]);
     })
