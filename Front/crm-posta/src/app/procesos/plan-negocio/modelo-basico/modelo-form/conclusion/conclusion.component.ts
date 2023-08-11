@@ -33,7 +33,7 @@ export class ConclusionComponent {
     private procesoService:ProcesoService,
     private modeloBasicoService:ModeloBasicoService,
     private http:HttpClient,
-    private router:Router) { }
+    private router:Router) { } 
     ngOnInit(): void {
       this.rutaParametro.paramMap.subscribe(parametro => {
         let id = +parametro.get('id');

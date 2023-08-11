@@ -77,12 +77,15 @@ import { MensajesComponent } from './mensajes/mensajes.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PanelComponent } from './usuario/panel/panel.component';
 
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'clients', component: ClientComponent },
+  { path: 'panel/:id', component: PanelComponent },
+
   { path: 'clients/page/:page', component: ClientComponent },
   { path: 'clients/form/businessman', component: FormClientComponent },
   { path: 'clients/form/entrepreneur', component: FormEntrepreneurComponent },
@@ -102,7 +105,7 @@ const routes: Routes = [
   { path: 'municipios', component: MunicipioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'main', component: MainComponent },
-  
+
   { path: 'asesorias', component: AsesoriaListComponent },
   { path: 'procesos', component: ProcesoListarComponent },
   { path: 'puntajeAutoevaluacion/cliente/:id', component: VerPuntajeComponent },
@@ -164,7 +167,6 @@ const routes: Routes = [
   { path: 'estructuraCostos/cliente/:id/ver/:idVer', component: EstructuraCostosComponent },
   // plan basico
   { path: 'clients/:id/verBasico/:idVer1', component: ModeloListaComponent },
-
   { path: 'informacion/cliente/:id/ver/:idVer', component: InformacionComponent },
   { path: 'interno/cliente/:id/ver/:idVer', component: InternoComponent },
   { path: 'dofa/cliente/:id/ver/:idVer', component: DofaComponent },
@@ -180,7 +182,7 @@ const routes: Routes = [
   { path: 'empresario/resultados', component: ResultadosComponent },
   { path: 'empresario/resultados/cliente/:id', component: ResultadosComponent },
   { path: 'empresario/economico', component: EconomicoComponent },
-  { path: 'empresario/economico/cliente/:id', component: EconomicoComponent },
+  { path: 'empresario/economico/cliente/:id', component: EconomicoComponent }, 
 
   //para editar
   //Diagnostico Empresarial
@@ -195,6 +197,10 @@ const routes: Routes = [
   //para editar
   //Plan de Accion
   { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent },
+
+  //Para Ver
+  { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent },
+  { path: 'accion/empresario/:id/ver/:idVer', component: PlanAccionComponent },
 
   //Mensajes
   { path: 'mensajes', component: MensajesComponent },
@@ -225,7 +231,7 @@ const routes: Routes = [
     MainComponent,
     HeaderSuperiorComponent,
 
-    
+
     AsesoriaListComponent,
     ProcesoListarComponent,
     AccionProcesosComponent,
@@ -273,8 +279,9 @@ const routes: Routes = [
     PlanAccionComponent,
     MensajesComponent,
     CalendarioComponent,
-    
-    
+    PanelComponent,
+
+
   ],
 
   imports: [
@@ -286,13 +293,13 @@ const routes: Routes = [
     CommonModule,
     FullCalendarModule,
     NgbModule,
-    
-    
-   
+
+
+
   ],
   providers: [
-   
-    
+
+
   ],
   bootstrap: [AppComponent]
 })

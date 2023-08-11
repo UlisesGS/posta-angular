@@ -25,9 +25,9 @@ export class FormClientComponent implements OnInit {
   proceso:Process=new Process();
   procesos:Process[]=[];
   ciiu:Ciiu[]=[];
+
   idEditar:number
-  
-  
+
 
   constructor(private service: ClientService
     , private router: Router
@@ -47,14 +47,14 @@ export class FormClientComponent implements OnInit {
     this.service.getCiiu().subscribe(data=>{
       this.ciiu=data;
       console.log(data);
-      
+
     })
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
       if (id) {
         this.service.getClient(id).subscribe(data => {
-          
-          
+
+
           this.empresario = data;
           console.log(this.empresario);
           //this.empresario.municipio=data.municipio;
@@ -113,7 +113,7 @@ export class FormClientComponent implements OnInit {
   public editar() {
     console.log(this.empresario);
     this.empresario.type="businessman";
-    
+
 
     this.service.updateBusinessman(this.empresario).subscribe(data => {
       
@@ -166,12 +166,12 @@ export class FormClientComponent implements OnInit {
 
 
   public cambiarTipo() {
-    
+
     this.cliente.type="businessman";
     this.cliente.businessIdea=null;
     this.cliente.product=null;
     console.log(this.cliente);
-    
+
     this.service.updateBusinessman(this.cliente).subscribe(data => {
       console.log(data);
       console.log(this.cliente);
@@ -202,7 +202,7 @@ export class FormClientComponent implements OnInit {
       Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
 
 
-      
+
 
 
 },e=>{

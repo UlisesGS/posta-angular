@@ -7,6 +7,7 @@ import { ProcesoService } from './../proceso.service';
 import { Process } from '../Process';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs';
+import { Usuario } from 'src/app/usuario/usuario';
 
 @Component({
   selector: 'app-proceso-listar',
@@ -14,6 +15,7 @@ import { tap } from 'rxjs';
   styleUrls: ['./proceso-listar.component.css']
 })
 export class ProcesoListarComponent implements OnInit {
+  usuario:Usuario= new Usuario();
   value:boolean;
   paginador:any;
   procesos:Process[]=[];
@@ -35,6 +37,9 @@ export class ProcesoListarComponent implements OnInit {
 
   }
   ngOnInit(): void {
+this.usuario= JSON.parse(localStorage.getItem('usuario'));
+
+
 this.clienteService.getClientsMunicipios().subscribe(data=>{
   //console.log(data);
 
@@ -85,6 +90,10 @@ this.modal.abrirModalPocesos();
   public todos(){
     this.procesoService.procesosFindAll().subscribe(data=>{
       this.procesos=data;
+      if(this.usuario.role!='ADMIN'){
+        this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
+      }
+
       console.log(this.procesos);
 
     })
@@ -101,17 +110,25 @@ this.modal.abrirModalPocesos();
     this.modal.abrirModalAsesoria();
   }
   public filtroPortype(){
+    console.log(this.type);
+
     this.procesoService.procesoFindByType(this.type).subscribe(data=>{
       console.log(data);
       this.procesos=data;
+      if(this.usuario.role!='ADMIN'){
+        this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
+      }
 
     })
   }
   public filtroPortermiando(){
-    console.log(this.terminado);
+
 
     this.procesoService.procesoFindByTermiando(this.terminado).subscribe(data=>{
       this.procesos=data;
+      if(this.usuario.role!='ADMIN'){
+        this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
+      }
 
     })
   }
@@ -120,6 +137,9 @@ this.modal.abrirModalPocesos();
 
     this.procesoService.procesoFindByEstado(this.estado).subscribe(data=>{
       this.procesos=data;
+      if(this.usuario.role!='ADMIN'){
+        this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
+      }
 
     })
   }
@@ -128,7 +148,9 @@ this.modal.abrirModalPocesos();
 
     this.procesoService.procesoFindByNombre(this.termino).subscribe(data=>{
       this.procesos=data;
-
+      if(this.usuario.role!='ADMIN'){
+        this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
+      }
     })
   }
 
@@ -152,6 +174,9 @@ this.modal.abrirModalPocesos();
         this.procesos = response.content as Process[];
         this.paginador = response;
         console.log(this.procesos);
+        if(this.usuario.role!='ADMIN'){
+          this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
+        }
 
       });
 

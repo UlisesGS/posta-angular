@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProcessEmpresario } from '../process-empresario';
 import { Client } from 'src/app/client/client';
 import { Process } from 'src/app/procesos/Process';
@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./economico.component.css']
 })
 export class EconomicoComponent {
-
+  @Input()idVer:number;
 
   procesoEmpresario: ProcessEmpresario = new ProcessEmpresario()
   //procesos:ProcessEmpresario[]=[];
@@ -43,6 +43,8 @@ export class EconomicoComponent {
     private router: Router,
   ) { }
   ngOnInit(): void {
+    console.log(this.idVer);
+    
     //this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados.
     this.ruta.paramMap.subscribe(parametro => {
       let id = + parametro.get('id')
@@ -66,6 +68,24 @@ export class EconomicoComponent {
 
               if (idEditar) {
                 this.process.procesosFindById(idEditar).subscribe(data => {
+                  this.proceso = data;
+
+                  this.indicador1=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventasMes;
+                  this.indicador2=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aumentoVentas;
+                  this.indicador3=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosFormales;
+                  this.indicador4=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosInformales;
+                  this.indicador5=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosNuevos;
+                  this.indicador6=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empresaExportando;
+                  this.indicador7=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventassExportacion;
+                  this.indicador8=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.diversificacionProductos;
+                  this.indicador9=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aperturaNuevosMercados;
+                  this.indicador10=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.accesoOtrasFuentes;
+                 // console.log(this.proceso);
+
+                })
+              }
+              if (this.idVer) {
+                this.process.procesosFindById(this.idVer).subscribe(data => {
                   this.proceso = data;
 
                   this.indicador1=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventasMes;

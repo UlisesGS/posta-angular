@@ -50,6 +50,8 @@ export class PresupuestoGastoComponent {
   ) {}
 
   ngOnInit(): void {
+
+    
     this.rutaParametro.paramMap.subscribe((parametro) => {
       let id = +parametro.get('id');
       this.idEditar = +parametro.get('idEditar');

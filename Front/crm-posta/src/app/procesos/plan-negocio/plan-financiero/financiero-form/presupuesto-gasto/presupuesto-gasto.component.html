@@ -3,9 +3,9 @@
         <app-client-details></app-client-details>
     </div>
     <div class="col-10">
-        <h4>Presupuesto de Compras</h4>
+        <h4>Presupuesto de Costos y Gastos</h4>
         <div class="centered-col">
-            <h5 class="centered-heading">Consumo Materia Prima por Producto</h5>
+            <h5 class="centered-heading">Requerimientos de Personal</h5>
         </div>
         <div class="row">
             <div class="col-4">
@@ -21,67 +21,108 @@
                                         <th>Cargo</th>
                                         <th>Salario Mensual $</th>
                                         <th>Salario Año 1</th>
-                                        <th>Accion</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr >
+                                    <tr>
                                         <td><input type="text" [(ngModel)]="materia1.cargo"></td>
                                         <td><input type="number" step="any" [(ngModel)]="materia1.salarioMensual"></td>
                                         <td class="autorellenadas">{{materia1.salariaAnual}}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3" class="add-row"><a (click)="agregarFila()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        <td colspan="3" class="add-row"><a (click)="agregarFila()"
+                                                class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let i of operativo.personal">
+                                    <tr *ngFor="let i of operativo?.personal">
                                         <td>{{i.cargo}}</td>
-                                        <td>{{i.salarioMensual}}</td>
-                                        <td>{{i.salariaAnual}}</td>
-                                        <td><button (click)="sacarOperativo(i)" class="btn-close "></button></td>
+                                        <td style="text-align: right;">
+
+                                            {{i?.salarioMensual?.toLocaleString('en-US', { style: 'currency', currency:
+                                            'USD' })}}
+
+                                        </td>
+                                        <td>
+                                            <div class="cell-content">
+                                                <a (click)="sacarOperativo(i)" class="btn-close"></a>
+                                                <span class="salaria-anual">{{i?.salariaAnual?.toLocaleString('en-US', {
+                                                    style: 'currency', currency: 'USD' })}}</span>
+
+                                            </div>
+                                        </td>
+
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th >Subtotal</th>
-                                        <th>$ {{operativo.subTotal}}</th>
-                                        <th>$ {{operativo.subTotalAnual}}</th>
+                                        <th>Subtotal</th>
+                                        <th style="text-align: right;">{{operativo?.subTotal?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</th>
+                                        <th style="text-align: right;">
+                                            {{operativo?.subTotalAnual?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</th>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Parafiscales</td>
-                                        <td class="autorellenadas">$ {{operativo.parafiscales}}</td>
-                                        <td class="autorellenadas">$ {{operativo.totalParafiscales}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.parafiscales?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.totalParafiscales?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Seguridad Social</td>
-                                        <td class="autorellenadas">$ {{operativo.seguridadSocial}}</td>
-                                        <td class="autorellenadas">$ {{operativo.totalSeguridadSocial}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.seguridadSocial?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.totalSeguridadSocial?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Cesantías</td>
-                                        <td class="autorellenadas">$ {{operativo.cesantias}}</td>
-                                        <td class="autorellenadas">$ {{operativo.totalCesantias}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.cesantias?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.totalCesantias?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Interes sobre Censatías</td>
-                                        <td class="autorellenadas">$ {{operativo.interesesCesantias}}</td>
-                                        <td class="autorellenadas">$ {{operativo.totalInteresesCesantias}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.interesesCesantias?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.totalInteresesCesantias?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Prima de Servicios</td>
-                                        <td class="autorellenadas">$ {{operativo.primaServicios}}</td>
-                                        <td class="autorellenadas">$ {{operativo.totalPrimaServicios}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.primaServicios?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.totalPrimaServicios?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="autorellenadas" >Vacaciones</td>
-                                        <td class="autorellenadas">$ {{operativo.vacaciones}}</td>
-                                        <td class="autorellenadas">$ {{operativo.totalVacaciones}}</td>
+                                        <td class="autorellenadas">Vacaciones</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.vacaciones?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">
+                                            {{operativo?.totalVacaciones?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
-                                        <th >Total</th>
-                                        <th>$ {{operativo.totalMensual}}</th>
-                                        <th>$ {{operativo.totalAnual}}</th>
+                                        <th>Total</th>
+                                        <th style="text-align: right;">
+                                            {{operativo?.totalMensual?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</th>
+                                        <th style="text-align: right;"> {{operativo?.totalAnual?.toLocaleString('en-US',
+                                            { style: 'currency', currency: 'USD' })}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -102,7 +143,7 @@
                                         <th>Cargo</th>
                                         <th>Salario Mensual $</th>
                                         <th>Salario Año 1</th>
-                                        <th>Accion</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -112,56 +153,97 @@
                                         <td class="autorellenadas">{{materia2.salariaAnual}}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3" class="add-row"><a (click)="agregarFila1()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        <td colspan="3" class="add-row"><a (click)="agregarFila1()"
+                                                class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
                                     <tr *ngFor="let i of administrativo.personal">
                                         <td>{{i.cargo}}</td>
-                                        <td>{{i.salarioMensual}}</td>
-                                        <td>{{i.salariaAnual}}</td>
-                                        <td><button (click)="sacarAdministrativo(i)" class="btn-close "></button></td>
+                                        <td style="text-align: right;">
+                                            {{i?.salarioMensual?.toLocaleString('en-US', { style: 'currency', currency:
+                                            'USD' })}}</td>
+                                        <td>
+                                            <div class="cell-content">
+                                                <a (click)="sacarAdministrativo(i)" class="btn-close "></a>
+                                                <span class="salaria-anual"> {{i?.salariaAnual?.toLocaleString('en-US',
+                                                    { style: 'currency', currency: 'USD' })}}</span>
+                                            </div>
+
+
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th >Subtotal</th>
-                                        <th>$ {{administrativo.subTotal}}</th>
-                                        <th>$ {{administrativo.subTotalAnual}}</th>
+                                        <th>Subtotal</th>
+                                        <th style="text-align: right;">
+                                            {{administrativo?.subTotal?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</th>
+                                        <th style="text-align: right;">
+                                            {{administrativo?.subTotalAnual?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</th>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Parafiscales</td>
-                                        <td class="autorellenadas">$ {{administrativo.parafiscales}}</td>
-                                        <td class="autorellenadas">$ {{administrativo.totalParafiscales}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.totalParafiscales?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.totalParafiscales?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Seguridad Social</td>
-                                        <td class="autorellenadas">$ {{administrativo.seguridadSocial}}</td>
-                                        <td class="autorellenadas">$ {{administrativo.totalSeguridadSocial}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.seguridadSocial?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.totalSeguridadSocial?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Cesantías</td>
-                                        <td class="autorellenadas">$ {{administrativo.cesantias}}</td>
-                                        <td class="autorellenadas">$ {{administrativo.totalCesantias}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.cesantias?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.totalCesantias?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Interes sobre Censatías</td>
-                                        <td class="autorellenadas">$ {{administrativo.interesesCesantias}}</td>
-                                        <td class="autorellenadas">$ {{administrativo.totalInteresesCesantias}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.interesesCesantias?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.totalInteresesCesantias?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Prima de Servicios</td>
-                                        <td class="autorellenadas">$ {{administrativo.primaServicios}}</td>
-                                        <td class="autorellenadas">$ {{administrativo.totalPrimaServicios}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.primaServicios?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.totalPrimaServicios?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="autorellenadas" >Vacaciones</td>
-                                        <td class="autorellenadas">$ {{administrativo.vacaciones}}</td>
-                                        <td class="autorellenadas">$ {{administrativo.totalVacaciones}}</td>
+                                        <td class="autorellenadas">Vacaciones</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.vacaciones?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">$
+                                            {{administrativo?.totalVacaciones?.toLocaleString('en-US', { style:
+                                            'currency', currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
-                                        <th >Total</th>
-                                        <th>$ {{administrativo.totalMensual}}</th>
-                                        <th>$ {{administrativo.totalAnual}}</th>
+                                        <th>Total</th>
+                                        <th style="text-align: right;">
+                                            {{administrativo?.totalMensual?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</th>
+                                        <th style="text-align: right;">
+                                            {{administrativo?.totalAnual?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -182,7 +264,7 @@
                                         <th>Cargo</th>
                                         <th>Salario Mensual $</th>
                                         <th>Salario Año 1</th>
-                                        <th>Accion</th>
+                                        
 
                                     </tr>
                                 </thead>
@@ -193,56 +275,83 @@
                                         <td class="autorellenadas">{{materia3.salariaAnual}}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3" class="add-row"><a (click)="agregarFila2()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        <td colspan="3" class="add-row"><a (click)="agregarFila2()"
+                                                class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
                                     <tr *ngFor="let i of ventas.personal">
                                         <td>{{i.cargo}}</td>
-                                        <td>{{i.salarioMensual}}</td>
-                                        <td>{{i.salariaAnual}}</td>
-                                        <td><button (click)="sacarVentas(i)" class="btn-close "></button></td>
+                                        <td style="text-align: right;">{{i?.salarioMensual?.toLocaleString('en-US',
+                                            { style: 'currency', currency: 'USD' })}}</td>
+                                        <td>
+                                            <div class="cell-content">
+                                                <a (click)="sacarVentas(i)" class="btn-close "></a>
+                                                <span class="salaria-anual">
+                                                    {{i?.salariaAnual?.toLocaleString('en-US',
+                                                    { style: 'currency', currency: 'USD' })}}
+                                                </span>
+                                            </div>
+                                            
+                                        </td>
+                                        
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th >Subtotal</th>
-                                        <th>$ {{ventas.subTotal}}</th>
-                                        <th>$ {{ventas.subTotalAnual}}</th>
+                                        <th>Subtotal</th>
+                                        <th style="text-align: right;">{{ventas?.subTotal?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</th>
+                                        <th style="text-align: right;">{{ventas?.subTotalAnual?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</th>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Parafiscales</td>
-                                        <td class="autorellenadas">$ {{ventas.parafiscales}}</td>
-                                        <td class="autorellenadas">$ {{ventas.totalParafiscales}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.parafiscales?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.totalParafiscales?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Seguridad Social</td>
-                                        <td class="autorellenadas">$ {{ventas.seguridadSocial}}</td>
-                                        <td class="autorellenadas">$ {{ventas.totalSeguridadSocial}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.seguridadSocial?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.totalSeguridadSocial?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Cesantías</td>
-                                        <td class="autorellenadas">$ {{ventas.cesantias}}</td>
-                                        <td class="autorellenadas">$ {{ventas.totalCesantias}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.cesantias?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.totalCesantias?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Interes sobre Censatías</td>
-                                        <td class="autorellenadas">$ {{ventas.interesesCesantias}}</td>
-                                        <td class="autorellenadas">$ {{ventas.totalInteresesCesantias}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.interesesCesantias?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.totalInteresesCesantias?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
                                         <td class="autorellenadas">Prima de Servicios</td>
-                                        <td class="autorellenadas">$ {{ventas.primaServicios}}</td>
-                                        <td class="autorellenadas">$ {{ventas.totalPrimaServicios}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.primaServicios?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.totalPrimaServicios?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="autorellenadas" >Vacaciones</td>
-                                        <td class="autorellenadas">$ {{ventas.vacaciones}}</td>
-                                        <td class="autorellenadas">$ {{ventas.totalVacaciones}}</td>
+                                        <td class="autorellenadas">Vacaciones</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.vacaciones?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{ventas?.totalVacaciones?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</td>
                                     </tr>
                                     <tr>
-                                        <th >Total</th>
-                                        <th>$ {{ventas.totalMensual}}</th>
-                                        <th>$ {{ventas.totalAnual}}</th>
+                                        <th>Total</th>
+                                        <th style="text-align: right;">{{ventas?.totalMensual?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</th>
+                                        <th style="text-align: right;">{{ventas?.totalAnual?.toLocaleString('en-US', { style: 'currency',
+                                            currency: 'USD' })}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -253,7 +362,7 @@
         </div>
         <div class="row">
             <div class="centered-col">
-                <h5 class="centered-heading">Unidades a Producir</h5>
+                <h5 class="centered-heading"></h5>
             </div>
             <div class="col centered-col">
                 <div class="table-container">
@@ -267,33 +376,33 @@
                         <tbody style="text-align: center;font-size: small;">
                             <tr>
                                 <td class="autorellenadas">Parafiscales</td>
-                                <td class="autorellenadas">4,00% </td>
+                                <td class="autorellenadas" style="text-align: right;">4,00% </td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas">Seguridad Social</td>
-                                <td class="autorellenadas">20,50% </td>
+                                <td class="autorellenadas" style="text-align: right;">20,50% </td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas">Cesantías</td>
-                                <td class="autorellenadas">8,33% </td>
+                                <td class="autorellenadas" style="text-align: right;">8,33% </td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas">Interes sobre Censatías</td>
-                                <td class="autorellenadas">0,12% </td>
+                                <td class="autorellenadas" style="text-align: right;">0,12% </td>
                             </tr>
                             <tr>
                                 <td class="autorellenadas">Prima de Servicios</td>
-                                <td class="autorellenadas">8,33% </td>
+                                <td class="autorellenadas" style="text-align: right;">8,33% </td>
                             </tr>
                             <tr>
-                                <td class="autorellenadas" >Vacaciones</td>
-                                <td class="autorellenadas">4,17% </td>
+                                <td class="autorellenadas">Vacaciones</td>
+                                <td class="autorellenadas" style="text-align: right;">4,17% </td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>Total</th>
-                                <th>45,45%</th>
+                                <th style="text-align: right;">45,45%</th>
 
                             </tr>
                         </tfoot>
@@ -315,26 +424,34 @@
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;font-size: small;">
-                              <tr>
-                                <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
-                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc1}}</td>
-                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc1+100}}</td>
-                            </tr>
-                            <tr>
-                                <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
-                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc2}}</td>
-                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc2+100}}</td>
-                            </tr>
-                            <tr>
-                                <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
-                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc3}}</td>
-                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc3+100}}</td>
-                            </tr>
-                            <tr>
-                                <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
-                                <td class="autorellenadas" style="width: 5%;">{{proceso?.businessPlanFinancial?.ipc3}}</td>
-                                <td class="autorellenadas" style="width: 13%;">{{proceso?.businessPlanFinancial?.ipc3+100}}</td>
-                            </tr>
+                                <tr>
+                                    <td class="autorellenadas" style="width: 8%;">AÑO 2</td>
+                                    <td class="autorellenadas" style="width: 5%;">
+                                        {{proceso?.businessPlanFinancial?.ipc1}}%</td>
+                                    <td class="autorellenadas" style="width: 13%;">
+                                        {{proceso?.businessPlanFinancial?.ipc1+100}}%</td>
+                                </tr>
+                                <tr>
+                                    <td class="autorellenadas" style="width: 8%;"> AÑO 3</td>
+                                    <td class="autorellenadas" style="width: 5%;">
+                                        {{proceso?.businessPlanFinancial?.ipc2}}%</td>
+                                    <td class="autorellenadas" style="width: 13%;">
+                                        {{proceso?.businessPlanFinancial?.ipc2+100}}%</td>
+                                </tr>
+                                <tr>
+                                    <td class="autorellenadas" style="width: 8%;">AÑO 4</td>
+                                    <td class="autorellenadas" style="width: 5%;">
+                                        {{proceso?.businessPlanFinancial?.ipc3}}%</td>
+                                    <td class="autorellenadas" style="width: 13%;">
+                                        {{proceso?.businessPlanFinancial?.ipc3+100}}%</td>
+                                </tr>
+                                <tr>
+                                    <td class="autorellenadas" style="width: 8%;">AÑO 5</td>
+                                    <td class="autorellenadas" style="width: 5%;">
+                                        {{proceso?.businessPlanFinancial?.ipc3}}%</td>
+                                    <td class="autorellenadas" style="width: 13%;">
+                                        {{proceso?.businessPlanFinancial?.ipc3+100}}%</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -358,7 +475,6 @@
                                         <th>Concepto</th>
                                         <th>Mensual $</th>
                                         <th>Año 1</th>
-                                        <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -368,21 +484,30 @@
                                         <td class="autorellenadas">{{operativos.gastoAnual}}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3" class="add-row"><a (click)="agregarCostoOperativo()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        <td colspan="3" class="add-row"><a (click)="agregarCostoOperativo()"
+                                                class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
                                     <tr *ngFor="let i of operativo.costos">
                                         <td>{{i.concepto}}</td>
-                                        <td>{{i.gastoMensual}}</td>
-                                        <td>{{i.gastoAnual}}</td>
-                                        <td><button (click)="sacarOperativoCostos(i)" class="btn-close "></button></td>
+                                        <td style="text-align: right;">{{i?.gastoMensual?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</td>
+                                        <td>
+                                            <div class="cell-content">
+                                                <a (click)="sacarOperativoCostos(i)" class="btn-close "></a>
+                                                <span class="salaria-anual">{{i?.gastoAnual?.toLocaleString('en-US', {
+                                                    style: 'currency', currency: 'USD' })}}</span>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th >Subtotal</th>
-                                        <th>$ {{operativo.totalCostoMensual}}</th>
-                                        <th>$ {{operativo.totalCostoAnual}}</th>
+                                        <th>Subtotal</th>
+                                        <th style="text-align: right;">{{operativo?.totalCostoMensual?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</th>
+                                        <th style="text-align: right;">{{operativo?.totalCostoAnual?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -403,31 +528,43 @@
                                         <th>Concepto</th>
                                         <th>Mensual $</th>
                                         <th>Año 1</th>
-                                        <th>Accion</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td><input type="text" [(ngModel)]="administrativos.concepto"></td>
-                                        <td><input type="number" step="any" [(ngModel)]="administrativos.gastoMensual"></td>
+                                        <td><input type="number" step="any" [(ngModel)]="administrativos.gastoMensual">
+                                        </td>
                                         <td class="autorellenadas">{{administrativos.gastoAnual}}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3" class="add-row"><a (click)="agregarGastoAdministrativo()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        <td colspan="3" class="add-row"><a (click)="agregarGastoAdministrativo()"
+                                                class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let i of administrativo.costos">
-                                        <td>{{i.concepto}}</td>
-                                        <td>{{i.gastoMensual}}</td>
-                                        <td>{{i.gastoAnual}}</td>
-                                        <td><button (click)="sacarAdministrativoCostos(i)" class="btn-close "></button></td>
+                                    <tr *ngFor="let i of administrativo?.costos">
+                                        <td>{{i?.concepto}}</td>
+                                        <td style="text-align: right;">{{i.gastoMensual.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</td>
+                                        <td class="cell-content">
+                                            <a (click)="sacarAdministrativoCostos(i)" class="btn-close "></a>
+                                            <span class="salaria-anual">
+                                                {{i.gastoAnual?.toLocaleString('en-US', {
+                                                    style: 'currency', currency: 'USD' })}}
+                                            </span>
+                                            
+                                        </td>
+                                        
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th >Subtotal</th>
-                                        <th>$ {{administrativo.totalCostoMensual}}</th>
-                                        <th>$ {{administrativo.totalCostoAnual}}</th>
+                                        <th>Subtotal</th>
+                                        <th style="text-align: right;">{{administrativo?.totalCostoMensual?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</th>
+                                        <th style="text-align: right;">{{administrativo?.totalCostoAnual?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -448,7 +585,7 @@
                                         <th>Concepto</th>
                                         <th>Mensual $</th>
                                         <th>Año 1</th>
-                                        <th>Accion</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -459,21 +596,31 @@
 
                                     </tr>
                                     <tr>
-                                        <td colspan="3" class="add-row"><a (click)="agregarGastoVenta()"  class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                        <td colspan="3" class="add-row"><a (click)="agregarGastoVenta()"
+                                                class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
                                         </td>
                                     </tr>
                                     <tr *ngFor="let i of ventas.costos">
                                         <td>{{i.concepto}}</td>
-                                        <td>{{i.gastoMensual}}</td>
-                                        <td>{{i.gastoAnual}}</td>
-                                        <td><button (click)="sacarVentaCostos(i)" class="btn-close "></button></td>
+                                        <td style="text-align: right;">{{i?.gastoMensual?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</td>
+                                        <td class="cell-content">
+                                            <a (click)="sacarVentaCostos(i)" class="btn-close "></a>
+                                            <span class="salaria-anual">
+                                                {{i?.gastoAnual?.toLocaleString('en-US', {
+                                                    style: 'currency', currency: 'USD' })}}
+                                            </span>
+                                        </td>
+                                        
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th >Subtotal</th>
-                                        <th>$ {{ventas.totalCostoMensual}}</th>
-                                        <th>$ {{ventas.totalCostoAnual}}</th>
+                                        <th>Subtotal</th>
+                                        <th style="text-align: right;">{{ventas?.totalCostoMensual?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</th>
+                                        <th style="text-align: right;">{{ventas?.totalCostoAnual?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -484,13 +631,13 @@
 
         </div>
         <div class="form-group mt-3">
-          <button *ngIf="!idEditar" (click)="guardarYsalir()"  class="btn">Guardar</button>
-          <button *ngIf="!idEditar"(click)="guardar()" class="btn">Guardar y Continuar</button>
-          <button *ngIf="idEditar" (click)="editarYsalir()"  class="btn">Editar</button>
-          <button *ngIf="idEditar" (click)="editar()" class="btn">Editar y Continuar</button>
-            <button [routerLink]="['/compras/cliente/',cliente.id,'editar', proceso?.id]"  class="btn">Volver</button>
-          </div>
+            <button *ngIf="!idEditar" (click)="guardarYsalir()" class="btn">Guardar</button>
+            <button *ngIf="!idEditar" (click)="guardar()" class="btn">Guardar y Continuar</button>
+            <button *ngIf="idEditar" (click)="editarYsalir()" class="btn">Editar</button>
+            <button *ngIf="idEditar" (click)="editar()" class="btn">Editar y Continuar</button>
+            <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
+            <button [routerLink]="['/compras/cliente/',cliente.id,'editar', proceso?.id]" class="btn">Volver</button>
+        </div>
     </div>
-
 
 </div>

@@ -3,7 +3,8 @@ import { Usuario } from "../usuario/usuario";
 
 export class Calendario {
     id: number;
-    fecha: Date; 
+    fecha: Date | null = null;
+    
     titulo:string;
     contenido: string;
     usuario: Usuario;

@@ -5,7 +5,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-11">
       <div id="calendarContainer" class="mx-auto">
         <full-calendar [options]="calendarOptions"></full-calendar>
       </div>
@@ -34,6 +34,10 @@
         <input type="date" class="form-control" id="fecha" [(ngModel)]="nuevoEvento.fecha" name="fecha" required>
       </div>
       <div class="form-group">
+        <label for="hora">Hora:</label>
+        <input type="time" class="form-control" id="hora" [(ngModel)]="nuevaHora" name="hora" required>
+      </div>
+      <div class="form-group">
         <label for="contenido">Contenido:</label>
         <textarea class="form-control" id="contenido" [(ngModel)]="nuevoEvento.contenido" name="contenido" required></textarea>
       </div>
@@ -49,3 +53,6 @@
     </form>
   </div>
 </ng-template>
+
+
+

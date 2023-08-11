@@ -30,7 +30,6 @@ export class FormEntrepreneurComponent implements OnInit {
   idEditar:number
   proceso:Process=new Process();
   procesos:Process[]=[];
-  
 
   ngOnInit(): void {
     this.clientService.getClientsMunicipios().subscribe(data=>{
