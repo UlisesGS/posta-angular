@@ -547,6 +547,7 @@ compararTipo(){
 
   public guardar() {
     this.proceso.estado = 'Presupuesto Venta';
+    this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Venta';
     console.log(this.proceso);
 
     this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
@@ -571,6 +572,7 @@ compararTipo(){
   public guardarYsalir() {
 
     this.proceso.estado = 'Presupuesto Venta';
+    this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Venta';
     console.log(this.proceso);
 
     this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;

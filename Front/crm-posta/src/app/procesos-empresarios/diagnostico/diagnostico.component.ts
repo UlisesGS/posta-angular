@@ -189,6 +189,7 @@ continuar(){
       this.consolidado=true;
       //this.procesoEmpresario.estado = 'Diagnostico'
       this.proceso.estado= 'Diagnostico';
+      this.proceso.estadoAnteriorEmpresario= 'Diagnostico';
       this.process.procesosSave(this.proceso).subscribe(dato=>{
         console.log(dato);
 
@@ -236,6 +237,7 @@ continuar(){
       this.consolidado=true;
       //this.procesoEmpresario.estado = 'Diagnostico'
       this.proceso.estado= 'Diagnostico';
+      this.proceso.estadoAnteriorEmpresario= 'Diagnostico';
       this.process.procesosUpdate(this.proceso).subscribe(dato=>{
         console.log(dato);
 

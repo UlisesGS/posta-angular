@@ -548,7 +548,9 @@
         </div>
 
         <div class="form-group">
-            <button   (click)="guardarYsalir()" class="btn">Guardar</button>
+            <button  *ngIf="!proceso?.selfAssessment?.id && !proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="guardarYsalir()" class="btn">Guardar</button>
+            <button *ngIf="!proceso?.selfAssessment?.id && proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" class="btn" (click)="guardarProcesoEmpresario()">Guardar y Ver Totales 2</button>
+
             <!-- <button  (click)="guardar()" class="btn">Guardar y
                 Continuar</button> -->
             <button [routerLink]="['/procesos']" (click)="cerrarModalAsesoria()" class="btn">Cancelar</button>

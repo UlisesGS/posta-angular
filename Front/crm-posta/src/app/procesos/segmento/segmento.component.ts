@@ -93,6 +93,7 @@ export class SegmentoComponent implements OnInit {
   }
   public guardar() {
     this.proceso.estado = 'Segmento de Clientes';
+    this.proceso.estadoAnteriorEmprendedor = 'Segmento de Clientes';
     console.log(this.proceso);
     this.proceso.canvasModel.customerSegments = this.customerSegments
     this.procesoService.segmentoSave(this.proceso.canvasModel.customerSegments).subscribe(segmento => {
@@ -108,6 +109,7 @@ export class SegmentoComponent implements OnInit {
 
   public guardarYsalir() {
     this.proceso.estado = 'Segmento de Clientes';
+    this.proceso.estadoAnteriorEmprendedor = 'Segmento de Clientes';
     console.log(this.proceso);
     this.proceso.canvasModel.customerSegments = this.customerSegments
     this.procesoService.segmentoSave(this.proceso.canvasModel.customerSegments).subscribe(segmento => {

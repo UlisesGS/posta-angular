@@ -135,6 +135,7 @@ export class EconomicoComponent {
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => {
       // this.proceso = data;
       this.proceso.estado = 'Economico';
+      this.proceso.estadoAnteriorEmpresario = 'Economico';
       this.process.procesosUpdate(this.proceso).subscribe(p => {
         this.router.navigate(['/empresario/accion/cliente/', this.cliente.id])
       })
@@ -161,6 +162,7 @@ export class EconomicoComponent {
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => {
       // this.proceso = data;
       this.proceso.estado = 'Economico';
+      this.proceso.estadoAnteriorEmpresario = 'Economico';
       this.process.procesosUpdate(this.proceso).subscribe(p => {
         Swal.fire('Exito', 'Analisis Economico creado con exito', 'success');
         this.router.navigate(['/procesos'])

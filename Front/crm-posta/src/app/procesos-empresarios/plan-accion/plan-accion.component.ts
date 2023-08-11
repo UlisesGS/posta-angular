@@ -88,6 +88,7 @@ export class PlanAccionComponent {
 
    this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => {
       this.proceso.estado = 'Plan Accion';
+      this.proceso.estadoAnteriorEmpresario = 'Plan Accion';
       this.process.procesosUpdate(this.proceso).subscribe(p => {
         Swal.fire('Exito', 'El plan de Accion fue creado con exito', 'success');
         this.router.navigate(['/procesos'])

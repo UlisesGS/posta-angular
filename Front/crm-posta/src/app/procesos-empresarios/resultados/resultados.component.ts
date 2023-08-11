@@ -48,6 +48,8 @@ this.ruta.paramMap.subscribe(parametro=>{
               this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados=new AnalisisResultados();
 
               // para editar
+              console.log(this.proceso);
+              
               let idEditar = +parametro.get('idEditar');
               console.log('no entro al if');
 
@@ -85,6 +87,7 @@ this.ruta.paramMap.subscribe(parametro=>{
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data=>{
       console.log(data);
       this.proceso.estado='Resultados'
+      this.proceso.estadoAnteriorEmpresario='Resultados'
 
       this.process.procesosUpdate(this.proceso).subscribe(dato=>{
 
@@ -104,6 +107,7 @@ this.ruta.paramMap.subscribe(parametro=>{
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data=>{
       console.log(data);
       this.proceso.estado='Resultados'
+      this.proceso.estadoAnteriorEmpresario='Resultados'
 
       this.process.procesosUpdate(this.proceso).subscribe(dato=>{
 

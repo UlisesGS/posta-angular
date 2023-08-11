@@ -88,6 +88,7 @@ export class DofaComponent {
         this.businessPlan.dofaAnalisis=data;
         this.proceso.businessPlan.dofaAnalisis=data;
         this.proceso.estado='Analisis Dofa';
+        this.proceso.estadoAnteriorEmprendedor='Analisis Dofa';
         console.log(this.proceso);
 
         // en el proximo cambiar a put hdp
@@ -110,6 +111,7 @@ export class DofaComponent {
             this.businessPlan.dofaAnalisis=data;
             this.proceso.businessPlan.dofaAnalisis=data;
             this.proceso.estado='Analisis Dofa';
+            this.proceso.estadoAnteriorEmprendedor='Analisis Dofa';
             console.log(this.proceso);
             // en el proximo cambiar a put hdp
           //  console.log(this.businessPlan);

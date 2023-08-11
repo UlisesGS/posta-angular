@@ -97,6 +97,7 @@ export class InternoComponent {
         this.businessPlan.analisis=data;
         this.proceso.businessPlan.analisis=data;
         this.proceso.estado='Analisis Interno/Externo';
+        this.proceso.estadoAnteriorEmprendedor='Analisis Interno/Externo';
         console.log(this.proceso);
 
         // en el proximo cambiar a put hdp
@@ -119,6 +120,7 @@ export class InternoComponent {
             this.businessPlan.analisis=data;
             this.proceso.businessPlan.analisis=data;
             this.proceso.estado='Analisis Interno/Externo';
+            this.proceso.estadoAnteriorEmprendedor='Analisis Interno/Externo';
             console.log(this.proceso);
             // en el proximo cambiar a put hdp
           //  console.log(this.businessPlan);

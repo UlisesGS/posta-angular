@@ -137,6 +137,7 @@ export class EstructuraCostosComponent {
   guardarYSalir() {
     //this.proceso.terminado=true;
     this.proceso.estado = 'Estructura Costos';
+    this.proceso.estadoAnteriorEmprendedor= "Estructura Costos";
     this.costoEntidad.costosFijos = this.listaBackend2;
     this.costoEntidad.costosVariables = this.listaBackend;
     this.costoEntidad.totalVariable();
@@ -162,6 +163,7 @@ export class EstructuraCostosComponent {
  
   guardar() {
     this.proceso.estado = 'Estructura Costos';
+    this.proceso.estadoAnteriorEmprendedor= "Estructura Costos";
     this.costoEntidad.costosFijos = this.listaBackend2;
     this.costoEntidad.costosVariables = this.listaBackend;
     this.costoEntidad.totalVariable();
