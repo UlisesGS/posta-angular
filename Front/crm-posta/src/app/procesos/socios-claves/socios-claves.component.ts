@@ -78,6 +78,7 @@ export class SociosClavesComponent {
 
   public guardar(){
     this.proceso.estado='Socios Claves';
+    this.proceso.estadoAnteriorEmprendedor='Socios Claves';
     console.log(this.proceso);
     this.proceso.canvasModel.keyPartners=this.keyPartners
 
@@ -97,6 +98,7 @@ export class SociosClavesComponent {
 
   public guardarYsalir(){
     this.proceso.estado='Socios Claves';
+    this.proceso.estadoAnteriorEmprendedor='Socios Claves';
     console.log(this.proceso);
     this.proceso.canvasModel.keyPartners=this.keyPartners
 

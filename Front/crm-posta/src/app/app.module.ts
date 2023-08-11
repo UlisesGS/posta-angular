@@ -88,6 +88,10 @@ const routes: Routes = [
   { path: 'clients/form/entrepreneur', component: FormEntrepreneurComponent },
   { path: 'clients/form/editar/businessman/:id', component: FormClientComponent },
   { path: 'clients/form/editar/entrepreneur/:id', component: FormEntrepreneurComponent },
+  
+  { path: 'clients/form/editar/businessman/:id/:idEditar', component: FormClientComponent },
+  { path: 'clients/form/editar/entrepreneur/:id/:idEditar', component: FormEntrepreneurComponent },
+
   { path: 'clients/registrar', component: RegistrarComponent },
   { path: 'autoevaluacion/cliente/:id', component: AutoevaluacionComponent },
   { path: 'clients/details/:id', component: DetallesComponent },

@@ -8,6 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ModalService } from '../modal.service';
 import { Ciiu } from '../ciiu';
 import { AuthService } from './../../auth/auth.service';
+import { Process } from 'src/app/procesos/Process';
+import { ProcesoService } from 'src/app/procesos/proceso.service';
 
 @Component({
   selector: 'app-form-client',
@@ -20,7 +22,10 @@ export class FormClientComponent implements OnInit {
   cliente: Client = new Client();
   errores: any;
   enums: any;
+  proceso:Process=new Process();
+  procesos:Process[]=[];
   ciiu:Ciiu[]=[];
+  idEditar:number
   
   
 
@@ -28,7 +33,8 @@ export class FormClientComponent implements OnInit {
     , private router: Router
     , public modalservice: ModalService
     , private rutaParametro: ActivatedRoute,
-    private authServic:AuthService) { }
+    private authServic:AuthService,
+    private procesoService:ProcesoService) { }
   ngOnInit(): void {
     this.service.getClientsMunicipios().subscribe(data => {
       this.municipios = data;
@@ -52,7 +58,25 @@ export class FormClientComponent implements OnInit {
           this.empresario = data;
           console.log(this.empresario);
           //this.empresario.municipio=data.municipio;
+
+          this.procesoService.procesosFindAll().subscribe(pr=>{
+            this.procesos=pr
+
+            this.procesos.forEach(pro=>{
+              if(pro?.selfAssessment?.client?.id==this.empresario.id && pro?.processEmpresario?.client?.id==this.empresario.id){
+                this.proceso=pro
+                console.log(this.proceso);
+                
+              }
+            })
+            
+            
+          })
+          
+          
+
         })
+         this.idEditar = +parametro.get('idEditar');
       }
     })
   }
@@ -92,8 +116,27 @@ export class FormClientComponent implements OnInit {
     
 
     this.service.updateBusinessman(this.empresario).subscribe(data => {
-      this.router.navigate(['/clients'])
-      Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
+      
+      console.log(this.proceso);
+      if(this.idEditar){
+        console.log('QUE ONDAAAAAA');
+        
+        if(this.proceso.processEmpresario){
+          this.proceso.estado=this.proceso.estadoAnteriorEmpresario
+          this.procesoService.procesosUpdate(this.proceso).subscribe()
+        }else{
+          this.proceso.estado='iniciando2'
+          console.log(this.proceso);
+          
+          this.procesoService.procesosUpdate(this.proceso).subscribe()
+        }
+
+        
+          
+    }
+
+    this.router.navigate(['/clients'])
+    Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
 
 
       //this.cerrarModal();
@@ -132,6 +175,30 @@ export class FormClientComponent implements OnInit {
     this.service.updateBusinessman(this.cliente).subscribe(data => {
       console.log(data);
       console.log(this.cliente);
+    
+    
+   /* if(this.proceso?.processEmpresario?.id && this.proceso?.selfAssessment?.id){
+      
+    }
+
+      if(this.proceso?.processEmpresario?.id){
+        this.proceso.estadoAnteriorEmpresario=this.proceso.estado;
+        console.log('estadoAnteriorEmpresario '+this.proceso.estadoAnteriorEmprendedor);
+        if(this.proceso.estadoAnteriorEmprendedor){
+          console.log('estado '+this.proceso.estado);
+          this.proceso.estado=this.proceso.estadoAnteriorEmprendedor;
+        }
+      }
+
+      if(this.proceso?.selfAssessment?.id){
+        this.proceso.estadoAnteriorEmprendedor=this.proceso.estado;
+        console.log('estadoAnteriorEmprendedor '+this.proceso.estadoAnteriorEmprendedor);
+        
+        if(this.proceso.estadoAnteriorEmpresario){
+          this.proceso.estado=this.proceso.estadoAnteriorEmpresario;
+          console.log('estado '+this.proceso.estado);
+        }
+      }*/
       Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
 
 

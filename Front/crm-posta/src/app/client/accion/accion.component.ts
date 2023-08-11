@@ -10,6 +10,7 @@ import { Usuario } from 'src/app/usuario/usuario';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ProcesoService } from 'src/app/procesos/proceso.service';
 import { Process } from 'src/app/procesos/Process';
+import { LoginComponent } from 'src/app/auth/login/login.component';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -43,6 +44,8 @@ export class AccionComponent implements OnInit {
   this.condicion2= false;
     this.procesoService.procesosFindAll().subscribe(lista => {
       this.procesos = lista;
+      console.log(this.procesos);
+      
       this.procesos.forEach(p => {
         if (p?.selfAssessment?.client?.id == this.cliente.id || p?.processEmpresario?.client?.id == this.cliente.id) {
           
@@ -126,19 +129,21 @@ export class AccionComponent implements OnInit {
       this.ruta.navigate([`autoevaluacion/cliente/${this.cliente.id}`]);
 
     } else if (this.condicion2 == false && this.cliente.type== 'businessman') {
-      this.ruta.navigate([`empresario/resultados/cliente/${this.cliente.id}`]);
+      console.log('1111111111111111111111111');
+      
+      this.ruta.navigate([`empresario/diagnostico/cliente/${this.cliente.id}`]);
 
     } else if (this.condicion2 == true && this.condicion == true && this.cliente.type== 'entrepreneur') {
       this.proceso.estado=this.proceso.estadoAnteriorEmprendedor
       this.procesoService.procesosUpdate(this.proceso).subscribe()
-      this.ruta.navigate([`autoevaluacion/cliente/${this.cliente.id}`]);
 
     } else if (this.condicion2 == true && this.condicion == true && this.cliente.type== 'businessman') {
+      console.log('2223222222222222222222');
+      
       this.proceso.estado=this.proceso.estadoAnteriorEmpresario
       this.procesoService.procesosUpdate(this.proceso).subscribe()
-      this.ruta.navigate([`empresario/resultados/cliente/${this.cliente.id}`]);
 
-    }else{
+    }
       switch (this.proceso.estado) {
         case 'iniciando':
           this.ruta.navigate([`autoevaluacion/cliente/${this.cliente.id}`]);
@@ -231,7 +236,7 @@ export class AccionComponent implements OnInit {
           this.ruta.navigate([`/accion/empresario/${this.proceso.processEmpresario.client.id}/editar/${this.proceso.id}`])
           break;
       }
-    }
+    
 
     this.modalService.cerrarModalAction();
   }
@@ -259,24 +264,12 @@ export class AccionComponent implements OnInit {
 
   public cambiarTipo() {
     if (this.cliente.type == 'entrepreneur') {
-      if(this.proceso?.selfAssessment?.id){
-        this.proceso.estadoAnteriorEmprendedor=this.proceso.estado;
-        if(this.proceso.estadoAnteriorEmpresario){
-          this.proceso.estado=this.proceso.estadoAnteriorEmpresario;
-        }
-      }
-      this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
+      
+      this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}/${1}`]);
 
     } else {
-      if(this.proceso?.processEmpresario?.id){
-        this.proceso.estadoAnteriorEmpresario=this.proceso.estado;
-        if(this.proceso.estadoAnteriorEmprendedor){
-          this.proceso.estado=this.proceso.estadoAnteriorEmprendedor;
-        }
-        
-        
-      }
-      this.ruta.navigate([`clients/form/editar/entrepreneur/${this.cliente.id}`]);
+      
+      this.ruta.navigate([`clients/form/editar/entrepreneur/${this.cliente.id}/${1}`]);
     }
     //  this.ruta.navigate([`clients/form/editar/businessman/${this.cliente.id}`]);
     /*this.cliente.type="businessman";

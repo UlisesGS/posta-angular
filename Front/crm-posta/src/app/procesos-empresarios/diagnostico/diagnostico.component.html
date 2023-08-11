@@ -2744,8 +2744,8 @@
           </table>
         </form>
         <div class="form-group mt-3">
-        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && !proceso?.selfAssessment?.client?.id" (click)="sacarTotales()">Guardar y Ver Totales</button>
-        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && proceso?.selfAssessment?.client?.id" (click)="sacarTotalesCambiarTipo()">Guardar y Ver Totales 2</button>
+        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && !proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotales()">Guardar y Ver Totales</button>
+        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotalesCambiarTipo()">Guardar y Ver Totales 2</button>
         <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="editar()" class="btn">Editar</button>
         <button [routerLink]="['/procesos']"  class="btn">cancelar</button>
          </div>

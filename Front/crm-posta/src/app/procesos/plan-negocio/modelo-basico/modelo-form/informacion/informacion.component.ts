@@ -101,6 +101,7 @@ export class InformacionComponent {
       // en el proximo cambiar a put hdp
       console.log(this.businessPlan);
       this.proceso.estado = 'Informacion Proyecto'
+      this.proceso.estadoAnteriorEmprendedor = 'Informacion Proyecto'
       this.modeloBasicoService.planSaveBusinessPlan(this.businessPlan).subscribe(plan => {
         this.businessPlan = plan;
         this.proceso.businessPlan = this.businessPlan;
@@ -119,6 +120,7 @@ export class InformacionComponent {
       // en el proximo cambiar a put hdp
       console.log(this.businessPlan);
       this.proceso.estado = 'Informacion Proyecto'
+      this.proceso.estadoAnteriorEmprendedor = 'Informacion Proyecto'
       this.modeloBasicoService.planSaveBusinessPlan(this.businessPlan).subscribe(plan => {
         this.businessPlan = plan;
         this.proceso.businessPlan = this.businessPlan;

@@ -88,6 +88,7 @@ export class ConclusionComponent {
 
       //  this.proceso.businessPlan.conclusion
         this.proceso.estado='Conclusiones';
+        this.proceso.estadoAnteriorEmprendedor='Conclusiones';
         console.log(this.proceso);
 
         // en el proximo cambiar a put hdp
@@ -109,6 +110,7 @@ export class ConclusionComponent {
 
 
             this.proceso.estado='Conclusiones';
+            this.proceso.estadoAnteriorEmprendedor='Conclusiones';
             console.log(this.proceso);
             // en el proximo cambiar a put hdp
           //  console.log(this.businessPlan);

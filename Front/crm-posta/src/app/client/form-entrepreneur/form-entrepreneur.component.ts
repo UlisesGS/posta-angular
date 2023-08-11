@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 import { ModalService } from '../modal.service';
 import { Client } from '../client';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ProcesoService } from 'src/app/procesos/proceso.service';
+import { Process } from 'src/app/procesos/Process';
 
 
 @Component({
@@ -19,11 +21,15 @@ export class FormEntrepreneurComponent implements OnInit {
     ,private router:Router
     , public modalservice:ModalService
     , private rutaParametro:ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private procesoService:ProcesoService
     ){}
   emprendedor:Client= new Client();
   municipios:Municipio[]=[];
   errores:any;
+  idEditar:number
+  proceso:Process=new Process();
+  procesos:Process[]=[];
   
 
   ngOnInit(): void {
@@ -37,7 +43,25 @@ export class FormEntrepreneurComponent implements OnInit {
       if(id){
         this.clientService.getClient(id).subscribe(data=>{
           this.emprendedor=data;
+
+
+          this.procesoService.procesosFindAll().subscribe(pr=>{
+            this.procesos=pr
+
+            this.procesos.forEach(pro=>{
+              if(pro?.selfAssessment?.client?.id==this.emprendedor.id || pro?.processEmpresario?.client?.id==this.emprendedor.id){
+                this.proceso=pro
+                
+                
+              }
+            })
+
+            
+            
+          })
+
         })
+         this.idEditar = +parametro.get('idEditar');
       }
     })
 
@@ -79,6 +103,23 @@ public editar(){
   this.emprendedor.type="entrepreneur";
   this.clientService.updateEntrepreneur(this.emprendedor).subscribe(data=>{
     this.router.navigate(['/clients'])
+
+    if(this.idEditar){
+      console.log('QUE ONDAAAAAA');
+      
+      if(this.proceso.selfAssessment){
+        this.proceso.estado=this.proceso.estadoAnteriorEmprendedor
+        this.procesoService.procesosUpdate(this.proceso).subscribe()
+      }else{
+        this.proceso.estado='iniciando'
+        this.procesoService.procesosUpdate(this.proceso).subscribe()
+      }
+
+      
+        
+  }
+
+
     Swal.fire(`Editado`, `Emprendedor ${data.name} fue editado con exito`, `success`)
 
   },e=>{
