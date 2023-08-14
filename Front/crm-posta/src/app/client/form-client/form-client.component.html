@@ -1,12 +1,13 @@
 <div class="container display-flex">
-    <form class="was-validated" >
+    <form class="was-validated">
         <h2 class="btn btn-disabled">DATOS DE REPRESENTANTE LEGAL</h2>
         <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
             <div style="flex-basis: 50%;">
                 <div>
                     <label for="este">
                         <br>
-                        <input type="text" name="name" [(ngModel)]="empresario.name" placeholder="Nombre" class="form-control" required>
+                        <input type="text" name="name" [(ngModel)]="empresario.name" placeholder="Nombre"
+                            class="form-control" required>
                     </label>
 
                 </div>
@@ -14,7 +15,8 @@
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
-                        <input type="text" name="nit" [(ngModel)]="empresario.nit" placeholder="Documento/NIT" class="form-control" required>
+                        <input type="text" name="nit" [(ngModel)]="empresario.nit" placeholder="Documento/NIT"
+                            class="form-control" required>
                     </label>
                 </div>
 
@@ -22,7 +24,8 @@
             <div style="flex-basis: 50%;">
                 <label for="">
                     <br>
-                    <input type="text" name="lastName" [(ngModel)]="empresario.lastName" placeholder="Apellido" class="form-control" required>
+                    <input type="text" name="lastName" [(ngModel)]="empresario.lastName" placeholder="Apellido"
+                        class="form-control" required>
                 </label>
 
                 <div style="flex-basis: 50%;">
@@ -30,7 +33,7 @@
 
                         <br>
                         <select class="form-select form-select-sm" [(ngModel)]="empresario.gender" name="gender"
-                            aria-label="Default select example" >
+                            aria-label="Default select example">
                             <option [ngValue]="undefined">--- Seleccionar Género ---</option>
                             <option value="MALE">Masculino</option>
                             <option value="FEMALE">Femenino</option>
@@ -44,15 +47,15 @@
                 <label for="">
 
                     <br>
-                    <input type="date" style="border-radius: 5;" name="fechaNacimiento" [(ngModel)]="empresario.fechaNacimiento"
-                        placeholder="Edad" class="form-control" required>
+                    <input type="date" style="border-radius: 5;" name="fechaNacimiento"
+                        [(ngModel)]="empresario.fechaNacimiento" placeholder="Edad" class="form-control" required>
                 </label>
                 <div style="flex-basis: 50%;">
                     <label for="">
 
                         <br>
                         <select [(ngModel)]="empresario.ethnicGroup" class="form-select form-select-sm"
-                            name="ethnicGroup" [(ngModel)]="empresario.ethnicGroup" aria-label="Default select example" >
+                            name="ethnicGroup" [(ngModel)]="empresario.ethnicGroup" aria-label="Default select example">
                             <option [ngValue]="undefined">--- Seleccionar Grupo Étnico ---</option>
                             <option value="ROM">ROM</option>
                             <option value="INDIGENAS">INDIGENAS</option>
@@ -70,13 +73,15 @@
                         <br>
                     </label>
                     <input value="true" [(ngModel)]="empresario.victimPopulation" class="form-check-input" type="radio"
-                        name="victimPopulation" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;" required="">
+                        name="victimPopulation" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;"
+                        required="">
                     <label for="victimPopulation" class="form-check-label"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
 
 
                     <input value="false" [(ngModel)]="empresario.victimPopulation" class="form-check-input" type="radio"
-                        name="victimPopulation" id="victimPopulation1" style="margin-top: 20px; margin-left: 10px;" required="">
+                        name="victimPopulation" id="victimPopulation1" style="margin-top: 20px; margin-left: 10px;"
+                        required="">
                     <label for="victimPopulation1" class="form-check-label"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
 
@@ -88,13 +93,16 @@
 
                     <br>
                     <select [(ngModel)]="empresario.studyLevel" class="form-select form-select-sm" name="studyLevel"
-                        ngModel="" aria-label="Default select example" >
+                        ngModel="" aria-label="Default select example">
                         <option [ngValue]="undefined">--- Seleccionar Nivel Escolaridad ---</option>
                         <option value="PRIMARIO">PRIMARIO</option>
                         <option value="TECNICO">TECNICO</option>
                         <option value="TECNOLOGO ">TECNOLOGO </option>
+                        <option value="BACHILLER ">BACHILLER </option>
+                        <option value="PREGRADO ">PREGRADO </option>
                         <option value="POSTGRADO ">POSTGRADO </option>
-                       
+                        <option value="PROFESIONAL ">PROFESIONAL </option>
+
                     </select>
                 </label>
                 <div style="flex-basis: 50%;">
@@ -104,7 +112,8 @@
                         <br>
                     </label>
                     <input [(ngModel)]="empresario.displacement" class="form-check-input" type="radio"
-                        name="displacement" id="displacement" value="true" style="margin-top: 20px; margin-left: 5px;" required="">
+                        name="displacement" id="displacement" value="true" style="margin-top: 20px; margin-left: 5px;"
+                        required="">
                     <label class="form-check-label" for="displacement"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
                     <input value="false" [(ngModel)]="empresario.displacement" class="form-check-input" type="radio"
@@ -119,7 +128,8 @@
                         <br>
                     </label>
                     <input value="true" [(ngModel)]="empresario.disability" class="form-check-input" type="radio"
-                        name="disability" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;" required="">
+                        name="disability" id="flexRadioDefault1" style="margin-top: 20px; margin-left: 5px;"
+                        required="">
                     <label class="form-check-label" for="disability"
                         style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
 
@@ -132,11 +142,6 @@
 
             </div>
         </div>
-
-
-
-
-
         <!-- Form de los datos de Empresa -->
         <div>
             <h2 class="btn btn-disabled mt-2">DATOS DE LA EMPRESA</h2>
@@ -145,9 +150,11 @@
                     <label>
                         <br>
                         <select [(ngModel)]="empresario.typeOfCompany" class="form-select form-select-sm"
-                            name="typeOfCompany" aria-label="Default select example" >
+                            name="typeOfCompany" aria-label="Default select example">
                             <option [ngValue]="undefined">--- Seleccionar Tipo de Empresa ---</option>
-                            <option *ngFor="let e of enums" [ngValue]="e">{{e}}</option>
+                            <option value="PERSONA_JURIDICA">PERSONA JURIDICA</option>
+                            <option value="PERSONA_NATURAL">PERSONA NATURAL</option>
+                            <!-- <option *ngFor="let e of enums" [ngValue]="e">{{e}}</option> -->
                         </select>
                     </label>
                     <div style="flex-basis: 50%;">
@@ -161,8 +168,8 @@
                 <div style="flex-basis: 50%;">
                     <label>
                         <br>
-                        <select [(ngModel)]="empresario.ciiu" class="form-select form-select-sm"
-                            name="typeOfCompany" aria-label="Default select example" >
+                        <select [(compareWith)]="compararCiu" [(ngModel)]="empresario.ciiu"
+                            class="form-select form-select-sm" name="typeOfCompany" aria-label="Default select example">
                             <option [ngValue]="undefined">--- Seleccionar CIIU ---</option>
                             <option *ngFor="let e of ciiu" [ngValue]="e">{{e.id}} || {{e.titulo}}</option>
                         </select>
@@ -188,13 +195,15 @@
 
                         <br>
                         <input type="text" style="border-radius: 5; margin-right: 5px;" name="employeePartTime"
-                            [(ngModel)]="empresario.employeePartTime" placeholder="Emleados MT" class="form-control" required>
+                            [(ngModel)]="empresario.employeePartTime" placeholder="Emleados MT" class="form-control"
+                            required>
                     </label>
                     <label for="">
 
                         <br>
                         <input type="text" style="border-radius: 5;" name="employeeFullTime"
-                            [(ngModel)]="empresario.employeeFullTime" placeholder="Empleados TC" class="form-control" required>
+                            [(ngModel)]="empresario.employeeFullTime" placeholder="Empleados TC" class="form-control"
+                            required>
                     </label>
                     <div style="flex-basis: 50%;">
                         <label for="">
@@ -209,7 +218,8 @@
 
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"
-                                [(ngModel)]="empresario.email" placeholder="Correo Electrónico" class="form-control" required>
+                                [(ngModel)]="empresario.email" placeholder="Correo Electrónico" class="form-control"
+                                required>
                         </label>
                         <div style="flex-basis: 50%;">
 
@@ -253,9 +263,10 @@
 
                             <br>
                             <select [compareWith]="compararMunicipio" [(ngModel)]="empresario.municipio"
-                                class="form-select form-select-sm" name="municipio" aria-label="Default select example"  >
-                                <option [ngValue]="undefined" disabled >--- Seleccionar Municipio---</option>
-                                <option *ngFor="let m of municipios" [ngValue]="m">{{m.name}} || {{m.country}}</option>
+                                class="form-select form-select-sm" name="municipio" aria-label="Default select example">
+                                <option [ngValue]="undefined" disabled>--- Seleccionar Municipio---</option>
+                                <option *ngFor="let m of municipios" [ngValue]="m">{{m.id}} || {{m.name}} ||
+                                    {{m.country}}</option>
 
 
                             </select>
@@ -286,7 +297,8 @@
                 <div style="flex-basis: 100%;" class="mt-3">
                     <div class="form-group">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
-                            [(ngModel)]="empresario.remarks" placeholder="Tema/Observaciones" class="form-control"></textarea>
+                            [(ngModel)]="empresario.remarks" placeholder="Tema/Observaciones"
+                            class="form-control"></textarea>
                     </div>
                 </div>
             </div>

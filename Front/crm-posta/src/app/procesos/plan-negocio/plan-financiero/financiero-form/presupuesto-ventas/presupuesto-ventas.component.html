@@ -4,7 +4,7 @@
     </div>
     <div class="col-10">
         <div class="col-8 centered-col">
-            <h4>Presupuesto de Ventas</h4>
+            <h4>PRESUPUESTO DE VENTAS</h4>
             <div style="text-align: center;">
                 <h5>ESTRUCTURA DEL MERCADO - UNIDADES</h5>
             </div>
@@ -96,11 +96,11 @@
                         <td class="autorellenadas" step="0.01" style="text-align: right;width: 13%;">{{pres.unidadHoraHombre?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).replace('$', '')}}</td>
                         <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.capacidadInstaladaPorOperario}}</td>
                         <td style="width: 13%;">
-                            <select name="tipo1" id="" (click)="llenarHoras()" class="form-select" [(ngModel)]="pres.tiempoDecicacion" style="width: 100%; margin: 0; padding: 5px;">
+                            <!-- <select name="tipo1" id="" (click)="llenarHoras()" class="form-select" [(ngModel)]="pres.tiempoDecicacion" style="width: 100%; margin: 0; padding: 5px;">
                                 <option value=100>100%</option>
                                 <option value=50>50%</option>
-                            </select>
-                            <!-- <input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion"> -->
+                            </select> -->
+                            <input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion">
                         </td>
                         <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.capacidadInstaladaUnidades/100}}</td>
                         <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.cantidad}}</td>

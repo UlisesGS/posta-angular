@@ -109,7 +109,8 @@ export class DetallesComponent {
       this.imagenService.uploadImageCierre(this.file, this.proceso).subscribe(
         (response) => {
           console.log(response);
-          window.location.reload(); // Maneja la respuesta del backend
+          window.location.reload();
+           // Maneja la respuesta del backend
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre
@@ -134,7 +135,7 @@ export class DetallesComponent {
       this.imagenService.uploadImageImpacto(this.file, this.proceso).subscribe(
         (response) => {
           console.log(response);
-          window.location.reload(); // Maneja la respuesta del backend
+          window.location.reload();
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre
@@ -146,7 +147,7 @@ export class DetallesComponent {
   getImageUrlImpacto() {
     this.imagenService.getImageBlobImpacto(this.proceso).subscribe(
       (blob) => {
-        this.imageUrlCierre = URL.createObjectURL(blob);
+        this.imageUrlImpacto = URL.createObjectURL(blob);
       },
       (error) => {
         if (error.status == 500) {

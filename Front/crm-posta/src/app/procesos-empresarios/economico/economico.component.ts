@@ -50,6 +50,7 @@ export class EconomicoComponent {
           this.procesos = data;
           this.procesos.forEach(pr => {
             if (pr.processEmpresario?.client?.id == this.cliente.id) {
+              this.proceso=pr;
               // para editar
               let idEditar = +parametro.get('idEditar');
               if (idEditar) {
@@ -102,8 +103,12 @@ export class EconomicoComponent {
     //sino todo lo que sigue
     this.analisisEconomico.diversificacionProductos = this.indicador8;
     this.analisisEconomico.aperturaNuevosMercados = this.indicador9;
-    this.analisisEconomico.accesoOtrasFuentes = this.indicador10;console.log(this.analisisEconomico);
-    this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico = this.analisisEconomico; console.log(this.proceso);
+    this.analisisEconomico.accesoOtrasFuentes = this.indicador10;
+    console.log(this.analisisEconomico);
+    console.log(this.proceso);
+    
+    this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico = this.analisisEconomico;
+     console.log(this.proceso);
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => {
       // this.proceso = data;
       this.proceso.estado = 'Economico';

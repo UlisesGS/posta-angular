@@ -251,7 +251,7 @@ export class InternoComponent {
                           { text: this.proceso.businessPlan.analisis.propuestaValor , style: ['thisText', 'fieldHeader'] }
                         ],
                         [
-                          { text: 'COMERCIALIZACION:', style: 'fieldHeader' },
+                          { text: 'ESTRATEGIAS DE COMERCIALIZACION Y MARKETING- MEDIOS DIGITALES:', style: 'fieldHeader' },
                           { text: this.proceso.businessPlan.analisis.comercializacion , style: ['thisText', 'fieldHeader'] }
                         ],
                         [
@@ -266,10 +266,10 @@ export class InternoComponent {
                           { text: 'COMPETENCIAS:', style: 'fieldHeader' },
                           { text: this.proceso.businessPlan.analisis.competencias, style: ['thisText', 'fieldHeader'] }
                         ],
-                        [
-                          { text: 'MEDIO DIGITALES:', style: 'fieldHeader' },
-                          { text: this.proceso.businessPlan.analisis.mediosDigitales, style: ['thisText', 'fieldHeader'] }
-                        ],
+                        // [
+                        //   { text: 'MEDIO DIGITALES:', style: 'fieldHeader' },
+                        //   { text: this.proceso.businessPlan.analisis.mediosDigitales, style: ['thisText', 'fieldHeader'] }
+                        // ],
                         [
                           { text: 'RECURSOS NECESARIOS:', style: 'fieldHeader' },
                           { text: this.proceso.businessPlan.analisis.recursosNecesarios, style: ['thisText', 'fieldHeader'] }
