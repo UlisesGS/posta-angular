@@ -203,7 +203,7 @@ const routes: Routes = [
   { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent },
   { path: 'accion/empresario/:id/ver/:idVer', component: PlanAccionComponent },
   { path: 'resultados/empresario/:id/ver/:idVer', component: ResultadosComponent },
-
+  { path: 'empresario/accion/cliente/:id/ver/:idVer', component: PlanAccionComponent },
   //Mensajes
   { path: 'mensajes', component: MensajesComponent },
 

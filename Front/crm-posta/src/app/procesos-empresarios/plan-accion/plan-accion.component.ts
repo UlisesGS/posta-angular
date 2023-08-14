@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProcessEmpresarioService } from '../process-empresario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from 'src/app/client/client.service';
@@ -16,7 +16,7 @@ import { AreaIntervenir } from '../area-intervenir';
   styleUrls: ['./plan-accion.component.css']
 })
 export class PlanAccionComponent {
-
+  @Input()idVer:number;
 
   procesoEmpresario: ProcessEmpresario = new ProcessEmpresario()
   //procesos:ProcessEmpresario[]=[];
@@ -35,6 +35,8 @@ export class PlanAccionComponent {
 
   ngOnInit(): void {
     //this.procesoEmpresario.diagnosticoEmpresarial.analisisResultados.
+   
+    
     this.ruta.paramMap.subscribe(parametro => {
       let id = + parametro.get('id')
       this.clienteServicio.getClient(id).subscribe(clien => {
@@ -61,12 +63,18 @@ export class PlanAccionComponent {
 
               if (idEditar) {
                 this.process.procesosFindById(idEditar).subscribe(data => {
-
                   this.proceso = data;
                   console.log(this.proceso);
-
-
-
+                })
+              }
+              this.idVer=+parametro.get('idVer');
+              if (this.idVer) {
+                console.log(this.idVer);
+                
+                this.process.procesosFindById(this.idVer).subscribe(data => {
+                  this.proceso = data;
+                  console.log(this.proceso);
+                  
                 })
               }
             }
