@@ -7,7 +7,7 @@ export class InternalExternalAnalysis {
     operacion:string;
     equipoTrabajo:string;
     competencias:string;
-    mediosDigitales:string;
+    // mediosDigitales:string;
     recursosNecesarios:string;
     legal:string;
     fuenteFinanciacion:string;

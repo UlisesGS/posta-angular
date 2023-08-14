@@ -63,7 +63,7 @@ export class DiagnosticoComponent implements OnInit {
           this.cliente = data;
           this.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
           this.process.procesosFindAll().subscribe(pro => {
-            console.log('holaaa');
+            
             this.procesosSS=pro;
             this.procesosSS.forEach(proceso=>{
               if(proceso?.selfAssessment?.client?.id==this.cliente.id){

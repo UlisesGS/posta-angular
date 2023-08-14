@@ -62,7 +62,7 @@ export class ModalDetallesComponent {
        ;
        break;
        case 'planAccion':
-        this.ruta.navigate([`empresario/accion/cliente/${this.proceso.processEmpresario.client.id}`]);
+        this.ruta.navigate([`empresario/accion/cliente/${this.proceso.processEmpresario.client.id}/ver/${this.proceso.id}`]);
        ;
        break;
     }
@@ -725,10 +725,10 @@ export class ModalDetallesComponent {
                   { text: 'COMPETENCIAS:', style: 'fieldHeader' },
                   { text: this.proceso.businessPlan.analisis.competencias, style: ['thisText', 'fieldHeader'] }
                 ],
-                [
-                  { text: 'MEDIO DIGITALES:', style: 'fieldHeader' },
-                  { text: this.proceso.businessPlan.analisis.mediosDigitales, style: ['thisText', 'fieldHeader'] }
-                ],
+                // [
+                //   { text: 'MEDIO DIGITALES:', style: 'fieldHeader' },
+                //   { text: this.proceso.businessPlan.analisis.mediosDigitales, style: ['thisText', 'fieldHeader'] }
+                // ],
                 [
                   { text: 'RECURSOS NECESARIOS:', style: 'fieldHeader' },
                   { text: this.proceso.businessPlan.analisis.recursosNecesarios, style: ['thisText', 'fieldHeader'] }
