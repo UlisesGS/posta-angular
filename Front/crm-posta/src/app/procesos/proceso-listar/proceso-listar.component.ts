@@ -110,10 +110,12 @@ this.modal.abrirModalPocesos();
   public filtroPortermiando(){
     console.log(this.terminado);
 
-    this.procesoService.procesoFindByTermiando(this.terminado).subscribe(data=>{
-      this.procesos=data;
-
-    })
+    if(this.terminado!==undefined){
+      this.procesoService.procesoFindByTermiando(this.terminado).subscribe(data=>{
+        this.procesos=data;
+      })
+    }
+   
   }
   public filtroPorEstado(){
 
@@ -125,11 +127,13 @@ this.modal.abrirModalPocesos();
   }
   public buscar(){
 
+    if(this.termino!==""){
+      this.procesoService.procesoFindByNombre(this.termino).subscribe(data=>{
+        this.procesos=data;
+      })
+    }
 
-    this.procesoService.procesoFindByNombre(this.termino).subscribe(data=>{
-      this.procesos=data;
-
-    })
+ 
   }
 
 

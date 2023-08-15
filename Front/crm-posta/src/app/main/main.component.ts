@@ -65,7 +65,7 @@ export class MainComponent implements OnInit {
 
           this.clients = response.content as Client[];
           this.paginador = response;
-          console.log(this.paginador);
+         
         });
 
     })
