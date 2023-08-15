@@ -34,6 +34,7 @@ export class Process {
   processEmpresario:ProcessEmpresario;
   estadoAnteriorEmprendedor:string;
   estadoAnteriorEmpresario:string;
+  fechaFinalizacion:Date;
 
 
 }

@@ -65,6 +65,7 @@ export class PresupuestoVentasComponent implements OnInit {
   estructuraMercado: EstructuraMercado = new EstructuraMercado;
   ciclicidad: CiclicidadVentas = new CiclicidadVentas;
   ciclicidadVentas: CiclicidadVentas[] = [];
+  totalUnidadesAno=0;
 
   presupuestoVenta: PresupuestoVenta = new PresupuestoVenta();
 
@@ -99,18 +100,22 @@ export class PresupuestoVentasComponent implements OnInit {
         })
       }
       let idEditar = +parametro.get('idEditar');
+      console.log(idEditar);
+      
       if (idEditar){
         this.procesoService.procesosFindById(idEditar).subscribe(data=>{
           console.log(data);
-
-
           this.proceso= data;
-          this.proceso.businessPlanFinancial.presupuestoVenta.ciclicidadVentas.forEach(c=>{
+          console.log(this.proceso);
+          
+          
+          this.proceso?.businessPlanFinancial?.presupuestoVenta?.ciclicidadVentas.forEach(c=>{
             this.listaMes.push(c.calificacion);
           })
-          this.presupuestoVenta=this.proceso.businessPlanFinancial.presupuestoVenta;
-          console.log(this.presupuestoVenta);
-          this.businessPlanFinancial= this.proceso.businessPlanFinancial;
+          
+           this.presupuestoVenta=this.proceso?.businessPlanFinancial?.presupuestoVenta;
+           console.log(this.presupuestoVenta);
+           this.businessPlanFinancial= this.proceso?.businessPlanFinancial;
 
         })
       }
@@ -225,6 +230,7 @@ compararTipo(){
     this.ciclicidad = new CiclicidadVentas();
     console.log(e.target.value);
     console.log(mes);
+    
 
     if (mes === 'enero') {
       this.ciclicidad.calificacion = +e.target.value
@@ -241,6 +247,7 @@ compararTipo(){
           console.log(this.presupuestoVenta.ciclicidadVentas[0]);
 
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor1 == false) {
@@ -265,6 +272,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[1] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor2 == false) {
@@ -289,6 +297,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[2] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor3 == false) {
@@ -313,6 +322,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[3] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor4 == false) {
@@ -333,6 +343,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[4] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor5 == false) {
@@ -353,6 +364,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[5] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor6 == false) {
@@ -373,6 +385,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[6] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor7 == false) {
@@ -393,6 +406,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[7] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor8 == false) {
@@ -413,6 +427,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[8] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor9 == false) {
@@ -433,6 +448,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[9] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor10 == false) {
@@ -453,6 +469,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[10] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor11 == false) {
@@ -473,6 +490,7 @@ compararTipo(){
           c.calificacion = +e.target.value;
           this.presupuestoVenta.ciclicidadVentas[11] = c;
           this.presupuestoVenta.calculosCiclicidad();
+          
         }
       })
       if (this.valor12 == false) {

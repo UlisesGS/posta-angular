@@ -7,6 +7,7 @@ import { Process } from 'src/app/procesos/Process';
 import { ModalService } from '../modal.service';
 import { ImagenService } from './imagen.service';
 import { PdfServiceService } from './pdf-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalles',
@@ -107,17 +108,31 @@ export class DetallesComponent {
   uploadImageCierre() {
     if (this.file) {
       this.imagenService.uploadImageCierre(this.file, this.proceso).subscribe(
-        (response) => {
+        (response:any) => {
+          this.proceso.fechaFinalizacion=new Date();
+          this.proceso.terminado=true;
+          this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+            Swal.fire('Éxito','Proceso Terminado', 'success').then(() => {
+              window.location.reload();
+            });
+          })
           console.log(response);
-          window.location.reload();
+          //window.location.reload();
            // Maneja la respuesta del backend
         },
         (error) => {
-          console.error(error); // Maneja el error, si ocurre
+          console.error(error);
+          this.proceso.fechaFinalizacion=new Date();
+          this.proceso.terminado=true;
+          this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+            Swal.fire('Éxito','Proceso Terminado', 'success').then(() => {
+              window.location.reload();
+            });
+          }) // Maneja el error, si ocurre
         }
       );
     }
-    window.location.reload();
+   
   }
   getImageUrlCierre() {
     this.imagenService.getImageBlobCierre(this.proceso).subscribe(
