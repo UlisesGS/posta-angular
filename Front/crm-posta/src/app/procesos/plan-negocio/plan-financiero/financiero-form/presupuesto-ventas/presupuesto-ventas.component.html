@@ -87,22 +87,22 @@
                         </select>
                     </td>
                         <td style="width: 13%;">
-                            <select name="tipo" id="" (click)="llenarHoras()" class="form-select" [(ngModel)]="pres.horasOperario" style="width: 100%; margin: 0; padding: 5px;">
+                            <!-- <select name="tipo" id="" (click)="llenarHoras()" class="form-select" [(ngModel)]="pres.horasOperario" style="width: 100%; margin: 0; padding: 5px;">
                                 <option value=2880>2280</option>
                                 <option value=1440>1440</option>
-                            </select>
-                            <!-- <input type="number"  (keyup)="llenarHoras()" [(ngModel)]="pres.horasOperario"> -->
+                            </select> -->
+                            <input type="number"  (keyup)="llenarHoras()" [(ngModel)]="pres.horasOperario">
                         </td>
                         <td class="autorellenadas" step="0.01" style="text-align: right;width: 13%;">{{pres.unidadHoraHombre?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).replace('$', '')}}</td>
-                        <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.capacidadInstaladaPorOperario}}</td>
+                        <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres?.capacidadInstaladaPorOperario?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
                         <td style="width: 13%;">
-                            <!-- <select name="tipo1" id="" (click)="llenarHoras()" class="form-select" [(ngModel)]="pres.tiempoDecicacion" style="width: 100%; margin: 0; padding: 5px;">
+                            <select name="tipo1" id="" (click)="llenarHoras()" class="form-select" [(ngModel)]="pres.tiempoDecicacion" style="width: 100%; margin: 0; padding: 5px;">
                                 <option value=100>100%</option>
                                 <option value=50>50%</option>
-                            </select> -->
-                            <input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion">
+                            </select>
+                            <!-- <input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion"> -->
                         </td>
-                        <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.capacidadInstaladaUnidades/100}}</td>
+                        <td class="autorellenadas" style="text-align: right;width: 13%;">{{(pres?.capacidadInstaladaUnidades/100)?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
                         <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.cantidad}}</td>
 
                     </tr>
@@ -111,9 +111,9 @@
                 <tfoot>
                     <tr>
                         <th colspan="4">Total</th>
-                        <th style="text-align: right;">{{presupuestoVenta.totalCapacidadOperario}}</th>
+                        <th style="text-align: right;">{{presupuestoVenta?.totalCapacidadOperario?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</th>
                         <th></th>
-                        <th style="text-align: right;">{{presupuestoVenta.totalCapacidadInstalada/100}}</th>
+                        <th style="text-align: right;">{{(presupuestoVenta?.totalCapacidadInstalada/100)?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</th>
                         <th style="text-align: right;">{{totalUnidadesRequeridas}}</th>
                     </tr>
                 </tfoot>
@@ -406,7 +406,7 @@
                                 <tr>
                                     <th>Total</th>
                                     <th>{{presupuestoVenta.totalCalificacion}}</th>
-                                    <th>Total cantidad</th>
+                                    <th>{{presupuestoVenta.totalUnidadesAno?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</th>
                                     <th style="text-align: right;">{{presupuestoVenta.totalTotal?.toLocaleString('en-US', {
                                         style: 'currency', currency: 'USD' })}}</th>
                                 </tr>
