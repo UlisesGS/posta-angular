@@ -39,22 +39,16 @@ export class ClientDetailsComponent implements OnInit{
           
         })
       }
-      // if(idVer){
-      //   this.serviceClient.getClient(idVer).subscribe(data=>{
-      //     this.client=data;
-      //     console.log(data);
+       if(idVer){
+         this.serviceClient.getClient(idVer).subscribe(data=>{
+           this.client=data;
+           console.log(data);
           
-      //     console.log(this.client);
+           console.log(this.client);
 
-      //   })
-      // }
-      // if(idVer){
-      //   this.serviceClient.getClient(idVer).subscribe(data=>{
-      //     this.client=data;
-      //     console.log(this.client);
-
-      //   })
-      // }
+         })
+       }
+      
 
     })
   }

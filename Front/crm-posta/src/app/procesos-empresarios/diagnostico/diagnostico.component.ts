@@ -80,6 +80,7 @@ export class DiagnosticoComponent implements OnInit {
            
             
             this.process.procesosFindById(this.idEditar).subscribe(data=>{
+              this.total=0;
               this.proceso=data;
               this.procesoEmpresario=this.proceso.processEmpresario
               this.diagnostico=this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico
@@ -96,6 +97,13 @@ export class DiagnosticoComponent implements OnInit {
               this.digitales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionDigital
               this.ambientales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionAmbiental
               this.intelectuales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionIntelectual
+              this.consolidado=true;
+              this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
+                this.total+=t;
+                
+              })
+              this.total=this.total/10;
+              
               console.log(this.proceso);
               
               
@@ -122,6 +130,7 @@ export class DiagnosticoComponent implements OnInit {
               this.digitales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionDigital
               this.ambientales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionAmbiental
               this.intelectuales = this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.gestionIntelectual
+              this.consolidado=true;
               console.log(this.proceso);
               
               
@@ -177,7 +186,7 @@ continuar(){
     this.proceso.processEmpresario=this.procesoEmpresario
 
     console.log(this.proceso);
-    
+    this.proceso.client=this.cliente;
     //llamar al back para que saque todos los totales
     this.processEmpresarioService.procesoEmpresarioSave(this.proceso).subscribe(data => {
       this.proceso.processEmpresario=data;
@@ -185,7 +194,8 @@ continuar(){
       this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
         this.total+=t;
       })
-
+      this.total=this.total/10;
+      this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.total=this.total;
       this.consolidado=true;
       //this.procesoEmpresario.estado = 'Diagnostico'
       this.proceso.estado= 'Diagnostico';
@@ -227,12 +237,15 @@ continuar(){
     console.log(this.proceso);
     
     //llamar al back para que saque todos los totales
+   
     this.processEmpresarioService.procesoEmpresarioSave(this.proceso).subscribe(data => {
       this.proceso.processEmpresario=data;
 
       this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
         this.total+=t;
       })
+      this.total=this.total/10;
+      this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.total=this.total;
 
       this.consolidado=true;
       //this.procesoEmpresario.estado = 'Diagnostico'
@@ -272,6 +285,11 @@ continuar(){
     this.proceso.processEmpresario=this.procesoEmpresario
 
     console.log(this.proceso);
+    this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.totales.forEach(t=>{
+      this.total+=t;
+    })
+    this.total=this.total/10;
+    this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.total=this.total;
     
     //llamar al back para que saque todos los totales
     this.processEmpresarioService.updateProcesoDiagnostico(this.proceso).subscribe(data=>{

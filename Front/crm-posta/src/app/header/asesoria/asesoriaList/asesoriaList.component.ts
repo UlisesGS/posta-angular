@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ModalService } from 'src/app/client/modal.service';
 
 
 import { Asesoria } from 'src/app/usuario/asesoria';
@@ -17,7 +18,9 @@ export class AsesoriaListComponent implements OnInit {
   asesorias:Asesoria[];
   datos:any[];
   usuario: Usuario = new Usuario();
-  constructor(private usuarioService: UsuarioService,private activateRoute:ActivatedRoute) { }
+  constructor(private usuarioService: UsuarioService,
+    public modalservice: ModalService,
+    private activateRoute:ActivatedRoute) { }
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));

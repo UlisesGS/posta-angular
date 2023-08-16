@@ -25,6 +25,8 @@ export class FormClientComponent implements OnInit {
   proceso: Process = new Process();
   procesos: Process[] = [];
   ciiu: Ciiu[] = [];
+  searchTerm:string = '';
+  filteredCiiu:Ciiu[] = []
 
   idEditar: number
 
@@ -35,6 +37,17 @@ export class FormClientComponent implements OnInit {
     , private rutaParametro: ActivatedRoute,
     private authServic: AuthService,
     private procesoService: ProcesoService) { }
+
+    filterCiiu() {
+      this.filteredCiiu = this.ciiu.filter(e =>
+
+           e.titulo.includes(this.searchTerm)
+           
+      );
+      console.log(this.filteredCiiu);
+      
+  }
+
   ngOnInit(): void {
     this.service.getClientsMunicipios().subscribe(data => {
       this.municipios = data;

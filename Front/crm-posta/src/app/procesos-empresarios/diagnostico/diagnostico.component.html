@@ -2743,15 +2743,10 @@
             </tbody>
           </table>
         </form>
-        <div class="form-group mt-3">
-        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && !proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotales()">Guardar y Ver Totales</button>
-        <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotalesCambiarTipo()">Guardar y Ver Totales 2</button>
-        <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="editar()" class="btn">Editar</button>
-        <button [routerLink]="['/procesos']"  class="btn">cancelar</button>
-         </div>
+       
       </div>
     </div>
-    <button [routerLink]="['/procesos']"  class="btn">cancelar</button>
+  
     <div class="row">
       <div class="col-6">
 
@@ -2774,7 +2769,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[0]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[0]?.toFixed(2)}}
                 </td>
               </tr>
               <tr>
@@ -2786,7 +2781,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[1]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[1]?.toFixed(2)}}
                 </td>
               </tr>
               <tr>
@@ -2798,7 +2793,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[2]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[2]?.toFixed(2)}}
                 </td>
               </tr>
 
@@ -2811,7 +2806,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[3]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[3]?.toFixed(2)}}
                 </td>
               </tr>
               <tr>
@@ -2823,7 +2818,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[4]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[4]?.toFixed(2)}}
                 </td>
               </tr>
               <tr>
@@ -2835,7 +2830,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[5]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[5]?.toFixed(2)}}
                 </td>
               </tr>
               <tr>
@@ -2847,7 +2842,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[6]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[6]?.toFixed(2)}}
                 </td>
               </tr>
               <tr>
@@ -2859,7 +2854,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[7]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[7]?.toFixed(2)}}
                 </td>
               </tr>
               <tr>
@@ -2871,7 +2866,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[8]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[8]?.toFixed(2)}}
                 </td>
               </tr>
               <tr>
@@ -2883,7 +2878,7 @@
                   </label>
                 </td>
                 <td style="width: 3%;" class="mantener">
-                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[9]}}
+                  {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[9]?.toFixed(2)}}
                 </td>
               </tr>
 
@@ -2891,26 +2886,28 @@
                 <td colspan="2" style="text-align: center; background-color: rgb(240, 240, 118);">
                   Puntaje Total :
                 </td>
-                <td style="text-align: center; background-color: rgb(240, 240, 118);">{{total}}</td>
+                <td style="text-align: center; background-color: rgb(240, 240, 118);">{{total?.toFixed(2)}}</td>
               </tr>
             </tbody>
           </table>
         </form>
       </div>
+      <div>
+        
+
+        <div class="form-group mt-3">
+          <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && !proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotales()">Guardar y Ver Totales</button>
+          <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotalesCambiarTipo()">Guardar y Ver Totales 2</button>
+          <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="editar()" class="btn">Editar</button>
+          <button [routerLink]="['/procesos']"  class="btn">cancelar</button>
+          <button *ngIf="consolidado" (click)="continuar()" class="btn">Continuar</button>
+          <button *ngIf="consolidado" [routerLink]="['/procesos']"  class="btn">Volver</button>
+      </div>
+      </div>
     </div>
 
   </div>
-  <div class="form-group mt-3" *ngIf="consolidado">
-
-
-
-
-    <button (click)="continuar()" class="btn">Continuar</button>
-    
-    <button [routerLink]="['/procesos']"  class="btn">Volver</button>
-
-</div>
-
+ 
 </div>
 
 
@@ -2922,7 +2919,7 @@
   <div class="col">
     <h2 class="btn btn-disabled">Diagnóstico Empresarial</h2>
 
-    <!-- <div class="row">
+   <div class="row">
       <div class="col-6">
         <div>
           <span class="left-align">CONCEPTOS GENERALES DE LA EMPRESA </span><i
@@ -3436,7 +3433,7 @@
       </div>
 
     </div> 
-
+<!--
     <div class="row">
       <div class="col-6">
         <div>

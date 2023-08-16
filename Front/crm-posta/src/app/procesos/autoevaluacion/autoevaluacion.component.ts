@@ -45,12 +45,7 @@ export class AutoevaluacionComponent implements OnInit {
 
         this.listaProcesos.forEach(proceso=>{
           if(proceso?.processEmpresario?.client?.id==this.cliente.id){
-            this.proceso=proceso;
-            console.log('hola');
-            
-            
-            
-            
+            this.proceso=proceso;console.log('hola');
             }
         })
       })
@@ -94,31 +89,20 @@ export class AutoevaluacionComponent implements OnInit {
               //   console.log(data);
               this.selfAssessment = data;
               this.proceso.selfAssessment = data;
-              // console.log(this.proceso);
+              this.proceso.client=this.cliente;
               this.canvasService.procesosSave(this.proceso).subscribe(data => {
                 this.proceso = data;
                 console.log(this.proceso);
-
-
                 //   console.log(this.selfAssessment);
-
                 if (this.condicion) {
                   console.log(this.condicion);
-
                   this.router.navigate(['puntajeAutoevaluacion/cliente/',this.cliente.id]);
                   Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
                 } else {
                   this.router.navigate(['/segmento/cliente/', this.cliente.id]);
                 }
-
-
-
-
-
               })
             })
-
-
           }, e => {
             if (e.status === 500) {
               this.router.navigate(['/procesos']);
@@ -144,46 +128,28 @@ export class AutoevaluacionComponent implements OnInit {
           this.selfAssessment.client = this.cliente;
           //agregue recien
           this.canvasService.canvasSave(this.canvasModel).subscribe(canvas => {
-            //console.log('canvas'+data);
-
             this.canvasModel = canvas;
             this.proceso.canvasModel = this.canvasModel;
-
             this.proceso.estado = "AutoEvaluación";
             this.proceso.estadoAnteriorEmprendedor= "AutoEvaluación";
-
             this.proceso.user = JSON.parse(localStorage.getItem('usuario'))
             this.selfAssessment.selfAssessment = this.preguntas;;
             this.selfAssessment.client = this.cliente;
-            this.clienteService.guardarPreguntas(this.selfAssessment).subscribe(data => {
-              //   console.log(data);
+            this.clienteService.guardarPreguntas(this.selfAssessment).subscribe(data => {//   console.log(data);
               this.selfAssessment = data;
-              this.proceso.selfAssessment = data;
-              // console.log(this.proceso);
+              this.proceso.selfAssessment = data; // console.log(this.proceso);
               this.canvasService.procesosUpdate(this.proceso).subscribe(data => {
                 this.proceso = data;
                 console.log(this.proceso);
-
-
-                //   console.log(this.selfAssessment);
-
                 if (this.condicion) {
                   console.log(this.condicion);
-
                   this.router.navigate(['puntajeAutoevaluacion/cliente/',this.cliente.id]);
                   Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
                 } else {
                   this.router.navigate(['/segmento/cliente/', this.cliente.id]);
                 }
-
-
-
-
-
               })
             })
-
-
           }, e => {
             if (e.status === 500) {
               this.router.navigate(['/procesos']);
@@ -199,11 +165,6 @@ export class AutoevaluacionComponent implements OnInit {
   public guardarYsalir() {
     this.condicion = true
     this.guardarProceso();
-
-
-
-
-
   }
 
 }

@@ -32,6 +32,7 @@ export class Client{
     product:string;
 //Atributos Empresario
   contracting:string;
+  contracting1:string;
   companyName:string;
   fechaAlta:string;
   typeOfCompany:string;

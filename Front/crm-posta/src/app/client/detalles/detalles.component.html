@@ -11,7 +11,7 @@
   </div>
   <div class="col-10">
     <div class="col">
-      <div class="card" *ngIf="cliente.type==='entrepreneur'">
+      <div class="card" *ngIf="cliente?.type==='entrepreneur'">
         <div class="card-header">
           <button class="btn btn-disabled" style="background-color: red; color: white;width: 100%;">
             Perfil
@@ -19,12 +19,12 @@
         </div>
         <div class="card-body">
           <div style="margin: 10px;">
-            <button *ngIf="proceso?.selfAssessment===null"
+            <button *ngIf="!proceso?.selfAssessment"
               style="background-color: rgb(213, 218, 215); color: white;width: 80%;" class="btn btn-disabled">
               <span class="left-align">AUTOEVALUACIÓN</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"></i>
             </button>
-            <button *ngIf="proceso?.selfAssessment!==null"
+            <button *ngIf="proceso?.selfAssessment"
               style="background-color: rgb(34, 197, 89); color: white;width: 80%;" class="btn btn-disabled">
               <span class="left-align">AUTOEVALUACIÓN</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"
@@ -32,14 +32,14 @@
             </button>
           </div>
           <div style="margin: 10px;">
-            <button *ngIf="proceso?.canvasModel===null" class="btn btn-disabled"
+            <button *ngIf="!proceso?.canvasModel" class="btn btn-disabled"
               style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
               <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"></i>
             </button>
           </div>
           <div style="margin: 10px;">
-            <button *ngIf="proceso?.canvasModel?.costStructure===null" class="btn btn-disabled"
+            <button *ngIf="!proceso?.canvasModel?.costStructure && proceso?.canvasModel" class="btn btn-disabled"
               style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
               <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"
@@ -47,7 +47,7 @@
             </button>
           </div>
           <div style="margin: 10px;">
-            <button *ngIf="proceso?.canvasModel?.costStructure!==null" class="btn btn-disabled"
+            <button *ngIf="proceso?.canvasModel?.costStructure" class="btn btn-disabled"
               style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
               <span class="left-align">MODELO CANVAS</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"
@@ -55,18 +55,18 @@
             </button>
           </div>
           <div style="margin: 10px;">
-            <button *ngIf="proceso?.businessPlan===null" class="btn btn-disabled"
+            <button *ngIf="!proceso?.businessPlan" class="btn btn-disabled"
               style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
               <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"></i>
             </button>
-            <button *ngIf="proceso?.businessPlan?.conclusion===null && proceso?.businessPlan!==null"
+            <button *ngIf="!proceso?.businessPlan?.conclusion && proceso?.businessPlan"
               class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
               <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"
                 (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'continuar', 'continuar', 'negocio')"></i>
             </button>
-            <button *ngIf="proceso?.businessPlan?.conclusion!==null" class="btn btn-disabled"
+            <button *ngIf="proceso?.businessPlan?.conclusion" class="btn btn-disabled"
               style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
               <span class="left-align">PLAN DE NEGOCIOS</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"
@@ -74,19 +74,19 @@
             </button>
           </div>
           <div style="margin: 10px;">
-            <button *ngIf="proceso?.businessPlanFinancial===null" class="btn btn-disabled"
+            <button *ngIf="!proceso?.businessPlanFinancial" class="btn btn-disabled"
               style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
               <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i
                 class="fa-solid fa-pen-to-square right-align" type="button"></i>
             </button>
             <button
-              *ngIf="proceso?.businessPlanFinancial?.planInversion===null && proceso?.businessPlanFinancial!==null"
+              *ngIf="!proceso?.businessPlanFinancial?.planInversion && proceso?.businessPlanFinancial"
               class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
               <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i
                 class="fa-solid fa-pen-to-square right-align" type="button"
                 (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'finalizado', 'continuar', 'financiero')"></i>
             </button>
-            <button *ngIf="proceso?.businessPlanFinancial?.planInversion!==null" class="btn btn-disabled"
+            <button *ngIf="proceso?.businessPlanFinancial?.planInversion" class="btn btn-disabled"
               style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
               <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i
                 class="fa-solid fa-pen-to-square right-align" type="button"
@@ -147,18 +147,18 @@
         </div>
         <div class="card-body">
           <div style="margin: 10px;">
-            <button *ngIf="proceso?.processEmpresario===null"
+            <button *ngIf="!proceso?.processEmpresario"
               style="background-color: rgb(213, 218, 215); color: white;width: 80%;" class="btn btn-disabled">
               <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"></i>
             </button>
-            <button *ngIf="proceso?.processEmpresario!==null && proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico===null"
+            <button *ngIf="!proceso?.processEmpresario && proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico"
               style="background-color: rgb(58, 144, 224); color: white;width: 80%;" class="btn btn-disabled">
               <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button" (click)="abrirEmpresarial(proceso,'continuar', 'continuar', 'diagnostico')"
                 ></i>
             </button>
-            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico!==null"
+            <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico"
             style="background-color: rgb(34, 197, 89); color: white;width: 80%;" class="btn btn-disabled">
             <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span><i class="fa-solid fa-pen-to-square right-align"
               type="button" (click)="abrirEmpresarial(proceso,'finalizado', 'continuar', 'diagnostico')"
@@ -175,12 +175,12 @@
           </div>
           
           <div style="margin: 10px;">
-            <button  class="btn btn-disabled" *ngIf="proceso?.processEmpresario?.planAccion===null"
+            <button  class="btn btn-disabled" *ngIf="!proceso?.processEmpresario?.planAccion"
               style="background-color: rgb(213, 218, 215); color: white;width: 80%;">
               <span class="left-align">PLAN DE ACCIÓN</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button"></i>
             </button>
-            <button *ngIf="proceso?.processEmpresario?.planAccion!==null" class="btn btn-disabled"
+            <button *ngIf="proceso?.processEmpresario?.planAccion" class="btn btn-disabled"
               style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
               <span class="left-align">PLAN DE ACCIÓN</span><i class="fa-solid fa-pen-to-square right-align"
                 type="button" (click)="abrirEmpresarial(proceso,'finalizado', 'finalizado', 'planAccion')"
