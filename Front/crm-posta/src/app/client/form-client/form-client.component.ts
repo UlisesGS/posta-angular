@@ -79,6 +79,8 @@ export class FormClientComponent implements OnInit {
           })
         })
         this.idEditar = +parametro.get('idEditar');
+        console.log(this.idEditar)
+        
       }
     })
   }
@@ -109,11 +111,13 @@ export class FormClientComponent implements OnInit {
     this.service.updateBusinessman(this.empresario).subscribe(data => {
       console.log(this.proceso);
       if (this.idEditar) {
-        if (this.proceso.processEmpresario) {
+        if (this.proceso?.processEmpresario) {
+          this.proceso.cambio=true;
           this.proceso.estado = this.proceso.estadoAnteriorEmpresario
           this.procesoService.procesosUpdate(this.proceso).subscribe()
         } else {
           this.proceso.estado = 'iniciando2'
+          this.proceso.cambio=false;
           this.procesoService.procesosUpdate(this.proceso).subscribe()
         }
       }
@@ -154,6 +158,7 @@ export class FormClientComponent implements OnInit {
     this.cliente.type = "businessman";
     this.cliente.businessIdea = null;
     this.cliente.product = null;
+    
     this.service.updateBusinessman(this.cliente).subscribe(data => {
       Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
     }, e => {

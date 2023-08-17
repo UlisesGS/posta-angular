@@ -197,7 +197,9 @@ export class DetallesComponent {
               }else 
               if (proceso?.processEmpresario?.client?.id == this.cliente.id) {
                 this.proceso = proceso;
+                console.log(proceso.processEmpresario.planDeAccion);
                 console.log(proceso);
+                
                 if (this.proceso.documentoCompromiso) {
                   this.getImageUrl();
                 }

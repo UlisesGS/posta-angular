@@ -10,8 +10,8 @@ import { URL } from 'src/app/URL';
 })
 export class ImagenService {
   //baseUrl=URL
-  private baseUrl:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080"
-  //private baseUrl = 'http://localhost:8080'; 
+  //private baseUrl:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080"
+  private baseUrl = 'http://localhost:8080'; 
 
   constructor(private http: HttpClient) { }
 

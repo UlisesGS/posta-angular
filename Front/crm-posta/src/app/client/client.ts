@@ -46,6 +46,8 @@ export class Client{
   canvasModel:Canvas;
   user:Usuario;
 
+  
+
 
 
 }

@@ -34,7 +34,6 @@ export class ClientDetailsComponent implements OnInit{
         this.serviceClient.getClient(id).subscribe(data=>{
           this.client=data;
           console.log(data);
-          
           console.log(this.client);
           
         })

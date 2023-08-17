@@ -33,10 +33,6 @@ export class ModalDetallesComponent {
   public cerrarTest() {
     this.modalService.cerrarTestAuto();
   }
-
-  
-
-
   public verProceso(){
   
     switch(this.tipoVer){
@@ -68,12 +64,107 @@ export class ModalDetallesComponent {
     }
     this.modalService.cerrarTestAuto();
   }
-
-
-
-
-
-
+  public continuarProceso(){
+    console.log(this.proceso.estado);
+ 
+     switch(this.proceso.estado){
+       case 'iniciando':
+         this.ruta.navigate([`autoevaluacion/cliente/${this.proceso.canvasModel.client.id}`]);
+         break;
+       case 'AutoEvaluación':
+       this.ruta.navigate([`segmento/cliente/${this.proceso.canvasModel.client.id}`]);
+       break;
+       case 'Segmento de Clientes':
+         this.ruta.navigate([`propuestaDeValor/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Propuesta de Valor':
+         this.ruta.navigate([`canales/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Canales':
+         this.ruta.navigate([`relaciones/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Relación con los Clientes':
+         this.ruta.navigate([`recursosClaves/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Recursos Claves':
+         this.ruta.navigate([`actividadesClaves/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Actividades Claves':
+         this.ruta.navigate([`sociosClaves/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Socios Claves':
+         this.ruta.navigate([`ingresos/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Ingresos':
+         this.ruta.navigate([`estructuraCostos/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Estructura Costos':
+         this.ruta.navigate([`informacion/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Informacion Proyecto':
+         this.ruta.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Analisis Interno/Externo':
+         this.ruta.navigate([`dofa/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Analisis Dofa':
+         this.ruta.navigate([`conclusion/cliente/${this.proceso.canvasModel.client.id}`]);
+       ;
+       break;
+       case 'Conclusiones':
+        this.ruta.navigate([`ventas/cliente/${this.proceso.canvasModel.client.id}`]);
+       //this.ruta.navigate(['/procesos']);
+       ;
+       break;
+       case 'Presupuesto Venta':
+         this.ruta.navigate([`compras/cliente/${this.proceso.canvasModel.client.id}`]);
+        //this.ruta.navigate(['/procesos']);
+        ;
+        break;
+        case 'Presupuesto Compra':
+         this.ruta.navigate([`gastos/cliente/${this.proceso.canvasModel.client.id}`]);
+        //this.ruta.navigate(['/procesos']);
+        ;
+        break;
+        case 'Presupuesto Gastos/Costos':
+         this.ruta.navigate([`inversion/cliente/${this.proceso.canvasModel.client.id}`]);
+        ;
+        break;
+        case 'Plan Financiero finalizado':
+         this.ruta.navigate([`/empresario/diagnostico/cliente/${this.proceso.processEmpresario.client.id}`])
+        break;
+ 
+ 
+        case 'iniciando2':
+         this.ruta.navigate([`/empresario/diagnostico/cliente/${this.proceso.processEmpresario.client.id}`])
+        break;
+        case 'Diagnostico':
+         this.ruta.navigate([`/empresario/resultados/cliente/${this.proceso.processEmpresario.client.id}`])
+        break;
+        case 'Resultados':
+         this.ruta.navigate([`/empresario/economico/cliente/${this.proceso.processEmpresario.client.id}`])
+        break;
+        case 'Economico':
+         this.ruta.navigate([`/empresario/accion/cliente/${this.proceso.processEmpresario.client.id}`])
+        break;
+        // MODIFICAR
+        case 'Plan Accion':
+         this.ruta.navigate([`/accion/empresario/${this.proceso.processEmpresario.client.id}/editar/${this.proceso.id}`])
+        break;
+     }
+     this.modalService.cerrarModalProceso();
+   }
   convertImageToBase64(imageUrl: string): Promise<string> {
     return this.http.get(imageUrl, { responseType: 'blob' })
       .toPromise()
@@ -86,7 +177,6 @@ export class ModalDetallesComponent {
         });
       });
   }
-
 
   imprimirCanvas() {
 

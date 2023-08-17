@@ -22,7 +22,7 @@
                                     </a>
 
                                 </li>
-                                <li *ngIf="autoB!='finalizado' "><a
+                                <li *ngIf="autoB!='finalizado'  "><a
                                         class="dropdown-item d-flex align-items-center gap-2 py-2"
                                         (click)="continuarProceso()">
                                         <span class="d-inline-block bg-primary rounded-circle p-1"></span>
@@ -31,7 +31,7 @@
 
                                 <li *ngIf="autoB=='finalizado' && canvasB=='continuar'"><a
                                         class="dropdown-item d-flex align-items-center gap-2 py-2"
-                                        (click)="continuarProceso()">
+                                        (click)="continuarProceso()"> 
                                         <span class="d-inline-block bg-primary rounded-circle p-1"></span>
                                         Continuar con el Proceso
                                     </a></li>

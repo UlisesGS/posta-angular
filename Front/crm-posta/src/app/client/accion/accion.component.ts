@@ -41,7 +41,7 @@ export class AccionComponent implements OnInit {
   ngOnInit(): void {
     // this.condicion=false;
     this.condicion = false;
-  this.condicion2= false;
+   this.condicion2= false;
     this.procesoService.procesosFindAll().subscribe(lista => {
       this.procesos = lista;
       console.log(this.procesos);

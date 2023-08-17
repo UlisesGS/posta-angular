@@ -81,7 +81,7 @@ export class AutoevaluacionComponent implements OnInit {
             this.proceso.canvasModel = this.canvasModel;
 
             this.proceso.estado = "AutoEvaluación";
-
+            this.proceso.cambio=true;
             this.proceso.user = JSON.parse(localStorage.getItem('usuario'))
             this.selfAssessment.selfAssessment = this.preguntas;;
             this.selfAssessment.client = this.cliente;
@@ -131,6 +131,7 @@ export class AutoevaluacionComponent implements OnInit {
             this.canvasModel = canvas;
             this.proceso.canvasModel = this.canvasModel;
             this.proceso.estado = "AutoEvaluación";
+            this.proceso.cambio=true;
             this.proceso.estadoAnteriorEmprendedor= "AutoEvaluación";
             this.proceso.user = JSON.parse(localStorage.getItem('usuario'))
             this.selfAssessment.selfAssessment = this.preguntas;;

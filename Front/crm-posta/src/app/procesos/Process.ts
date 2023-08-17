@@ -39,6 +39,8 @@ export class Process {
   client:Client;
   updatedate:Date;
 
+  cambio:boolean;
+
 
 }
 

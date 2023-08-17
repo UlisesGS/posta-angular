@@ -48,7 +48,7 @@ export class FormEntrepreneurComponent implements OnInit {
             this.procesos=pr
 
             this.procesos.forEach(pro=>{
-              if(pro?.selfAssessment?.client?.id==this.emprendedor.id || pro?.processEmpresario?.client?.id==this.emprendedor.id){
+              if(pro?.selfAssessment?.client?.id==this.emprendedor?.id || pro?.processEmpresario?.client?.id==this.emprendedor?.id){
                 this.proceso=pro
                 
                 
@@ -60,7 +60,8 @@ export class FormEntrepreneurComponent implements OnInit {
           })
 
         })
-         this.idEditar = +parametro.get('idEditar');
+         this.idEditar = +parametro.get('idEditar'); 
+         console.log(this.idEditar)
       }
     })
 
@@ -108,10 +109,17 @@ public editar(){
       
       if(this.proceso.selfAssessment){
         this.proceso.estado=this.proceso.estadoAnteriorEmprendedor
+        this.proceso.cambio=true;
         this.procesoService.procesosUpdate(this.proceso).subscribe()
+        console.log("Chango");
+        
       }else{
-        this.proceso.estado='iniciando'
+        this.proceso.estado='iniciando';
+        this.proceso.cambio=false;
         this.procesoService.procesosUpdate(this.proceso).subscribe()
+        console.log("Changuito");
+        
+        
       }
 
       
