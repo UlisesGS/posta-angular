@@ -14,4 +14,5 @@ gestionDigital:number[];
 gestionAmbiental:number[];
 gestionIntelectual:number[];
 totales:number[];
+total:number;
 	}

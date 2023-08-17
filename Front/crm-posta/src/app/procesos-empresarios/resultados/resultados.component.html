@@ -2,7 +2,322 @@
     <div class="col-2" *ngIf="!idVer">
         <app-client-details></app-client-details>
     </div>
-    <div class="col-10" *ngIf="!idVer">
+    <div class="col-10">
+        <div class="row">
+            <div class="col-8" *ngIf="!idVer">
+                <h2 class="btn btn-disabled">Anális de Resultados</h2>
+                <div class="col">
+                    <form action="">
+                        <table class="table table-bordered" style="border: solid 1px;">
+                            <tbody>
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>1. GESTIÓN ESTRATÉGICA COMERCIAL Y DE MARKETING</strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionEstrategica"
+                                            name="1" id="1" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>2. GESTIÓN DE LA PRODUCTIVIDAD Y DEL TALENTO HUMANO
+                                        </strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionProductividad"
+                                            name="2" id="2" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>3. GESTIÓN DE LA PRODUCTIVIDAD OPERACIONAL
+    
+                                        </strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionOperacional"
+                                            name="3" id="3" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>4. GESTIÓN DE CALIDAD
+    
+                                        </strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionCalidad"
+                                            name="4" id="4" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>5. GESTIÓN DE LA INNOVACIÓN
+    
+                                        </strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionInnovacion"
+                                            name="5" id="5" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>6. GESTIÓN FINANCIERA Y CONTABLE
+    
+                                        </strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionFinanciera"
+                                            name="6" id="6" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>7. GESTIÓN LOGÍSTICA
+    
+                                        </strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionLogistica"
+                                            name="7" id="7" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>8. GESTIÓN DE TRANSFORMACIÓN DIGÍTAL
+    
+                                        </strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionDigital"
+                                            name="8" id="8" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>9. SOSTENIBILIDAD AMBIENTAL
+    
+                                        </strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionAmbiental"
+                                            name="9" id="9" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th style="font-size: 14px;">
+                                        <strong>10. GESTIÓN PROPIEDAD INTELECTUAL E INDUSTRIAL
+    
+                                        </strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea
+                                            [(ngModel)]="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados.gestionIntelectual"
+                                            name="10" id="10" class="form-control" rows="4"></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+                    (click)="guardar()" class="btn">Guardar</button>
+                <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+                    (click)="guardarYcontinuar()" class="btn">Guardar y Continuar</button>
+                <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+                    (click)="editar()" class="btn">Editar</button>
+                <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+                    (click)="editarYcontinuar()" class="btn">Editar y Continuar</button>
+                <button [routerLink]="['/procesos']" class="btn ">Cancelar</button>
+                <button [routerLink]="['/diagnostico/empresario/',cliente.id,'editar',proceso.id]"
+                    class="btn ">Volver</button>
+            </div>
+            <div class="col-2 half-width mt-5" *ngIf="!idVer">
+                <form action="">
+                    <table class="table table-bordered" style="border: solid 1px;">
+                        <thead>
+                            <tr>
+                                <th style="width: 3%;" colspan="2">CONSOLIDADO</th>
+                                <th style="width: 20%;">CALIFICACIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 3%;">1</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong>GESTIÓN ESTRATÉGICA COMERCIAL Y DE MARKETING
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[0]?.toFixed(2)}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">2</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong>GESTIÓN DE LA PRODUCTIVIDAD Y DEL TALENTO HUMANO
+    
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[1]?.toFixed(2)}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">3</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong>GESTIÓN DE LA PRODUCTIVIDAD OPERACIONAL
+    
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[2]?.toFixed(2)}}
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <td style="width: 3%;">4</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong>GESTIÓN DE CALIDAD
+    
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[3]?.toFixed(2)}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">5</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong>GESTIÓN DE LA INNOVACIÓN
+    
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[4]?.toFixed(2)}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">6</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong>GESTIÓN FINANCIERA Y CONTABLE
+    
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[5]?.toFixed(2)}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">7</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong> GESTIÓN LOGÍSTICA
+    
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[6]?.toFixed(2)}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">8</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong>GESTIÓN DE TRANSFORMACIÓN DIGÍTAL
+    
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[7]?.toFixed(2)}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">9</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong>GESTIÓN DE SOSTENIBILIDAD AMBIENTAL
+    
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[8]?.toFixed(2)}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">10</td>
+                                <td style="width: 94%;">
+                                    <label for="pregunta1"><strong>GESTIÓN DE LA PROPIEDAD INTELECTUAL E INDUSTRIAL
+    
+                                        </strong>
+                                    </label>
+                                </td>
+                                <td style="width: 3%;" class="mantener">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.totales[9]?.toFixed(2)}}
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <td colspan="2" style="text-align: center; background-color: rgb(240, 240, 118);">
+                                    Puntaje Total :
+                                </td>
+                                <td style="text-align: center; background-color: rgb(240, 240, 118);">
+                                    {{proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.total?.toFixed(2)}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+  
+    <!-- <div class="col-10" *ngIf="!idVer">
         <h2 class="btn btn-disabled">Anális de Resultados</h2>
         <div class="col-8">
             <form action="">
@@ -168,8 +483,8 @@
             (click)="editarYcontinuar()" class="btn">Editar y Continuar</button>
         <button [routerLink]="['/procesos']" class="btn ">Cancelar</button>
         <button [routerLink]="['/diagnostico/empresario/',cliente.id,'editar',proceso.id]" class="btn ">Volver</button>
-    </div>
-    <div class="col" *ngIf="idVer">
+    </div> -->
+    <div class="col-10" *ngIf="idVer">
         <h2 class="btn btn-disabled">Anális de Resultados</h2>
         <div class="col">
             <form action="">

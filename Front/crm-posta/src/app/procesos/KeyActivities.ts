@@ -4,5 +4,6 @@ export class KeyActivities {
   prestacionServicio:string;
   comunicacionMarketing:string;
   postVenta:string;
+  otros:string;
 
 }

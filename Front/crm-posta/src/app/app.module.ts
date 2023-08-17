@@ -78,6 +78,7 @@ import { CalendarioComponent } from './calendario/calendario.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanelComponent } from './usuario/panel/panel.component';
+import { RecargaComponent } from './header/asesoria/asesoriaList/recarga/recarga.component';
 
 
 const routes: Routes = [
@@ -209,6 +210,9 @@ const routes: Routes = [
 
   //Calendario
   { path: 'calendario', component: CalendarioComponent },
+
+  //recarga asesoria en asesoria
+  { path: 'recarga', component: RecargaComponent },
 ]
 
 @NgModule({
@@ -282,6 +286,7 @@ const routes: Routes = [
     MensajesComponent,
     CalendarioComponent,
     PanelComponent,
+    RecargaComponent,
 
 
   ],

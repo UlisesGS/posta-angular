@@ -3,5 +3,6 @@ export class RevenueStreams {
   capitalPorpio:string;
   capitalPrestamo:string;
   canalesPago:string;
+  otros:string;
 
 }

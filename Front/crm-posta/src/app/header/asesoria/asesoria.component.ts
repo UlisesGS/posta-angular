@@ -84,6 +84,7 @@ this.asesoria.user = this.usuario;
     this.usuarioService.asesoriaSave(this.asesoria).subscribe(data=>{
       this.asesoria.advisory=data;
       Swal.fire('Finalizada', `La asesoria de ${/* NOMBRE DE ASESOR */this.client.name} fue creada con exito`, 'success')
+      this.router.navigate(['/recarga'])
       this.cerrarModalAsesoria();
     },e=>{
       if(e.status==404){

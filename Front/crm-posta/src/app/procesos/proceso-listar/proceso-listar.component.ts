@@ -46,33 +46,6 @@ this.clienteService.getClientsMunicipios().subscribe(data=>{
   this.municipios=data;
 })
 this.todosPaginacion();
-/*
-this.clienteService.clienteListarTodos().subscribe(data=>{
- // console.log(data);
-
-  this.clientes=data;
-  console.log(this.clientes);
-  this.clientes.forEach(cliente=>{
-    if(cliente.canvasModel==null){
-      console.log('es null');
-
-    }else{
-      this.clientesProceso.push(cliente);
-    }
-
-
-  })
-  console.log(this.clientesProceso);
- //this.clientes= this.clientes.filter(cliente=>cliente.canvasModel==null);
-})
-*/
-/*this.procesoService.procesosFindAll().subscribe(data=>{
-  this.procesos=data;
-  console.log(this.procesos);
-
-})*/
-
-
 
   }
   public cambiarCondicion(){
@@ -173,6 +146,7 @@ this.modal.abrirModalPocesos();
         })
       )*/.subscribe(response => {
         console.log(response);
+        
 
         this.procesos = response.content as Process[];
         this.paginador = response;
