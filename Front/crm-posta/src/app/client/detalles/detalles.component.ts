@@ -194,12 +194,12 @@ export class DetallesComponent {
                 if (this.proceso.actaCierre) {
                   this.getImageUrlCierre();
                 }
-                
-
               }else 
               if (proceso?.processEmpresario?.client?.id == this.cliente.id) {
                 this.proceso = proceso;
+                console.log(proceso.processEmpresario.planDeAccion);
                 console.log(proceso);
+                
                 if (this.proceso.documentoCompromiso) {
                   this.getImageUrl();
                 }
@@ -214,13 +214,14 @@ export class DetallesComponent {
                 }
 
               }
+              
             })
           })
 
         })
       }
     })
-
+    console.log(this.proceso);
   }
 
 

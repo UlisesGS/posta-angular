@@ -1,258 +1,525 @@
-<div class="container display-flex">
-    <form class="was-validated">
-        <h2 class="btn btn-disabled">DATOS DEL EMPRENDEDOR</h2>
-        <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
-            <div style="flex-basis: 50%;">
-                <label for="">
-                    <br>
 
-                    <input type="text" name="name" [(ngModel)]="emprendedor.name" placeholder="Nombre" class="form-control" required>
-
-                </label>
-                <div style="flex-basis: 50%;">
-                    <label for="">
-                        <br>
-
-                        <input type="text" name="nit" [(ngModel)]="emprendedor.nit" placeholder="Documento/NIT" class="form-control" required>
-
-                    </label>
-                </div>
-            </div>
-            <div style="flex-basis: 50%;">
-                <label for="">
-                    <br>
-                    <input type="text" name="lastName" [(ngModel)]="emprendedor.lastName" placeholder="Apellido" class="form-control" required>
-                </label>
-                <div style="flex-basis: 50%;">
-                    <label for="">
-
-                        <br>
-                        <select class="form-select form-select-sm" name="gender" [(ngModel)]="emprendedor.gender"
-                            aria-label="Default select example" required>
-                            <option [ngValue]="undefined">--- Seleccionar Género ---</option>
-                            <option value="MALE">Masculino</option>
-                            <option value="FEMALE">Femenino</option>
-                            <option value="LGBTQ">LGBTQ+</option>
-
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <div style="flex-basis: 50%;">
-                <label for="">
-                    <br>
-                    <input type="date" style="border-radius: 5;" name="fechaNacimiento" [(ngModel)]="emprendedor.fechaNacimiento"
-                        placeholder="Edad" class="form-control" required>
-                </label>
-                <div style="flex-basis: 50%;">
-                    <label for="">
-
-                        <br>
-                        <select class="form-select form-select-sm" name="ethnicGroup"
-                            [(ngModel)]="emprendedor.ethnicGroup" aria-label="Default select example" required>
-                            <option [ngValue]="undefined">--- Seleccionar Grupo Étnico ---</option>
-                            <option value="ROM">ROM</option>
-                            <option value="INDIGENAS">INDIGENAS</option>
-                            <option value="AFROCOLOMBIANO">AFROCOLOMBIANO</option>
-                            <option value="RAIZALES">RAIZALES</option>
-                            <option value="OTRO ">OTRO </option>
-
-                        </select>
-                    </label>
-                </div>
-                <div style="flex-basis: 50%;">
-
-
-                    <label for="" style="font-size: 15px; margin-top: 10px;;">
-
-                        <strong>¿Es población víctima?</strong>
-                        <br>
-                    </label>
-
-                    <input value="true" [(ngModel)]="emprendedor.victimPopulation" class="form-check-input" type="radio"
-                        name="victimPopulation" id="victimPopulation" style="margin-top: 20px; margin-left: 5px;" required>
-                    <label for="victimPopulation" class="form-check-label"
-                        style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
-
-                    <input value="false" [(ngModel)]="emprendedor.victimPopulation" class="form-check-input"
-                        type="radio" name="victimPopulation" id="victimPopulation1"
-                        style="margin-top: 20px; margin-left: 10px;" required>
-                    <label for="victimPopulation1" class="form-check-label"
-                        style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
-
-
-                </div>
-            </div>
-            <div style="flex-basis: 50%;">
-                <label for="">
-
-                    <br>
-                    <select class="form-select form-select-sm" name="studyLevel" [(ngModel)]="emprendedor.studyLevel"
-                        aria-label="Default select example" required>
-                        <option [ngValue]="undefined">--- Seleccionar Nivel Escolaridad ---</option>
-                        <option value="PRIMARIO">PRIMARIO</option>
-                        <option value="TECNICO">TECNICO</option>
-                        <option value="TECNOLOGO ">TECNOLOGO </option>
-                        <option value="BACHILLER ">BACHILLER </option>
-                        <option value="PREGRADO ">PREGRADO </option>
-                        <option value="POSTGRADO ">POSTGRADO </option>
-                        <option value="PROFESIONAL ">PROFESIONAL </option>
-
-                    </select>
-                </label>
-                <div style="flex-basis: 50%;">
-
-
-                    <label for="" style="font-size: 15px; margin-top: 10px;;">
-
-                        <strong>¿Esta en condiciones de desplazamiento?</strong>
-                        <br>
-                    </label>
-                    <input value="true" [(ngModel)]="emprendedor.displacement" class="form-check-input" type="radio"
-                        name="displacement" id="displacement" style="margin-top: 20px; margin-left: 5px;" required>
-                    <label class="form-check-label" for="displacement"
-                        style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
-                    <input value="false" [(ngModel)]="emprendedor.displacement" class="form-check-input" type="radio"
-                        name="displacement" id="displacement1" style="margin-top: 20px; margin-left: 10px;" required>
-                    <label class="form-check-label" for="displacement1"
-                        style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
-                </div>
-                <div style="flex-basis: 50%;">
-
-
-                    <label for="" style="font-size: 15px; margin-top: 10px;;">
-
-                        <strong>¿Presenta alguna discapacidad?</strong>
-                        <br>
-                    </label>
-                    <input value="true" [(ngModel)]="emprendedor.disability" class="form-check-input" type="radio"
-                        name="disability" id="disability" style="margin-top: 20px; margin-left: 5px;" required>
-                    <label class="form-check-label" for="disability"
-                        style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
-                    <input value="false" [(ngModel)]="emprendedor.disability" class="form-check-input" type="radio"
-                        name="disability" id="disability1" style="margin-top: 20px; margin-left: 10px;" required>
-                    <label class="form-check-label" for="disability1"
-                        style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-        <!-- Form de los datos de Empresa -->
-
-        <div>
-            <h2 class="btn btn-disabled mt-2">DATOS IDEA DE NEGOCIO</h2>
+<div *ngIf="idEditar!==0 && idEditar!=1">
+    <div class="container display-flex">
+        <form class="was-validated">
+            <h2 class="btn btn-disabled">DATOS DEL EMPRENDEDOR</h2>
             <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
-                        <input type="text" name="businessIdea" [(ngModel)]="emprendedor.businessIdea"
-                            placeholder="Idea de Negocio" class="form-control" required>
+    
+                        <input type="text" name="name" [(ngModel)]="emprendedor.name" placeholder="Nombre" class="form-control" required>
+    
                     </label>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+    
+                            <input type="text" name="nit" [(ngModel)]="emprendedor.nit" placeholder="Documento/NIT" class="form-control" required>
+    
+                        </label>
+                    </div>
                 </div>
                 <div style="flex-basis: 50%;">
                     <label for="">
                         <br>
-                        <input type="text" name="product" [(ngModel)]="emprendedor.product"
-                            placeholder="Producto a Comercializar" class="form-control" required>
+                        <input type="text" name="lastName" [(ngModel)]="emprendedor.lastName" placeholder="Apellido" class="form-control" required>
                     </label>
-
-                </div>
-                <div style="flex-basis: 50%;">
-
-
                     <div style="flex-basis: 50%;">
                         <label for="">
+    
                             <br>
-                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="address"
-                                [(ngModel)]="emprendedor.address" placeholder="Dirección" class="form-control" required>
-                        </label>
-                    </div>
-                    <div style="flex-basis: 50%;">
-
-                        <label for="">
-                            <br>
-                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="phone"
-                                [(ngModel)]="emprendedor.phone" placeholder="Teléfono" class="form-control" required>
-                        </label>
-                    </div>
-                </div>
-                <div style="flex-basis: 50%;">
-
-                    <div style="flex-basis: 50%;">
-
-                        <label for="">
-                            <br>
-                            <select [compareWith]="compararMunicipio" [(ngModel)]="emprendedor.municipio" class="form-select form-select-sm"
-                                name="municipio" aria-label="Default select example" required>
-                                <option [ngValue]="undefined">--- Seleccionar Municipio ---</option>
-                                <option *ngFor="let m of municipios" [ngValue]="m">{{m.id}} || {{m.name}} || {{m.country}}</option>
-
-
+                            <select class="form-select form-select-sm" name="gender" [(ngModel)]="emprendedor.gender"
+                                aria-label="Default select example" required>
+                                <option [ngValue]="undefined">--- Seleccionar Género ---</option>
+                                <option value="MALE">Masculino</option>
+                                <option value="FEMALE">Femenino</option>
+                                <option value="LGBTQ">LGBTIQ+</option>
+    
                             </select>
                         </label>
-
-                    </div>
-
-                    <div style="flex-basis: 50%;">
-                        <label for="">
-                            <br>
-                            <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"
-                                [(ngModel)]="emprendedor.email" placeholder="Correo Electrónico" class="form-control" required>
-                        </label>
-
                     </div>
                 </div>
-                <div style="flex-basis: 100%;" class="mt-3">
-                    <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
-                            [(ngModel)]="emprendedor.remarks" placeholder="Tema/Observaciones" class="form-control" required></textarea>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        <br>
+                        <input type="date" style="border-radius: 5;" name="fechaNacimiento" [(ngModel)]="emprendedor.fechaNacimiento"
+                            placeholder="Edad" class="form-control" required>
+                    </label>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+    
+                            <br>
+                            <select class="form-select form-select-sm" name="ethnicGroup"
+                                [(ngModel)]="emprendedor.ethnicGroup" aria-label="Default select example" required>
+                                <option [ngValue]="undefined">--- Seleccionar Grupo Étnico ---</option>
+                                <option value="ROM">ROM</option>
+                                <option value="INDIGENAS">INDIGENAS</option>
+                                <option value="AFROCOLOMBIANO">AFROCOLOMBIANO</option>
+                                <option value="RAIZALES">RAIZALES</option>
+                                <option value="OTRO ">OTRO </option>
+    
+                            </select>
+                        </label>
+                    </div>
+                    <div style="flex-basis: 50%;">
+    
+    
+                        <label for="" style="font-size: 15px; margin-top: 10px;;">
+    
+                            <strong>¿Es población víctima?</strong>
+                            <br>
+                        </label>
+    
+                        <input value="true" [(ngModel)]="emprendedor.victimPopulation" class="form-check-input" type="radio"
+                            name="victimPopulation" id="victimPopulation" style="margin-top: 20px; margin-left: 5px;" required>
+                        <label for="victimPopulation" class="form-check-label"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+    
+                        <input value="false" [(ngModel)]="emprendedor.victimPopulation" class="form-check-input"
+                            type="radio" name="victimPopulation" id="victimPopulation1"
+                            style="margin-top: 20px; margin-left: 10px;" required>
+                        <label for="victimPopulation1" class="form-check-label"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+    
+    
+                    </div>
+                </div>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+    
+                        <br>
+                        <select class="form-select form-select-sm" name="studyLevel" [(ngModel)]="emprendedor.studyLevel"
+                            aria-label="Default select example" required>
+                            <option [ngValue]="undefined">--- Seleccionar Nivel Escolaridad ---</option>
+                            <!-- <option value="PRIMARIO">PRIMARIO</option> -->
+                            <option value="BACHILLER ">BACHILLER</option>
+                            <option value="TECNICO">TECNICO</option>
+                            <option value="TECNOLOGO ">TECNOLOGO</option>
+                            <option value="PREGRADO ">PREGRADO</option>
+                            <option value="POSTGRADO ">POSTGRADO</option>
+                            <!-- <option value="PROFESIONAL ">PROFESIONAL </option> -->
+    
+                        </select>
+                    </label>
+                    <div style="flex-basis: 50%;">
+    
+    
+                        <label for="" style="font-size: 15px; margin-top: 10px;;">
+    
+                            <strong>¿Esta en condiciones de desplazamiento?</strong>
+                            <br>
+                        </label>
+                        <input value="true" [(ngModel)]="emprendedor.displacement" class="form-check-input" type="radio"
+                            name="displacement" id="displacement" style="margin-top: 20px; margin-left: 5px;" required>
+                        <label class="form-check-label" for="displacement"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+                        <input value="false" [(ngModel)]="emprendedor.displacement" class="form-check-input" type="radio"
+                            name="displacement" id="displacement1" style="margin-top: 20px; margin-left: 10px;" required>
+                        <label class="form-check-label" for="displacement1"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+                    </div>
+                    <div style="flex-basis: 50%;">
+    
+    
+                        <label for="" style="font-size: 15px; margin-top: 10px;;">
+    
+                            <strong>¿Presenta alguna discapacidad?</strong>
+                            <br>
+                        </label>
+                        <input value="true" [(ngModel)]="emprendedor.disability" class="form-check-input" type="radio"
+                            name="disability" id="disability" style="margin-top: 20px; margin-left: 5px;" required>
+                        <label class="form-check-label" for="disability"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+                        <input value="false" [(ngModel)]="emprendedor.disability" class="form-check-input" type="radio"
+                            name="disability" id="disability1" style="margin-top: 20px; margin-left: 10px;" required>
+                        <label class="form-check-label" for="disability1"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col p-2 mt-3" style="border-radius: 1em;">
-            <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="active" required>
-            <p style="font-size: 10px;" class="">
+    
+    
+    
+    
+    
+    
+            <!-- Form de los datos de Empresa -->
+    
+            <div>
+                <h2 class="btn btn-disabled mt-2">DATOS IDEA DE NEGOCIO</h2>
+                <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+                            <input type="text" name="businessIdea" [(ngModel)]="emprendedor.businessIdea"
+                                placeholder="Idea de Negocio" class="form-control" required>
+                        </label>
+                    </div>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+                            <input type="text" name="product" [(ngModel)]="emprendedor.product"
+                                placeholder="Producto a Comercializar" class="form-control" required>
+                        </label>
+    
+                    </div>
+                    <div style="flex-basis: 50%;">
+    
+    
+                        <div style="flex-basis: 50%;">
+                            <label for="">
+                                <br>
+                                <input type="text" style="border-radius: 5; margin-right: 5px;" name="address"
+                                    [(ngModel)]="emprendedor.address" placeholder="Dirección" class="form-control" required>
+                            </label>
+                        </div>
+                        <div style="flex-basis: 50%;">
+    
+                            <label for="">
+                                <br>
+                                <input type="text" style="border-radius: 5; margin-right: 5px;" name="phone"
+                                    [(ngModel)]="emprendedor.phone" placeholder="Teléfono" class="form-control" required>
+                            </label>
+                        </div>
+                    </div>
+                    <div style="flex-basis: 50%;">
+    
+                        <div style="flex-basis: 50%;">
+    
+                            <label for="">
+                                <br>
+                                <select [compareWith]="compararMunicipio" [(ngModel)]="emprendedor.municipio" class="form-select form-select-sm"
+                                    name="municipio" aria-label="Default select example" required>
+                                    <option [ngValue]="undefined">--- Seleccionar Municipio ---</option>
+                                    <option *ngFor="let m of municipios" [ngValue]="m">{{m.id}} || {{m.name}} || {{m.country}}</option>
+    
+    
+                                </select>
+                            </label>
+    
+                        </div>
+    
+                        <div style="flex-basis: 50%;">
+                            <label for="">
+                                <br>
+                                <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"
+                                    [(ngModel)]="emprendedor.email" placeholder="Correo Electrónico" class="form-control" required>
+                            </label>
+    
+                        </div>
+                    </div>
+                    <div style="flex-basis: 100%;" class="mt-3">
+                        <div class="form-group">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                                [(ngModel)]="emprendedor.remarks" placeholder="Tema/Observaciones" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col p-2 mt-3" style="border-radius: 1em;">
+                <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="active" required>
+                <p style="font-size: 10px;" class="">
+    
+                    Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE
+                    VILLAVICENCIO (la “CCV”)
+                    para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación
+                    personal, nombres y apellidos,
+                    números de teléfono y celular, correo electrónico, país de origen y en general toda la información
+                    solicitada para información
+                    de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a
+                    la que puede accederse
+                    en el siguiente link:
+                    https://s3.pagegear.co/415/78/politica_de_tratamiento_de_datos_personales_2021_ccv.pdf, así como para el
+                    desarrollo de las funciones públicas que le han sido asignadas y demás actividades complementarias y ser
+                    informado de nuevas
+                    jornadas, eventos y/o espacios de formación que adelanta la Cámara, divulgación de la oferta académica y
+                    evaluación de los
+                    servicios de la Cámara. Reconozco y acepto que la CCV me informó que en caso de que se soliciten datos
+                    personales sensibles,
+                    la entrega de estos es meramente facultativa y no estoy obligado a entregarlos.
+                    Reconozco que se me fue informado que, como titular de mis datos personales, tengo derecho a conocer,
+                    actualizar y rectificar mis datos personales, solicitar prueba de la autorización otorgada para su
+                    tratamiento, ser informado sobre el uso que se ha dado a los mismos, presentar quejas ante la
+                    Superintendencia de Industria y Comercio por infracción a la ley, revocar la autorización y/o solicitar
+                    la supresión de mis datos en los casos que sea procedente y acceder en forma gratuita a los mismos. De
+                    igual manera, se me indicó que puedo ejercer mis derechos como titular de mis datos personales a través
+                    de los canales dispuestos en la Política de Tratamiento de Datos Personales o a través del correo
+                    electrónico datospersonales@ccv.org.co.
+                </p>
+            </div>
+            <div class="form-group">
+                <button *ngIf="!emprendedor.id" (click)="registrar()" class="btn btn-success">Registrar</button>
+                <button *ngIf="emprendedor.id" (click)="editar()" class="btn btn-success">Editar</button>
+              </div>
+    
+    
+    
+    
+        </form>
+    </div>
+</div>
 
-                Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE
-                VILLAVICENCIO (la “CCV”)
-                para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación
-                personal, nombres y apellidos,
-                números de teléfono y celular, correo electrónico, país de origen y en general toda la información
-                solicitada para información
-                de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a
-                la que puede accederse
-                en el siguiente link:
-                https://s3.pagegear.co/415/78/politica_de_tratamiento_de_datos_personales_2021_ccv.pdf, así como para el
-                desarrollo de las funciones públicas que le han sido asignadas y demás actividades complementarias y ser
-                informado de nuevas
-                jornadas, eventos y/o espacios de formación que adelanta la Cámara, divulgación de la oferta académica y
-                evaluación de los
-                servicios de la Cámara. Reconozco y acepto que la CCV me informó que en caso de que se soliciten datos
-                personales sensibles,
-                la entrega de estos es meramente facultativa y no estoy obligado a entregarlos.
-                Reconozco que se me fue informado que, como titular de mis datos personales, tengo derecho a conocer,
-                actualizar y rectificar mis datos personales, solicitar prueba de la autorización otorgada para su
-                tratamiento, ser informado sobre el uso que se ha dado a los mismos, presentar quejas ante la
-                Superintendencia de Industria y Comercio por infracción a la ley, revocar la autorización y/o solicitar
-                la supresión de mis datos en los casos que sea procedente y acceder en forma gratuita a los mismos. De
-                igual manera, se me indicó que puedo ejercer mis derechos como titular de mis datos personales a través
-                de los canales dispuestos en la Política de Tratamiento de Datos Personales o a través del correo
-                electrónico datospersonales@ccv.org.co.
-            </p>
-        </div>
-        <div class="form-group">
-            <button *ngIf="!emprendedor.id" (click)="registrar()" class="btn btn-success">Registrar</button>
-            <button *ngIf="emprendedor.id" (click)="editar()" class="btn btn-success">Editar</button>
-          </div>
-
-
-
-
-    </form>
+<div class="col-8" *ngIf="idEditar==0 || idEditar==1">
+    <div class="container display-flex">
+        <form class="was-validated">
+            <h2 class="btn btn-disabled">DATOS DEL EMPRENDEDOR</h2>
+            <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        <br>
+    
+                        <input type="text" name="name" [(ngModel)]="emprendedor.name" placeholder="Nombre" class="form-control" required>
+    
+                    </label>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+    
+                            <input type="text" name="nit" [(ngModel)]="emprendedor.nit" placeholder="Documento/NIT" class="form-control" required>
+    
+                        </label>
+                    </div>
+                </div>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        <br>
+                        <input type="text" name="lastName" [(ngModel)]="emprendedor.lastName" placeholder="Apellido" class="form-control" required>
+                    </label>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+    
+                            <br>
+                            <select class="form-select form-select-sm" name="gender" [(ngModel)]="emprendedor.gender"
+                                aria-label="Default select example" required>
+                                <option [ngValue]="undefined">--- Seleccionar Género ---</option>
+                                <option value="MALE">Masculino</option>
+                                <option value="FEMALE">Femenino</option>
+                                <option value="LGBTQ">LGBTIQ+</option>
+    
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+                        <br>
+                        <input type="date" style="border-radius: 5;" name="fechaNacimiento" [(ngModel)]="emprendedor.fechaNacimiento"
+                            placeholder="Edad" class="form-control" required>
+                    </label>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+    
+                            <br>
+                            <select class="form-select form-select-sm" name="ethnicGroup"
+                                [(ngModel)]="emprendedor.ethnicGroup" aria-label="Default select example" required>
+                                <option [ngValue]="undefined">--- Seleccionar Grupo Étnico ---</option>
+                                <option value="ROM">ROM</option>
+                                <option value="INDIGENAS">INDIGENAS</option>
+                                <option value="AFROCOLOMBIANO">AFROCOLOMBIANO</option>
+                                <option value="RAIZALES">RAIZALES</option>
+                                <option value="OTRO ">OTRO </option>
+    
+                            </select>
+                        </label>
+                    </div>
+                    <div style="flex-basis: 50%;">
+    
+    
+                        <label for="" style="font-size: 15px; margin-top: 10px;;">
+    
+                            <strong>¿Es población víctima?</strong>
+                            <br>
+                        </label>
+    
+                        <input value="true" [(ngModel)]="emprendedor.victimPopulation" class="form-check-input" type="radio"
+                            name="victimPopulation" id="victimPopulation" style="margin-top: 20px; margin-left: 5px;" required>
+                        <label for="victimPopulation" class="form-check-label"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+    
+                        <input value="false" [(ngModel)]="emprendedor.victimPopulation" class="form-check-input"
+                            type="radio" name="victimPopulation" id="victimPopulation1"
+                            style="margin-top: 20px; margin-left: 10px;" required>
+                        <label for="victimPopulation1" class="form-check-label"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+    
+    
+                    </div>
+                </div>
+                <div style="flex-basis: 50%;">
+                    <label for="">
+    
+                        <br>
+                        <select class="form-select form-select-sm" name="studyLevel" [(ngModel)]="emprendedor.studyLevel"
+                            aria-label="Default select example" required>
+                            <option [ngValue]="undefined">--- Seleccionar Nivel Escolaridad ---</option>
+                            <!-- <option value="PRIMARIO">PRIMARIO</option> -->
+                            <option value="BACHILLER ">BACHILLER</option>
+                            <option value="TECNICO">TECNICO</option>
+                            <option value="TECNOLOGO ">TECNOLOGO</option>
+                            <option value="PREGRADO ">PREGRADO</option>
+                            <option value="POSTGRADO ">POSTGRADO</option>
+                            <!-- <option value="PROFESIONAL ">PROFESIONAL </option> -->
+    
+                        </select>
+                    </label>
+                    <div style="flex-basis: 50%;">
+    
+    
+                        <label for="" style="font-size: 15px; margin-top: 10px;;">
+    
+                            <strong>¿Esta en condiciones de desplazamiento?</strong>
+                            <br>
+                        </label>
+                        <input value="true" [(ngModel)]="emprendedor.displacement" class="form-check-input" type="radio"
+                            name="displacement" id="displacement" style="margin-top: 20px; margin-left: 5px;" required>
+                        <label class="form-check-label" for="displacement"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+                        <input value="false" [(ngModel)]="emprendedor.displacement" class="form-check-input" type="radio"
+                            name="displacement" id="displacement1" style="margin-top: 20px; margin-left: 10px;" required>
+                        <label class="form-check-label" for="displacement1"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+                    </div>
+                    <div style="flex-basis: 50%;">
+    
+    
+                        <label for="" style="font-size: 15px; margin-top: 10px;;">
+    
+                            <strong>¿Presenta alguna discapacidad?</strong>
+                            <br>
+                        </label>
+                        <input value="true" [(ngModel)]="emprendedor.disability" class="form-check-input" type="radio"
+                            name="disability" id="disability" style="margin-top: 20px; margin-left: 5px;" required>
+                        <label class="form-check-label" for="disability"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">SI</label>
+                        <input value="false" [(ngModel)]="emprendedor.disability" class="form-check-input" type="radio"
+                            name="disability" id="disability1" style="margin-top: 20px; margin-left: 10px;" required>
+                        <label class="form-check-label" for="disability1"
+                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+    
+            <!-- Form de los datos de Empresa -->
+    
+            <div>
+                <h2 class="btn btn-disabled mt-2">DATOS IDEA DE NEGOCIO</h2>
+                <div class="col p-2" style="display: flex; flex-wrap: wrap; border: solid 1px; border-radius: 1em;">
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+                            <input type="text" name="businessIdea" [(ngModel)]="emprendedor.businessIdea"
+                                placeholder="Idea de Negocio" class="form-control" required>
+                        </label>
+                    </div>
+                    <div style="flex-basis: 50%;">
+                        <label for="">
+                            <br>
+                            <input type="text" name="product" [(ngModel)]="emprendedor.product"
+                                placeholder="Producto a Comercializar" class="form-control" required>
+                        </label>
+    
+                    </div>
+                    <div style="flex-basis: 50%;">
+    
+    
+                        <div style="flex-basis: 50%;">
+                            <label for="">
+                                <br>
+                                <input type="text" style="border-radius: 5; margin-right: 5px;" name="address"
+                                    [(ngModel)]="emprendedor.address" placeholder="Dirección" class="form-control" required>
+                            </label>
+                        </div>
+                        <div style="flex-basis: 50%;">
+    
+                            <label for="">
+                                <br>
+                                <input type="text" style="border-radius: 5; margin-right: 5px;" name="phone"
+                                    [(ngModel)]="emprendedor.phone" placeholder="Teléfono" class="form-control" required>
+                            </label>
+                        </div>
+                    </div>
+                    <div style="flex-basis: 50%;">
+    
+                        <div style="flex-basis: 50%;">
+    
+                            <label for="">
+                                <br>
+                                <select [compareWith]="compararMunicipio" [(ngModel)]="emprendedor.municipio" class="form-select form-select-sm"
+                                    name="municipio" aria-label="Default select example" required>
+                                    <option [ngValue]="undefined">--- Seleccionar Municipio ---</option>
+                                    <option *ngFor="let m of municipios" [ngValue]="m">{{m.id}} || {{m.name}} || {{m.country}}</option>
+    
+    
+                                </select>
+                            </label>
+    
+                        </div>
+    
+                        <div style="flex-basis: 50%;">
+                            <label for="">
+                                <br>
+                                <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"
+                                    [(ngModel)]="emprendedor.email" placeholder="Correo Electrónico" class="form-control" required>
+                            </label>
+    
+                        </div>
+                    </div>
+                    <div style="flex-basis: 100%;" class="mt-3">
+                        <div class="form-group">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"
+                                [(ngModel)]="emprendedor.remarks" placeholder="Tema/Observaciones" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col p-2 mt-3" style="border-radius: 1em;">
+                <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="active" required>
+                <p style="font-size: 10px;" class="">
+    
+                    Autorizo de manera expresa, libre y voluntaria a la CÁMARA DE COMERCIO DE
+                    VILLAVICENCIO (la “CCV”)
+                    para realizar el tratamiento de mis datos personales, especialmente los relativos a identificación
+                    personal, nombres y apellidos,
+                    números de teléfono y celular, correo electrónico, país de origen y en general toda la información
+                    solicitada para información
+                    de contacto emprendedor, las finalidades dispuestas en la Política de Tratamiento de Datos Personales a
+                    la que puede accederse
+                    en el siguiente link:
+                    https://s3.pagegear.co/415/78/politica_de_tratamiento_de_datos_personales_2021_ccv.pdf, así como para el
+                    desarrollo de las funciones públicas que le han sido asignadas y demás actividades complementarias y ser
+                    informado de nuevas
+                    jornadas, eventos y/o espacios de formación que adelanta la Cámara, divulgación de la oferta académica y
+                    evaluación de los
+                    servicios de la Cámara. Reconozco y acepto que la CCV me informó que en caso de que se soliciten datos
+                    personales sensibles,
+                    la entrega de estos es meramente facultativa y no estoy obligado a entregarlos.
+                    Reconozco que se me fue informado que, como titular de mis datos personales, tengo derecho a conocer,
+                    actualizar y rectificar mis datos personales, solicitar prueba de la autorización otorgada para su
+                    tratamiento, ser informado sobre el uso que se ha dado a los mismos, presentar quejas ante la
+                    Superintendencia de Industria y Comercio por infracción a la ley, revocar la autorización y/o solicitar
+                    la supresión de mis datos en los casos que sea procedente y acceder en forma gratuita a los mismos. De
+                    igual manera, se me indicó que puedo ejercer mis derechos como titular de mis datos personales a través
+                    de los canales dispuestos en la Política de Tratamiento de Datos Personales o a través del correo
+                    electrónico datospersonales@ccv.org.co.
+                </p>
+            </div>
+            <div class="form-group">
+                <button *ngIf="!emprendedor?.id" (click)="registrar()" class="btn btn-success">Registrar</button>
+                <button *ngIf="emprendedor?.id" (click)="editar()" class="btn btn-success">Editar</button>
+                <button *ngIf="emprendedor?.id" routerLink="/clients" class="btn btn-success mx-2">Volver</button>
+                <button *ngIf="empresario?.id" (click)="editar()" class="btn btn-success">Editar</button>
+                <button *ngIf="empresario?.id" routerLink="/clients" class="btn btn-success mx-2">Volver</button>
+              </div>
+    
+    
+    
+    
+        </form>
+    </div>
 </div>

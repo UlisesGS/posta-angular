@@ -44,11 +44,11 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
 this.usuario = JSON.parse(localStorage.getItem('usuario'));
     this.procesosService.procesosFindAllUltimo().subscribe(data=>{
-   //   console.log(data);
+      console.log(this.usuario);
 
       this.procesos=data;
       if(this.usuario.role!='ADMIN'){
-        this.procesos= this.procesos.filter(f=>f.user.id==this.usuario.id);
+        this.procesos= this.procesos.filter(f=>f?.user?.id==this.usuario?.id);
       }
 
     })
@@ -84,6 +84,8 @@ this.usuario = JSON.parse(localStorage.getItem('usuario'));
 
 
     })
+   
+    
   }
 
   abrirModal():void{

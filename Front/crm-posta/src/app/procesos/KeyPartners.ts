@@ -4,6 +4,7 @@ export class KeyPartners {
   entidadesPublicas:string;
   entidadesPrivadas:string;
   academia:string;
+  otros:string;
 
 
 }
