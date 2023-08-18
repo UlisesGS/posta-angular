@@ -104,48 +104,9 @@ export class ClientComponent implements OnInit {
     })
   }
   buscarNav() {
-
-
-    })
     this.serviceClient.getClientsMunicipios().subscribe(data => {
       this.municicipios = data;
       console.log(this.municicipios);
-
-
-/*<<<<<<< juanma
-    })
-    this.condicion = false;
-    this.procesoService.procesosFindAll().subscribe(lista => {
-      this.procesos = lista;
-      console.log(this.procesos);
-
-
-    })
-  }
-  buscarNav() {
-    console.log(this.busquedaService.getTermino());
-      this.serviceClient.buscarPorNombre(this.busquedaService.getTermino()).subscribe(data => {
-        this.clients = data;
-        this.exite = false
-
-      }, e => {
-        console.log(e);
-        this.exite = true
-      })
-  }
-
-  public buscar() {
-
-    console.log("buscar" + this.termino);
-
-    if(this.termino!==""){
-
-      this.serviceClient.buscarPorNombre(this.termino).subscribe(data => {
-        this.clients = data;
-      })
-    }
-=======*/
-
     this.serviceClient.buscarPorNombre(this.busquedaService.getTermino()).subscribe(data => {
       this.clients = data;
       if(this.usuario.role!='ADMIN'){
@@ -158,15 +119,12 @@ export class ClientComponent implements OnInit {
       console.log(e);
 
       this.exite = true
-    })
+    });
 
-
+  })
   }
 
   public buscar() {
-
-    console.log("buscar" + this.termino);
-
     this.serviceClient.buscarPorNombre(this.termino).subscribe(data => {
       this.clients = data;
       if(this.usuario.role!='ADMIN'){
@@ -258,15 +216,12 @@ export class ClientComponent implements OnInit {
 
 
   public findByState(){
-    
-    
-    this.serviceClient.findByState(this.active).subscribe(date=>{
-      console.log(date);
-      
-      this.clients=date;
-
-    })
-
+    if(this.active!=null){
+      this.serviceClient.findByState(this.active).subscribe(date=>{
+        console.log(date);
+        this.clients=date;
+      })
+    }
   }
 
 
