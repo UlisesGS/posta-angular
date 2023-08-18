@@ -42,10 +42,10 @@ export class FormClientComponent implements OnInit {
       this.filteredCiiu = this.ciiu.filter(e =>
 
            e.titulo.includes(this.searchTerm)
-           
+
       );
       console.log(this.filteredCiiu);
-      
+
   }
 
   ngOnInit(): void {
@@ -80,7 +80,7 @@ export class FormClientComponent implements OnInit {
         })
         this.idEditar = +parametro.get('idEditar');
         console.log(this.idEditar)
-        
+
       }
     })
   }
@@ -112,11 +112,14 @@ export class FormClientComponent implements OnInit {
       console.log(this.proceso);
       if (this.idEditar) {
         if (this.proceso?.processEmpresario) {
+          console.log('Empresario cambio true');
+
           this.proceso.cambio=true;
           this.proceso.estado = this.proceso.estadoAnteriorEmpresario
           this.procesoService.procesosUpdate(this.proceso).subscribe()
         } else {
           this.proceso.estado = 'iniciando2'
+          console.log('Empresario cambio false');
           this.proceso.cambio=false;
           this.procesoService.procesosUpdate(this.proceso).subscribe()
         }
@@ -158,7 +161,7 @@ export class FormClientComponent implements OnInit {
     this.cliente.type = "businessman";
     this.cliente.businessIdea = null;
     this.cliente.product = null;
-    
+
     this.service.updateBusinessman(this.cliente).subscribe(data => {
       Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
     }, e => {

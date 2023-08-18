@@ -86,6 +86,9 @@ this.modal.abrirModalPocesos();
     console.log(this.type);
 
     this.procesoService.procesoFindByType(this.type).subscribe(data=>{
+      console.log(this.type);
+
+
       console.log(data);
       this.procesos=data;
       if(this.usuario.role!='ADMIN'){
