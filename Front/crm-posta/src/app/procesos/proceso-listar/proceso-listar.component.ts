@@ -100,6 +100,8 @@ this.modal.abrirModalPocesos();
   public filtroPortermiando(){
 
 
+
+  if(this.terminado!==undefined){
     this.procesoService.procesoFindByTermiando(this.terminado).subscribe(data=>{
       this.procesos=data;
       if(this.usuario.role!='ADMIN'){
@@ -107,6 +109,8 @@ this.modal.abrirModalPocesos();
       }
 
     })
+  }
+
   }
   public filtroPorEstado(){
 
@@ -121,6 +125,12 @@ this.modal.abrirModalPocesos();
   }
   public buscar(){
 
+    if(this.termino!==""){
+      this.procesoService.procesoFindByNombre(this.termino).subscribe(data=>{
+        this.procesos=data;
+      })
+    }
+
 
     this.procesoService.procesoFindByNombre(this.termino).subscribe(data=>{
       this.procesos=data;
@@ -128,6 +138,7 @@ this.modal.abrirModalPocesos();
         this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
       }
     })
+
   }
 
 
@@ -139,12 +150,14 @@ this.modal.abrirModalPocesos();
         page = 0;
       }
       this.procesoService.procesosPaginacion(page)
-      /*.pipe(
-        tap(response => {
-          console.log('ClientesComponent: tap 3');
-          (response.content as Process[]).forEach(proceso => console.log(proceso));
-        })
-      )*/.subscribe(response => {
+
+      // .pipe(
+      //   tap(response => {
+      //     console.log('ClientesComponent: tap 3');
+      //     (response.content as Process[]).forEach(proceso => console.log(proceso));
+      //   })
+       .subscribe(response => {
+
         console.log(response);
         
 

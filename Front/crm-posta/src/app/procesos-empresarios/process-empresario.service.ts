@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { URL } from './../URL';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { ProcessEmpresario } from './process-empresario';
 import { Process } from '../procesos/Process';
 
@@ -20,7 +20,7 @@ export class ProcessEmpresarioService {
   }
   //metodos post
   public procesoEmpresarioSave(procesoEmpresario: Process): Observable<any> {
-    return this.http.post<any>(`${this.url}`, procesoEmpresario);
+    return this.http.post<any>(`${this.url}`, procesoEmpresario)
   }
   // metodos put
   public updateProcesoEconomico(procesoEmpresario: Process): Observable<any> {

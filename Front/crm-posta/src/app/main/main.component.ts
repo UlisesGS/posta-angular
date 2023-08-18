@@ -71,10 +71,12 @@ this.usuario = JSON.parse(localStorage.getItem('usuario'));
 
           this.clients = response.content as Client[];
           this.paginador = response;
+
           if(this.usuario.role!='ADMIN'){
             this.clients= this.clients.filter(f=>f.user.id==this.usuario.id);
           }
         //  console.log(this.paginador);
+
         });
 
     })

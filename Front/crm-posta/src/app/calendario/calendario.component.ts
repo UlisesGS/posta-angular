@@ -193,6 +193,33 @@ export class CalendarioComponent implements OnInit {
   //    this.abrirModalConContenido(modalContent);
   //  }
 
+  //Esto es del Juanma desde aca
+ /* mostrarDetallesEvento(eventoClickeado: any) {
+    const detallesEventoDiv = document.getElementById('detallesEvento');
+    detallesEventoDiv.innerHTML = `
+      <h4>${eventoClickeado.title}</h4>
+      <p><strong>Fecha de inicio:</strong> ${eventoClickeado.start}</p>
+      <p><strong>Cliente:</strong> ${eventoClickeado.cliente?.name} ${eventoClickeado.cliente?.lastName}</p>
+      <p><strong>Contenido:</strong> ${eventoClickeado.contenido}</p>
+      <!-- Puedes mostrar más detalles según las propiedades adicionales del evento -->
+    `;
+    
+  }
+
+
+
+
+//Aca esta todo para mostrar lo que hay al hacer click en el evento
+  cargarCalendarios() {
+    this.getAllCalendariosByUserId();
+  }
+  ngAfterViewInit(): void {
+    this.cargarCalendarios();
+  }
+  // Método para mostrar detalles del evento en un modal
+ */
+//hasta aca del Juanma
+
   // Implementa estas funciones si no lo has hecho ya
   generarContenidoModalEventos(eventosDelDia: any[]) {
     // Genera el contenido HTML para mostrar los eventos en el modal
@@ -209,4 +236,5 @@ export class CalendarioComponent implements OnInit {
   }
   
   
+
 }

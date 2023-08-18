@@ -7,17 +7,16 @@
   <div class="row">
     <div class="col-11">
       <div id="calendarContainer" class="mx-auto">
-        <full-calendar [options]="calendarOptions"></full-calendar>
+        <full-calendar [options]="calendarOptions" (eventClick)="handleEventClick($event)"></full-calendar>
       </div>
     </div>
-  </div>
+  </div> 
 </div>
-
 
 <!-- Modal para crear evento -->
 <ng-template #modalCrearEvento let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Crear Evento</h4>
+    <h4 class="modal-title" id="modal-basic-title">{{ eventoClickeado?.title }}</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -51,6 +50,21 @@
       <!-- Agrega aquí más campos para el evento, como cliente, etc. -->
       <button type="submit" class="btn btn-primary my-4">Guardar</button>
     </form>
+    
+  </div>
+</ng-template>
+
+
+<!-- Modal para mostrar detalles del evento -->
+<ng-template #modalDetallesEvento let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ eventoClickeado?.title }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div id="detallesEvento"></div>
   </div>
 </ng-template>
 

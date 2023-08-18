@@ -15,7 +15,7 @@ import { UsuarioService } from 'src/app/usuario/usuario.service';
   styleUrls: ['./asesoriaList.component.css']
 })
 export class AsesoriaListComponent implements OnInit {
-  asesorias:Asesoria[];
+  asesorias:Asesoria[]=[];
   datos:any[];
   usuario: Usuario = new Usuario();
   constructor(private usuarioService: UsuarioService,
@@ -31,7 +31,9 @@ this.todos()
   public todos(){
     this.usuarioService.usuarioGetAsesorias(this.usuario).subscribe(data=>{
       console.log(data);
-this.asesorias=data['content']
+    this.asesorias=data['content']
+ 
+    
      })
   }
 }

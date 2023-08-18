@@ -16,56 +16,55 @@ import Swal from 'sweetalert2';
 })
 export class AsesoriaComponent implements OnInit {
 
-  constructor(private modalService:ModalService,
-    private clientService:ClientService,
-    private router:Router,
-    private usuarioService:UsuarioService){}
+  constructor(private modalService: ModalService,
+    private clientService: ClientService,
+    private router: Router,
+    private usuarioService: UsuarioService) { }
 
-  client:Client=new Client();
-  municipio:Municipio[]=[];
-  errores:any;
-  condicion:boolean;
-  asesoria:Asesoria=new Asesoria();
-  termino:string;
-  clientes:Client[]=[]
-  usuario:Usuario = new Usuario()
+  client: Client = new Client();
+  municipio: Municipio[] = [];
+  errores: any;
+  condicion: boolean;
+  asesoria: Asesoria = new Asesoria();
+  termino: string;
+  clientes: Client[] = []
+  usuario: Usuario = new Usuario()
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     console.log(this.usuario);
 
-    this.condicion=false;
-    this.clientService.getClientsMunicipios().subscribe(data => {
-      this.municipio=data;
-
-    })
+    this.condicion = false;
+    // this.clientService.getClientsMunicipios().subscribe(data => {
+    //   this.municipio = data;
+    // })
   }
 
-  
 
 
-  public registrar(){
+
+  public registrar() {
     console.log(this.client);
 
-    this.clientService.saveClient(this.client).subscribe(data=>{
+    this.clientService.saveClient(this.client).subscribe(data => {
       console.log(data);
-      this.client=data;
+      this.client = data;
       Swal.fire('Creado', `Cliente ${data.name} cargado con exito`, 'success');
-      this.condicion=true;
+      this.condicion = true;
 
 
 
       /*this.cerrarModalAsesoria();*/
 
-    },e=>{
-      if(e.status==404){
-        this.errores=e.error;
+    }, e => {
+      if (e.status == 404) {
+        this.errores = e.error;
         Swal.fire('Error:', 'complete bien los datos', 'error');
-       console.log(this.errores);
+        console.log(this.errores);
 
 
       }
-      if(e.status==500 || e.status==400){
+      if (e.status == 500 || e.status == 400) {
         console.log(e);
 
         Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
@@ -75,26 +74,26 @@ export class AsesoriaComponent implements OnInit {
   }
 
 
-  public finalizar(){
+  public finalizar() {
 
-    this.asesoria.client=this.client;
-this.asesoria.user = this.usuario;
+    this.asesoria.client = this.client;
+    this.asesoria.user = this.usuario;
     console.log(this.asesoria);
 
-    this.usuarioService.asesoriaSave(this.asesoria).subscribe(data=>{
-      this.asesoria.advisory=data;
+    this.usuarioService.asesoriaSave(this.asesoria).subscribe(data => {
+      this.asesoria.advisory = data;
       Swal.fire('Finalizada', `La asesoria de ${/* NOMBRE DE ASESOR */this.client.name} fue creada con exito`, 'success')
       this.router.navigate(['/recarga'])
       this.cerrarModalAsesoria();
-    },e=>{
-      if(e.status==404){
-        this.errores=e.error;
+    }, e => {
+      if (e.status == 404) {
+        this.errores = e.error;
         Swal.fire('Error:', 'complete bien los datos', 'error');
-       console.log(this.errores);
+        console.log(this.errores);
 
 
       }
-      if(e.status==500 || e.status==400){
+      if (e.status == 500 || e.status == 400) {
         console.log(e);
 
         Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
@@ -106,21 +105,23 @@ this.asesoria.user = this.usuario;
   }
 
 
-  cerrarModalAsesoria():void{
+  cerrarModalAsesoria(): void {
     this.modalService.cerrarModalAsesoria();
   }
-  public buscar(){
-this.clientService.buscarPorNombre(this.termino).subscribe(data=>{
-  this.clientes = data;
-})
+  public buscar() {
+    if(this.termino != ""){
+      this.clientService.buscarPorNombre(this.termino).subscribe(data => {
+        this.clientes = data;
+      })
+    }
   }
-  public findById(id:number){
-    this.clientService.getClient(id).subscribe(data=>{
-      this.client= data;
-      this.condicion=true;
+  public findById(id: number) {
+    this.clientService.getClient(id).subscribe(data => {
+      this.client = data;
+      this.condicion = true;
     })
   }
-  public volver(){
-    this.condicion=false;
+  public volver() {
+    this.condicion = false;
   }
 }

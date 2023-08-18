@@ -115,6 +115,8 @@ export class NuevoProcesoComponent implements OnInit {
     this.modalService.cerrarModalAsesoria();
   }
   public buscar() {
+
+   if (this.termino != "") {
     this.clientService.buscarPorNombre(this.termino).subscribe((data) => {
       this.clientes = data;
       if(this.usuario.role!='ADMIN'){
@@ -124,6 +126,8 @@ export class NuevoProcesoComponent implements OnInit {
       }
       //   this.clientes = this.clientes.filter((d) => d.type !== 'businessman');
     });
+   }
+
   }
   public findById(id: number) {
     this.clientService.getClient(id).subscribe((data) => {
@@ -133,8 +137,10 @@ export class NuevoProcesoComponent implements OnInit {
         console.log('entrepreneur');
 
 
+
         this.condicion = true;
       }else{
+
 
 
         Swal.fire('Reparacion', 'Esta etapa se encuentra en reparacion', 'info');

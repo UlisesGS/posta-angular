@@ -24,6 +24,7 @@ export class ClientComponent implements OnInit {
 
 
   datosFiltrados: string;
+
   usuario: Usuario = new Usuario();
   procesos: Process[] = [];
   proceso: Process = new Process();
@@ -48,6 +49,7 @@ export class ClientComponent implements OnInit {
 
 
 
+
   constructor(private serviceClient: ClientService,
     public modalservice: ModalService,
     private activatedRoute: ActivatedRoute,
@@ -61,7 +63,9 @@ export class ClientComponent implements OnInit {
 
     this.filtrarDato()
     this.modal = false;
+
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
+
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
 
@@ -77,6 +81,7 @@ export class ClientComponent implements OnInit {
         ).subscribe(response => {
           this.clients = response.content as Client[];
           this.paginador = response;
+
           if(this.usuario.role!='ADMIN'){
             this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
 
@@ -101,7 +106,45 @@ export class ClientComponent implements OnInit {
   buscarNav() {
 
 
+    })
+    this.serviceClient.getClientsMunicipios().subscribe(data => {
+      this.municicipios = data;
+      console.log(this.municicipios);
 
+
+/*<<<<<<< juanma
+    })
+    this.condicion = false;
+    this.procesoService.procesosFindAll().subscribe(lista => {
+      this.procesos = lista;
+      console.log(this.procesos);
+
+
+    })
+  }
+  buscarNav() {
+    console.log(this.busquedaService.getTermino());
+      this.serviceClient.buscarPorNombre(this.busquedaService.getTermino()).subscribe(data => {
+        this.clients = data;
+        this.exite = false
+
+      }, e => {
+        console.log(e);
+        this.exite = true
+      })
+  }
+
+  public buscar() {
+
+    console.log("buscar" + this.termino);
+
+    if(this.termino!==""){
+
+      this.serviceClient.buscarPorNombre(this.termino).subscribe(data => {
+        this.clients = data;
+      })
+    }
+=======*/
 
     this.serviceClient.buscarPorNombre(this.busquedaService.getTermino()).subscribe(data => {
       this.clients = data;
@@ -131,6 +174,7 @@ export class ClientComponent implements OnInit {
 
       }
     })
+//>>>>>>> master
     // en el html {{busquedaService.getTermino().length>0  && busquedaService.getTermino().length!=0?buscar(busquedaService.getTermino()):""}}
   }
 
@@ -160,6 +204,7 @@ export class ClientComponent implements OnInit {
 
     })
   }
+
 
 
   public reiniciarFiltro() {
@@ -197,6 +242,7 @@ export class ClientComponent implements OnInit {
       if(this.usuario.role!='ADMIN'){
         this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
 
+
       }
     })
   }
@@ -210,6 +256,7 @@ export class ClientComponent implements OnInit {
     })
   }
 
+
   public findByState(){
     
     
@@ -217,6 +264,7 @@ export class ClientComponent implements OnInit {
       console.log(date);
       
       this.clients=date;
+
     })
 
   }
@@ -241,15 +289,16 @@ export class ClientComponent implements OnInit {
   public filtrarPorMunicipio() {
     console.log(this.municipio);
 
-    this.serviceClient.getClientsMunicipiosPage(0, this.municipio).subscribe(data => {
-      this.clients = data.content;
-      if(this.usuario.role!='ADMIN'){
-        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
 
-      }
-      console.log(data);
+   if(this.municipio!==undefined){
 
-    })
+     this.serviceClient.getClientsMunicipiosPage(0, this.municipio).subscribe(data => {
+       this.clients = data.content;
+       console.log(data);
+ 
+     })
+   }
+
   }
   filtrarDato() {
     this.datosFiltrados = this.busquedaService.getTermino();

@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientComponent } from './client/client.component';
 import { CommonModule } from '@angular/common'
+
 import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 import { FormsModule } from '@angular/forms';
 import { MunicipioComponent } from './municipio/municipio.component';
@@ -72,6 +76,14 @@ import { ProcesosEmpresariosComponent } from './procesos-empresarios/procesos-em
 import { DiagnosticoComponent } from './procesos-empresarios/diagnostico/diagnostico.component';
 import { ResultadosComponent } from './procesos-empresarios/resultados/resultados.component';
 import { EconomicoComponent } from './procesos-empresarios/economico/economico.component';
+
+import { AuthGuard } from './usuario/guards/auth.guard';
+import { AdminGuard } from './usuario/guards/admin.guard';
+import { TokenInterceptor } from './usuario/interceptors/token.interceptor';
+import { AuthInterceptor } from './usuario/interceptors/auth.interceptor';
+
+
+
 import { PlanAccionComponent } from './procesos-empresarios/plan-accion/plan-accion.component';
 import { MensajesComponent } from './mensajes/mensajes.component';
 import { CalendarioComponent } from './calendario/calendario.component';
@@ -84,121 +96,129 @@ import { RecargaComponent } from './header/asesoria/asesoriaList/recarga/recarga
 const routes: Routes = [
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'clients', component: ClientComponent },
-  { path: 'panel/:id', component: PanelComponent },
 
-  { path: 'clients/page/:page', component: ClientComponent },
-  { path: 'clients/form/businessman', component: FormClientComponent },
-  { path: 'clients/form/entrepreneur', component: FormEntrepreneurComponent },
-  { path: 'clients/form/editar/businessman/:id', component: FormClientComponent },
-  { path: 'clients/form/editar/entrepreneur/:id', component: FormEntrepreneurComponent },
-  
-  { path: 'clients/form/editar/businessman/:id/:idEditar', component: FormClientComponent },
-  { path: 'clients/form/editar/entrepreneur/:id/:idEditar', component: FormEntrepreneurComponent },
 
-  { path: 'clients/registrar', component: RegistrarComponent },
-  { path: 'autoevaluacion/cliente/:id', component: AutoevaluacionComponent },
-  { path: 'clients/details/:id', component: DetallesComponent },
-  { path: 'clients/action/:id', component: AccionComponent },
-  { path: 'usuarios', component: UsuariolistComponent },
-  { path: 'usuarios/form', component: UsuarioformComponent },
-  { path: 'usuarios/form/:id', component: UsuarioformComponent },
-  { path: 'municipios', component: MunicipioComponent },
+
+
+  { path: 'clients', component: ClientComponent, canActivate: [AuthGuard] },
+  { path: 'clients/page/:page', component: ClientComponent, canActivate: [AuthGuard] },
+  { path: 'clients/form/businessman', component: FormClientComponent, canActivate: [AuthGuard] },
+  { path: 'clients/form/entrepreneur', component: FormEntrepreneurComponent, canActivate: [AuthGuard] },
+  { path: 'clients/form/editar/businessman/:id', component: FormClientComponent, canActivate: [AuthGuard] },
+  { path: 'clients/form/editar/entrepreneur/:id', component: FormEntrepreneurComponent, canActivate: [AuthGuard] },
+  { path: 'clients/registrar', component: RegistrarComponent , canActivate: [AuthGuard]},
+  { path: 'autoevaluacion/cliente/:id', component: AutoevaluacionComponent, canActivate: [AuthGuard] },
+  { path: 'clients/details/:id', component: DetallesComponent, canActivate: [AuthGuard] },
+  { path: 'clients/action/:id', component: AccionComponent , canActivate: [AuthGuard]},
+  { path: 'usuarios', component: UsuariolistComponent,  canActivate: [AuthGuard,AdminGuard] },
+  { path: 'usuarios/form', component: UsuarioformComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios/form/:id', component: UsuarioformComponent , canActivate: [AuthGuard]},
+  { path: 'municipios', component: MunicipioComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'main', component: MainComponent },
+  { path: 'main', component: MainComponent , canActivate: [AuthGuard]},
+  { path: 'calendario', component: CalendarioComponent , canActivate: [AuthGuard]},
+  { path: 'asesorias', component: AsesoriaListComponent , canActivate: [AuthGuard]},
+  { path: 'procesos', component: ProcesoListarComponent , canActivate: [AuthGuard]},
+  { path: 'puntajeAutoevaluacion/cliente/:id', component: VerPuntajeComponent , canActivate: [AuthGuard]},
 
-  { path: 'asesorias', component: AsesoriaListComponent },
-  { path: 'procesos', component: ProcesoListarComponent },
-  { path: 'puntajeAutoevaluacion/cliente/:id', component: VerPuntajeComponent },
   //Modelo Canvas
-  { path: 'segmento/cliente/:id', component: SegmentoComponent },
-  { path: 'propuestaDeValor/cliente/:id', component: PropuestaDeValorComponent },
-  { path: 'canales/cliente/:id', component: CanalesComponent },
-  { path: 'relaciones/cliente/:id', component: RelacionesComponent },
-  { path: 'recursosClaves/cliente/:id', component: RecursosClavesComponent },
-  { path: 'actividadesClaves/cliente/:id', component: ActividadesClavesComponent },
-  { path: 'sociosClaves/cliente/:id', component: SociosClavesComponent },
-  { path: 'ingresos/cliente/:id', component: IngresosComponent },
-  { path: 'estructuraCostos/cliente/:id', component: EstructuraCostosComponent },
-  { path: 'procesos/ver/:id', component: VerProcesosComponent },
+  { path: 'segmento/cliente/:id', component: SegmentoComponent, canActivate: [AuthGuard] },
+  { path: 'propuestaDeValor/cliente/:id', component: PropuestaDeValorComponent, canActivate: [AuthGuard] },
+  { path: 'canales/cliente/:id', component: CanalesComponent , canActivate: [AuthGuard]},
+  { path: 'relaciones/cliente/:id', component: RelacionesComponent , canActivate: [AuthGuard]},
+  { path: 'recursosClaves/cliente/:id', component: RecursosClavesComponent, canActivate: [AuthGuard] },
+  { path: 'actividadesClaves/cliente/:id', component: ActividadesClavesComponent, canActivate: [AuthGuard] },
+  { path: 'sociosClaves/cliente/:id', component: SociosClavesComponent, canActivate: [AuthGuard] },
+  { path: 'ingresos/cliente/:id', component: IngresosComponent, canActivate: [AuthGuard] },
+  { path: 'estructuraCostos/cliente/:id', component: EstructuraCostosComponent, canActivate: [AuthGuard] },
+
+  { path: 'procesos/ver/:id', component: VerProcesosComponent, canActivate: [AuthGuard] },
+
+
   //Plan de Negocios
-  { path: 'informacion/cliente/:id', component: InformacionComponent },
-  { path: 'interno/cliente/:id', component: InternoComponent },
-  { path: 'dofa/cliente/:id', component: DofaComponent },
-  { path: 'conclusion/cliente/:id', component: ConclusionComponent },
-  { path: 'proceso/page/:page', component: ProcesoListarComponent },
+  { path: 'informacion/cliente/:id', component: InformacionComponent, canActivate: [AuthGuard] },
+  { path: 'interno/cliente/:id', component: InternoComponent, canActivate: [AuthGuard] },
+  { path: 'dofa/cliente/:id', component: DofaComponent, canActivate: [AuthGuard] },
+  { path: 'conclusion/cliente/:id', component: ConclusionComponent, canActivate: [AuthGuard] },
+  { path: 'proceso/page/:page', component: ProcesoListarComponent , canActivate: [AuthGuard]},
   //Plan Financiero
-  { path: 'ventas/cliente/:id', component: PresupuestoVentasComponent },
-  { path: 'compras/cliente/:id', component: PresupuestoFormComponent },
-  { path: 'gastos/cliente/:id', component: PresupuestoGastoComponent },
-  { path: 'inversion/cliente/:id', component: PlanInversionComponent },
+  { path: 'ventas/cliente/:id', component: PresupuestoVentasComponent, canActivate: [AuthGuard] },
+  { path: 'compras/cliente/:id', component: PresupuestoFormComponent, canActivate: [AuthGuard] },
+  { path: 'gastos/cliente/:id', component: PresupuestoGastoComponent , canActivate: [AuthGuard]},
+  { path: 'inversion/cliente/:id', component: PlanInversionComponent , canActivate: [AuthGuard]},
+
+
   // para editar
   // canvas
-  { path: 'segmento/cliente/:id/editar/:idEditar', component: SegmentoComponent },
-  { path: 'propuestaDeValor/cliente/:id/editar/:idEditar', component: PropuestaDeValorComponent },
-  { path: 'canales/cliente/:id/editar/:idEditar', component: CanalesComponent },
-  { path: 'relaciones/cliente/:id/editar/:idEditar', component: RelacionesComponent },
-  { path: 'recursosClaves/cliente/:id/editar/:idEditar', component: RecursosClavesComponent },
-  { path: 'actividadesClaves/cliente/:id/editar/:idEditar', component: ActividadesClavesComponent },
-  { path: 'sociosClaves/cliente/:id/editar/:idEditar', component: SociosClavesComponent },
-  { path: 'ingresos/cliente/:id/editar/:idEditar', component: IngresosComponent },
-  { path: 'estructuraCostos/cliente/:id/editar/:idEditar', component: EstructuraCostosComponent },
+  { path: 'segmento/cliente/:id/editar/:idEditar', component: SegmentoComponent , canActivate: [AuthGuard]},
+  { path: 'propuestaDeValor/cliente/:id/editar/:idEditar', component: PropuestaDeValorComponent, canActivate: [AuthGuard] },
+  { path: 'canales/cliente/:id/editar/:idEditar', component: CanalesComponent, canActivate: [AuthGuard] },
+  { path: 'relaciones/cliente/:id/editar/:idEditar', component: RelacionesComponent , canActivate: [AuthGuard]},
+  { path: 'recursosClaves/cliente/:id/editar/:idEditar', component: RecursosClavesComponent, canActivate: [AuthGuard] },
+  { path: 'actividadesClaves/cliente/:id/editar/:idEditar', component: ActividadesClavesComponent, canActivate: [AuthGuard] },
+  { path: 'sociosClaves/cliente/:id/editar/:idEditar', component: SociosClavesComponent, canActivate: [AuthGuard] },
+  { path: 'ingresos/cliente/:id/editar/:idEditar', component: IngresosComponent, canActivate: [AuthGuard] },
+  { path: 'estructuraCostos/cliente/:id/editar/:idEditar', component: EstructuraCostosComponent, canActivate: [AuthGuard] },
   // plan basico
-  { path: 'informacion/cliente/:id/editar/:idEditar', component: InformacionComponent },
-  { path: 'interno/cliente/:id/editar/:idEditar', component: InternoComponent },
-  { path: 'dofa/cliente/:id/editar/:idEditar', component: DofaComponent },
-  { path: 'conclusion/cliente/:id/editar/:idEditar', component: ConclusionComponent },
+  { path: 'informacion/cliente/:id/editar/:idEditar', component: InformacionComponent , canActivate: [AuthGuard]},
+  { path: 'interno/cliente/:id/editar/:idEditar', component: InternoComponent , canActivate: [AuthGuard]},
+  { path: 'dofa/cliente/:id/editar/:idEditar', component: DofaComponent, canActivate: [AuthGuard] },
+  { path: 'conclusion/cliente/:id/editar/:idEditar', component: ConclusionComponent, canActivate: [AuthGuard] },
   // plan financiero
-  { path: 'ventas/cliente/:id/editar/:idEditar', component: PresupuestoVentasComponent },
-  { path: 'compras/cliente/:id/editar/:idEditar', component: PresupuestoFormComponent },
-  { path: 'gastos/cliente/:id/editar/:idEditar', component: PresupuestoGastoComponent },
-  { path: 'inversion/cliente/:id/editar/:idEditar', component: PlanInversionComponent },
+
+  { path: 'ventas/cliente/:id/editar/:idEditar', component: PresupuestoVentasComponent, canActivate: [AuthGuard] },
+  { path: 'compras/cliente/:id/editar/:idEditar', component: PresupuestoFormComponent , canActivate: [AuthGuard]},
+  { path: 'gastos/cliente/:id/editar/:idEditar', component: PresupuestoGastoComponent , canActivate: [AuthGuard]},
+  { path: 'inversion/cliente/:id/editar/:idEditar', component: PlanInversionComponent , canActivate: [AuthGuard]},
+
   // para ver
   // canvas
-  { path: 'puntajeAutoevaluacion/ver/:idVer', component: VerPuntajeComponent },
-  { path: 'procesos/verLienzo/:idVer', component: VerProcesosComponent },
-  { path: 'segmento/cliente/:id/ver/:idVer', component: SegmentoComponent },
-  { path: 'propuestaDeValor/cliente/:id/ver/:idVer', component: PropuestaDeValorComponent },
-  { path: 'canales/cliente/:id/ver/:idVer', component: CanalesComponent },
-  { path: 'relaciones/cliente/:id/ver/:idVer', component: RelacionesComponent },
-  { path: 'recursosClaves/cliente/:id/ver/:idVer', component: RecursosClavesComponent },
-  { path: 'actividadesClaves/cliente/:id/ver/:idVer', component: ActividadesClavesComponent },
-  { path: 'sociosClaves/cliente/:id/ver/:idVer', component: SociosClavesComponent },
-  { path: 'ingresos/cliente/:id/ver/:idVer', component: IngresosComponent },
-  { path: 'estructuraCostos/cliente/:id/ver/:idVer', component: EstructuraCostosComponent },
+  { path: 'puntajeAutoevaluacion/ver/:idVer', component: VerPuntajeComponent, canActivate: [AuthGuard] },
+  { path: 'procesos/verLienzo/:idVer', component: VerProcesosComponent, canActivate: [AuthGuard] },
+  { path: 'segmento/cliente/:id/ver/:idVer', component: SegmentoComponent , canActivate: [AuthGuard]},
+  { path: 'propuestaDeValor/cliente/:id/ver/:idVer', component: PropuestaDeValorComponent, canActivate: [AuthGuard] },
+  { path: 'canales/cliente/:id/ver/:idVer', component: CanalesComponent , canActivate: [AuthGuard]},
+  { path: 'relaciones/cliente/:id/ver/:idVer', component: RelacionesComponent , canActivate: [AuthGuard]},
+  { path: 'recursosClaves/cliente/:id/ver/:idVer', component: RecursosClavesComponent, canActivate: [AuthGuard] },
+  { path: 'actividadesClaves/cliente/:id/ver/:idVer', component: ActividadesClavesComponent, canActivate: [AuthGuard] },
+  { path: 'sociosClaves/cliente/:id/ver/:idVer', component: SociosClavesComponent , canActivate: [AuthGuard]},
+  { path: 'ingresos/cliente/:id/ver/:idVer', component: IngresosComponent , canActivate: [AuthGuard]},
+  { path: 'estructuraCostos/cliente/:id/ver/:idVer', component: EstructuraCostosComponent , canActivate: [AuthGuard]},
   // plan basico
-  { path: 'clients/:id/verBasico/:idVer1', component: ModeloListaComponent },
-  { path: 'informacion/cliente/:id/ver/:idVer', component: InformacionComponent },
-  { path: 'interno/cliente/:id/ver/:idVer', component: InternoComponent },
-  { path: 'dofa/cliente/:id/ver/:idVer', component: DofaComponent },
-  { path: 'conclusion/cliente/:id/ver/:idVer', component: ConclusionComponent },
-  // plan financiero
-  { path: 'ventas/cliente/:id/ver/:idVer', component: PresupuestoVentasComponent },
-  { path: 'compras/cliente/:id/ver/:idVer', component: PresupuestoFormComponent },
-  { path: 'gastos/cliente/:id/ver/:idVer', component: PresupuestoGastoComponent },
-  { path: 'inversion/cliente/:id/ver/:idVer', component: PlanInversionComponent },
-  //Diagnostico Empresarial
-  { path: 'empresario/diagnostico', component: DiagnosticoComponent },
-  { path: 'empresario/diagnostico/cliente/:id', component: DiagnosticoComponent },
-  { path: 'empresario/resultados', component: ResultadosComponent },
-  { path: 'empresario/resultados/cliente/:id', component: ResultadosComponent },
-  { path: 'empresario/economico', component: EconomicoComponent },
-  { path: 'empresario/economico/cliente/:id', component: EconomicoComponent }, 
 
-  //para editar
+  { path: 'clients/:id/verBasico/:idVer1', component: ModeloListaComponent , canActivate: [AuthGuard]},
+
+  { path: 'informacion/cliente/:id/ver/:idVer', component: InformacionComponent , canActivate: [AuthGuard]},
+  { path: 'interno/cliente/:id/ver/:idVer', component: InternoComponent , canActivate: [AuthGuard]},
+  { path: 'dofa/cliente/:id/ver/:idVer', component: DofaComponent , canActivate: [AuthGuard]},
+  { path: 'conclusion/cliente/:id/ver/:idVer', component: ConclusionComponent, canActivate: [AuthGuard] },
+  // plan financiero
+
+
+  { path: 'ventas/cliente/:id/ver/:idVer', component: PresupuestoVentasComponent, canActivate: [AuthGuard] },
+  { path: 'compras/cliente/:id/ver/:idVer', component: PresupuestoFormComponent, canActivate: [AuthGuard] },
+  { path: 'gastos/cliente/:id/ver/:idVer', component: PresupuestoGastoComponent , canActivate: [AuthGuard]},
+  { path: 'inversion/cliente/:id/ver/:idVer', component: PlanInversionComponent , canActivate: [AuthGuard]},
   //Diagnostico Empresarial
+
+  { path: 'empresario/diagnostico', component: DiagnosticoComponent, canActivate: [AuthGuard] },
+  { path: 'empresario/diagnostico/cliente/:id', component: DiagnosticoComponent, canActivate: [AuthGuard] },
+  { path: 'empresario/resultados', component: ResultadosComponent , canActivate: [AuthGuard]},
+  { path: 'empresario/resultados/cliente/:id', component: ResultadosComponent , canActivate: [AuthGuard]},
+  { path: 'empresario/economico', component: EconomicoComponent , canActivate: [AuthGuard]},
+  { path: 'empresario/economico/cliente/:id', component: EconomicoComponent , canActivate: [AuthGuard]},
+
+
   { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent },
   { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent },
   { path: 'economico/empresario/:id/editar/:idEditar', component: EconomicoComponent },
   
 
-  //Plan de Accion
-  { path: 'empresario/accion', component: PlanAccionComponent },
-  { path: 'empresario/accion/cliente/:id', component: PlanAccionComponent },
+
 
   //para editar
   //Plan de Accion
-  { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent },
+  { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent,canActivate: [AuthGuard] },
 
   //Para Ver
   { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent },
@@ -206,13 +226,17 @@ const routes: Routes = [
   { path: 'resultados/empresario/:id/ver/:idVer', component: ResultadosComponent },
   { path: 'empresario/accion/cliente/:id/ver/:idVer', component: PlanAccionComponent },
   //Mensajes
-  { path: 'mensajes', component: MensajesComponent },
+  { path: 'mensajes', component: MensajesComponent,canActivate: [AuthGuard] },
 
   //Calendario
-  { path: 'calendario', component: CalendarioComponent },
+
+  { path: 'calendario', component: CalendarioComponent,canActivate: [AuthGuard] },
+
+
 
   //recarga asesoria en asesoria
   { path: 'recarga', component: RecargaComponent },
+
 ]
 
 @NgModule({
@@ -282,17 +306,22 @@ const routes: Routes = [
     DiagnosticoComponent,
     ResultadosComponent,
     EconomicoComponent,
+
     PlanAccionComponent,
     MensajesComponent,
     CalendarioComponent,
+
     PanelComponent,
     RecargaComponent,
+
 
 
   ],
 
   imports: [
-    BrowserModule,
+
+
+  BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -304,10 +333,15 @@ const routes: Routes = [
 
 
   ],
+
+
   providers: [
 
+    {provide: HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi: true},
+    {provide: HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi: true}
 
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
