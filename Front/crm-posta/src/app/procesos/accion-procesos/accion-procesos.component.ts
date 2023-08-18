@@ -6,6 +6,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import pdfMake from 'pdfmake/build/pdfmake';
 import Swal from 'sweetalert2';
+import { Client } from 'src/app/client/client';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -36,7 +37,10 @@ export class AccionProcesosComponent implements OnInit {
 
   // [routerLink]="['/procesos/ver/', proceso.id]"
   verProceso(){
-    this.ruta.navigate([`procesos/ver/${this.proceso.id}`])
+    //this.ruta.navigate([`procesos/ver/${this.proceso.id}`])
+   // /clients/details/
+//this.ruta.navigate([`/clients/details/${Client.id}`])
+
     this.modal.cerrarModalProceso();
   }
 
@@ -122,7 +126,9 @@ export class AccionProcesosComponent implements OnInit {
        break;
 
 
-
+       case 'iniciando2':
+        this.ruta.navigate([`/empresario/diagnostico/cliente/${this.proceso.processEmpresario.client.id}`])
+       break;
        case 'Diagnostico':
         this.ruta.navigate([`/empresario/resultados/cliente/${this.proceso.processEmpresario.client.id}`])
        break;

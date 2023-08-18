@@ -1,0 +1,43 @@
+<div class="container">
+<div class="card" style="width: 30rem;">
+  <div class="card-body">
+    <h5 class="card-title">Nombre y Apellido : {{usuario.name}} {{usuario.lastName}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Role: {{usuario.role}}</h6>
+    <p class="card-text"> Profesion : {{usuario.profesion}}</p>
+    <button (click)="cambiarCondicion()" class="btn btn-danger btn-sm m-2">{{!condicion?'Cambiar Contraseña':'Cerrar'}}</button>
+
+  <button (click)="inicio()"  class="btn btn-danger btn-sm m-2">Inicio</button>
+  </div>
+</div>
+
+</div>
+<div *ngIf="condicion">
+<div class="mb-3 row my-4">
+  <label for="inputPassword" class="col-sm-2 col-form-label">Contraseña Actual</label>
+  <div class="col-sm-10">
+    <input [(ngModel)]="actual" type="password" class="form-control" id="inputPassword">
+</div>
+</div>
+<div class="mb-3 row">
+  <label for="inputPassword" class="col-sm-2 col-form-label">Nueva Contraseña</label>
+  <div class="col-sm-10">
+    <input [(ngModel)]="nueva" type="password" class="form-control" id="inputPassword">
+  </div>
+</div>
+
+<div class="mb-3 row">
+  <label for="inputPassword" class="col-sm-2 col-form-label">Repita Nueva Contraseña</label>
+  <div class="col-sm-10">
+    <input [(ngModel)]="repita" type="password" class="form-control" id="inputPassword">
+  </div>
+</div>
+
+
+<div class="mb-3 row">
+
+  <div class="col-sm-10">
+   <button (click)="cambiar()" class="btn btn-primary">Cambiar</button>
+
+  </div>
+</div>
+</div>

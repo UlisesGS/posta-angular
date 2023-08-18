@@ -50,6 +50,8 @@ export class PresupuestoGastoComponent {
   ) {}
 
   ngOnInit(): void {
+
+    
     this.rutaParametro.paramMap.subscribe((parametro) => {
       let id = +parametro.get('id');
       this.idEditar = +parametro.get('idEditar');
@@ -325,6 +327,7 @@ public  totalCostos(r:RequerimientosPersonal){
     console.log(this.proceso);
 
     this.proceso.estado = 'Presupuesto Gastos/Costos';
+    this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Gastos/Costos';
 
     this.procesoService.procesosUpdate(this.proceso).subscribe((data1) => {
       console.log(data1);
@@ -355,6 +358,7 @@ public  totalCostos(r:RequerimientosPersonal){
     console.log(this.proceso);
 
     this.proceso.estado = 'Presupuesto Gastos/Costos';
+    this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Gastos/Costos';
 
     this.procesoService.procesosUpdate(this.proceso).subscribe((data1) => {
       console.log(data1);

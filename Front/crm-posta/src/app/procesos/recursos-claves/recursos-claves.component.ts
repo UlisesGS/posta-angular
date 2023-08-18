@@ -79,6 +79,7 @@ export class RecursosClavesComponent {
 
   public guardar(){
     this.proceso.estado='Recursos Claves';
+    this.proceso.estadoAnteriorEmprendedor='Recursos Claves';
     console.log(this.proceso);
     this.proceso.canvasModel.keyRecources=this.keyRecources
    this.procesoService.recursosClavesSave(this.proceso.canvasModel.keyRecources).subscribe(pro=>{
@@ -95,6 +96,7 @@ export class RecursosClavesComponent {
 
   public guardarYsalir(){
     this.proceso.estado='Recursos Claves';
+    this.proceso.estadoAnteriorEmprendedor='Recursos Claves';
     console.log(this.proceso);
     this.proceso.canvasModel.keyRecources=this.keyRecources
    this.procesoService.recursosClavesSave(this.proceso.canvasModel.keyRecources).subscribe(pro=>{

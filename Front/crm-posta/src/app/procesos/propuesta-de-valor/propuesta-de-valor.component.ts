@@ -77,6 +77,7 @@ export class PropuestaDeValorComponent {
   }
   public guardar(){
     this.proceso.estado='Propuesta de Valor';
+    this.proceso.estadoAnteriorEmprendedor='Propuesta de Valor'
     console.log(this.proceso);
     this.proceso.canvasModel.valuePropositions=this.valuePropositions
    this.procesoService.propuestaValorSave(this.proceso.canvasModel.valuePropositions).subscribe(valor=>{
@@ -93,6 +94,7 @@ export class PropuestaDeValorComponent {
 
   public guardarYsalir(){
     this.proceso.estado='Propuesta de Valor';
+    this.proceso.estadoAnteriorEmprendedor='Propuesta de Valor'
     console.log(this.proceso);
     this.proceso.canvasModel.valuePropositions=this.valuePropositions
    this.procesoService.propuestaValorSave(this.proceso.canvasModel.valuePropositions).subscribe(valor=>{

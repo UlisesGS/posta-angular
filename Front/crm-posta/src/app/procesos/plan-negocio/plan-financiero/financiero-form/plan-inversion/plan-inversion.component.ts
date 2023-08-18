@@ -72,20 +72,34 @@ export class PlanInversionComponent implements OnInit {
     })
   }
   eliminarActivo(a:Inversion){
+    this.planDeInversion.activoPropio-=a.aportesPropios;
+    this.planDeInversion.activoInvesion-=a.inversionRequerida;
+    this.planDeInversion.activoCredito-=a.creditoRequerido;
+    this.planDeInversion.calculoTotal();
     this.planDeInversion.activoFijo= this.planDeInversion.activoFijo.filter(f=>f!=a);
     this.activosFijos = this.activosFijos.filter(activo=>activo!=a);
   }
   eliminarMaquinaria(a:Inversion){
+    this.planDeInversion.maquinariaPropio-=a.aportesPropios;
+    this.planDeInversion.maquinariaInversion-=a.inversionRequerida;
+    this.planDeInversion.maquinariaCredito-=a.creditoRequerido;
+    this.planDeInversion.calculoTotal();
     this.planDeInversion.maquinariaEquipo= this.planDeInversion.maquinariaEquipo.filter(f=>f!=a);
     this.maquinarias = this.maquinarias.filter(activo=>activo!=a);
   }
   eliminarMueble(a:Inversion){
-
-    this.planDeInversion.maquinariaEquipo= this.planDeInversion.maquinariaEquipo.filter(f=>f!=a);
-    this.maquinarias = this.maquinarias.filter(activo=>activo!=a);
+    this.planDeInversion.mueblesPropio-=a.aportesPropios;
+    this.planDeInversion.mueblesInversion-=a.inversionRequerida;
+    this.planDeInversion.muebleCredito-=a.creditoRequerido;
+    this.planDeInversion.calculoTotal();
+    this.planDeInversion.mueblesEnseres= this.planDeInversion.mueblesEnseres.filter(f=>f!=a);
+    this.muebles = this.muebles.filter(activo=>activo!=a);
   }
   eliminarVehiculo(a:Inversion){
-
+    this.planDeInversion.vehiculosPropio-=a.aportesPropios;
+    this.planDeInversion.vehiculosInversion-=a.inversionRequerida;
+    this.planDeInversion.vehiculosCredito-=a.creditoRequerido;
+    this.planDeInversion.calculoTotal();
     this.planDeInversion.vehiculos= this.planDeInversion.vehiculos.filter(f=>f!=a);
     this.vehiculos = this.vehiculos.filter(activo=>activo!=a);
   }
@@ -178,6 +192,7 @@ export class PlanInversionComponent implements OnInit {
 
 
     this.proceso.estado='Plan Financiero finalizado';
+    this.proceso.estadoAnteriorEmprendedor='Plan Financiero finalizado';
 
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
       console.log(data1);
@@ -207,6 +222,7 @@ export class PlanInversionComponent implements OnInit {
 
 
     this.proceso.estado='Plan Financiero finalizado';
+    this.proceso.estadoAnteriorEmprendedor='Plan Financiero finalizado';
 
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
       console.log(data1);

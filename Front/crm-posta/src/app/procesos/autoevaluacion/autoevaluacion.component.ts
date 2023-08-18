@@ -21,16 +21,39 @@ export class AutoevaluacionComponent implements OnInit {
   canvasModel: Canvas = new Canvas();
   cliente: Client = new Client();
   proceso: Process = new Process();
+  listaProcesos: Process[]=[];
   constructor(private modalService: ModalService,
     private clienteService: ClientService,
     private rutaParametro: ActivatedRoute,
     private canvasService: ProcesoService,
     private router: Router,
+    private parametro: ActivatedRoute
 
   ) { }
+
   ngOnInit(): void {
-    
+    this.parametro.paramMap.subscribe(p => {
+      let id = +p.get('id');
+      if (id) {
+        this.clienteService.getClient(id).subscribe(data => {
+          this.cliente = data;
+        })
+      }
+
+      this.canvasService.procesosFindAll().subscribe(pro=>{
+        this.listaProcesos=pro
+
+        this.listaProcesos.forEach(proceso=>{
+          if(proceso?.processEmpresario?.client?.id==this.cliente.id){
+            this.proceso=proceso;console.log('hola');
+            }
+        })
+      })
+
+    })
+  
   }
+  
 
   cerrarModalAsesoria(): void {
     this.modalService.cerrarModalAsesoria();
@@ -58,7 +81,7 @@ export class AutoevaluacionComponent implements OnInit {
             this.proceso.canvasModel = this.canvasModel;
 
             this.proceso.estado = "AutoEvaluación";
-
+            this.proceso.cambio=true;
             this.proceso.user = JSON.parse(localStorage.getItem('usuario'))
             this.selfAssessment.selfAssessment = this.preguntas;;
             this.selfAssessment.client = this.cliente;
@@ -66,31 +89,68 @@ export class AutoevaluacionComponent implements OnInit {
               //   console.log(data);
               this.selfAssessment = data;
               this.proceso.selfAssessment = data;
-              // console.log(this.proceso);
+              this.proceso.client=this.cliente;
               this.canvasService.procesosSave(this.proceso).subscribe(data => {
                 this.proceso = data;
                 console.log(this.proceso);
-
-
                 //   console.log(this.selfAssessment);
-
                 if (this.condicion) {
                   console.log(this.condicion);
-
                   this.router.navigate(['puntajeAutoevaluacion/cliente/',this.cliente.id]);
                   Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
                 } else {
                   this.router.navigate(['/segmento/cliente/', this.cliente.id]);
                 }
-
-
-
-
-
               })
             })
+          }, e => {
+            if (e.status === 500) {
+              this.router.navigate(['/procesos']);
+            }
+          });
+
+        })
+      }
+    })
+
+  }
 
 
+
+  public guardarProcesoEmpresario() {
+    this.condicion = true
+    this.rutaParametro.paramMap.subscribe(parametro => {
+      let id = +parametro.get('id');
+      if (id) {
+        this.clienteService.getClient(id).subscribe(d => {
+          this.cliente = d;
+          this.canvasModel.client = this.cliente
+          this.selfAssessment.client = this.cliente;
+          //agregue recien
+          this.canvasService.canvasSave(this.canvasModel).subscribe(canvas => {
+            this.canvasModel = canvas;
+            this.proceso.canvasModel = this.canvasModel;
+            this.proceso.estado = "AutoEvaluación";
+            this.proceso.cambio=true;
+            this.proceso.estadoAnteriorEmprendedor= "AutoEvaluación";
+            this.proceso.user = JSON.parse(localStorage.getItem('usuario'))
+            this.selfAssessment.selfAssessment = this.preguntas;;
+            this.selfAssessment.client = this.cliente;
+            this.clienteService.guardarPreguntas(this.selfAssessment).subscribe(data => {//   console.log(data);
+              this.selfAssessment = data;
+              this.proceso.selfAssessment = data; // console.log(this.proceso);
+              this.canvasService.procesosUpdate(this.proceso).subscribe(data => {
+                this.proceso = data;
+                console.log(this.proceso);
+                if (this.condicion) {
+                  console.log(this.condicion);
+                  this.router.navigate(['puntajeAutoevaluacion/cliente/',this.cliente.id]);
+                  Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
+                } else {
+                  this.router.navigate(['/segmento/cliente/', this.cliente.id]);
+                }
+              })
+            })
           }, e => {
             if (e.status === 500) {
               this.router.navigate(['/procesos']);
@@ -106,11 +166,6 @@ export class AutoevaluacionComponent implements OnInit {
   public guardarYsalir() {
     this.condicion = true
     this.guardarProceso();
-
-
-
-
-
   }
 
 }

@@ -192,6 +192,7 @@ export class PresupuestoFormComponent implements OnInit {
     console.log(this.proceso);
 
     this.proceso.estado = 'Presupuesto Compra';
+    this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Compra';
 
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
       console.log(data1);
@@ -210,6 +211,7 @@ export class PresupuestoFormComponent implements OnInit {
     console.log(this.proceso);
 
     this.proceso.estado = 'Presupuesto Compra'
+    this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Compra';
 
     this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
       console.log(data1);

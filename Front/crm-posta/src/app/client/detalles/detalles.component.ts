@@ -7,6 +7,7 @@ import { Process } from 'src/app/procesos/Process';
 import { ModalService } from '../modal.service';
 import { ImagenService } from './imagen.service';
 import { PdfServiceService } from './pdf-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalles',
@@ -107,16 +108,31 @@ export class DetallesComponent {
   uploadImageCierre() {
     if (this.file) {
       this.imagenService.uploadImageCierre(this.file, this.proceso).subscribe(
-        (response) => {
+        (response:any) => {
+          this.proceso.fechaFinalizacion=new Date();
+          this.proceso.terminado=true;
+          this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+            Swal.fire('Éxito','Proceso Terminado', 'success').then(() => {
+              window.location.reload();
+            });
+          })
           console.log(response);
-          window.location.reload(); // Maneja la respuesta del backend
+          //window.location.reload();
+           // Maneja la respuesta del backend
         },
         (error) => {
-          console.error(error); // Maneja el error, si ocurre
+          console.error(error);
+          this.proceso.fechaFinalizacion=new Date();
+          this.proceso.terminado=true;
+          this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
+            Swal.fire('Éxito','Proceso Terminado', 'success').then(() => {
+              window.location.reload();
+            });
+          }) // Maneja el error, si ocurre
         }
       );
     }
-    window.location.reload();
+   
   }
   getImageUrlCierre() {
     this.imagenService.getImageBlobCierre(this.proceso).subscribe(
@@ -134,7 +150,7 @@ export class DetallesComponent {
       this.imagenService.uploadImageImpacto(this.file, this.proceso).subscribe(
         (response) => {
           console.log(response);
-          window.location.reload(); // Maneja la respuesta del backend
+          window.location.reload();
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre
@@ -146,7 +162,7 @@ export class DetallesComponent {
   getImageUrlImpacto() {
     this.imagenService.getImageBlobImpacto(this.proceso).subscribe(
       (blob) => {
-        this.imageUrlCierre = URL.createObjectURL(blob);
+        this.imageUrlImpacto = URL.createObjectURL(blob);
       },
       (error) => {
         if (error.status == 500) {
@@ -178,12 +194,12 @@ export class DetallesComponent {
                 if (this.proceso.actaCierre) {
                   this.getImageUrlCierre();
                 }
-                
-
               }else 
               if (proceso?.processEmpresario?.client?.id == this.cliente.id) {
                 this.proceso = proceso;
+                console.log(proceso.processEmpresario.planDeAccion);
                 console.log(proceso);
+                
                 if (this.proceso.documentoCompromiso) {
                   this.getImageUrl();
                 }
@@ -198,13 +214,14 @@ export class DetallesComponent {
                 }
 
               }
+              
             })
           })
 
         })
       }
     })
-
+    console.log(this.proceso);
   }
 
 

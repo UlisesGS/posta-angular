@@ -9,6 +9,7 @@ import { AuthService } from '../auth/auth.service';
 import { BusquedaService } from '../busqueda.service';
 import { ProcesoService } from './../procesos/proceso.service';
 import { Process } from '../procesos/Process';
+import { Usuario } from '../usuario/usuario';
 
 
 
@@ -24,6 +25,7 @@ export class ClientComponent implements OnInit {
 
   datosFiltrados: string;
 
+  usuario: Usuario = new Usuario();
   procesos: Process[] = [];
   proceso: Process = new Process();
   clients: Client[];
@@ -43,6 +45,8 @@ export class ClientComponent implements OnInit {
   public municipio: number;
   public termino: string;
   exite: boolean;
+  active:boolean;
+
 
 
 
@@ -60,6 +64,8 @@ export class ClientComponent implements OnInit {
     this.filtrarDato()
     this.modal = false;
 
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
 
@@ -75,6 +81,11 @@ export class ClientComponent implements OnInit {
         ).subscribe(response => {
           this.clients = response.content as Client[];
           this.paginador = response;
+
+          if(this.usuario.role!='ADMIN'){
+            this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+          }
         });
 
     })
@@ -83,6 +94,25 @@ export class ClientComponent implements OnInit {
       console.log(this.municicipios);
 
 
+    })
+    this.condicion = false;
+    this.procesoService.procesosFindAll().subscribe(lista => {
+      this.procesos = lista;
+      console.log(this.procesos);
+
+
+    })
+  }
+  buscarNav() {
+
+
+    })
+    this.serviceClient.getClientsMunicipios().subscribe(data => {
+      this.municicipios = data;
+      console.log(this.municicipios);
+
+
+/*<<<<<<< juanma
     })
     this.condicion = false;
     this.procesoService.procesosFindAll().subscribe(lista => {
@@ -114,6 +144,37 @@ export class ClientComponent implements OnInit {
         this.clients = data;
       })
     }
+=======*/
+
+    this.serviceClient.buscarPorNombre(this.busquedaService.getTermino()).subscribe(data => {
+      this.clients = data;
+      if(this.usuario.role!='ADMIN'){
+        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+      }
+      this.exite = false
+
+    }, e => {
+      console.log(e);
+
+      this.exite = true
+    })
+
+
+  }
+
+  public buscar() {
+
+    console.log("buscar" + this.termino);
+
+    this.serviceClient.buscarPorNombre(this.termino).subscribe(data => {
+      this.clients = data;
+      if(this.usuario.role!='ADMIN'){
+        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+      }
+    })
+//>>>>>>> master
     // en el html {{busquedaService.getTermino().length>0  && busquedaService.getTermino().length!=0?buscar(busquedaService.getTermino()):""}}
   }
 
@@ -135,10 +196,15 @@ export class ClientComponent implements OnInit {
 
           this.clients = response.content as Client[];
           this.paginador = response;
+          if(this.usuario.role!='ADMIN'){
+            this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+          }
         });
 
     })
   }
+
 
 
   public reiniciarFiltro() {
@@ -160,19 +226,47 @@ export class ClientComponent implements OnInit {
   }
   public filtroPorGenero() {
     console.log(this.genero);
-    if(this.genero!==undefined){
+    this.serviceClient.getClientsGender(0, this.genero).subscribe(data => {
+      this.clients = data.content;
+      if(this.usuario.role!='ADMIN'){
+        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
 
-      this.serviceClient.getClientsGender(0, this.genero).subscribe(data => {
-        this.clients = data.content;
-      })
-    }
+      }
+    })
 
 
   }
   public filtroPorType() {
     this.serviceClient.getClientType(0, this.type).subscribe(data => {
       this.clients = data.content;
+      if(this.usuario.role!='ADMIN'){
+        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+
+      }
     })
+  }
+  public ClientsDelete(id:number): void{
+    console.log(id);
+
+    this.serviceClient.ClientsDelete(id).subscribe( data => {
+      console.log(data);
+
+      this.todos();
+    })
+  }
+
+
+  public findByState(){
+    
+    
+    this.serviceClient.findByState(this.active).subscribe(date=>{
+      console.log(date);
+      
+      this.clients=date;
+
+    })
+
   }
 
 
@@ -195,6 +289,7 @@ export class ClientComponent implements OnInit {
   public filtrarPorMunicipio() {
     console.log(this.municipio);
 
+
    if(this.municipio!==undefined){
 
      this.serviceClient.getClientsMunicipiosPage(0, this.municipio).subscribe(data => {
@@ -203,6 +298,7 @@ export class ClientComponent implements OnInit {
  
      })
    }
+
   }
   filtrarDato() {
     this.datosFiltrados = this.busquedaService.getTermino();

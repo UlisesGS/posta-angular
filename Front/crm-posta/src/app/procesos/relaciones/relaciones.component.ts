@@ -78,6 +78,7 @@ export class RelacionesComponent {
   }
   public guardar(){
     this.proceso.estado='Relación con los Clientes';
+    this.proceso.estadoAnteriorEmprendedor='Relación con los Clientes';
     console.log(this.proceso);
     this.proceso.canvasModel.customerRelationships=this.customerRelationships
    this.procesoService.relacionesSave(this.proceso.canvasModel.customerRelationships).subscribe(relacion=>{
@@ -94,6 +95,7 @@ export class RelacionesComponent {
 
   public guardarYsalir(){
     this.proceso.estado='Relación con los Clientes';
+    this.proceso.estadoAnteriorEmprendedor='Relación con los Clientes';
     console.log(this.proceso);
     this.proceso.canvasModel.customerRelationships=this.customerRelationships
    this.procesoService.relacionesSave(this.proceso.canvasModel.customerRelationships).subscribe(relacion=>{

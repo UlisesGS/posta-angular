@@ -89,11 +89,14 @@ import { MensajesComponent } from './mensajes/mensajes.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PanelComponent } from './usuario/panel/panel.component';
+import { RecargaComponent } from './header/asesoria/asesoriaList/recarga/recarga.component';
 
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+
 
 
 
@@ -117,6 +120,7 @@ const routes: Routes = [
   { path: 'asesorias', component: AsesoriaListComponent , canActivate: [AuthGuard]},
   { path: 'procesos', component: ProcesoListarComponent , canActivate: [AuthGuard]},
   { path: 'puntajeAutoevaluacion/cliente/:id', component: VerPuntajeComponent , canActivate: [AuthGuard]},
+
   //Modelo Canvas
   { path: 'segmento/cliente/:id', component: SegmentoComponent, canActivate: [AuthGuard] },
   { path: 'propuestaDeValor/cliente/:id', component: PropuestaDeValorComponent, canActivate: [AuthGuard] },
@@ -181,6 +185,7 @@ const routes: Routes = [
   { path: 'ingresos/cliente/:id/ver/:idVer', component: IngresosComponent , canActivate: [AuthGuard]},
   { path: 'estructuraCostos/cliente/:id/ver/:idVer', component: EstructuraCostosComponent , canActivate: [AuthGuard]},
   // plan basico
+
   { path: 'clients/:id/verBasico/:idVer1', component: ModeloListaComponent , canActivate: [AuthGuard]},
 
   { path: 'informacion/cliente/:id/ver/:idVer', component: InformacionComponent , canActivate: [AuthGuard]},
@@ -189,11 +194,13 @@ const routes: Routes = [
   { path: 'conclusion/cliente/:id/ver/:idVer', component: ConclusionComponent, canActivate: [AuthGuard] },
   // plan financiero
 
+
   { path: 'ventas/cliente/:id/ver/:idVer', component: PresupuestoVentasComponent, canActivate: [AuthGuard] },
   { path: 'compras/cliente/:id/ver/:idVer', component: PresupuestoFormComponent, canActivate: [AuthGuard] },
   { path: 'gastos/cliente/:id/ver/:idVer', component: PresupuestoGastoComponent , canActivate: [AuthGuard]},
   { path: 'inversion/cliente/:id/ver/:idVer', component: PlanInversionComponent , canActivate: [AuthGuard]},
   //Diagnostico Empresarial
+
   { path: 'empresario/diagnostico', component: DiagnosticoComponent, canActivate: [AuthGuard] },
   { path: 'empresario/diagnostico/cliente/:id', component: DiagnosticoComponent, canActivate: [AuthGuard] },
   { path: 'empresario/resultados', component: ResultadosComponent , canActivate: [AuthGuard]},
@@ -202,10 +209,10 @@ const routes: Routes = [
   { path: 'empresario/economico/cliente/:id', component: EconomicoComponent , canActivate: [AuthGuard]},
 
 
-
-
-
-
+  { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent },
+  { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent },
+  { path: 'economico/empresario/:id/editar/:idEditar', component: EconomicoComponent },
+  
 
 
 
@@ -213,11 +220,22 @@ const routes: Routes = [
   //Plan de Accion
   { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent,canActivate: [AuthGuard] },
 
+  //Para Ver
+  { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent },
+  { path: 'accion/empresario/:id/ver/:idVer', component: PlanAccionComponent },
+  { path: 'resultados/empresario/:id/ver/:idVer', component: ResultadosComponent },
+  { path: 'empresario/accion/cliente/:id/ver/:idVer', component: PlanAccionComponent },
   //Mensajes
   { path: 'mensajes', component: MensajesComponent,canActivate: [AuthGuard] },
 
   //Calendario
+
   { path: 'calendario', component: CalendarioComponent,canActivate: [AuthGuard] },
+
+
+
+  //recarga asesoria en asesoria
+  { path: 'recarga', component: RecargaComponent },
 
 ]
 
@@ -292,8 +310,11 @@ const routes: Routes = [
     PlanAccionComponent,
     MensajesComponent,
     CalendarioComponent,
-    
-    
+
+    PanelComponent,
+    RecargaComponent,
+
+
 
   ],
 
@@ -308,15 +329,17 @@ const routes: Routes = [
     CommonModule,
     FullCalendarModule,
     NgbModule,
-    
-    
-   
+
+
+
   ],
 
 
   providers: [
+
     {provide: HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi: true},
     {provide: HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi: true}
+
   ],
 
   bootstrap: [AppComponent]

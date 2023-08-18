@@ -8,6 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ModalService } from '../modal.service';
 import { Ciiu } from '../ciiu';
 import { AuthService } from './../../auth/auth.service';
+import { Process } from 'src/app/procesos/Process';
+import { ProcesoService } from 'src/app/procesos/proceso.service';
 
 @Component({
   selector: 'app-form-client',
@@ -20,15 +22,32 @@ export class FormClientComponent implements OnInit {
   cliente: Client = new Client();
   errores: any;
   enums: any;
-  ciiu:Ciiu[]=[];
-  
-  
+  proceso: Process = new Process();
+  procesos: Process[] = [];
+  ciiu: Ciiu[] = [];
+  searchTerm:string = '';
+  filteredCiiu:Ciiu[] = []
+
+  idEditar: number
+
 
   constructor(private service: ClientService
     , private router: Router
     , public modalservice: ModalService
     , private rutaParametro: ActivatedRoute,
-    private authServic:AuthService) { }
+    private authServic: AuthService,
+    private procesoService: ProcesoService) { }
+
+    filterCiiu() {
+      this.filteredCiiu = this.ciiu.filter(e =>
+
+           e.titulo.includes(this.searchTerm)
+
+      );
+      console.log(this.filteredCiiu);
+
+  }
+
   ngOnInit(): void {
     this.service.getClientsMunicipios().subscribe(data => {
       this.municipios = data;
@@ -38,111 +57,117 @@ export class FormClientComponent implements OnInit {
       this.enums = data;
       console.log(this.enums);
     })
-    this.service.getCiiu().subscribe(data=>{
-      this.ciiu=data;
+    this.service.getCiiu().subscribe(data => {
+      this.ciiu = data;
       console.log(data);
-      
+
     })
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
       if (id) {
         this.service.getClient(id).subscribe(data => {
-          
-          
-          this.empresario = data;
-          console.log(this.empresario);
-          //this.empresario.municipio=data.municipio;
+          this.empresario = data; console.log(this.empresario);
+          this.procesoService.procesosFindAll().subscribe(pr => {
+            this.procesos = pr
+            this.procesos.forEach(pro => {
+              if (pro?.selfAssessment?.client?.id == this.empresario.id && pro?.processEmpresario?.client?.id == this.empresario.id) {
+                this.proceso = pro
+                console.log(this.proceso);
+
+              }
+            })
+          })
         })
+        this.idEditar = +parametro.get('idEditar');
+        console.log(this.idEditar)
+
       }
     })
   }
 
   public registrar() {
-    this.empresario.type="businessman";
-    this.empresario.user=this.authServic.devolverUsuario();
-    console.log(this.empresario);
+    this.empresario.type = "businessman";
+    this.empresario.user = this.authServic.devolverUsuario(); console.log(this.empresario);
     this.service.saveBusinessman(this.empresario).subscribe(data => {
       Swal.fire('ÉXITO', `Empresario ${data.name} fue creado con exito`, 'success')
-
       this.cerrarModal();
       this.router.navigate(['/municipios'])
     }
-    , e => {
-      if (e.status == 404) {
-        this.errores = e.error;
-        Swal.fire('ERROR:', 'Datos Incompletos', 'error');
-        console.log(this.errores);
-
-
-      }
-      if (e.status == 500 || e.status == 400) {
-        console.log(e);
-
-        Swal.fire("ERROR: ", `Error en la carga del formulario`, 'error');
-      }
-
-
-    })
+      , e => {
+        if (e.status == 404) {
+          this.errores = e.error;
+          Swal.fire('ERROR:', 'Datos Incompletos', 'error');
+        }
+        if (e.status == 500 || e.status == 400) {
+          Swal.fire("ERROR: ", `Error en la carga del formulario`, 'error');
+        }
+      })
 
 
   }
   public editar() {
     console.log(this.empresario);
-    this.empresario.type="businessman";
-    
-
+    this.empresario.type = "businessman";
     this.service.updateBusinessman(this.empresario).subscribe(data => {
+      console.log(this.proceso);
+      if (this.idEditar) {
+        if (this.proceso?.processEmpresario) {
+          console.log('Empresario cambio true');
+
+          this.proceso.cambio=true;
+          this.proceso.estado = this.proceso.estadoAnteriorEmpresario
+          this.procesoService.procesosUpdate(this.proceso).subscribe()
+        } else {
+          this.proceso.estado = 'iniciando2'
+          console.log('Empresario cambio false');
+          this.proceso.cambio=false;
+          this.procesoService.procesosUpdate(this.proceso).subscribe()
+        }
+      }
+
       this.router.navigate(['/clients'])
       Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
+    }, e => {
 
-
-      //this.cerrarModal();
-
-
-},e=>{
-
-  Swal.fire("Error: ", `Error al editar el contacto`, 'error');
-})
-}
+      Swal.fire("Error: ", `Error al editar el contacto`, 'error');
+    })
+  }
 
   cerrarModal() {
     this.modalservice.cerrarModal();
   }
 
-  compararMunicipio(o1: Municipio, o2: Municipio):boolean{
-
-
-
+  compararMunicipio(o1: Municipio, o2: Municipio): boolean {
     if (o1 === undefined && o2 === undefined) {
       return true;
     }
-
     return o1 && o2 ? o1.id === o2.id : o1 === o2;
-
+  }
+  compararCiu(o1: Ciiu, o2: Ciiu): boolean {
+    if (o1 === undefined && o2 === undefined) {
+      return true;
+    }
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  }
+  compararCompany(o1: any, o2: any): boolean {
+    if (o1 === undefined && o2 === undefined) {
+      return true;
+    }
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
   }
 
 
   public cambiarTipo() {
-    
-    this.cliente.type="businessman";
-    this.cliente.businessIdea=null;
-    this.cliente.product=null;
-    console.log(this.cliente);
-    
+    this.cliente.type = "businessman";
+    this.cliente.businessIdea = null;
+    this.cliente.product = null;
+
     this.service.updateBusinessman(this.cliente).subscribe(data => {
-      console.log(data);
-      console.log(this.cliente);
       Swal.fire('Editado', `Empresario ${data.name} fue editado con exito`, 'success')
-
-
-      
-
-
-},e=>{
-  Swal.fire("Error: ", `Error al editar el contacto`, 'error');
-})
-}
-
+    }, e => {
+      Swal.fire("Error: ", `Error al editar el contacto`, 'error');
+    })
+  }
 
 }
 

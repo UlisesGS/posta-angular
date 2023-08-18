@@ -8,6 +8,7 @@ import { Municipio } from '../municipio/municipio';
 import { Observable, tap } from 'rxjs';
 import { Process } from '../procesos/Process';
 import { ProcesoService } from '../procesos/proceso.service';
+import { Usuario } from '../usuario/usuario';
 
 @Component({
   selector: 'app-main',
@@ -24,7 +25,7 @@ export class MainComponent implements OnInit {
     procesos:Process[]=[];
   clients: Client[];
   client: Client;
-
+  usuario:Usuario= new Usuario();
   municicipios: Municipio[];
 
   clienteSeleccionado: Client;
@@ -41,10 +42,15 @@ export class MainComponent implements OnInit {
   public termino: string;
 
   ngOnInit(): void {
+this.usuario = JSON.parse(localStorage.getItem('usuario'));
     this.procesosService.procesosFindAllUltimo().subscribe(data=>{
-      console.log(data);
+      console.log(this.usuario);
 
       this.procesos=data;
+      if(this.usuario.role!='ADMIN'){
+        this.procesos= this.procesos.filter(f=>f?.user?.id==this.usuario?.id);
+      }
+
     })
     this.modal = false;
 
@@ -65,16 +71,23 @@ export class MainComponent implements OnInit {
 
           this.clients = response.content as Client[];
           this.paginador = response;
-         
+
+          if(this.usuario.role!='ADMIN'){
+            this.clients= this.clients.filter(f=>f.user.id==this.usuario.id);
+          }
+        //  console.log(this.paginador);
+
         });
 
     })
     this.serviceClient.getClientsMunicipios().subscribe(data => {
       this.municicipios = data;
-      console.log(this.municicipios);
+      //console.log(this.municicipios);
 
 
     })
+   
+    
   }
 
   abrirModal():void{

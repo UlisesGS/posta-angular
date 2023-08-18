@@ -4,6 +4,7 @@ import { SelfAssessment } from './selfAssessment';
 import { BusinessPlan } from './plan-negocio/modelo-basico/BusinessPlan';
 import { BusinessPlanFinancial } from "./plan-negocio/plan-financiero/BusinessPlanFinancial";
 import { ProcessEmpresario } from "../procesos-empresarios/process-empresario";
+import { Client } from "../client/client";
 
 /*}
 @OneToOne
@@ -32,6 +33,13 @@ export class Process {
   actaCierre:string;
   impacto:string;
   processEmpresario:ProcessEmpresario;
+  estadoAnteriorEmprendedor:string;
+  estadoAnteriorEmpresario:string;
+  fechaFinalizacion:Date;
+  client:Client;
+  updatedate:Date;
+
+  cambio:boolean;
 
 
 }

@@ -15,13 +15,13 @@
 
                       <ul class="list-unstyled mb-0">
                           <!-- -->
-                             <li><a (click)="verProceso()" class="dropdown-item d-flex align-items-center gap-2 py-2">
+                             <li><a [routerLink]="['/clients/details/', proceso.client.id]" class="dropdown-item d-flex align-items-center gap-2 py-2">
 
                          <!-- <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >-->
                                   <span class="d-inline-block bg-primary rounded-circle p-1"></span>
                                   Ver Estado Del Proceso
-                              </a></li>
-                          <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" (click)="continuarProceso()">
+                              </a></li> 
+                          <li *ngIf="!proceso?.terminado"><a class="dropdown-item d-flex align-items-center gap-2 py-2" (click)="continuarProceso()">
                                   <span class="d-inline-block bg-primary rounded-circle p-1"></span>
                                  Continuar con el Proceso
                               </a></li>

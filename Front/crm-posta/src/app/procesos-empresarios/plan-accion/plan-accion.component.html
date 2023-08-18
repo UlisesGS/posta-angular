@@ -2,7 +2,7 @@
     <div class="col-2">
         <app-client-details></app-client-details>
     </div>
-    <div class="col-10">
+    <div class="col-10" *ngIf="!idVer">
         <h2 class="btn btn-disabled">Plan de Áccion</h2>
         <div class="col-11">
             <form action="">
@@ -17,61 +17,125 @@
                             <th style="width: 10%;" colspan="4" rowspan="1">Seguimiento</th>
                         </tr>
                         <tr>
-                            <th style="width: 10%;"  rowspan="1">Fecha Inicio</th>
-                            <th style="width: 10%;"  rowspan="1">Fecha de Cierre</th>
-                            <th style="width: 10%;"  rowspan="1">Cumplimiento</th>
-                            <th style="width: 10%;"  rowspan="1">Observaciones</th>
+                            <th style="width: 10%;" rowspan="1">Fecha Inicio</th>
+                            <th style="width: 10%;" rowspan="1">Fecha de Cierre</th>
+                            <th style="width: 10%;" rowspan="1">Cumplimiento</th>
+                            <th style="width: 10%;" rowspan="1">Observaciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td style="width: 10%;">Lineamientos Básicos Estratégicos</td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.objetivoEstrategico" name="a1" id="a1" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.actividadEstrategica" name="a2" id="a2" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.responsable" name="a3" id="a3" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.aliadosEstrategicos" name="a4" id="a4" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaInicio" name="a5" id="a5" class="form-control" ></td>
-                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaCierre" name="a5" id="a5" class="form-control" ></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.cumplimiento" name="a5" id="a5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.observaciones" name="a5" id="a5" class="form-control" ></textarea></td>
-                            
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.objetivoEstrategico"
+                                    name="a1" id="a1" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.actividadEstrategica"
+                                    name="a2" id="a2" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.responsable"
+                                    name="a3" id="a3" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.aliadosEstrategicos"
+                                    name="a4" id="a4" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><input type="date"
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaInicio"
+                                    name="a5" id="a5" class="form-control"></td>
+                            <td style="width: 10%;"><input type="date"
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaCierre"
+                                    name="a5" id="a5" class="form-control"></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.cumplimiento"
+                                    name="a5" id="a5" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.observaciones"
+                                    name="a5" id="a5" class="form-control"></textarea></td>
+
                         </tr>
                         <tr>
                             <td style="width: 10%;">Mercadeo y Ventas</td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.objetivoEstrategico"  name="b1" id="b1" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.actividadEstrategica"  name="b2" id="b2" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.responsable"  name="b3" id="b3" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.aliadosEstrategicos"  name="b4" id="b4" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaInicio"  name="b5" id="b5" class="form-control" ></td>
-                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaCierre"  name="b5" id="b5" class="form-control" ></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.cumplimiento"  name="b5" id="b5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.observaciones"  name="b5" id="b5" class="form-control" ></textarea></td>
-                            
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.objetivoEstrategico"
+                                    name="b1" id="b1" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.actividadEstrategica"
+                                    name="b2" id="b2" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.responsable"
+                                    name="b3" id="b3" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.aliadosEstrategicos"
+                                    name="b4" id="b4" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><input type="date"
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaInicio"
+                                    name="b5" id="b5" class="form-control"></td>
+                            <td style="width: 10%;"><input type="date"
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaCierre"
+                                    name="b5" id="b5" class="form-control"></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.cumplimiento"
+                                    name="b5" id="b5" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.observaciones"
+                                    name="b5" id="b5" class="form-control"></textarea></td>
+
                         </tr>
                         <tr>
                             <td style="width: 10%;">Producción y Operaciones</td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.objetivoEstrategico" name="c1" id="c1" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.actividadEstrategica" name="c2" id="c2" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.responsable" name="c3" id="c3" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.aliadosEstrategicos" name="c4" id="c4" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaInicio" name="c5" id="c5" class="form-control" ></td>
-                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaCierre" name="c5" id="c5" class="form-control" ></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.cumplimiento" name="c5" id="c5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.observaciones" name="c5" id="c5" class="form-control" ></textarea></td>
-                            
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.objetivoEstrategico"
+                                    name="c1" id="c1" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.actividadEstrategica"
+                                    name="c2" id="c2" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.responsable"
+                                    name="c3" id="c3" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.aliadosEstrategicos"
+                                    name="c4" id="c4" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><input type="date"
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaInicio"
+                                    name="c5" id="c5" class="form-control"></td>
+                            <td style="width: 10%;"><input type="date"
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaCierre"
+                                    name="c5" id="c5" class="form-control"></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.cumplimiento"
+                                    name="c5" id="c5" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.observaciones"
+                                    name="c5" id="c5" class="form-control"></textarea></td>
+
                         </tr>
                         <tr>
                             <td style="width: 10%;">Talento Humano</td>
 
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.objetivoEstrategico" name="d1" id="d1" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.actividadEstrategica" name="d2" id="d2" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.responsable" name="d3" id="d3" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.aliadosEstrategicos" name="d4" id="d4" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaInicio" name="d5" id="d5" class="form-control" ></td>
-                            <td style="width: 10%;"><input type="date" [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaCierre" name="d5" id="d5" class="form-control" ></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.cumplimiento" name="d5" id="d5" class="form-control" ></textarea></td>
-                            <td style="width: 10%;"><textarea [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.observaciones" name="d5" id="d5" class="form-control" ></textarea></td>
-                            
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.objetivoEstrategico"
+                                    name="d1" id="d1" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.actividadEstrategica"
+                                    name="d2" id="d2" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.responsable"
+                                    name="d3" id="d3" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.aliadosEstrategicos"
+                                    name="d4" id="d4" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><input type="date"
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaInicio"
+                                    name="d5" id="d5" class="form-control"></td>
+                            <td style="width: 10%;"><input type="date"
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaCierre"
+                                    name="d5" id="d5" class="form-control"></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.cumplimiento"
+                                    name="d5" id="d5" class="form-control"></textarea></td>
+                            <td style="width: 10%;"><textarea
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.observaciones"
+                                    name="d5" id="d5" class="form-control"></textarea></td>
+
 
                         </tr>
                     </tbody>
@@ -79,10 +143,192 @@
             </form>
         </div>
         <button *ngIf="!proceso?.processEmpresario?.planDeAccion?.id" (click)="guardar()" class="btn">Guardar</button>
-            <button *ngIf="proceso?.processEmpresario?.planDeAccion?.id" (click)="editar()" class="btn">Editar</button>
-        <button [routerLink]="['/procesos']"
-                class="btn ">Cancelar</button>
-                <button [routerLink]="['/economico/empresario/',cliente.id,'editar',proceso.id]"
-                class="btn ">Volver</button>
+        <button *ngIf="proceso?.processEmpresario?.planDeAccion?.id" (click)="editar()" class="btn">Editar</button>
+        <button [routerLink]="['/procesos']" class="btn ">Cancelar</button>
+        <button [routerLink]="['/economico/empresario/',cliente.id,'editar',proceso.id]" class="btn ">Volver</button>
+    </div>
+    <div class="col-10" *ngIf="idVer">
+        <h2 class="btn btn-disabled">Plan de Áccion</h2>
+        <div class="col">
+            <form action="">
+                <table class="table table-bordered" style="border: solid 1px;">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;" rowspan="2">Área a Intervenir</th>
+                            <th style="width: 10%;" rowspan="2">Objetivo Estratégico</th>
+                            <th style="width: 10%;" rowspan="2">Actividad Estratégica</th>
+                            <th style="width: 10%;" rowspan="2">Responsable</th>
+                            <th style="width: 10%;" rowspan="2">Aliados Estratégicos</th>
+                            <th style="width: 10%;" colspan="4" rowspan="1">Seguimiento</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 10%;" rowspan="1">Fecha Inicio</th>
+                            <th style="width: 10%;" rowspan="1">Fecha de Cierre</th>
+                            <th style="width: 10%;" rowspan="1">Cumplimiento</th>
+                            <th style="width: 10%;" rowspan="1">Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width: 10%;">Lineamientos Básicos Estratégicos</td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="a1" id="a1" >{{proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.objetivoEstrategico}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="a2" id="a2" >{{proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.actividadEstrategica}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="a3" id="a3" >{{proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.responsable}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="a4" id="a4" >{{proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.aliadosEstrategicos}}</div></td>
+                            <td style="width: 10%;">
+                                <div style="display: flex; justify-content: center; align-items: center; ">
+                                    {{ proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaInicio |
+                                    date:'dd/MM/yyyy' }}
+                                </div>
+                            </td>
+                            <td style="width: 10%;">
+                                <div style="display: flex; justify-content: center; align-items: center; ">
+                                    {{ proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaCierre |
+                                    date:'dd/MM/yyyy' }}
+                                </div>
+                            </td>
+                            <!-- <td style="width: 10%;"><input type="date" disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaInicio"
+                                    name="a5" id="a5" class="form-control"></td>
+                            <td style="width: 10%;"><input type="date" disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.fechaCierre"
+                                    name="a5" id="a5" class="form-control"></td> -->
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="a5" id="a5" >{{proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.cumplimiento}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="a5" id="a5" >{{proceso?.processEmpresario?.planDeAccion?.lineamientosBasicos.observaciones}}</div></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Mercadeo y Ventas</td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="b1" id="b1" >{{proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.objetivoEstrategico}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="b2" id="b2" >{{proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.actividadEstrategica}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="b3" id="b3" >{{proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.responsable}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="b4" id="b4" >{{proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.aliadosEstrategicos}}</div></td>
+                            <td style="width: 10%;">
+                                <div style="display: flex; justify-content: center; align-items: center; ">
+                                    {{ proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaInicio |
+                                    date:'dd/MM/yyyy' }}
+                                </div>
+                            </td>
+                            <td style="width: 10%;">
+                                <div style="display: flex; justify-content: center; align-items: center; ">
+                                    {{ proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaCierre |
+                                    date:'dd/MM/yyyy' }}
+                                </div>
+                            </td>
+                            <!-- <td style="width: 10%;"><input type="date" disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaInicio"
+                                    name="b5" id="b5" class="form-control"></td>
+                            <td style="width: 10%;"><input type="date" disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.fechaCierre"
+                                    name="b5" id="b5" class="form-control"></td> -->
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="b5" id="b5" >{{proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.cumplimiento}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="b5" id="b5" >{{proceso?.processEmpresario?.planDeAccion?.mercadeoVentas.observaciones}}</div></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Producción y Operaciones</td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="c1" id="c1" >{{proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.objetivoEstrategico}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="c2" id="c2" >{{proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.actividadEstrategica}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                  
+                                    name="c3" id="c3" >{{proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.responsable}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="c4" id="c4" >{{proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.aliadosEstrategicos}}</div></td>
+                            <td style="width: 10%;">
+                                <div style="display: flex; justify-content: center; align-items: center; ">
+                                    {{ proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaInicio |
+                                    date:'dd/MM/yyyy' }}
+                                </div>
+                            </td>
+                            <td style="width: 10%;">
+                                <div style="display: flex; justify-content: center; align-items: center; ">
+                                    {{ proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaCierre |
+                                    date:'dd/MM/yyyy' }}
+                                </div>
+                            </td>
+                            <!-- <td style="width: 10%;"><input type="date" disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaInicio"
+                                    name="c5" id="c5" class="form-control"></td>
+                            <td style="width: 10%;"><input type="date" disabled
+                                    [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.fechaCierre"
+                                    name="c5" id="c5" class="form-control"></td> -->
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="c5" id="c5" >{{proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.cumplimiento}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="c5" id="c5" >{{proceso?.processEmpresario?.planDeAccion?.produccionOperaciones.observaciones}}</div></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Talento Humano</td>
+
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="d1" id="d1" >{{proceso?.processEmpresario?.planDeAccion?.talentoHumano.objetivoEstrategico}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="d2" id="d2" >{{proceso?.processEmpresario?.planDeAccion?.talentoHumano.actividadEstrategica}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="d3" id="d3" >{{proceso?.processEmpresario?.planDeAccion?.talentoHumano.responsable}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="d4" id="d4" >{{proceso?.processEmpresario?.planDeAccion?.talentoHumano.aliadosEstrategicos}}</div></td>
+                            <!-- <td style="width: 10%;"><input type="date" disabled [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaInicio " name="d5" id="d5" class="form-control" ></td> -->
+                            <td style="width: 10%;">
+                                <div style="display: flex; justify-content: center; align-items: center; ">
+                                    {{ proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaInicio |
+                                    date:'dd/MM/yyyy' }}
+                                </div>
+                            </td>
+                            <!-- <td style="width: 10%;"><input type="date" disabled [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaCierre" name="d5" id="d5" class="form-control" ></td> -->
+                            <td style="width: 10%;">
+                                <div style="display: flex; justify-content: center; align-items: center; ">
+                                    {{ proceso?.processEmpresario?.planDeAccion?.talentoHumano.fechaCierre |
+                                    date:'dd/MM/yyyy' }}
+                                </div>
+                            </td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="d5" id="d5" >{{proceso?.processEmpresario?.planDeAccion?.talentoHumano.cumplimiento}}</div></td>
+                            <td style="width: 10%;"><div disabled
+                                    
+                                    name="d5" id="d5" >{{proceso?.processEmpresario?.planDeAccion?.talentoHumano.observaciones}}</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <button [routerLink]="['/clients/details/',cliente.id]"  class="btn">Volver</button>
     </div>
 </div>

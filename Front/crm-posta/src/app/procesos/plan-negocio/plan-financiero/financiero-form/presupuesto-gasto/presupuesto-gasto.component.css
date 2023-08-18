@@ -69,3 +69,16 @@
     color: white;
     margin-left: 10px;
 }
+.cell-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-close {
+  margin-left: 10px; /* Espacio entre la variable y el ícono */
+}
+
+.salaria-anual {
+  text-align: left; /* Alineación a la izquierda de la variable */
+}
