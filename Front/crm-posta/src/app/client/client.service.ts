@@ -92,7 +92,7 @@ export class ClientService {
     return this.http.put<any>(`${this.urlEndPoint}/client/${businessman.id}`,businessman, {headers:this.httpHeader})
   }
 /* TODOS LOS DELETE */
-  public ClientsDelete(id:void):Observable<void>{
+  public ClientsDelete(id:number):Observable<void>{
     return this.http.delete<void>(`${this.urlEndPoint}/${id}`)
   }
 
@@ -122,5 +122,9 @@ export class ClientService {
     public clienteListarTodos():Observable<any>{
       return this.http.get<any>(`${this.urlEndPoint}/listar`)
 
+    }
+
+    public findByState(active:boolean):Observable<any>{
+      return this.http.get<any>(`${this.urlEndPoint}/activos/${active}`);
     }
 }
