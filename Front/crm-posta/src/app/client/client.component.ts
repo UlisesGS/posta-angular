@@ -44,6 +44,7 @@ export class ClientComponent implements OnInit {
   public municipio: number;
   public termino: string;
   exite: boolean;
+  active:boolean;
 
 
 
@@ -198,6 +199,26 @@ export class ClientComponent implements OnInit {
 
       }
     })
+  }
+  public ClientsDelete(id:number): void{
+    console.log(id);
+
+    this.serviceClient.ClientsDelete(id).subscribe( data => {
+      console.log(data);
+
+      this.todos();
+    })
+  }
+
+  public findByState(){
+    
+    
+    this.serviceClient.findByState(this.active).subscribe(date=>{
+      console.log(date);
+      
+      this.clients=date;
+    })
+
   }
 
 
