@@ -125,13 +125,15 @@ export class ClientComponent implements OnInit {
   }
 
   public buscar() {
-    this.serviceClient.buscarPorNombre(this.termino).subscribe(data => {
-      this.clients = data;
-      if(this.usuario.role!='ADMIN'){
-        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
-
-      }
-    })
+  
+    if(this.termino != ""){
+      this.serviceClient.buscarPorNombre(this.termino).subscribe(data => {
+        this.clients = data;
+        if(this.usuario.role!='ADMIN'){
+          this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+        }
+      })
+    }
 //>>>>>>> master
     // en el html {{busquedaService.getTermino().length>0  && busquedaService.getTermino().length!=0?buscar(busquedaService.getTermino()):""}}
   }
@@ -184,13 +186,15 @@ export class ClientComponent implements OnInit {
   }
   public filtroPorGenero() {
     console.log(this.genero);
-    this.serviceClient.getClientsGender(0, this.genero).subscribe(data => {
-      this.clients = data.content;
-      if(this.usuario.role!='ADMIN'){
-        this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
-
-      }
-    })
+    if(this.genero!=undefined){
+      this.serviceClient.getClientsGender(0, this.genero).subscribe(data => {
+        this.clients = data.content;
+        if(this.usuario.role!='ADMIN'){
+          this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+  
+        }
+      })
+    }
 
 
   }

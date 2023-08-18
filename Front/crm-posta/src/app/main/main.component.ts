@@ -21,11 +21,11 @@ export class MainComponent implements OnInit {
     public modalservice: ModalService,
     private activatedRoute: ActivatedRoute,
     public authService: AuthService,
-    public procesosService:ProcesoService,) { }
-    procesos:Process[]=[];
+    public procesosService: ProcesoService,) { }
+  procesos: Process[] = [];
   clients: Client[];
   client: Client;
-  usuario:Usuario= new Usuario();
+  usuario: Usuario = new Usuario();
   municicipios: Municipio[];
 
   clienteSeleccionado: Client;
@@ -42,13 +42,14 @@ export class MainComponent implements OnInit {
   public termino: string;
 
   ngOnInit(): void {
-this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    this.procesosService.procesosFindAllUltimo().subscribe(data=>{
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+
+    this.procesosService.procesosFindAllUltimo().subscribe(data => {
       console.log(this.usuario);
 
-      this.procesos=data;
-      if(this.usuario.role!='ADMIN'){
-        this.procesos= this.procesos.filter(f=>f?.user?.id==this.usuario?.id);
+      this.procesos = data;
+      if (this.usuario.role != 'ADMIN') {
+        this.procesos = this.procesos.filter(f => f?.user?.id == this.usuario?.id);
       }
 
     })
@@ -72,10 +73,10 @@ this.usuario = JSON.parse(localStorage.getItem('usuario'));
           this.clients = response.content as Client[];
           this.paginador = response;
 
-          if(this.usuario.role!='ADMIN'){
-            this.clients= this.clients.filter(f=>f.user.id==this.usuario.id);
+          if (this.usuario.role != 'ADMIN') {
+            this.clients = this.clients.filter(f => f.user.id == this.usuario.id);
           }
-        //  console.log(this.paginador);
+          //  console.log(this.paginador);
 
         });
 
@@ -86,11 +87,11 @@ this.usuario = JSON.parse(localStorage.getItem('usuario'));
 
 
     })
-   
-    
+
+
   }
 
-  abrirModal():void{
+  abrirModal(): void {
     this.modalservice.abrirModal();
   }
 
