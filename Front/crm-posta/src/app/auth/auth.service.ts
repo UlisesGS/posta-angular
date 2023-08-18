@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Auth } from './auth';
+import { URL } from '../URL';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { Auth } from './auth';
 export class AuthService implements OnInit {
   private _usuario: Usuario
   private _token: string;
+  urlBase=URL;
 
   public get usuario(): Usuario {
     if (this._usuario != null) {
@@ -39,7 +41,7 @@ export class AuthService implements OnInit {
   }
 
   public login(usuario: Auth): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/login', usuario);
+    return this.http.post<any>(`${this.urlBase}/login`, usuario);
   }
   saveToken(accesToken: string) {
     this._token = accesToken;
