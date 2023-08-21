@@ -136,9 +136,9 @@ export class CalendarioComponent implements OnInit {
   buscarCliente() {
     this.clienteService.clienteListarTodos().subscribe(listas => {
       this.clientes = listas;
+     this.clientes = this.clientes.filter(c=>c?.user?.id==this.usuario?.id);
       console.log(listas);
     });
-
 
   }
   crearEvento() {

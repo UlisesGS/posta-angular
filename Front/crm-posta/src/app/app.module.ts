@@ -221,10 +221,10 @@ const routes: Routes = [
   { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent,canActivate: [AuthGuard] },
 
   //Para Ver
-  { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent },
-  { path: 'accion/empresario/:id/ver/:idVer', component: PlanAccionComponent },
-  { path: 'resultados/empresario/:id/ver/:idVer', component: ResultadosComponent },
-  { path: 'empresario/accion/cliente/:id/ver/:idVer', component: PlanAccionComponent },
+  { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent,canActivate: [AuthGuard]  },
+  { path: 'accion/empresario/:id/ver/:idVer', component: PlanAccionComponent,canActivate: [AuthGuard]  },
+  { path: 'resultados/empresario/:id/ver/:idVer', component: ResultadosComponent,canActivate: [AuthGuard]  },
+  { path: 'empresario/accion/cliente/:id/ver/:idVer', component: PlanAccionComponent,canActivate: [AuthGuard]  },
   //Mensajes
   { path: 'mensajes', component: MensajesComponent,canActivate: [AuthGuard] },
 
@@ -235,7 +235,7 @@ const routes: Routes = [
 
 
   //recarga asesoria en asesoria
-  { path: 'recarga', component: RecargaComponent },
+  { path: 'recarga', component: RecargaComponent,canActivate: [AuthGuard]  },
 
 ]
 

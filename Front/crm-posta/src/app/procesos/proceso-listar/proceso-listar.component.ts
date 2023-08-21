@@ -125,20 +125,14 @@ this.modal.abrirModalPocesos();
   }
   public buscar(){
 
-    if(this.termino!==""){
+    if(this.termino!==""){   
       this.procesoService.procesoFindByNombre(this.termino).subscribe(data=>{
         this.procesos=data;
+        if(this.usuario.role!='ADMIN'){
+          this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
+        }
       })
     }
-
-
-    this.procesoService.procesoFindByNombre(this.termino).subscribe(data=>{
-      this.procesos=data;
-      if(this.usuario.role!='ADMIN'){
-        this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
-      }
-    })
-
   }
 
 
@@ -172,5 +166,4 @@ this.modal.abrirModalPocesos();
 
   })
   }
-
 }
