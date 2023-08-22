@@ -8,12 +8,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientComponent } from './client/client.component';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 
 import { FullCalendarModule } from '@fullcalendar/angular';
 
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; 
 import { MunicipioComponent } from './municipio/municipio.component';
 import { FormClientComponent } from './client/form-client/form-client.component';
 import { FormEntrepreneurComponent } from './client/form-entrepreneur/form-entrepreneur.component';
@@ -91,6 +91,7 @@ import { CalendarioComponent } from './calendario/calendario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanelComponent } from './usuario/panel/panel.component';
 import { RecargaComponent } from './header/asesoria/asesoriaList/recarga/recarga.component';
+import { UsuarioRecargarComponent } from './usuario/usuariolist/usuario-recargar/usuario-recargar.component';
 
 
 const routes: Routes = [
@@ -236,6 +237,7 @@ const routes: Routes = [
 
   //recarga asesoria en asesoria
   { path: 'recarga', component: RecargaComponent,canActivate: [AuthGuard]  },
+  { path: 'recarga/usuario', component: UsuarioRecargarComponent,canActivate: [AuthGuard]  },
 
 ]
 
@@ -313,6 +315,7 @@ const routes: Routes = [
 
     PanelComponent,
     RecargaComponent,
+    UsuarioRecargarComponent,
 
 
 
