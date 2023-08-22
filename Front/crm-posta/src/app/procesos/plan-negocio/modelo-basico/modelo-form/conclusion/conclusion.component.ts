@@ -25,6 +25,7 @@ export class ConclusionComponent {
   procesos:Process[]=[];
   proceso:Process= new Process();
   idVer1:number;
+  conclusion:string;
   imageUrl ="/assets/camaraHD.jpg";
 
   constructor(private modalService: ModalService,
@@ -53,9 +54,11 @@ export class ConclusionComponent {
 
                     //para ver
                 if (this.idVer1) {
+                  console.log('entro al ver');
                   this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
                     this.proceso = data;
                     this.businessPlan.conclusion = this.proceso?.businessPlan?.conclusion;
+                    this.conclusion=this.proceso?.businessPlan?.conclusion;
                     console.log(this.businessPlan?.conclusion);
 
                   })
@@ -64,13 +67,15 @@ export class ConclusionComponent {
 
                     // para editar
                 let idEditar = +parametro.get('idEditar');
-                console.log('no entro al if');
+                
                 
                 if(idEditar){
+                  console.log('entro al editar');
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
                     this.businessPlan=this.proceso.businessPlan;
-                    this.businessPlan.conclusion=this.proceso.businessPlan.conclusion;
+                    this.businessPlan.conclusion=this.proceso?.businessPlan?.conclusion;
+                    this.conclusion=this.proceso?.businessPlan?.conclusion;
                     
                   })
                 }
@@ -86,7 +91,7 @@ export class ConclusionComponent {
     }
     guardar(){
 
-      //  this.proceso.businessPlan.conclusion
+        this.proceso.businessPlan.conclusion=this.conclusion;
         this.proceso.estado='Conclusiones';
         this.proceso.estadoAnteriorEmprendedor='Conclusiones';
         console.log(this.proceso);
@@ -108,7 +113,7 @@ export class ConclusionComponent {
         }
         guardarYsalir(){
 
-
+          this.proceso.businessPlan.conclusion=this.conclusion;
             this.proceso.estado='Conclusiones';
             this.proceso.estadoAnteriorEmprendedor='Conclusiones';
             console.log(this.proceso);
@@ -133,7 +138,7 @@ export class ConclusionComponent {
 
 
         editar(){
-    
+          this.proceso.businessPlan.conclusion=this.conclusion;
             this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
               this.businessPlan=plan;
               this.proceso.businessPlan=this.businessPlan;
@@ -151,7 +156,7 @@ export class ConclusionComponent {
             }
             editarYsalir(){
     
-    
+              this.proceso.businessPlan.conclusion=this.conclusion;
                 this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
                   this.businessPlan=plan;
                   this.proceso.businessPlan=this.businessPlan;

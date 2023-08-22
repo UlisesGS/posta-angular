@@ -58,7 +58,7 @@ export class UsuarioformComponent implements OnInit {
     this.usuarioService.usuarioSave(this.usuario1).subscribe(data => {
       this.modalService.cerrarModalProceso();
       Swal.fire('ÉXITO', `El usuario ${data.name} fue creado con exito`, 'success');
-
+      this.ruta.navigate(['/recarga/usuario'])
     }
     , e => {
       Swal.fire('ERROR: ', 'Datos Incorrectos', 'error');

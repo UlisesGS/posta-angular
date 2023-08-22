@@ -57,12 +57,16 @@ export class DofaComponent {
                   if (this.idVer1) {
                     this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
                       this.proceso = data;
-                      this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
+                      this.dofaAnalisis = this.proceso?.businessPlan?.dofaAnalisis;
                       console.log(this.dofaAnalisis);
 
                       // para editar
-                      let idEditar = +parametro.get('idEditar');
-                      console.log('no entro al if');
+                      
+                    });
+                  }
+
+                  let idEditar = +parametro.get('idEditar');
+                      
 
                       if (idEditar) {
                         this.procesoService.procesosFindById(idEditar).subscribe(data => {
@@ -70,12 +74,10 @@ export class DofaComponent {
 
                           this.proceso = data;
                           this.businessPlan = this.proceso.businessPlan;
-                          this.dofaAnalisis = this.proceso.businessPlan.dofaAnalisis;
+                          this.dofaAnalisis = this.proceso?.businessPlan?.dofaAnalisis;
                           console.log(this.dofaAnalisis);
                         });
                       }
-                    });
-                  }
                 }
               });
             });
@@ -99,6 +101,8 @@ export class DofaComponent {
           this.proceso.businessPlan=this.businessPlan;
           this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
             this.proceso=pro;
+            console.log(this.proceso);
+            
             this.router.navigate([`conclusion/cliente/${this.proceso.canvasModel.client.id}`]);
           })
         })
