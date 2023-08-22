@@ -93,7 +93,7 @@
                 (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'finalizado', 'finalizado', 'financiero')"></i>
             </button>
           </div>
-          <div class="m-2">
+          <!-- <div class="m-2">
             <a href="assets/CompromisoEmprendedor.pdf" target="_blank" class="btn" (click)="imprimirCompromiso()"><i
                 class="fa-solid fa-file fa-2xl"></i> Documento de Compromiso</a>
             <i class="fa-solid fa-caret-down fa-xl" (click)="condicionCompromiso()"></i>
@@ -106,7 +106,28 @@
             <div class="m-2">
               <a *ngIf="imageUrl" [href]="imageUrl" target="_blank" class="btn">Abrir imagen en otra pestaña</a>
             </div>
+          </div> -->
+          <div class="m-2">
+            <a href="assets/CompromisoEmprendedor.pdf" target="_blank" class="btn"><i class="fa-solid fa-file fa-2xl"></i> Documento de Compromiso</a>
+            <i class="fa-solid fa-caret-down fa-xl" (click)="condicionCompromiso()"></i>
           </div>
+          
+          <!-- Área para cargar imágenes o archivos -->
+          <div *ngIf="compromiso">
+            <div class="m-2 col-6" *ngIf="imageUrl==null">
+              <input type="file" class="form-control col" (change)="onFileSelected($event)">
+              <button class="btn mt-2" (click)="uploadImage()">Subir Imagen</button>
+            </div>
+            <!-- Mostrar la imagen o archivo PDF cargado -->
+            <div class="m-2">
+              <a *ngIf="imageUrl" [href]="imageUrl" target="_blank" class="btn">Abrir imagen o PDF en otra pestaña</a>
+              <iframe *ngIf="isPDF(imageUrl)" [src]="imageUrl" width="100%" height="500"></iframe>
+              <img *ngIf="isImage(imageUrl)" [src]="imageUrl" alt="Imagen">
+            </div>
+          </div>
+
+
+
           <div class="m-2">
             <a href="assets/EncuestaEmprendedor.pdf" target="_blank" class="btn" (click)="imprimirEncuesta()"><i
                 class="fa-solid fa-file fa-2xl"></i> Encuesta de Satisfacción</a>
@@ -117,11 +138,26 @@
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
               <button class="btn mt-2" (click)="uploadImageEncuesta()">Subir Imagen</button>
             </div>
+            <!-- Mostrar la imagen o archivo PDF cargado -->
+            <div class="m-2">
+              <a *ngIf="imageUrlEncuesta" [href]="imageUrlEncuesta" target="_blank" class="btn">Abrir imagen o PDF en otra pestaña</a>
+              <iframe *ngIf="isPDF(imageUrlEncuesta)" [src]="imageUrlEncuesta" width="100%" height="500"></iframe>
+              <img *ngIf="isImage(imageUrlEncuesta)" [src]="imageUrlEncuesta" alt="Imagen">
+            </div>
+            <!-- <div class="m-2 col-6" *ngIf="imageUrlEncuesta==null">
+              <input type="file" class="form-control col" (change)="onFileSelected($event)">
+              <button class="btn mt-2" (click)="uploadImageEncuesta()">Subir Imagen</button>
+            </div>
             <div class="m-2">
               <a *ngIf="imageUrlEncuesta" [href]="imageUrlEncuesta" class="btn" target="_blank">Abrir imagen en otra
                 pestaña</a>
-            </div>
+            </div> -->
           </div>
+
+
+
+
+
           <div class="m-2">
             <a href="assets/ActaCierreEmprendedor.pdf" target="_blank" class="btn" (click)="imprimirActa()"><i
                 class="fa-solid fa-file fa-2xl"></i> Acta de Cierre</a>
