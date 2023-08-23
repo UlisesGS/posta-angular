@@ -111,6 +111,7 @@ const routes: Routes = [
   { path: 'clients/details/:id', component: DetallesComponent, canActivate: [AuthGuard] },
   { path: 'clients/action/:id', component: AccionComponent , canActivate: [AuthGuard]},
   { path: 'usuarios', component: UsuariolistComponent,  canActivate: [AuthGuard,AdminGuard] },
+  { path: 'panel/:id', component: PanelComponent, canActivate: [AuthGuard] },
   { path: 'usuarios/form', component: UsuarioformComponent, canActivate: [AuthGuard] },
   { path: 'usuarios/form/:id', component: UsuarioformComponent , canActivate: [AuthGuard]},
   { path: 'municipios', component: MunicipioComponent, canActivate: [AuthGuard] },
