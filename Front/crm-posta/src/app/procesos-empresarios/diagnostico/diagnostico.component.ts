@@ -67,6 +67,8 @@ export class DiagnosticoComponent implements OnInit {
             this.procesosSS=pro;
             this.procesosSS.forEach(proceso=>{
               if(proceso?.selfAssessment?.client?.id==this.cliente.id){
+
+                this.proceso=proceso;
                 }
 
               })
@@ -188,6 +190,7 @@ continuar(){
     console.log(this.proceso);
     this.proceso.client=this.cliente;
     //llamar al back para que saque todos los totales
+    
     this.processEmpresarioService.procesoEmpresarioSave(this.proceso).subscribe(data => {
       this.proceso.processEmpresario=data;
 
@@ -195,11 +198,14 @@ continuar(){
         this.total+=t;
       })
       this.total=this.total/10;
+      this.proceso.user=this.usuario;
       this.proceso.processEmpresario.diagnosticoEmpresarial.diagnostico.total=this.total;
       this.consolidado=true;
+      this.proceso.cambio=true;
       //this.procesoEmpresario.estado = 'Diagnostico'
       this.proceso.estado= 'Diagnostico';
       this.proceso.estadoAnteriorEmpresario= 'Diagnostico';
+      this.proceso.cambio=true;
       this.process.procesosSave(this.proceso).subscribe(dato=>{
         console.log(dato);
 
@@ -251,6 +257,7 @@ continuar(){
       //this.procesoEmpresario.estado = 'Diagnostico'
       this.proceso.estado= 'Diagnostico';
       this.proceso.estadoAnteriorEmpresario= 'Diagnostico';
+      this.proceso.cambio=true;
       this.process.procesosUpdate(this.proceso).subscribe(dato=>{
         console.log(dato);
 

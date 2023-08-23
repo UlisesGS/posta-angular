@@ -65,17 +65,44 @@ export class DetallesComponent {
     }
     window.location.reload();
   }
+  // getImageUrl() {
+  //   this.imagenService.getImageBlob(this.proceso).subscribe(
+  //     (blob) => {
+  //       const fileReader = new FileReader();
+  //       fileReader.onload = (e) => {
+  //         this.imageUrl = fileReader.result as string; // Convierte el blob a una URL
+  //       };
+  //       fileReader.readAsDataURL(blob);
+  //     },
+  //     (error) => {
+  //       console.error(error); // Maneja el error, si ocurre
+  //     }
+  //   );
+  // }
+
   getImageUrl() {
-    this.imagenService.getImageBlob(this.proceso).subscribe(
-      (blob) => {
+    this.imagenService.getImageBlob(this.proceso).subscribe((blob: Blob) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
         this.imageUrl = URL.createObjectURL(blob);
         console.log(this.imageUrl);
-
-      },
-      (error) => {
-        //console.error(error); // Maneja el error, si ocurre
-      }
-    );
+        
+      };
+      reader.readAsDataURL(blob);
+    });
+  }
+  isPDF(url: string): boolean {
+    if (url && typeof url === 'string') {
+      return url.toLowerCase().endsWith('.pdf');
+    }
+    return false; // Si url es null o no es una cadena, retornamos false
+  }
+  isImage(url: string): boolean {
+    if (url && typeof url === 'string') {
+      return /\.(jpeg|jpg|gif|png)$/i.test(url);
+    }
+    return false;
   }
 
   uploadImageEncuesta() {
@@ -92,17 +119,29 @@ export class DetallesComponent {
     }
     window.location.reload();
   }
-  getImageUrlEncuesta() {
-    this.imagenService.getImageBlobEncuesta(this.proceso).subscribe(
-      (blob) => {
-        this.imageUrlEncuesta = URL.createObjectURL(blob);
-        console.log(this.imageUrl);
+  // getImageUrlEncuesta() {
+  //   this.imagenService.getImageBlobEncuesta(this.proceso).subscribe(
+  //     (blob) => {
+  //       this.imageUrlEncuesta = URL.createObjectURL(blob);
+  //       console.log(this.imageUrl);
 
-      },
-      (error) => {
-        //console.error(error); // Maneja el error, si ocurre
-      }
-    );
+  //     },
+  //     (error) => {
+  //       //console.error(error); // Maneja el error, si ocurre
+  //     }
+  //   );
+  // }
+  getImageUrlEncuesta() {
+    this.imagenService.getImageBlobEncuesta(this.proceso).subscribe((blob: Blob) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
+        this.imageUrlEncuesta = URL.createObjectURL(blob);
+        console.log(this.imageUrlEncuesta);
+        
+      };
+      reader.readAsDataURL(blob);
+    });
   }
 
   uploadImageCierre() {
@@ -134,16 +173,26 @@ export class DetallesComponent {
     }
    
   }
+  // getImageUrlCierre() {
+  //   this.imagenService.getImageBlobCierre(this.proceso).subscribe(
+  //     (blob) => {
+  //       this.imageUrlCierre = URL.createObjectURL(blob);
+  //     },
+  //     (error) => {
+  //       if (error.status == 500) {
+  //       }
+  //     }
+  //   );
+  // }
   getImageUrlCierre() {
-    this.imagenService.getImageBlobCierre(this.proceso).subscribe(
-      (blob) => {
+    this.imagenService.getImageBlobCierre(this.proceso).subscribe((blob: Blob) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
         this.imageUrlCierre = URL.createObjectURL(blob);
-      },
-      (error) => {
-        if (error.status == 500) {
-        }
-      }
-    );
+      };
+      reader.readAsDataURL(blob);
+    });
   }
   uploadImageImpacto() {
     if (this.file) {
@@ -159,17 +208,28 @@ export class DetallesComponent {
     }
     window.location.reload();
   }
+  // getImageUrlImpacto() {
+  //   this.imagenService.getImageBlobImpacto(this.proceso).subscribe(
+  //     (blob) => {
+  //       this.imageUrlImpacto = URL.createObjectURL(blob);
+  //     },
+  //     (error) => {
+  //       if (error.status == 500) {
+  //       }
+  //     }
+  //   );
+  // }
   getImageUrlImpacto() {
-    this.imagenService.getImageBlobImpacto(this.proceso).subscribe(
-      (blob) => {
+    this.imagenService.getImageBlobImpacto(this.proceso).subscribe((blob: Blob) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
         this.imageUrlImpacto = URL.createObjectURL(blob);
-      },
-      (error) => {
-        if (error.status == 500) {
-        }
-      }
-    );
+      };
+      reader.readAsDataURL(blob);
+    });
   }
+  
 
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
