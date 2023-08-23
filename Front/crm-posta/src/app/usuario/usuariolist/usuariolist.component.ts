@@ -18,6 +18,7 @@ export class UsuariolistComponent implements OnInit{
   ngOnInit(): void {
     this.usuario= JSON.parse(localStorage.getItem('usuario'));
     this.todos();
+    this.modalService.cerrarModalProceso()
   }
 
   constructor(private usuarioService:UsuarioService,

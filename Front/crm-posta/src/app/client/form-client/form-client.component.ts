@@ -63,14 +63,18 @@ export class FormClientComponent implements OnInit {
 
     })
     this.rutaParametro.paramMap.subscribe(parametro => {
+      console.log('hola');
+      
       let id = +parametro.get('id');
       if (id) {
         this.service.getClient(id).subscribe(data => {
           this.empresario = data; console.log(this.empresario);
           this.procesoService.procesosFindAll().subscribe(pr => {
             this.procesos = pr
+            console.log(this.procesos);
+            
             this.procesos.forEach(pro => {
-              if (pro?.selfAssessment?.client?.id == this.empresario.id && pro?.processEmpresario?.client?.id == this.empresario.id) {
+              if (pro?.selfAssessment?.client?.id == this.empresario.id || pro?.processEmpresario?.client?.id == this.empresario.id) {
                 this.proceso = pro
                 console.log(this.proceso);
 

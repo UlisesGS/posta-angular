@@ -73,6 +73,7 @@ export class ResultadosComponent implements OnInit {
   guardar() {
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => { console.log(data);
       this.proceso.estado = 'Resultados'
+      this.proceso.estadoAnteriorEmpresario = 'Resultados'
       this.process.procesosUpdate(this.proceso).subscribe(dato => {
 
       })
@@ -86,6 +87,7 @@ export class ResultadosComponent implements OnInit {
   guardarYcontinuar() {
     this.procesoEmpresarioservice.procesoEmpresarioSave(this.proceso).subscribe(data => { console.log(data);
       this.proceso.estado = 'Resultados'
+      this.proceso.estadoAnteriorEmpresario = 'Resultados'
       this.process.procesosUpdate(this.proceso).subscribe(dato => {
 
       })

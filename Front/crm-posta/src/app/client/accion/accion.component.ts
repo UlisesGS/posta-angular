@@ -220,8 +220,9 @@ export class AccionComponent implements OnInit {
           ;
           break;
         case 'Plan Financiero finalizado':
-          this.ruta.navigate([`inversion/cliente/${this.proceso.canvasModel.client.id}`]);
+          this.ruta.navigate([`/clients/details/${this.proceso.canvasModel.client.id}`]);
           break;
+
         case 'Diagnostico':
           this.ruta.navigate([`/empresario/resultados/cliente/${this.proceso.processEmpresario.client.id}`])
           break;
@@ -233,7 +234,7 @@ export class AccionComponent implements OnInit {
           break;
         // MODIFICAR
         case 'Plan Accion':
-          this.ruta.navigate([`/accion/empresario/${this.proceso.processEmpresario.client.id}/editar/${this.proceso.id}`])
+          this.ruta.navigate([`/clients/details/${this.proceso.canvasModel.client.id}`])
           break;
       }
     

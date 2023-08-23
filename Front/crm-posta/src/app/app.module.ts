@@ -107,6 +107,11 @@ const routes: Routes = [
   { path: 'clients/form/entrepreneur', component: FormEntrepreneurComponent, canActivate: [AuthGuard] },
   { path: 'clients/form/editar/businessman/:id', component: FormClientComponent, canActivate: [AuthGuard] },
   { path: 'clients/form/editar/entrepreneur/:id', component: FormEntrepreneurComponent, canActivate: [AuthGuard] },
+
+  
+  { path: 'clients/form/editar/businessman/:id/:idEditar', component: FormClientComponent, canActivate: [AuthGuard] },
+  { path: 'clients/form/editar/entrepreneur/:id/:idEditar', component: FormEntrepreneurComponent, canActivate: [AuthGuard] },
+
   { path: 'clients/registrar', component: RegistrarComponent , canActivate: [AuthGuard]},
   { path: 'autoevaluacion/cliente/:id', component: AutoevaluacionComponent, canActivate: [AuthGuard] },
   { path: 'clients/details/:id', component: DetallesComponent, canActivate: [AuthGuard] },
@@ -208,7 +213,8 @@ const routes: Routes = [
   { path: 'empresario/resultados/cliente/:id', component: ResultadosComponent , canActivate: [AuthGuard]},
   { path: 'empresario/economico', component: EconomicoComponent , canActivate: [AuthGuard]},
   { path: 'empresario/economico/cliente/:id', component: EconomicoComponent , canActivate: [AuthGuard]},
-
+  { path: 'empresario/accion', component: PlanAccionComponent, canActivate: [AuthGuard] },
+  { path: 'empresario/accion/cliente/:id', component: PlanAccionComponent, canActivate: [AuthGuard] },
 
   { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent },
   { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent },
