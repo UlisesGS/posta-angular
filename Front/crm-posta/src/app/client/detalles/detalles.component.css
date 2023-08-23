@@ -11,3 +11,10 @@ a{
   color: rgb(72, 72, 240);
   text-decoration: none;
 }
+
+button{
+  border-color: #eb9694;
+  background-color: red ;
+  color: white;
+  margin-left: 10px;
+}

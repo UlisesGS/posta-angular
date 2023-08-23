@@ -33,6 +33,10 @@ export class ModalDetallesComponent {
   public cerrarTest() {
     this.modalService.cerrarTestAuto();
   }
+
+
+
+
   public verProceso(){
   
     switch(this.tipoVer){
@@ -44,10 +48,12 @@ export class ModalDetallesComponent {
       break;
       case 'negocio':
 
-        this.ruta.navigate([`clients/${this.proceso.canvasModel.client.id}/verBasico/${this.proceso.id}`]);
+        this.ruta.navigate([`clients/${this.proceso.selfAssessment.client.id}/verBasico/${this.proceso.id}`]);
 
       ;
       break;
+
+      /* VER QUE CARAJOS HACEN ESTAS RUTAS */
       case 'Propuesta de Valor':
         this.ruta.navigate([`canales/cliente/${this.proceso.canvasModel.client.id}`]);
        ;
@@ -64,6 +70,9 @@ export class ModalDetallesComponent {
     }
     this.modalService.cerrarTestAuto();
   }
+
+
+
   public continuarProceso(){
     console.log(this.proceso.estado);
  
