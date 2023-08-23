@@ -12,38 +12,38 @@ import { Router } from '@angular/router';
   templateUrl: './header-superior.component.html',
   styleUrls: ['./header-superior.component.css']
 })
-export class HeaderSuperiorComponent implements OnInit{
+export class HeaderSuperiorComponent implements OnInit {
 
   @HostBinding('class.is-open')
-  public modal:boolean;
-  public termino:string;
-  usuario:Usuario = new Usuario()
-  clientes:Client[]=[]
-    constructor(public modalService:ModalService,
-      private clienteService:ClientService,
-       private busquedaService: BusquedaService,
-       public authService:AuthService,
-       private ruta:Router,
-       ){}
+  public modal: boolean;
+  public termino: string;
+  usuario: Usuario = new Usuario()
+  clientes: Client[] = []
+  constructor(public modalService: ModalService,
+    private clienteService: ClientService,
+    private busquedaService: BusquedaService,
+    public authService: AuthService,
+    private ruta: Router,
+  ) { }
 
-    ngOnInit(): void {
-      this.modal=false;
-      this.usuario=JSON.parse(localStorage.getItem('usuario'))
-    }
+  ngOnInit(): void {
+    this.modal = false;
+    this.usuario = JSON.parse(localStorage.getItem('usuario'))
+  }
 
-    abrirModalAsesoria():void{
-      this.modalService.abrirModalAsesoria();
-    }
-    public setLlenar(){
-  //this.clienteService.buscarPorNombre(this.termino).subscribe(data=>{
+  abrirModalAsesoria(): void {
+    this.modalService.abrirModalAsesoria();
+  }
+  public setLlenar() {
+    //this.clienteService.buscarPorNombre(this.termino).subscribe(data=>{
     //this.clientes=data;
-  //})
-  //console.log(this.clientes);
-  this.busquedaService.setTermino(this.termino);
-    }
-    panel(){
-      this.usuario=JSON.parse(localStorage.getItem('usuario'))
+    //})
+    //console.log(this.clientes);
+    this.busquedaService.setTermino(this.termino);
+  }
+  panel() {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'))
 
-this.ruta.navigate(['/panel/',this.usuario?.id])
-    }
+    this.ruta.navigate(['/panel/', this.usuario?.id])
+  }
 }

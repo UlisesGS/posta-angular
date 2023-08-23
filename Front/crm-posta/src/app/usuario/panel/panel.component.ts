@@ -3,6 +3,7 @@ import { Usuario } from '../usuario';
 import { UsuarioService } from './../usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import * as bcrypt from 'bcryptjs'; 
 
 @Component({
   selector: 'app-panel',
@@ -34,8 +35,13 @@ if(id){
     }
   }
 cambiar(){
-if(this.actual== this.usuario.password && this.nueva==this.repita){
+  
+if(bcrypt.compareSync(this.actual, this.usuario.password) && this.nueva == this.repita ){
+ 
+  
   this.usuario.password= this.nueva;
+
+
 
   //poner el metodo del back para cambiar la contraseña
   this.usuariosService.usuarioUpdate(this.usuario).subscribe(s=>{
