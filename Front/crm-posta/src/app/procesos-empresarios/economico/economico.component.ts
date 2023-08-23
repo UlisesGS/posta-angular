@@ -9,6 +9,7 @@ import { ProcesoService } from 'src/app/procesos/proceso.service';
 import { AnalisisEconomico } from '../analisis-economico';
 import { Indicador } from './../indicador';
 import Swal from 'sweetalert2';
+import { LoginComponent } from 'src/app/auth/login/login.component';
 
 @Component({
   selector: 'app-economico',
@@ -46,6 +47,8 @@ export class EconomicoComponent {
       let id = + parametro.get('id')
       this.clienteServicio.getClient(id).subscribe(clien => {
         this.cliente = clien;
+        console.log(this.cliente);
+        
         this.process.procesosFindAll().subscribe(data => {
           this.procesos = data;
           this.procesos.forEach(pr => {

@@ -62,6 +62,7 @@
           </div>
           <div class="table-container">
             <table class="table table-sm"  *ngFor="let proceso of procesos">
+                <div *ngIf="proceso?.cambio">
                 <thead>
                     <tr>
 
@@ -100,6 +101,7 @@
                         </th>
                     </tr>
                 </tbody>
+            </div>
             </table>
 
         </div>
