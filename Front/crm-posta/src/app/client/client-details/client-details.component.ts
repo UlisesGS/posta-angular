@@ -38,7 +38,16 @@ export class ClientDetailsComponent implements OnInit{
           
         })
       }
-       if(idVer){
+
+      /*
+      'diagnostico/empresario/:id/ver/:idVer'
+
+      'puntajeAutoevaluacion/ver/:idVer'
+
+      ES POR ESTO LA CONDICION DEL IF, LAS RUTAS NO CONTIENEN LOS MISMOS ID
+      
+      */
+       if(idVer && !id){
          this.serviceClient.getClient(idVer).subscribe(data=>{
            this.client=data;
            console.log(data);
@@ -47,6 +56,8 @@ export class ClientDetailsComponent implements OnInit{
 
          })
        }
+
+ 
       
 
     })

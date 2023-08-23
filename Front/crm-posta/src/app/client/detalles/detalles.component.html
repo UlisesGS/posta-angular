@@ -1,8 +1,8 @@
 <app-modal-detalles *ngIf="modalService.auto && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
   [canvasB]="canvasB" [negociosB]="negociosB" [financieroB]="financieroB" [tipoVer]="tipoVer"></app-modal-detalles>
 
-  <app-modal-detalles *ngIf="modalService.auto && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
-  [canvasB]="canvasB" [tipoVer]="tipoVer"></app-modal-detalles>
+  <!-- <app-modal-detalles *ngIf="modalService.auto && procesoSeleccionado" [proceso]="procesoSeleccionado" [autoB]="autoB"
+  [canvasB]="canvasB" [tipoVer]="tipoVer"></app-modal-detalles> -->
 
 
 <div class="row">
@@ -79,7 +79,7 @@
               <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i
                 class="fa-solid fa-pen-to-square right-align" type="button"></i>
             </button>
-            <button
+             <button
               *ngIf="!proceso?.businessPlanFinancial?.planInversion && proceso?.businessPlanFinancial"
               class="btn btn-disabled" style="background-color: rgb(58, 144, 224); color: white;width: 80%;">
               <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i
@@ -91,7 +91,7 @@
               <span class="left-align">PLAN DE NEGOCIOS FINANCIERO</span><i
                 class="fa-solid fa-pen-to-square right-align" type="button"
                 (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'finalizado', 'finalizado', 'financiero')"></i>
-            </button>
+            </button> 
           </div>
           <!-- <div class="m-2">
             <a href="assets/CompromisoEmprendedor.pdf" target="_blank" class="btn" (click)="imprimirCompromiso()"><i
@@ -174,7 +174,12 @@
             </div>
           </div>
         </div>
+        <button [routerLink]="['/procesos']"  class="btn">Volver</button>
       </div>
+
+
+
+      
       <div class="card" *ngIf="cliente.type==='businessman'"> 
         <div class="card-header">
           <button class="btn btn-disabled" style="background-color: rgb(136, 0, 0); color: white;width: 100%;">
@@ -282,7 +287,10 @@
             </div>
           </div>
         </div>
+        <button [routerLink]="['/procesos']"  class="btn">Volver</button>
       </div>
+
     </div>
   </div>
+  
 </div>

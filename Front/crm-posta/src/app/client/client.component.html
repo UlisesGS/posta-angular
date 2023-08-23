@@ -89,8 +89,11 @@
                 <td style="width: 20%; font-size: 10px;" class="align-middle"> Municipio</td>
                 <td style="width: 20%; font-size: 10px; text-align: center;" class="align-middle"> Tipo de Cliente</td>
                 <td style="text-align: center; width: 5%; font-size: 10px;" class="align-middle"> Acciones</td>
+
+                <div *ngIf="usuario.role=='ADMIN'">
                 <td style="text-align: center; width: 5%; font-size: 10px;" class="align-middle"> Estado</td>
-                
+                </div>
+
             </tr>
         </thead>
         <tbody  class="table-sm" style="margin-top: 0;">
@@ -117,12 +120,16 @@
                 <th *ngIf="client.type!==null"  style="text-align: center; width: 5%;">
                     <i class="fa-solid fa-pen-to-square" type="button" (click)="abrirModalAction(client,procesos)"></i>
                 </th>
-                <th style="width: 5%;" >
-                    <label class="switch">
-                       <input [(ngModel)]="client.active" name="active"   (click)="ClientsDelete(client.id)" type="checkbox">
-                       <span class="slider"></span>
-                     </label>
+
+                <div *ngIf="usuario.role=='ADMIN'">
+                    <th style="width: 5%;" >
+                        <label class="switch">
+                            <input [(ngModel)]="client.active" name="active"   (click)="ClientsDelete(client.id)" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
                    </th>
+                </div>
+
             </tr>
         </tbody>
     </table>
