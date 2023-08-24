@@ -35,7 +35,6 @@ export class IngresosComponent implements OnInit{
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          console.log(data);
           this.procesoService.procesosFindAll().subscribe(p=>{
 
             this.procesos=p;
@@ -45,13 +44,11 @@ export class IngresosComponent implements OnInit{
                 
                 // para editar
                 let idEditar = +parametro.get('idEditar');
-                console.log('no entro al if');
                 
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
                     this.revenueStreams=this.proceso.canvasModel.revenueStreams;
-                    console.log(this.revenueStreams);
                     
                   })
                 }
@@ -79,7 +76,6 @@ export class IngresosComponent implements OnInit{
   public guardar(){
     this.proceso.estado='Ingresos';
     this.proceso.estadoAnteriorEmprendedor='Ingresos'
-    console.log(this.proceso);
     this.proceso.canvasModel.revenueStreams=this.revenueStreams
    this.procesoService.ingresosSave(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
     this.proceso.canvasModel.revenueStreams=valor;
@@ -96,7 +92,6 @@ export class IngresosComponent implements OnInit{
   public guardarYsalir(){
     this.proceso.estado='Ingresos';
     this.proceso.estadoAnteriorEmprendedor='Ingresos'
-    console.log(this.proceso);
     this.proceso.canvasModel.revenueStreams=this.revenueStreams
    this.procesoService.ingresosSave(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
     this.proceso.canvasModel.revenueStreams=valor;
@@ -113,8 +108,6 @@ export class IngresosComponent implements OnInit{
 
 
   public editar(){
-
-    console.log(this.proceso);
     this.proceso.canvasModel.revenueStreams=this.revenueStreams
    this.procesoService.ingresosPut(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
     this.proceso.canvasModel.revenueStreams=valor;
@@ -132,8 +125,6 @@ export class IngresosComponent implements OnInit{
 
 
   public editarYsalir(){
-
-    console.log(this.proceso);
     this.proceso.canvasModel.revenueStreams=this.revenueStreams
    this.procesoService.ingresosPut(this.proceso.canvasModel.revenueStreams).subscribe(valor=>{
     this.proceso.canvasModel.revenueStreams=valor;

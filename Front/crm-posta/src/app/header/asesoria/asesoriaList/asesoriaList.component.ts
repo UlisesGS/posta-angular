@@ -24,13 +24,11 @@ export class AsesoriaListComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    console.log(this.usuario);
 this.todos()
 
   }
   public todos(){
     this.usuarioService.usuarioGetAsesorias(this.usuario).subscribe(data=>{
-      console.log(data);
     this.asesorias=data['content']
  
     

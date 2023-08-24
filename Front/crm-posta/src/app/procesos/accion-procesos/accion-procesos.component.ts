@@ -45,7 +45,6 @@ export class AccionProcesosComponent implements OnInit {
   }
 
   public continuarProceso(){
-   console.log(this.proceso.estado);
 
     switch(this.proceso.estado){
       case 'iniciando':

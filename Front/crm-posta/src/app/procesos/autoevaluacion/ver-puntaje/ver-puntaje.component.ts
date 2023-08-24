@@ -34,13 +34,11 @@ export class VerPuntajeComponent implements OnInit {
       if(this.idVer){
         this.clientService.getClient(this.idVer).subscribe(data=>{
           this.cliente=data;
-          console.log(this.cliente);
           this.procesoService.procesosFindAll().subscribe(procesos=>{
             this.procesos=procesos; 
             this.procesos.forEach(p=>{
               if(p.selfAssessment?.client?.id==this.cliente?.id){
                 this.proceso=p;
-                console.log(this.proceso);
                 
               }
               
@@ -56,7 +54,6 @@ export class VerPuntajeComponent implements OnInit {
             this.procesos.forEach(p=>{
               if(p.selfAssessment?.client?.id==this.cliente?.id){
                 this.proceso=p;
-                console.log(this.proceso);
                 
               }
               

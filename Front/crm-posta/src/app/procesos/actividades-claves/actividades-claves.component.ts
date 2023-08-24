@@ -32,7 +32,6 @@ export class ActividadesClavesComponent {
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          console.log(data);
           this.procesoService.procesosFindAll().subscribe(pro => {
             this.procesos=pro;
 
@@ -42,13 +41,11 @@ export class ActividadesClavesComponent {
                 
                 // para editar
                 let idEditar = +parametro.get('idEditar');
-                console.log('no entro al if');
                 
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
                     this.keyActivities=this.proceso.canvasModel.keyActivities;
-                    console.log(this.keyActivities);
                     
                   })
                 }
@@ -79,10 +76,7 @@ export class ActividadesClavesComponent {
   public guardar(){
     this.proceso.estado='Actividades Claves';
     this.proceso.estadoAnteriorEmprendedor='Actividades Claves'
-    console.log(this.proceso);
     this.proceso.canvasModel.keyActivities=this.keyActivities
-    console.log(this.keyActivities);
-    console.log(this.proceso);
 
 
    this.procesoService.actividadesClavesSave(this.proceso.canvasModel.keyActivities).subscribe(pro=>{
@@ -99,10 +93,7 @@ export class ActividadesClavesComponent {
   public guardarYsalir(){
     this.proceso.estado='Actividades Claves';
     this.proceso.estadoAnteriorEmprendedor='Actividades Claves'
-    console.log(this.proceso);
     this.proceso.canvasModel.keyActivities=this.keyActivities
-    console.log(this.keyActivities);
-    console.log(this.proceso);
 
 
    this.procesoService.actividadesClavesSave(this.proceso.canvasModel.keyActivities).subscribe(pro=>{
@@ -120,10 +111,7 @@ export class ActividadesClavesComponent {
 
   public editar(){
     this.proceso.estado='Actividades Claves';
-    console.log(this.proceso);
     this.proceso.canvasModel.keyActivities=this.keyActivities
-    console.log(this.keyActivities);
-    console.log(this.proceso);
 
 
    this.procesoService.actividadesClavesPut(this.proceso.canvasModel.keyActivities).subscribe(pro=>{
@@ -143,10 +131,7 @@ export class ActividadesClavesComponent {
 
   public editarYsalir(){
     this.proceso.estado='Actividades Claves';
-    console.log(this.proceso);
     this.proceso.canvasModel.keyActivities=this.keyActivities
-    console.log(this.keyActivities);
-    console.log(this.proceso);
 
 
    this.procesoService.actividadesClavesPut(this.proceso.canvasModel.keyActivities).subscribe(pro=>{

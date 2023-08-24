@@ -41,9 +41,7 @@ export class ClientDetailsComponent implements OnInit{
 
       /*
       'diagnostico/empresario/:id/ver/:idVer'
-
       'puntajeAutoevaluacion/ver/:idVer'
-
       ES POR ESTO LA CONDICION DEL IF, LAS RUTAS NO CONTIENEN LOS MISMOS ID
       
       */

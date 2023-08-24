@@ -55,14 +55,12 @@ export class InternoComponent {
                   
                   // para editar
                 let idEditar = +parametro.get('idEditar');
-                console.log('no entro al if');
                 
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
                     this.businessPlan=this.proceso.businessPlan;
                     this.internalExternalAnalysis=this.proceso.businessPlan.analisis;
-                    console.log(this.internalExternalAnalysis);
                     
                   })
                 }
@@ -73,7 +71,6 @@ export class InternoComponent {
                   this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
                     this.proceso = data;
                     this.internalExternalAnalysis = this.proceso.businessPlan.analisis;
-                    console.log(this.internalExternalAnalysis);
 
                   })
                 }
@@ -98,10 +95,6 @@ export class InternoComponent {
         this.proceso.businessPlan.analisis=data;
         this.proceso.estado='Analisis Interno/Externo';
         this.proceso.estadoAnteriorEmprendedor='Analisis Interno/Externo';
-        console.log(this.proceso);
-
-        // en el proximo cambiar a put hdp
-        console.log(this.businessPlan);
 
         this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
           this.businessPlan=plan;
@@ -121,9 +114,6 @@ export class InternoComponent {
             this.proceso.businessPlan.analisis=data;
             this.proceso.estado='Analisis Interno/Externo';
             this.proceso.estadoAnteriorEmprendedor='Analisis Interno/Externo';
-            console.log(this.proceso);
-            // en el proximo cambiar a put hdp
-          //  console.log(this.businessPlan);
 
             this.modeloBasicoService.planUpdateBusinessPlan(this.proceso.businessPlan).subscribe(plan=>{
               this.businessPlan=plan;
@@ -171,7 +161,6 @@ export class InternoComponent {
               this.modeloBasicoService.planUpdateAnalisis(this.internalExternalAnalysis).subscribe(data=>{
                 this.businessPlan.analisis=data;
                 this.proceso.businessPlan.analisis=data;
-                console.log(this.proceso);
                 // en el proximo cambiar a put hdp
               //  console.log(this.businessPlan);
     
