@@ -61,7 +61,6 @@ export class FormEntrepreneurComponent implements OnInit {
 
         })
          this.idEditar = +parametro.get('idEditar');
-         console.log(this.idEditar)
       }
     })
 
@@ -69,7 +68,6 @@ export class FormEntrepreneurComponent implements OnInit {
 public registrar(){
   this.emprendedor.type="entrepreneur";
   this.emprendedor.user=this.authService.devolverUsuario();
-  console.log(this.emprendedor);
   this.clientService.saveEntrepreneur(this.emprendedor).subscribe(data=>{
     Swal.fire(`ÉXITO`, `Emprendedor ${data.name} fue creado con exito`, `success`)
 
@@ -105,18 +103,15 @@ public editar(){
     this.router.navigate(['/clients'])
 
     if(this.idEditar){
-      console.log('QUE ONDAAAAAA');
 
       if(this.proceso?.selfAssessment){
         this.proceso.estado=this.proceso.estadoAnteriorEmprendedor
-        console.log('Emprendedor cambio true');
         this.proceso.cambio=true;
         this.procesoService.procesosUpdate(this.proceso).subscribe()
 
 
       }else{
         this.proceso.estado='iniciando';
-        console.log('Emprendedor cambio false');
         this.proceso.cambio=false;
         this.procesoService.procesosUpdate(this.proceso).subscribe()
 
@@ -132,7 +127,6 @@ public editar(){
     Swal.fire(`Editado`, `Emprendedor ${data.name} fue editado con exito`, `success`)
 
   },e=>{
-    console.log(e);
 
     Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
   })

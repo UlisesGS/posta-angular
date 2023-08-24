@@ -237,14 +237,12 @@ export class DetallesComponent {
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          console.log(data);
           this.procesoService.procesosFindAll().subscribe(pro => {
             this.procesos = pro;
 
             this.procesos.forEach(proceso => {
               if (proceso?.canvasModel?.client?.id == this.cliente.id) {
                 this.proceso = proceso;
-                console.log(proceso);
                 if (this.proceso.documentoCompromiso) {
                   this.getImageUrl();
                 }
@@ -257,8 +255,6 @@ export class DetallesComponent {
               }else 
               if (proceso?.processEmpresario?.client?.id == this.cliente.id) {
                 this.proceso = proceso;
-                console.log(proceso.processEmpresario.planDeAccion);
-                console.log(proceso);
                 
                 if (this.proceso.documentoCompromiso) {
                   this.getImageUrl();
@@ -293,11 +289,6 @@ export class DetallesComponent {
     this.negociosB = negociosB
     this.financieroB = financieroB
     this.procesoSeleccionado = proceso;
-    console.log(this.tipoVer);
-    console.log(this.autoB);
-    console.log(this.canvasB);
-    console.log(this.negociosB);
-    console.log(this.financieroB);
     this.modalService.abrirTestAuto();
   }
 
@@ -307,9 +298,6 @@ export class DetallesComponent {
     this.autoB = autoB
     this.canvasB = canvasB
     this.procesoSeleccionado = proceso;
-    console.log(this.tipoVer);
-    console.log(this.autoB);
-    console.log(this.canvasB);
     this.modalService.abrirTestAuto();
   }
 

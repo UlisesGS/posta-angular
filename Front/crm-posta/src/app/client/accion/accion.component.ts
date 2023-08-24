@@ -80,10 +80,9 @@ export class AccionComponent implements OnInit {
 
 
     if (this.condicion && this.condicion2) {
-      Swal.fire('Error:', 'El cliente ya contiene un proceso asignado1', 'error');
+      Swal.fire('Error:', 'El cliente ya contiene un proceso asignado', 'error');
 
     } else if (!this.condicion && this.cliente?.type == 'entrepreneur') {
-      console.log("entro 1");
 
       if (this.condicion2) {
         this.proceso.estado=this.proceso.estadoAnteriorEmprendedor
@@ -95,7 +94,6 @@ export class AccionComponent implements OnInit {
 
 
     } else if (!this.condicion2 && this.cliente?.type == 'businessman') {
-      console.log("entro 2");
       if (this.condicion) {
         this.proceso.estado=this.proceso.estadoAnteriorEmpresario
         this.procesoService.procesosUpdate(this.proceso).subscribe()
@@ -106,8 +104,7 @@ export class AccionComponent implements OnInit {
 
 
     } else {
-      console.log("entro 3");
-      Swal.fire('Error:', 'El cliente ya contiene un proceso asignado2', 'error');
+      Swal.fire('Error:', 'El cliente ya contiene un proceso asignado', 'error');
     }
   }
 
@@ -129,7 +126,6 @@ export class AccionComponent implements OnInit {
       this.ruta.navigate([`autoevaluacion/cliente/${this.cliente.id}`]);
 
     } else if (this.condicion2 == false && this.cliente.type== 'businessman') {
-      console.log('1111111111111111111111111');
       
       this.ruta.navigate([`empresario/diagnostico/cliente/${this.cliente.id}`]);
 
@@ -138,7 +134,6 @@ export class AccionComponent implements OnInit {
       this.procesoService.procesosUpdate(this.proceso).subscribe()
 
     } else if (this.condicion2 == true && this.condicion == true && this.cliente.type== 'businessman') {
-      console.log('2223222222222222222222');
       
       this.proceso.estado=this.proceso.estadoAnteriorEmpresario
       this.procesoService.procesosUpdate(this.proceso).subscribe()

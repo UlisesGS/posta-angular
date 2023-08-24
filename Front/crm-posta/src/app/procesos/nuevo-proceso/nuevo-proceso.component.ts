@@ -40,7 +40,6 @@ export class NuevoProcesoComponent implements OnInit {
   ngOnInit(): void {
     this.otra = 0;
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    console.log(this.usuario);
 
     this.condicion = false;
     this.clientService.getClientsMunicipios().subscribe((data) => {
@@ -49,11 +48,9 @@ export class NuevoProcesoComponent implements OnInit {
   }
 
   public registrar() {
-    console.log(this.client);
 
     this.clientService.saveClient(this.client).subscribe(
       (data) => {
-        console.log(data);
         this.client = data;
         Swal.fire(
           'Creado',
@@ -82,7 +79,6 @@ export class NuevoProcesoComponent implements OnInit {
   public finalizar() {
     this.asesoria.client = this.client;
     this.asesoria.user = this.usuario;
-    console.log(this.asesoria);
 
     this.usuarioService.asesoriaSave(this.asesoria).subscribe(
       (data) => {
@@ -176,15 +172,12 @@ export class NuevoProcesoComponent implements OnInit {
   llevar() {
     //  console.log('hola');
     let bool: boolean = false;
-    console.log(this.client);
     let id = this.client.id;
     this.procesoService.procesosFindAll().subscribe(pro => {
       this.procesos = pro;
-      console.log(pro);
       this.procesos.forEach(p => {
 
         if (p.selfAssessment?.client?.id == this.client.id) {
-          console.log('entro al if ');
           bool = true;
           this.cerrarModalProceso()
           Swal.fire('Error', 'El cliente seleccionado ya tiene un proceso asignado', 'error');

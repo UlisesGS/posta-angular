@@ -75,7 +75,6 @@ export class ClientComponent implements OnInit {
       this.serviceClient.getClientsPaginar(page)
         .pipe(
           tap(response => {
-            console.log('ClientesComponent: tap 3');
             (response.content as Client[]).forEach(cliente => console.log(cliente.name));
           })
         ).subscribe(response => {
@@ -91,14 +90,12 @@ export class ClientComponent implements OnInit {
     })
     this.serviceClient.getClientsMunicipios().subscribe(data => {
       this.municicipios = data;
-      console.log(this.municicipios);
 
 
     })
     this.condicion = false;
     this.procesoService.procesosFindAll().subscribe(lista => {
       this.procesos = lista;
-      console.log(this.procesos);
 
 
     })
@@ -106,7 +103,6 @@ export class ClientComponent implements OnInit {
   buscarNav() {
     this.serviceClient.getClientsMunicipios().subscribe(data => {
       this.municicipios = data;
-      console.log(this.municicipios);
     this.serviceClient.buscarPorNombre(this.busquedaService.getTermino()).subscribe(data => {
       this.clients = data;
       if(this.usuario.role!='ADMIN'){
@@ -116,7 +112,6 @@ export class ClientComponent implements OnInit {
       this.exite = false
 
     }, e => {
-      console.log(e);
 
       this.exite = true
     });
@@ -148,11 +143,9 @@ export class ClientComponent implements OnInit {
       this.serviceClient.getClientsPaginar(page)
         .pipe(
           tap(response => {
-            console.log('ClientesComponent: tap 3');
             (response.content as Client[]).forEach(cliente => console.log(cliente.name));
           })
         ).subscribe(response => {
-          console.log(response);
 
           this.clients = response.content as Client[];
           this.paginador = response;
@@ -185,7 +178,6 @@ export class ClientComponent implements OnInit {
     }
   }
   public filtroPorGenero() {
-    console.log(this.genero);
     if(this.genero!=undefined){
       this.serviceClient.getClientsGender(0, this.genero).subscribe(data => {
         this.clients = data.content;
@@ -209,10 +201,8 @@ export class ClientComponent implements OnInit {
     })
   }
   public ClientsDelete(id:number): void{
-    console.log(id);
 
     this.serviceClient.ClientsDelete(id).subscribe( data => {
-      console.log(data);
 
       this.todos();
     })
@@ -222,7 +212,6 @@ export class ClientComponent implements OnInit {
   public findByState(){
     if(this.active!=null){
       this.serviceClient.findByState(this.active).subscribe(date=>{
-        console.log(date);
         this.clients=date;
       })
     }
@@ -246,14 +235,12 @@ export class ClientComponent implements OnInit {
 
   }
   public filtrarPorMunicipio() {
-    console.log(this.municipio);
 
 
    if(this.municipio!==undefined){
 
      this.serviceClient.getClientsMunicipiosPage(0, this.municipio).subscribe(data => {
        this.clients = data.content;
-       console.log(data);
  
      })
    }
@@ -261,7 +248,6 @@ export class ClientComponent implements OnInit {
   }
   filtrarDato() {
     this.datosFiltrados = this.busquedaService.getTermino();
-    console.log(this.datosFiltrados);
 
 
   }

@@ -68,22 +68,19 @@ export class FormClientComponent implements OnInit {
       let id = +parametro.get('id');
       if (id) {
         this.service.getClient(id).subscribe(data => {
-          this.empresario = data; console.log(this.empresario);
+          this.empresario = data;
           this.procesoService.procesosFindAll().subscribe(pr => {
             this.procesos = pr
-            console.log(this.procesos);
             
             this.procesos.forEach(pro => {
               if (pro?.selfAssessment?.client?.id == this.empresario.id || pro?.processEmpresario?.client?.id == this.empresario.id) {
                 this.proceso = pro
-                console.log(this.proceso);
 
               }
             })
           })
         })
         this.idEditar = +parametro.get('idEditar');
-        console.log(this.idEditar)
 
       }
     })
@@ -91,7 +88,7 @@ export class FormClientComponent implements OnInit {
 
   public registrar() {
     this.empresario.type = "businessman";
-    this.empresario.user = this.authServic.devolverUsuario(); console.log(this.empresario);
+    this.empresario.user = this.authServic.devolverUsuario();
     this.service.saveBusinessman(this.empresario).subscribe(data => {
       Swal.fire('ÉXITO', `Empresario ${data.name} fue creado con exito`, 'success')
       this.cerrarModal();
@@ -110,20 +107,16 @@ export class FormClientComponent implements OnInit {
 
   }
   public editar() {
-    console.log(this.empresario);
     this.empresario.type = "businessman";
     this.service.updateBusinessman(this.empresario).subscribe(data => {
-      console.log(this.proceso);
       if (this.idEditar) {
         if (this.proceso?.processEmpresario) {
-          console.log('Empresario cambio true');
 
           this.proceso.cambio=true;
           this.proceso.estado = this.proceso.estadoAnteriorEmpresario
           this.procesoService.procesosUpdate(this.proceso).subscribe()
         } else {
           this.proceso.estado = 'iniciando2'
-          console.log('Empresario cambio false');
           this.proceso.cambio=false;
           this.procesoService.procesosUpdate(this.proceso).subscribe()
         }

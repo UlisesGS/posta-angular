@@ -42,24 +42,20 @@ export class ConclusionComponent {
         if (id) {
           this.clienteService.getClient(id).subscribe(data => {
             this.cliente = data;
-            console.log(data);
             this.procesoService.procesosFindAll().subscribe(pro => {
               this.procesos=pro;
 
               this.procesos.forEach(proceso=>{
                 if(proceso?.canvasModel?.client?.id==this.cliente.id){
                   this.proceso=proceso;
-                  console.log(this.proceso);
 
 
                     //para ver
                 if (this.idVer1) {
-                  console.log('entro al ver');
                   this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
                     this.proceso = data;
                     this.businessPlan.conclusion = this.proceso?.businessPlan?.conclusion;
                     this.conclusion=this.proceso?.businessPlan?.conclusion;
-                    console.log(this.businessPlan?.conclusion);
 
                   })
                 }
@@ -70,7 +66,6 @@ export class ConclusionComponent {
                 
                 
                 if(idEditar){
-                  console.log('entro al editar');
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
                     this.businessPlan=this.proceso.businessPlan;
@@ -94,7 +89,6 @@ export class ConclusionComponent {
         this.proceso.businessPlan.conclusion=this.conclusion;
         this.proceso.estado='Conclusiones';
         this.proceso.estadoAnteriorEmprendedor='Conclusiones';
-        console.log(this.proceso);
 
         // en el proximo cambiar a put hdp
         //console.log(this.businessPlan);
@@ -116,7 +110,6 @@ export class ConclusionComponent {
           this.proceso.businessPlan.conclusion=this.conclusion;
             this.proceso.estado='Conclusiones';
             this.proceso.estadoAnteriorEmprendedor='Conclusiones';
-            console.log(this.proceso);
             // en el proximo cambiar a put hdp
           //  console.log(this.businessPlan);
 

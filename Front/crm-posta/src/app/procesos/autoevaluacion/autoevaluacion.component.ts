@@ -45,7 +45,7 @@ export class AutoevaluacionComponent implements OnInit {
 
         this.listaProcesos.forEach(proceso=>{
           if(proceso?.processEmpresario?.client?.id==this.cliente.id){
-            this.proceso=proceso;console.log('hola');
+            this.proceso=proceso;
             }
         })
       })
@@ -92,10 +92,8 @@ export class AutoevaluacionComponent implements OnInit {
               this.proceso.client=this.cliente;
               this.canvasService.procesosSave(this.proceso).subscribe(data => {
                 this.proceso = data;
-                console.log(this.proceso);
                 //   console.log(this.selfAssessment);
                 if (this.condicion) {
-                  console.log(this.condicion);
                   this.router.navigate(['puntajeAutoevaluacion/cliente/',this.cliente.id]);
                   Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
                 } else {
@@ -141,9 +139,7 @@ export class AutoevaluacionComponent implements OnInit {
               this.proceso.selfAssessment = data; // console.log(this.proceso);
               this.canvasService.procesosUpdate(this.proceso).subscribe(data => {
                 this.proceso = data;
-                console.log(this.proceso);
                 if (this.condicion) {
-                  console.log(this.condicion);
                   this.router.navigate(['puntajeAutoevaluacion/cliente/',this.cliente.id]);
                   Swal.fire('Exito:', 'La autoevaluación fue guardada con éxito', 'success');
                 } else {

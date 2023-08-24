@@ -50,7 +50,6 @@ export class InformacionComponent {
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          console.log(data);
           this.procesoService.procesosFindAll().subscribe(pro => {
             this.procesos = pro;
             this.procesos.forEach(proceso => {
@@ -58,7 +57,6 @@ export class InformacionComponent {
                 this.proceso = proceso;
                 // para editar
                 let idEditar = +parametro.get('idEditar');
-                console.log('no entro al if');
 
 
                 if(idEditar){
@@ -66,8 +64,6 @@ export class InformacionComponent {
                     this.proceso=data;
                     this.businessPlan=this.proceso.businessPlan;
                     this.proyectInformation=this.proceso.businessPlan.proyectInformation;
-
-                    console.log(this.proyectInformation);
                   })
                 }
                 //para ver
@@ -75,7 +71,6 @@ export class InformacionComponent {
                   this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
                     this.proceso = data;
                     this.proyectInformation = this.proceso.businessPlan.proyectInformation;
-                    console.log(this.proyectInformation);
 
                   })
                 }
@@ -99,7 +94,6 @@ export class InformacionComponent {
     this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data => {
       this.businessPlan.proyectInformation = data;
       // en el proximo cambiar a put hdp
-      console.log(this.businessPlan);
       this.proceso.estado = 'Informacion Proyecto'
       this.proceso.estadoAnteriorEmprendedor = 'Informacion Proyecto'
       this.modeloBasicoService.planSaveBusinessPlan(this.businessPlan).subscribe(plan => {
@@ -118,7 +112,6 @@ export class InformacionComponent {
     this.modeloBasicoService.planSaveProyect(this.proyectInformation).subscribe(data => {
       this.businessPlan.proyectInformation = data;
       // en el proximo cambiar a put hdp
-      console.log(this.businessPlan);
       this.proceso.estado = 'Informacion Proyecto'
       this.proceso.estadoAnteriorEmprendedor = 'Informacion Proyecto'
       this.modeloBasicoService.planSaveBusinessPlan(this.businessPlan).subscribe(plan => {
@@ -135,15 +128,11 @@ export class InformacionComponent {
 
   }
 
-  /*------------------------------------------------------------------------------------------------------------------------*/
-  /*  REVISAR. EN TODOS LOS NGMODEL EN LA PAGINA ME MUESTRA EN TODOS HOLA, MIENTRAS QUE EL JSON HAY TRES QUE DICEN CHAU  */
-  /*------------------------------------------------------------------------------------------------------------------------*/
+
   editar() {
 
     this.modeloBasicoService.planUpdateProyect(this.proyectInformation).subscribe(data => {
       this.businessPlan.proyectInformation = data;
-      // en el proximo cambiar a put hdp
-      console.log(this.businessPlan);
 
 
       this.modeloBasicoService.planUpdateBusinessPlan(this.businessPlan).subscribe(plan=>{
@@ -166,8 +155,6 @@ export class InformacionComponent {
       editarYsalir(){
         this.modeloBasicoService.planUpdateProyect(this.proyectInformation).subscribe(data=>{
           this.businessPlan.proyectInformation=data;
-          // en el proximo cambiar a put hdp
-          console.log(this.businessPlan);
 
           this.modeloBasicoService.planUpdateBusinessPlan(this.businessPlan).subscribe(plan=>{
             this.businessPlan=plan;

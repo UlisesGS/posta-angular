@@ -45,7 +45,6 @@ export class MainComponent implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
 
     this.procesosService.procesosFindAllUltimo().subscribe(data => {
-      console.log(this.usuario);
 
       this.procesos = data;
       if (this.usuario.role != 'ADMIN') {
@@ -64,7 +63,6 @@ export class MainComponent implements OnInit {
       this.serviceClient.getClientsByTime(page)
         .pipe(
           tap(response => {
-            console.log('ClientesComponent: tap 3');
             (response.content as Client[]).forEach(cliente => console.log(cliente.name));
           })
         ).subscribe(response => {

@@ -32,7 +32,6 @@ export class AsesoriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    console.log(this.usuario);
 
     this.condicion = false;
     // this.clientService.getClientsMunicipios().subscribe(data => {
@@ -47,7 +46,6 @@ export class AsesoriaComponent implements OnInit {
     console.log(this.client);
 
     this.clientService.saveClient(this.client).subscribe(data => {
-      console.log(data);
       this.client = data;
       Swal.fire('Creado', `Cliente ${data.name} cargado con exito`, 'success');
       this.condicion = true;
@@ -60,12 +58,10 @@ export class AsesoriaComponent implements OnInit {
       if (e.status == 404) {
         this.errores = e.error;
         Swal.fire('Error:', 'complete bien los datos', 'error');
-        console.log(this.errores);
 
 
       }
       if (e.status == 500 || e.status == 400) {
-        console.log(e);
 
         Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
       }
@@ -78,7 +74,6 @@ export class AsesoriaComponent implements OnInit {
 
     this.asesoria.client = this.client;
     this.asesoria.user = this.usuario;
-    console.log(this.asesoria);
 
     this.usuarioService.asesoriaSave(this.asesoria).subscribe(data => {
       this.asesoria.advisory = data;
@@ -89,12 +84,10 @@ export class AsesoriaComponent implements OnInit {
       if (e.status == 404) {
         this.errores = e.error;
         Swal.fire('Error:', 'complete bien los datos', 'error');
-        console.log(this.errores);
 
 
       }
       if (e.status == 500 || e.status == 400) {
-        console.log(e);
 
         Swal.fire("Error: ", `Error en la carga del formulario`, 'error');
       }

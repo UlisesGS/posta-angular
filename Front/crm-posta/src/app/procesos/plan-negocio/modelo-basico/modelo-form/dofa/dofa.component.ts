@@ -44,21 +44,18 @@ export class DofaComponent {
         if (id) {
           this.clienteService.getClient(id).subscribe(data => {
             this.cliente = data;
-            console.log(data);
             this.procesoService.procesosFindAll().subscribe(pro => {
               this.procesos = pro;
 
               this.procesos.forEach(proceso => {
                 if (proceso?.canvasModel?.client?.id == this.cliente.id) {
                   this.proceso = proceso;
-                  console.log(this.proceso);
 
                   // para ver
                   if (this.idVer1) {
                     this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
                       this.proceso = data;
                       this.dofaAnalisis = this.proceso?.businessPlan?.dofaAnalisis;
-                      console.log(this.dofaAnalisis);
 
                       // para editar
                       
@@ -70,12 +67,10 @@ export class DofaComponent {
 
                       if (idEditar) {
                         this.procesoService.procesosFindById(idEditar).subscribe(data => {
-                          console.log(data);
 
                           this.proceso = data;
                           this.businessPlan = this.proceso.businessPlan;
                           this.dofaAnalisis = this.proceso?.businessPlan?.dofaAnalisis;
-                          console.log(this.dofaAnalisis);
                         });
                       }
                 }
@@ -91,7 +86,6 @@ export class DofaComponent {
         this.proceso.businessPlan.dofaAnalisis=data;
         this.proceso.estado='Analisis Dofa';
         this.proceso.estadoAnteriorEmprendedor='Analisis Dofa';
-        console.log(this.proceso);
 
         // en el proximo cambiar a put hdp
         //console.log(this.businessPlan);
@@ -101,7 +95,6 @@ export class DofaComponent {
           this.proceso.businessPlan=this.businessPlan;
           this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
             this.proceso=pro;
-            console.log(this.proceso);
             
             this.router.navigate([`conclusion/cliente/${this.proceso.canvasModel.client.id}`]);
           })
@@ -116,7 +109,6 @@ export class DofaComponent {
             this.proceso.businessPlan.dofaAnalisis=data;
             this.proceso.estado='Analisis Dofa';
             this.proceso.estadoAnteriorEmprendedor='Analisis Dofa';
-            console.log(this.proceso);
             // en el proximo cambiar a put hdp
           //  console.log(this.businessPlan);
 
@@ -141,7 +133,6 @@ export class DofaComponent {
           this.modeloBasicoService.planUpdateDofa(this.dofaAnalisis).subscribe(data=>{
             this.businessPlan.dofaAnalisis=data;
             this.proceso.businessPlan.dofaAnalisis=data;
-            console.log(this.proceso);
 
             // en el proximo cambiar a put hdp
             //console.log(this.businessPlan);
@@ -166,7 +157,6 @@ export class DofaComponent {
               this.modeloBasicoService.planUpdateDofa(this.dofaAnalisis).subscribe(data=>{
                 this.businessPlan.dofaAnalisis=data;
                 this.proceso.businessPlan.dofaAnalisis=data;
-                console.log(this.proceso);
                 // en el proximo cambiar a put hdp
               //  console.log(this.businessPlan);
 

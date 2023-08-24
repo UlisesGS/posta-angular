@@ -34,7 +34,6 @@ export class CanalesComponent {
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          console.log(data);
           this.procesoService.procesosFindAll().subscribe(p=>{
 
             this.procesos=p;
@@ -44,13 +43,11 @@ export class CanalesComponent {
                 
                 // para editar
                 let idEditar = +parametro.get('idEditar');
-                console.log('entro al if');
                 
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
                     this.channels=this.proceso.canvasModel.channels;
-                    console.log(this.channels);
                     
                   })
                 }
@@ -78,7 +75,6 @@ export class CanalesComponent {
   public guardar(){
     this.proceso.estado='Canales';
     this.proceso.estadoAnteriorEmprendedor= "Canales";
-    console.log(this.proceso);
     this.proceso.canvasModel.channels=this.channels
    this.procesoService.canalesSave(this.proceso.canvasModel.channels).subscribe(canales=>{
     this.proceso.canvasModel.channels=canales;
@@ -94,7 +90,6 @@ export class CanalesComponent {
   public guardarYsalir(){
     this.proceso.estado='Canales';
     this.proceso.estadoAnteriorEmprendedor= "Canales";
-    console.log(this.proceso);
     this.proceso.canvasModel.channels=this.channels
    this.procesoService.canalesSave(this.proceso.canvasModel.channels).subscribe(canales=>{
     this.proceso.canvasModel.channels=canales;
@@ -109,8 +104,6 @@ export class CanalesComponent {
 
 
   public editar(){
- 
-    console.log(this.proceso);
     this.proceso.canvasModel.channels=this.channels
    this.procesoService.canalesPut(this.proceso.canvasModel.channels).subscribe(canales=>{
     this.proceso.canvasModel.channels=canales;
@@ -128,8 +121,6 @@ export class CanalesComponent {
 
 
   public editarYsalir(){
-
-    console.log(this.proceso);
     this.proceso.canvasModel.channels=this.channels
    this.procesoService.canalesPut(this.proceso.canvasModel.channels).subscribe(canales=>{
     this.proceso.canvasModel.channels=canales;

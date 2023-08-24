@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-municipio',
-  templateUrl: './municipio.component.html',
-  styleUrls: ['./municipio.component.css']
+  templateUrl: './municipio.component.html'
 })
 export class MunicipioComponent implements OnInit{
 

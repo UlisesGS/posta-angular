@@ -55,7 +55,6 @@ export class EstructuraCostosComponent {
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          console.log(data);
           this.procesoService.procesosFindAll().subscribe(p => {
 
             this.procesos = p;
@@ -66,7 +65,6 @@ export class EstructuraCostosComponent {
                 
                 // para editar
                 let idEditar = +parametro.get('idEditar');
-                console.log('no entro al if');
                 
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
@@ -106,7 +104,6 @@ export class EstructuraCostosComponent {
      this.nuevaEntidad.amount=this.amount;
      this.nuevaEntidad.nameComponent=this.nameComponent;
      this.listaBackend.push(this.nuevaEntidad);
-     console.log(this.listaBackend);
 
     
 
@@ -116,17 +113,14 @@ export class EstructuraCostosComponent {
     this.nuevaEntidad1.amount = this.amount1;
     this.nuevaEntidad1.nameComponent = this.nameComponent1;
     this.listaBackend2.push(this.nuevaEntidad1);
-    console.log(this.listaBackend2);
 
   }
 
   eliminarVariable(costoComponent:CostComponent){
-    console.log(costoComponent);
     this.listaBackend= this.listaBackend.filter(item => item!== costoComponent)
       
   }
   eliminarFijo(costoComponent:CostComponent){
-    console.log(costoComponent);
     this.listaBackend2= this.listaBackend2.filter(item => item!== costoComponent)
       
   }
@@ -143,16 +137,13 @@ export class EstructuraCostosComponent {
     this.costoEntidad.totalVariable();
     this.costoEntidad.totalFijo();
     this.costoEntidad.total();
-    console.log(this.costoEntidad);
     this.proceso.canvasModel.costStructure = this.costoEntidad;
-    console.log(this.costoEntidad);
 
     this.procesoService.estructuraCostoSave(this.costoEntidad).subscribe(costo => {
       this.proceso.canvasModel.costStructure = costo;
       this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
         this.procesoService.procesosUpdate(this.proceso).subscribe(data => {
           this.router.navigate(['procesos'])
-          console.log(this.proceso);
 
           Swal.fire('Exito', 'Estructura costos creado con exito', 'success');
         })
@@ -169,12 +160,11 @@ export class EstructuraCostosComponent {
     this.costoEntidad.totalVariable();
     this.costoEntidad.totalFijo();
     this.costoEntidad.total();
-    console.log(this.costoEntidad);
   
     this.proceso.canvasModel.costStructure = this.costoEntidad;
   
     this.procesoService.estructuraCostoSave(this.costoEntidad).subscribe(costo => {
-      console.log(costo); // Verifica la respuesta del servidor
+       // Verifica la respuesta del servidor
   
       this.proceso.canvasModel.costStructure = costo; // Usa el objeto 'costo' recibido en lugar de 'this.costoEntidad'
       this.procesoService.canvasUpdate(this.proceso.canvasModel).subscribe(canvas => {
