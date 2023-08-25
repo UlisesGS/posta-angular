@@ -22,20 +22,20 @@
                                     </a>
 
                                 </li>
-                                <li *ngIf="autoB!='finalizado'  "><a
+                                <li *ngIf="!proceso.selfAssessment && proceso.client.type=='entrepreneur' "><a
                                         class="dropdown-item d-flex align-items-center gap-2 py-2"
                                         (click)="continuarProceso()">
                                         <span class="d-inline-block bg-primary rounded-circle p-1"></span>
                                         Iniciar Autoevaluacion
                                     </a></li>
 
-                                <li *ngIf="autoB=='finalizado' && canvasB=='continuar'"><a
+                                <li *ngIf="autoB=='finalizado' && canvasB=='continuar' "><a
                                         class="dropdown-item d-flex align-items-center gap-2 py-2"
                                         (click)="continuarProceso()"> 
                                         <span class="d-inline-block bg-primary rounded-circle p-1"></span>
                                         Continuar con el Proceso
                                     </a></li>
-                                <li *ngIf="autoB=='finalizado' && canvasB=='finalizado' && negociosB=='continuar'"><a
+                                <li *ngIf="autoB=='finalizado' && canvasB=='finalizado' && negociosB=='continuar' "><a
                                         class="dropdown-item d-flex align-items-center gap-2 py-2"
                                         (click)="continuarProceso()">
                                         <span class="d-inline-block bg-primary rounded-circle p-1"></span>
