@@ -74,6 +74,8 @@ export class ModalDetallesComponent {
 
 
   public continuarProceso(){
+    console.log();
+    
  
      switch(this.proceso.estado){
        case 'iniciando':
