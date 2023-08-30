@@ -519,10 +519,6 @@
       </div>
 
     </div> 
-
-
-
-
 <!--aca decia leandro -->
 <!--aca estaban las lineas -->
     <div class="row">
@@ -2897,9 +2893,9 @@
 
         <div class="form-group mt-3">
           <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && !proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotales()">Guardar y Ver Totales</button>
-          <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotalesCambiarTipo()">Guardar y Ver Totales 2</button>
+          <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotalesCambiarTipo()">Guardar y Ver Totales</button>
           <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="editar()" class="btn">Editar</button>
-          <button [routerLink]="['/procesos']"  class="btn">cancelar</button>
+          <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
           <button *ngIf="consolidado" (click)="continuar()" class="btn">Continuar</button>
           <button *ngIf="consolidado" [routerLink]="['/procesos']"  class="btn">Volver</button>
       </div>

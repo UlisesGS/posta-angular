@@ -25,9 +25,9 @@ export class FormClientComponent implements OnInit {
   proceso: Process = new Process();
   procesos: Process[] = [];
   ciiu: Ciiu[] = [];
-  searchTerm:string = '';
-  filteredCiiu:Ciiu[] = []
-
+  searchTerm: string = '';
+  filteredCiiu: Ciiu[] = []
+  clientes: Client[];
   idEditar: number
 
 
@@ -38,17 +38,18 @@ export class FormClientComponent implements OnInit {
     private authServic: AuthService,
     private procesoService: ProcesoService) { }
 
-    filterCiiu() {
-      this.filteredCiiu = this.ciiu.filter(e =>
-
-           e.titulo.includes(this.searchTerm)
-
-      );
-      console.log(this.filteredCiiu);
-
+  filterCiiu() {
+    this.filteredCiiu = this.ciiu.filter(e =>
+      e.titulo.includes(this.searchTerm)
+    );
+    console.log(this.filteredCiiu);
   }
 
   ngOnInit(): void {
+
+    this.service.clienteListarTodos().subscribe(lista => {
+      this.clientes = lista;
+    })
     this.service.getClientsMunicipios().subscribe(data => {
       this.municipios = data;
       console.log(data);
@@ -64,24 +65,22 @@ export class FormClientComponent implements OnInit {
     })
     this.rutaParametro.paramMap.subscribe(parametro => {
       console.log('hola');
-      
+
       let id = +parametro.get('id');
       if (id) {
         this.service.getClient(id).subscribe(data => {
           this.empresario = data;
           this.procesoService.procesosFindAll().subscribe(pr => {
             this.procesos = pr
-            
+
             this.procesos.forEach(pro => {
               if (pro?.selfAssessment?.client?.id == this.empresario.id || pro?.processEmpresario?.client?.id == this.empresario.id) {
                 this.proceso = pro
-
               }
             })
           })
         })
         this.idEditar = +parametro.get('idEditar');
-
       }
     })
   }
@@ -89,22 +88,50 @@ export class FormClientComponent implements OnInit {
   public registrar() {
     this.empresario.type = "businessman";
     this.empresario.user = this.authServic.devolverUsuario();
-    this.service.saveBusinessman(this.empresario).subscribe(data => {
-      Swal.fire('ÉXITO', `Empresario ${data.name} fue creado con exito`, 'success')
-      this.cerrarModal();
-      this.router.navigate(['/municipios'])
+    let cond: boolean = false;
+    let condNit: boolean = false;
+    let condPhone: boolean = false;
+    let condMerca: boolean = false;
+    this.clientes.forEach(c => {
+      if (c.email == this.empresario.email) {
+        cond = true;
+      }
+      if (c.nit == this.empresario.nit) {
+        condNit = true;
+      }
+      if (c.phone == this.empresario.phone) {
+        condPhone = true;
+      }
+      if (c.phone == this.empresario.numberMercantilRegistry) {
+        condMerca = true;
+      }
+
+    })
+
+    if(cond){
+      Swal.fire('ERROR:', 'Correo Electrónico Duplicado', 'error');
+    }else if(condNit){
+      Swal.fire('ERROR:', 'Documento/NIT Duplicado', 'error');
+    }else if(condPhone){
+      Swal.fire('ERROR:', 'Número de Teléfono Duplicado', 'error');
+    }else if(condMerca){
+      Swal.fire('ERROR:', 'Registro Mercantil Duplicado', 'error');
+    }else{
+      this.service.saveBusinessman(this.empresario).subscribe(data => {
+        Swal.fire('ÉXITO', `Empresario ${data.name} fue creado con exito`, 'success')
+        this.cerrarModal();
+        this.router.navigate(['/municipios'])
+      }
+        , e => {
+          if (e.status == 404) {
+            this.errores = e.error;
+            Swal.fire('ERROR:', 'Datos Incompletos', 'error');
+          }
+          if (e.status == 500 || e.status == 400) {
+            Swal.fire("ERROR: ", `Error en la carga del formulario`, 'error');
+          }
+        })
     }
-      , e => {
-        if (e.status == 404) {
-          this.errores = e.error;
-          Swal.fire('ERROR:', 'Datos Incompletos', 'error');
-        }
-        if (e.status == 500 || e.status == 400) {
-          Swal.fire("ERROR: ", `Error en la carga del formulario`, 'error');
-        }
-      })
-
-
   }
   public editar() {
     this.empresario.type = "businessman";
@@ -112,12 +139,12 @@ export class FormClientComponent implements OnInit {
       if (this.idEditar) {
         if (this.proceso?.processEmpresario) {
 
-          this.proceso.cambio=true;
+          this.proceso.cambio = true;
           this.proceso.estado = this.proceso.estadoAnteriorEmpresario
           this.procesoService.procesosUpdate(this.proceso).subscribe()
         } else {
           this.proceso.estado = 'iniciando2'
-          this.proceso.cambio=false;
+          this.proceso.cambio = false;
           this.procesoService.procesosUpdate(this.proceso).subscribe()
         }
       }

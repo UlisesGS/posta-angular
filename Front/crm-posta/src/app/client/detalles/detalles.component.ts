@@ -52,18 +52,26 @@ export class DetallesComponent {
   }
 
   uploadImage() {
-    if (this.file) {
-      this.imagenService.uploadImage(this.file, this.proceso).subscribe(
-        (response) => {
-          console.log(response);
-          // Maneja la respuesta del backend
-        },
-        (error) => {
-          console.error(error); // Maneja el error, si ocurre
-        }
-      );
+    if (!this.file) {
+      return; // Si no hay archivo seleccionado, sal del método
     }
-    window.location.reload();
+  
+    this.imagenService.uploadImage(this.file, this.proceso).subscribe(
+      (response) => {
+        console.log(response);
+        console.log("Cargo");
+        
+        // Maneja la respuesta del backend
+      },
+      (error) => {
+        console.error(error); // Maneja el error, si ocurre
+        console.log("Error");
+        
+      },
+      () => {
+        window.location.reload(); // Recarga la página después de completar la carga
+      }
+    );
   }
   // getImageUrl() {
   //   this.imagenService.getImageBlob(this.proceso).subscribe(
@@ -110,7 +118,7 @@ export class DetallesComponent {
       this.imagenService.uploadImageEncuesta(this.file, this.proceso).subscribe(
         (response) => {
           console.log(response);
-          window.location.reload(); // Maneja la respuesta del backend
+          // Maneja la respuesta del backend
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre
@@ -199,7 +207,7 @@ export class DetallesComponent {
       this.imagenService.uploadImageImpacto(this.file, this.proceso).subscribe(
         (response) => {
           console.log(response);
-          window.location.reload();
+          
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre

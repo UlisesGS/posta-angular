@@ -27,15 +27,10 @@ export class ClientDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.activate.paramMap.subscribe(data=>{
       let id:number= +data.get('id');
-
       let idVer:number=+data.get('idVer');
-
       if(id){
-        this.serviceClient.getClient(id).subscribe(data=>{
+        this?.serviceClient.getClient(id).subscribe(data=>{
           this.client=data;
-          console.log(data);
-          console.log(this.client);
-          
         })
       }
 
@@ -48,21 +43,10 @@ export class ClientDetailsComponent implements OnInit{
        if(idVer && !id){
          this.serviceClient.getClient(idVer).subscribe(data=>{
            this.client=data;
-           console.log(data);
-          
-           console.log(this.client);
-
          })
        }
-
- 
-      
-
     })
   }
-
-
-
   }
 
 

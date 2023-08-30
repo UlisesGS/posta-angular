@@ -564,35 +564,37 @@ compararTipo(){
   }
 
   public guardar() {
-    this.proceso.estado = 'Presupuesto Venta';
-    this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Venta';
-    console.log(this.proceso);
-
-    this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
-
-    this.planFinancieroService.planFinancialSave(this.businessPlanFinancial).subscribe(plan => {
-      this.businessPlanFinancial = plan;
-      this.proceso.businessPlanFinancial = this.businessPlanFinancial;
-      this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
-        this.proceso = pro;
-        this.router.navigate([`compras/cliente/${this.proceso.canvasModel.client.id}`]);
+    let cond:boolean=false;
+    if(!this.presupuestoVenta.estructuraMercado){
+      cond=true;
+    }
+    if(cond){
+      Swal.fire('ERROR', 'Estructura de Mercado sin Contenido', 'error');
+    }else{
+      this.proceso.estado = 'Presupuesto Venta';
+      this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Venta';console.log(this.proceso);
+      this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
+      this.planFinancieroService.planFinancialSave(this.businessPlanFinancial).subscribe(plan => {
+        this.businessPlanFinancial = plan;
+        this.proceso.businessPlanFinancial = this.businessPlanFinancial;
+        this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
+          this.proceso = pro;
+          this.router.navigate([`compras/cliente/${this.proceso.canvasModel.client.id}`]);
+        })
       })
-    })
-
-
-
-
+    }
+   
   }
-
-
-
-
   public guardarYsalir() {
-
-    this.proceso.estado = 'Presupuesto Venta';
+    let cond:boolean=false;
+    if(!this.presupuestoVenta.estructuraMercado){
+      cond=true;
+    }
+    if(cond){
+      Swal.fire('ERROR', 'Estructura de Mercado sin Contenido', 'error');
+    }else{
+      this.proceso.estado = 'Presupuesto Venta';
     this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Venta';
-    console.log(this.proceso);
-
     this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
     this.planFinancieroService.planFinancialSave(this.businessPlanFinancial).subscribe(plan => {
       this.businessPlanFinancial = plan;
@@ -603,15 +605,9 @@ compararTipo(){
         Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
       })
     })
-
-
-
+    }
   }
   editarYsalir(){
-    // no esta modificando
-    //this.proceso.estado = 'Presupuesto Venta';
-    console.log(this.proceso);
-
     this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
     this.planFinancieroService.planFinancialSave(this.businessPlanFinancial).subscribe(plan => {
       this.businessPlanFinancial = plan;
@@ -625,10 +621,6 @@ compararTipo(){
 
   }
   editar(){
-    // no esta modificando
-  //  this.proceso.estado = 'Presupuesto Venta';
-    console.log(this.proceso);
-
     this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
 
     this.planFinancieroService.planFinancialSave(this.businessPlanFinancial).subscribe(plan => {
@@ -636,13 +628,9 @@ compararTipo(){
       this.proceso.businessPlanFinancial = this.businessPlanFinancial;
       this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
         this.proceso = pro;
-        if(this.proceso?.businessPlanFinancial?.presupuestoCompra.length>0){
-          console.log('primero');
-          
+        if(this.proceso?.businessPlanFinancial?.presupuestoCompra.length>0){ 
           this.router.navigate([`/compras/cliente/${this.cliente.id}/editar/${this.proceso.id}`])
         }else{
-          console.log('segundo');
-          
           this.router.navigate(['/compras/cliente/', this.cliente.id]);
         }
       })

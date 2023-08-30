@@ -64,11 +64,10 @@
                                     <tr *ngFor="let i of item.estructuraCompras" >
                                         <td>{{i.materiaPrima}}</td>
                                         <td>{{i.tipo}}</td>
-                                        <td>{{i.valorUnitario?.toLocaleString('en-US', {
+                                        <td class="total-unitario">{{i.valorUnitario?.toLocaleString('en-US', {
                                             style: 'currency', currency: 'USD' })}}</td>
-                                        <td>{{i.cantidadUbnidad?.toLocaleString('en-US', {
-                                            style: 'currency', currency: 'USD' })}}</td>
-                                        <td class="autorellenadas"> <div class="cell-content">
+                                        <td class="total-unitario">{{i.cantidadUbnidad?.toFixed(2)}}</td>
+                                        <td class="autorellenadas" > <div class="cell-content">
                                             <a (click)="sacarFila(item,i)" class="btn-close"></a>
                                             <span class="total-unitario">{{i.totalUnitario?.toLocaleString('en-US', {
                                                 style: 'currency', currency: 'USD' })}}</span>
