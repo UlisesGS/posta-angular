@@ -15,14 +15,14 @@
             </form>
         </div>
         <div class="form-group mt-3">
-            <button *ngIf="proceso?.businessPlan.conclusion!=null" (click)="editarYsalir()" class="btn">Editar</button>
+            <button *ngIf="proceso?.businessPlan?.conclusion!=null" (click)="editarYsalir()" class="btn">Editar</button>
 
-          <button *ngIf="proceso?.businessPlan.conclusion!=null" (click)="editar()" class="btn">Editar y
+          <button *ngIf="proceso?.businessPlan?.conclusion!=null" (click)="editar()" class="btn">Editar y
               Continuar</button>
-            <button *ngIf="proceso?.businessPlan.conclusion==null" (click)="guardarYsalir()" class="btn">Guardar</button>
-            <button *ngIf="proceso?.businessPlan.conclusion==null" (click)="guardar()"  class="btn">Guardar y Continuar</button>
+            <button *ngIf="proceso?.businessPlan?.conclusion==null" (click)="guardarYsalir()" class="btn">Guardar</button>
+            <button *ngIf="proceso?.businessPlan?.conclusion==null" (click)="guardar()"  class="btn">Guardar y Continuar</button>
             <button routerLink="/procesos"  class="btn">Cancelar</button>
-            <button [routerLink]="['/dofa/cliente/',cliente.id,'editar',proceso.id]"
+            <button [routerLink]="['/dofa/cliente/',cliente?.id,'editar',proceso?.id]"
                 class="btn ">Volver</button>
         </div>
     </div>

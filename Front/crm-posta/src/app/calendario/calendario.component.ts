@@ -60,7 +60,7 @@ export class CalendarioComponent implements OnInit {
      headerToolbar: {
     left: 'prev,next today',
     center: 'title',
-    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek' // Agrega las vistas que deseas mostrar
+    right: 'dayGridMonth,listWeek' // Agrega las vistas que deseas mostrar
   }
 
   };
@@ -129,6 +129,7 @@ export class CalendarioComponent implements OnInit {
     this.buscarCliente();
 
     this.getAllCalendariosByUserId();
+
     // this.calendarOptions.dateClick = this.handleDateClick.bind(this);
     
   }
@@ -144,26 +145,21 @@ export class CalendarioComponent implements OnInit {
   crearEvento() {
     this.usuario = this.authService.devolverUsuario();
     this.nuevoEvento.usuario = this.usuario;
-  
     // Combina la fecha y la hora seleccionada para crear la fecha completa del evento
     const fechaHoraEvento = new Date(this.nuevoEvento.fecha);
     const horaMinutos = this.nuevaHora.split(':');
     fechaHoraEvento.setHours(Number(horaMinutos[0]));
     fechaHoraEvento.setMinutes(Number(horaMinutos[1]));
-  
     this.nuevoEvento.fecha = fechaHoraEvento;
-  
     // Envía el evento con la fecha y hora incorporada a la propiedad fecha
     this.calendarioService.crearEvento(this.nuevoEvento).subscribe((calendarioCreado) => {
       console.log('Evento creado:', calendarioCreado);
       this.modalService.dismissAll();
       this.getAllCalendariosByUserId();
-  
       // Reinicia el nuevoEvento para el próximo evento
       this.nuevoEvento = {
         id: 0,
         fecha: new Date(),
-  
         titulo: '',
         contenido: '',
         usuario: null,
@@ -175,50 +171,7 @@ export class CalendarioComponent implements OnInit {
     });
   }
   
-//   handleDateClick(arg) {
-//  console.log('Fecha clickeada:', arg.date);
-//    this.mostrarEventosDelDia(arg.date);
-//   }
-  
-  //  mostrarEventosDelDia(fecha: Date) {
-  //    const eventosDelDia = [];
-  //    for (const evento of this.calendarOptions.events) {
-  //      const eventoFecha = new Date(evento.start);
-  //      if (eventoFecha.toDateString() === fecha.toDateString()) {
-  //        eventosDelDia.push(evento);
-  //      }
-  //    }
-  
-  //    const modalContent = this.generarContenidoModalEventos(eventosDelDia);
-  //    this.abrirModalConContenido(modalContent);
-  //  }
 
-  //Esto es del Juanma desde aca
- /* mostrarDetallesEvento(eventoClickeado: any) {
-    const detallesEventoDiv = document.getElementById('detallesEvento');
-    detallesEventoDiv.innerHTML = `
-      <h4>${eventoClickeado.title}</h4>
-      <p><strong>Fecha de inicio:</strong> ${eventoClickeado.start}</p>
-      <p><strong>Cliente:</strong> ${eventoClickeado.cliente?.name} ${eventoClickeado.cliente?.lastName}</p>
-      <p><strong>Contenido:</strong> ${eventoClickeado.contenido}</p>
-      <!-- Puedes mostrar más detalles según las propiedades adicionales del evento -->
-    `;
-    
-  }
-
-
-
-
-//Aca esta todo para mostrar lo que hay al hacer click en el evento
-  cargarCalendarios() {
-    this.getAllCalendariosByUserId();
-  }
-  ngAfterViewInit(): void {
-    this.cargarCalendarios();
-  }
-  // Método para mostrar detalles del evento en un modal
- */
-//hasta aca del Juanma
 
   // Implementa estas funciones si no lo has hecho ya
   generarContenidoModalEventos(eventosDelDia: any[]) {

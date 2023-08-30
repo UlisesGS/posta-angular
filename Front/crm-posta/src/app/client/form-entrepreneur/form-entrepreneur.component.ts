@@ -30,6 +30,8 @@ export class FormEntrepreneurComponent implements OnInit {
   idEditar:number
   proceso:Process=new Process();
   procesos:Process[]=[];
+  clientes:Client[];
+
 
   ngOnInit(): void {
     this.clientService.getClientsMunicipios().subscribe(data=>{
@@ -37,28 +39,22 @@ export class FormEntrepreneurComponent implements OnInit {
       console.log(data);
 
     })
+    this.clientService.clienteListarTodos().subscribe(list=>{
+      this.clientes=list;
+    })
     this.rutaParametro.paramMap.subscribe(parametro=>{
       let id = +parametro.get('id');
       if(id){
         this.clientService.getClient(id).subscribe(data=>{
           this.emprendedor=data;
-
-
           this.procesoService.procesosFindAll().subscribe(pr=>{
             this.procesos=pr
-
             this.procesos.forEach(pro=>{
               if(pro?.selfAssessment?.client?.id==this.emprendedor?.id || pro?.processEmpresario?.client?.id==this.emprendedor?.id){
                 this.proceso=pro
-
-
               }
             })
-
-
-
           })
-
         })
          this.idEditar = +parametro.get('idEditar');
       }
@@ -68,31 +64,49 @@ export class FormEntrepreneurComponent implements OnInit {
 public registrar(){
   this.emprendedor.type="entrepreneur";
   this.emprendedor.user=this.authService.devolverUsuario();
-  this.clientService.saveEntrepreneur(this.emprendedor).subscribe(data=>{
-    Swal.fire(`ÉXITO`, `Emprendedor ${data.name} fue creado con exito`, `success`)
-
-    this.cerrarModal();
-    this.router.navigate(['/municipios'])
-  },e=>{
-    if(e.status==404){
-      this.errores=e.error;
-      Swal.fire('ERROR:', 'Datos Incompletos', 'error');
-     console.log(this.errores);
-
-
+  let cond:boolean=false;
+  let condNit:boolean=false;
+  let condPhone:boolean=false;
+  
+  this.clientes.forEach(c=>{
+    if(c.email==this.emprendedor.email){
+      cond=true;
     }
-    if(e.status==500 || e.status==400){
-      console.log(e);
-
-      Swal.fire("ERROR: ", `Error en la carga del formulario`, 'error');
+    if(c.nit==this.emprendedor.nit){
+      condNit=true;
     }
-
-
-
-
+    if(c.phone==this.emprendedor.phone){
+      condPhone=true;
+    }
+   
+    
   })
-
-
+  if(cond){
+    Swal.fire('ERROR:', 'Correo Electrónico Duplicado', 'error');
+  }else if(condNit){
+    Swal.fire('ERROR:', 'Documento/NIT Duplicado', 'error');
+  }else if(condPhone){
+    Swal.fire('ERROR:', 'Número de Teléfono Duplicado', 'error');
+  }
+  else{
+    this.clientService.saveEntrepreneur(this.emprendedor).subscribe(data=>{
+      Swal.fire(`ÉXITO`, `Emprendedor ${data.name} fue creado con exito`, `success`)
+  
+      this.cerrarModal();
+      this.router.navigate(['/municipios'])
+    },e=>{
+      if(e.status==404){
+        this.errores=e.error;
+        Swal.fire('ERROR:', 'Datos Incompletos', 'error');
+       console.log(this.errores);
+      }
+      if(e.status==500 || e.status==400){
+        console.log(e);
+        Swal.fire("ERROR: ", `Error en la carga del formulario`, 'error');
+      }
+    })
+  }
+  
 }
 cerrarModal(){
   this.modalservice.cerrarModal();

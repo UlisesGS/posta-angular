@@ -52,9 +52,6 @@ export class PlanInversionComponent implements OnInit {
             this.procesos.forEach(proceso => {
               if (proceso?.canvasModel?.client?.id == this.cliente.id) {
                 this.proceso = proceso;
-
-
-
               }
 
             })
@@ -176,65 +173,95 @@ export class PlanInversionComponent implements OnInit {
 
 
   public guardarYsalir() {
-    if(!this.proceso.businessPlanFinancial.planInversion){
-      this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
+    let condFijo:boolean=false;
+    let condMaquina:boolean=false;
+    let condMueble:boolean=false;
+    let condVehiculo:boolean=false;
+    if(!this.planDeInversion.activoFijo){
+      condFijo=true;
+    }
+    if(!this.planDeInversion.maquinariaEquipo){
+      condMaquina=true;
+    }
+    if(!this.planDeInversion.mueblesEnseres){
+      condMueble=true;
+    }
+    if(!this.planDeInversion.vehiculos){
+      condVehiculo=true;
     }
 
-   // this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
-    /*
-    this.proceso.businessPlanFinancial.planInversion.activoFijo=this.activosFijos;
-    this.proceso.businessPlanFinancial.planInversion.maquinariaEquipo=this.maquinarias;
-    this.proceso.businessPlanFinancial.planInversion.mueblesEnseres=this.muebles;
-    this.proceso.businessPlanFinancial.planInversion.vehiculos=this.vehiculos;
-    */
-   this.proceso.businessPlanFinancial.planInversion= this.planDeInversion;
-   console.log(this.proceso);
+    if(condFijo){
+      Swal.fire('ERROR','Activos Fijos Vacio','error');
+    }else if(condMaquina){
+      Swal.fire('ERROR','Maquinaria y Equipamiento Vacio','error');
+    }else if(condMueble){
+      Swal.fire('ERROR','Muebles y Enseres Vacio','error');
+    }else if(condVehiculo){
+      Swal.fire('ERROR','Vehículos Vacio','error');
+    }else{
+      if(!this.proceso.businessPlanFinancial.planInversion){
+        this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
+      }
+     this.proceso.businessPlanFinancial.planInversion= this.planDeInversion;
+      this.proceso.estado='Plan Financiero finalizado';
+      this.proceso.estadoAnteriorEmprendedor='Plan Financiero finalizado';
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
+      })
+      this.planFinancialService.inversionPut(this.proceso.businessPlanFinancial).subscribe(data=>{
+      this.router.navigate(['/procesos'])
+      Swal.fire('Exito', 'Plan Financiero creado con exito', 'success');
+      })
+    }
 
 
-    this.proceso.estado='Plan Financiero finalizado';
-    this.proceso.estadoAnteriorEmprendedor='Plan Financiero finalizado';
-
-    this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
-      console.log(data1);
-
-    })
-    this.planFinancialService.inversionPut(this.proceso.businessPlanFinancial).subscribe(data=>{
-      console.log(data);
-
-    this.router.navigate(['/procesos'])
-    Swal.fire('Exito', 'Plan Financiero creado con exito', 'success');
-
-    })
+    
 
   }
   public guardar() {
-    if(!this.proceso.businessPlanFinancial.planInversion){
-      this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
+
+    let condFijo:boolean=false;
+    let condMaquina:boolean=false;
+    let condMueble:boolean=false;
+    let condVehiculo:boolean=false;
+    if(!this.planDeInversion.activoFijo){
+      condFijo=true;
     }
-    this.proceso.businessPlanFinancial.planInversion= this.planDeInversion;
+    if(!this.planDeInversion.maquinariaEquipo){
+      condMaquina=true;
+    }
+    if(!this.planDeInversion.mueblesEnseres){
+      condMueble=true;
+    }
+    if(!this.planDeInversion.vehiculos){
+      condVehiculo=true;
+    }
+
+    if(condFijo){
+      Swal.fire('ERROR','Activos Fijos Vacio','error');
+    }else if(condMaquina){
+      Swal.fire('ERROR','Maquinaria y Equipamiento Vacio','error');
+    }else if(condMueble){
+      Swal.fire('ERROR','Muebles y Enseres Vacio','error');
+    }else if(condVehiculo){
+      Swal.fire('ERROR','Vehículos Vacio','error');
+    }else{
+      if(!this.proceso.businessPlanFinancial.planInversion){
+        this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
+      }
+      this.proceso.businessPlanFinancial.planInversion= this.planDeInversion;
+      this.proceso.estado='Plan Financiero finalizado';
+      this.proceso.estadoAnteriorEmprendedor='Plan Financiero finalizado';
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
+      })
+      this.planFinancialService.inversionPut(this.proceso.businessPlanFinancial).subscribe(data=>{
+      this.router.navigate(['/procesos'])
+      Swal.fire('Exito', 'Plan Financiero creado con exito', 'success');
+  
+      })
+    }
 
 
-   // this.proceso.businessPlanFinancial.planInversion.activoFijo=this.activosFijos;
-   // this.proceso.businessPlanFinancial.planInversion.maquinariaEquipo=this.maquinarias;
-    //this.proceso.businessPlanFinancial.planInversion.mueblesEnseres=this.muebles;
-    //this.proceso.businessPlanFinancial.planInversion.vehiculos=this.vehiculos;
-   console.log(this.proceso);
-
-
-    this.proceso.estado='Plan Financiero finalizado';
-    this.proceso.estadoAnteriorEmprendedor='Plan Financiero finalizado';
-
-    this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
-      console.log(data1);
-
-    })
-    this.planFinancialService.inversionPut(this.proceso.businessPlanFinancial).subscribe(data=>{
-      console.log(data);
-
-    this.router.navigate(['/procesos'])
-    Swal.fire('Exito', 'Plan Financiero creado con exito', 'success');
-
-    })
+   
 
   }
 
