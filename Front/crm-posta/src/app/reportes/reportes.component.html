@@ -1,0 +1,39 @@
+<div class="alert alert-success" role="alert">
+    <h2>Reportes</h2>
+</div>
+<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+
+<button (click)="totalDeClientes()" type="button" class="btn btn-danger m-2">Numero de Empresas atendidas</button>
+<button (click)="planDeNegocio()" type="button" class="btn btn-warning m-2">Numero de Plan de Negocio</button>
+<button (click)="procesoActivo()" type="button" class="btn btn-success m-2">Numero de Procesos Activos finalizados</button>
+</div>
+
+
+
+<div *ngIf="mostrarClientes">
+<div>
+<canvas id="barChart" width="100" height="50"></canvas>
+</div>
+<div>
+<canvas id="pieChart" width="100" height="50"></canvas>
+</div>
+</div>
+
+
+<div *ngIf="mostrarPlanDeNegocio">
+<div>
+<canvas id="barChart1" width="100" height="50"></canvas>
+</div>
+<div>
+<canvas id="pieChart1" width="100" height="50"></canvas>
+</div>
+</div>
+
+<div *ngIf="mostrarProcesosActivos">
+<div>
+  <canvas id="barChart2" width="100" height="50"></canvas>
+</div>
+<div>
+  <canvas id="pieChart2" width="100" height="50"></canvas>
+</div>
+</div>
