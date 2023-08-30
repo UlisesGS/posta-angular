@@ -147,4 +147,8 @@ public estructuraCostoSave(costStructure:CostStructure):Observable<any>{
   public estructuraCostoPut(costStructure:CostStructure):Observable<any>{
     return this.http.put<any>(`${this.urlEndPoint}/estructuraCostoPut/${costStructure.id}`,costStructure);
   }
+  public procesoListarPorUsuario(id:number, page:number):Observable<any>{
+    return this.http.get<any>(`${this.urlProcesos}/usuario/${id}/page/${page}`)
+
+  }
   }

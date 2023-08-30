@@ -67,7 +67,7 @@ this.modal.abrirModalPocesos();
         this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
       }
 
-      console.log(this.procesos);
+     
 
     })
   }
@@ -143,26 +143,45 @@ this.modal.abrirModalPocesos();
       if (!page) {
         page = 0;
       }
-      this.procesoService.procesosPaginacion(page)
+      console.log(this.usuario);
+      
+      if(this.usuario.role=='ADMIN'){
+        this.procesoService.procesosPaginacion(page)
 
-      // .pipe(
-      //   tap(response => {
-      //     console.log('ClientesComponent: tap 3');
-      //     (response.content as Process[]).forEach(proceso => console.log(proceso));
-      //   })
-       .subscribe(response => {
-
-        console.log(response);
+     
+        .subscribe(response => {
+ 
+         console.log(response);
+         
+ 
+         this.procesos = response.content as Process[];
+         this.paginador = response;
         
+      //   if(this.usuario.role!='ADMIN'){
+       //    this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
+       //  }
+ 
+       });
+      }else{
+        this.procesoService.procesoListarPorUsuario(this.usuario.id,page)
 
-        this.procesos = response.content as Process[];
-        this.paginador = response;
-        console.log(this.procesos);
-        if(this.usuario.role!='ADMIN'){
-          this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
-        }
+     
+        .subscribe(r => {
 
-      });
+ 
+         
+ 
+         this.procesos = r.content as Process[];
+         this.paginador = r;
+        console.log(this.proceso);
+        
+      //   if(this.usuario.role!='ADMIN'){
+       //    this.procesos = this.procesos.filter(f=>f.user?.id==this.usuario?.id);
+       //  }
+ 
+       });
+      }
+     
 
   })
   }

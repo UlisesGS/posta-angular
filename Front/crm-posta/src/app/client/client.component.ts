@@ -72,7 +72,8 @@ export class ClientComponent implements OnInit {
       if (!page) {
         page = 0;
       }
-      this.serviceClient.getClientsPaginar(page)
+      if(this.usuario.role=='ADMIN'){
+        this.serviceClient.getClientsPaginar(page)
         .pipe(
           tap(response => {
             (response.content as Client[]).forEach(cliente => console.log(cliente.name));
@@ -81,11 +82,25 @@ export class ClientComponent implements OnInit {
           this.clients = response.content as Client[];
           this.paginador = response;
 
-          if(this.usuario.role!='ADMIN'){
+         /* if(this.usuario.role!='ADMIN'){
             this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
 
-          }
+          }*/
         });
+
+      }else{
+        this.serviceClient.clienteListarPorUsuario(this.usuario.id,page).subscribe(r => {
+          this.clients = r.content as Client[];
+          this.paginador = r;
+
+         /* if(this.usuario.role!='ADMIN'){
+            this.clients= this.clients.filter(c=>c?.user?.id==this.usuario?.id);
+
+          }*/
+        });
+
+      }
+   
 
     })
     this.serviceClient.getClientsMunicipios().subscribe(data => {
