@@ -123,6 +123,10 @@ export class ClientService {
       return this.http.get<any>(`${this.urlEndPoint}/listar`)
 
     }
+    public clienteListarPorUsuario(id:number, page:number):Observable<any>{
+      return this.http.get<any>(`${this.urlEndPoint}/usuario/${id}/page/${page}`)
+
+    }
 
     public findByState(active:boolean):Observable<any>{
       return this.http.get<any>(`${this.urlEndPoint}/activos/${active}`);
