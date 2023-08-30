@@ -92,6 +92,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanelComponent } from './usuario/panel/panel.component';
 import { RecargaComponent } from './header/asesoria/asesoriaList/recarga/recarga.component';
 import { UsuarioRecargarComponent } from './usuario/usuariolist/usuario-recargar/usuario-recargar.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 
 const routes: Routes = [
@@ -245,6 +246,7 @@ const routes: Routes = [
   //recarga asesoria en asesoria
   { path: 'recarga', component: RecargaComponent,canActivate: [AuthGuard]  },
   { path: 'recarga/usuario', component: UsuarioRecargarComponent,canActivate: [AuthGuard]  },
+  { path: 'reportes', component: ReportesComponent,canActivate: [AuthGuard]  },
 
 ]
 
@@ -323,6 +325,7 @@ const routes: Routes = [
     PanelComponent,
     RecargaComponent,
     UsuarioRecargarComponent,
+    ReportesComponent,
 
 
 
