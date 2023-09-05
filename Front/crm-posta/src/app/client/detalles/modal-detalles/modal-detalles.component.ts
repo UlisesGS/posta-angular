@@ -52,6 +52,10 @@ export class ModalDetallesComponent {
 
       ;
       break;
+      case 'financiero':
+        this.ruta.navigate([`planFinancieroVer/${this.proceso.selfAssessment.client.id}/ver/${this.proceso.id}`]);
+       ;
+       break;
 
       /* VER QUE CARAJOS HACEN ESTAS RUTAS */
       case 'Propuesta de Valor':
@@ -67,6 +71,7 @@ export class ModalDetallesComponent {
         this.ruta.navigate([`empresario/accion/cliente/${this.proceso.processEmpresario.client.id}/ver/${this.proceso.id}`]);
        ;
        break;
+       
     }
     this.modalService.cerrarTestAuto();
   }

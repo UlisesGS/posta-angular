@@ -32,6 +32,7 @@ export class PlanInversionComponent implements OnInit {
   vehiculos: Inversion[] = [];
   vehiculo: Inversion = new Inversion();
   planDeInversion: PlanInversion = new PlanInversion();
+  idVer:number;
   constructor(
     private planFinancialService: PlanFinancieroService,
     private rutaParametro: ActivatedRoute,
@@ -43,6 +44,7 @@ export class PlanInversionComponent implements OnInit {
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
       let idEditar=+parametro.get('idEditar');
+      this.idVer =+parametro.get('idVer1');
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
@@ -61,6 +63,13 @@ export class PlanInversionComponent implements OnInit {
       }
       if(idEditar){
         this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+          this.proceso= data;
+          this.planDeInversion= this.proceso.businessPlanFinancial.planInversion;
+
+        })
+      }
+      if(this.idVer){
+        this.procesoService.procesosFindById(this.idVer).subscribe(data=>{
           this.proceso= data;
           this.planDeInversion= this.proceso.businessPlanFinancial.planInversion;
 
