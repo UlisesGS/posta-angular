@@ -12,9 +12,12 @@
                     </button>
                 </div>
                 <div *ngIf="venta">
-                    
+                    <div *ngIf="proceso?.businessPlanFinancial?.presupuestoVenta">
                     <app-presupuesto-ventas></app-presupuesto-ventas>
-
+                </div>   
+                <div *ngIf="!proceso?.businessPlanFinancial?.presupuestoVenta" class="alert alert-primary" role="alert">
+                    Presupuesto de venta no exite 
+                   </div>
                 </div>
             </div>
             
@@ -28,8 +31,14 @@
                     </button>
                 </div>
                 <div *ngIf="compra">
+                    <div *ngIf="proceso?.businessPlanFinancial?.presupuestoCompra">
                     <app-presupuesto-form></app-presupuesto-form>
                 </div>
+                <div *ngIf="!proceso?.businessPlanFinancial?.presupuestoCompra" class="alert alert-primary" role="alert">
+                    Presupuesto de compra no exite 
+                   </div>
+                </div>
+                
             </div>
         </div>
         <div class="row">
@@ -41,7 +50,12 @@
                     </button>
                 </div>
                 <div *ngIf="gasto">
+                    <div *ngIf="proceso?.businessPlanFinancial?.gastoCosto">
                     <app-presupuesto-gasto></app-presupuesto-gasto>
+                    </div>
+                    <div *ngIf="!proceso?.businessPlanFinancial?.gastoCosto" class="alert alert-primary" role="alert">
+                       Presupuesto de gasto no exite 
+                      </div>
                 </div>
             </div>
         </div>
@@ -56,7 +70,12 @@
                     </button>
                 </div>
                 <div *ngIf="inversion">
+                    <div *ngIf="proceso?.businessPlanFinancial?.planInversion">
                     <app-plan-inversion></app-plan-inversion>
+                </div>
+                <div *ngIf="!proceso?.businessPlanFinancial?.planInversion" class="alert alert-primary" role="alert">
+                    Presupuesto de gasto no exite 
+                   </div>
                 </div>
             </div>
         </div>
