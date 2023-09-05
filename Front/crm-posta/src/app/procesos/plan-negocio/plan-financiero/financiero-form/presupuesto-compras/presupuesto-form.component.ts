@@ -28,6 +28,7 @@ export class PresupuestoFormComponent implements OnInit {
   totalUnitario: number[] = [];
   cantidadP: number = 0;
   idEditar: number;
+  idVer:number;
   cliente: Client = new Client;
   procesos: Process[] = [];
   proceso: Process = new Process;
@@ -43,6 +44,17 @@ export class PresupuestoFormComponent implements OnInit {
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
+      this.idVer = +parametro.get('idVer1');
+      if (this.idVer){
+        this.procesoService.procesosFindAll().subscribe(data => {
+          this.procesos = data;
+          this.procesos.forEach(p => {
+            if (p.id == this.idVer) {
+              this.proceso = p;
+            }
+          })
+        })
+      }
       this.idEditar = + parametro.get('idEditar');
       if (this.idEditar) {
         this.procesoService.procesosFindAll().subscribe(data => {

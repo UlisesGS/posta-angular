@@ -93,6 +93,7 @@ import { PanelComponent } from './usuario/panel/panel.component';
 import { RecargaComponent } from './header/asesoria/asesoriaList/recarga/recarga.component';
 import { UsuarioRecargarComponent } from './usuario/usuariolist/usuario-recargar/usuario-recargar.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { VerFinancieroComponent } from './procesos/plan-negocio/plan-financiero/ver-financiero/ver-financiero.component';
 
 
 const routes: Routes = [
@@ -207,6 +208,10 @@ const routes: Routes = [
   { path: 'compras/cliente/:id/ver/:idVer', component: PresupuestoFormComponent, canActivate: [AuthGuard] },
   { path: 'gastos/cliente/:id/ver/:idVer', component: PresupuestoGastoComponent , canActivate: [AuthGuard]},
   { path: 'inversion/cliente/:id/ver/:idVer', component: PlanInversionComponent , canActivate: [AuthGuard]},
+  // para ver
+  { path: 'planFinancieroVer/:id/ver/:idVer1', component:VerFinancieroComponent , canActivate: [AuthGuard]},
+
+
   //Diagnostico Empresarial
 
   { path: 'empresario/diagnostico', component: DiagnosticoComponent, canActivate: [AuthGuard] },
@@ -326,6 +331,7 @@ const routes: Routes = [
     RecargaComponent,
     UsuarioRecargarComponent,
     ReportesComponent,
+    VerFinancieroComponent,
 
 
 

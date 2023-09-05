@@ -68,6 +68,8 @@ export class InformacionComponent {
                 }
                 //para ver
                 if (this.idVer1) {
+                 
+                  
                   this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
                     this.proceso = data;
                     this.proyectInformation = this.proceso.businessPlan.proyectInformation;
