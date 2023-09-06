@@ -625,8 +625,11 @@ compararTipo(){
       this.proceso.businessPlanFinancial = this.businessPlanFinancial;
       this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
         this.proceso = pro;
-        this.router.navigate(['procesos']);
-        Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
+       
+          this.router.navigate(['procesos']);
+          Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
+        
+       
       })
     })
     }
@@ -638,8 +641,12 @@ compararTipo(){
       this.proceso.businessPlanFinancial = this.businessPlanFinancial;
       this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
         this.proceso = pro;
+        if(this.idVer){
+          Swal.fire('Exito', 'Presupuesto Venta Editado con exito', 'success');
+        }else{
         this.router.navigate(['procesos']);
         Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
+        }
       })
     })
 
