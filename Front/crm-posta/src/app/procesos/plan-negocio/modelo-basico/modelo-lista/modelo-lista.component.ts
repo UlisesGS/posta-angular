@@ -65,6 +65,8 @@ export class ModeloListaComponent implements OnInit{
         })
       }
       if (idVer) {
+   
+        
         this.clienteService.getClient(idVer).subscribe(data => {
           this.cliente = data;
           console.log(data);

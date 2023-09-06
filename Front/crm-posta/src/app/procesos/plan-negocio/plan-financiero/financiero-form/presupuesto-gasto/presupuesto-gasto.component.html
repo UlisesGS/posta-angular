@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-2">
+    <div class="col-2" *ngIf="!idVer">
         <app-client-details></app-client-details>
     </div>
     <div class="col-10">
@@ -630,13 +630,19 @@
             </div>
 
         </div>
-        <div class="form-group mt-3">
+        <div class="form-group mt-3" *ngIf="!idVer">
             <button *ngIf="!idEditar" (click)="guardarYsalir()" class="btn">Guardar</button>
             <button *ngIf="!idEditar" (click)="guardar()" class="btn">Guardar y Continuar</button>
             <button *ngIf="idEditar" (click)="editarYsalir()" class="btn">Editar</button>
             <button *ngIf="idEditar" (click)="editar()" class="btn">Editar y Continuar</button>
             <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
             <button [routerLink]="['/compras/cliente/',cliente.id,'editar', proceso?.id]" class="btn">Volver</button>
+        </div>
+        <div class="form-group mt-3" *ngIf="idVer">
+          
+           
+            <button *ngIf="idEditar" (click)="editarYsalir()" class="btn">Editar</button>
+           
         </div>
     </div>
 

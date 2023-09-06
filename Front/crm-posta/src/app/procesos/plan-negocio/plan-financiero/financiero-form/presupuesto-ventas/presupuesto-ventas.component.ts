@@ -66,6 +66,7 @@ export class PresupuestoVentasComponent implements OnInit {
   ciclicidad: CiclicidadVentas = new CiclicidadVentas;
   ciclicidadVentas: CiclicidadVentas[] = [];
   totalUnidadesAno=0;
+  idVer:number;
 
   presupuestoVenta: PresupuestoVenta = new PresupuestoVenta();
 
@@ -100,7 +101,7 @@ export class PresupuestoVentasComponent implements OnInit {
         })
       }
       let idEditar = +parametro.get('idEditar');
-      console.log(idEditar);
+     
       
       if (idEditar){
         this.procesoService.procesosFindById(idEditar).subscribe(data=>{
@@ -119,6 +120,29 @@ export class PresupuestoVentasComponent implements OnInit {
 
         })
       }
+       this.idVer = +parametro.get('idVer1');
+     
+      
+      if (this.idVer){
+        console.log("idVer");
+        
+        this.procesoService.procesosFindById(this.idVer).subscribe(data=>{
+          console.log(data);
+          this.proceso= data;
+          console.log(this.proceso);
+          
+          
+          this.proceso?.businessPlanFinancial?.presupuestoVenta?.ciclicidadVentas.forEach(c=>{
+            this.listaMes.push(c.calificacion);
+          })
+          
+           this.presupuestoVenta=this.proceso?.businessPlanFinancial?.presupuestoVenta;
+           console.log(this.presupuestoVenta);
+           this.businessPlanFinancial= this.proceso?.businessPlanFinancial;
+
+        })
+      }
+
     })
 
   }
@@ -601,8 +625,11 @@ compararTipo(){
       this.proceso.businessPlanFinancial = this.businessPlanFinancial;
       this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
         this.proceso = pro;
-        this.router.navigate(['procesos']);
-        Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
+       
+          this.router.navigate(['procesos']);
+          Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
+        
+       
       })
     })
     }
@@ -614,8 +641,12 @@ compararTipo(){
       this.proceso.businessPlanFinancial = this.businessPlanFinancial;
       this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
         this.proceso = pro;
+        if(this.idVer){
+          Swal.fire('Exito', 'Presupuesto Venta Editado con exito', 'success');
+        }else{
         this.router.navigate(['procesos']);
         Swal.fire('Exito', 'Presupuesto Venta creada con exito', 'success');
+        }
       })
     })
 

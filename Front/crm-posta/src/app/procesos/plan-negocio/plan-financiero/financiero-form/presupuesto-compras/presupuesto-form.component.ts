@@ -28,6 +28,7 @@ export class PresupuestoFormComponent implements OnInit {
   totalUnitario: number[] = [];
   cantidadP: number = 0;
   idEditar: number;
+  idVer:number;
   cliente: Client = new Client;
   procesos: Process[] = [];
   proceso: Process = new Process;
@@ -41,9 +42,14 @@ export class PresupuestoFormComponent implements OnInit {
     private planFinancialService: PlanFinancieroService,
     private router: Router) { }
   ngOnInit(): void {
+   
+    
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
+      this.idVer = +parametro.get('idVer1');
+      
       this.idEditar = + parametro.get('idEditar');
+<<<<<<< HEAD
       console.log(this.idEditar);
       
       if (this.idEditar) {
@@ -67,13 +73,55 @@ export class PresupuestoFormComponent implements OnInit {
               
             }
           })
+=======
+if(this.idVer){
+  this.procesoService.procesosFindAll().subscribe(data => {
+    this.procesos = data;
+    this.procesos.forEach(p => {
+      if (p.id == this.idVer) {
+        this.proceso = p;
+       this.proceso.businessPlanFinancial.presupuestoCompra = p.businessPlanFinancial.presupuestoCompra
+              
+        this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pro => {
+          console.log(pro.estructuraCompras);
+          this.totalUnitarios = pro.total
+          this.totalAnuales = pro.totalAnual
+          this.estructuraCompras=pro.estructuraCompras
+>>>>>>> 3fcc1ae8403087486861824e0f2f81d6ba155e59
         })
+        
       }
+    })
+  })
+}
+if (this.idEditar) {
+
+  this.procesoService.procesosFindAll().subscribe(data => {
+    this.procesos = data;
+    this.procesos.forEach(p => {
+      if (p.id == this.idEditar) {
+        this.proceso = p;
+        this.proceso.businessPlanFinancial.presupuestoCompra = p.businessPlanFinancial.presupuestoCompra
+              
+        this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pro => {
+          console.log(pro.estructuraCompras);
+          this.totalUnitarios = pro.total
+          this.totalAnuales = pro.totalAnual
+          this.estructuraCompras=pro.estructuraCompras
+        })
+        
+      }
+    })
+  })
+}
+     
       if (id) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
-          if (this.idEditar) {
-          } else {
+          if (this.idEditar || this.idVer) {
+         console.log('dentro del id ver o editar');
+         
+          }else{
             this.procesoService.procesosFindAll().subscribe(pro => {
               this.procesos = pro;
               this.procesos.forEach(proceso => {
@@ -101,8 +149,11 @@ export class PresupuestoFormComponent implements OnInit {
   sacarFila(presupuestoCompra: PresupuestoCompra, e: EstructuraCompra) {  console.log(e);
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pre => {
       pre.estructuraCompras = pre.estructuraCompras.filter(estructura => estructura != e);
+      this.estructuraCompras = this.estructuraCompras.filter(a=>a !=e);
     })
+    this.sacarTotales();
   }
+<<<<<<< HEAD
 
   public sacarTotales(){
 
@@ -122,15 +173,45 @@ export class PresupuestoFormComponent implements OnInit {
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
       console.log(compra.id);
       
+=======
+  public sacarTotales(){
+    this.totalUnitarios = 0
+    this.totalAnuales = 0
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
+      compra.total=0;
+      compra.totalAnual=0;
+      console.log(this.estructuraCompras);
+      
+      this.estructuraCompras.forEach(compras=>{
+        compra.total+=compras.totalUnitario;
+      })
+      compra.totalAnual=(compra.total*compra.cantidadProducto);
+      this.totalUnitarios=compra.total;
+      this.totalAnuales=compra.totalAnual;
+    })
+
+
+  }
+  agregarFila(producto: string) {
+    
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
+>>>>>>> 3fcc1ae8403087486861824e0f2f81d6ba155e59
       if (compra.nombreProcucto == producto) {
         this.nombreP = compra.nombreProcucto
         compra.total = 0;
+        compra.totalAnual=0;
         this.estructuraCompra.totalUnitario = this.estructuraCompra.valorUnitario * this.estructuraCompra.cantidadUbnidad;
         if (compra.estructuraCompras == null) {
           compra.estructuraCompras = [];
         }
         compra.estructuraCompras.push(this.estructuraCompra);
+<<<<<<< HEAD
         this.sacarTotales();
+=======
+        console.log(compra);
+        
+      this.sacarTotales();
+>>>>>>> 3fcc1ae8403087486861824e0f2f81d6ba155e59
       }
       this.totalUnitarios += compra.total;
       this.totalAnuales += compra.totalAnual;
@@ -226,8 +307,13 @@ export class PresupuestoFormComponent implements OnInit {
       this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
       })
       this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data => {
-        this.router.navigate(['/procesos'])
-        Swal.fire('Exito', 'Presupuesto Compra Editado con exito', 'success');
+        if(this.idVer){
+          Swal.fire('Exito', 'Presupuesto Compra Editado con exito', 'success');
+        }else{
+          this.router.navigate(['/procesos'])
+          Swal.fire('Exito', 'Presupuesto Compra Editado con exito', 'success');
+        }
+      
       })
     } 
   }

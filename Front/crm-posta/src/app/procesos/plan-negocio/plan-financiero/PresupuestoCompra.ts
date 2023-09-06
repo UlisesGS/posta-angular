@@ -18,8 +18,10 @@ totalAnual:number=0.0;
     }
 */
 public sacarTotales(){
-  this.estructuraCompras.forEach(compras=>{
-    this.total+=compras.totalUnitario;
+  this.total=0;
+  this.totalAnual=0;
+  this.estructuraCompras.forEach(c=>{
+    this.total+=c.totalUnitario;
   })
   this.totalAnual=(this.total*this.cantidadProducto);
 }

@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-2">
+        <app-client-details></app-client-details>
+    </div>
+    <div class="col-10">
+        <div class="row">
+            <div class="card-body">
+                <div style="margin: 10px;">
+                    <button class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+                        <span class="left-align">PRESUPUESTO VENTA</span><i
+                        class="fa-solid fa-caret-down fa-xl right-align" type="button" (click)="condicionVenta()" ></i>
+                    </button>
+                </div>
+                <div *ngIf="venta">
+                    <div *ngIf="proceso?.businessPlanFinancial?.presupuestoVenta">
+                    <app-presupuesto-ventas></app-presupuesto-ventas>
+                    <button (click)="condicionVenta()"
+                    class="btn btn-danger">Cerrar</button>
+                </div>   
+                <div *ngIf="!proceso?.businessPlanFinancial?.presupuestoVenta" class="alert alert-primary" role="alert">
+                    Presupuesto de venta no existe 
+                   </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="card-body">
+                <div style="margin: 10px;">
+                    <button class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+                        <span class="left-align">PRESUPUESTO COMPRA</span><i
+                        class="fa-solid fa-caret-down fa-xl right-align" type="button" (click)="condicionCompra()"></i>
+                    </button>
+                </div>
+                <div *ngIf="compra">
+                    <div *ngIf="proceso?.businessPlanFinancial?.presupuestoCompra">
+                    <app-presupuesto-form></app-presupuesto-form>
+                    <button (click)="condicionCompra()"
+                    class="btn btn-danger">Cerrar</button>
+                </div>
+                <div *ngIf="!proceso?.businessPlanFinancial?.presupuestoCompra" class="alert alert-primary" role="alert">
+                    Presupuesto de compra no existe 
+                   </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="card-body">
+                <div style="margin: 10px;">
+                    <button class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+                        <span class="left-align">PRESUPUESTO GASTOS</span><i
+                        class="fa-solid fa-caret-down fa-xl right-align" type="button" (click)="condicionGasto()"></i>
+                    </button>
+                </div>
+                <div *ngIf="gasto">
+                    <div *ngIf="proceso?.businessPlanFinancial?.gastoCosto">
+                    <app-presupuesto-gasto></app-presupuesto-gasto>
+                    <button (click)="condicionGasto()"
+                    class="btn btn-danger">Cerrar</button>
+
+                    </div>
+                    <div *ngIf="!proceso?.businessPlanFinancial?.gastoCosto" class="alert alert-primary" role="alert">
+                       Presupuesto de gasto no existe 
+                      </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="card-body">
+                <div style="margin: 10px;">
+                    <button class="btn btn-disabled" style="background-color: rgb(34, 197, 89); color: white;width: 80%;">
+                        <span class="left-align ">PRESUPUESTO INVERSION</span><i
+                        class="fa-solid fa-caret-down fa-xl right-align" type="button" (click)="condicionInversion()"></i>
+                    </button>
+                </div>
+                <div *ngIf="inversion">
+                    <div *ngIf="proceso?.businessPlanFinancial?.planInversion">
+                    <app-plan-inversion></app-plan-inversion>
+                    <button (click)="condicionInversion()"
+                    class="btn btn-danger">Cerrar</button>
+                </div>
+                <div *ngIf="!proceso?.businessPlanFinancial?.planInversion" class="alert alert-primary" role="alert">
+                    Presupuesto de gasto no existe 
+                   </div>
+                </div>
+            </div>
+        </div>
+
+        <button [routerLink]="['/clients/details/', cliente.id]"  class="btn" id="btn">Volver</button>
+    </div>
+</div>

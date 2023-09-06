@@ -40,6 +40,7 @@ export class PresupuestoGastoComponent {
   proceso: Process = new Process();
   idEditar: number;
   gastoCosto: GastoCosto = new GastoCosto();
+  idVer:number;
 
   constructor(
     private planFinancialService: PlanFinancieroService,
@@ -54,6 +55,7 @@ export class PresupuestoGastoComponent {
     
     this.rutaParametro.paramMap.subscribe((parametro) => {
       let id = +parametro.get('id');
+      this.idVer = +parametro.get('idVer1');
       this.idEditar = +parametro.get('idEditar');
 
       if (id) {
@@ -74,8 +76,19 @@ export class PresupuestoGastoComponent {
                     this.proceso.businessPlanFinancial.gastoCosto.operativo;
                   this.ventas =
                     this.proceso.businessPlanFinancial.gastoCosto.comercialVentas;
-                  console.log(this.administrativo);
+                 
                 }
+                if (this.idVer) {
+                  this.gastoCosto= this.proceso.businessPlanFinancial.gastoCosto;
+                  this.administrativo =
+                    this.proceso.businessPlanFinancial.gastoCosto.administrativo;
+                  this.operativo =
+                    this.proceso.businessPlanFinancial.gastoCosto.operativo;
+                  this.ventas =
+                    this.proceso.businessPlanFinancial.gastoCosto.comercialVentas;
+                 
+                }
+
               }
             });
           });
