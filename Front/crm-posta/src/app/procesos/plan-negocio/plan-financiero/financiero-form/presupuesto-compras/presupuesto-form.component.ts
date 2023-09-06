@@ -44,12 +44,27 @@ export class PresupuestoFormComponent implements OnInit {
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
       this.idEditar = + parametro.get('idEditar');
+      console.log(this.idEditar);
+      
       if (this.idEditar) {
         this.procesoService.procesosFindAll().subscribe(data => {
           this.procesos = data;
           this.procesos.forEach(p => {
+            console.log(p);
+            
             if (p.id == this.idEditar) {
+              console.log('entre perras');
+              
               this.proceso = p;
+              this.proceso.businessPlanFinancial.presupuestoCompra = p.businessPlanFinancial.presupuestoCompra
+              
+              this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pro => {
+                console.log(pro.estructuraCompras);
+                this.totalUnitarios = pro.total
+                this.totalAnuales = pro.totalAnual
+                this.estructuraCompras=pro.estructuraCompras
+              })
+              
             }
           })
         })
@@ -88,10 +103,25 @@ export class PresupuestoFormComponent implements OnInit {
       pre.estructuraCompras = pre.estructuraCompras.filter(estructura => estructura != e);
     })
   }
+
+  public sacarTotales(){
+
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
+      this.estructuraCompras.forEach(compras=>{
+        compra.total+=compras.totalUnitario;
+      })
+      compra.totalAnual=(compra.total*compra.cantidadProducto);
+    })
+
+    
+  }
+
   agregarFila(producto: string) {
     this.totalUnitarios = 0
     this.totalAnuales = 0
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
+      console.log(compra.id);
+      
       if (compra.nombreProcucto == producto) {
         this.nombreP = compra.nombreProcucto
         compra.total = 0;
@@ -100,7 +130,7 @@ export class PresupuestoFormComponent implements OnInit {
           compra.estructuraCompras = [];
         }
         compra.estructuraCompras.push(this.estructuraCompra);
-        compra.sacarTotales();
+        this.sacarTotales();
       }
       this.totalUnitarios += compra.total;
       this.totalAnuales += compra.totalAnual;
