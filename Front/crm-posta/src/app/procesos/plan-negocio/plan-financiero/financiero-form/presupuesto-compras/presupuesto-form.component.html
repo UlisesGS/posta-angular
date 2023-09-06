@@ -177,6 +177,11 @@
           <button [routerLink]="['/procesos']"  class="btn">Cancelar</button>
           <button [routerLink]="['/ventas/cliente/',cliente.id,'editar', proceso?.id]"  class="btn">Volver</button>
         </div>
+        <div class="form-group mt-3" *ngIf="idVer">
+          
+            <button  (click)="editarYsalir()"  class="btn">Editar</button>
+           
+          </div>
     </div>
 
 

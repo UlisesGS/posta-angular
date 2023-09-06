@@ -217,8 +217,13 @@ export class PlanInversionComponent implements OnInit {
       this.procesoService.procesosUpdate(this.proceso).subscribe(data1=>{
       })
       this.planFinancialService.inversionPut(this.proceso.businessPlanFinancial).subscribe(data=>{
-      this.router.navigate(['/procesos'])
-      Swal.fire('Exito', 'Plan Financiero creado con exito', 'success');
+      if(this.idVer){
+        Swal.fire('Exito', 'Plan Financiero creado con exito', 'success');
+      }else{
+        this.router.navigate(['/procesos'])
+        Swal.fire('Exito', 'Plan Financiero creado con exito', 'success');
+      }
+       
       })
     }
 
