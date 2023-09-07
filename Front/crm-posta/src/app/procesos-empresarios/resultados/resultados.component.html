@@ -159,18 +159,28 @@
                             </tbody>
                         </table>
                     </form>
+                    
                 </div>
-                <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
-                    (click)="guardar()" class="btn">Guardar</button>
-                <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
-                    (click)="guardarYcontinuar()" class="btn">Guardar y Continuar</button>
+                <div *ngIf="!idEditar1">
+                    <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+                        (click)="guardar()" class="btn">Guardar</button>
+                    <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+                        (click)="guardarYcontinuar()" class="btn">Guardar y Continuar</button>
+                    <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+                        (click)="editar()" class="btn">Editar</button>
+                    <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
+                        (click)="editarYcontinuar()" class="btn">Editar y Continuar</button>
+                    <button [routerLink]="['/procesos']" class="btn ">Cancelar</button>
+                    <button [routerLink]="['/diagnostico/empresario/',cliente.id,'editar',proceso.id]"
+                        class="btn ">Volver</button>
+                    </div>
+                <div *ngIf="idEditar1">
+                
                 <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
                     (click)="editar()" class="btn">Editar</button>
-                <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisResultados?.id"
-                    (click)="editarYcontinuar()" class="btn">Editar y Continuar</button>
-                <button [routerLink]="['/procesos']" class="btn ">Cancelar</button>
-                <button [routerLink]="['/diagnostico/empresario/',cliente.id,'editar',proceso.id]"
+                 <button [routerLink]="['/diagnostico/empresario/',cliente.id,'ver',proceso.id]"
                     class="btn ">Volver</button>
+                </div>
             </div>
             <div class="col-2 half-width mt-5" *ngIf="!idVer">
                 <form action="">

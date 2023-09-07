@@ -34,7 +34,7 @@ export class EconomicoComponent {
   indicador9: Indicador = new Indicador();
   indicador10: Indicador = new Indicador();
   analisisEconomico: AnalisisEconomico = new AnalisisEconomico();
-
+  idEditar1:number;
   constructor(
     private procesoEmpresarioservice: ProcessEmpresarioService,
     private ruta: ActivatedRoute,
@@ -45,10 +45,10 @@ export class EconomicoComponent {
   ngOnInit(): void {
     this.ruta.paramMap.subscribe(parametro => {
       let id = + parametro.get('id')
+      this.idEditar1=+parametro.get('idEditar1');
       this.clienteServicio.getClient(id).subscribe(clien => {
         this.cliente = clien;
-        console.log(this.cliente);
-        
+                
         this.process.procesosFindAll().subscribe(data => {
           this.procesos = data;
           this.procesos.forEach(pr => {
@@ -56,35 +56,14 @@ export class EconomicoComponent {
               this.proceso=pr;
               // para editar
               let idEditar = +parametro.get('idEditar');
+              if(this.idEditar1){
+                this.verSegunId(this.idEditar1);
+              }
               if (idEditar) {
-                this.process.procesosFindById(idEditar).subscribe(data => {
-                  this.proceso = data;
-                  this.indicador1=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventasMes;
-                  this.indicador2=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aumentoVentas;
-                  this.indicador3=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosFormales;
-                  this.indicador4=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosInformales;
-                  this.indicador5=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosNuevos;
-                  this.indicador6=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empresaExportando;
-                  this.indicador7=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventassExportacion;
-                  this.indicador8=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.diversificacionProductos;
-                  this.indicador9=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aperturaNuevosMercados;
-                  this.indicador10=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.accesoOtrasFuentes;
-                })
+               this.verSegunId(idEditar);
               }
               if (this.idVer) {
-                this.process.procesosFindById(this.idVer).subscribe(data => {
-                  this.proceso = data;
-                  this.indicador1=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventasMes;
-                  this.indicador2=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aumentoVentas;
-                  this.indicador3=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosFormales;
-                  this.indicador4=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosInformales;
-                  this.indicador5=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosNuevos;
-                  this.indicador6=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empresaExportando;
-                  this.indicador7=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventassExportacion;
-                  this.indicador8=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.diversificacionProductos;
-                  this.indicador9=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aperturaNuevosMercados;
-                  this.indicador10=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.accesoOtrasFuentes;
-                })
+               this.verSegunId(this.idVer);
               }
             }
           })
@@ -92,7 +71,21 @@ export class EconomicoComponent {
       })
     })
   }
-
+ verSegunId(idProceso:number){
+  this.process.procesosFindById(idProceso).subscribe(data => {
+    this.proceso = data;
+    this.indicador1=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventasMes;
+    this.indicador2=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aumentoVentas;
+    this.indicador3=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosFormales;
+    this.indicador4=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosInformales;
+    this.indicador5=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empleosNuevos;
+    this.indicador6=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.empresaExportando;
+    this.indicador7=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.ventassExportacion;
+    this.indicador8=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.diversificacionProductos;
+    this.indicador9=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.aperturaNuevosMercados;
+    this.indicador10=this.proceso.processEmpresario.diagnosticoEmpresarial.analisisEconomico.accesoOtrasFuentes;
+  })
+ }
 
   guardar() {
     this.analisisEconomico.ventasMes = this.indicador1;
@@ -153,11 +146,20 @@ export class EconomicoComponent {
   editar(){
     this.procesoEmpresarioservice.updateProcesoEconomico(this.proceso).subscribe(data=>{
     })
-    if(this.proceso.processEmpresario.planDeAccion){
-      this.router.navigate([`/economico/accion/${this.cliente.id}/editar/${this.proceso.id}`])
+    if(this.idEditar1){
+      
+      this.router.navigate([`/diagnostico/empresario/${this.cliente.id}/ver/${this.proceso.id}`])
+      Swal.fire('Exito', 'Analisis Economico editado con exito', 'success')
     }else{
-      this.router.navigate(['/empresario/accion/cliente/', this.cliente.id])
+      if(this.proceso.processEmpresario.planDeAccion){
+        this.router.navigate([`/economico/accion/${this.cliente.id}/editar/${this.proceso.id}`])
+        Swal.fire('Exito', 'Analisis Economico editado con exito', 'success')
+      }else{
+        this.router.navigate(['/empresario/accion/cliente/', this.cliente.id])
+        Swal.fire('Exito', 'Analisis Economico editado con exito', 'success')
+      }
     }
+   
   }
 
 

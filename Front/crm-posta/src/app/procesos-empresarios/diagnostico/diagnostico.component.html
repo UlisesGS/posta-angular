@@ -1,4 +1,7 @@
+
 <div class="row" *ngIf="!idVer">
+ 
+
   <div class="col-2">
     <app-client-details></app-client-details>
   </div>
@@ -2889,9 +2892,14 @@
         </form>
       </div>
       <div>
-        
+        <div class="form-group mt-3" *ngIf="idEditar1">
+          
+          <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="editar()" class="btn">Editar</button>
+       
+          <button *ngIf="consolidado" [routerLink]="['/diagnostico/empresario/', cliente.id, 'ver', proceso.id]"  class="btn">Volver</button>
+      </div>
 
-        <div class="form-group mt-3">
+        <div class="form-group mt-3" *ngIf="!idEditar1">
           <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && !proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotales()">Guardar y Ver Totales</button>
           <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id && proceso?.selfAssessment?.client?.id" class="btn" (click)="sacarTotalesCambiarTipo()">Guardar y Ver Totales</button>
           <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.diagnostico?.id" (click)="editar()" class="btn">Editar</button>
@@ -5687,11 +5695,15 @@
             </tbody>
           </table>
         </form>
+        <div>
+          <button  [routerLink]="['/diagnostico/',cliente.id,'editar',proceso.id]" class="btn btn-danger">Editar</button>
+        </div>
       </div>
     </div>
     <app-economico [idVer]="idVer" class="col"></app-economico>
-    
+    <button  [routerLink]="['/economico/',cliente.id,'editar',proceso.id]" class="btn btn-danger">Editar</button>
     <app-resultados [idVer]="idVer" class="col"></app-resultados>
+    <button  [routerLink]="['/resultados/',cliente.id,'editar',proceso.id]" class="btn btn-danger">Editar</button>
     <div class="form-group mt-3">
       <button [routerLink]="['/clients/details/',cliente.id]"  class="btn">Volver</button>
   </div>
