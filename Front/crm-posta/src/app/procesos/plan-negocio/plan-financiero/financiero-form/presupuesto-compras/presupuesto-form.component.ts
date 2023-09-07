@@ -58,7 +58,7 @@ if(this.idVer){
        this.proceso.businessPlanFinancial.presupuestoCompra = p.businessPlanFinancial.presupuestoCompra
               
         this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pro => {
-          console.log(pro.estructuraCompras);
+          
           this.totalUnitarios = pro.total
           this.totalAnuales = pro.totalAnual
           this.estructuraCompras=pro.estructuraCompras
@@ -120,7 +120,7 @@ if (this.idEditar) {
  
   elementos: any[] = []; // Inicializa la lista vacía o con elementos existentes
 
-  sacarFila(presupuestoCompra: PresupuestoCompra, e: EstructuraCompra) {  console.log(e);
+  sacarFila(presupuestoCompra: PresupuestoCompra, e: EstructuraCompra) {  ;
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pre => {
       pre.estructuraCompras = pre.estructuraCompras.filter(estructura => estructura != e);
       this.estructuraCompras = this.estructuraCompras.filter(a=>a !=e);
@@ -133,7 +133,7 @@ if (this.idEditar) {
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
       compra.total=0;
       compra.totalAnual=0;
-      console.log(this.estructuraCompras);
+  
       
       this.estructuraCompras.forEach(compras=>{
         compra.total+=compras.totalUnitario;
@@ -157,14 +157,14 @@ if (this.idEditar) {
           compra.estructuraCompras = [];
         }
         compra.estructuraCompras.push(this.estructuraCompra);
-        console.log(compra);
         
-      this.sacarTotales();
+      
+    
       }
-      this.totalUnitarios += compra.total;
-      this.totalAnuales += compra.totalAnual;
-      this.i++; 
+      this.sacarTotales();
+    
     })
+   
     this.nombreP = this.presupuestoCompra.nombreProcucto
     this.estructuraCompras = [];
     this.estructuraCompra = new EstructuraCompra();
