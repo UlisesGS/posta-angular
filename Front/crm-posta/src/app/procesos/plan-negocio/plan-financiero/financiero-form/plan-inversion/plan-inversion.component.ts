@@ -62,6 +62,7 @@ export class PlanInversionComponent implements OnInit {
         })
       }
       if(idEditar){
+        
         this.procesoService.procesosFindById(idEditar).subscribe(data=>{
           this.proceso= data;
           this.planDeInversion= this.proceso.businessPlanFinancial.planInversion;
@@ -78,10 +79,11 @@ export class PlanInversionComponent implements OnInit {
     })
   }
   eliminarActivo(a:Inversion){
+    
     this.planDeInversion.activoPropio-=a.aportesPropios;
     this.planDeInversion.activoInvesion-=a.inversionRequerida;
     this.planDeInversion.activoCredito-=a.creditoRequerido;
-    this.planDeInversion.calculoTotal();
+    this.planDeInversion.calculoTotal;
     this.planDeInversion.activoFijo= this.planDeInversion.activoFijo.filter(f=>f!=a);
     this.activosFijos = this.activosFijos.filter(activo=>activo!=a);
   }
@@ -89,7 +91,7 @@ export class PlanInversionComponent implements OnInit {
     this.planDeInversion.maquinariaPropio-=a.aportesPropios;
     this.planDeInversion.maquinariaInversion-=a.inversionRequerida;
     this.planDeInversion.maquinariaCredito-=a.creditoRequerido;
-    this.planDeInversion.calculoTotal();
+    this.planDeInversion.calculoTotal;
     this.planDeInversion.maquinariaEquipo= this.planDeInversion.maquinariaEquipo.filter(f=>f!=a);
     this.maquinarias = this.maquinarias.filter(activo=>activo!=a);
   }
@@ -97,7 +99,7 @@ export class PlanInversionComponent implements OnInit {
     this.planDeInversion.mueblesPropio-=a.aportesPropios;
     this.planDeInversion.mueblesInversion-=a.inversionRequerida;
     this.planDeInversion.muebleCredito-=a.creditoRequerido;
-    this.planDeInversion.calculoTotal();
+    this.planDeInversion.calculoTotal;
     this.planDeInversion.mueblesEnseres= this.planDeInversion.mueblesEnseres.filter(f=>f!=a);
     this.muebles = this.muebles.filter(activo=>activo!=a);
   }
@@ -105,76 +107,82 @@ export class PlanInversionComponent implements OnInit {
     this.planDeInversion.vehiculosPropio-=a.aportesPropios;
     this.planDeInversion.vehiculosInversion-=a.inversionRequerida;
     this.planDeInversion.vehiculosCredito-=a.creditoRequerido;
-    this.planDeInversion.calculoTotal();
+    this.planDeInversion.calculoTotal;
     this.planDeInversion.vehiculos= this.planDeInversion.vehiculos.filter(f=>f!=a);
     this.vehiculos = this.vehiculos.filter(activo=>activo!=a);
   }
 
+  
+
   agregarActivo() {
     this.activoFijo.creditoRequerido = 0;
-    this.activoFijo.totalCredito();
+    this.activoFijo.totalCredito;
     this.activosFijos.push(this.activoFijo);
     this.activoFijo = new Inversion();
     this.planDeInversion.activoFijo = this.activosFijos;
     this.planDeInversion.activoCredito = 0;
     this.planDeInversion.activoPropio = 0;
     this.planDeInversion.activoInvesion = 0;
-    this.planDeInversion.fijo();
+    this.planDeInversion.fijo;
     this.planDeInversion.totalPropio = 0;
     this.planDeInversion.totalInversion = 0;
     this.planDeInversion.totalCredito = 0;
-    this.planDeInversion.calculoTotal();
+    this.planDeInversion.calculoTotal;
     //this.activosFijos.push();
 
   }
   agregarMaquinaria() {
+
+    
     this.maquinaria.creditoRequerido = 0;
-    this.maquinaria.totalCredito();
+    this.maquinaria.totalCredito;
     this.maquinarias.push(this.maquinaria);
     this.maquinaria = new Inversion();
     this.planDeInversion.maquinariaEquipo = this.maquinarias;
     this.planDeInversion.maquinariaPropio = 0;
     this.planDeInversion.maquinariaInversion = 0;
     this.planDeInversion.maquinariaCredito = 0;
-    this.planDeInversion.maquinaria();
+    this.planDeInversion.maquinaria;
     this.planDeInversion.totalPropio = 0;
     this.planDeInversion.totalInversion = 0;
     this.planDeInversion.totalCredito = 0;
-    this.planDeInversion.calculoTotal();
+    this.planDeInversion.calculoTotal;
+    console.log(this.planDeInversion.totalCredito);
+    
     //this.activosFijos.push();
 
   }
   agregarMuebles() {
     this.mueble.creditoRequerido = 0;
-    this.mueble.totalCredito();
+    this.mueble.totalCredito;
     this.muebles.push(this.mueble);
     this.mueble = new Inversion();
     this.planDeInversion.mueblesEnseres = this.muebles;
     this.planDeInversion.mueblesPropio = 0;
     this.planDeInversion.mueblesInversion = 0;
     this.planDeInversion.muebleCredito = 0;
-    this.planDeInversion.muebles();
+    this.planDeInversion.muebles;
     this.planDeInversion.totalPropio = 0;
     this.planDeInversion.totalInversion = 0;
     this.planDeInversion.totalCredito = 0;
-    this.planDeInversion.calculoTotal();
+    this.planDeInversion.calculoTotal;
     //this.activosFijos.push();
 
   }
   agregarVehiculos() {
     this.vehiculo.creditoRequerido = 0;
-    this.vehiculo.totalCredito();
+    this.vehiculo.totalCredito;
     this.vehiculos.push(this.vehiculo);
     this.planDeInversion.vehiculos = this.vehiculos;
     this.vehiculo = new Inversion();
     this.planDeInversion.vehiculosPropio = 0;
     this.planDeInversion.vehiculosInversion = 0;
     this.planDeInversion.vehiculosCredito = 0;
-    this.planDeInversion.vehiculoss();
+    this.planDeInversion.vehiculoss;
     this.planDeInversion.totalPropio = 0;
     this.planDeInversion.totalInversion = 0;
     this.planDeInversion.totalCredito = 0;
-    this.planDeInversion.calculoTotal();
+    this.planDeInversion.calculoTotal;
 
     //this.activosFijos.push();
 
