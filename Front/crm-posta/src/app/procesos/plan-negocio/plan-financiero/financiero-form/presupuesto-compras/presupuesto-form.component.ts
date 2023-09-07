@@ -131,8 +131,7 @@ if (this.idEditar) {
     this.totalUnitarios = 0
     this.totalAnuales = 0
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
-      compra.total=0;
-      compra.totalAnual=0;
+
   
       
       this.estructuraCompras.forEach(compras=>{
