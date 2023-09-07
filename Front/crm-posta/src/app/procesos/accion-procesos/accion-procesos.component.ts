@@ -139,7 +139,7 @@ export class AccionProcesosComponent implements OnInit {
        break;
        // MODIFICAR
        case 'Plan Accion':
-        this.ruta.navigate([`/clients/details/${this.proceso.canvasModel.client.id}`])
+        this.ruta.navigate([`/clients/details/${this.proceso.processEmpresario.client.id}`])
        break;
     }
     this.modal.cerrarModalProceso();
