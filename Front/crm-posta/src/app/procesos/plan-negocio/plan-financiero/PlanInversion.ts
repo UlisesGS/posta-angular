@@ -51,6 +51,8 @@ this.vehiculos.forEach(v=>{
 })
   }
   public calculoTotal(){
+    console.log('hola calculo');
+    
     this.totalPropio=(this.maquinariaPropio+this.mueblesPropio+this.vehiculosPropio+this.activoPropio);
     this.totalInversion=(this.maquinariaInversion+this.mueblesInversion+this.vehiculosInversion+this.activoInvesion);
     this.totalCredito=(this.totalInversion-this.totalPropio);
