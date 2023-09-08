@@ -51,7 +51,7 @@
                 </div>
             </form>
         </div>
-        <div class="form-group mt-3">
+        <div class="form-group mt-3" *ngIf="!idEditar1">
 
             <button *ngIf="proyectInformation.id" (click)="editarYsalir()" class="btn">Editar</button>
 
@@ -64,6 +64,17 @@
             <button [routerLink]="['/estructuraCostos/cliente/',cliente.id,'editar',proceso.id]" (click)="cerrarModalAsesoria()"
                 class="btn ">Volver</button>
         </div>
+        <div class="form-group mt-3" *ngIf="idEditar1">
+
+         
+
+          <button *ngIf="proyectInformation.id" (click)="editarYsalir()" class="btn">Editar </button>
+
+          
+            <button [routerLink]="['/clients/',cliente.id,'verBasico',proceso.id]" 
+                class="btn ">Volver</button>
+        </div>
+
     </div>
 </div>
 
@@ -81,37 +92,37 @@
                 </div>
                 <div class="form-group">
                     <label for="">Problema Identidificado: </label>
-                    <textarea disabled [(ngModel)]="proyectInformation.problemas"   class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="proyectInformation.problemas"   class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks1"
                         placeholder=""></textarea>
                 </div>
                 <div class="form-group">
                     <label   for="">Objetivos: </label>
-                    <textarea disabled [(ngModel)]="proyectInformation.objetivos"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="proyectInformation.objetivos"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks2"
                         placeholder=""></textarea>
                 </div>
                 <div class="form-group">
                     <label  for="">Misión: </label>
-                    <textarea disabled [(ngModel)]="proyectInformation.mision" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="proyectInformation.mision" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks3"
                         placeholder=""></textarea>
                 </div>
                 <div class="form-group">
                     <label  for="">Visión: </label>
-                    <textarea  disabled [(ngModel)]="proyectInformation.vision" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea  disabled [(ngModel)]="proyectInformation.vision" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks4"
                         placeholder=""></textarea>
                 </div>
                 <div class="form-group">
                     <label  for="">Valores Corporativos: </label>
-                    <textarea disabled [(ngModel)]="proyectInformation.valoresCorporativos"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="proyectInformation.valoresCorporativos"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks5"
                         placeholder=""></textarea>
                 </div>
                 <div class="form-group">
                     <label  for="">Impacto Ambiental: </label>
-                    <textarea disabled [(ngModel)]="proyectInformation.impactoAmbiental" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="proyectInformation.impactoAmbiental" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks6"
                         placeholder=""></textarea>
                 </div>
                 <div class="form-group">
                     <label  for="">Impacto Social: </label>
-                    <textarea disabled [(ngModel)]="proyectInformation.impactoSocial" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="proyectInformation.impactoSocial" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks7"
                         placeholder=""></textarea>
                 </div>
 
