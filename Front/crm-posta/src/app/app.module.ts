@@ -223,16 +223,16 @@ const routes: Routes = [
   { path: 'empresario/accion', component: PlanAccionComponent, canActivate: [AuthGuard] },
   { path: 'empresario/accion/cliente/:id', component: PlanAccionComponent, canActivate: [AuthGuard] },
 
-  { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent },
-  { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent },
-  { path: 'economico/empresario/:id/editar/:idEditar', component: EconomicoComponent },
-  
-
-
-
-  //para editar
-  //Plan de Accion
+  { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent,canActivate: [AuthGuard]  },
+  { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent,canActivate: [AuthGuard]  },
+  { path: 'economico/empresario/:id/editar/:idEditar', component: EconomicoComponent,canActivate: [AuthGuard]  },
   { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent,canActivate: [AuthGuard] },
+
+  { path: 'diagnostico/empresario/:id/editar/:idEditar1', component: DiagnosticoComponent,canActivate: [AuthGuard]  },
+  { path: 'resultados/empresario/:id/editar/:idEditar1', component: ResultadosComponent,canActivate: [AuthGuard]  },
+  { path: 'economico/empresario/:id/editar/:idEditar1', component: EconomicoComponent,canActivate: [AuthGuard]  },
+  { path: 'accion/empresario/:id/editar/:idEditar1', component: PlanAccionComponent,canActivate: [AuthGuard] },
+
 
   //Para Ver
   { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent,canActivate: [AuthGuard]  },
