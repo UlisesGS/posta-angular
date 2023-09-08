@@ -22,6 +22,7 @@ export class ResultadosComponent implements OnInit {
   cliente: Client = new Client();
   procesos: Process[] = [];
   proceso: Process = new Process();
+  idEditar1:number;
   constructor(private procesoEmpresarioservice: ProcessEmpresarioService,
     private ruta: ActivatedRoute,
     private clienteServicio: ClientService,
@@ -32,6 +33,7 @@ export class ResultadosComponent implements OnInit {
     
     this.ruta.paramMap.subscribe(parametro => {
       let id = + parametro.get('id')
+      this.idEditar1 = + parametro.get('idEditar1');
       this.clienteServicio.getClient(id).subscribe(clien => {
         this.cliente = clien;
         this.process.procesosFindAll().subscribe(data => {
@@ -50,6 +52,15 @@ export class ResultadosComponent implements OnInit {
                 this.proceso.processEmpresario.diagnosticoEmpresarial = new DiagnosticoEmpresarial();
                 this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados = new AnalisisResultados();
                 this.process.procesosFindById(idEditar).subscribe(data => {
+                  this.proceso = data;
+                })
+              }
+              if(this.idEditar1){
+                this.proceso = new Process()
+                this.proceso.processEmpresario = new ProcessEmpresario();
+                this.proceso.processEmpresario.diagnosticoEmpresarial = new DiagnosticoEmpresarial();
+                this.proceso.processEmpresario.diagnosticoEmpresarial.analisisResultados = new AnalisisResultados();
+                this.process.procesosFindById(this.idEditar1).subscribe(data => {
                   this.proceso = data;
                 })
               }
@@ -98,9 +109,14 @@ export class ResultadosComponent implements OnInit {
   editar() {
     this.procesoEmpresarioservice.updateProcesoResultado(this.proceso).subscribe(data => {
     })
-
-    this.router.navigate([`/procesos`])
-    Swal.fire('Exito', 'Analisis Resultados editados con exito', 'success');
+if(this.idEditar1){
+  this.router.navigate([`/diagnostico/empresario/${this.cliente.id}/ver/${this.proceso.id}`])
+  Swal.fire('Exito', 'Analisis Resultados editados con exito', 'success');
+}else{
+  this.router.navigate([`/procesos`])
+  Swal.fire('Exito', 'Analisis Resultados editados con exito', 'success');
+}
+    
   }
 
 

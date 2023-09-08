@@ -30,7 +30,7 @@ export class InformacionComponent {
   proyectInformation: ProyectInformation = new ProyectInformation();
   idVer1: number;
   imageUrl ="/assets/camaraHD.jpg";
-
+  idEditar1:number;
   constructor(private modalService: ModalService,
     private clienteService: ClientService,
     private rutaParametro: ActivatedRoute,
@@ -45,6 +45,7 @@ export class InformacionComponent {
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
       this.idVer1 = +parametro.get('idVer1');
+      this.idEditar1 = +parametro.get('idEditar1');
 
 
       if (id) {
@@ -57,7 +58,13 @@ export class InformacionComponent {
                 this.proceso = proceso;
                 // para editar
                 let idEditar = +parametro.get('idEditar');
-
+                if(this.idEditar1){
+                  this.procesoService.procesosFindById(this.idEditar1).subscribe(data=>{
+                    this.proceso=data;
+                    this.businessPlan=this.proceso.businessPlan;
+                    this.proyectInformation=this.proceso.businessPlan.proyectInformation;
+                  })
+                }
 
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
@@ -72,8 +79,10 @@ export class InformacionComponent {
                   
                   this.procesoService.procesosFindById(this.idVer1).subscribe(data => {
                     this.proceso = data;
+                    this.businessPlan=this.proceso.businessPlan;
                     this.proyectInformation = this.proceso.businessPlan.proyectInformation;
-
+                               
+                    
                   })
                 }
 
@@ -163,9 +172,16 @@ export class InformacionComponent {
             this.proceso.businessPlan=this.businessPlan;
             this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
               this.proceso=pro;
+              if (this.idEditar1){
+                this.router.navigate(['/clients/',this.cliente.id,'verBasico',this.proceso.id]);
+                Swal.fire('Exito', 'Informacion del Proyecto editado con exito', 'success');
+              }else{
+
+              
             //  this.router.navigate([`interno/cliente/${this.proceso.canvasModel.client.id}`]);
             this.router.navigate(['/procesos']);
             Swal.fire('Exito', 'Informacion del Proyecto editado con exito', 'success');
+              }
             })
           })
 

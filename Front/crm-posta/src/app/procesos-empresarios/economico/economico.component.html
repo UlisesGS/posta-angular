@@ -318,7 +318,7 @@
                     </tbody>
                 </table>
             </form>
-            <div *ngIf="!idVer">
+            <div *ngIf="!idVer && !idEditar1">
                 <button *ngIf="!proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico?.id"
                     (click)="guardarYsalir()" class="btn">Guardar</button>
                 <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico?.id"
@@ -329,6 +329,14 @@
                     (click)="editar()" class="btn">Editar Y Continuar</button>
                 <button [routerLink]="['/procesos']" class="btn">Cancelar</button>
                 <button [routerLink]="['/resultados/empresario/',cliente.id,'editar',proceso.id]"
+                    class="btn ">Volver</button>
+            </div>
+            <div *ngIf="idEditar1">
+           
+                <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico?.id"
+                    (click)="editar()" class="btn">Editar</button>
+               
+                <button [routerLink]="['/dignostico/empresario/',cliente.id,'ver',proceso.id]"
                     class="btn ">Volver</button>
             </div>
 

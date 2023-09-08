@@ -173,6 +173,12 @@ const routes: Routes = [
   { path: 'interno/cliente/:id/editar/:idEditar', component: InternoComponent , canActivate: [AuthGuard]},
   { path: 'dofa/cliente/:id/editar/:idEditar', component: DofaComponent, canActivate: [AuthGuard] },
   { path: 'conclusion/cliente/:id/editar/:idEditar', component: ConclusionComponent, canActivate: [AuthGuard] },
+  // editar desde el ver
+  { path: 'informacion/:id/editar/:idEditar1', component: InformacionComponent , canActivate: [AuthGuard]},
+  { path: 'interno/:id/editar/:idEditar1', component: InternoComponent , canActivate: [AuthGuard]},
+  { path: 'dofa/:id/editar/:idEditar1', component: DofaComponent, canActivate: [AuthGuard] },
+  { path: 'conclusion/:id/editar/:idEditar1', component: ConclusionComponent, canActivate: [AuthGuard] },
+  
   // plan financiero
 
   { path: 'ventas/cliente/:id/editar/:idEditar', component: PresupuestoVentasComponent, canActivate: [AuthGuard] },
@@ -222,6 +228,7 @@ const routes: Routes = [
   { path: 'empresario/economico/cliente/:id', component: EconomicoComponent , canActivate: [AuthGuard]},
   { path: 'empresario/accion', component: PlanAccionComponent, canActivate: [AuthGuard] },
   { path: 'empresario/accion/cliente/:id', component: PlanAccionComponent, canActivate: [AuthGuard] },
+<<<<<<< HEAD
 
   { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent,canActivate: [AuthGuard]  },
   { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent,canActivate: [AuthGuard]  },
@@ -234,7 +241,24 @@ const routes: Routes = [
   { path: 'accion/empresario/:id/editar/:idEditar1', component: PlanAccionComponent,canActivate: [AuthGuard] },
 
 
+=======
+//para editar
+  //Plan de Accion
+  { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent, canActivate: [AuthGuard] },
+  { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent, canActivate: [AuthGuard] },
+  { path: 'economico/empresario/:id/editar/:idEditar', component: EconomicoComponent, canActivate: [AuthGuard] },
+  { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent,canActivate: [AuthGuard] },
+  
+// para editar desde detalle
+  { path: 'diagnostico/:id/editar/:idEditar1', component: DiagnosticoComponent, canActivate: [AuthGuard] },
+  { path: 'resultados/:id/editar/:idEditar1', component: ResultadosComponent, canActivate: [AuthGuard] },
+  { path: 'economico/:id/editar/:idEditar1', component: EconomicoComponent, canActivate: [AuthGuard] },
+  { path: 'accion/:id/editar/:idEditar1', component: PlanAccionComponent,canActivate: [AuthGuard] },
+  
+ 
+>>>>>>> c5b5ba17940b43d0fa831c34a90d0793073db2c3
   //Para Ver
+
   { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent,canActivate: [AuthGuard]  },
   { path: 'accion/empresario/:id/ver/:idVer', component: PlanAccionComponent,canActivate: [AuthGuard]  },
   { path: 'resultados/empresario/:id/ver/:idVer', component: ResultadosComponent,canActivate: [AuthGuard]  },

@@ -142,11 +142,19 @@
                 </table>
             </form>
         </div>
+        <div *ngIf="!idEditar1">
         <button *ngIf="!proceso?.processEmpresario?.planDeAccion?.id" (click)="guardar()" class="btn">Guardar</button>
         <button *ngIf="proceso?.processEmpresario?.planDeAccion?.id" (click)="editar()" class="btn">Editar</button>
         <button [routerLink]="['/procesos']" class="btn ">Cancelar</button>
         <button [routerLink]="['/economico/empresario/',cliente.id,'editar',proceso.id]" class="btn ">Volver</button>
-    </div>
+</div>
+<div *ngIf="idEditar1">
+       
+        <button *ngIf="proceso?.processEmpresario?.planDeAccion?.id" (click)="editar()" class="btn">Editar</button>
+       
+        <button [routerLink]="['/empresario/accion/cliente',cliente.id,'ver',proceso.id]" class="btn ">Volver</button>
+</div>
+</div>
     <div class="col-10" *ngIf="idVer">
         <h2 class="btn btn-disabled">Plan de Áccion</h2>
         <div class="col">
@@ -330,5 +338,6 @@
             </form>
         </div>
         <button [routerLink]="['/clients/details/',cliente.id]"  class="btn">Volver</button>
+        <button [routerLink]="['/accion/',cliente.id,'editar',proceso.id]"  class="btn">Editar</button>
     </div>
 </div>

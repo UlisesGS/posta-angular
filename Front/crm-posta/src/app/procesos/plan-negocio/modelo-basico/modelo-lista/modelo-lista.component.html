@@ -14,6 +14,7 @@
                 <div *ngIf="informacion">
                     
                     <app-informacion></app-informacion>
+                    <button [routerLink]="['/informacion/', cliente.id,'editar',proceso.id]" class="btn btn-danger m-4">Editar</button>
 
                 </div>
             </div>
@@ -29,6 +30,7 @@
                 </div>
                 <div *ngIf="analisis">
                     <app-interno></app-interno>
+                    <button [routerLink]="['/interno/', cliente.id,'editar',proceso.id]" class="btn btn-danger m-4">Editar</button>
                 </div>
             </div>
         </div>
@@ -42,6 +44,7 @@
                 </div>
                 <div *ngIf="dofa">
                     <app-dofa></app-dofa>
+                    <button [routerLink]="['/dofa/', cliente.id,'editar',proceso.id]" class="btn btn-danger m-4">Editar</button>
                 </div>
             </div>
         </div>
@@ -57,6 +60,7 @@
                 </div>
                 <div *ngIf="conclusion">
                     <app-conclusion></app-conclusion>
+                    <button [routerLink]="['/conclusion/', cliente.id,'editar',proceso.id]" class="btn btn-danger m-4">Editar conclusion</button>
                 </div>
             </div>
         </div>

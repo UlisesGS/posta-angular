@@ -32,7 +32,7 @@
                 </div>
             </form>
         </div>
-        <div class="form-group mt-3">
+        <div class="form-group mt-3" *ngIf="!idEditar1" >
             <button *ngIf="dofaAnalisis.id" (click)="editarYsalir()" class="btn">Editar</button>
 
           <button *ngIf="dofaAnalisis.id" (click)="editar()" class="btn">Editar y
@@ -41,6 +41,13 @@
             <button *ngIf="!dofaAnalisis.id" (click)="guardar()" class="btn">Guardar y Continuar</button>
             <button routerLink="/procesos"  class="btn">Cancelar</button>
             <button [routerLink]="['/interno/cliente/',cliente.id,'editar',proceso.id]"
+                class="btn ">Volver</button>
+        </div>
+        <div class="form-group mt-3"  *ngIf="idEditar1">
+            <button *ngIf="dofaAnalisis.id" (click)="editarYsalir()" class="btn">Editar</button>
+
+         
+            <button [routerLink]="['/clients/',cliente.id,'verBasico',proceso.id]" 
                 class="btn ">Volver</button>
         </div>
     </div>
@@ -54,22 +61,22 @@
             <div style="flex-basis: 100%;" class="mt-3">
                 <div class="form-group">
                     <label for="">Debilidades: </label>
-                    <textarea disabled [(ngModel)]="dofaAnalisis.debilidades"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="dofaAnalisis.debilidades"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks1"
                         placeholder=""></textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Oportunidades: </label>
-                    <textarea disabled [(ngModel)]="dofaAnalisis.oportunidades"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="dofaAnalisis.oportunidades"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks2"
                         placeholder=""></textarea>
                 </div>
                 <div class="form-group">
                     <label   for="">Fortalezas: </label>
-                    <textarea disabled [(ngModel)]="dofaAnalisis.fotalezas" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="dofaAnalisis.fotalezas" class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks3"
                         placeholder=""></textarea>
                 </div>
                 <div class="form-group">
                     <label  for="">Amenazas: </label>
-                    <textarea disabled [(ngModel)]="dofaAnalisis.amenazas"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks"
+                    <textarea disabled [(ngModel)]="dofaAnalisis.amenazas"  class="form-control" id="exampleFormControlTextarea1" rows="5" name="remarks4"
                         placeholder=""></textarea>
                 </div>
 

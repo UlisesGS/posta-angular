@@ -23,7 +23,7 @@ export class PlanAccionComponent {
   cliente: Client = new Client();
   procesos: Process[] = [];
   proceso: Process = new Process();
-
+  idEditar1:number;
   constructor(
     private procesoEmpresarioservice: ProcessEmpresarioService,
     private ruta: ActivatedRoute,
@@ -39,18 +39,14 @@ export class PlanAccionComponent {
     
     this.ruta.paramMap.subscribe(parametro => {
       let id = + parametro.get('id')
+      this.idEditar1= + parametro.get('idEditar1');
       this.clienteServicio.getClient(id).subscribe(clien => {
         this.cliente = clien;
         this.process.procesosFindAll().subscribe(data => {
           this.procesos = data;
 
           this.procesos.forEach(pr => {
-            console.log(pr);
-
-
             if (pr.processEmpresario?.client?.id == this.cliente.id) {
-              console.log(pr);
-
               this.proceso = pr
               this.proceso.processEmpresario.planDeAccion=new PlanDeAccion();
               this.proceso.processEmpresario.planDeAccion.lineamientosBasicos=new AreaIntervenir();
@@ -60,20 +56,25 @@ export class PlanAccionComponent {
               // para editar
               let idEditar = +parametro.get('idEditar');
               console.log('no entro al if');
-
+              if(this.idEditar1){
+                this.process.procesosFindById(this.idEditar1).subscribe(data => {
+                  this.proceso = data;
+                  
+                })
+              }
               if (idEditar) {
                 this.process.procesosFindById(idEditar).subscribe(data => {
                   this.proceso = data;
-                  console.log(this.proceso);
+                  
                 })
               }
               this.idVer=+parametro.get('idVer');
               if (this.idVer) {
-                console.log(this.idVer);
+               
                 
                 this.process.procesosFindById(this.idVer).subscribe(data => {
                   this.proceso = data;
-                  console.log(this.proceso);
+                 
                   
                 })
               }
@@ -107,8 +108,15 @@ export class PlanAccionComponent {
 
   editar(){
     this.procesoEmpresarioservice.updatePlanDeAccion(this.proceso).subscribe(data=>{
-      Swal.fire('Exito', 'El plan de Accion fue editado con exito', 'success')
-      this.router.navigate(['/procesos']);
+      if(this.idEditar1){
+        this.router.navigate([`/empresario/accion/cliente/${this.cliente.id}/ver/${this.proceso.id}`])
+        Swal.fire('Exito', 'El plan de Accion fue editado con exito', 'success')
+      }else{
+        this.router.navigate(['/procesos']);
+        Swal.fire('Exito', 'El plan de Accion fue editado con exito', 'success')
+      }
+    
+     
     })
   }
 }

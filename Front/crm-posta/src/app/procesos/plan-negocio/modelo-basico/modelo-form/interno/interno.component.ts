@@ -28,7 +28,7 @@ export class InternoComponent {
   proceso:Process= new Process();
   idVer1: number;
   imageUrl ="/assets/camaraHD.jpg";
-
+  idEditar1:number;
   constructor(private modalService: ModalService,
     private clienteService: ClientService,
     private rutaParametro: ActivatedRoute,
@@ -39,6 +39,7 @@ export class InternoComponent {
     ngOnInit(): void {
       this.rutaParametro.paramMap.subscribe(parametro => {
         let id = +parametro.get('id');
+        this.idEditar1 = +parametro.get('idEditar1');
         this.idVer1 = +parametro.get('idVer1');
         if (id) {
           this.clienteService.getClient(id).subscribe(data => {
@@ -58,6 +59,14 @@ export class InternoComponent {
                 
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
+                    this.proceso=data;
+                    this.businessPlan=this.proceso.businessPlan;
+                    this.internalExternalAnalysis=this.proceso.businessPlan.analisis;
+                    
+                  })
+                }
+                if(this.idEditar1){
+                  this.procesoService.procesosFindById(this.idEditar1).subscribe(data=>{
                     this.proceso=data;
                     this.businessPlan=this.proceso.businessPlan;
                     this.internalExternalAnalysis=this.proceso.businessPlan.analisis;
@@ -169,8 +178,14 @@ export class InternoComponent {
                   this.proceso.businessPlan=this.businessPlan;
                   this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
                     this.proceso=pro;
-                    this.router.navigate(['/procesos']);
-                    Swal.fire('Exito', 'Analisis interno y externo editada con exito', 'success');
+                    if(this.idEditar1){
+                      this.router.navigate(['/clients/',this.cliente.id,'verBasico',this.proceso.id]);
+                      Swal.fire('Exito', 'Analisis interno y externo editada con exito', 'success');
+                    }else{
+                      this.router.navigate(['/procesos']);
+                      Swal.fire('Exito', 'Analisis interno y externo editada con exito', 'success');
+                    }
+                   
                   })
                 })
               })
