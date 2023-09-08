@@ -44,7 +44,7 @@
                 </div>
                 <div *ngIf="dofa">
                     <app-dofa></app-dofa>
-                    <button class="btn btn-danger m-4">Editar</button>
+                    <button [routerLink]="['/dofa/', cliente.id,'editar',proceso.id]" class="btn btn-danger m-4">Editar</button>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                 </div>
                 <div *ngIf="conclusion">
                     <app-conclusion></app-conclusion>
-                    <button class="btn btn-danger m-4">Editar</button>
+                    <button [routerLink]="['/conclusion/', cliente.id,'editar',proceso.id]" class="btn btn-danger m-4">Editar conclusion</button>
                 </div>
             </div>
         </div>

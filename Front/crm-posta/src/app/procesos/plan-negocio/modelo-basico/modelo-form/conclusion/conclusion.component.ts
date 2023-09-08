@@ -27,7 +27,7 @@ export class ConclusionComponent {
   idVer1:number;
   conclusion:string;
   imageUrl ="/assets/camaraHD.jpg";
-
+  idEditar1:number;
   constructor(private modalService: ModalService,
     private clienteService: ClientService,
     private rutaParametro: ActivatedRoute,
@@ -38,6 +38,7 @@ export class ConclusionComponent {
     ngOnInit(): void {
       this.rutaParametro.paramMap.subscribe(parametro => {
         let id = +parametro.get('id');
+        this.idEditar1 = + parametro.get('idEditar1');
         this.idVer1 = +parametro.get('idVer1');
         if (id) {
           this.clienteService.getClient(id).subscribe(data => {
@@ -59,7 +60,15 @@ export class ConclusionComponent {
 
                   })
                 }
-
+                  if (this.idEditar1){
+                    this.procesoService.procesosFindById(this.idEditar1).subscribe(data=>{
+                      this.proceso=data;
+                      this.businessPlan=this.proceso.businessPlan;
+                      this.businessPlan.conclusion=this.proceso?.businessPlan?.conclusion;
+                      this.conclusion=this.proceso?.businessPlan?.conclusion;
+                      
+                    })
+                  }
 
                     // para editar
                 let idEditar = +parametro.get('idEditar');
@@ -155,8 +164,13 @@ export class ConclusionComponent {
                   this.proceso.businessPlan=this.businessPlan;
                   this.procesoService.procesosUpdate(this.proceso).subscribe(pro=>{
                     this.proceso=pro;
+                    if(this.idEditar1){
+                      this.router.navigate(['/clients/',this.cliente.id,'verBasico',this.proceso.id]);
+                       Swal.fire('Exito', 'Conclusiones editada con exito', 'success');
+                    }else{
                     this.router.navigate(['/procesos']);
                     Swal.fire('Exito', 'Conclusiones editada con exito', 'success');
+                    }
                   //  this.router.navigate([`dofa/cliente/${this.proceso.canvasModel.client.id}`]);
                   })
                 })
