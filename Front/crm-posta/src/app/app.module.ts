@@ -173,6 +173,12 @@ const routes: Routes = [
   { path: 'interno/cliente/:id/editar/:idEditar', component: InternoComponent , canActivate: [AuthGuard]},
   { path: 'dofa/cliente/:id/editar/:idEditar', component: DofaComponent, canActivate: [AuthGuard] },
   { path: 'conclusion/cliente/:id/editar/:idEditar', component: ConclusionComponent, canActivate: [AuthGuard] },
+  // editar desde el ver
+  { path: 'informacion/:id/editar/:idEditar1', component: InformacionComponent , canActivate: [AuthGuard]},
+  { path: 'interno/:id/editar/:idEditar1', component: InternoComponent , canActivate: [AuthGuard]},
+  { path: 'dofa/:id/editar/:idEditar1', component: DofaComponent, canActivate: [AuthGuard] },
+  { path: 'conclusion/:id/editar/:idEditar1', component: ConclusionComponent, canActivate: [AuthGuard] },
+  
   // plan financiero
 
   { path: 'ventas/cliente/:id/editar/:idEditar', component: PresupuestoVentasComponent, canActivate: [AuthGuard] },
