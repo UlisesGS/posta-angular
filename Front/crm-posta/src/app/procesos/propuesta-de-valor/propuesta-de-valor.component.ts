@@ -44,8 +44,7 @@ export class PropuestaDeValorComponent {
                 
                 // para editar
                 let idEditar = +parametro.get('idEditar');
-                console.log('no entro al if');
-                
+                                
                 if(idEditar){
                   this.procesoService.procesosFindById(idEditar).subscribe(data=>{
                     this.proceso=data;
