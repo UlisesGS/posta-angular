@@ -23,6 +23,9 @@ export class ResultadosComponent implements OnInit {
   procesos: Process[] = [];
   proceso: Process = new Process();
   idEditar1:number;
+  verId:number=1;
+
+
   constructor(private procesoEmpresarioservice: ProcessEmpresarioService,
     private ruta: ActivatedRoute,
     private clienteServicio: ClientService,
@@ -130,4 +133,8 @@ if(this.idEditar1){
       this.router.navigate(['/empresario/economico/cliente/', this.cliente.id])
     }
   }
+
+
+
+  
 }

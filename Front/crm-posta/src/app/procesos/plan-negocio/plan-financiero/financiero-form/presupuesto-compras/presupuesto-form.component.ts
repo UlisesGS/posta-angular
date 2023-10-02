@@ -20,6 +20,8 @@ export class PresupuestoFormComponent implements OnInit {
   i = 0;
   totalUnitarios: number = 0;
   totalAnuales: number = 0;
+  subto:number=0;
+  subto1:number=0;
   nombreP: string;
   materiaPrima: string[] = [];
   unidadesDeMedida: string[] = [];
@@ -35,6 +37,8 @@ export class PresupuestoFormComponent implements OnInit {
   estructuraCompra: EstructuraCompra = new EstructuraCompra()
   estructuraCompra2: EstructuraCompra = new EstructuraCompra()
   estructuraCompras: EstructuraCompra[] = []
+  otrosInsumos: EstructuraCompra[] = []
+  insumos:EstructuraCompra=new EstructuraCompra();
   presupuestoCompra: PresupuestoCompra = new PresupuestoCompra();
   constructor(private rutaParametro: ActivatedRoute,
     private clienteService: ClientService,
@@ -62,6 +66,7 @@ if(this.idVer){
           this.totalUnitarios = pro.total
           this.totalAnuales = pro.totalAnual
           this.estructuraCompras=pro.estructuraCompras
+          this.otrosInsumos=pro.otrosInsumos
         })
         
       }
@@ -120,6 +125,13 @@ if (this.idEditar) {
  
   elementos: any[] = []; // Inicializa la lista vacía o con elementos existentes
 
+  sacarFila1(presupuestoCompra: PresupuestoCompra, e: EstructuraCompra) {  ;
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pre => {
+      pre.otrosInsumos = pre.otrosInsumos.filter(estructura => estructura != e);
+      this.otrosInsumos = this.otrosInsumos.filter(a=>a !=e);
+    })
+    this.sacarTotales();
+  }
   sacarFila(presupuestoCompra: PresupuestoCompra, e: EstructuraCompra) {  ;
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pre => {
       pre.estructuraCompras = pre.estructuraCompras.filter(estructura => estructura != e);
@@ -130,28 +142,46 @@ if (this.idEditar) {
   public sacarTotales(){
     this.totalUnitarios = 0
     this.totalAnuales = 0
+   
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
+      console.log("Hola");
+      compra.total=0;
+      compra.totalAnual=0;
+      compra.subtotal=0;
+      this.estructuraCompras.forEach(compras=>{
+        compra.subtotal+=compras.totalUnitario;
+      })
+      
+      this.totalUnitarios=compra.subtotal+compra.subtotal2;//
+      compra.total=this.totalUnitarios;//
+      compra.totalAnual=(compra.total*compra.cantidadProducto);
+      this.totalAnuales=compra.totalAnual;
+    })
+    
+  }
+  public sacarTotales1(){
+    this.totalUnitarios = 0
+    this.totalAnuales = 0
+    
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
       compra.total=0;
       compra.totalAnual=0;
-  
-      
-      this.estructuraCompras.forEach(compras=>{
-        compra.total+=compras.totalUnitario;
+      compra.subtotal2=0;
+      this.otrosInsumos.forEach(compras=>{
+        compra.subtotal2+=compras.totalUnitario;
       })
+      this.totalUnitarios=compra.subtotal+compra.subtotal2;//
+      compra.total=this.totalUnitarios;//
       compra.totalAnual=(compra.total*compra.cantidadProducto);
-      this.totalUnitarios=compra.total;
-      this.totalAnuales=compra.totalAnual;
+      this.totalAnuales=compra.totalAnual; 
     })
-
-
   }
   agregarFila(producto: string) {
     
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
       if (compra.nombreProcucto == producto) {
         this.nombreP = compra.nombreProcucto
-        compra.total = 0;
-        compra.totalAnual=0;
+        
         this.estructuraCompra.totalUnitario = this.estructuraCompra.valorUnitario * this.estructuraCompra.cantidadUbnidad;
         if (compra.estructuraCompras == null) {
           compra.estructuraCompras = [];
@@ -166,8 +196,31 @@ if (this.idEditar) {
     })
    
     this.nombreP = this.presupuestoCompra.nombreProcucto
-    this.estructuraCompras = [];
+    //this.estructuraCompras = []; esta pija lo rompe
     this.estructuraCompra = new EstructuraCompra();
+  }
+  agregarFila1(producto: string) {
+    
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
+      if (compra.nombreProcucto == producto) {
+        this.nombreP = compra.nombreProcucto
+       
+        this.insumos.totalUnitario = this.insumos.valorUnitario * this.insumos.cantidadUbnidad;
+        if (compra.otrosInsumos == null) {
+          compra.otrosInsumos = [];
+        }
+        compra.otrosInsumos.push(this.insumos);
+        
+      
+    
+      }
+      this.sacarTotales1();
+    
+    })
+   
+    this.nombreP = this.presupuestoCompra.nombreProcucto
+    //this.otrosInsumos = []; esta pija lo rompe
+    this.insumos = new EstructuraCompra();
   }
 
   public crearPresupuestoCompra(estructuraMercado: EstructuraMercado) {
