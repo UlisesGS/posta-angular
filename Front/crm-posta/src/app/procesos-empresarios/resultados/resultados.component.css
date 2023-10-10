@@ -43,11 +43,17 @@ button{
   
   .right-align {
     margin-top: 10px;
-    float: right;
-    
-    
-    
+    float: right; 
   }
   .half-width {
     width: 30%;
+  }
+  
+  .content{
+    display: flex;
+    overflow-x: hidden;
+  }
+  #conta{
+    max-height: 100vh;
+    overflow: auto;
   }

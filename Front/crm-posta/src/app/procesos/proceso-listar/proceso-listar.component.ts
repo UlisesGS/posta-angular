@@ -163,14 +163,10 @@ this.modal.abrirModalPocesos();
  
        });
       }else{
-        this.procesoService.procesoListarPorUsuario(this.usuario.id,page)
+        this.procesoService?.procesoListarPorUsuario(this.usuario.id,page)
 
      
         .subscribe(r => {
-
- 
-         
- 
          this.procesos = r.content as Process[];
          this.paginador = r;
         console.log(this.proceso);
