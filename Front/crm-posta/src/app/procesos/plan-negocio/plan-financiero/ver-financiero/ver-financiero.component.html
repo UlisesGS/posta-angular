@@ -14,8 +14,8 @@
                 <div *ngIf="venta">
                     <div *ngIf="proceso?.businessPlanFinancial?.presupuestoVenta">
                     <app-presupuesto-ventas></app-presupuesto-ventas>
-                    <button (click)="condicionVenta()"
-                    class="btn btn-danger">Cerrar</button>
+                    <!-- <button (click)="condicionVenta()"
+                    class="btn btn-danger">Cerrar</button> -->
                 </div>   
                 <div *ngIf="!proceso?.businessPlanFinancial?.presupuestoVenta" class="alert alert-primary" role="alert">
                     Presupuesto de venta no existe 
@@ -35,8 +35,8 @@
                 <div *ngIf="compra">
                     <div *ngIf="proceso?.businessPlanFinancial?.presupuestoCompra">
                     <app-presupuesto-form></app-presupuesto-form>
-                    <button (click)="condicionCompra()"
-                    class="btn btn-danger">Cerrar</button>
+                    <!-- <button (click)="condicionCompra()"
+                    class="btn btn-danger">Cerrar</button> -->
                 </div>
                 <div *ngIf="!proceso?.businessPlanFinancial?.presupuestoCompra" class="alert alert-primary" role="alert">
                     Presupuesto de compra no existe 
@@ -56,8 +56,8 @@
                 <div *ngIf="gasto">
                     <div *ngIf="proceso?.businessPlanFinancial?.gastoCosto">
                     <app-presupuesto-gasto></app-presupuesto-gasto>
-                    <button (click)="condicionGasto()"
-                    class="btn btn-danger">Cerrar</button>
+                    <!-- <button (click)="condicionGasto()"
+                    class="btn btn-danger">Cerrar</button> -->
 
                     </div>
                     <div *ngIf="!proceso?.businessPlanFinancial?.gastoCosto" class="alert alert-primary" role="alert">
@@ -79,8 +79,8 @@
                 <div *ngIf="inversion">
                     <div *ngIf="proceso?.businessPlanFinancial?.planInversion">
                     <app-plan-inversion></app-plan-inversion>
-                    <button (click)="condicionInversion()"
-                    class="btn btn-danger">Cerrar</button>
+                    <!-- <button (click)="condicionInversion()"
+                    class="btn btn-danger">Cerrar</button> -->
                 </div>
                 <div *ngIf="!proceso?.businessPlanFinancial?.planInversion" class="alert alert-primary" role="alert">
                     Presupuesto de gasto no existe 
@@ -89,6 +89,6 @@
             </div>
         </div>
 
-        <button [routerLink]="['/clients/details/', cliente.id]"  class="btn" id="btn">Volver</button>
+        <button [routerLink]="['/clients/details/', cliente.id]"  class="btn mt-5" id="btn">Volver</button>
     </div>
 </div>

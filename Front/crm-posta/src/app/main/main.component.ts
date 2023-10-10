@@ -31,7 +31,7 @@ export class MainComponent implements OnInit {
   clienteSeleccionado: Client;
   procesoSeleccionado: Process;
   paginador: any;
-
+  procesoCache:Process[]=[];
 
   public value: boolean;
   public genero: string;
@@ -42,8 +42,12 @@ export class MainComponent implements OnInit {
   public termino: string;
 
   ngOnInit(): void {
+    
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-
+    this.procesosService.procesosFindAll().subscribe(data=>{
+      this.procesoCache= data;
+      localStorage.setItem('procesos', JSON.stringify(this.procesoCache));
+    })
     this.procesosService.procesosFindAllUltimo().subscribe(data => {
 
       this.procesos = data;
@@ -66,24 +70,16 @@ export class MainComponent implements OnInit {
             (response.content as Client[]).forEach(cliente => console.log(cliente.name));
           })
         ).subscribe(response => {
-
-
           this.clients = response.content as Client[];
           this.paginador = response;
-
           if (this.usuario.role != 'ADMIN') {
             this.clients = this.clients.filter(f => f.user.id == this.usuario.id);
           }
-          //  console.log(this.paginador);
-
-        });
+          });
 
     })
     this.serviceClient.getClientsMunicipios().subscribe(data => {
       this.municicipios = data;
-      //console.log(this.municicipios);
-
-
     })
 
 

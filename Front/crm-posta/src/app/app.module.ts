@@ -228,20 +228,6 @@ const routes: Routes = [
   { path: 'empresario/economico/cliente/:id', component: EconomicoComponent , canActivate: [AuthGuard]},
   { path: 'empresario/accion', component: PlanAccionComponent, canActivate: [AuthGuard] },
   { path: 'empresario/accion/cliente/:id', component: PlanAccionComponent, canActivate: [AuthGuard] },
-<<<<<<< HEAD
-
-  { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent,canActivate: [AuthGuard]  },
-  { path: 'resultados/empresario/:id/editar/:idEditar', component: ResultadosComponent,canActivate: [AuthGuard]  },
-  { path: 'economico/empresario/:id/editar/:idEditar', component: EconomicoComponent,canActivate: [AuthGuard]  },
-  { path: 'accion/empresario/:id/editar/:idEditar', component: PlanAccionComponent,canActivate: [AuthGuard] },
-
-  { path: 'diagnostico/empresario/:id/editar/:idEditar1', component: DiagnosticoComponent,canActivate: [AuthGuard]  },
-  { path: 'resultados/empresario/:id/editar/:idEditar1', component: ResultadosComponent,canActivate: [AuthGuard]  },
-  { path: 'economico/empresario/:id/editar/:idEditar1', component: EconomicoComponent,canActivate: [AuthGuard]  },
-  { path: 'accion/empresario/:id/editar/:idEditar1', component: PlanAccionComponent,canActivate: [AuthGuard] },
-
-
-=======
 //para editar
   //Plan de Accion
   { path: 'diagnostico/empresario/:id/editar/:idEditar', component: DiagnosticoComponent, canActivate: [AuthGuard] },
@@ -256,7 +242,6 @@ const routes: Routes = [
   { path: 'accion/:id/editar/:idEditar1', component: PlanAccionComponent,canActivate: [AuthGuard] },
   
  
->>>>>>> c5b5ba17940b43d0fa831c34a90d0793073db2c3
   //Para Ver
 
   { path: 'diagnostico/empresario/:id/ver/:idVer', component: DiagnosticoComponent,canActivate: [AuthGuard]  },

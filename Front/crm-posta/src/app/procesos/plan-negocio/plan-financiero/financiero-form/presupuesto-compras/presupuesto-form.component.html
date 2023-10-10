@@ -8,7 +8,7 @@
             <h5 class="centered-heading">CONSUMO MATERIA PRIMA POR PRODUCTO</h5>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col">
                 <div class="centered-col" *ngFor="let item of proceso?.businessPlanFinancial?.presupuestoCompra">
                     <div class="col">
                         <div style="margin-bottom: 20px;" class="col-6">
@@ -80,8 +80,64 @@
                                         <th colspan="4">Total</th>
                                         <th>{{item.total?.toLocaleString('en-US', {
                                             style: 'currency', currency: 'USD' })}} </th>
+                                            
                                     </tr>
                                 </tfoot>
+                                <thead>
+                                    <tr>
+                                        <td class="autorellenadas" colspan="4">Subtotal</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{item.subtotal?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td  class="autorellenadas" style="text-align: center;" colspan="5">Otros Insumos</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td><input type="text" [(ngModel)]="insumos.materiaPrima"></td>
+                                  <td style="width: 20%; transform: scale(0.75);">
+                                    <select [(ngModel)]="insumos.tipo" class="form-select"
+                                    aria-label="Default select example" >
+                                    <option value="UNIDAD" >Unidad</option>
+                                    <option value="KILOGRAMO" >Kilogramo</option>
+                                    <option value="LIBRA" >Libra</option>
+                                    <option value="ONZA" >Onza</option>
+                                    <option value="LITRO" >Litro</option>
+                                    <option value="METRO CUBICO" >Metro cubico</option>
+                                    <option value="DIA" >Dia</option>
+                                    <option value="HORA" >Hora</option>
+                                    <option value="MINUTO" >Minuto</option>
+                                    <option value="SERVICIO" >Servicio</option>
+                                    <option value="PRODUCTO" >Producto</option>
+                                    <option value="OTRO" >Otro</option>
+                                </select></td>
+                                  <td><input type="number" step="any" [(ngModel)]="insumos.valorUnitario"></td>
+                                  <td><input type="number" step="any" [(ngModel)]="insumos.cantidadUbnidad"></td>
+                                  <td class="autorellenadas"></td>
+                                  <tr>
+                                    <td colspan="5" class="add-row">
+                                        <a (click)="agregarFila1(item.nombreProcucto)" class="btn mt-2">Agregar <i class="fa-solid fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                                    <tr *ngFor="let i of item.otrosInsumos" >
+                                        <td>{{i.materiaPrima}}</td>
+                                        <td>{{i.tipo}}</td>
+                                        <td class="total-unitario">{{i.valorUnitario?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}}</td>
+                                        <td class="total-unitario">{{i.cantidadUbnidad?.toFixed(2)}}</td>
+                                        <td class="autorellenadas" > <div class="cell-content">
+                                            <a (click)="sacarFila1(item,i)" class="btn-close"></a>
+                                            <span class="total-unitario">{{i.totalUnitario?.toLocaleString('en-US', {
+                                                style: 'currency', currency: 'USD' })}}</span>
+                                          </div></td>
+                                      </tr>
+                                      <tr>
+                                        <td class="autorellenadas" colspan="4">Subtotal</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{item.subtotal2?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}} </td>
+                                      </tr>
+                                </tbody>
+                            
                             </table>
                         </div>
                     </div>

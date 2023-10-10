@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProcessEmpresario } from '../process-empresario';
 import { Diagnostico } from '../diagnostico';
 import { ConceptoGenerales } from '../concepto-generales';
@@ -21,6 +21,7 @@ import { ProcesoService } from 'src/app/procesos/proceso.service';
   styleUrls: ['./diagnostico.component.css']
 })
 export class DiagnosticoComponent implements OnInit {
+  @Input()verId:number;
   idEditar:number;
   idVer:number;
   total:number=0;
@@ -49,6 +50,7 @@ export class DiagnosticoComponent implements OnInit {
   idEditar1:number;
   constructor(private clienteService: ClientService, private processEmpresarioService: ProcessEmpresarioService, private ruta: Router, private parametro: ActivatedRoute, private process:ProcesoService) { }
   ngOnInit(): void {
+  console.log(this.verId);
   
     this.procesoEmpresario.diagnosticoEmpresarial= new DiagnosticoEmpresarial();
     this.procesoEmpresario.diagnosticoEmpresarial.diagnostico= new Diagnostico();

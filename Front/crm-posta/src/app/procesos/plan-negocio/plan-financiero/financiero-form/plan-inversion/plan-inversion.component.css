@@ -83,3 +83,6 @@
 .salaria-anual {
   text-align: left; /* Alineación a la izquierda de la variable */
 }
+.total-unitario {
+  text-align: right; /* Alineación a la derecha de la variable */
+}
