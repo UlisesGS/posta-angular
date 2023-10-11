@@ -322,37 +322,49 @@ public  totalCostos(r:RequerimientosPersonal){
     let condGastoA:boolean=false;
     let condGastoV:boolean=false;
     if(!this.operativo?.personal){  
+      this.operativo.personal=[]
       condOper=true;
     }
     if(!this.administrativo?.personal){
+      this.administrativo.personal=[]
       condAdmi=true;
     }
     if(!this.ventas?.personal){
+      this.ventas.personal=[]
       condVenta=true;
     }
     if(!this.operativo.costos){
+      this.operativo.costos=[]
       condCostoO=true;
     }
     if(!this.administrativo.costos){
+      this.administrativo.costos=[]
       condGastoA=true;
     }
     if(!this.ventas.costos){
+      this.ventas.costos=[]
       condGastoV=true;
     }
 
-    if(condOper){
-      Swal.fire('ERROR','Personal Operativo Vacio','error');
+  /*  if(condOper){
+    //  Swal.fire('ERROR','Personal Operativo Vacio','error');
+    this.operativo.personal=[]
     }else if(condAdmi){
-      Swal.fire('ERROR','Personal Administrativo Vacio','error');
+    //  Swal.fire('ERROR','Personal Administrativo Vacio','error');
+    this.administrativo.personal=[]
     }else if(condVenta){
-      Swal.fire('ERROR','Personal de Ventas Vacio','error');
+    //  Swal.fire('ERROR','Personal de Ventas Vacio','error');
+    this.ventas.personal=[]
     }else if(condCostoO){
-      Swal.fire('ERROR','Costos Operativos Vacios','error');
+      this.operativo.costos=[]
+     // Swal.fire('ERROR','Costos Operativos Vacios','error');
     }else if(condGastoA){
-      Swal.fire('ERROR','Gastos Administrativos Vacios','error');
+      this.administrativo.costos=[]
+     // Swal.fire('ERROR','Gastos Administrativos Vacios','error');
     }else if(condGastoV){
-      Swal.fire('ERROR','Gastos de Ventas Vacios','error');
-    }else{
+      this.ventas.costos=[]
+     // Swal.fire('ERROR','Gastos de Ventas Vacios','error');
+    }else{*/
       this.proceso.businessPlanFinancial.gastoCosto.comercialVentas =
       this.gastoCosto.comercialVentas;
     this.proceso.businessPlanFinancial.gastoCosto.operativo =
@@ -381,9 +393,41 @@ public  totalCostos(r:RequerimientosPersonal){
         );
       });
 
-    }
+    //}
 
     
+  }
+  public listaVacia(){
+    let condOper:boolean=false;
+    let condAdmi:boolean=false;
+    let condVenta:boolean=false;
+    let condCostoO:boolean=false;
+    let condGastoA:boolean=false;
+    let condGastoV:boolean=false;
+    if(!this.operativo?.personal){  
+      this.operativo.personal=[]
+      condOper=true;
+    }
+    if(!this.administrativo?.personal){
+      this.administrativo.personal=[]
+      condAdmi=true;
+    }
+    if(!this.ventas?.personal){
+      this.ventas.personal=[]
+      condVenta=true;
+    }
+    if(!this.operativo.costos){
+      this.operativo.costos=[]
+      condCostoO=true;
+    }
+    if(!this.administrativo.costos){
+      this.administrativo.costos=[]
+      condGastoA=true;
+    }
+    if(!this.ventas.costos){
+      this.ventas.costos=[]
+      condGastoV=true;
+    }
   }
   public guardar() {
     this.proceso.businessPlanFinancial.gastoCosto = new GastoCosto();
@@ -394,24 +438,30 @@ public  totalCostos(r:RequerimientosPersonal){
     let condGastoA:boolean=false;
     let condGastoV:boolean=false;
     if(!this.operativo?.personal){  
+      this.operativo.personal=[]
       condOper=true;
     }
     if(!this.administrativo?.personal){
+      this.administrativo.personal=[]
       condAdmi=true;
     }
     if(!this.ventas?.personal){
+      this.ventas.personal=[]
       condVenta=true;
     }
     if(!this.operativo.costos){
+      this.operativo.costos=[]
       condCostoO=true;
     }
     if(!this.administrativo.costos){
+      this.administrativo.costos=[]
       condGastoA=true;
     }
     if(!this.ventas.costos){
+      this.ventas.costos=[]
       condGastoV=true;
     }
-
+/*
     if(condOper){
       Swal.fire('ERROR','Personal Operativo Vacio','error');
     }else if(condAdmi){
@@ -424,7 +474,7 @@ public  totalCostos(r:RequerimientosPersonal){
       Swal.fire('ERROR','Gastos Administrativos Vacios','error');
     }else if(condGastoV){
       Swal.fire('ERROR','Gastos de Ventas Vacios','error');
-    }else{
+    }else{*/
        this.proceso.businessPlanFinancial.gastoCosto.comercialVentas =
        this.gastoCosto.comercialVentas;
      this.proceso.businessPlanFinancial.gastoCosto.operativo =
@@ -450,9 +500,9 @@ public  totalCostos(r:RequerimientosPersonal){
     }
     
     
-  }
+  
   public editarYsalir() {
-    console.log(this.gastoCosto);
+   this.listaVacia()
     this.proceso.businessPlanFinancial.gastoCosto = new GastoCosto();
     this.proceso.businessPlanFinancial.gastoCosto.comercialVentas =
       this.gastoCosto.comercialVentas;
@@ -476,6 +526,7 @@ public  totalCostos(r:RequerimientosPersonal){
       });
   }
   public editar() {
+    this.listaVacia()
     console.log(this.gastoCosto);
     this.proceso.businessPlanFinancial.gastoCosto = new GastoCosto();
     this.proceso.businessPlanFinancial.gastoCosto.comercialVentas =
