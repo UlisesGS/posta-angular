@@ -254,14 +254,64 @@ if (this.idEditar) {
   }
 
   public guardar() {
+    console.log(this.proceso);
+    
     let cond:boolean=false;
+    let condicionOtroInsumos:boolean = false;
     this.proceso?.businessPlanFinancial?.presupuestoCompra.forEach(c=>{
       if(!c.estructuraCompras){
         cond=true;
       }
+      if(!c.otrosInsumos){
+        condicionOtroInsumos= true;
+      }
     })
     if(cond){
-      Swal.fire('ERROR', 'Materias Primas sin Contenido', 'error');
+      if(condicionOtroInsumos){
+        let otro: EstructuraCompra = new EstructuraCompra();
+        let listaOtro: EstructuraCompra[]=[]
+        this.proceso.businessPlanFinancial.presupuestoCompra.forEach(o=>{
+          o.otrosInsumos=[]
+         o.otrosInsumos.forEach(f=>{
+          f.materiaPrima='SIN INFORMAR'
+          f.tipo= 'OTRO'
+          f.valorUnitario=0;
+          f.cantidadUbnidad=0;  
+         listaOtro.push(f); 
+         })
+         o.otrosInsumos = listaOtro;
+        })
+        console.log('Dentro de otros insumos' + this.proceso);
+      }
+      let a :EstructuraCompra = new EstructuraCompra()
+      let lista:EstructuraCompra[] = [];
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(x=>{
+      x.estructuraCompras= []
+        this.nombreP = x.nombreProcucto
+        x.estructuraCompras.forEach(f=>{
+          f.materiaPrima='SIN INFORMAR'
+          f.tipo= 'OTRO'
+          f.valorUnitario=0;
+          f.cantidadUbnidad=0;  
+         lista.push(f); 
+         })  
+         x.estructuraCompras= lista;
+        
+         
+      //  this.insumos.totalUnitario = this.insumos.valorUnitario * this.insumos.cantidadUbnidad;
+        
+      })  
+      this.proceso.estado = 'Presupuesto Compra'
+      this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Compra';
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
+      })
+      this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data => {
+        this.router.navigate(['gastos/cliente/', this.cliente.id])
+      })
+      
+      console.log('Dentro de estructura compra' + this.proceso);
+    
+    //  Swal.fire('ERROR', 'Materias Primas sin Contenido', 'error');
     }else{
       this.proceso.estado = 'Presupuesto Compra'
     this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Compra';
@@ -275,13 +325,57 @@ if (this.idEditar) {
 
   editar() {
     let cond:boolean=false;
+    let condicionOtroInsumos:boolean=false;
     this.proceso?.businessPlanFinancial?.presupuestoCompra.forEach(c=>{
       if(c.estructuraCompras.length===0){
         cond=true;
       }
     })
     if(cond){
-      Swal.fire('ERROR', 'Materias Primas sin Contenido', 'error');
+      if(condicionOtroInsumos){
+        let otro: EstructuraCompra = new EstructuraCompra();
+        let listaOtro: EstructuraCompra[]=[]
+        this.proceso.businessPlanFinancial.presupuestoCompra.forEach(o=>{
+          o.otrosInsumos=[]
+         o.otrosInsumos.forEach(f=>{
+          f.materiaPrima='SIN INFORMAR'
+          f.tipo= 'OTRO'
+          f.valorUnitario=0;
+          f.cantidadUbnidad=0;  
+         listaOtro.push(f); 
+         })
+         o.otrosInsumos = listaOtro;
+        })
+        console.log('Dentro de otros insumos' + this.proceso);
+      }
+      let a :EstructuraCompra = new EstructuraCompra()
+      let lista:EstructuraCompra[] = [];
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(x=>{
+      x.estructuraCompras= []
+        this.nombreP = x.nombreProcucto
+        x.estructuraCompras.forEach(f=>{
+          f.materiaPrima='SIN INFORMAR'
+          f.tipo= 'OTRO'
+          f.valorUnitario=0;
+          f.cantidadUbnidad=0;  
+         lista.push(f); 
+         })  
+         x.estructuraCompras= lista;
+        
+         
+      //  this.insumos.totalUnitario = this.insumos.valorUnitario * this.insumos.cantidadUbnidad;
+        
+      })  
+      this.proceso.estado = 'Presupuesto Compra'
+      this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Compra';
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
+      })
+      this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data => {
+        this.router.navigate(['gastos/cliente/', this.cliente.id])
+      })
+      
+      console.log('Dentro de estructura compra' + this.proceso);
+     // Swal.fire('ERROR', 'Materias Primas sin Contenido', 'error');
     }else{
        this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
      })
@@ -297,12 +391,57 @@ if (this.idEditar) {
 
   editarYsalir() {
     let cond:boolean=false;
+    let condicionOtroInsumos:boolean = false;
     this.proceso?.businessPlanFinancial?.presupuestoCompra.forEach(c=>{
       if(c.estructuraCompras.length===0){
         cond=true;
       }
     })
     if(cond){
+      if(condicionOtroInsumos){
+        let otro: EstructuraCompra = new EstructuraCompra();
+        let listaOtro: EstructuraCompra[]=[]
+        this.proceso.businessPlanFinancial.presupuestoCompra.forEach(o=>{
+          o.otrosInsumos=[]
+         o.otrosInsumos.forEach(f=>{
+          f.materiaPrima='SIN INFORMAR'
+          f.tipo= 'OTRO'
+          f.valorUnitario=0;
+          f.cantidadUbnidad=0;  
+         listaOtro.push(f); 
+         })
+         o.otrosInsumos = listaOtro;
+        })
+        console.log('Dentro de otros insumos' + this.proceso);
+      }
+      let a :EstructuraCompra = new EstructuraCompra()
+      let lista:EstructuraCompra[] = [];
+    this.proceso.businessPlanFinancial.presupuestoCompra.forEach(x=>{
+      x.estructuraCompras= []
+        this.nombreP = x.nombreProcucto
+        x.estructuraCompras.forEach(f=>{
+          f.materiaPrima='SIN INFORMAR'
+          f.tipo= 'OTRO'
+          f.valorUnitario=0;
+          f.cantidadUbnidad=0;  
+         lista.push(f); 
+         })  
+         x.estructuraCompras= lista;
+        
+         
+      //  this.insumos.totalUnitario = this.insumos.valorUnitario * this.insumos.cantidadUbnidad;
+        
+      })  
+      this.proceso.estado = 'Presupuesto Compra'
+      this.proceso.estadoAnteriorEmprendedor = 'Presupuesto Compra';
+      this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
+      })
+      this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data => {
+        this.router.navigate(['gastos/cliente/', this.cliente.id])
+      })
+      
+      console.log('Dentro de estructura compra' + this.proceso);
+      
       Swal.fire('ERROR', 'Materias Primas sin Contenido', 'error');
     }else{
       this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
