@@ -40,6 +40,7 @@ export class PlanInversionComponent implements OnInit {
     private procesoService: ProcesoService,
     private router: Router,
   ) { }
+
   ngOnInit(): void {
     this.rutaParametro.paramMap.subscribe(parametro => {
       let id = +parametro.get('id');
@@ -68,6 +69,8 @@ export class PlanInversionComponent implements OnInit {
           this.planDeInversion = new PlanInversion()
           this.planDeInversion= this.proceso.businessPlanFinancial.planInversion;
           this.activosFijos=this.proceso.businessPlanFinancial.planInversion.activoFijo
+          
+          
 
         })
       }
@@ -77,7 +80,9 @@ export class PlanInversionComponent implements OnInit {
           this.planDeInversion = new PlanInversion()
           this.planDeInversion= this.proceso.businessPlanFinancial.planInversion;
           this.activosFijos=this.proceso.businessPlanFinancial.planInversion.activoFijo
-      
+          
+          console.log(this.proceso);
+          
           
 
         })
@@ -162,6 +167,7 @@ export class PlanInversionComponent implements OnInit {
     //this.activosFijos.push();
 
   }
+
   agregarMuebles() {
     this.mueble.creditoRequerido = 0;
     this.mueble.totalCredito;
@@ -205,27 +211,74 @@ export class PlanInversionComponent implements OnInit {
     let condMueble:boolean=false;
     let condVehiculo:boolean=false;
     if(!this.planDeInversion.activoFijo){
+
+      this.planDeInversion.activoFijo = []
+      let activo = new Inversion()
+
+      activo.aportesPropios=0;
+      activo.inversionRequerida=0;
+      activo.creditoRequerido=0;
+      activo.tipo='SIN INFORMAR'
+
+      this.planDeInversion.activoFijo.push(activo)
+
       condFijo=true;
     }
-    if(!this.planDeInversion.maquinariaEquipo){
+    if(!this.planDeInversion.maquinariaEquipo ){
+
+      this.planDeInversion.maquinariaEquipo = []
+      let activo = new Inversion()
+
+      this.planDeInversion.maquinariaPropio=0
+      this.planDeInversion.maquinariaInversion=0
+      this.planDeInversion.maquinariaCredito=0
+
+      activo.aportesPropios=0;
+      activo.inversionRequerida=0;
+      activo.creditoRequerido=0;
+      activo.tipo='SIN INFORMAR'
+
+      this.planDeInversion.maquinariaEquipo.push(activo)
+
       condMaquina=true;
     }
     if(!this.planDeInversion.mueblesEnseres){
+
+      this.planDeInversion.mueblesEnseres = []
+      let activo = new Inversion()
+
+
+      this.planDeInversion.mueblesPropio=0
+      this.planDeInversion.mueblesInversion=0
+      this.planDeInversion.muebleCredito=0
+
+      activo.aportesPropios=0;
+      activo.inversionRequerida=0;
+      activo.creditoRequerido=0;
+      activo.tipo='SIN INFORMAR'
+
+      this.planDeInversion.mueblesEnseres.push(activo)
+
       condMueble=true;
     }
     if(!this.planDeInversion.vehiculos){
+
+      this.planDeInversion.vehiculos = []
+      let activo = new Inversion()
+
+      this.planDeInversion.vehiculosPropio=0
+      this.planDeInversion.vehiculosInversion=0
+      this.planDeInversion.vehiculosCredito=0
+
+      activo.aportesPropios=0;
+      activo.inversionRequerida=0;
+      activo.creditoRequerido=0;
+      activo.tipo='SIN INFORMAR'
+
+      this.planDeInversion.vehiculos.push(activo)
+
       condVehiculo=true;
     }
-
-    if(condFijo){
-      Swal.fire('ERROR','Activos Fijos Vacio','error');
-    }else if(condMaquina){
-      Swal.fire('ERROR','Maquinaria y Equipamiento Vacio','error');
-    }else if(condMueble){
-      Swal.fire('ERROR','Muebles y Enseres Vacio','error');
-    }else if(condVehiculo){
-      Swal.fire('ERROR','Vehículos Vacio','error');
-    }else{
       if(!this.proceso.businessPlanFinancial.planInversion){
         this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
       }
@@ -243,7 +296,7 @@ export class PlanInversionComponent implements OnInit {
       }
        
       })
-    }
+    
 
 
     
@@ -256,27 +309,76 @@ export class PlanInversionComponent implements OnInit {
     let condMueble:boolean=false;
     let condVehiculo:boolean=false;
     if(!this.planDeInversion.activoFijo){
+
+      this.planDeInversion.activoFijo = []
+      let activo = new Inversion()
+
+      activo.aportesPropios=0;
+      activo.inversionRequerida=0;
+      activo.creditoRequerido=0;
+      activo.tipo='SIN INFORMAR'
+
+      this.planDeInversion.activoFijo.push(activo)
+
       condFijo=true;
     }
     if(!this.planDeInversion.maquinariaEquipo){
+
+      this.planDeInversion.maquinariaEquipo = []
+      let activo = new Inversion()
+
+      this.planDeInversion.maquinariaPropio=0
+      this.planDeInversion.maquinariaInversion=0
+      this.planDeInversion.maquinariaCredito=0
+
+      activo.aportesPropios=0;
+      activo.inversionRequerida=0;
+      activo.creditoRequerido=0;
+      activo.tipo='SIN INFORMAR'
+
+      this.planDeInversion.maquinariaEquipo.push(activo)
+
       condMaquina=true;
     }
     if(!this.planDeInversion.mueblesEnseres){
+
+      this.planDeInversion.mueblesEnseres = []
+      let activo = new Inversion()
+
+
+      this.planDeInversion.mueblesPropio=0
+      this.planDeInversion.mueblesInversion=0
+      this.planDeInversion.muebleCredito=0
+
+      activo.aportesPropios=0;
+      activo.inversionRequerida=0;
+      activo.creditoRequerido=0;
+      activo.tipo='SIN INFORMAR'
+
+      this.planDeInversion.mueblesEnseres.push(activo)
+
       condMueble=true;
     }
     if(!this.planDeInversion.vehiculos){
+
+      this.planDeInversion.vehiculos = []
+      let activo = new Inversion()
+
+      this.planDeInversion.vehiculosPropio=0
+      this.planDeInversion.vehiculosInversion=0
+      this.planDeInversion.vehiculosCredito=0
+
+      activo.aportesPropios=0;
+      activo.inversionRequerida=0;
+      activo.creditoRequerido=0;
+      activo.tipo='SIN INFORMAR'
+
+      this.planDeInversion.vehiculos.push(activo)
+
       condVehiculo=true;
     }
 
-    if(condFijo){
-      Swal.fire('ERROR','Activos Fijos Vacio','error');
-    }else if(condMaquina){
-      Swal.fire('ERROR','Maquinaria y Equipamiento Vacio','error');
-    }else if(condMueble){
-      Swal.fire('ERROR','Muebles y Enseres Vacio','error');
-    }else if(condVehiculo){
-      Swal.fire('ERROR','Vehículos Vacio','error');
-    }else{
+    
       if(!this.proceso.businessPlanFinancial.planInversion){
         this.proceso.businessPlanFinancial.planInversion=new PlanInversion();
       }
@@ -290,7 +392,7 @@ export class PlanInversionComponent implements OnInit {
       Swal.fire('Exito', 'Plan Financiero creado con exito', 'success');
   
       })
-    }
+    
 
 
    
