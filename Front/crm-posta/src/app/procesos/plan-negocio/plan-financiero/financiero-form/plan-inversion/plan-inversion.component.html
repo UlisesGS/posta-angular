@@ -37,7 +37,7 @@
                                 <td style="text-align: right;">{{i.aportesPropios?.toLocaleString('en-US', {
                                     style: 'currency', currency: 'USD' })}}</td>
                                 <td ><div class="cell-content">
-                                    <a (click)="eliminarVehiculo(i)" class="btn-close "></a>
+                                    <a (click)="eliminarActivo(i)" class="btn-close "></a>
                                     <span class="total-unitario">{{i.inversionRequerida?.toLocaleString('en-US', {
                                         style: 'currency', currency: 'USD' })}}</span>
                                 </div></td>
@@ -69,7 +69,7 @@
                                       <td style="text-align: right;">{{i.aportesPropios?.toLocaleString('en-US', {
                                         style: 'currency', currency: 'USD' })}}</td>
                                       <td ><div class="cell-content">
-                                        <a (click)="eliminarVehiculo(i)" class="btn-close "></a>
+                                        <a (click)="eliminarMaquinaria(i)" class="btn-close "></a>
                                         <span class="total-unitario">{{i.inversionRequerida?.toLocaleString('en-US', {
                                             style: 'currency', currency: 'USD' })}}</span>
                                     </div></td>
@@ -114,7 +114,7 @@
                                     style: 'currency', currency: 'USD' })}}</td>
                                   <td >
                                     <div class="cell-content">
-                                        <a (click)="eliminarVehiculo(i)" class="btn-close "></a>
+                                        <a (click)="eliminarMueble(i)" class="btn-close "></a>
                                         <span class="total-unitario">{{i.inversionRequerida?.toLocaleString('en-US', {
                                             style: 'currency', currency: 'USD' })}}</span>
                                     </div></td>

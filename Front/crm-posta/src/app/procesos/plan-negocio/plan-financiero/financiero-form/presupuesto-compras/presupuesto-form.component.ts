@@ -88,6 +88,8 @@ if (this.idEditar) {
           this.totalAnuales = pro.totalAnual
           this.estructuraCompras=pro.estructuraCompras
         })
+        console.log(this.proceso);
+        
         
       }
     })
@@ -283,8 +285,8 @@ if (this.idEditar) {
         })
         console.log('Dentro de otros insumos' + this.proceso);
       }
-      let a :EstructuraCompra = new EstructuraCompra()
-      let lista:EstructuraCompra[] = [];
+      let a :EstructuraCompra = new EstructuraCompra();
+      let lista: EstructuraCompra[]=[];
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(x=>{
       x.estructuraCompras= []
         this.nombreP = x.nombreProcucto
