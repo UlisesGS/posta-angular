@@ -16,17 +16,26 @@ export class LoginComponent implements OnInit {
   titulo: string = 'Login Usuario';
   usuario: Usuario = new Usuario;
   auth: Auth = new Auth()
+  caducidad:boolean= false;
   constructor(
     private usuarioService: UsuarioService,
     private authService: AuthService,
-    private ruta: Router) { }
+    private ruta: Router,
+  /*  private datePipe: DatePipe*/) { }
 
   ngOnInit(): void {
     if(this.authService.isLogin()){
       this.ruta.navigate(['/main'])
     }
+   //this.getFechaActual()
+    
   }
-
+ /* getFechaActual() {
+    const today = new Date();
+    const formattedDate = this.datePipe.transform(today, 'yyyy-MM-dd');
+    console.log('Fecha actual:', formattedDate);
+  }
+*/
   public login() {
     if (this.auth.password == null || this.auth.email == null) {
       Swal.fire('Error: ', 'Usuario o contraseña vacio', 'error');

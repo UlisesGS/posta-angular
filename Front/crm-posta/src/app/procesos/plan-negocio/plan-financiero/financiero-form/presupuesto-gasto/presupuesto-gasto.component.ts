@@ -330,27 +330,32 @@ public  totalCostos(r:RequerimientosPersonal){
     let condGastoA:boolean=false;
     let condGastoV:boolean=false;
     if(!this.operativo?.personal){  
-      this.operativo.personal=[]
+      this.gastoCosto.operativo= this.operativo;
+      //this.operativo.personal=[]
       condOper=true;
     }
     if(!this.administrativo?.personal){
-      this.administrativo.personal=[]
+    this.gastoCosto.administrativo= this.administrativo
       condAdmi=true;
     }
     if(!this.ventas?.personal){
-      this.ventas.personal=[]
+      this.gastoCosto.comercialVentas = this.ventas;
+     // this.ventas.personal=[]
       condVenta=true;
     }
     if(!this.operativo.costos){
-      this.operativo.costos=[]
+      this.gastoCosto.operativo= this.operativo;
+    //  this.operativo.costos=[]
       condCostoO=true;
     }
     if(!this.administrativo.costos){
-      this.administrativo.costos=[]
+      this.gastoCosto.administrativo= this.administrativo
+    //  this.administrativo.costos=[]
       condGastoA=true;
     }
     if(!this.ventas.costos){
-      this.ventas.costos=[]
+      this.gastoCosto.comercialVentas = this.ventas;
+    //  this.ventas.costos=[]
       condGastoV=true;
     }
 
@@ -966,11 +971,14 @@ public  totalCostos(r:RequerimientosPersonal){
       .gastosPut(this.proceso.businessPlanFinancial)
       .subscribe((data) => {
         console.log(data);
-if(this.proceso.businessPlanFinancial.planInversion){
-  this.router.navigate(['inversion/cliente/', this.cliente.id,'editar',this.proceso.id]);
-}else{
-  this.router.navigate(['inversion/cliente/', this.cliente.id]);
-}
+        if(!this.idVer){
+          if(this.proceso.businessPlanFinancial.planInversion){
+            this.router.navigate(['inversion/cliente/', this.cliente.id,'editar',this.proceso.id]);
+          }else{
+            this.router.navigate(['inversion/cliente/', this.cliente.id]);
+          }
+        }
+
 
       });
   }
