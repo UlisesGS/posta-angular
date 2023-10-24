@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/usuario/usuario';
 import { Auth } from '../auth';
 import Swal from 'sweetalert2';
-//import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-login',
