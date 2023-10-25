@@ -48,7 +48,10 @@ export class DiagnosticoComponent implements OnInit {
   cliente: Client = new Client();
   usuario: Usuario = new Usuario();
   idEditar1:number;
-  constructor(private clienteService: ClientService, private processEmpresarioService: ProcessEmpresarioService, private ruta: Router, private parametro: ActivatedRoute, private process:ProcesoService) { }
+  constructor(private clienteService: ClientService, 
+    private processEmpresarioService: ProcessEmpresarioService, 
+    private ruta: Router, private parametro: ActivatedRoute, 
+    private process:ProcesoService) { }
   ngOnInit(): void {
   console.log(this.verId);
   

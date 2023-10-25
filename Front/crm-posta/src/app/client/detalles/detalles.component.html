@@ -199,15 +199,17 @@
             </button>
             <button *ngIf="proceso?.processEmpresario && !proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico"
               style="background-color: rgb(58, 144, 224); color: white;width: 80%;" class="btn btn-disabled">
-              <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span><i class="fa-solid fa-pen-to-square right-align"
+              <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span>
+                <i class="fa-solid fa-pen-to-square right-align"
                 type="button" (click)="abrirEmpresarial(proceso,'finalizado', 'continuar', 'diagnostico')"
-                ></i>
+                ></i> 
             </button>
             <button *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico"
             style="background-color: rgb(34, 197, 89); color: white;width: 80%;" class="btn btn-disabled">
-            <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span><i class="fa-solid fa-pen-to-square right-align"
+            <span class="left-align">HERRAMIENTA DE DIAGNÓSTICO</span>
+             <i class="fa-solid fa-pen-to-square right-align"
               type="button" (click)="abrirEmpresarial(proceso,'continuar', 'continuar', 'diagnostico')"
-              ></i>
+              ></i> 
           </button>
           </div>
           <div style="margin: 10px;" *ngIf="proceso?.processEmpresario?.diagnosticoEmpresarial?.analisisEconomico">
