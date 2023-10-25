@@ -16,7 +16,7 @@ h2:hover{
 }
 th{
     vertical-align: middle;
-    background-color: rgb(255, 206, 206);
+    background-color: rgb(209, 207, 207);
     text-align: center;
 }
 td{
@@ -44,16 +44,7 @@ button{
   .right-align {
     margin-top: 10px;
     float: right;
+    
+    
+    
   }
-  .placeholder-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #999; /* Color de texto de ejemplo */
-}
-.mio{
-    border: 1px solid black;
-            padding: 8px;
-            position: relative;
-}

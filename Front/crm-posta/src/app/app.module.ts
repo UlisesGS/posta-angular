@@ -94,6 +94,7 @@ import { RecargaComponent } from './header/asesoria/asesoriaList/recarga/recarga
 import { UsuarioRecargarComponent } from './usuario/usuariolist/usuario-recargar/usuario-recargar.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { VerFinancieroComponent } from './procesos/plan-negocio/plan-financiero/ver-financiero/ver-financiero.component';
+import { VerCompletoComponent } from './procesos-empresarios/ver-completo/ver-completo.component';
 
 
 const routes: Routes = [
@@ -262,6 +263,9 @@ const routes: Routes = [
   { path: 'recarga/usuario', component: UsuarioRecargarComponent,canActivate: [AuthGuard]  },
   { path: 'reportes', component: ReportesComponent,canActivate: [AuthGuard]  },
 
+  //Nuevo ver Empresario
+  { path: 'empresarioVer/:id/ver/:idVer', component: VerCompletoComponent,canActivate: [AuthGuard]  },
+
 ]
 
 @NgModule({
@@ -341,6 +345,7 @@ const routes: Routes = [
     UsuarioRecargarComponent,
     ReportesComponent,
     VerFinancieroComponent,
+    VerCompletoComponent,
 
 
 

@@ -4,5 +4,6 @@ export class KeyRecources {
   recursosFisicos:string;
   recursosIntelectuales:string;
   recursosTecnologicos:string;
+  otros:string;
 
 }

@@ -154,10 +154,10 @@
                             <br>
                             <select [(ngModel)]="empresario.typeOfCompany" class="form-select form-select-sm"
                                 name="typeOfCompany" aria-label="Default select example">
-                                <option [ngValue]="undefined">--- Seleccionar Tipo de Empresa ---</option>
+                                <option [ngValue]="undefined">--- Tipo de Régimen Tributario ---</option>
                                 <option value="PERSONA_JURIDICA">PERSONA JURIDICA</option>
                                 <option value="PERSONA_NATURAL">PERSONA NATURAL</option>
-                                <option value="PERSONA_NATURAL">REGIMEN TRIBUTARIO</option>
+                                <option value="REGIMEN_ESPECIAL">REGIMEN ESPECIAL</option>
                                 <!-- <option *ngFor="let e of enums" [ngValue]="e">{{e}}</option> -->
                             </select>
                         </label>
@@ -209,14 +209,14 @@
     
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="employeePartTime"
-                                [(ngModel)]="empresario.employeePartTime" placeholder="Emleados MT" class="form-control"
+                                [(ngModel)]="empresario.employeePartTime" placeholder="Empleos Formales" class="form-control"
                                 required>
                         </label>
                         <label for="">
     
                             <br>
                             <input type="text" style="border-radius: 5;" name="employeeFullTime"
-                                [(ngModel)]="empresario.employeeFullTime" placeholder="Empleados TC" class="form-control"
+                                [(ngModel)]="empresario.employeeFullTime" placeholder="Empleos Informales" class="form-control"
                                 required>
                         </label>
                         <div style="flex-basis: 50%;">
@@ -228,14 +228,14 @@
                             </label>
                         </div>
                         <div style="flex-basis: 50%;">
-                            <label for="">
+                            <!-- <label for="">
     
                                 <br>
                                 <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"
                                     [(ngModel)]="empresario.email" placeholder="Correo Electrónico" class="form-control"
                                     required>
-                            </label>
-                            <div style="flex-basis: 50%;">
+                            </label> -->
+                            <div style="flex-basis: 50%;" class="mt-2">
     
                                 <label for="" style="font-size: 15px; margin-top: 10px;;">
                                     <strong>¿Tiene registro Mercantil?</strong>
@@ -251,29 +251,59 @@
                                     style="margin-top: 20px; margin-left: 10px;" required="">
                                 <label class="form-check-label" for="registroMercantil1"
                                     style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+
+                                    <label for="">
+    
+                                        <br>
+                                        <input [(ngModel)]="empresario.numberMercantilRegistry" type="text"
+                                            style="border-radius: 5; margin-right: 5px;" name="numberMercantilRegistry"
+                                            placeholder="Número de registro Mercantil" class="form-control" required>
+                                    </label>
                             </div>
                         </div>
                     </div>
-                    <div style="flex-basis: 50%;">
-                        <label for="" style="font-size: 15px; margin-top: 30px;">
-                            <strong>Forma de Contratación</strong>
-                            <br>
-                        </label>
-                        <input [(ngModel)]="empresario.contracting" value="DIRECT" class="form-check-input" type="radio"
-                            name="contracting" id="contracting" style="margin-top: 35px; margin-left: 5px;" required>
-                        <label class="form-check-label" for="contracting"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
-                        <input [(ngModel)]="empresario.contracting" value="INNUENDO" class="form-check-input" type="radio"
-                            name="contracting" id="contracting1" style="margin-top: 35px; margin-left: 10px;" required>
-                        <label class="form-check-label" for="contracting1"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
-                        <input [(ngModel)]="empresario.contracting" value="FIXED" class="form-check-input" type="radio"
-                            name="contracting" id="contracting2" style="margin-top: 35px; margin-left: 10px;" required>
-                        <label class="form-check-label" for="contracting2"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label>
+                    <div style="flex-basis: 50%; ">
+                        <div class="mt-2" >
+                            <label>
+                                <br>
+                                <select [(ngModel)]="empresario.trueTypeOfCom" class="form-select form-select-sm"
+                                    name="trueTypeOfCom" aria-label="Default select example">
+                                    <option [ngValue]="undefined">--- Tipo de Empresa ---</option>
+                                    <option value="MICRO">Micro</option>
+                                    <option value="PEQUENA">Pequeña</option>
+                                    <option value="MEDIANA">Mediana</option>
+                                    <option value="GRANDE">Grande</option>
+                                    <!-- <option *ngFor="let e of enums" [ngValue]="e">{{e}}</option> -->
+                                </select>
+                            </label>
+                            <!-- <label for="" style="font-size: 15px; margin-top: 30px;">
+                                <strong>Forma de Contratación</strong>
+                                <br>
+                            </label>
+                            <input [(ngModel)]="empresario.contracting" value="DIRECT" class="form-check-input" type="radio"
+                                name="contracting" id="contracting" style="margin-top: 35px; margin-left: 5px;" required>
+                            <label class="form-check-label" for="contracting"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
+                            <input [(ngModel)]="empresario.contracting" value="INNUENDO" class="form-check-input" type="radio"
+                                name="contracting" id="contracting1" style="margin-top: 35px; margin-left: 10px;" required>
+                            <label class="form-check-label" for="contracting1"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
+                            <input [(ngModel)]="empresario.contracting" value="FIXED" class="form-check-input" type="radio"
+                                name="contracting" id="contracting2" style="margin-top: 35px; margin-left: 10px;" required>
+                            <label class="form-check-label" for="contracting2"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label> -->
+                        </div>
+                        
     
-                        <div style="visibility: hidden;">
-                            <label for="" style="font-size: 15px; margin-top: 0px;">
+                        <div >
+                            <label for="">
+    
+                                <br>
+                                <input [(ngModel)]="empresario.phone" type="text"
+                                    style="border-radius: 5; margin-right: 5px;" name="phone" ngModel=""
+                                    placeholder="Teléfono" class="form-control" required>
+                            </label>
+                            <!-- <label for="" style="font-size: 15px; margin-top: 0px;">
                                 <strong>Forma de Contratación</strong>
                                 <br>
                             </label>
@@ -288,27 +318,36 @@
                             <input value="FIXED" class="form-check-input" type="radio" name="contracting234"
                                 id="contracting2234" style="margin-top: 0px; margin-left: 10px;" required>
                             <label class="form-check-label" for="contracting24234"
-                                style="font-size: 15px; margin-top: 0px; margin-left: 5px;">Fija</label>
+                                style="font-size: 15px; margin-top: 0px; margin-left: 5px;">Fija</label> -->
                         </div>
     
+                        <div >
+                            <label for="">
     
-                        <label for="" style="font-size: 15px; margin-top: 0px;">
-                            <strong>Forma de Contratación</strong>
-                            <br>
-                        </label>
-                        <input [(ngModel)]="empresario.contracting1" value="DIRECT" class="form-check-input" type="radio"
-                            name="contracting12" id="contracting3" style="margin-top: 20px; margin-left: 5px;" required>
-                        <label class="form-check-label" for="contracting3"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
-                        <input [(ngModel)]="empresario.contracting1" value="INNUENDO" class="form-check-input" type="radio"
-                            name="contracting12" id="contracting4" style="margin-top: 20px; margin-left: 10px;" required>
-                        <label class="form-check-label" for="contracting4"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
-                        <input [(ngModel)]="empresario.contracting1" value="FIXED" class="form-check-input" type="radio"
-                            name="contracting12" id="contracting5" style="margin-top: 20px; margin-left: 10px;" required>
-                        <label class="form-check-label" for="contracting5"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label>
-                        <div style="flex-basis: 50%;">
+                                <br>
+                                <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"
+                                    [(ngModel)]="empresario.email" placeholder="Correo Electrónico" class="form-control"
+                                    required>
+                            </label>
+                            <!-- <label for="" style="font-size: 15px; margin-top: 0px;">
+                                <strong>Forma de Contratación</strong>
+                                <br>
+                            </label>
+                            <input [(ngModel)]="empresario.contracting1" value="DIRECT" class="form-check-input" type="radio"
+                                name="contracting12" id="contracting3" style="margin-top: 20px; margin-left: 5px;" required>
+                            <label class="form-check-label" for="contracting3"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
+                            <input [(ngModel)]="empresario.contracting1" value="INNUENDO" class="form-check-input" type="radio"
+                                name="contracting12" id="contracting4" style="margin-top: 20px; margin-left: 10px;" required>
+                            <label class="form-check-label" for="contracting4"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
+                            <input [(ngModel)]="empresario.contracting1" value="FIXED" class="form-check-input" type="radio"
+                                name="contracting12" id="contracting5" style="margin-top: 20px; margin-left: 10px;" required>
+                            <label class="form-check-label" for="contracting5"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label> -->
+                            <div style="flex-basis: 50%;">
+                        </div>
+                       
     
     
                             <label for="">
@@ -325,7 +364,7 @@
     
                             </label>
                         </div>
-                        <div style="flex-basis: 50%;">
+                        <!-- <div style="flex-basis: 50%;">
     
                             <label for="">
     
@@ -334,8 +373,8 @@
                                     style="border-radius: 5; margin-right: 5px;" name="phone" ngModel=""
                                     placeholder="Teléfono" class="form-control" required>
                             </label>
-                        </div>
-                        <div style="flex-basis: 50%;">
+                        </div> -->
+                        <!-- <div style="flex-basis: 50%;">
     
                             <label for="">
     
@@ -344,7 +383,7 @@
                                     style="border-radius: 5; margin-right: 5px;" name="numberMercantilRegistry"
                                     placeholder="Número de registro Mercantil" class="form-control" required>
                             </label>
-                        </div>
+                        </div> -->
                     </div>
                     <div style="flex-basis: 100%;" class="mt-3">
                         <div class="form-group">
@@ -395,7 +434,8 @@
 </div>
 
 
-<div class="col-8" *ngIf="idEditar==0 || idEditar==1">
+<div class="col-6" *ngIf="idEditar==0 || idEditar==1">
+    
     <div class="container display-flex">
         <form class="was-validated">
             <h2 class="btn btn-disabled">DATOS DE REPRESENTANTE LEGAL</h2>
@@ -469,7 +509,6 @@
     
                         <label for="" style="font-size: 15px; margin-top: 10px;">
                             <strong>¿Es población víctima?</strong>
-                            
                             <br>
                         </label>
                         <input value="true" [(ngModel)]="empresario.victimPopulation" class="form-check-input" type="radio"
@@ -551,10 +590,10 @@
                             <br>
                             <select [(ngModel)]="empresario.typeOfCompany" class="form-select form-select-sm"
                                 name="typeOfCompany" aria-label="Default select example">
-                                <option [ngValue]="undefined">--- Seleccionar Tipo de Empresa ---</option>
+                                <option [ngValue]="undefined">--- Tipo de Régimen Tributario ---</option>
                                 <option value="PERSONA_JURIDICA">PERSONA JURIDICA</option>
                                 <option value="PERSONA_NATURAL">PERSONA NATURAL</option>
-                                <option value="PERSONA_NATURAL">REGIMEN TRIBUTARIO</option>
+                                <option value="REGIMEN_ESPECIAL">REGIMEN ESPECIAL</option>
                                 <!-- <option *ngFor="let e of enums" [ngValue]="e">{{e}}</option> -->
                             </select>
                         </label>
@@ -606,14 +645,14 @@
     
                             <br>
                             <input type="text" style="border-radius: 5; margin-right: 5px;" name="employeePartTime"
-                                [(ngModel)]="empresario.employeePartTime" placeholder="Emleados MT" class="form-control"
+                                [(ngModel)]="empresario.employeePartTime" placeholder="Empleos Formales" class="form-control"
                                 required>
                         </label>
                         <label for="">
     
                             <br>
                             <input type="text" style="border-radius: 5;" name="employeeFullTime"
-                                [(ngModel)]="empresario.employeeFullTime" placeholder="Empleados TC" class="form-control"
+                                [(ngModel)]="empresario.employeeFullTime" placeholder="Empleos Informales" class="form-control"
                                 required>
                         </label>
                         <div style="flex-basis: 50%;">
@@ -625,14 +664,14 @@
                             </label>
                         </div>
                         <div style="flex-basis: 50%;">
-                            <label for="">
+                            <!-- <label for="">
     
                                 <br>
                                 <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"
                                     [(ngModel)]="empresario.email" placeholder="Correo Electrónico" class="form-control"
                                     required>
-                            </label>
-                            <div style="flex-basis: 50%;">
+                            </label> -->
+                            <div style="flex-basis: 50%;" class="mt-2">
     
                                 <label for="" style="font-size: 15px; margin-top: 10px;;">
                                     <strong>¿Tiene registro Mercantil?</strong>
@@ -648,29 +687,59 @@
                                     style="margin-top: 20px; margin-left: 10px;" required="">
                                 <label class="form-check-label" for="registroMercantil1"
                                     style="font-size: 15px; margin-top: 16px; margin-left: 5px;">NO</label>
+
+                                    <label for="">
+    
+                                        <br>
+                                        <input [(ngModel)]="empresario.numberMercantilRegistry" type="text"
+                                            style="border-radius: 5; margin-right: 5px;" name="numberMercantilRegistry"
+                                            placeholder="Número de registro Mercantil" class="form-control" required>
+                                    </label>
                             </div>
                         </div>
                     </div>
-                    <div style="flex-basis: 50%;">
-                        <label for="" style="font-size: 15px; margin-top: 30px;">
-                            <strong>Forma de Contratación</strong>
-                            <br>
-                        </label>
-                        <input [(ngModel)]="empresario.contracting" value="DIRECT" class="form-check-input" type="radio"
-                            name="contracting" id="contracting" style="margin-top: 35px; margin-left: 5px;" required>
-                        <label class="form-check-label" for="contracting"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
-                        <input [(ngModel)]="empresario.contracting" value="INNUENDO" class="form-check-input" type="radio"
-                            name="contracting" id="contracting1" style="margin-top: 35px; margin-left: 10px;" required>
-                        <label class="form-check-label" for="contracting1"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
-                        <input [(ngModel)]="empresario.contracting" value="FIXED" class="form-check-input" type="radio"
-                            name="contracting" id="contracting2" style="margin-top: 35px; margin-left: 10px;" required>
-                        <label class="form-check-label" for="contracting2"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label>
+                    <div style="flex-basis: 50%; ">
+                        <div class="mt-2" >
+                            <label>
+                                <br>
+                                <select [(ngModel)]="empresario.trueTypeOfCom" class="form-select form-select-sm"
+                                    name="trueTypeOfCom" aria-label="Default select example">
+                                    <option [ngValue]="undefined">--- Tipo de Empresa ---</option>
+                                    <option value="MICRO">Micro</option>
+                                    <option value="PEQUENA">Pequeña</option>
+                                    <option value="MEDIANA">Mediana</option>
+                                    <option value="GRANDE">Grande</option>
+                                    <!-- <option *ngFor="let e of enums" [ngValue]="e">{{e}}</option> -->
+                                </select>
+                            </label>
+                            <!-- <label for="" style="font-size: 15px; margin-top: 30px;">
+                                <strong>Forma de Contratación</strong>
+                                <br>
+                            </label>
+                            <input [(ngModel)]="empresario.contracting" value="DIRECT" class="form-check-input" type="radio"
+                                name="contracting" id="contracting" style="margin-top: 35px; margin-left: 5px;" required>
+                            <label class="form-check-label" for="contracting"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
+                            <input [(ngModel)]="empresario.contracting" value="INNUENDO" class="form-check-input" type="radio"
+                                name="contracting" id="contracting1" style="margin-top: 35px; margin-left: 10px;" required>
+                            <label class="form-check-label" for="contracting1"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
+                            <input [(ngModel)]="empresario.contracting" value="FIXED" class="form-check-input" type="radio"
+                                name="contracting" id="contracting2" style="margin-top: 35px; margin-left: 10px;" required>
+                            <label class="form-check-label" for="contracting2"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label> -->
+                        </div>
+                        
     
-                        <div style="visibility: hidden;">
-                            <label for="" style="font-size: 15px; margin-top: 0px;">
+                        <div >
+                            <label for="">
+    
+                                <br>
+                                <input [(ngModel)]="empresario.phone" type="text"
+                                    style="border-radius: 5; margin-right: 5px;" name="phone" ngModel=""
+                                    placeholder="Teléfono" class="form-control" required>
+                            </label>
+                            <!-- <label for="" style="font-size: 15px; margin-top: 0px;">
                                 <strong>Forma de Contratación</strong>
                                 <br>
                             </label>
@@ -685,27 +754,36 @@
                             <input value="FIXED" class="form-check-input" type="radio" name="contracting234"
                                 id="contracting2234" style="margin-top: 0px; margin-left: 10px;" required>
                             <label class="form-check-label" for="contracting24234"
-                                style="font-size: 15px; margin-top: 0px; margin-left: 5px;">Fija</label>
+                                style="font-size: 15px; margin-top: 0px; margin-left: 5px;">Fija</label> -->
                         </div>
     
+                        <div >
+                            <label for="">
     
-                        <label for="" style="font-size: 15px; margin-top: 0px;">
-                            <strong>Forma de Contratación</strong>
-                            <br>
-                        </label>
-                        <input [(ngModel)]="empresario.contracting1" value="DIRECT" class="form-check-input" type="radio"
-                            name="contracting12" id="contracting3" style="margin-top: 20px; margin-left: 5px;" required>
-                        <label class="form-check-label" for="contracting3"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
-                        <input [(ngModel)]="empresario.contracting1" value="INNUENDO" class="form-check-input" type="radio"
-                            name="contracting12" id="contracting4" style="margin-top: 20px; margin-left: 10px;" required>
-                        <label class="form-check-label" for="contracting4"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
-                        <input [(ngModel)]="empresario.contracting1" value="FIXED" class="form-check-input" type="radio"
-                            name="contracting12" id="contracting5" style="margin-top: 20px; margin-left: 10px;" required>
-                        <label class="form-check-label" for="contracting5"
-                            style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label>
-                        <div style="flex-basis: 50%;">
+                                <br>
+                                <input type="text" style="border-radius: 5; margin-right: 5px;" name="email"
+                                    [(ngModel)]="empresario.email" placeholder="Correo Electrónico" class="form-control"
+                                    required>
+                            </label>
+                            <!-- <label for="" style="font-size: 15px; margin-top: 0px;">
+                                <strong>Forma de Contratación</strong>
+                                <br>
+                            </label>
+                            <input [(ngModel)]="empresario.contracting1" value="DIRECT" class="form-check-input" type="radio"
+                                name="contracting12" id="contracting3" style="margin-top: 20px; margin-left: 5px;" required>
+                            <label class="form-check-label" for="contracting3"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Directa</label>
+                            <input [(ngModel)]="empresario.contracting1" value="INNUENDO" class="form-check-input" type="radio"
+                                name="contracting12" id="contracting4" style="margin-top: 20px; margin-left: 10px;" required>
+                            <label class="form-check-label" for="contracting4"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Indirecta</label>
+                            <input [(ngModel)]="empresario.contracting1" value="FIXED" class="form-check-input" type="radio"
+                                name="contracting12" id="contracting5" style="margin-top: 20px; margin-left: 10px;" required>
+                            <label class="form-check-label" for="contracting5"
+                                style="font-size: 15px; margin-top: 16px; margin-left: 5px;">Fija</label> -->
+                            <div style="flex-basis: 50%;">
+                        </div>
+                       
     
     
                             <label for="">
@@ -722,7 +800,7 @@
     
                             </label>
                         </div>
-                        <div style="flex-basis: 50%;">
+                        <!-- <div style="flex-basis: 50%;">
     
                             <label for="">
     
@@ -731,8 +809,8 @@
                                     style="border-radius: 5; margin-right: 5px;" name="phone" ngModel=""
                                     placeholder="Teléfono" class="form-control" required>
                             </label>
-                        </div>
-                        <div style="flex-basis: 50%;">
+                        </div> -->
+                        <!-- <div style="flex-basis: 50%;">
     
                             <label for="">
     
@@ -741,7 +819,7 @@
                                     style="border-radius: 5; margin-right: 5px;" name="numberMercantilRegistry"
                                     placeholder="Número de registro Mercantil" class="form-control" required>
                             </label>
-                        </div>
+                        </div> -->
                     </div>
                     <div style="flex-basis: 100%;" class="mt-3">
                         <div class="form-group">
@@ -784,12 +862,11 @@
                 </p>
             </div>
             <div class="form-group">
-                <button *ngIf="!empresario?.id" (click)="registrar()" class="btn btn-success">Registrar</button>
-                <button *ngIf="empresario?.id" (click)="editar()" class="btn btn-success">Editar</button>
-                <button *ngIf="empresario?.id" routerLink="/clients" class="btn btn-success mx-2">Volver</button>
-                <button *ngIf="emprendedor?.id" (click)="editar()" class="btn btn-success">Editar</button>
-                <button *ngIf="emprendedor?.id" routerLink="/clients" class="btn btn-success mx-2">Volver</button>
+                <button *ngIf="!empresario.id" (click)="registrar()" class="btn btn-success">Registrar</button>
+                <button *ngIf="empresario.id" (click)="editar()" class="btn btn-success">Editar</button>
             </div>
         </form>
     </div>
 </div>
+
+
