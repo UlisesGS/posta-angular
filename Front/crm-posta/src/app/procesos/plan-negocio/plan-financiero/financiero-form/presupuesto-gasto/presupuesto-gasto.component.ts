@@ -272,6 +272,12 @@ public  totalCostos(r:RequerimientosPersonal){
     this.materia3 = new Personal();
   }
 
+
+
+
+
+
+
   agregarCostoOperativo() {
     this.operativos.anual();
     if (this.operativo.costos == null) {
@@ -284,6 +290,7 @@ public  totalCostos(r:RequerimientosPersonal){
   this.totalCostos(this.operativo);
     this.gastoCosto.operativo = this.operativo;
   }
+
   agregarGastoAdministrativo() {
     this.administrativos.anual();
     if (this.administrativo.costos == null) {
@@ -296,6 +303,7 @@ public  totalCostos(r:RequerimientosPersonal){
     this.totalCostos(this.administrativo);
     this.gastoCosto.administrativo = this.administrativo; console.log(this.gastoCosto);
   }
+
   agregarGastoVenta() {
     this.ventasL.anual();
     if (this.ventas.costos == null) {
@@ -322,37 +330,54 @@ public  totalCostos(r:RequerimientosPersonal){
     let condGastoA:boolean=false;
     let condGastoV:boolean=false;
     if(!this.operativo?.personal){  
+      this.gastoCosto.operativo= this.operativo;
+      //this.operativo.personal=[]
       condOper=true;
     }
     if(!this.administrativo?.personal){
+    this.gastoCosto.administrativo= this.administrativo
       condAdmi=true;
     }
     if(!this.ventas?.personal){
+      this.gastoCosto.comercialVentas = this.ventas;
+     // this.ventas.personal=[]
       condVenta=true;
     }
     if(!this.operativo.costos){
+      this.gastoCosto.operativo= this.operativo;
+    //  this.operativo.costos=[]
       condCostoO=true;
     }
     if(!this.administrativo.costos){
+      this.gastoCosto.administrativo= this.administrativo
+    //  this.administrativo.costos=[]
       condGastoA=true;
     }
     if(!this.ventas.costos){
+      this.gastoCosto.comercialVentas = this.ventas;
+    //  this.ventas.costos=[]
       condGastoV=true;
     }
 
-    if(condOper){
-      Swal.fire('ERROR','Personal Operativo Vacio','error');
+  /*  if(condOper){
+    //  Swal.fire('ERROR','Personal Operativo Vacio','error');
+    this.operativo.personal=[]
     }else if(condAdmi){
-      Swal.fire('ERROR','Personal Administrativo Vacio','error');
+    //  Swal.fire('ERROR','Personal Administrativo Vacio','error');
+    this.administrativo.personal=[]
     }else if(condVenta){
-      Swal.fire('ERROR','Personal de Ventas Vacio','error');
+    //  Swal.fire('ERROR','Personal de Ventas Vacio','error');
+    this.ventas.personal=[]
     }else if(condCostoO){
-      Swal.fire('ERROR','Costos Operativos Vacios','error');
+      this.operativo.costos=[]
+     // Swal.fire('ERROR','Costos Operativos Vacios','error');
     }else if(condGastoA){
-      Swal.fire('ERROR','Gastos Administrativos Vacios','error');
+      this.administrativo.costos=[]
+     // Swal.fire('ERROR','Gastos Administrativos Vacios','error');
     }else if(condGastoV){
-      Swal.fire('ERROR','Gastos de Ventas Vacios','error');
-    }else{
+      this.ventas.costos=[]
+     // Swal.fire('ERROR','Gastos de Ventas Vacios','error');
+    }else{*/
       this.proceso.businessPlanFinancial.gastoCosto.comercialVentas =
       this.gastoCosto.comercialVentas;
     this.proceso.businessPlanFinancial.gastoCosto.operativo =
@@ -381,12 +406,11 @@ public  totalCostos(r:RequerimientosPersonal){
         );
       });
 
-    }
+    //}
 
     
   }
-  public guardar() {
-    this.proceso.businessPlanFinancial.gastoCosto = new GastoCosto();
+  public listaVacia(){
     let condOper:boolean=false;
     let condAdmi:boolean=false;
     let condVenta:boolean=false;
@@ -394,43 +418,191 @@ public  totalCostos(r:RequerimientosPersonal){
     let condGastoA:boolean=false;
     let condGastoV:boolean=false;
     if(!this.operativo?.personal){  
+      this.operativo.personal=[]
       condOper=true;
     }
     if(!this.administrativo?.personal){
+      this.administrativo.personal=[]
       condAdmi=true;
     }
     if(!this.ventas?.personal){
+      this.ventas.personal=[]
       condVenta=true;
     }
     if(!this.operativo.costos){
+      this.operativo.costos=[]
       condCostoO=true;
     }
     if(!this.administrativo.costos){
+      this.administrativo.costos=[]
       condGastoA=true;
     }
     if(!this.ventas.costos){
+      this.ventas.costos=[]
+      condGastoV=true;
+    }
+  }
+  public guardar() {
+    this.proceso.businessPlanFinancial.gastoCosto = new GastoCosto();
+    
+    let condOper:boolean=false;
+    let condAdmi:boolean=false;
+    let condVenta:boolean=false;
+    let condCostoO:boolean=false;
+    let condGastoA:boolean=false;
+    let condGastoV:boolean=false;
+    console.log(this.gastoCosto);
+    if(!this.operativo?.personal){  
+      console.log(this.gastoCosto);
+      this.proceso.businessPlanFinancial.gastoCosto.operativo = new RequerimientosPersonal();
+      this.proceso.businessPlanFinancial.gastoCosto.operativo.personal = [];
+      let per = new Personal()
+      
+     this.proceso.businessPlanFinancial.gastoCosto.operativo.subTotal = 0;
+     this.proceso.businessPlanFinancial.gastoCosto.operativo.subTotalAnual = 0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.parafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalParafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.seguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalSeguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.cesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.interesesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalInteresesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.primaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalPrimaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.vacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalVacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalAnual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalCostoMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalCostoAnual=0;
+   
+   
+   per.cargo='SIN INFORMAR'
+   per.salarioMensual=0;
+   per.salariaAnual=0;
+
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.personal.push(per)
+
+   
+
+   console.log(this.proceso);
+
+      condOper=true;
+    }
+
+
+
+    
+    if(!this.administrativo?.personal){
+
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo = new RequerimientosPersonal();
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo.personal = [];
+      let per = new Personal()
+
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo.subTotal = 0.0;
+     this.proceso.businessPlanFinancial.gastoCosto.administrativo.subTotalAnual = 0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.parafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalParafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.seguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalSeguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.cesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.interesesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalInteresesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.primaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalPrimaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.vacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalVacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalAnual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalCostoMensual=0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalCostoAnual=0.0;
+   
+    per.cargo='SIN INFORMAR'
+    per.salarioMensual=0;
+    per.salariaAnual=0;
+
+    this.proceso.businessPlanFinancial.gastoCosto.administrativo.personal.push(per)
+      condAdmi=true;
+      console.log(this.proceso);
+    }
+    if(!this.ventas?.personal){
+
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas = new RequerimientosPersonal();
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.personal = [];
+      let per = new Personal()
+
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.subTotal = 0.0;
+     this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.subTotalAnual = 0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.parafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalParafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.seguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalSeguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.cesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.interesesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalInteresesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.primaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalPrimaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.vacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalVacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalAnual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalCostoMensual=0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalCostoAnual=0.0;
+   
+    per.cargo='SIN INFORMAR'
+    per.salarioMensual=0;
+    per.salariaAnual=0;
+
+    this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.personal.push(per)
+      condVenta=true;
+      console.log(this.proceso);
+    }
+    if(!this.operativo.costos){
+      console.log(this.proceso);
+      let co = new OtrosCostos()
+      this.proceso.businessPlanFinancial.gastoCosto.operativo.costos = [];
+        co.concepto='SINF INFORMAR'
+        co.gastoMensual=0;
+        co.gastoAnual=0;
+        this.proceso.businessPlanFinancial.gastoCosto.operativo.costos.push(co)
+      condCostoO=true;
+      console.log(this.proceso);
+    }
+    if(!this.administrativo.costos){
+      let co = new OtrosCostos()
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo.costos = [];
+        co.concepto='SINF INFORMAR'
+        co.gastoMensual=0;
+        co.gastoAnual=0;
+        this.proceso.businessPlanFinancial.gastoCosto.administrativo.costos.push(co)
+      condGastoA=true;
+      console.log(this.proceso);
+    }
+    if(!this.ventas.costos){
+      let co = new OtrosCostos()
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.costos = [];
+        co.concepto='SINF INFORMAR'
+        co.gastoMensual=0;
+        co.gastoAnual=0;
+        this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.costos.push(co)
       condGastoV=true;
     }
 
-    if(condOper){
-      Swal.fire('ERROR','Personal Operativo Vacio','error');
-    }else if(condAdmi){
-      Swal.fire('ERROR','Personal Administrativo Vacio','error');
-    }else if(condVenta){
-      Swal.fire('ERROR','Personal de Ventas Vacio','error');
-    }else if(condCostoO){
-      Swal.fire('ERROR','Costos Operativos Vacios','error');
-    }else if(condGastoA){
-      Swal.fire('ERROR','Gastos Administrativos Vacios','error');
-    }else if(condGastoV){
-      Swal.fire('ERROR','Gastos de Ventas Vacios','error');
-    }else{
-       this.proceso.businessPlanFinancial.gastoCosto.comercialVentas =
-       this.gastoCosto.comercialVentas;
-     this.proceso.businessPlanFinancial.gastoCosto.operativo =
-       this.gastoCosto.operativo;
-     this.proceso.businessPlanFinancial.gastoCosto.administrativo =
-       this.gastoCosto.administrativo;
+    if(!this.proceso.businessPlanFinancial.gastoCosto.operativo ){
+     this.proceso.businessPlanFinancial.gastoCosto.operativo = this.gastoCosto.operativo;
+    }
+    if(!this.proceso.businessPlanFinancial.gastoCosto.administrativo){
+     this.proceso.businessPlanFinancial.gastoCosto.administrativo = this.gastoCosto.administrativo;
+    }
+    if(!this.proceso.businessPlanFinancial.gastoCosto.comercialVentas){
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas = this.gastoCosto.comercialVentas;
+    }
+     /* */
+    
+      
      console.log(this.proceso);
 
      this.proceso.estado = 'Presupuesto Gastos/Costos';
@@ -450,10 +622,163 @@ public  totalCostos(r:RequerimientosPersonal){
     }
     
     
-  }
+  
+
+
+
+
   public editarYsalir() {
-    console.log(this.gastoCosto);
+   this.listaVacia()
     this.proceso.businessPlanFinancial.gastoCosto = new GastoCosto();
+
+
+    if(!this.operativo?.personal){  
+      console.log(this.gastoCosto);
+      this.proceso.businessPlanFinancial.gastoCosto.operativo = new RequerimientosPersonal();
+      this.proceso.businessPlanFinancial.gastoCosto.operativo.personal = [];
+      let per = new Personal()
+      
+     this.proceso.businessPlanFinancial.gastoCosto.operativo.subTotal = 0;
+     this.proceso.businessPlanFinancial.gastoCosto.operativo.subTotalAnual = 0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.parafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalParafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.seguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalSeguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.cesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.interesesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalInteresesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.primaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalPrimaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.vacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalVacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalAnual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalCostoMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalCostoAnual=0;
+   
+   
+   per.cargo='SIN INFORMAR'
+   per.salarioMensual=0;
+   per.salariaAnual=0;
+
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.personal.push(per)
+
+   
+
+   console.log(this.proceso);
+    }
+
+
+
+    
+    if(!this.administrativo?.personal){
+
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo = new RequerimientosPersonal();
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo.personal = [];
+      let per = new Personal()
+
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo.subTotal = 0.0;
+     this.proceso.businessPlanFinancial.gastoCosto.administrativo.subTotalAnual = 0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.parafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalParafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.seguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalSeguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.cesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.interesesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalInteresesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.primaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalPrimaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.vacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalVacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalAnual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalCostoMensual=0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalCostoAnual=0.0;
+   
+    per.cargo='SIN INFORMAR'
+    per.salarioMensual=0;
+    per.salariaAnual=0;
+
+    this.proceso.businessPlanFinancial.gastoCosto.administrativo.personal.push(per)
+      console.log(this.proceso);
+    }
+    if(!this.ventas?.personal){
+
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas = new RequerimientosPersonal();
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.personal = [];
+      let per = new Personal()
+
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.subTotal = 0.0;
+     this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.subTotalAnual = 0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.parafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalParafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.seguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalSeguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.cesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.interesesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalInteresesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.primaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalPrimaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.vacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalVacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalAnual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalCostoMensual=0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalCostoAnual=0.0;
+   
+    per.cargo='SIN INFORMAR'
+    per.salarioMensual=0;
+    per.salariaAnual=0;
+
+    this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.personal.push(per)
+      console.log(this.proceso);
+    }
+    if(!this.operativo.costos){
+      console.log(this.proceso);
+      let co = new OtrosCostos()
+      this.proceso.businessPlanFinancial.gastoCosto.operativo.costos = [];
+        co.concepto='SINF INFORMAR'
+        co.gastoMensual=0;
+        co.gastoAnual=0;
+        this.proceso.businessPlanFinancial.gastoCosto.operativo.costos.push(co)
+      console.log(this.proceso);
+    }
+    if(!this.administrativo.costos){
+      let co = new OtrosCostos()
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo.costos = [];
+        co.concepto='SINF INFORMAR'
+        co.gastoMensual=0;
+        co.gastoAnual=0;
+        this.proceso.businessPlanFinancial.gastoCosto.administrativo.costos.push(co)
+      console.log(this.proceso);
+    }
+    if(!this.ventas.costos){
+      let co = new OtrosCostos()
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.costos = [];
+        co.concepto='SINF INFORMAR'
+        co.gastoMensual=0;
+        co.gastoAnual=0;
+        this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.costos.push(co)
+    }
+
+    if(!this.proceso.businessPlanFinancial.gastoCosto.operativo ){
+     this.proceso.businessPlanFinancial.gastoCosto.operativo = this.gastoCosto.operativo;
+    }
+    if(!this.proceso.businessPlanFinancial.gastoCosto.administrativo){
+     this.proceso.businessPlanFinancial.gastoCosto.administrativo = this.gastoCosto.administrativo;
+    }
+    if(!this.proceso.businessPlanFinancial.gastoCosto.comercialVentas){
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas = this.gastoCosto.comercialVentas;
+    }
+
+
+
+
+
+
     this.proceso.businessPlanFinancial.gastoCosto.comercialVentas =
       this.gastoCosto.comercialVentas;
     this.proceso.businessPlanFinancial.gastoCosto.operativo =
@@ -475,15 +800,165 @@ public  totalCostos(r:RequerimientosPersonal){
         );
       });
   }
+
+
+
+
+
+
+
+
   public editar() {
+    this.listaVacia()
     console.log(this.gastoCosto);
     this.proceso.businessPlanFinancial.gastoCosto = new GastoCosto();
-    this.proceso.businessPlanFinancial.gastoCosto.comercialVentas =
-      this.gastoCosto.comercialVentas;
-    this.proceso.businessPlanFinancial.gastoCosto.operativo =
-      this.gastoCosto.operativo;
-    this.proceso.businessPlanFinancial.gastoCosto.administrativo =
-      this.gastoCosto.administrativo;
+    
+    console.log(this.operativo.personal);
+    
+    if(!this.operativo?.personal){  
+      console.log(this.gastoCosto);
+      this.proceso.businessPlanFinancial.gastoCosto.operativo = new RequerimientosPersonal();
+      this.proceso.businessPlanFinancial.gastoCosto.operativo.personal = [];
+      let per = new Personal()
+      
+     this.proceso.businessPlanFinancial.gastoCosto.operativo.subTotal = 0;
+     this.proceso.businessPlanFinancial.gastoCosto.operativo.subTotalAnual = 0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.parafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalParafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.seguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalSeguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.cesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.interesesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalInteresesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.primaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalPrimaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.vacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalVacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalAnual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalCostoMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.totalCostoAnual=0;
+   
+   
+   per.cargo='SIN INFORMAR'
+   per.salarioMensual=0;
+   per.salariaAnual=0;
+
+   this.proceso.businessPlanFinancial.gastoCosto.operativo.personal.push(per)
+
+   
+
+   console.log(this.proceso);
+    }
+
+
+
+    
+    if(!this.administrativo?.personal){
+
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo = new RequerimientosPersonal();
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo.personal = [];
+      let per = new Personal()
+
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo.subTotal = 0.0;
+     this.proceso.businessPlanFinancial.gastoCosto.administrativo.subTotalAnual = 0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.parafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalParafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.seguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalSeguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.cesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.interesesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalInteresesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.primaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalPrimaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.vacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalVacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalAnual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalCostoMensual=0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.administrativo.totalCostoAnual=0.0;
+   
+    per.cargo='SIN INFORMAR'
+    per.salarioMensual=0;
+    per.salariaAnual=0;
+
+    this.proceso.businessPlanFinancial.gastoCosto.administrativo.personal.push(per)
+      console.log(this.proceso);
+    }
+    if(!this.ventas?.personal){
+
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas = new RequerimientosPersonal();
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.personal = [];
+      let per = new Personal()
+
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.subTotal = 0.0;
+     this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.subTotalAnual = 0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.parafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalParafiscales=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.seguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalSeguridadSocial=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.cesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.interesesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalInteresesCesantias=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.primaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalPrimaServicios=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.vacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalVacaciones=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalMensual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalAnual=0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalCostoMensual=0.0;
+   this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.totalCostoAnual=0.0;
+   
+    per.cargo='SIN INFORMAR'
+    per.salarioMensual=0;
+    per.salariaAnual=0;
+
+    this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.personal.push(per)
+      console.log(this.proceso);
+    }
+    if(!this.operativo.costos){
+      console.log(this.proceso);
+      let co = new OtrosCostos()
+      this.proceso.businessPlanFinancial.gastoCosto.operativo.costos = [];
+        co.concepto='SINF INFORMAR'
+        co.gastoMensual=0;
+        co.gastoAnual=0;
+        this.proceso.businessPlanFinancial.gastoCosto.operativo.costos.push(co)
+      console.log(this.proceso);
+    }
+    if(!this.administrativo.costos){
+      let co = new OtrosCostos()
+      this.proceso.businessPlanFinancial.gastoCosto.administrativo.costos = [];
+        co.concepto='SINF INFORMAR'
+        co.gastoMensual=0;
+        co.gastoAnual=0;
+        this.proceso.businessPlanFinancial.gastoCosto.administrativo.costos.push(co)
+      console.log(this.proceso);
+    }
+    if(!this.ventas.costos){
+      let co = new OtrosCostos()
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.costos = [];
+        co.concepto='SINF INFORMAR'
+        co.gastoMensual=0;
+        co.gastoAnual=0;
+        this.proceso.businessPlanFinancial.gastoCosto.comercialVentas.costos.push(co)
+    }
+
+    if(!this.proceso.businessPlanFinancial.gastoCosto.operativo ){
+     this.proceso.businessPlanFinancial.gastoCosto.operativo = this.gastoCosto.operativo;
+    }
+    if(!this.proceso.businessPlanFinancial.gastoCosto.administrativo){
+     this.proceso.businessPlanFinancial.gastoCosto.administrativo = this.gastoCosto.administrativo;
+    }
+    if(!this.proceso.businessPlanFinancial.gastoCosto.comercialVentas){
+      this.proceso.businessPlanFinancial.gastoCosto.comercialVentas = this.gastoCosto.comercialVentas;
+    }
+
+
+
     console.log(this.proceso);
 
     //this.proceso.estado = 'Presupuesto Gastos/Costos';
@@ -496,11 +971,14 @@ public  totalCostos(r:RequerimientosPersonal){
       .gastosPut(this.proceso.businessPlanFinancial)
       .subscribe((data) => {
         console.log(data);
-if(this.proceso.businessPlanFinancial.planInversion){
-  this.router.navigate(['inversion/cliente/', this.cliente.id,'editar',this.proceso.id]);
-}else{
-  this.router.navigate(['inversion/cliente/', this.cliente.id]);
-}
+        if(!this.idVer){
+          if(this.proceso.businessPlanFinancial.planInversion){
+            this.router.navigate(['inversion/cliente/', this.cliente.id,'editar',this.proceso.id]);
+          }else{
+            this.router.navigate(['inversion/cliente/', this.cliente.id]);
+          }
+        }
+
 
       });
   }
