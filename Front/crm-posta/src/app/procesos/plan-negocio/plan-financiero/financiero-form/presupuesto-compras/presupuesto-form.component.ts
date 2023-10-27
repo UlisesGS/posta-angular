@@ -39,6 +39,10 @@ export class PresupuestoFormComponent implements OnInit {
   estructuraCompras: EstructuraCompra[] = []
   otrosInsumos: EstructuraCompra[] = []
   insumos:EstructuraCompra=new EstructuraCompra();
+
+  listaPresupuesto: EstructuraMercado[]=[];
+  presu: PresupuestoCompra[]=[]
+
   presupuestoCompra: PresupuestoCompra = new PresupuestoCompra();
   constructor(private rutaParametro: ActivatedRoute,
     private clienteService: ClientService,
@@ -54,20 +58,64 @@ export class PresupuestoFormComponent implements OnInit {
       
       this.idEditar = + parametro.get('idEditar');
 if(this.idVer){
+  console.log('entro');
+  
   this.procesoService.procesosFindAll().subscribe(data => {
     this.procesos = data;
     this.procesos.forEach(p => {
       if (p.id == this.idVer) {
         this.proceso = p;
        this.proceso.businessPlanFinancial.presupuestoCompra = p.businessPlanFinancial.presupuestoCompra
-              
-        this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pro => {
+
+
+       this.proceso.businessPlanFinancial.presupuestoVenta.estructuraMercado.forEach(mercado => {
+        this.crearPresupuestoCompra(mercado);
+        this.cantidadP += 1;
+      })
+      console.log(this.proceso.businessPlanFinancial.presupuestoCompra);
+
+     /* let longitud = this.proceso.businessPlanFinancial.presupuestoCompra.length
+      let mitad = Math.floor(longitud/2)
+
+      this.proceso.businessPlanFinancial.presupuestoCompra.splice(mitad)*/
+
+       this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pro => {
           
-          this.totalUnitarios = pro.total
-          this.totalAnuales = pro.totalAnual
-          this.estructuraCompras=pro.estructuraCompras
-          this.otrosInsumos=pro.otrosInsumos
-        })
+        this.totalUnitarios = pro.total
+        this.totalAnuales = pro.totalAnual
+        this.estructuraCompras=pro.estructuraCompras
+        this.otrosInsumos=pro.otrosInsumos
+      })
+      console.log(this.proceso.businessPlanFinancial.presupuestoCompra);
+
+       this.listaPresupuesto=this.proceso.businessPlanFinancial.presupuestoVenta.estructuraMercado
+
+        this.presu = this.proceso.businessPlanFinancial.presupuestoCompra
+
+    /* this.proceso.businessPlanFinancial.presupuestoCompra =  []
+       this.proceso.businessPlanFinancial.presupuestoVenta.estructuraMercado.forEach(mercado => {
+        this.crearPresupuestoCompra(mercado);
+        this.cantidadP += 1;
+      })*/
+      console.log(this.proceso.businessPlanFinancial.presupuestoCompra);
+      
+      /*
+      public crearPresupuestoCompra(estructuraMercado: EstructuraMercado) {
+    this.presupuestoCompra = new PresupuestoCompra();
+    this.presupuestoCompra.cantidadProducto = estructuraMercado.cantidad;
+    this.presupuestoCompra.nombreProcucto = estructuraMercado.producto;
+    this.presupuestoCompra.tipoProducto = estructuraMercado.tipo;
+    this.proceso.businessPlanFinancial.presupuestoCompra.push(this.presupuestoCompra);
+    
+    
+  }
+      */
+
+      
+
+      
+
+        
         
       }
     })
@@ -231,6 +279,8 @@ if (this.idEditar) {
     this.presupuestoCompra.nombreProcucto = estructuraMercado.producto;
     this.presupuestoCompra.tipoProducto = estructuraMercado.tipo;
     this.proceso.businessPlanFinancial.presupuestoCompra.push(this.presupuestoCompra);
+    
+    
   }
   public guardarYsalir() {
     let cond:boolean=false;
