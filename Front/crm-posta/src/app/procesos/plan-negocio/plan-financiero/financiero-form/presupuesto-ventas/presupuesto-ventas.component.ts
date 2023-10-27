@@ -14,6 +14,7 @@ import { CiclicidadVentas } from './../../CiclicidadVentas';
 import { PresupuestoVenta } from './../../PresupuestoVenta';
 import Swal from 'sweetalert2';
 import { EstructuraCompra } from './../../EstructuraCompras';
+import { PresupuestoCompra } from '../../PresupuestoCompra';
 
 
 @Component({
@@ -132,6 +133,7 @@ export class PresupuestoVentasComponent implements OnInit {
           console.log(this.proceso);
           
           
+          
           this.proceso?.businessPlanFinancial?.presupuestoVenta?.ciclicidadVentas.forEach(c=>{
             this.listaMes.push(c.calificacion);
           })
@@ -139,6 +141,8 @@ export class PresupuestoVentasComponent implements OnInit {
            this.presupuestoVenta=this.proceso?.businessPlanFinancial?.presupuestoVenta;
            console.log(this.presupuestoVenta);
            this.businessPlanFinancial= this.proceso?.businessPlanFinancial;
+
+           
 
         })
       }
@@ -635,10 +639,32 @@ compararTipo(){
     }
   }
   editarYsalir(){
+    
+    console.log('hola');
     this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
     this.planFinancieroService.planFinancialSave(this.businessPlanFinancial).subscribe(plan => {
       this.businessPlanFinancial = plan;
       this.proceso.businessPlanFinancial = this.businessPlanFinancial;
+
+     /* if(this.proceso?.businessPlanFinancial?.presupuestoCompra){
+        console.log('entro al if');
+        this.proceso.businessPlanFinancial.presupuestoCompra =  []
+        this.proceso.businessPlanFinancial.presupuestoVenta.estructuraMercado.forEach(estructura=>{
+          console.log('vuelta');
+          
+            let presupuestoCompra = new PresupuestoCompra();
+            presupuestoCompra.cantidadProducto = estructura.cantidad;
+            presupuestoCompra.nombreProcucto = estructura.producto;
+            presupuestoCompra.tipoProducto = estructura.tipo;
+            
+            this.proceso.businessPlanFinancial.presupuestoCompra.push(presupuestoCompra);
+          
+        })
+        
+        console.log(this.proceso.businessPlanFinancial);
+        
+      }*/
+
       this.procesoService.procesosUpdate(this.proceso).subscribe(pro => {
         this.proceso = pro;
         if(this.idVer){
@@ -652,6 +678,20 @@ compararTipo(){
 
   }
   editar(){
+    
+    if(this.proceso?.businessPlanFinancial?.presupuestoCompra){
+    this.presupuestoVenta.estructuraMercado.forEach(estructuraMercado=>{
+      
+        let presupuestoCompra = new PresupuestoCompra();
+        presupuestoCompra.cantidadProducto = estructuraMercado.cantidad;
+        presupuestoCompra.nombreProcucto = estructuraMercado.producto;
+        presupuestoCompra.tipoProducto = estructuraMercado.tipo;
+        this.proceso.businessPlanFinancial.presupuestoCompra.push(presupuestoCompra);
+      
+    })
+    this.planFinancieroService.comprasPut(this.proceso.businessPlanFinancial)
+  }
+    
     this.businessPlanFinancial.presupuestoVenta = this.presupuestoVenta;
 
     this.planFinancieroService.planFinancialSave(this.businessPlanFinancial).subscribe(plan => {
