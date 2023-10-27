@@ -45,6 +45,12 @@ export class PresupuestoFormComponent implements OnInit {
   presu: PresupuestoCompra[]=[]
 
   presupuestoCompra: PresupuestoCompra = new PresupuestoCompra();
+
+  listaPresupuesto: EstructuraCompra[]=[];
+  listasOtros: EstructuraCompra[]=[];
+  presu: PresupuestoCompra[]=[]
+
+
   constructor(private rutaParametro: ActivatedRoute,
     private clienteService: ClientService,
     private procesoService: ProcesoService,
@@ -65,6 +71,7 @@ if(this.idVer){
     this.procesos.forEach(p => {
       if (p.id == this.idVer) {
         this.proceso = p;
+
        this.proceso.businessPlanFinancial.presupuestoCompra = p.businessPlanFinancial.presupuestoCompra
 
      
@@ -107,6 +114,7 @@ if(this.idVer){
        })
         
       })
+
 
 
       }
@@ -433,7 +441,7 @@ if (this.idEditar) {
   }
 
   editarYsalir() {
-    console.log('entreeee');
+
     let cond:boolean=false;
     let condicionOtroInsumos:boolean = false;
     this.proceso?.businessPlanFinancial?.presupuestoCompra.forEach(c=>{
