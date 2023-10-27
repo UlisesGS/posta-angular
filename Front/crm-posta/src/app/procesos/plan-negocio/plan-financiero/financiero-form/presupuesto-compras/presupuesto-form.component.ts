@@ -40,7 +40,8 @@ export class PresupuestoFormComponent implements OnInit {
   otrosInsumos: EstructuraCompra[] = []
   insumos:EstructuraCompra=new EstructuraCompra();
 
-  listaPresupuesto: EstructuraMercado[]=[];
+  listaPresupuesto: EstructuraCompra[]=[];
+  listasOtros: EstructuraCompra[]=[];
   presu: PresupuestoCompra[]=[]
 
   presupuestoCompra: PresupuestoCompra = new PresupuestoCompra();
@@ -58,7 +59,6 @@ export class PresupuestoFormComponent implements OnInit {
       
       this.idEditar = + parametro.get('idEditar');
 if(this.idVer){
-  console.log('entro');
   
   this.procesoService.procesosFindAll().subscribe(data => {
     this.procesos = data;
@@ -67,62 +67,53 @@ if(this.idVer){
         this.proceso = p;
        this.proceso.businessPlanFinancial.presupuestoCompra = p.businessPlanFinancial.presupuestoCompra
 
+     
+       
+       this.presu = this.proceso.businessPlanFinancial.presupuestoCompra
+       
+       
+       this.proceso.businessPlanFinancial.presupuestoCompra=[]
+
+       
 
        this.proceso.businessPlanFinancial.presupuestoVenta.estructuraMercado.forEach(mercado => {
-        this.crearPresupuestoCompra(mercado);
+          this.crearPresupuestoCompra(mercado);
+        
+        
         this.cantidadP += 1;
+
+
       })
-      console.log(this.proceso.businessPlanFinancial.presupuestoCompra);
 
-     /* let longitud = this.proceso.businessPlanFinancial.presupuestoCompra.length
-      let mitad = Math.floor(longitud/2)
+      this.proceso.businessPlanFinancial.presupuestoCompra.forEach(presu=>{
+        presu.estructuraCompras=[]
+        presu.otrosInsumos=[]
 
-      this.proceso.businessPlanFinancial.presupuestoCompra.splice(mitad)*/
+       })
+
 
        this.proceso.businessPlanFinancial.presupuestoCompra.forEach(pro => {
-          
-        this.totalUnitarios = pro.total
-        this.totalAnuales = pro.totalAnual
-        this.estructuraCompras=pro.estructuraCompras
-        this.otrosInsumos=pro.otrosInsumos
+       this.presu.forEach(pre=>{
+
+        if(pre.nombreProcucto==pro.nombreProcucto){
+        this.totalUnitarios = pre.total
+        this.totalAnuales = pre.totalAnual
+        this.estructuraCompras=pre.estructuraCompras
+        this.otrosInsumos=pre.otrosInsumos
+        pro.estructuraCompras=pre.estructuraCompras
+        pro.otrosInsumos=pre.otrosInsumos
+        }
+
+       })
+        
       })
-      console.log(this.proceso.businessPlanFinancial.presupuestoCompra);
 
-       this.listaPresupuesto=this.proceso.businessPlanFinancial.presupuestoVenta.estructuraMercado
 
-        this.presu = this.proceso.businessPlanFinancial.presupuestoCompra
-
-    /* this.proceso.businessPlanFinancial.presupuestoCompra =  []
-       this.proceso.businessPlanFinancial.presupuestoVenta.estructuraMercado.forEach(mercado => {
-        this.crearPresupuestoCompra(mercado);
-        this.cantidadP += 1;
-      })*/
-      console.log(this.proceso.businessPlanFinancial.presupuestoCompra);
-      
-      /*
-      public crearPresupuestoCompra(estructuraMercado: EstructuraMercado) {
-    this.presupuestoCompra = new PresupuestoCompra();
-    this.presupuestoCompra.cantidadProducto = estructuraMercado.cantidad;
-    this.presupuestoCompra.nombreProcucto = estructuraMercado.producto;
-    this.presupuestoCompra.tipoProducto = estructuraMercado.tipo;
-    this.proceso.businessPlanFinancial.presupuestoCompra.push(this.presupuestoCompra);
-    
-    
-  }
-      */
-
-      
-
-      
-
-        
-        
       }
     })
   })
 }
 if (this.idEditar) {
-
   this.procesoService.procesosFindAll().subscribe(data => {
     this.procesos = data;
     this.procesos.forEach(p => {
@@ -148,7 +139,6 @@ if (this.idEditar) {
         this.clienteService.getClient(id).subscribe(data => {
           this.cliente = data;
           if (this.idEditar || this.idVer) {
-         console.log('dentro del id ver o editar');
          
           }else{
             this.procesoService.procesosFindAll().subscribe(pro => {
@@ -194,7 +184,6 @@ if (this.idEditar) {
     this.totalAnuales = 0
    
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
-      console.log("Hola");
       compra.total=0;
       compra.totalAnual=0;
       compra.subtotal=0;
@@ -376,6 +365,8 @@ if (this.idEditar) {
   }
 
   editar() {
+    
+    
     let cond:boolean=false;
     let condicionOtroInsumos:boolean=false;
     this.proceso?.businessPlanFinancial?.presupuestoCompra.forEach(c=>{
@@ -442,9 +433,12 @@ if (this.idEditar) {
   }
 
   editarYsalir() {
+    console.log('entreeee');
     let cond:boolean=false;
     let condicionOtroInsumos:boolean = false;
     this.proceso?.businessPlanFinancial?.presupuestoCompra.forEach(c=>{
+   
+      
       if(c.estructuraCompras.length===0){
         cond=true;
       }
@@ -496,6 +490,8 @@ if (this.idEditar) {
       
       Swal.fire('ERROR', 'Materias Primas sin Contenido', 'error');
     }else{
+      console.log('else');
+      
       this.procesoService.procesosUpdate(this.proceso).subscribe(data1 => {
       })
       this.planFinancialService.comprasPut(this.proceso.businessPlanFinancial).subscribe(data => {
