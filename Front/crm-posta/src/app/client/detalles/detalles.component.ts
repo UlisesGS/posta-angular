@@ -55,17 +55,20 @@ export class DetallesComponent {
     if (!this.file) {
       return; // Si no hay archivo seleccionado, sal del método
     }
-  
-    this.imagenService.uploadImage(this.file, this.proceso).subscribe(
+    console.log(this.proceso.id);
+    
+    this.imagenService.uploadImage(this.file, this.proceso.id).subscribe(
       (response) => {
         console.log(response);
         console.log("Cargo");
+        window.location.reload();
         
         // Maneja la respuesta del backend
       },
       (error) => {
         console.error(error); // Maneja el error, si ocurre
         console.log("Error");
+        window.location.reload();
         
       },
       () => {
@@ -73,23 +76,8 @@ export class DetallesComponent {
       }
     );
   }
-  // getImageUrl() {
-  //   this.imagenService.getImageBlob(this.proceso).subscribe(
-  //     (blob) => {
-  //       const fileReader = new FileReader();
-  //       fileReader.onload = (e) => {
-  //         this.imageUrl = fileReader.result as string; // Convierte el blob a una URL
-  //       };
-  //       fileReader.readAsDataURL(blob);
-  //     },
-  //     (error) => {
-  //       console.error(error); // Maneja el error, si ocurre
-  //     }
-  //   );
-  // }
-
   getImageUrl() {
-    this.imagenService.getImageBlob(this.proceso).subscribe((blob: Blob) => {
+    this.imagenService.getImageBlob(this.proceso.id).subscribe((blob: Blob) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
@@ -114,33 +102,32 @@ export class DetallesComponent {
   }
 
   uploadImageEncuesta() {
-    if (this.file) {
-      this.imagenService.uploadImageEncuesta(this.file, this.proceso).subscribe(
+    if (!this.file) {
+      return; // Si no hay archivo seleccionado, sal del método
+    }
+    
+      this.imagenService.uploadImageEncuesta(this.file, this.proceso.id).subscribe(
         (response) => {
           console.log(response);
+          console.log("Cargo");
+          window.location.reload();
+          
           // Maneja la respuesta del backend
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre
+          console.log("Error");
+          window.location.reload();
+          
+        },
+        () => {
+          window.location.reload(); // Recarga la página después de completar la carga
         }
       );
-    }
-    window.location.reload();
   }
-  // getImageUrlEncuesta() {
-  //   this.imagenService.getImageBlobEncuesta(this.proceso).subscribe(
-  //     (blob) => {
-  //       this.imageUrlEncuesta = URL.createObjectURL(blob);
-  //       console.log(this.imageUrl);
-
-  //     },
-  //     (error) => {
-  //       //console.error(error); // Maneja el error, si ocurre
-  //     }
-  //   );
-  // }
+  
   getImageUrlEncuesta() {
-    this.imagenService.getImageBlobEncuesta(this.proceso).subscribe((blob: Blob) => {
+    this.imagenService.getImageBlobEncuesta(this.proceso.id).subscribe((blob: Blob) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
@@ -154,7 +141,7 @@ export class DetallesComponent {
 
   uploadImageCierre() {
     if (this.file) {
-      this.imagenService.uploadImageCierre(this.file, this.proceso).subscribe(
+      this.imagenService.uploadImageCierre(this.file, this.proceso.id).subscribe(
         (response:any) => {
           this.proceso.fechaFinalizacion=new Date();
           this.proceso.terminado=true;
@@ -181,19 +168,9 @@ export class DetallesComponent {
     }
    
   }
-  // getImageUrlCierre() {
-  //   this.imagenService.getImageBlobCierre(this.proceso).subscribe(
-  //     (blob) => {
-  //       this.imageUrlCierre = URL.createObjectURL(blob);
-  //     },
-  //     (error) => {
-  //       if (error.status == 500) {
-  //       }
-  //     }
-  //   );
-  // }
+
   getImageUrlCierre() {
-    this.imagenService.getImageBlobCierre(this.proceso).subscribe((blob: Blob) => {
+    this.imagenService.getImageBlobCierre(this.proceso.id).subscribe((blob: Blob) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
@@ -203,32 +180,33 @@ export class DetallesComponent {
     });
   }
   uploadImageImpacto() {
-    if (this.file) {
-      this.imagenService.uploadImageImpacto(this.file, this.proceso).subscribe(
+    if (!this.file) {
+      return; // Si no hay archivo seleccionado, sal del método
+    }
+      this.imagenService.uploadImageImpacto(this.file, this.proceso.id).subscribe(
         (response) => {
           console.log(response);
+          console.log("Cargo");
+          window.location.reload();
           
+          // Maneja la respuesta del backend
         },
         (error) => {
           console.error(error); // Maneja el error, si ocurre
+          console.log("Error");
+          window.location.reload();
+          
+        },
+        () => {
+          window.location.reload(); // Recarga la página después de completar la carga
         }
       );
     }
-    window.location.reload();
-  }
-  // getImageUrlImpacto() {
-  //   this.imagenService.getImageBlobImpacto(this.proceso).subscribe(
-  //     (blob) => {
-  //       this.imageUrlImpacto = URL.createObjectURL(blob);
-  //     },
-  //     (error) => {
-  //       if (error.status == 500) {
-  //       }
-  //     }
-  //   );
-  // }
+    
+  
+ 
   getImageUrlImpacto() {
-    this.imagenService.getImageBlobImpacto(this.proceso).subscribe((blob: Blob) => {
+    this.imagenService.getImageBlobImpacto(this.proceso.id).subscribe((blob: Blob) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         console.log(reader.result); // Esto mostrará el contenido del Blob en la consola

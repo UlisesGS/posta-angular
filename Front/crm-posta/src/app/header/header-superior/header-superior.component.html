@@ -11,7 +11,10 @@
           </div>
           <div class="col-1 text-end">
             <a href="#" class="btn" style="background-color: #faf8f8;">
-              <i class="fa-regular fa-bell"></i>
+              <i *ngIf="hayMensajesNuevos; else noMensajesNuevos" class="fa-solid fa-bell"></i>
+              <ng-template #noMensajesNuevos>
+                <i class="fa-regular fa-bell-slash"></i> <!-- Icono para cuando no hay mensajes nuevos -->
+              </ng-template>
             </a>
           </div>
           <div class="col-2 text-end">

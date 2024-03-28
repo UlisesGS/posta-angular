@@ -97,4 +97,70 @@ export class PdfServiceService {
   return this.http.get<Blob>(`${this.urlEndPoint}/diagnostico/${id}`, httpOptions)
  }
 
+
+ //Emprendedor
+ public generarAutoevaluacion(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/autoevaluacion/${id}`, httpOptions)
+ }
+
+ public generarClientes(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/canvasClientes/${id}`, httpOptions)
+ }
+
+ public generarValor(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/canvasValor/${id}`, httpOptions)
+ }
+
+ public generarCanales(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/canvasCanales/${id}`, httpOptions)
+ }
+
+ public generarRelaciones(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/canvasRelaciones/${id}`, httpOptions)
+ }
+
+ public generarRecursos(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/canvasRecursos/${id}`, httpOptions)
+ }
+
+ public generarActividades(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/canvasActividades/${id}`, httpOptions)
+ }
+
+ public generarSocios(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/canvasSocios/${id}`, httpOptions)
+ }
+
+ public generarIngresos(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/canvasIngresos/${id}`, httpOptions)
+ }
+
+
 }

@@ -318,7 +318,7 @@
 
         <div class="form-group" *ngIf="idVer">
             <button   [routerLink]="['/clients/details/', cliente.id]" class="btn">Volver</button>
-            <button   (click)="generarPDF()" class="btn">Imprimir</button>
+            <button   (click)="generarPDF(cliente.id)" class="btn">Imprimir</button>
         </div>
     </div>
 </div>
