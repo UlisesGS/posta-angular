@@ -18,4 +18,9 @@ export class MensajeService {
     const url = `${this.apiUrl}/porUser/${userId}`;
     return this.http.get<Mensaje[]>(url);
   }
+
+  leido(id:number):Observable<void>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<void>(url);
+  }
 }

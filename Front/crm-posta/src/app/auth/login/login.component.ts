@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       this.authService.saveToken(response.token);//guardo token
     
       let us = this.authService.usuario;
-      Swal.fire('Login: ', `hola ${us.name}`, 'success');
+      Swal.fire('Login: ', `Hola ${us.name}`, 'success');
       this.ruta.navigate(['/main']);
     },err => {
       if(err.status == 401){

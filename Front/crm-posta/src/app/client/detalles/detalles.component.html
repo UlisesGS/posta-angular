@@ -116,7 +116,7 @@
           <div *ngIf="compromiso">
             <div class="m-2 col-6" *ngIf="imageUrl==null">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImage()">Subir Imagen</button>
+              <button class="btn mt-2" (click)="uploadImage(proceso.id)">Subir Imagen</button>
             </div>
             <!-- Mostrar la imagen o archivo PDF cargado -->
             <div class="m-2">
@@ -136,7 +136,7 @@
           <div *ngIf="encuesta">
             <div class="m-2 col-6" *ngIf="imageUrlEncuesta==null">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImageEncuesta()">Subir Imagen</button>
+              <button class="btn mt-2" (click)="uploadImageEncuesta(proceso.id)">Subir Imagen</button>
             </div>
             <!-- Mostrar la imagen o archivo PDF cargado -->
             <div class="m-2">
@@ -166,7 +166,7 @@
           <div *ngIf="cierre">
             <div class="m-2 col-6" *ngIf="imageUrlCierre==null">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImageCierre()">Subir Imagen</button>
+              <button class="btn mt-2" (click)="uploadImageCierre(proceso.id)">Subir Imagen</button>
             </div>
             <div class="m-2">
               <a *ngIf="imageUrlCierre" [href]="imageUrlCierre" class="btn" target="_blank">Abrir imagen en otra
@@ -242,7 +242,7 @@
           <div *ngIf="compromiso">
             <div class="m-2 col-6" *ngIf="imageUrl==null">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImage()">Subir Imagen</button>
+              <button class="btn mt-2" (click)="uploadImage(proceso.id)">Subir Imagen</button>
             </div>
             <div class="m-2">
               <a *ngIf="imageUrl" [href]="imageUrl" target="_blank" class="btn">Abrir imagen en otra pestaña</a>
@@ -256,7 +256,7 @@
           <div *ngIf="impacto">
             <div class="m-2 col-6" *ngIf="imageUrlImpacto==null">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImageImpacto()">Subir Imagen</button>
+              <button class="btn mt-2" (click)="uploadImageImpacto(proceso.id)">Subir Imagen</button>
             </div>
             <div class="m-2">
               <a *ngIf="imageUrlImpacto" [href]="imageUrlImpacto" target="_blank" class="btn">Abrir imagen en otra pestaña</a>
@@ -270,7 +270,7 @@
           <div *ngIf="encuesta">
             <div class="m-2 col-6" *ngIf="imageUrlEncuesta==null">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImageEncuesta()">Subir Imagen</button>
+              <button class="btn mt-2" (click)="uploadImageEncuesta(proceso.id)">Subir Imagen</button>
             </div>
             <div class="m-2">
               <a *ngIf="imageUrlEncuesta" [href]="imageUrlEncuesta" class="btn" target="_blank">Abrir imagen en otra
@@ -285,7 +285,7 @@
           <div *ngIf="cierre">
             <div class="m-2 col-6" *ngIf="imageUrlCierre==null">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImageCierre()">Subir Imagen</button>
+              <button class="btn mt-2" (click)="uploadImageCierre(proceso.id)">Subir Imagen</button>
             </div>
             <div class="m-2">
               <a *ngIf="imageUrlCierre" [href]="imageUrlCierre" class="btn" target="_blank">Abrir imagen en otra

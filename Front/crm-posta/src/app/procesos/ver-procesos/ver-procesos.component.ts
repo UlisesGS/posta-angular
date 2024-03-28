@@ -8,6 +8,7 @@ import { ModalService } from 'src/app/client/modal.service';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import pdfMake from 'pdfmake/build/pdfmake';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { PdfServiceService } from 'src/app/client/detalles/pdf-service.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -29,7 +30,8 @@ export class VerProcesosComponent implements OnInit {
     private procesoService: ProcesoService,
     private clienteService: ClientService,
     private http:HttpClient,
-    public modalService: ModalService) { }
+    public modalService: ModalService,
+    private pdfServ:PdfServiceService) { }
 
   ngOnInit(): void {
     this.rutaPorParametro.paramMap.subscribe(parametro => {
@@ -137,725 +139,125 @@ export class VerProcesosComponent implements OnInit {
   }
 
 
-  imprimirSegmento() {
-
-    this.convertImageToBase64(this.imageUrl).then(base64 => {
-      const documentDefinition = {
-        content: [
-          {
-            image: base64,
-            width: 129, // Ancho de la imagen en el PDF
-            height: 106, // Alto de la imagen en el PDF
-            margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
-            // Márgenes de la imagen en el PDF
-          },
-
-          // ... Estilos y otras configuraciones ...
-
-          /*     SEGMENTO DE CLIENTES     */
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: '#',  },
-                  { text: 'SEGMENTO DE CLIENTES', style: ['thisText', 'header'] }
-                ]
-              ]
-            }
-          },
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: 'DEMOGRAFICAS:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.customerSegments.demograficas , style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'GEOGRAFICAS:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.customerSegments.geograficas , style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'PSICOGRAFICAS:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.customerSegments.psicograficas , style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'COMPORTAMIENTO:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.customerSegments.comportanmiento , style: ['thisText', 'fieldHeader'] }
-                ],
-              ]
-            }
-          },
-        ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 12,
-          },
-          thisText: {
-            bold: true,
-            color: 'dark'
-          },
-          fieldValue: {
-            fontSize: 10,
-            margin: [5, 0]
-          },
-          p: {
-            fontSize: 10,
-            margin: [0, 10]
-          },
-          link: {
-            fontSize: 10,
-            color: 'blue',
-            margin: [0, 10],
-            decoration: 'underline'
-          },
-          fieldHeader: {
-            fontSize: 10,
-            bold: true,
-            margin: [0, 5]
-          }
-        }
-      };
-      pdfMake.vfs = pdfFonts.pdfMake.vfs;
-      pdfMake.createPdf(documentDefinition).open();
-
-    })
+  generarClientes(id: number) {
+    this.pdfServ.generarClientes(id).subscribe(
+      (data: Blob) => {
+        // Maneja la respuesta del servicio
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url); // Abre el PDF en una nueva ventana o pestaña
+      },
+      (error) => {
+        // Maneja errores, si los hay
+        console.error('Error al generar el informe:', error);
+      }
+    );
   }
 
-
-
-  imprimirPropuesta() {
-
-    this.convertImageToBase64(this.imageUrl).then(base64 => {
-      const documentDefinition = {
-        content: [
-          {
-            image: base64,
-            width: 129, // Ancho de la imagen en el PDF
-            height: 106, // Alto de la imagen en el PDF
-            margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
-            // Márgenes de la imagen en el PDF
-          },
-
-          // ... Estilos y otras configuraciones ...
-
-          /*     SEGMENTO DE CLIENTES     */
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: '#',  },
-                  { text: 'PROPUESTA DE VALOR', style: ['thisText', 'header'] }
-                ]
-              ]
-            }
-          },
-
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: 'PORPUESTA DE VALOR:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.valuePropositions.proposition, style: ['thisText', 'fieldHeader'] }
-                ],
-              ]
-            }
-          },
-        ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 12,
-          },
-          thisText: {
-            bold: true,
-            color: 'dark'
-          },
-          fieldValue: {
-            fontSize: 10,
-            margin: [5, 0]
-          },
-          p: {
-            fontSize: 10,
-            margin: [0, 10]
-          },
-          link: {
-            fontSize: 10,
-            color: 'blue',
-            margin: [0, 10],
-            decoration: 'underline'
-          },
-          fieldHeader: {
-            fontSize: 10,
-            bold: true,
-            margin: [0, 5]
-          }
-        }
-      };
-      pdfMake.vfs = pdfFonts.pdfMake.vfs;
-      pdfMake.createPdf(documentDefinition).open();
-
-    })
-  } 
-
-
-
-  imprimirCanales() {
-
-    this.convertImageToBase64(this.imageUrl).then(base64 => {
-      const documentDefinition = {
-        content: [
-          {
-            image: base64,
-            width: 129, // Ancho de la imagen en el PDF
-            height: 106, // Alto de la imagen en el PDF
-            margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
-            // Márgenes de la imagen en el PDF
-          },
-
-          // ... Estilos y otras configuraciones ...
-
-          /*     SEGMENTO DE CLIENTES     */
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: '#',  },
-                  { text: 'CANALES', style: ['thisText', 'header'] }
-                ]
-              ]
-            }
-          },
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: 'INFORMACION:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.channels.informacion , style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'EVALUACION:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.channels.evaluacion , style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'COMPRA:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.channels.compra, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'ENTREGA:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.channels.entrega , style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'POSTVENTA:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.channels.postVenta , style: ['thisText', 'fieldHeader'] }
-                ],
-              ]
-            }
-          },
-        ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 12,
-          },
-          thisText: {
-            bold: true,
-            color: 'dark'
-          },
-          fieldValue: {
-            fontSize: 10,
-            margin: [5, 0]
-          },
-          p: {
-            fontSize: 10,
-            margin: [0, 10]
-          },
-          link: {
-            fontSize: 10,
-            color: 'blue',
-            margin: [0, 10],
-            decoration: 'underline'
-          },
-          fieldHeader: {
-            fontSize: 10,
-            bold: true,
-            margin: [0, 5]
-          }
-        }
-      };
-      pdfMake.vfs = pdfFonts.pdfMake.vfs;
-      pdfMake.createPdf(documentDefinition).open();
-
-    })
+  generarValor(id: number) {
+    this.pdfServ.generarValor(id).subscribe(
+      (data: Blob) => {
+        // Maneja la respuesta del servicio
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url); // Abre el PDF en una nueva ventana o pestaña
+      },
+      (error) => {
+        // Maneja errores, si los hay
+        console.error('Error al generar el informe:', error);
+      }
+    );
   }
 
-
-
-
-  imprimirRelaciones() {
-
-    this.convertImageToBase64(this.imageUrl).then(base64 => {
-      const documentDefinition = {
-        content: [
-          {
-            image: base64,
-            width: 129, // Ancho de la imagen en el PDF
-            height: 106, // Alto de la imagen en el PDF
-            margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
-            // Márgenes de la imagen en el PDF
-          },
-
-          // ... Estilos y otras configuraciones ...
-
-          /*     SEGMENTO DE CLIENTES     */
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: '#',  },
-                  { text: 'RELACION CON CLIENTES', style: ['thisText', 'header'] }
-                ]
-              ]
-            }
-          },
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: 'CAPTACION:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.customerRelationships.captacion, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'FIDELIZACION:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.customerRelationships.fidelizacion, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'ESTIMULACION:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.customerRelationships.estimulacion, style: ['thisText', 'fieldHeader'] }
-                ],
-              ]
-            }
-          },
-        ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 12,
-          },
-          thisText: {
-            bold: true,
-            color: 'dark'
-          },
-          fieldValue: {
-            fontSize: 10,
-            margin: [5, 0]
-          },
-          p: {
-            fontSize: 10,
-            margin: [0, 10]
-          },
-          link: {
-            fontSize: 10,
-            color: 'blue',
-            margin: [0, 10],
-            decoration: 'underline'
-          },
-          fieldHeader: {
-            fontSize: 10,
-            bold: true,
-            margin: [0, 5]
-          }
-        }
-      };
-      pdfMake.vfs = pdfFonts.pdfMake.vfs;
-      pdfMake.createPdf(documentDefinition).open();
-
-    })
+  generarCanales(id: number) {
+    this.pdfServ.generarCanales(id).subscribe(
+      (data: Blob) => {
+        // Maneja la respuesta del servicio
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url); // Abre el PDF en una nueva ventana o pestaña
+      },
+      (error) => {
+        // Maneja errores, si los hay
+        console.error('Error al generar el informe:', error);
+      }
+    );
   }
 
-
-
-
-  imprimirRecursosClaves() {
-
-    this.convertImageToBase64(this.imageUrl).then(base64 => {
-      const documentDefinition = {
-        content: [
-          {
-            image: base64,
-            width: 129, // Ancho de la imagen en el PDF
-            height: 106, // Alto de la imagen en el PDF
-            margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
-            // Márgenes de la imagen en el PDF
-          },
-
-          // ... Estilos y otras configuraciones ...
-
-          /*     SEGMENTO DE CLIENTES     */
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: '#',  },
-                  { text: 'RECURSOS CLAVES', style: ['thisText', 'header'] }
-                ]
-              ]
-            }
-          },
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: 'RECURSOS HUMANOS:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyRecources.recursosHumanos, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'RECURSOS FISICOS:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyRecources.recursosFisicos, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'RECURSOS INTELECTUALES:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyRecources.recursosIntelectuales, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'RECURSOS TECNOLOGICOS:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyRecources.recursosTecnologicos, style: ['thisText', 'fieldHeader'] }
-                ],
-              ]
-            }
-          },
-        ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 12,
-          },
-          thisText: {
-            bold: true,
-            color: 'dark'
-          },
-          fieldValue: {
-            fontSize: 10,
-            margin: [5, 0]
-          },
-          p: {
-            fontSize: 10,
-            margin: [0, 10]
-          },
-          link: {
-            fontSize: 10,
-            color: 'blue',
-            margin: [0, 10],
-            decoration: 'underline'
-          },
-          fieldHeader: {
-            fontSize: 10,
-            bold: true,
-            margin: [0, 5]
-          }
-        }
-      };
-      pdfMake.vfs = pdfFonts.pdfMake.vfs;
-      pdfMake.createPdf(documentDefinition).open();
-
-    })
+  generarRelaciones(id: number) {
+    this.pdfServ.generarRelaciones(id).subscribe(
+      (data: Blob) => {
+        // Maneja la respuesta del servicio
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url); // Abre el PDF en una nueva ventana o pestaña
+      },
+      (error) => {
+        // Maneja errores, si los hay
+        console.error('Error al generar el informe:', error);
+      }
+    );
   }
 
-
-
-
-  imprimirActividadesClaves() {
-
-    this.convertImageToBase64(this.imageUrl).then(base64 => {
-      const documentDefinition = {
-        content: [
-          {
-            image: base64,
-            width: 129, // Ancho de la imagen en el PDF
-            height: 106, // Alto de la imagen en el PDF
-            margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
-            // Márgenes de la imagen en el PDF
-          },
-
-          // ... Estilos y otras configuraciones ...
-
-          /*     SEGMENTO DE CLIENTES     */
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: '#',  },
-                  { text: 'ACTIVIDADES CLAVES', style: ['thisText', 'header'] }
-                ]
-              ]
-            }
-          },
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: 'ACTIVIDAD PRINCIPAL:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyActivities.actividadPrincipal, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'PRESTACION SERVICIO:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyRecources.recursosFisicos, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'COMUNICACION MARKETING:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyRecources.recursosIntelectuales, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'POSTVENTA:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyRecources.recursosTecnologicos, style: ['thisText', 'fieldHeader'] }
-                ],
-              ]
-            }
-          },
-        ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 12,
-          },
-          thisText: {
-            bold: true,
-            color: 'dark'
-          },
-          fieldValue: {
-            fontSize: 10,
-            margin: [5, 0]
-          },
-          p: {
-            fontSize: 10,
-            margin: [0, 10]
-          },
-          link: {
-            fontSize: 10,
-            color: 'blue',
-            margin: [0, 10],
-            decoration: 'underline'
-          },
-          fieldHeader: {
-            fontSize: 10,
-            bold: true,
-            margin: [0, 5]
-          }
-        }
-      };
-      pdfMake.vfs = pdfFonts.pdfMake.vfs;
-      pdfMake.createPdf(documentDefinition).open();
-
-    })
+  generarRecursos(id: number) {
+    this.pdfServ.generarRecursos(id).subscribe(
+      (data: Blob) => {
+        // Maneja la respuesta del servicio
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url); // Abre el PDF en una nueva ventana o pestaña
+      },
+      (error) => {
+        // Maneja errores, si los hay
+        console.error('Error al generar el informe:', error);
+      }
+    );
   }
 
-        
-
-
-
-  imprimirSociosClaves() {
-
-    this.convertImageToBase64(this.imageUrl).then(base64 => {
-      const documentDefinition = {
-        content: [
-          {
-            image: base64,
-            width: 129, // Ancho de la imagen en el PDF
-            height: 106, // Alto de la imagen en el PDF
-            margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
-            // Márgenes de la imagen en el PDF
-          },
-
-          // ... Estilos y otras configuraciones ...
-
-          /*     SEGMENTO DE CLIENTES     */
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: '#',  },
-                  { text: 'SOCIOS CLAVES', style: ['thisText', 'header'] }
-                ]
-              ]
-            }
-          },
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: 'PROVEEDORES:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyPartners.proveedores, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'ENTIDADES PUBLICAS:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyPartners.entidadesPublicas, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'ENTIDADES PRIVADAS:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyPartners.entidadesPrivadas, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'ACADEMIA:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.keyPartners.academia, style: ['thisText', 'fieldHeader'] }
-                ],
-              ]
-            }
-          },
-        ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 12,
-          },
-          thisText: {
-            bold: true,
-            color: 'dark'
-          },
-          fieldValue: {
-            fontSize: 10,
-            margin: [5, 0]
-          },
-          p: {
-            fontSize: 10,
-            margin: [0, 10]
-          },
-          link: {
-            fontSize: 10,
-            color: 'blue',
-            margin: [0, 10],
-            decoration: 'underline'
-          },
-          fieldHeader: {
-            fontSize: 10,
-            bold: true,
-            margin: [0, 5]
-          }
-        }
-      };
-      pdfMake.vfs = pdfFonts.pdfMake.vfs;
-      pdfMake.createPdf(documentDefinition).open();
-
-    })
-  }
-         
-
-
-
-  imprimirIngresos() {
-
-    this.convertImageToBase64(this.imageUrl).then(base64 => {
-      const documentDefinition = {
-        content: [
-          {
-            image: base64,
-            width: 129, // Ancho de la imagen en el PDF
-            height: 106, // Alto de la imagen en el PDF
-            margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
-            // Márgenes de la imagen en el PDF
-          },
-
-          // ... Estilos y otras configuraciones ...
-
-          /*     SEGMENTO DE CLIENTES     */
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: '#',  },
-                  { text: 'INGRESOS', style: ['thisText', 'header'] }
-                ]
-              ]
-            }
-          },
-          {
-            table: {
-              layout: 'noBorders', // <-- Eliminar los bordes de la tabla
-              widths: ['auto', '*'],
-              body: [
-                [
-                  { text: 'CAPITAL PROPIO:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.revenueStreams.capitalPorpio, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'CAPITAL PRESTAMO:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.revenueStreams.capitalPrestamo, style: ['thisText', 'fieldHeader'] }
-                ],
-                [
-                  { text: 'CANALES PAGO:', style: 'fieldHeader' },
-                  { text: this.proceso.canvasModel.revenueStreams.canalesPago, style: ['thisText', 'fieldHeader'] }
-                ],
-              ]
-            }
-          },
-        ],
-        styles: {
-          header: {
-            bold: true,
-            fontSize: 12,
-          },
-          thisText: {
-            bold: true,
-            color: 'dark'
-          },
-          fieldValue: {
-            fontSize: 10,
-            margin: [5, 0]
-          },
-          p: {
-            fontSize: 10,
-            margin: [0, 10]
-          },
-          link: {
-            fontSize: 10,
-            color: 'blue',
-            margin: [0, 10],
-            decoration: 'underline'
-          },
-          fieldHeader: {
-            fontSize: 10,
-            bold: true,
-            margin: [0, 5]
-          }
-        }
-      };
-      pdfMake.vfs = pdfFonts.pdfMake.vfs;
-      pdfMake.createPdf(documentDefinition).open();
-
-    })
+  generarActividades(id: number) {
+    this.pdfServ.generarActividades(id).subscribe(
+      (data: Blob) => {
+        // Maneja la respuesta del servicio
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url); // Abre el PDF en una nueva ventana o pestaña
+      },
+      (error) => {
+        // Maneja errores, si los hay
+        console.error('Error al generar el informe:', error);
+      }
+    );
   }
 
+  generarSocios(id: number) {
+    this.pdfServ.generarSocios(id).subscribe(
+      (data: Blob) => {
+        // Maneja la respuesta del servicio
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url); // Abre el PDF en una nueva ventana o pestaña
+      },
+      (error) => {
+        // Maneja errores, si los hay
+        console.error('Error al generar el informe:', error);
+      }
+    );
+  }
 
-
+  generarIngresos(id: number) {
+    this.pdfServ.generarIngresos(id).subscribe(
+      (data: Blob) => {
+        // Maneja la respuesta del servicio
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url); // Abre el PDF en una nueva ventana o pestaña
+      },
+      (error) => {
+        // Maneja errores, si los hay
+        console.error('Error al generar el informe:', error);
+      }
+    );
+  }
 
   imprimirCostoEstructura() {
 

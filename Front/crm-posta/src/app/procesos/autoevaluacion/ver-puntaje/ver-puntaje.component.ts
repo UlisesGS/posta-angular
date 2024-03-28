@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { PdfServiceService } from 'src/app/client/detalles/pdf-service.service';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -25,7 +26,8 @@ export class VerPuntajeComponent implements OnInit {
   constructor(private clientService:ClientService,
     private procesoService:ProcesoService,
     private activatedRoute:ActivatedRoute,
-    private http:HttpClient){}
+    private http:HttpClient,
+    private pdfServ:PdfServiceService){}
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(parametro=>{
@@ -81,38 +83,19 @@ export class VerPuntajeComponent implements OnInit {
   
 
 
-  generarPDF() {
-    this.convertImageToBase64(this.imageUrl).then(base64 => {
-    const docDefinition = {
-      content: [
-        {
-          image: base64,
-          width: 129, // Ancho de la imagen en el PDF
-          height: 106, // Alto de la imagen en el PDF
-          margin: [0, 0, 0, 10] // Margen inferior de 10 unidades
-          // Márgenes de la imagen en el PDF
-        },
-        { text: `PUNTAJE: `+this.proceso.selfAssessment.score, style: 'header', alignment: 'center' },
-        { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#000000' }] },
-        { text: 'CALIFIQUE CADA RESPUESTA DE LA SIGUIENTE MANERA', style: 'subheader', alignment: 'center' },
-        { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#000000' }] },
-        { text: '3 puntos por cada "SI". 2 puntos por cada "QUIZÁS". 0 puntos por cada "NO".', style: 'subheader' },
-        { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#000000' }] }, // Línea separadora usando el canvas
-        { text: 'SI USTED OBTUVO UNA PUNTUACION ENTRE:', style: 'subheader', alignment: 'center' }, // Centrar el texto
-        { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#000000' }] },
-        { text: '90 y 72. Comience su negocio y programe una cita con un asesor del Centro. Usted tiene las condiciones para ser un buen emprendedor.', style: 'subheader', alignment: 'center' }, // Centrar el texto
-        { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#000000' }] },
-        { text: '71 y 58. Usted tiene potencial, pero necesita mayor esfuerzo y dedicación para sacar adelante sus proyectos.', style: 'subheader', alignment: 'center' }, // Centrar el texto
-        { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#000000' }] },
-      ],
-      styles: {
-        header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
-        subheader: { fontSize: 14, bold: true, margin: [0, 10, 0, 5] },
-        message: { fontSize: 12 }
+  generarPDF(id: number) {
+    this.pdfServ.generarAutoevaluacion(id).subscribe(
+      (data: Blob) => {
+        // Maneja la respuesta del servicio
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url); // Abre el PDF en una nueva ventana o pestaña
+      },
+      (error) => {
+        // Maneja errores, si los hay
+        console.error('Error al generar el informe:', error);
       }
-    };
-
-    pdfMake.createPdf(docDefinition).open();
-  })}
+    );
+  }
 
 }

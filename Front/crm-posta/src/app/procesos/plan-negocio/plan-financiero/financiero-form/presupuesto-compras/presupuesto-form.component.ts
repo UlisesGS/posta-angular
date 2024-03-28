@@ -46,9 +46,7 @@ export class PresupuestoFormComponent implements OnInit {
 
   presupuestoCompra: PresupuestoCompra = new PresupuestoCompra();
 
-  listaPresupuesto: EstructuraCompra[]=[];
-  listasOtros: EstructuraCompra[]=[];
-  presu: PresupuestoCompra[]=[]
+  
 
 
   constructor(private rutaParametro: ActivatedRoute,

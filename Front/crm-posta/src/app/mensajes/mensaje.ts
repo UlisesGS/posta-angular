@@ -7,4 +7,5 @@ contenido:string;
 remitente:Usuario;
 destinatario:Usuario;
 fehcaEnvio:Date;
+leido:boolean;
 }

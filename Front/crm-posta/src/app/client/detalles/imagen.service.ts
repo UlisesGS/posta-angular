@@ -13,48 +13,49 @@ export class ImagenService {
 
 
   //private baseUrl:string="http://ec2-3-141-31-192.us-east-2.compute.amazonaws.com:8080/image"
- // private baseUrl:string="http://ec2-3-80-138-228.compute-1.amazonaws.com:8080/image"
+  //private baseUrl:string="http://ec2-3-80-138-228.compute-1.amazonaws.com:8080/image"
+  private baseUrl='http://ec2-18-231-154-207.sa-east-1.compute.amazonaws.com:8080/image' 
 
- private baseUrl = 'http://localhost:8080/image'; 
+  //private baseUrl = 'http://localhost:8080/image'; 
 
 
   constructor(private http: HttpClient) { }
 
-  uploadImage(file: File, proceso:Process): Observable<string> {
+  uploadImage(file: File, id:number): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
 
-    return this.http.post<string>(`${this.baseUrl}/uploadCompromiso/${proceso.id}`, formData);
+    return this.http.post<string>(`${this.baseUrl}/uploadCompromiso/${id}`, formData);
   }
 
-  getImageBlob(proceso:Process): Observable<Blob> {
-    return this.http.get(`${this.baseUrl}/imagenCompromiso/${proceso.id}`, { responseType: 'blob' });
+  getImageBlob(id:number): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}/downloadCompromiso/${id}`, { responseType: 'blob' });
   }
 
-  uploadImageEncuesta(file: File, proceso:Process): Observable<string> {
+  uploadImageEncuesta(file: File, id:number): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
 
-    return this.http.post<string>(`${this.baseUrl}/uploadEncuesta/${proceso.id}`, formData);
+    return this.http.post<string>(`${this.baseUrl}/uploadEncuesta/${id}`, formData);
   }
 
-  getImageBlobEncuesta(proceso:Process): Observable<Blob> {
-    return this.http.get(`${this.baseUrl}/imagenEncuesta/${proceso.id}`, { responseType: 'blob' });
+  getImageBlobEncuesta(id:number): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}/imagenEncuesta/${id}`, { responseType: 'blob' });
   }
-  uploadImageCierre(file: File, proceso:Process): Observable<string> {
+  uploadImageCierre(file: File, id:number): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<string>(`${this.baseUrl}/uploadCierre/${proceso.id}`, formData);
+    return this.http.post<string>(`${this.baseUrl}/uploadCierre/${id}`, formData);
   }
-  getImageBlobCierre(proceso:Process): Observable<Blob> {
-    return this.http.get(`${this.baseUrl}/imagenCierre/${proceso.id}`, { responseType: 'blob' });
+  getImageBlobCierre(id:number): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}/imagenCierre/${id}`, { responseType: 'blob' });
   }
-  uploadImageImpacto(file: File, proceso:Process): Observable<string> {
+  uploadImageImpacto(file: File, id:number): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<string>(`${this.baseUrl}/uploadImpacto/${proceso.id}`, formData);
+    return this.http.post<string>(`${this.baseUrl}/uploadImpacto/${id}`, formData);
   }
-  getImageBlobImpacto(proceso:Process): Observable<Blob> {
-    return this.http.get(`${this.baseUrl}/imagenImpacto/${proceso.id}`, { responseType: 'blob' });
+  getImageBlobImpacto(id:number): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}/imagenImpacto/${id}`, { responseType: 'blob' });
   }
 }
