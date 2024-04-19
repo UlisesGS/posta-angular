@@ -30,7 +30,7 @@
                                 <div class="cell-content">
                                     <a (click)="sacarItem(item)" class="btn-close"></a>
                                     <span class="salaria-anual">
-                                        {{item.cantidad}}
+                                        {{item?.cantidad?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}
                                     </span>
                                 </div>
                                  </td>
@@ -41,7 +41,7 @@
                     <tfoot>
                         <tr>
                             <th style="text-align: left;">Total</th>
-                            <th style="text-align: right;">{{totalUnidadesRequeridas}}</th>
+                            <th style="text-align: right;" >{{totalUnidadesRequeridas?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -103,7 +103,7 @@
                             <!-- <input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.tiempoDecicacion"> -->
                         </td>
                         <td class="autorellenadas" style="text-align: right;width: 13%;">{{(pres?.capacidadInstaladaUnidades/100)?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
-                        <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres.cantidad}}</td>
+                        <td class="autorellenadas" style="text-align: right;width: 13%;">{{pres?.cantidad?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
 
                     </tr>
 
@@ -114,7 +114,7 @@
                         <th style="text-align: right;">{{presupuestoVenta?.totalCapacidadOperario?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</th>
                         <th></th>
                         <th style="text-align: right;">{{(presupuestoVenta?.totalCapacidadInstalada/100)?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</th>
-                        <th style="text-align: right;">{{totalUnidadesRequeridas}}</th>
+                        <th style="text-align: right;">{{totalUnidadesRequeridas?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</th>
                     </tr>
                 </tfoot>
             </table>
@@ -137,7 +137,7 @@
                 <tbody>
                     <tr *ngFor="let pres of presupuestoVenta.estructuraMercado">
                         <td class="autorellenadas" style="width: 13%;">{{pres.producto}}</td>
-                        <td style="width: 13%;text-align: right;" class="autorellenadas">{{pres.cantidad}}</td>
+                        <td style="width: 13%;text-align: right;" class="autorellenadas">{{pres?.cantidad?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
                         <td style="width: 13%;text-align: right;"><input type="number" (keyup)="llenarHoras()" [(ngModel)]="pres.precioUnitario"></td>
                         <td style="width: 13%;text-align: right;" class="autorellenadas">{{pres.precioTotal?.toLocaleString('en-US', {
                             style: 'currency', currency: 'USD' })}}</td>
@@ -148,7 +148,7 @@
                 <tfoot>
                     <tr>
                         <th >Total</th>
-                        <th style="text-align: right;">{{presupuestoVenta.totalProductos}}</th>
+                        <th style="text-align: right;">{{presupuestoVenta?.totalProductos?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</th>
                         <th style="text-align: right;">{{presupuestoVenta.totalPrecioUnitario?.toLocaleString('en-US', {
                             style: 'currency', currency: 'USD' })}}</th>
                         <th style="text-align: right;">{{presupuestoVenta.totalTotal?.toLocaleString('en-US', {

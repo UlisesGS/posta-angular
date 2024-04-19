@@ -19,7 +19,7 @@
                                 </tr>
                                 <tr>
                                     <th style="width: 50%;">Unidad de Producción</th>
-                                    <td class="autorellenadas">{{item.cantidadProducto}}</td>
+                                    <td class="autorellenadas">{{item?.cantidadProducto?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).split('.')[0].replace('$', '')}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -64,31 +64,32 @@
                                     <tr *ngFor="let i of item.estructuraCompras" >
                                         <td>{{i.materiaPrima}}</td>
                                         <td>{{i.tipo}}</td>
-                                        <td class="total-unitario">{{i.valorUnitario?.toLocaleString('en-US', {
+                                        <td class="total-unitario">{{i?.valorUnitario?.toLocaleString('en-US', {
                                             style: 'currency', currency: 'USD' })}}</td>
-                                        <td class="total-unitario">{{i.cantidadUbnidad?.toFixed(2)}}</td>
+                                        <td class="total-unitario">{{i?.cantidadUbnidad?.toFixed(2)}}</td>
                                         <td class="autorellenadas" > <div class="cell-content">
                                             <a (click)="sacarFila(item,i)" class="btn-close"></a>
-                                            <span class="total-unitario">{{i.totalUnitario?.toLocaleString('en-US', {
+                                            <span class="total-unitario">{{i?.totalUnitario?.toLocaleString('en-US', {
                                                 style: 'currency', currency: 'USD' })}}</span>
                                           </div></td>
                                     
                                       </tr>
+                                      <tr>
+                                        <td class="autorellenadas" colspan="4">Subtotal</td>
+                                        <td class="autorellenadas" style="text-align: right;">{{item?.subtotal?.toLocaleString('en-US', {
+                                            style: 'currency', currency: 'USD' })}} </td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th colspan="4">Total</th>
-                                        <th>{{item.total?.toLocaleString('en-US', {
+                                        <th>{{item?.total?.toLocaleString('en-US', {
                                             style: 'currency', currency: 'USD' })}} </th>
                                             
                                     </tr>
                                 </tfoot>
                                 <thead>
-                                    <tr>
-                                        <td class="autorellenadas" colspan="4">Subtotal</td>
-                                        <td class="autorellenadas" style="text-align: right;">{{item.subtotal?.toLocaleString('en-US', {
-                                            style: 'currency', currency: 'USD' })}} </td>
-                                    </tr>
+                                    
                                     <tr>
                                         <td  class="autorellenadas" style="text-align: center;" colspan="5">Otros Insumos</td>
                                     </tr>

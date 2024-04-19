@@ -32,6 +32,11 @@ export class DetallesComponent {
   cierre: boolean = false;
   impacto:boolean=false;
 
+  existeCompromiso=false;
+  existeEncuesta=false;
+  existeCierre=false;
+  existeImpacto=false;
+
   constructor(
     private procesoService: ProcesoService,
     private rutaParametro: ActivatedRoute,
@@ -76,30 +81,30 @@ export class DetallesComponent {
       }
     );
   }
-  getImageUrl() {
-    this.imagenService.getImageBlob(this.proceso.id).subscribe((blob: Blob) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
-        this.imageUrl = URL.createObjectURL(blob);
-        console.log(this.imageUrl);
-        
-      };
-      reader.readAsDataURL(blob);
-    });
+ 
+  downloadFile() {
+    this.imagenService.downloadFile(this.proceso.id).subscribe(
+      response => {
+        // Crear una URL para el Blob
+        const downloadUrl = window.URL.createObjectURL(response);
+
+        // Crear un enlace <a> para descargar el archivo
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'documento'; // Cambia 'documento' por el nombre deseado del archivo
+        document.body.appendChild(link);
+        link.click();
+
+        // Limpiar la URL creada para el Blob
+        window.URL.revokeObjectURL(downloadUrl);
+      },
+      error => {
+        console.error('Error al descargar el archivo:', error);
+      }
+    );
   }
-  isPDF(url: string): boolean {
-    if (url && typeof url === 'string') {
-      return url.toLowerCase().endsWith('.pdf');
-    }
-    return false; // Si url es null o no es una cadena, retornamos false
-  }
-  isImage(url: string): boolean {
-    if (url && typeof url === 'string') {
-      return /\.(jpeg|jpg|gif|png)$/i.test(url);
-    }
-    return false;
-  }
+ 
+
 
   uploadImageEncuesta() {
     if (!this.file) {
@@ -126,17 +131,26 @@ export class DetallesComponent {
       );
   }
   
-  getImageUrlEncuesta() {
-    this.imagenService.getImageBlobEncuesta(this.proceso.id).subscribe((blob: Blob) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
-        this.imageUrlEncuesta = URL.createObjectURL(blob);
-        console.log(this.imageUrlEncuesta);
-        
-      };
-      reader.readAsDataURL(blob);
-    });
+  downloadEncuesta() {
+    this.imagenService.downloadEncuesta(this.proceso.id).subscribe(
+      response => {
+        // Crear una URL para el Blob
+        const downloadUrl = window.URL.createObjectURL(response);
+
+        // Crear un enlace <a> para descargar el archivo
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'documento'; // Cambia 'documento' por el nombre deseado del archivo
+        document.body.appendChild(link);
+        link.click();
+
+        // Limpiar la URL creada para el Blob
+        window.URL.revokeObjectURL(downloadUrl);
+      },
+      error => {
+        console.error('Error al descargar el archivo:', error);
+      }
+    );
   }
 
   uploadImageCierre() {
@@ -169,15 +183,26 @@ export class DetallesComponent {
    
   }
 
-  getImageUrlCierre() {
-    this.imagenService.getImageBlobCierre(this.proceso.id).subscribe((blob: Blob) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
-        this.imageUrlCierre = URL.createObjectURL(blob);
-      };
-      reader.readAsDataURL(blob);
-    });
+  downloadCierre() {
+    this.imagenService.downloadCierre(this.proceso.id).subscribe(
+      response => {
+        // Crear una URL para el Blob
+        const downloadUrl = window.URL.createObjectURL(response);
+
+        // Crear un enlace <a> para descargar el archivo
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'documento'; // Cambia 'documento' por el nombre deseado del archivo
+        document.body.appendChild(link);
+        link.click();
+
+        // Limpiar la URL creada para el Blob
+        window.URL.revokeObjectURL(downloadUrl);
+      },
+      error => {
+        console.error('Error al descargar el archivo:', error);
+      }
+    );
   }
   uploadImageImpacto() {
     if (!this.file) {
@@ -205,16 +230,27 @@ export class DetallesComponent {
     
   
  
-  getImageUrlImpacto() {
-    this.imagenService.getImageBlobImpacto(this.proceso.id).subscribe((blob: Blob) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        console.log(reader.result); // Esto mostrará el contenido del Blob en la consola
-        this.imageUrlImpacto = URL.createObjectURL(blob);
-      };
-      reader.readAsDataURL(blob);
-    });
-  }
+    downloadImpacto() {
+      this.imagenService.downloadImpacto(this.proceso.id).subscribe(
+        response => {
+          // Crear una URL para el Blob
+          const downloadUrl = window.URL.createObjectURL(response);
+  
+          // Crear un enlace <a> para descargar el archivo
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = 'documento'; // Cambia 'documento' por el nombre deseado del archivo
+          document.body.appendChild(link);
+          link.click();
+  
+          // Limpiar la URL creada para el Blob
+          window.URL.revokeObjectURL(downloadUrl);
+        },
+        error => {
+          console.error('Error al descargar el archivo:', error);
+        }
+      );
+    }
   
 
   ngOnInit(): void {
@@ -229,30 +265,32 @@ export class DetallesComponent {
             this.procesos.forEach(proceso => {
               if (proceso?.canvasModel?.client?.id == this.cliente.id) {
                 this.proceso = proceso;
+                console.log(this.proceso);
+                
                 if (this.proceso.documentoCompromiso) {
-                  this.getImageUrl();
+                  this.existeCompromiso=true;
                 }
                 if (this.proceso.encuestaSatisfaccion) {
-                  this.getImageUrlEncuesta();
+                  this.existeEncuesta=true;
                 }
                 if (this.proceso.actaCierre) {
-                  this.getImageUrlCierre();
+                  this.existeCierre=true;
                 }
               }else 
               if (proceso?.processEmpresario?.client?.id == this.cliente.id) {
                 this.proceso = proceso;
                 
                 if (this.proceso.documentoCompromiso) {
-                  this.getImageUrl();
+                  this.existeCompromiso=true;
                 }
                 if (this.proceso.encuestaSatisfaccion) {
-                  this.getImageUrlEncuesta();
+                  this.existeEncuesta=true;
                 }
                 if (this.proceso.actaCierre) {
-                  this.getImageUrlCierre();
+                  this.existeCierre=true;
                 }
                 if (this.proceso.impacto) {
-                  this.getImageUrlImpacto();
+                  this.existeImpacto=true;
                 }
 
               }
