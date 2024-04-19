@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
   }
   public cerrarSesion() {
     this.authService.logaut();
-    Swal.fire("Sesion", 'la sesion fue cerrada con exito', 'success');
+    Swal.fire("Sesion", 'Sesión Cerrada con Éxito', 'success');
     this.ruta.navigate(['/login'])
   }
 

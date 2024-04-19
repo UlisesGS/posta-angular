@@ -195,6 +195,8 @@ if (this.idEditar) {
       compra.subtotal=0;
       this.estructuraCompras.forEach(compras=>{
         compra.subtotal+=compras.totalUnitario;
+        console.log(compra.subtotal);
+        
       })
       
       this.totalUnitarios=compra.subtotal+compra.subtotal2;//
@@ -221,6 +223,8 @@ if (this.idEditar) {
       this.totalAnuales=compra.totalAnual; 
     })
   }
+
+
   agregarFila(producto: string) {
     
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {
@@ -236,14 +240,20 @@ if (this.idEditar) {
       
     
       }
-      this.sacarTotales();
-    
+      
     })
-   
+    
+    
+    
     this.nombreP = this.presupuestoCompra.nombreProcucto
     //this.estructuraCompras = []; esta pija lo rompe
     this.estructuraCompra = new EstructuraCompra();
+
   }
+
+
+
+
   agregarFila1(producto: string) {
     
     this.proceso.businessPlanFinancial.presupuestoCompra.forEach(compra => {

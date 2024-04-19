@@ -93,20 +93,7 @@
                 (click)="abrirTestAuto(proceso,'finalizado', 'finalizado', 'finalizado', 'finalizado', 'financiero')"></i>
             </button> 
           </div>
-          <!-- <div class="m-2">
-            <a href="assets/CompromisoEmprendedor.pdf" target="_blank" class="btn" (click)="imprimirCompromiso()"><i
-                class="fa-solid fa-file fa-2xl"></i> Documento de Compromiso</a>
-            <i class="fa-solid fa-caret-down fa-xl" (click)="condicionCompromiso()"></i>
-          </div>
-          <div *ngIf="compromiso">
-            <div class="m-2 col-6" *ngIf="imageUrl==null">
-              <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImage()">Subir Imagen</button>
-            </div>
-            <div class="m-2">
-              <a *ngIf="imageUrl" [href]="imageUrl" target="_blank" class="btn">Abrir imagen en otra pestaña</a>
-            </div>
-          </div> -->
+       
           <div class="m-2">
             <a href="assets/CompromisoEmprendedor.pdf" target="_blank" class="btn"><i class="fa-solid fa-file fa-2xl"></i> Documento de Compromiso</a>
             <i class="fa-solid fa-caret-down fa-xl" (click)="condicionCompromiso()"></i>
@@ -114,15 +101,14 @@
           
           <!-- Área para cargar imágenes o archivos -->
           <div *ngIf="compromiso">
-            <div class="m-2 col-6" *ngIf="imageUrl==null">
+            <div class="m-2 col-6" *ngIf="!existeCompromiso">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
               <button class="btn mt-2" (click)="uploadImage(proceso.id)">Subir Imagen</button>
             </div>
             <!-- Mostrar la imagen o archivo PDF cargado -->
             <div class="m-2">
-              <a *ngIf="imageUrl" [href]="imageUrl" target="_blank" class="btn">Abrir imagen o PDF en otra pestaña</a>
-              <iframe *ngIf="isPDF(imageUrl)" [src]="imageUrl" width="100%" height="500"></iframe>
-              <img *ngIf="isImage(imageUrl)" [src]="imageUrl" alt="Imagen">
+              <a *ngIf="existeCompromiso" (click)="downloadFile()" target="_blank" class="btn">Descargar imagen o PDF en otra pestaña</a>
+              
             </div>
           </div>
 
@@ -134,24 +120,16 @@
             <i class="fa-solid fa-caret-down fa-xl" (click)="condicionEncuesta()"></i>
           </div>
           <div *ngIf="encuesta">
-            <div class="m-2 col-6" *ngIf="imageUrlEncuesta==null">
+            <div class="m-2 col-6" *ngIf="!existeEncuesta">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
               <button class="btn mt-2" (click)="uploadImageEncuesta(proceso.id)">Subir Imagen</button>
             </div>
             <!-- Mostrar la imagen o archivo PDF cargado -->
             <div class="m-2">
-              <a *ngIf="imageUrlEncuesta" [href]="imageUrlEncuesta" target="_blank" class="btn">Abrir imagen o PDF en otra pestaña</a>
-              <iframe *ngIf="isPDF(imageUrlEncuesta)" [src]="imageUrlEncuesta" width="100%" height="500"></iframe>
-              <img *ngIf="isImage(imageUrlEncuesta)" [src]="imageUrlEncuesta" alt="Imagen">
+              <a *ngIf="existeEncuesta" (click)="downloadEncuesta()" target="_blank" class="btn">Descargar imagen o PDF</a>
+              
             </div>
-            <!-- <div class="m-2 col-6" *ngIf="imageUrlEncuesta==null">
-              <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImageEncuesta()">Subir Imagen</button>
-            </div>
-            <div class="m-2">
-              <a *ngIf="imageUrlEncuesta" [href]="imageUrlEncuesta" class="btn" target="_blank">Abrir imagen en otra
-                pestaña</a>
-            </div> -->
+           
           </div>
 
 
@@ -164,13 +142,12 @@
             <i class="fa-solid fa-caret-down fa-xl" (click)="condicionCierre()"></i>
           </div>
           <div *ngIf="cierre">
-            <div class="m-2 col-6" *ngIf="imageUrlCierre==null">
+            <div class="m-2 col-6" *ngIf="!existeCierre">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
               <button class="btn mt-2" (click)="uploadImageCierre(proceso.id)">Subir Imagen</button>
             </div>
             <div class="m-2">
-              <a *ngIf="imageUrlCierre" [href]="imageUrlCierre" class="btn" target="_blank">Abrir imagen en otra
-                pestaña</a>
+              <a *ngIf="existeCierre" (click)="downloadCierre()" class="btn" target="_blank">Descargar imagen o PDF</a>
             </div>
           </div>
           <div>
@@ -235,31 +212,20 @@
             </button>
           </div>
           <div class="m-2">
-            <a href="assets/CompromisoEmprendedor.pdf" target="_blank" class="btn" (click)="imprimirCompromiso()"><i
-                class="fa-solid fa-file fa-2xl"></i> Documento de Compromiso</a>
+            <a href="assets/CompromisoEmprendedor.pdf" target="_blank" class="btn"><i class="fa-solid fa-file fa-2xl"></i> Documento de Compromiso</a>
             <i class="fa-solid fa-caret-down fa-xl" (click)="condicionCompromiso()"></i>
           </div>
+          
+          <!-- Área para cargar imágenes o archivos -->
           <div *ngIf="compromiso">
-            <div class="m-2 col-6" *ngIf="imageUrl==null">
+            <div class="m-2 col-6" *ngIf="!existeCompromiso">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
               <button class="btn mt-2" (click)="uploadImage(proceso.id)">Subir Imagen</button>
             </div>
+            <!-- Mostrar la imagen o archivo PDF cargado -->
             <div class="m-2">
-              <a *ngIf="imageUrl" [href]="imageUrl" target="_blank" class="btn">Abrir imagen en otra pestaña</a>
-            </div>
-          </div>
-          <div class="m-2">
-            <a href="assets/EncuestaImpacto.pdf" target="_blank" class="btn" (click)="imprimirImpacto()"><i
-                class="fa-solid fa-file fa-2xl"></i> Encuesta Impácto Económico</a>
-            <i class="fa-solid fa-caret-down fa-xl"(click)="condicionImpacto()" ></i>
-          </div>
-          <div *ngIf="impacto">
-            <div class="m-2 col-6" *ngIf="imageUrlImpacto==null">
-              <input type="file" class="form-control col" (change)="onFileSelected($event)">
-              <button class="btn mt-2" (click)="uploadImageImpacto(proceso.id)">Subir Imagen</button>
-            </div>
-            <div class="m-2">
-              <a *ngIf="imageUrlImpacto" [href]="imageUrlImpacto" target="_blank" class="btn">Abrir imagen en otra pestaña</a>
+              <a *ngIf="existeCompromiso" (click)="downloadFile()" target="_blank" class="btn">Descargar imagen o PDF en otra pestaña</a>
+              
             </div>
           </div>
           <div class="m-2">
@@ -268,28 +234,49 @@
             <i class="fa-solid fa-caret-down fa-xl" (click)="condicionEncuesta()"></i>
           </div>
           <div *ngIf="encuesta">
-            <div class="m-2 col-6" *ngIf="imageUrlEncuesta==null">
+            <div class="m-2 col-6" *ngIf="!existeEncuesta">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
               <button class="btn mt-2" (click)="uploadImageEncuesta(proceso.id)">Subir Imagen</button>
             </div>
+            <!-- Mostrar la imagen o archivo PDF cargado -->
             <div class="m-2">
-              <a *ngIf="imageUrlEncuesta" [href]="imageUrlEncuesta" class="btn" target="_blank">Abrir imagen en otra
-                pestaña</a>
+              <a *ngIf="existeEncuesta" (click)="downloadEncuesta()" target="_blank" class="btn">Descargar imagen o PDF</a>
+              
+            </div>
+           
+          </div>
+
+
+          <div class="m-2">
+            <a href="assets/EncuestaImpacto.pdf" target="_blank" class="btn" (click)="imprimirEncuesta()"><i
+                class="fa-solid fa-file fa-2xl"></i> Encuesta de Satisfacción</a>
+            <i class="fa-solid fa-caret-down fa-xl" (click)="condicionImpacto()"></i>
+          </div>
+          <div *ngIf="impacto">
+            <div class="m-2 col-6" *ngIf="!existeImpacto">
+              <input type="file" class="form-control col" (change)="onFileSelected($event)">
+              <button class="btn mt-2" (click)="uploadImageImpacto(proceso.id)">Subir Imagen</button>
+            </div>
+            <div class="m-2">
+              <a *ngIf="existeImpacto" (click)="downloadImpacto()" class="btn" target="_blank">Descargar imagen o PDF</a>
             </div>
           </div>
+
+
+
+
           <div class="m-2">
             <a href="assets/ActaCierreEmprendedor.pdf" target="_blank" class="btn" (click)="imprimirActa()"><i
                 class="fa-solid fa-file fa-2xl"></i> Acta de Cierre</a>
             <i class="fa-solid fa-caret-down fa-xl" (click)="condicionCierre()"></i>
           </div>
           <div *ngIf="cierre">
-            <div class="m-2 col-6" *ngIf="imageUrlCierre==null">
+            <div class="m-2 col-6" *ngIf="!existeCierre">
               <input type="file" class="form-control col" (change)="onFileSelected($event)">
               <button class="btn mt-2" (click)="uploadImageCierre(proceso.id)">Subir Imagen</button>
             </div>
             <div class="m-2">
-              <a *ngIf="imageUrlCierre" [href]="imageUrlCierre" class="btn" target="_blank">Abrir imagen en otra
-                pestaña</a>
+              <a *ngIf="existeCierre" (click)="downloadCierre()" class="btn" target="_blank">Descargar imagen o PDF</a>
             </div>
           </div>
           <div>
