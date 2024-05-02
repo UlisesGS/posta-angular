@@ -11,7 +11,7 @@
                                         <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
                                                 <thead>
                                                         <tr>
-                                                                <th class="col-10" rowspan="2">Lineamientos Básicos Estratégicos</th>
+                                                                <th class="col-10" rowspan="2">Lineamientos Básicos Estratégicos e Imagen Coorporativa</th>
                                                                 <th class="col-1">Inicio</th>
                                                                 <th class="col-1">Fin</th>
                                                         </tr>
@@ -155,7 +155,7 @@
                                         <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
                                                 <thead>
                                                         <tr>
-                                                                <th class="col-10" rowspan="2">Producción y Operaciones</th>
+                                                                <th class="col-10" rowspan="2">Contable, Financiero y Fondos</th>
                                                                 <th class="col-1">Inicio</th>
                                                                 <th class="col-1">Fin</th>
                                                         </tr>
@@ -227,7 +227,7 @@
                                         <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
                                                 <thead>
                                                         <tr>
-                                                                <th class="col-10" rowspan="2">Talento Humano</th>
+                                                                <th class="col-10" rowspan="2">Talento Humano y Capacitaciones</th>
                                                                 <th class="col-1">Inicio</th>
                                                                 <th class="col-1">Fin</th>
                                                         </tr>
@@ -287,6 +287,150 @@
                                                                 <td width="15%">Observaciones</td>
                                                                 <td width="85%" colspan="2"><textarea
                                                                         [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.talentoHumano.observaciones"
+                                                                        name="d5" id="d5"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                </tbody>
+        
+                                        </table>
+                                </div>
+
+                                <div>
+                                        <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
+                                                <thead>
+                                                        <tr>
+                                                                <th class="col-10" rowspan="2">Registro, Marcas y Permisos</th>
+                                                                <th class="col-1">Inicio</th>
+                                                                <th class="col-1">Fin</th>
+                                                        </tr>
+                                                        <tr>
+                                                                <th class="row3 ">
+                                                                        <input type="date"
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.registroMarcas.fechaInicio"
+                                                                        name="d5" id="d5" class="form-control">
+                                                                </th>
+                                                                <th class="row3 ">
+                                                                        <input type="date"
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.registroMarcas.fechaCierre"
+                                                                        name="d5" id="d5" class="form-control">
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                        </table>
+                                        <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;">
+                                                
+                                                <tbody>
+                                                        <tr>
+                                                                <td class="col-2">Objetivo Estratégico</td>
+                                                                <td class="col-10" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.registroMarcas.objetivoEstrategico"
+                                                                        name="d1" id="d1"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Actividad Estratégica</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.registroMarcas.actividadEstrategica"
+                                                                        name="d2" id="d2"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Responsable</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.registroMarcas.responsable"
+                                                                        name="d3" id="d3"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Aliados Estratégicos</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.registroMarcas.aliadosEstrategicos"
+                                                                        name="d4" id="d4"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Cumplimiento</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.registroMarcas.cumplimiento"
+                                                                        name="d5" id="d5"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Observaciones</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.registroMarcas.observaciones"
+                                                                        name="d5" id="d5"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                </tbody>
+        
+                                        </table>
+                                </div>
+
+                                <div>
+                                        <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
+                                                <thead>
+                                                        <tr>
+                                                                <th class="col-10" rowspan="2">Otros Componentes No Contemplados</th>
+                                                                <th class="col-1">Inicio</th>
+                                                                <th class="col-1">Fin</th>
+                                                        </tr>
+                                                        <tr>
+                                                                <th class="row3 ">
+                                                                        <input type="date"
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.noContemplados.fechaInicio"
+                                                                        name="d5" id="d5" class="form-control">
+                                                                </th>
+                                                                <th class="row3 ">
+                                                                        <input type="date"
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.noContemplados.fechaCierre"
+                                                                        name="d5" id="d5" class="form-control">
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                        </table>
+                                        <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;">
+                                                
+                                                <tbody>
+                                                        <tr>
+                                                                <td class="col-2">Objetivo Estratégico</td>
+                                                                <td class="col-10" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.noContemplados.objetivoEstrategico"
+                                                                        name="d1" id="d1"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Actividad Estratégica</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.noContemplados.actividadEstrategica"
+                                                                        name="d2" id="d2"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Responsable</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.noContemplados.responsable"
+                                                                        name="d3" id="d3"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Aliados Estratégicos</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.noContemplados.aliadosEstrategicos"
+                                                                        name="d4" id="d4"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Cumplimiento</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.noContemplados.cumplimiento"
+                                                                        name="d5" id="d5"
+                                                                        class="form-control"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Observaciones</td>
+                                                                <td width="85%" colspan="2"><textarea
+                                                                        [(ngModel)]="proceso?.processEmpresario?.planDeAccion?.noContemplados.observaciones"
                                                                         name="d5" id="d5"
                                                                         class="form-control"></textarea></td>
                                                         </tr>
@@ -365,7 +509,7 @@
                                         <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
                                                 <thead>
                                                         <tr>
-                                                                <th class="col-10" rowspan="2">Lineamientos Básicos Estratégicos</th>
+                                                                <th class="col-10" rowspan="2">Lineamientos Básicos Estratégicos e Imagen Coorporativa</th>
                                                                 <th class="col-1">Inicio</th>
                                                                 <th class="col-1">Fin</th>
                                                         </tr>
@@ -501,7 +645,7 @@
                                         <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
                                                 <thead>
                                                         <tr>
-                                                                <th class="col-10" rowspan="2">Producción y Operaciones</th>
+                                                                <th class="col-10" rowspan="2">Contable, Financiero y Fondos</th>
                                                                 <th class="col-1">Inicio</th>
                                                                 <th class="col-1">Fin</th>
                                                         </tr>
@@ -569,7 +713,7 @@
                                         <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
                                                 <thead>
                                                         <tr>
-                                                                <th class="col-10" rowspan="2">Talento Humano</th>
+                                                                <th class="col-10" rowspan="2">Talento Humano y Capacitaciones</th>
                                                                 <th class="col-1">Inicio</th>
                                                                 <th class="col-1">Fin</th>
                                                         </tr>
@@ -632,6 +776,144 @@
         
                                         </table>
                                 </div>
+
+                                <div>
+                                        <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
+                                                <thead>
+                                                        <tr>
+                                                                <th class="col-10" rowspan="2">Registro, Marcas y Permisos</th>
+                                                                <th class="col-1">Inicio</th>
+                                                                <th class="col-1">Fin</th>
+                                                        </tr>
+                                                        <tr>
+                                                                <th class="row3 ">
+                                                                        <div style="display: flex; justify-content: center; align-items: center; ">
+                                                                                {{ proceso?.processEmpresario?.planDeAccion?.registroMarcas.fechaInicio |
+                                                                                date:'dd/MM/yyyy' }}
+                                                                            </div>
+                                                                </th>
+                                                                <th class="row3 ">
+                                                                        <div style="display: flex; justify-content: center; align-items: center; ">
+                                                                                {{ proceso?.processEmpresario?.planDeAccion?.registroMarcas.fechaCierre |
+                                                                                date:'dd/MM/yyyy' }}
+                                                                            </div>
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                        </table>
+                                        <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;">
+                                                
+                                                <tbody>
+                                                        <tr>
+                                                                <td class="col-2">Objetivo Estratégico</td>
+                                                                <td class="col-10" colspan="2"><div disabled
+                                            
+                                                                        name="a1" id="a1" >{{proceso?.processEmpresario?.planDeAccion?.registroMarcas.objetivoEstrategico}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Actividad Estratégica</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a2" id="a2" >{{proceso?.processEmpresario?.planDeAccion?.registroMarcas.actividadEstrategica}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Responsable</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a3" id="a3" >{{proceso?.processEmpresario?.planDeAccion?.registroMarcas.responsable}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Aliados Estratégicos</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a4" id="a4" >{{proceso?.processEmpresario?.planDeAccion?.registroMarcas.aliadosEstrategicos}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Cumplimiento</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a5" id="a5" >{{proceso?.processEmpresario?.planDeAccion?.registroMarcas.cumplimiento}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Observaciones</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a5" id="a5" >{{proceso?.processEmpresario?.planDeAccion?.registroMarcas.observaciones}}</div></td>
+                                                        </tr>
+                                                </tbody>
+        
+                                        </table>
+                                </div>
+
+                                <div>
+                                        <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;" >
+                                                <thead>
+                                                        <tr>
+                                                                <th class="col-10" rowspan="2">Otros Componentes No Contemplados</th>
+                                                                <th class="col-1">Inicio</th>
+                                                                <th class="col-1">Fin</th>
+                                                        </tr>
+                                                        <tr>
+                                                                <th class="row3 ">
+                                                                        <div style="display: flex; justify-content: center; align-items: center; ">
+                                                                                {{ proceso?.processEmpresario?.planDeAccion?.noContemplados.fechaInicio |
+                                                                                date:'dd/MM/yyyy' }}
+                                                                            </div>
+                                                                </th>
+                                                                <th class="row3 ">
+                                                                        <div style="display: flex; justify-content: center; align-items: center; ">
+                                                                                {{ proceso?.processEmpresario?.planDeAccion?.noContemplados.fechaCierre |
+                                                                                date:'dd/MM/yyyy' }}
+                                                                            </div>
+                                                                </th>
+                                                        </tr>
+                                                </thead>
+                                        </table>
+                                        <table class="table table-bordered" style="border: solid 1px; border-collapse: collapse; margin: 0; padding: 0;">
+                                                
+                                                <tbody>
+                                                        <tr>
+                                                                <td class="col-2">Objetivo Estratégico</td>
+                                                                <td class="col-10" colspan="2"><div disabled
+                                            
+                                                                        name="a1" id="a1" >{{proceso?.processEmpresario?.planDeAccion?.noContemplados.objetivoEstrategico}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Actividad Estratégica</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a2" id="a2" >{{proceso?.processEmpresario?.planDeAccion?.noContemplados.actividadEstrategica}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Responsable</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a3" id="a3" >{{proceso?.processEmpresario?.planDeAccion?.noContemplados.responsable}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Aliados Estratégicos</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a4" id="a4" >{{proceso?.processEmpresario?.planDeAccion?.noContemplados.aliadosEstrategicos}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Cumplimiento</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a5" id="a5" >{{proceso?.processEmpresario?.planDeAccion?.noContemplados.cumplimiento}}</div></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td width="15%">Observaciones</td>
+                                                                <td width="85%" colspan="2"><div disabled
+                                            
+                                                                        name="a5" id="a5" >{{proceso?.processEmpresario?.planDeAccion?.noContemplados.observaciones}}</div></td>
+                                                        </tr>
+                                                </tbody>
+        
+                                        </table>
+                                </div>
+
+
                         </form>
                 </div>
                 <button [routerLink]="['/clients/details/',cliente.id]" class="btn">Volver</button>

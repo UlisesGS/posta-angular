@@ -8,6 +8,7 @@ import { Usuario } from 'src/app/usuario/usuario';
 import { Process } from 'src/app/procesos/Process';
 import { ConceptoGenerales } from '../concepto-generales';
 import { Indicador } from '../indicador';
+import { PdfServiceService } from 'src/app/client/detalles/pdf-service.service';
 
 @Component({
   selector: 'app-ver-completo',
@@ -62,7 +63,8 @@ export class VerCompletoComponent implements OnInit {
     private processEmpresarioService: ProcessEmpresarioService,
     private ruta: Router,
     private parametro: ActivatedRoute,
-    private process: ProcesoService) { }
+    private process: ProcesoService,
+  private pdfService:PdfServiceService) { }
 
   ngOnInit(): void {
     this.parametro.paramMap.subscribe(p => {
@@ -109,7 +111,200 @@ export class VerCompletoComponent implements OnInit {
   }
 
 
+imprimirAnalisis(id:number){
+  this.pdfService.generarDiagnostico(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  );
+}
 
+imprimirEconomico(id:number){
+  this.pdfService.generarEconomico(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirConceptos(id:number){
+  this.pdfService.generarConceptos(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirEstrategica(id:number){
+  this.pdfService.generarEstrategia(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirProductividad(id:number){
+  this.pdfService.generarProductividad(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirOperacional(id:number){
+  this.pdfService.generarOperacional(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirCalidad(id:number){
+  this.pdfService.generarCalidad(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirInnovacion(id:number){
+  this.pdfService.generarInnovacion(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirFinanciera(id:number){
+  this.pdfService.generarFinanciera(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirLogistica(id:number){
+  this.pdfService.generarLogistica(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirTransformacion(id:number){
+  this.pdfService.generarTransformacion(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirAmbiental(id:number){
+  this.pdfService.generarAmbiental(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
+
+imprimirIntelectual(id:number){
+  this.pdfService.generarIntelectual(id).subscribe(
+    (data: Blob) => {
+      // Maneja la respuesta del servicio
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Abre el PDF en una nueva ventana o pestaña
+    },
+    (error) => {
+      // Maneja errores, si los hay
+      console.error('Error al generar el informe:', error);
+    }
+  ); 
+}
 
 
 

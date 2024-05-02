@@ -61,10 +61,7 @@ export class HeaderSuperiorComponent implements OnInit {
     this.modalService.abrirModalAsesoria();
   }
   public setLlenar() {
-    //this.clienteService.buscarPorNombre(this.termino).subscribe(data=>{
-    //this.clientes=data;
-    //})
-    //console.log(this.clientes);
+    
     this.busquedaService.setTermino(this.termino);
   }
   panel() {

@@ -97,6 +97,13 @@ export class PdfServiceService {
   return this.http.get<Blob>(`${this.urlEndPoint}/diagnostico/${id}`, httpOptions)
  }
 
+ public generarEconomico(id:number):Observable<Blob>{//Esto es analisis economico
+  const httpOptions = {
+    responseType: 'blob' as 'json', // Indicar el tipo de respuesta como Blob
+  };
+  return this.http.get<Blob>(`${this.urlEndPoint}/analisisEconomico/${id}`, httpOptions)
+ }
+
 
  //Emprendedor
  public generarAutoevaluacion(id:number):Observable<Blob>{//Esto es analisis economico

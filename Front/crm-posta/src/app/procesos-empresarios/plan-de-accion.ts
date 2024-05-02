@@ -5,6 +5,8 @@ lineamientosBasicos:AreaIntervenir;
 mercadeoVentas:AreaIntervenir;
 produccionOperaciones:AreaIntervenir;
 talentoHumano:AreaIntervenir;
+registroMarcas:AreaIntervenir;
+noContemplados:AreaIntervenir;
 }
 
 
