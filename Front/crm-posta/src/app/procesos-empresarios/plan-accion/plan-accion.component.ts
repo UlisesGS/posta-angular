@@ -53,6 +53,8 @@ export class PlanAccionComponent {
               this.proceso.processEmpresario.planDeAccion.mercadeoVentas=new AreaIntervenir();
               this.proceso.processEmpresario.planDeAccion.produccionOperaciones=new AreaIntervenir();
               this.proceso.processEmpresario.planDeAccion.talentoHumano=new AreaIntervenir();
+              this.proceso.processEmpresario.planDeAccion.registroMarcas=new AreaIntervenir();
+              this.proceso.processEmpresario.planDeAccion.noContemplados=new AreaIntervenir();
               // para editar
               let idEditar = +parametro.get('idEditar');
               console.log('no entro al if');
